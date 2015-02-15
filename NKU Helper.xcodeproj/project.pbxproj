@@ -9,11 +9,13 @@
 /* Begin PBXBuildFile section */
 		E90AE22E1A8F813900AD0D78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90AE22D1A8F813900AD0D78 /* AppDelegate.swift */; };
 		E90AE2311A8F813900AD0D78 /* NKU_Helper.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E90AE22F1A8F813900AD0D78 /* NKU_Helper.xcdatamodeld */; };
-		E90AE2331A8F813900AD0D78 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90AE2321A8F813900AD0D78 /* ViewController.swift */; };
+		E90AE2331A8F813900AD0D78 /* GradeSetUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90AE2321A8F813900AD0D78 /* GradeSetUpViewController.swift */; };
 		E90AE2361A8F813900AD0D78 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E90AE2341A8F813900AD0D78 /* Main.storyboard */; };
 		E90AE2381A8F813900AD0D78 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E90AE2371A8F813900AD0D78 /* Images.xcassets */; };
 		E90AE23B1A8F813900AD0D78 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E90AE2391A8F813900AD0D78 /* LaunchScreen.xib */; };
 		E90AE2471A8F813900AD0D78 /* NKU_HelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90AE2461A8F813900AD0D78 /* NKU_HelperTests.swift */; };
+		E90AE2511A8F814C00AD0D78 /* ImageGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90AE2501A8F814C00AD0D78 /* ImageGetter.swift */; };
+		E90AE2531A8F948300AD0D78 /* GradeGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90AE2521A8F948300AD0D78 /* GradeGetter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,13 +33,15 @@
 		E90AE22C1A8F813900AD0D78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E90AE22D1A8F813900AD0D78 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E90AE2301A8F813900AD0D78 /* NKU_Helper.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NKU_Helper.xcdatamodel; sourceTree = "<group>"; };
-		E90AE2321A8F813900AD0D78 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E90AE2321A8F813900AD0D78 /* GradeSetUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeSetUpViewController.swift; sourceTree = "<group>"; };
 		E90AE2351A8F813900AD0D78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E90AE2371A8F813900AD0D78 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E90AE23A1A8F813900AD0D78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		E90AE2401A8F813900AD0D78 /* NKU HelperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NKU HelperTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E90AE2451A8F813900AD0D78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E90AE2461A8F813900AD0D78 /* NKU_HelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NKU_HelperTests.swift; sourceTree = "<group>"; };
+		E90AE2501A8F814C00AD0D78 /* ImageGetter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageGetter.swift; sourceTree = "<group>"; };
+		E90AE2521A8F948300AD0D78 /* GradeGetter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeGetter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,7 +84,9 @@
 			isa = PBXGroup;
 			children = (
 				E90AE22D1A8F813900AD0D78 /* AppDelegate.swift */,
-				E90AE2321A8F813900AD0D78 /* ViewController.swift */,
+				E90AE2501A8F814C00AD0D78 /* ImageGetter.swift */,
+				E90AE2521A8F948300AD0D78 /* GradeGetter.swift */,
+				E90AE2321A8F813900AD0D78 /* GradeSetUpViewController.swift */,
 				E90AE2341A8F813900AD0D78 /* Main.storyboard */,
 				E90AE2371A8F813900AD0D78 /* Images.xcassets */,
 				E90AE2391A8F813900AD0D78 /* LaunchScreen.xib */,
@@ -215,8 +221,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E90AE2331A8F813900AD0D78 /* ViewController.swift in Sources */,
+				E90AE2331A8F813900AD0D78 /* GradeSetUpViewController.swift in Sources */,
 				E90AE2311A8F813900AD0D78 /* NKU_Helper.xcdatamodeld in Sources */,
+				E90AE2511A8F814C00AD0D78 /* ImageGetter.swift in Sources */,
+				E90AE2531A8F948300AD0D78 /* GradeGetter.swift in Sources */,
 				E90AE22E1A8F813900AD0D78 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -409,6 +417,7 @@
 				E90AE24C1A8F813900AD0D78 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E90AE24D1A8F813900AD0D78 /* Build configuration list for PBXNativeTarget "NKU HelperTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +426,7 @@
 				E90AE24F1A8F813900AD0D78 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
