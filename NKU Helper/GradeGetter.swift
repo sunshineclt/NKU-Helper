@@ -9,13 +9,13 @@
 import Foundation
 class GradeGetter: NSObject, NSURLConnectionDataDelegate {
     
-    var block:(grade:NSArray, doub:NSArray, gpa:NSArray, err:NSError)->Void
+    var block:(result:NSArray)->Void
     var respondData:NSMutableData?
     var connection:NSURLConnection?
     var step:Int
     var finalResult:NSMutableArray?
     override init() {
-        block = {(grade:NSArray, doub:NSArray, gpa:NSArray, err:NSError)->Void in
+        block = {(result:NSArray)->Void in
             
         }
         respondData = nil
@@ -26,7 +26,7 @@ class GradeGetter: NSObject, NSURLConnectionDataDelegate {
 
     }
     
-    func getGrade(uid:NSString, password:NSString, validateCode:NSString, block:(grade:NSArray, doub:NSArray, gpa:NSArray, err:NSError)->Void){
+    func getGrade(uid:NSString, password:NSString, validateCode:NSString, block:(result:NSArray)->Void){
         self.block = block
         var url:NSURL = NSURL(string: "http://222.30.32.10/stdloginAction.do")!
         var req:NSMutableURLRequest = NSMutableURLRequest(URL: url)
@@ -67,6 +67,8 @@ class GradeGetter: NSObject, NSURLConnectionDataDelegate {
             respondData = NSMutableData()
         }
         else{
+            
+            finalResult = NSMutableArray()
             if (step == 2){
                 var encoding:NSStringEncoding = CFStringConvertEncodingToNSStringEncoding(0x0632)
                 var html:NSString = NSString(data: respondData!, encoding: encoding)!
@@ -130,11 +132,13 @@ class GradeGetter: NSObject, NSURLConnectionDataDelegate {
                     obj.setObject(grade, forKey: "grade")
                     obj.setObject(credit, forKey: "credit")
                     
-                    finalResult = NSMutableArray()
                     finalResult?.addObject(obj)
+                    
                     
                 }
                 
+                block(result: finalResult!)
+
                 
             }
             
