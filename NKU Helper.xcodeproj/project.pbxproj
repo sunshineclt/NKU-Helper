@@ -10,15 +10,21 @@
 		E90AE22E1A8F813900AD0D78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90AE22D1A8F813900AD0D78 /* AppDelegate.swift */; };
 		E90AE2311A8F813900AD0D78 /* NKU_Helper.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E90AE22F1A8F813900AD0D78 /* NKU_Helper.xcdatamodeld */; };
 		E90AE2331A8F813900AD0D78 /* GradeSetUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90AE2321A8F813900AD0D78 /* GradeSetUpViewController.swift */; };
-		E90AE2361A8F813900AD0D78 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E90AE2341A8F813900AD0D78 /* Main.storyboard */; };
 		E90AE2381A8F813900AD0D78 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E90AE2371A8F813900AD0D78 /* Images.xcassets */; };
 		E90AE23B1A8F813900AD0D78 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E90AE2391A8F813900AD0D78 /* LaunchScreen.xib */; };
 		E90AE2471A8F813900AD0D78 /* NKU_HelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90AE2461A8F813900AD0D78 /* NKU_HelperTests.swift */; };
 		E90AE2511A8F814C00AD0D78 /* ImageGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90AE2501A8F814C00AD0D78 /* ImageGetter.swift */; };
 		E90AE2531A8F948300AD0D78 /* GradeGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90AE2521A8F948300AD0D78 /* GradeGetter.swift */; };
 		E91E5F4F1A90FAED009F3B2B /* GradeShowerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91E5F4E1A90FAED009F3B2B /* GradeShowerTableViewController.swift */; };
-		E91E5F511A90FDEE009F3B2B /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91E5F501A90FDEE009F3B2B /* RootViewController.swift */; };
 		E91E5F551A9103DF009F3B2B /* GradeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91E5F541A9103DF009F3B2B /* GradeCell.swift */; };
+		E94286501AA4CD2A00A4242C /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E942864F1AA4CD2A00A4242C /* LogInViewController.swift */; };
+		E94286541AA5494800A4242C /* LogIner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94286531AA5494800A4242C /* LogIner.swift */; };
+		E94286581AA5500C00A4242C /* SaveAccountInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94286571AA5500C00A4242C /* SaveAccountInfoViewController.swift */; };
+		E942865A1AA56E9E00A4242C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E94286591AA56E9E00A4242C /* Main.storyboard */; };
+		E98F94D61AA3180700885992 /* ClassTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98F94D51AA3180700885992 /* ClassTimeViewController.swift */; };
+		E98F94D81AA318EF00885992 /* FunctionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98F94D71AA318EF00885992 /* FunctionTableViewController.swift */; };
+		E98F94DA1AA3191F00885992 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98F94D91AA3191F00885992 /* SettingTableViewController.swift */; };
+		E98F94DC1AA3193E00885992 /* InternetConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98F94DB1AA3193E00885992 /* InternetConnectViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +43,6 @@
 		E90AE22D1A8F813900AD0D78 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E90AE2301A8F813900AD0D78 /* NKU_Helper.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NKU_Helper.xcdatamodel; sourceTree = "<group>"; };
 		E90AE2321A8F813900AD0D78 /* GradeSetUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeSetUpViewController.swift; sourceTree = "<group>"; };
-		E90AE2351A8F813900AD0D78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E90AE2371A8F813900AD0D78 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E90AE23A1A8F813900AD0D78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		E90AE2401A8F813900AD0D78 /* NKU HelperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NKU HelperTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,8 +52,15 @@
 		E90AE2521A8F948300AD0D78 /* GradeGetter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeGetter.swift; sourceTree = "<group>"; };
 		E91E5F4A1A90FA9E009F3B2B /* NKU Helper-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NKU Helper-Bridging-Header.h"; sourceTree = "<group>"; };
 		E91E5F4E1A90FAED009F3B2B /* GradeShowerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeShowerTableViewController.swift; sourceTree = "<group>"; };
-		E91E5F501A90FDEE009F3B2B /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		E91E5F541A9103DF009F3B2B /* GradeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeCell.swift; sourceTree = "<group>"; };
+		E942864F1AA4CD2A00A4242C /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		E94286531AA5494800A4242C /* LogIner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogIner.swift; sourceTree = "<group>"; };
+		E94286571AA5500C00A4242C /* SaveAccountInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveAccountInfoViewController.swift; sourceTree = "<group>"; };
+		E94286591AA56E9E00A4242C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		E98F94D51AA3180700885992 /* ClassTimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassTimeViewController.swift; sourceTree = "<group>"; };
+		E98F94D71AA318EF00885992 /* FunctionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunctionTableViewController.swift; sourceTree = "<group>"; };
+		E98F94D91AA3191F00885992 /* SettingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
+		E98F94DB1AA3193E00885992 /* InternetConnectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternetConnectViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,12 +104,14 @@
 			children = (
 				E90AE22D1A8F813900AD0D78 /* AppDelegate.swift */,
 				E90AE2501A8F814C00AD0D78 /* ImageGetter.swift */,
-				E90AE2521A8F948300AD0D78 /* GradeGetter.swift */,
-				E91E5F501A90FDEE009F3B2B /* RootViewController.swift */,
-				E90AE2321A8F813900AD0D78 /* GradeSetUpViewController.swift */,
-				E91E5F4E1A90FAED009F3B2B /* GradeShowerTableViewController.swift */,
-				E91E5F541A9103DF009F3B2B /* GradeCell.swift */,
-				E90AE2341A8F813900AD0D78 /* Main.storyboard */,
+				E94286571AA5500C00A4242C /* SaveAccountInfoViewController.swift */,
+				E942864F1AA4CD2A00A4242C /* LogInViewController.swift */,
+				E94286531AA5494800A4242C /* LogIner.swift */,
+				E98F94E21AA31A1A00885992 /* ClassTime */,
+				E98F94E01AA319DF00885992 /* InternetConnect */,
+				E98F94DF1AA319CD00885992 /* Function */,
+				E98F94E11AA319EE00885992 /* Settings */,
+				E94286591AA56E9E00A4242C /* Main.storyboard */,
 				E90AE2371A8F813900AD0D78 /* Images.xcassets */,
 				E90AE2391A8F813900AD0D78 /* LaunchScreen.xib */,
 				E90AE22F1A8F813900AD0D78 /* NKU_Helper.xcdatamodeld */,
@@ -130,6 +144,50 @@
 				E90AE2451A8F813900AD0D78 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E98F94D21AA317B100885992 /* GetGrade */ = {
+			isa = PBXGroup;
+			children = (
+				E90AE2521A8F948300AD0D78 /* GradeGetter.swift */,
+				E90AE2321A8F813900AD0D78 /* GradeSetUpViewController.swift */,
+				E91E5F4E1A90FAED009F3B2B /* GradeShowerTableViewController.swift */,
+				E91E5F541A9103DF009F3B2B /* GradeCell.swift */,
+			);
+			name = GetGrade;
+			sourceTree = "<group>";
+		};
+		E98F94DF1AA319CD00885992 /* Function */ = {
+			isa = PBXGroup;
+			children = (
+				E98F94D71AA318EF00885992 /* FunctionTableViewController.swift */,
+				E98F94D21AA317B100885992 /* GetGrade */,
+			);
+			name = Function;
+			sourceTree = "<group>";
+		};
+		E98F94E01AA319DF00885992 /* InternetConnect */ = {
+			isa = PBXGroup;
+			children = (
+				E98F94DB1AA3193E00885992 /* InternetConnectViewController.swift */,
+			);
+			name = InternetConnect;
+			sourceTree = "<group>";
+		};
+		E98F94E11AA319EE00885992 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				E98F94D91AA3191F00885992 /* SettingTableViewController.swift */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		E98F94E21AA31A1A00885992 /* ClassTime */ = {
+			isa = PBXGroup;
+			children = (
+				E98F94D51AA3180700885992 /* ClassTimeViewController.swift */,
+			);
+			name = ClassTime;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,7 +270,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E90AE2361A8F813900AD0D78 /* Main.storyboard in Resources */,
+				E942865A1AA56E9E00A4242C /* Main.storyboard in Resources */,
 				E90AE23B1A8F813900AD0D78 /* LaunchScreen.xib in Resources */,
 				E90AE2381A8F813900AD0D78 /* Images.xcassets in Resources */,
 			);
@@ -232,11 +290,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E98F94DC1AA3193E00885992 /* InternetConnectViewController.swift in Sources */,
+				E98F94D81AA318EF00885992 /* FunctionTableViewController.swift in Sources */,
 				E90AE2331A8F813900AD0D78 /* GradeSetUpViewController.swift in Sources */,
 				E90AE2311A8F813900AD0D78 /* NKU_Helper.xcdatamodeld in Sources */,
 				E90AE2511A8F814C00AD0D78 /* ImageGetter.swift in Sources */,
-				E91E5F511A90FDEE009F3B2B /* RootViewController.swift in Sources */,
+				E94286541AA5494800A4242C /* LogIner.swift in Sources */,
+				E98F94DA1AA3191F00885992 /* SettingTableViewController.swift in Sources */,
 				E91E5F4F1A90FAED009F3B2B /* GradeShowerTableViewController.swift in Sources */,
+				E98F94D61AA3180700885992 /* ClassTimeViewController.swift in Sources */,
+				E94286581AA5500C00A4242C /* SaveAccountInfoViewController.swift in Sources */,
+				E94286501AA4CD2A00A4242C /* LogInViewController.swift in Sources */,
 				E91E5F551A9103DF009F3B2B /* GradeCell.swift in Sources */,
 				E90AE2531A8F948300AD0D78 /* GradeGetter.swift in Sources */,
 				E90AE22E1A8F813900AD0D78 /* AppDelegate.swift in Sources */,
@@ -262,14 +326,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		E90AE2341A8F813900AD0D78 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E90AE2351A8F813900AD0D78 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E90AE2391A8F813900AD0D78 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (

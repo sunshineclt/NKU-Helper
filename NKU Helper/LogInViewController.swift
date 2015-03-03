@@ -1,35 +1,29 @@
 //
-//  GradeSetUpViewController.swift
+//  LogInViewController.swift
 //  NKU Helper
 //
-//  Created by 陈乐天 on 15/2/14.
+//  Created by 陈乐天 on 15/3/3.
 //  Copyright (c) 2015年 陈乐天. All rights reserved.
 //
 
 import UIKit
 
-class GradeSetUpViewController: UIViewController, UIAlertViewDelegate {
-
-    var gradeResult:NSArray = NSArray()
-    
-    @IBOutlet var ValidateCodeImageView: UIImageView!
+class LogInViewController: UIViewController, UIAlertViewDelegate {
     
     @IBOutlet var ValidateCodeTextField: UITextField!
-    override func viewDidLoad() {
-        
-                super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
-
+    @IBOutlet var ValidateCodeImageView: UIImageView!
+    
     override func viewWillAppear(animated: Bool) {
+        var view:UIView = UIView(frame: CGRectMake(0, 0, 320, 20))
+        view.backgroundColor = UIColor(red: 0.53, green: 0.8, blue: 0.98, alpha: 1)
+        self.view.addSubview(view)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         refreshImage()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     func refreshImage() {
         
         ValidateCodeTextField.becomeFirstResponder()
@@ -47,10 +41,12 @@ class GradeSetUpViewController: UIViewController, UIAlertViewDelegate {
     
     @IBAction func login(sender: AnyObject) {
         
+        
         var userDefaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         var accountInfo:NSDictionary = userDefaults.objectForKey("accountInfo") as NSDictionary
         var userID:String = accountInfo.objectForKey("userID") as String
         var password:String = accountInfo.objectForKey("password") as String
+        
         var loginer:LogIner = LogIner(userID: userID, password: password, validateCode: ValidateCodeTextField.text)
         loginer.login { (error) -> Void in
             if let temp = error {
@@ -66,43 +62,15 @@ class GradeSetUpViewController: UIViewController, UIAlertViewDelegate {
             }
             else{
                 print("Login Succeed!")
-                var 😌gradeGetter:GradeGetter = GradeGetter()
-                😌gradeGetter.getGrade() { (result, error) -> Void in
-                    
-                    if let temp = error {
-                        var alert:UIAlertView = UIAlertView(title: "失败", message: error!, delegate: nil, cancelButtonTitle: "知道了！")
-                        alert.show()
-                        self.refreshImage()
-                    }
-                        
-                    else {
-                        self.gradeResult = result!
-                        self.performSegueWithIdentifier("ShowGrade", sender: nil)
-                    }
-                    
-                }
-
+                self.dismissViewControllerAnimated(true, completion: nil)
                 
             }
         }
-
-        
-    }
-
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-        if segue.identifier == "ShowGrade" {
-            var destination:GradeShowerTableViewController = segue.destinationViewController as GradeShowerTableViewController
-            destination.gradeResult = self.gradeResult
-        }
-        
     }
     
- /*   func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
         if alertView.buttonTitleAtIndex(buttonIndex) == "好，重新设置用户名和密码" {
             self.performSegueWithIdentifier("editAccountInfo", sender: nil)
         }
     }
-   */ 
 }
-

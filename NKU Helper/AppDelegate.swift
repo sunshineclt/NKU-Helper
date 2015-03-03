@@ -10,16 +10,15 @@ import UIKit
 import CoreData
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate{
 
     var window: UIWindow?
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        UINavigationBar.appearance().barTintColor = UIColor.orangeColor()
+        UINavigationBar.appearance().barTintColor = UIColor(red: 0.53, green: 0.8, blue: 0.98, alpha: 1)
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
-
         
         // Override point for customization after application launch.
         return true
