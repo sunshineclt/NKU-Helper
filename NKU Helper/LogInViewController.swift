@@ -22,6 +22,7 @@ class LogInViewController: UIViewController, UIAlertViewDelegate {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         refreshImage()
+        ValidateCodeTextField.becomeFirstResponder()
     }
     
     func refreshImage() {
@@ -73,4 +74,5 @@ class LogInViewController: UIViewController, UIAlertViewDelegate {
             self.performSegueWithIdentifier("editAccountInfo", sender: nil)
         }
     }
+    
 }

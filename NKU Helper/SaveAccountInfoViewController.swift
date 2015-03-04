@@ -15,6 +15,7 @@ class SaveAccountInfoViewController: UIViewController, UIAlertViewDelegate {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        userIDTextField.becomeFirstResponder()
     }
     
     @IBAction func save(sender: AnyObject) {
@@ -40,6 +41,5 @@ class SaveAccountInfoViewController: UIViewController, UIAlertViewDelegate {
             self.dismissViewControllerAnimated(true, completion: nil)
         }
     }
-    
     
 }
