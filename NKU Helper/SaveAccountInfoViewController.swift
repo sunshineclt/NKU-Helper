@@ -38,7 +38,8 @@ class SaveAccountInfoViewController: UIViewController, UIAlertViewDelegate {
     func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
         if alertView.buttonTitleAtIndex(buttonIndex) == "好" {
             saveAccountInfo()
-            self.dismissViewControllerAnimated(true, completion: nil)
+            navigationController!.popViewControllerAnimated(true)
+            
         }
     }
     

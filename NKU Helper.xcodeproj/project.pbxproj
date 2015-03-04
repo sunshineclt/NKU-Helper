@@ -104,7 +104,6 @@
 			children = (
 				E90AE22D1A8F813900AD0D78 /* AppDelegate.swift */,
 				E90AE2501A8F814C00AD0D78 /* ImageGetter.swift */,
-				E94286571AA5500C00A4242C /* SaveAccountInfoViewController.swift */,
 				E942864F1AA4CD2A00A4242C /* LogInViewController.swift */,
 				E94286531AA5494800A4242C /* LogIner.swift */,
 				E98F94E21AA31A1A00885992 /* ClassTime */,
@@ -178,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				E98F94D91AA3191F00885992 /* SettingTableViewController.swift */,
+				E94286571AA5500C00A4242C /* SaveAccountInfoViewController.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";

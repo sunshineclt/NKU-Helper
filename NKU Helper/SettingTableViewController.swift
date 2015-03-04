@@ -10,22 +10,46 @@ import UIKit
 
 class SettingTableViewController: UITableViewController {
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        var numberOfRowsInSection:Int = 1
+        return numberOfRowsInSection
+    }
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell:UITableViewCell
-        if indexPath.section == 0 {
-            cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "account")
+        switch indexPath.section {
+        case 0:
             var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-            var accountInfo:NSDictionary = userDefaults.objectForKey("accountInfo") as NSDictionary
-            var userID:String = accountInfo.objectForKey("userID") as String
-            cell.textLabel?.text = userID
-            cell.detailTextLabel?.text = "欢迎登陆"
-            cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
-        }
-        else
-        {
-            cell = tableView.dequeueReusableCellWithIdentifier("1234") as UITableViewCell
+            var accountInfo:NSDictionary? = userDefaults.objectForKey("accountInfo") as NSDictionary?
+            if let temp = accountInfo {
+                cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "Account")
+
+                var userID:String = accountInfo!.objectForKey("userID") as String
+                cell.textLabel?.text = userID
+                cell.detailTextLabel?.text = "欢迎登陆"
+                cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+            }
+            else {
+                cell = tableView.dequeueReusableCellWithIdentifier("AddAccount") as UITableViewCell
+
+                cell.textLabel?.text = "请先登录！"
+                cell.detailTextLabel?.text = "欢迎使用NKU Helper！"
+            }
+            //case 1:
+            
+            //cell = tableView.dequeueReusableCellWithIdentifier("1234") as UITableViewCell
+            
+        default:cell = tableView.dequeueReusableCellWithIdentifier("1234") as UITableViewCell
+            
+            
         }
         return cell
     }
+    
     
 }

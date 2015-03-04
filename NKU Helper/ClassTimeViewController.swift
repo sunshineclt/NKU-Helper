@@ -12,16 +12,21 @@ class ClassTimeViewController: UIViewController, NSURLConnectionDataDelegate {
     
     @IBOutlet var classTimeWebView: UIWebView!
     
+    var loginOrNot:Bool? = nil
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
         var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         var accountInfo:NSDictionary? = userDefaults.objectForKey("accountInfo") as NSDictionary?
         if let temp = accountInfo {
-            
+            loginOrNot = true
         }
         else {
-            self.performSegueWithIdentifier("saveAccountInfo", sender: nil)
+          //  self.performSegueWithIdentifier("saveAccountInfo", sender: nil)
+            var alert:UIAlertView = UIAlertView(title: "请先登录", message: "登陆后方可查看课表，请到设置中登录！", delegate: nil, cancelButtonTitle: "知道了！")
+            alert.show()
+            loginOrNot = false
         }
         
         
@@ -30,13 +35,19 @@ class ClassTimeViewController: UIViewController, NSURLConnectionDataDelegate {
     override  func viewDidAppear(animated: Bool) {
         
         super.viewDidAppear(animated)
-        if isLogIn() {
-            refreshClassTimeTable("myself")
-            var req:NSURLRequest = NSURLRequest(URL: NSURL(string: "http://222.30.32.10/xsxk/selectedAction.do?operation=kebiao")!)
-            classTimeWebView.loadRequest(req)
+        
+        if loginOrNot! {
+            if isLogIn() {
+                refreshClassTimeTable("myself")
+                var req:NSURLRequest = NSURLRequest(URL: NSURL(string: "http://222.30.32.10/xsxk/selectedAction.do?operation=kebiao")!)
+                classTimeWebView.loadRequest(req)
+            }
+            else {
+                self.performSegueWithIdentifier("login", sender: nil)
+            }
         }
         else {
-            self.performSegueWithIdentifier("login", sender: nil)
+            
         }
     }
     
