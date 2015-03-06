@@ -10,24 +10,20 @@ import UIKit
 
 class LogInViewController: UIViewController, UIAlertViewDelegate {
     
-    @IBOutlet var ValidateCodeTextField: UITextField!
-    @IBOutlet var ValidateCodeImageView: UIImageView!
+    @IBOutlet var validateCodeTextField: UITextField!
+    @IBOutlet var validateCodeImageView: UIImageView!
     
     override func viewWillAppear(animated: Bool) {
         var view:UIView = UIView(frame: CGRectMake(0, 0, 320, 20))
-        view.backgroundColor = UIColor(red: 0.53, green: 0.8, blue: 0.98, alpha: 1)
+        view.backgroundColor = UINavigationBar.appearance().barTintColor
         self.view.addSubview(view)
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
+        
         refreshImage()
-        ValidateCodeTextField.becomeFirstResponder()
+        validateCodeTextField.becomeFirstResponder()
     }
     
     func refreshImage() {
         
-        ValidateCodeTextField.becomeFirstResponder()
         var validateCodeGetter:imageGetter = imageGetter()
         validateCodeGetter.getImageWithBlock { (data, err) -> Void in
             if let temp = err {
@@ -35,7 +31,7 @@ class LogInViewController: UIViewController, UIAlertViewDelegate {
             }
             else {
                 print("Validate Loading Succeed!\n")
-                self.ValidateCodeImageView.image = UIImage(data: data!)
+                self.validateCodeImageView.image = UIImage(data: data!)
             }
         }
     }
@@ -48,7 +44,7 @@ class LogInViewController: UIViewController, UIAlertViewDelegate {
         var userID:String = accountInfo.objectForKey("userID") as String
         var password:String = accountInfo.objectForKey("password") as String
         
-        var loginer:LogIner = LogIner(userID: userID, password: password, validateCode: ValidateCodeTextField.text)
+        var loginer:LogIner = LogIner(userID: userID, password: password, validateCode: validateCodeTextField.text)
         loginer.login { (error) -> Void in
             if let temp = error {
                 if error == "用户不存在或密码错误" {
@@ -66,12 +62,6 @@ class LogInViewController: UIViewController, UIAlertViewDelegate {
                 self.dismissViewControllerAnimated(true, completion: nil)
                 
             }
-        }
-    }
-    
-    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
-        if alertView.buttonTitleAtIndex(buttonIndex) == "好，重新设置用户名和密码" {
-            self.performSegueWithIdentifier("editAccountInfo", sender: nil)
         }
     }
     

@@ -21,10 +21,14 @@
 		E94286541AA5494800A4242C /* LogIner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94286531AA5494800A4242C /* LogIner.swift */; };
 		E94286581AA5500C00A4242C /* SaveAccountInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94286571AA5500C00A4242C /* SaveAccountInfoViewController.swift */; };
 		E942865A1AA56E9E00A4242C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E94286591AA56E9E00A4242C /* Main.storyboard */; };
+		E96419D21AA8971B00397691 /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96419D11AA8971B00397691 /* AccountTableViewCell.swift */; };
+		E96419D41AA8BC9800397691 /* DetailAccountInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96419D31AA8BC9800397691 /* DetailAccountInfoTableViewController.swift */; };
 		E98F94D61AA3180700885992 /* ClassTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98F94D51AA3180700885992 /* ClassTimeViewController.swift */; };
 		E98F94D81AA318EF00885992 /* FunctionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98F94D71AA318EF00885992 /* FunctionTableViewController.swift */; };
 		E98F94DA1AA3191F00885992 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98F94D91AA3191F00885992 /* SettingTableViewController.swift */; };
 		E98F94DC1AA3193E00885992 /* InternetConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98F94DB1AA3193E00885992 /* InternetConnectViewController.swift */; };
+		E9B8C4AF1AA82D6E00E0DD50 /* AccountInfo in Resources */ = {isa = PBXBuildFile; fileRef = E9B8C4AE1AA82D6E00E0DD50 /* AccountInfo */; };
+		E9FAACD41AA9762A000FE24D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9FAACD31AA9762A000FE24D /* LaunchScreen.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,10 +61,14 @@
 		E94286531AA5494800A4242C /* LogIner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogIner.swift; sourceTree = "<group>"; };
 		E94286571AA5500C00A4242C /* SaveAccountInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveAccountInfoViewController.swift; sourceTree = "<group>"; };
 		E94286591AA56E9E00A4242C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		E96419D11AA8971B00397691 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
+		E96419D31AA8BC9800397691 /* DetailAccountInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailAccountInfoTableViewController.swift; sourceTree = "<group>"; };
 		E98F94D51AA3180700885992 /* ClassTimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassTimeViewController.swift; sourceTree = "<group>"; };
 		E98F94D71AA318EF00885992 /* FunctionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunctionTableViewController.swift; sourceTree = "<group>"; };
 		E98F94D91AA3191F00885992 /* SettingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 		E98F94DB1AA3193E00885992 /* InternetConnectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternetConnectViewController.swift; sourceTree = "<group>"; };
+		E9B8C4AE1AA82D6E00E0DD50 /* AccountInfo */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AccountInfo; sourceTree = "<group>"; };
+		E9FAACD31AA9762A000FE24D /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,9 +110,10 @@
 		E90AE22A1A8F813900AD0D78 /* NKU Helper */ = {
 			isa = PBXGroup;
 			children = (
+				E9FAACD31AA9762A000FE24D /* LaunchScreen.xib */,
 				E90AE22D1A8F813900AD0D78 /* AppDelegate.swift */,
+				E9B8C4AE1AA82D6E00E0DD50 /* AccountInfo */,
 				E90AE2501A8F814C00AD0D78 /* ImageGetter.swift */,
-				E942864F1AA4CD2A00A4242C /* LogInViewController.swift */,
 				E94286531AA5494800A4242C /* LogIner.swift */,
 				E98F94E21AA31A1A00885992 /* ClassTime */,
 				E98F94E01AA319DF00885992 /* InternetConnect */,
@@ -178,6 +187,8 @@
 			children = (
 				E98F94D91AA3191F00885992 /* SettingTableViewController.swift */,
 				E94286571AA5500C00A4242C /* SaveAccountInfoViewController.swift */,
+				E96419D11AA8971B00397691 /* AccountTableViewCell.swift */,
+				E96419D31AA8BC9800397691 /* DetailAccountInfoTableViewController.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -186,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				E98F94D51AA3180700885992 /* ClassTimeViewController.swift */,
+				E942864F1AA4CD2A00A4242C /* LogInViewController.swift */,
 			);
 			name = ClassTime;
 			sourceTree = "<group>";
@@ -270,6 +282,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9FAACD41AA9762A000FE24D /* LaunchScreen.xib in Resources */,
+				E9B8C4AF1AA82D6E00E0DD50 /* AccountInfo in Resources */,
 				E942865A1AA56E9E00A4242C /* Main.storyboard in Resources */,
 				E90AE23B1A8F813900AD0D78 /* LaunchScreen.xib in Resources */,
 				E90AE2381A8F813900AD0D78 /* Images.xcassets in Resources */,
@@ -295,8 +309,10 @@
 				E90AE2331A8F813900AD0D78 /* GradeSetUpViewController.swift in Sources */,
 				E90AE2311A8F813900AD0D78 /* NKU_Helper.xcdatamodeld in Sources */,
 				E90AE2511A8F814C00AD0D78 /* ImageGetter.swift in Sources */,
+				E96419D21AA8971B00397691 /* AccountTableViewCell.swift in Sources */,
 				E94286541AA5494800A4242C /* LogIner.swift in Sources */,
 				E98F94DA1AA3191F00885992 /* SettingTableViewController.swift in Sources */,
+				E96419D41AA8BC9800397691 /* DetailAccountInfoTableViewController.swift in Sources */,
 				E91E5F4F1A90FAED009F3B2B /* GradeShowerTableViewController.swift in Sources */,
 				E98F94D61AA3180700885992 /* ClassTimeViewController.swift in Sources */,
 				E94286581AA5500C00A4242C /* SaveAccountInfoViewController.swift in Sources */,
