@@ -47,7 +47,7 @@ class ClassTimeViewController: UIViewController, NSURLConnectionDataDelegate {
     func isLogIn() -> Bool {
         var req:NSURLRequest = NSURLRequest(URL: NSURL(string: "http://222.30.32.10/xsxk/selectedAction.do?operation=kebiao")!)
         var response:NSHTTPURLResponse = NSHTTPURLResponse()
-        var receivedData:NSData = NSURLConnection.sendSynchronousRequest(req, returningResponse: nil, error: nil)!
+        var receivedData:NSData = NSURLConnection   .sendSynchronousRequest(req, returningResponse: nil, error: nil)!
         var encoding:NSStringEncoding = CFStringConvertEncodingToNSStringEncoding(0x0632)
         var html:NSString = NSString(data: receivedData, encoding: encoding)!
         if html.rangeOfString("星期一").length > 0 {
