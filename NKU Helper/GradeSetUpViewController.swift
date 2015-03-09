@@ -12,12 +12,13 @@ class GradeSetUpViewController: UIViewController, UIAlertViewDelegate {
 
     var gradeResult:NSArray = NSArray()
     
-    @IBOutlet var ValidateCodeImageView: UIImageView!
+    @IBOutlet var validateCodeImageView: UIImageView!
+    @IBOutlet var validateCodeTextField: UITextField!
     
-    @IBOutlet var ValidateCodeTextField: UITextField!
+    
     override func viewDidLoad() {
         
-                super.viewDidLoad()
+        super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -32,7 +33,7 @@ class GradeSetUpViewController: UIViewController, UIAlertViewDelegate {
 
     func refreshImage() {
         
-        ValidateCodeTextField.becomeFirstResponder()
+        validateCodeTextField.becomeFirstResponder()
         var validateCodeGetter:imageGetter = imageGetter()
         validateCodeGetter.getImageWithBlock { (data, err) -> Void in
             if let temp = err {
@@ -40,7 +41,7 @@ class GradeSetUpViewController: UIViewController, UIAlertViewDelegate {
             }
             else {
                 print("Validate Loading Succeed!\n")
-                self.ValidateCodeImageView.image = UIImage(data: data!)
+                self.validateCodeImageView.image = UIImage(data: data!)
             }
         }
     }
@@ -51,7 +52,7 @@ class GradeSetUpViewController: UIViewController, UIAlertViewDelegate {
         var accountInfo:NSDictionary = userDefaults.objectForKey("accountInfo") as NSDictionary
         var userID:String = accountInfo.objectForKey("userID") as String
         var password:String = accountInfo.objectForKey("password") as String
-        var loginer:LogIner = LogIner(userID: userID, password: password, validateCode: ValidateCodeTextField.text)
+        var loginer:LogIner = LogIner(userID: userID, password: password, validateCode: validateCodeTextField.text)
         loginer.login { (error) -> Void in
             if let temp = error {
                 if error == "用户不存在或密码错误" {

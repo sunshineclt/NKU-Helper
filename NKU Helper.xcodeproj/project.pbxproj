@@ -114,9 +114,8 @@
 			children = (
 				E9FAACD31AA9762A000FE24D /* LaunchScreen.xib */,
 				E90AE22D1A8F813900AD0D78 /* AppDelegate.swift */,
-				E9B8C4AE1AA82D6E00E0DD50 /* AccountInfo */,
-				E90AE2501A8F814C00AD0D78 /* ImageGetter.swift */,
 				E94286531AA5494800A4242C /* LogIner.swift */,
+				E90AE2501A8F814C00AD0D78 /* ImageGetter.swift */,
 				E98F94E21AA31A1A00885992 /* ClassTime */,
 				E98F94E01AA319DF00885992 /* InternetConnect */,
 				E98F94DF1AA319CD00885992 /* Function */,
@@ -188,9 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				E98F94D91AA3191F00885992 /* SettingTableViewController.swift */,
-				E94286571AA5500C00A4242C /* SaveAccountInfoViewController.swift */,
-				E96419D11AA8971B00397691 /* AccountTableViewCell.swift */,
-				E96419D31AA8BC9800397691 /* DetailAccountInfoTableViewController.swift */,
+				E9DB7EBC1AAB5EB0000D4182 /* AccountInfo */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -203,6 +200,17 @@
 				E942864F1AA4CD2A00A4242C /* LogInViewController.swift */,
 			);
 			name = ClassTime;
+			sourceTree = "<group>";
+		};
+		E9DB7EBC1AAB5EB0000D4182 /* AccountInfo */ = {
+			isa = PBXGroup;
+			children = (
+				E9B8C4AE1AA82D6E00E0DD50 /* AccountInfo */,
+				E94286571AA5500C00A4242C /* SaveAccountInfoViewController.swift */,
+				E96419D11AA8971B00397691 /* AccountTableViewCell.swift */,
+				E96419D31AA8BC9800397691 /* DetailAccountInfoTableViewController.swift */,
+			);
+			name = AccountInfo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
