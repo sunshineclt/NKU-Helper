@@ -67,7 +67,7 @@ class GradeShowerTableViewController: UITableViewController {
         
         GPA = GPA / allCredit
         var gpaLabel:UILabel = UILabel(frame: CGRectMake(170, 0, 140, 20))
-        gpaLabel.text = "学分积：\(GPA)"
+        gpaLabel.text = "学分绩：\(GPA)"
         gpaLabel.textAlignment = NSTextAlignment.Right
         gpaLabel.font = UIFont.systemFontOfSize(14)
         gpaLabel.textColor = UIColor(red: 0.3529, green: 0.3529, blue: 0.3725, alpha: 1)

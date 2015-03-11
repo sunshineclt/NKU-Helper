@@ -10,48 +10,56 @@ import UIKit
 
 class ClassTimeViewController: UIViewController, NSURLConnectionDataDelegate {
     
-    @IBOutlet var classTimeWebView: UIWebView!
-    
-    var haveAccountOrNot:Bool? = nil
+    @IBOutlet var classTimeTableWebView: UIWebView!
     var receivedData:NSMutableData! = nil
     
-    override  func viewDidAppear(animated: Bool) {
-        
-        super.viewDidAppear(animated)
+    override func viewDidLoad() {
         
         var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         var accountInfo:NSDictionary? = userDefaults.objectForKey("accountInfo") as NSDictionary?
         if let temp = accountInfo {
-            haveAccountOrNot = true
-        }
-        else {
-            //  self.performSegueWithIdentifier("saveAccountInfo", sender: nil)
-            var alert:UIAlertView = UIAlertView(title: "请先登录", message: "登陆后方可查看课表，请到设置中登录！", delegate: nil, cancelButtonTitle: "知道了！")
-            alert.show()
-            haveAccountOrNot = false
-        }
-        
-        if haveAccountOrNot! {
-            if isLogIn() {
+            
+            var courses:NSArray? = userDefaults.objectForKey("courses") as NSArray?
+            if let temp = courses {
                 var req:NSURLRequest = NSURLRequest(URL: NSURL(string: "http://222.30.32.10/xsxk/selectedAction.do?operation=kebiao")!)
-                classTimeWebView.loadRequest(req)
-                
-                var connection:NSURLConnection? = NSURLConnection(request: req, delegate: self)
-                if let temp = connection {
-                    receivedData = NSMutableData()
-                }
-                else {
-                    var alert:UIAlertView = UIAlertView(title: "错误", message: "没有网络你让我怎么查课表捏？", delegate: self, cancelButtonTitle: "好吧，那我去弄点网")
-                }
-                
+                classTimeTableWebView.loadRequest(req)
             }
             else {
-                self.performSegueWithIdentifier("login", sender: nil)
+                if isLogIn() {
+                    
+                    var req:NSURLRequest = NSURLRequest(URL: NSURL(string: "http://222.30.32.10/xsxk/selectedAction.do?operation=kebiao")!)
+                    classTimeTableWebView.loadRequest(req)
+                    var connection:NSURLConnection? = NSURLConnection(request: req, delegate: self)
+                    if let temp = connection {
+                        receivedData = NSMutableData()
+                    }
+                    else {
+                        var alert:UIAlertView = UIAlertView(title: "错误", message: "没有网络你让我怎么查课表捏？", delegate: nil, cancelButtonTitle: "好吧，那我去弄点网")
+                    }
+                }
+                else {
+                    self.performSegueWithIdentifier("login", sender: nil)
+                }
             }
         }
+            
         else {
             
+            var alert:UIAlertView = UIAlertView(title: "请先登录", message: "登陆后方可查看课表，请到设置中登录！", delegate: nil, cancelButtonTitle: "知道了！")
+            alert.show()
+            
         }
+        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        var nc:NSNotificationCenter = NSNotificationCenter.defaultCenter()
+        nc.addObserver(self, selector: "refreshClassTimeTable1", name: "loginComplete", object: nil)
+    }
+    
+    func refreshClassTimeTable1() {
+        refreshClassTimeTable("")
     }
     
     func isLogIn() -> Bool {
@@ -109,6 +117,9 @@ class ClassTimeViewController: UIViewController, NSURLConnectionDataDelegate {
         var day:Int = 1
         var startSection:Int = 1
         var courses:NSMutableArray = NSMutableArray()
+        var courseCount:Int = -1
+        var courseStatus:NSMutableArray = NSMutableArray()
+        var eachDaySectionCourseStatus:NSMutableArray = NSMutableArray()
         for (var i=0;i<matches.count;i++) {
             var presentRange = matches.objectAtIndex(i) as NSTextCheckingResult
             if presentRange.range.length > 67 {
@@ -136,43 +147,72 @@ class ClassTimeViewController: UIViewController, NSURLConnectionDataDelegate {
                 courseDetailInfo.setObject(sectionNumber, forKey: "sectionNumber")
                 
                 courses.addObject(courseDetailInfo)
+                courseCount++
+                for (var j=0;j<sectionNumber;j++) {
+                    eachDaySectionCourseStatus.addObject(courseCount)
+                }
                 startSection = startSection + sectionNumber
                 if startSection > 12 {
                     day++
                     startSection = 1
+                    courseStatus.addObject(eachDaySectionCourseStatus)
+                    eachDaySectionCourseStatus = NSMutableArray()
                 }
             }
             else {
                 startSection++
+                eachDaySectionCourseStatus.addObject(-1)
                 if startSection > 12 {
                     day++
                     startSection = 1
+                    courseStatus.addObject(eachDaySectionCourseStatus)
+                    eachDaySectionCourseStatus = NSMutableArray()
                 }
             }
+            
+            
         }
         
         var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         userDefaults.removeObjectForKey("courses")
-        var courses1:NSArray = courses as NSArray
-        userDefaults.setObject(courses1, forKey: "courses")
+        userDefaults.removeObjectForKey("courseStatus")
+        userDefaults.setObject(courses, forKey: "courses")
+        userDefaults.setObject(courseStatus, forKey: "courseStatus")
         userDefaults.synchronize()
-
+        
     }
     
     @IBAction func refreshClassTimeTable(sender: AnyObject) {
         
-        if haveAccountOrNot! {
+        var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        var accountInfo:NSDictionary? = userDefaults.objectForKey("accountInfo") as NSDictionary?
+        if let temp = accountInfo {
+            
             if isLogIn() {
+                
+                var courses:NSArray? = userDefaults.objectForKey("courses") as NSArray?
                 var req:NSURLRequest = NSURLRequest(URL: NSURL(string: "http://222.30.32.10/xsxk/selectedAction.do?operation=kebiao")!)
-                classTimeWebView.loadRequest(req)
+                classTimeTableWebView.loadRequest(req)
+                var connection:NSURLConnection? = NSURLConnection(request: req, delegate: self)
+                if let temp = connection {
+                    receivedData = NSMutableData()
+                }
+                else {
+                    var alert:UIAlertView = UIAlertView(title: "错误", message: "没有网络你让我怎么查课表捏？", delegate: nil, cancelButtonTitle: "好吧，那我去弄点网")
+                }
+                
             }
             else {
                 self.performSegueWithIdentifier("login", sender: nil)
             }
         }
-        else {
             
+        else {
+            //  self.performSegueWithIdentifier("saveAccountInfo", sender: nil)
+            var alert:UIAlertView = UIAlertView(title: "请先登录", message: "登陆后方可查看课表，请到设置中登录！", delegate: nil, cancelButtonTitle: "知道了！")
+            alert.show()
         }
+        
     }
     
     func connection(connection: NSURLConnection, didReceiveData data: NSData) {
@@ -183,22 +223,22 @@ class ClassTimeViewController: UIViewController, NSURLConnectionDataDelegate {
         var encoding:NSStringEncoding = CFStringConvertEncodingToNSStringEncoding(0x0632)
         var html:NSString = NSString(data: self.receivedData!, encoding: encoding)!
         loadAllCourseInfoWithHtml(html)
-        var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        /*    var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         var courses:NSMutableArray = userDefaults.objectForKey("courses") as NSMutableArray
         for (var i=0;i<courses.count;i++) {
-            var currentCourse:NSDictionary = courses.objectAtIndex(i) as NSDictionary
-            var classID = currentCourse.objectForKey("classID") as NSString
-            var classNumber = currentCourse.objectForKey("classNumber") as NSString
-            var className = currentCourse.objectForKey("className") as NSString
-            var weekOddEven = currentCourse.objectForKey("weekOddEven") as NSString
-            var classroom = currentCourse.objectForKey("classroom") as NSString
-            var teacherName = currentCourse.objectForKey("teacherName") as NSString
-            var day = currentCourse.objectForKey("day") as Int
-            var startSection = currentCourse.objectForKey("startSection") as Int
-            var sectionNumber = currentCourse.objectForKey("sectionNumber") as Int
-            print("\nclassID=\(classID) classNumber=\(classNumber) className=\(className) weekOddEven=\(weekOddEven) classroom=\(classroom) teacherName=\(teacherName) 星期\(day)第\(startSection)节--第\(startSection + sectionNumber - 1)节\n")
+        var currentCourse:NSDictionary = courses.objectAtIndex(i) as NSDictionary
+        var classID = currentCourse.objectForKey("classID") as NSString
+        var classNumber = currentCourse.objectForKey("classNumber") as NSString
+        var className = currentCourse.objectForKey("className") as NSString
+        var weekOddEven = currentCourse.objectForKey("weekOddEven") as NSString
+        var classroom = currentCourse.objectForKey("classroom") as NSString
+        var teacherName = currentCourse.objectForKey("teacherName") as NSString
+        var day = currentCourse.objectForKey("day") as Int
+        var startSection = currentCourse.objectForKey("startSection") as Int
+        var sectionNumber = currentCourse.objectForKey("sectionNumber") as Int
+        print("\nclassID=\(classID) classNumber=\(classNumber) className=\(className) weekOddEven=\(weekOddEven) classroom=\(classroom) teacherName=\(teacherName) 星期\(day)第\(startSection)节--第\(startSection + sectionNumber - 1)节\n")
         }
-        
+        */
     }
     
 }

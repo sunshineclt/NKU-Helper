@@ -15,10 +15,13 @@ class GradeSetUpViewController: UIViewController, UIAlertViewDelegate {
     @IBOutlet var validateCodeImageView: UIImageView!
     @IBOutlet var validateCodeTextField: UITextField!
     
+    @IBOutlet var imageLoadActivityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        imageLoadActivityIndicator.hidesWhenStopped = true
+
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -35,7 +38,9 @@ class GradeSetUpViewController: UIViewController, UIAlertViewDelegate {
         
         validateCodeTextField.becomeFirstResponder()
         var validateCodeGetter:imageGetter = imageGetter()
+        imageLoadActivityIndicator.startAnimating()
         validateCodeGetter.getImageWithBlock { (data, err) -> Void in
+            self.imageLoadActivityIndicator.stopAnimating()
             if let temp = err {
                 print("Validate Loading Error!\n")
             }

@@ -13,11 +13,12 @@ class LogInViewController: UIViewController, UIAlertViewDelegate {
     @IBOutlet var validateCodeTextField: UITextField!
     @IBOutlet var validateCodeImageView: UIImageView!
     
+    @IBOutlet var imageLoadActivityIndicator: UIActivityIndicatorView!
     override func viewWillAppear(animated: Bool) {
         var view:UIView = UIView(frame: CGRectMake(0, 0, 320, 20))
         view.backgroundColor = UINavigationBar.appearance().barTintColor
         self.view.addSubview(view)
-        
+        imageLoadActivityIndicator.hidesWhenStopped = true
         refreshImage()
         validateCodeTextField.becomeFirstResponder()
     }
@@ -25,7 +26,9 @@ class LogInViewController: UIViewController, UIAlertViewDelegate {
     func refreshImage() {
         
         var validateCodeGetter:imageGetter = imageGetter()
+        imageLoadActivityIndicator.startAnimating()
         validateCodeGetter.getImageWithBlock { (data, err) -> Void in
+            self.imageLoadActivityIndicator.stopAnimating()
             if let temp = err {
                 print("Validate Loading Error!\n")
             }
@@ -59,7 +62,10 @@ class LogInViewController: UIViewController, UIAlertViewDelegate {
             }
             else{
                 print("Login Succeed!")
-                self.dismissViewControllerAnimated(true, completion: nil)
+                self.dismissViewControllerAnimated(true, completion: { () -> Void in
+                    NSNotificationCenter.defaultCenter().postNotificationName("loginComplete", object: self)
+                
+                })
                 
             }
         }

@@ -15,6 +15,7 @@ class SaveAccountInfoViewController: UIViewController, UIAlertViewDelegate, NSUR
     @IBOutlet var validateCodeTextField: UITextField!
     @IBOutlet var validateCodeImageView: UIImageView!
     
+    @IBOutlet var imageLoadActivityIndicator: UIActivityIndicatorView!
     var receivedData:NSMutableData? = nil
     var name:String?
     var timeEnteringScohol:String?
@@ -23,6 +24,7 @@ class SaveAccountInfoViewController: UIViewController, UIAlertViewDelegate, NSUR
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        imageLoadActivityIndicator.hidesWhenStopped = true
         refreshImage()
     }
     
@@ -88,7 +90,10 @@ class SaveAccountInfoViewController: UIViewController, UIAlertViewDelegate, NSUR
     func refreshImage() {
         
         var validateCodeGetter:imageGetter = imageGetter()
+        imageLoadActivityIndicator.startAnimating()
         validateCodeGetter.getImageWithBlock { (data, err) -> Void in
+            self.imageLoadActivityIndicator.stopAnimating()
+
             if let temp = err {
                 print("Validate Loading Error!\n")
             }
