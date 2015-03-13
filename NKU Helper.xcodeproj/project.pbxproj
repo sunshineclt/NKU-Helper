@@ -99,6 +99,8 @@
 		E9B8C4AF1AA82D6E00E0DD50 /* AccountInfo in Resources */ = {isa = PBXBuildFile; fileRef = E9B8C4AE1AA82D6E00E0DD50 /* AccountInfo */; };
 		E9D4DC461AAEF45900A02327 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D4DC451AAEF45900A02327 /* TodayViewController.swift */; };
 		E9FAACD41AA9762A000FE24D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9FAACD31AA9762A000FE24D /* LaunchScreen.xib */; };
+		E9FDA2431AB15BB600B25E7E /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FDA2421AB15BB600B25E7E /* Base64.m */; };
+		E9FDA2451AB15F6B00B25E7E /* WeatherConditionGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FDA2441AB15F6B00B25E7E /* WeatherConditionGetter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -209,6 +211,9 @@
 		E9B8C4AE1AA82D6E00E0DD50 /* AccountInfo */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AccountInfo; sourceTree = "<group>"; };
 		E9D4DC451AAEF45900A02327 /* TodayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		E9FAACD31AA9762A000FE24D /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		E9FDA2411AB15BB600B25E7E /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
+		E9FDA2421AB15BB600B25E7E /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
+		E9FDA2441AB15F6B00B25E7E /* WeatherConditionGetter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherConditionGetter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -429,6 +434,9 @@
 			isa = PBXGroup;
 			children = (
 				E9D4DC451AAEF45900A02327 /* TodayViewController.swift */,
+				E9FDA2441AB15F6B00B25E7E /* WeatherConditionGetter.swift */,
+				E9FDA2411AB15BB600B25E7E /* Base64.h */,
+				E9FDA2421AB15BB600B25E7E /* Base64.m */,
 			);
 			name = Today;
 			sourceTree = "<group>";
@@ -621,10 +629,12 @@
 				E90AE2331A8F813900AD0D78 /* GradeSetUpViewController.swift in Sources */,
 				E90AE2311A8F813900AD0D78 /* NKU_Helper.xcdatamodeld in Sources */,
 				E90AE2511A8F814C00AD0D78 /* ImageGetter.swift in Sources */,
+				E9FDA2431AB15BB600B25E7E /* Base64.m in Sources */,
 				E96419D21AA8971B00397691 /* AccountTableViewCell.swift in Sources */,
 				E94286541AA5494800A4242C /* LogIner.swift in Sources */,
 				E9D4DC461AAEF45900A02327 /* TodayViewController.swift in Sources */,
 				E98F94DA1AA3191F00885992 /* SettingTableViewController.swift in Sources */,
+				E9FDA2451AB15F6B00B25E7E /* WeatherConditionGetter.swift in Sources */,
 				E96419D41AA8BC9800397691 /* DetailAccountInfoTableViewController.swift in Sources */,
 				E91E5F4F1A90FAED009F3B2B /* GradeShowerTableViewController.swift in Sources */,
 				E98F94D61AA3180700885992 /* ClassTimeViewController.swift in Sources */,

@@ -26,11 +26,16 @@ class TodayViewController: UIViewController {
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var weekdayLabel: UILabel!
     @IBOutlet var hourLabel: UILabel!
+    @IBOutlet var weatherConditionLabel: UILabel!
+    @IBOutlet var temperatureLabel: UILabel!
     @IBOutlet var pm25Label: UILabel!
     
     @IBOutlet var progressIndicator: UIProgressView!
     
     var timer:NSTimer!
+    var receivedWeatherData:NSMutableData?
+    
+    var weatherEncodeToWeatherCondition:NSDictionary = ["00":"晴", "01":"多云", "02":"阴", "03":"阵雨", "04":"雷阵雨", "05":"雷阵雨伴有冰雹", "06":"雨夹雪", "07":"小雨", "08":"中雨", "09":"大雨", "10":"暴雨", "11":"大暴雨", "12":"特大暴雨", "13":"阵雪", "14":"小雪", "15":"中雪", "16":"大雪", "17":"暴雪", "18":"雾", "19":"冻雨", "20":"沙尘暴", "21":"小到中雨", "22":"中到大雨", "23":"大到暴雨", "24":"暴雨到大暴雨", "25":"大暴雨到特大暴雨", "26":"小到中雪", "27":"中到大雪", "28":"大到暴雪", "29":"浮尘", "30":"扬沙", "31":"强沙尘暴", "53":"霾", "99":"无"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +55,11 @@ class TodayViewController: UIViewController {
         currentCourseClassroomLabel.adjustsFontSizeToFitWidth = true
         currentCourseTeacherNameLabel.adjustsFontSizeToFitWidth = true
         hourLabel.adjustsFontSizeToFitWidth = true
+        weatherConditionLabel.adjustsFontSizeToFitWidth = true
+        temperatureLabel.adjustsFontSizeToFitWidth = true
+        pm25Label.adjustsFontSizeToFitWidth = true
+        
+     //   weatherEncodeToWeatherCondition.add
         /*
         
         //  currentCourseView.layer.cornerRadius = 10
@@ -69,6 +79,7 @@ class TodayViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         
         super.viewWillAppear(animated)
+        refreshWeatherCondition()
         var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         var account:NSDictionary? = userDefaults.objectForKey("accountInfo") as NSDictionary?
         if let temp = account {
@@ -152,7 +163,7 @@ class TodayViewController: UIViewController {
         case 0..<7:
             statusLabel.text = "充足的睡眠是美好一天的开始！"
             currentCourseNameLabel.text = "Have a neat sleep!"
-            currentCourseClassroomLabel.text = "At 寝室"
+            currentCourseClassroomLabel.text = "@ 寝室"
             currentCourseTeacherNameLabel.text = ""
             var progress:Float = Float(hourInt+2)/9
             progressIndicator.setProgress(progress, animated: true)
@@ -199,7 +210,7 @@ class TodayViewController: UIViewController {
         case 35/3..<13:
             statusLabel.text = "午饭及午休时间"
             currentCourseNameLabel.text = "Have a nice lunch and sleep!"
-            currentCourseClassroomLabel.text = "At 食堂&寝室"
+            currentCourseClassroomLabel.text = "@ 食堂&寝室"
             currentCourseTeacherNameLabel.text = "木有老师~"
             var progress:Float = Float(hourInt-35/3)*3/4
             progressIndicator.setProgress(progress, animated: true)
@@ -246,7 +257,7 @@ class TodayViewController: UIViewController {
         case 53/3..<18:
             statusLabel.text = "晚餐时间"
             currentCourseNameLabel.text = "Have a nice dinner!"
-            currentCourseClassroomLabel.text = "At 食堂"
+            currentCourseClassroomLabel.text = "@ 食堂"
             currentCourseTeacherNameLabel.text = "木有老师~"
             var progress:Float = Float(hourInt-53/3)*3
             progressIndicator.setProgress(progress, animated: true)
@@ -293,7 +304,7 @@ class TodayViewController: UIViewController {
         default:
             statusLabel.text = "忙碌的一天结束啦"
             currentCourseNameLabel.text = "Have a neat sleep!"
-            currentCourseClassroomLabel.text = "At 寝室"
+            currentCourseClassroomLabel.text = "@ 寝室"
             currentCourseTeacherNameLabel.text = ""
             var progress:Float = Float(hourInt-22)/9
             progressIndicator.setProgress(progress, animated: true)
@@ -318,18 +329,92 @@ class TodayViewController: UIViewController {
             var course:NSDictionary = courses.objectAtIndex(status) as NSDictionary
             currentCourseNameLabel.text = course.objectForKey("className") as? String
             currentCourseClassroomLabel.text = course.objectForKey("classroom") as? String
-            currentCourseClassroomLabel.text = "At" + currentCourseClassroomLabel.text!
+            currentCourseClassroomLabel.text = "@ " + currentCourseClassroomLabel.text!
             currentCourseTeacherNameLabel.text = course.objectForKey("teacherName") as? String
         }
 
         
     }
     
+    func refreshWeatherCondition() {
+        
+        var weatherGetter:WeatherConditionGetter = WeatherConditionGetter()
+        var API:NSString = weatherGetter.getAPI()
+       // print(API)
+        var url:NSURL = NSURL(string: API)!
+
+        
+        var req:NSMutableURLRequest = NSMutableURLRequest(URL: url)
+        req.HTTPMethod = "GET"
+        
+        var returnData:NSData = NSData(contentsOfURL: url)!
+        var returnString:NSString = NSString(data: returnData, encoding: NSUTF8StringEncoding)!
+        print(returnString)
+        print("\n**********************\n")
+        
+        let jsonData:NSDictionary = NSJSONSerialization.JSONObjectWithData(returnData, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
+        let temp:NSDictionary = jsonData.objectForKey("f") as NSDictionary
+        let forecastAll = temp.objectForKey("f1") as NSArray
+        var theFirstDayForecast:NSDictionary = forecastAll.objectAtIndex(0) as NSDictionary
+        
+        var date = NSDate()
+        var calender:NSCalendar = NSCalendar(identifier: NSGregorianCalendar)!
+        var unitFlags:NSCalendarUnit = NSCalendarUnit.HourCalendarUnit | NSCalendarUnit.MinuteCalendarUnit
+        var components:NSDateComponents = calender.components(unitFlags, fromDate: date)
+        var hour:NSString = "\(components.hour)"
+        var minute:NSString = "\(components.minute)"
+        var time:Double = Double(components.hour) + Double(components.minute)/60
+        if time<18 {
+            
+            var weather = theFirstDayForecast.objectForKey("fa") as NSString
+            var temperature = theFirstDayForecast.objectForKey("fc") as NSString
+            var windDirection = theFirstDayForecast.objectForKey("fe") as NSString
+            var windStrenth = theFirstDayForecast.objectForKey("fg") as NSString
+            
+            var weatherImage = "day" + weather + ".png"
+            weatherImageView.image = UIImage(named: weatherImage)
+            temperatureLabel.text = temperature + "℃"
+            weatherConditionLabel.text = weatherEncodeToWeatherCondition.objectForKey(weather) as NSString
+            
+        }
+        else {
+            
+            var weather = theFirstDayForecast.objectForKey("fb") as NSString
+            var temperature = theFirstDayForecast.objectForKey("fd") as NSString
+            var windDirection = theFirstDayForecast.objectForKey("ff") as NSString
+            var windStrenth = theFirstDayForecast.objectForKey("fh") as NSString
+            
+            var weatherImage = "night" + weather + ".png"
+            weatherImageView.image = UIImage(named: weatherImage)
+            temperatureLabel.text = temperature + "℃"
+            weatherConditionLabel.text = weatherEncodeToWeatherCondition.objectForKey(weather) as NSString
+
+        }
+ /*
+        var connection:NSURLConnection? = NSURLConnection(request: req, delegate: self)
+        if let temp = connection {
+            receivedWeatherData = NSMutableData()
+        }
+        else {
+            
+        }
+   */
+    }
+    
     @IBAction func tapOnCurrentCourse(sender: UITapGestureRecognizer) {
         
         
     }
+  /*
+    func connection(connection: NSURLConnection, didReceiveData data: NSData) {
+        self.receivedWeatherData?.appendData(data)
+    }
     
+    func connectionDidFinishLoading(connection: NSURLConnection) {
+        var resultString = NSString(data: receivedWeatherData!, encoding: NSUTF8StringEncoding)
+        print(resultString)
+    }
+  */
     /*
     // MARK: - Navigation
     
