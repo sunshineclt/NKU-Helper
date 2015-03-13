@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TodayViewController: UIViewController {
+class TodayViewController: UIViewController ,UIScrollViewDelegate {
     
     @IBOutlet var tapperOnCurrentCourse: UITapGestureRecognizer!
     
@@ -16,6 +16,7 @@ class TodayViewController: UIViewController {
     @IBOutlet var dateView: UIView!
     @IBOutlet var weatherConditionView: UIView!
 
+    @IBOutlet var mainScrollView: UIScrollView!
     
     @IBOutlet var weatherImageView: UIImageView!
     
@@ -32,13 +33,23 @@ class TodayViewController: UIViewController {
     
     @IBOutlet var progressIndicator: UIProgressView!
     
+    var storeHouseRefreshControl:CBStoreHouseRefreshControl!
+    
     var timer:NSTimer!
     var receivedWeatherData:NSMutableData?
     
     var weatherEncodeToWeatherCondition:NSDictionary = ["00":"晴", "01":"多云", "02":"阴", "03":"阵雨", "04":"雷阵雨", "05":"雷阵雨伴有冰雹", "06":"雨夹雪", "07":"小雨", "08":"中雨", "09":"大雨", "10":"暴雨", "11":"大暴雨", "12":"特大暴雨", "13":"阵雪", "14":"小雪", "15":"中雪", "16":"大雪", "17":"暴雪", "18":"雾", "19":"冻雨", "20":"沙尘暴", "21":"小到中雨", "22":"中到大雨", "23":"大到暴雨", "24":"暴雨到大暴雨", "25":"大暴雨到特大暴雨", "26":"小到中雪", "27":"中到大雪", "28":"大到暴雪", "29":"浮尘", "30":"扬沙", "31":"强沙尘暴", "53":"霾", "99":"无"]
     
+    // MARK: LifeLoopFunction
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        mainScrollView.contentInset.top = 1
+        mainScrollView.alwaysBounceVertical = true
+        mainScrollView.delegate = self
+        self.storeHouseRefreshControl = CBStoreHouseRefreshControl.attachToScrollView(self.mainScrollView, target: self, refreshAction: "refreshTriggered", plist: "NKU", color: UIColor.whiteColor(), lineWidth: 1.5, dropHeight: 80, scale: 1, horizontalRandomness: 150, reverseLoadingAnimation: false, internalAnimationFactor: 0.5)
+        
         
         var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         var account:NSDictionary? = userDefaults.objectForKey("accountInfo") as NSDictionary?
@@ -59,20 +70,6 @@ class TodayViewController: UIViewController {
         temperatureLabel.adjustsFontSizeToFitWidth = true
         pm25Label.adjustsFontSizeToFitWidth = true
         
-     //   weatherEncodeToWeatherCondition.add
-        /*
-        
-        //  currentCourseView.layer.cornerRadius = 10
-        currentCourseView.layer.borderWidth = 0.27
-        currentCourseView.layer.borderColor = UIColor.grayColor().CGColor
-        dateView.layer.borderWidth = 0.27
-        dateView.layer.borderColor = UIColor.grayColor().CGColor
-        hourView.layer.borderWidth = 0.27
-        hourView.layer.borderColor = UIColor.grayColor().CGColor
-        pm25View.layer.borderWidth = 0.27
-        pm25View.layer.borderColor = UIColor.grayColor().CGColor
-        
-        */
         // Do any additional setup after loading the view.
     }
     
@@ -103,6 +100,8 @@ class TodayViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    // MARK: handleDataToBePresentedOnView
     
     func handleStatus() {
         
@@ -349,8 +348,8 @@ class TodayViewController: UIViewController {
         
         var returnData:NSData = NSData(contentsOfURL: url)!
         var returnString:NSString = NSString(data: returnData, encoding: NSUTF8StringEncoding)!
-        print(returnString)
-        print("\n**********************\n")
+     //   print(returnString)
+    //    print("\n**********************\n")
         
         let jsonData:NSDictionary = NSJSONSerialization.JSONObjectWithData(returnData, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
         let temp:NSDictionary = jsonData.objectForKey("f") as NSDictionary
@@ -401,20 +400,32 @@ class TodayViewController: UIViewController {
    */
     }
     
+    // MARK: seguesInsideTheView
+    
     @IBAction func tapOnCurrentCourse(sender: UITapGestureRecognizer) {
         
         
     }
-  /*
-    func connection(connection: NSURLConnection, didReceiveData data: NSData) {
-        self.receivedWeatherData?.appendData(data)
+    
+    // MARK: storeHouseRefreshControl
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        self.storeHouseRefreshControl.scrollViewDidScroll()
     }
     
-    func connectionDidFinishLoading(connection: NSURLConnection) {
-        var resultString = NSString(data: receivedWeatherData!, encoding: NSUTF8StringEncoding)
-        print(resultString)
+    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        self.storeHouseRefreshControl.scrollViewDidEndDragging()
     }
-  */
+    
+    func refreshTriggered() {
+        refreshWeatherCondition()
+        NSTimer.scheduledTimerWithTimeInterval(2.43, target: self, selector: "finishRefreshControl", userInfo: nil, repeats: false)
+    }
+    
+    func finishRefreshControl() {
+        self.storeHouseRefreshControl.finishingLoading()
+    }
+    
     /*
     // MARK: - Navigation
     

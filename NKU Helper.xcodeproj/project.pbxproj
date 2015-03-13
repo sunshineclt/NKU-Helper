@@ -17,6 +17,7 @@
 		E90AE2531A8F948300AD0D78 /* GradeGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90AE2521A8F948300AD0D78 /* GradeGetter.swift */; };
 		E91E5F4F1A90FAED009F3B2B /* GradeShowerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91E5F4E1A90FAED009F3B2B /* GradeShowerTableViewController.swift */; };
 		E91E5F551A9103DF009F3B2B /* GradeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91E5F541A9103DF009F3B2B /* GradeCell.swift */; };
+		E926CD751AB33B1700A5076A /* NKU.plist in Resources */ = {isa = PBXBuildFile; fileRef = E926CD741AB33B1700A5076A /* NKU.plist */; };
 		E94286501AA4CD2A00A4242C /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E942864F1AA4CD2A00A4242C /* LogInViewController.swift */; };
 		E94286541AA5494800A4242C /* LogIner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94286531AA5494800A4242C /* LogIner.swift */; };
 		E94286581AA5500C00A4242C /* SaveAccountInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94286571AA5500C00A4242C /* SaveAccountInfoViewController.swift */; };
@@ -96,6 +97,9 @@
 		E98F94D61AA3180700885992 /* ClassTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98F94D51AA3180700885992 /* ClassTimeViewController.swift */; };
 		E98F94D81AA318EF00885992 /* FunctionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98F94D71AA318EF00885992 /* FunctionTableViewController.swift */; };
 		E98F94DA1AA3191F00885992 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98F94D91AA3191F00885992 /* SettingTableViewController.swift */; };
+		E9ACA1211AB2D6E2001083C1 /* CBStoreHouseRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = E9ACA1201AB2D6E2001083C1 /* CBStoreHouseRefreshControl.m */; };
+		E9ACA1251AB2D93E001083C1 /* BarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E9ACA1241AB2D93E001083C1 /* BarItem.m */; };
+		E9ACA1271AB2DC8E001083C1 /* storehouse.plist in Resources */ = {isa = PBXBuildFile; fileRef = E9ACA1261AB2DC8E001083C1 /* storehouse.plist */; };
 		E9B8C4AF1AA82D6E00E0DD50 /* AccountInfo in Resources */ = {isa = PBXBuildFile; fileRef = E9B8C4AE1AA82D6E00E0DD50 /* AccountInfo */; };
 		E9D4DC461AAEF45900A02327 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D4DC451AAEF45900A02327 /* TodayViewController.swift */; };
 		E9FAACD41AA9762A000FE24D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9FAACD31AA9762A000FE24D /* LaunchScreen.xib */; };
@@ -129,6 +133,7 @@
 		E91E5F4A1A90FA9E009F3B2B /* NKU Helper-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NKU Helper-Bridging-Header.h"; sourceTree = "<group>"; };
 		E91E5F4E1A90FAED009F3B2B /* GradeShowerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeShowerTableViewController.swift; sourceTree = "<group>"; };
 		E91E5F541A9103DF009F3B2B /* GradeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeCell.swift; sourceTree = "<group>"; };
+		E926CD741AB33B1700A5076A /* NKU.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = NKU.plist; sourceTree = "<group>"; };
 		E942864F1AA4CD2A00A4242C /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		E94286531AA5494800A4242C /* LogIner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogIner.swift; sourceTree = "<group>"; };
 		E94286571AA5500C00A4242C /* SaveAccountInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveAccountInfoViewController.swift; sourceTree = "<group>"; };
@@ -208,6 +213,11 @@
 		E98F94D51AA3180700885992 /* ClassTimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassTimeViewController.swift; sourceTree = "<group>"; };
 		E98F94D71AA318EF00885992 /* FunctionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunctionTableViewController.swift; sourceTree = "<group>"; };
 		E98F94D91AA3191F00885992 /* SettingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
+		E9ACA11F1AB2D6E2001083C1 /* CBStoreHouseRefreshControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBStoreHouseRefreshControl.h; sourceTree = "<group>"; };
+		E9ACA1201AB2D6E2001083C1 /* CBStoreHouseRefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBStoreHouseRefreshControl.m; sourceTree = "<group>"; };
+		E9ACA1231AB2D93E001083C1 /* BarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarItem.h; sourceTree = "<group>"; };
+		E9ACA1241AB2D93E001083C1 /* BarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarItem.m; sourceTree = "<group>"; };
+		E9ACA1261AB2DC8E001083C1 /* storehouse.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = storehouse.plist; sourceTree = "<group>"; };
 		E9B8C4AE1AA82D6E00E0DD50 /* AccountInfo */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AccountInfo; sourceTree = "<group>"; };
 		E9D4DC451AAEF45900A02327 /* TodayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		E9FAACD31AA9762A000FE24D /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
@@ -430,13 +440,27 @@
 			name = ClassTime;
 			sourceTree = "<group>";
 		};
+		E9ACA1221AB2D6E7001083C1 /* RefreshControl Class */ = {
+			isa = PBXGroup;
+			children = (
+				E9ACA1231AB2D93E001083C1 /* BarItem.h */,
+				E9ACA1241AB2D93E001083C1 /* BarItem.m */,
+				E9ACA11F1AB2D6E2001083C1 /* CBStoreHouseRefreshControl.h */,
+				E9ACA1201AB2D6E2001083C1 /* CBStoreHouseRefreshControl.m */,
+			);
+			name = "RefreshControl Class";
+			sourceTree = "<group>";
+		};
 		E9D4DC471AAEF45D00A02327 /* Today */ = {
 			isa = PBXGroup;
 			children = (
+				E9ACA1261AB2DC8E001083C1 /* storehouse.plist */,
+				E926CD741AB33B1700A5076A /* NKU.plist */,
 				E9D4DC451AAEF45900A02327 /* TodayViewController.swift */,
 				E9FDA2441AB15F6B00B25E7E /* WeatherConditionGetter.swift */,
 				E9FDA2411AB15BB600B25E7E /* Base64.h */,
 				E9FDA2421AB15BB600B25E7E /* Base64.m */,
+				E9ACA1221AB2D6E7001083C1 /* RefreshControl Class */,
 			);
 			name = Today;
 			sourceTree = "<group>";
@@ -536,6 +560,7 @@
 				E95C8FC01AAF51A700D3D8EE /* night27.png in Resources */,
 				E95C8FBB1AAF51A700D3D8EE /* night22.png in Resources */,
 				E95C8FB91AAF51A700D3D8EE /* night20.png in Resources */,
+				E9ACA1271AB2DC8E001083C1 /* storehouse.plist in Resources */,
 				E95C8FAC1AAF51A700D3D8EE /* night07.png in Resources */,
 				E95C8F801AAF50A400D3D8EE /* day29.png in Resources */,
 				E95C8F731AAF50A400D3D8EE /* day16.png in Resources */,
@@ -547,6 +572,7 @@
 				E9FAACD41AA9762A000FE24D /* LaunchScreen.xib in Resources */,
 				E95C8F6A1AAF50A400D3D8EE /* day07.png in Resources */,
 				E95C8FA51AAF51A700D3D8EE /* night00.png in Resources */,
+				E926CD751AB33B1700A5076A /* NKU.plist in Resources */,
 				E95C8F7B1AAF50A400D3D8EE /* day24.png in Resources */,
 				E95C8FC51AAF51A700D3D8EE /* night53.png in Resources */,
 				E95C8F821AAF50A400D3D8EE /* day31.png in Resources */,
@@ -634,8 +660,10 @@
 				E94286541AA5494800A4242C /* LogIner.swift in Sources */,
 				E9D4DC461AAEF45900A02327 /* TodayViewController.swift in Sources */,
 				E98F94DA1AA3191F00885992 /* SettingTableViewController.swift in Sources */,
+				E9ACA1211AB2D6E2001083C1 /* CBStoreHouseRefreshControl.m in Sources */,
 				E9FDA2451AB15F6B00B25E7E /* WeatherConditionGetter.swift in Sources */,
 				E96419D41AA8BC9800397691 /* DetailAccountInfoTableViewController.swift in Sources */,
+				E9ACA1251AB2D93E001083C1 /* BarItem.m in Sources */,
 				E91E5F4F1A90FAED009F3B2B /* GradeShowerTableViewController.swift in Sources */,
 				E98F94D61AA3180700885992 /* ClassTimeViewController.swift in Sources */,
 				E94286581AA5500C00A4242C /* SaveAccountInfoViewController.swift in Sources */,
