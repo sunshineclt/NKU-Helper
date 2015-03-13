@@ -18,13 +18,13 @@ class ClassTimeViewController: UIViewController, NSURLConnectionDataDelegate {
         var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         var accountInfo:NSDictionary? = userDefaults.objectForKey("accountInfo") as NSDictionary?
         if let temp = accountInfo {
-            
+         /*
             var courses:NSArray? = userDefaults.objectForKey("courses") as NSArray?
             if let temp = courses {
                 var req:NSURLRequest = NSURLRequest(URL: NSURL(string: "http://222.30.32.10/xsxk/selectedAction.do?operation=kebiao")!)
                 classTimeTableWebView.loadRequest(req)
             }
-            else {
+            else {  */
                 if isLogIn() {
                     
                     var req:NSURLRequest = NSURLRequest(URL: NSURL(string: "http://222.30.32.10/xsxk/selectedAction.do?operation=kebiao")!)
@@ -40,7 +40,7 @@ class ClassTimeViewController: UIViewController, NSURLConnectionDataDelegate {
                 else {
                     self.performSegueWithIdentifier("login", sender: nil)
                 }
-            }
+          //  }
         }
             
         else {
