@@ -67,8 +67,14 @@ class SaveAccountInfoViewController: UIViewController, UIAlertViewDelegate, NSUR
         
         var url:NSURL = NSURL(string: "http://222.30.32.10/studymanager/stdbaseinfo/queryAction.do")!
         var req:NSURLRequest = NSURLRequest(URL: url)
-        var connection:NSURLConnection = NSURLConnection(request: req, delegate: self)!
-        receivedData = NSMutableData()
+        var connection:NSURLConnection? = NSURLConnection(request: req, delegate: self)
+        if let temp = connection {
+            receivedData = NSMutableData()
+        }
+        else {
+            var alertView:UIAlertView = UIAlertView(title: "网络错误", message: "木有网无法查证身份信息", delegate: nil, cancelButtonTitle: "好，知道了，这就去弄点网")
+            alertView.show()
+        }
     }
     
     func saveAccountInfo() {

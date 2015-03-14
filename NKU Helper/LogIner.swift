@@ -33,7 +33,12 @@ class LogIner:NSObject, NSURLConnectionDataDelegate{
         req.HTTPBody = data.dataUsingEncoding(NSUTF8StringEncoding)
         req.HTTPMethod = "POST"
         var connection:NSURLConnection? = NSURLConnection(request: req, delegate: self)
-        receivedData = NSMutableData()
+        if let temp = connection {
+            receivedData = NSMutableData()
+        }
+        else {
+            block(error: "没有网")
+        }
     }
     
     func connection(connection: NSURLConnection, didReceiveData data: NSData) {

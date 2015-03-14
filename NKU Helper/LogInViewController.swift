@@ -55,16 +55,21 @@ class LogInViewController: UIViewController, UIAlertViewDelegate {
                     alert.show()
                 }
                 else{
-                    var alert:UIAlertView = UIAlertView(title: "登录失败", message: "验证码错误", delegate: self, cancelButtonTitle: "好，重新输入验证码")
-                    alert.show()
-                    self.refreshImage()
+                    if error == "验证码错误" {
+                        var alert:UIAlertView = UIAlertView(title: "登录失败", message: "验证码错误", delegate: self, cancelButtonTitle: "好，重新输入验证码")
+                        alert.show()
+                        self.refreshImage()
+                    }
+                    else  {
+                        var alert:UIAlertView = UIAlertView(title: "网络错误", message: "木有网不能够登陆哦", delegate: nil, cancelButtonTitle: "知道啦，先去弄点网")
+                    }
                 }
             }
             else{
-                print("Login Succeed!")
+//                print("Login Succeed!")
                 self.dismissViewControllerAnimated(true, completion: { () -> Void in
                     NSNotificationCenter.defaultCenter().postNotificationName("loginComplete", object: self)
-                
+                    
                 })
                 
             }

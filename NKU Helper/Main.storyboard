@@ -238,7 +238,7 @@
         <scene sceneID="0L9-rU-f8t">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="p27-lO-dTl" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="4" title="功能" image="day07.png" id="fsg-Bf-oFB"/>
+                    <tabBarItem key="tabBarItem" tag="4" title="功能" id="fsg-Bf-oFB"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="b6E-e4-iEt">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -553,17 +553,6 @@
                                         <rect key="frame" x="2" y="90" width="315" height="133"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uR4-UE-fi0">
-                                                <rect key="frame" x="8" y="0.0" width="304" height="36"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" id="sK1-sX-xUn">
-                                                <rect key="frame" x="8" y="34" width="304" height="2"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            </progressView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uCY-3b-MD9">
                                                 <rect key="frame" x="160" y="102" width="152" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -578,8 +567,19 @@
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uR4-UE-fi0">
+                                                <rect key="frame" x="5" y="19" width="304" height="36"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" id="sK1-sX-xUn">
+                                                <rect key="frame" x="5" y="53" width="304" height="2"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </progressView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="32F-w6-JaY">
-                                                <rect key="frame" x="8" y="18" width="304" height="95"/>
+                                                <rect key="frame" x="5" y="37" width="304" height="95"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -601,6 +601,15 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="pHi-BH-66W">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="YIr-E5-PM0">
+                            <rect key="frame" x="89.5" y="7.5" width="141" height="29"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Now"/>
+                                <segment title="Overview"/>
+                            </segments>
+                        </segmentedControl>
                         <barButtonItem key="rightBarButtonItem" systemItem="action" id="7O7-Oo-XeR"/>
                     </navigationItem>
                     <connections>
@@ -652,7 +661,7 @@
         <scene sceneID="KJp-g8-xo7">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lQe-5i-hkC" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="2" title="课程表" image="day05.png" id="FEv-uC-Qda"/>
+                    <tabBarItem key="tabBarItem" tag="2" title="课程表" id="FEv-uC-Qda"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vLK-e7-WGz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -671,7 +680,7 @@
         <scene sceneID="xn6-uy-XyL">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rd0-uX-S1b" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="5" title="设置" image="day08.png" id="xFE-9p-Nuz"/>
+                    <tabBarItem key="tabBarItem" tag="5" title="设置" id="xFE-9p-Nuz"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="VdU-VH-Bbz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -690,7 +699,7 @@
         <scene sceneID="OMx-j7-oPo">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Svd-mg-JG8" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="今天" image="day04.png" id="0nM-SG-1KZ"/>
+                    <tabBarItem key="tabBarItem" title="今天" id="0nM-SG-1KZ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="5ra-a8-Xg5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -708,10 +717,6 @@
     </scenes>
     <resources>
         <image name="backgroundImage.jpg" width="640" height="1136"/>
-        <image name="day04.png" width="120" height="120"/>
-        <image name="day05.png" width="120" height="120"/>
-        <image name="day07.png" width="120" height="120"/>
-        <image name="day08.png" width="120" height="120"/>
         <image name="night01.png" width="120" height="120"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

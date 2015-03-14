@@ -13,34 +13,42 @@ class ClassTimeViewController: UIViewController, NSURLConnectionDataDelegate {
     @IBOutlet var classTimeTableWebView: UIWebView!
     var receivedData:NSMutableData! = nil
     
+    // MARK: MethodsRelatedToGetCourseData
+    
     override func viewDidLoad() {
+        
+        var nc:NSNotificationCenter = NSNotificationCenter.defaultCenter()
+        nc.addObserver(self, selector: "refreshClassTimeTable1", name: "loginComplete", object: nil)
         
         var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         var accountInfo:NSDictionary? = userDefaults.objectForKey("accountInfo") as NSDictionary?
         if let temp = accountInfo {
-         /*
+            /*
             var courses:NSArray? = userDefaults.objectForKey("courses") as NSArray?
             if let temp = courses {
-                var req:NSURLRequest = NSURLRequest(URL: NSURL(string: "http://222.30.32.10/xsxk/selectedAction.do?operation=kebiao")!)
-                classTimeTableWebView.loadRequest(req)
+            var req:NSURLRequest = NSURLRequest(URL: NSURL(string: "http://222.30.32.10/xsxk/selectedAction.do?operation=kebiao")!)
+            classTimeTableWebView.loadRequest(req)
             }
             else {  */
-                if isLogIn() {
-                    
-                    var req:NSURLRequest = NSURLRequest(URL: NSURL(string: "http://222.30.32.10/xsxk/selectedAction.do?operation=kebiao")!)
-                    classTimeTableWebView.loadRequest(req)
-                    var connection:NSURLConnection? = NSURLConnection(request: req, delegate: self)
-                    if let temp = connection {
-                        receivedData = NSMutableData()
-                    }
-                    else {
-                        var alert:UIAlertView = UIAlertView(title: "错误", message: "没有网络你让我怎么查课表捏？", delegate: nil, cancelButtonTitle: "好吧，那我去弄点网")
-                    }
+            switch isLogIn() {
+            case 1:
+                var req:NSURLRequest = NSURLRequest(URL: NSURL(string: "http://222.30.32.10/xsxk/selectedAction.do?operation=kebiao")!)
+                classTimeTableWebView.loadRequest(req)
+                var connection:NSURLConnection? = NSURLConnection(request: req, delegate: self)
+                if let temp = connection {
+                    receivedData = NSMutableData()
                 }
                 else {
-                    self.performSegueWithIdentifier("login", sender: nil)
+                    var alert:UIAlertView = UIAlertView(title: "错误", message: "没有网络你让我怎么查课表捏？", delegate: nil, cancelButtonTitle: "好吧，那我去弄点网")
+                    alert.show()
                 }
-          //  }
+            case 0:
+                self.performSegueWithIdentifier("login", sender: nil)
+            default:
+                var alertView:UIAlertView = UIAlertView(title: "网络错误", message: "木有网我没法加载课程表诶，这个试用版本的课程表还是从网上加载的呢", delegate: nil, cancelButtonTitle: "知道啦，开发者加油赶紧搞下一个版本")
+                alertView.show()
+            }
+            //  }
         }
             
         else {
@@ -50,31 +58,33 @@ class ClassTimeViewController: UIViewController, NSURLConnectionDataDelegate {
             
         }
         
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        var nc:NSNotificationCenter = NSNotificationCenter.defaultCenter()
-        nc.addObserver(self, selector: "refreshClassTimeTable1", name: "loginComplete", object: nil)
+      
     }
     
     func refreshClassTimeTable1() {
         refreshClassTimeTable("")
     }
     
-    func isLogIn() -> Bool {
+    func isLogIn() -> Int {
         var req:NSURLRequest = NSURLRequest(URL: NSURL(string: "http://222.30.32.10/xsxk/selectedAction.do?operation=kebiao")!)
         var response:NSHTTPURLResponse = NSHTTPURLResponse()
-        var receivedData:NSData = NSURLConnection.sendSynchronousRequest(req, returningResponse: nil, error: nil)!
-        var encoding:NSStringEncoding = CFStringConvertEncodingToNSStringEncoding(0x0632)
-        var html:NSString = NSString(data: receivedData, encoding: encoding)!
-        if html.rangeOfString("星期一").length > 0 {
-            return true
+        var receivedData:NSData? = NSURLConnection.sendSynchronousRequest(req, returningResponse: nil, error: nil)
+        if let temp = receivedData {
+            var encoding:NSStringEncoding = CFStringConvertEncodingToNSStringEncoding(0x0632)
+            var html:NSString = NSString(data: receivedData!, encoding: encoding)!
+            if html.rangeOfString("星期一").length > 0 {
+                return 1
+            }
+            else{
+                return 0
+            }
         }
-        else{
-            return false
+        else {
+            return -1
         }
     }
+    
+    // MARK: 解析html数据以获得课程数据
     
     func handleHtml(html:NSString) -> (NSString!, NSString!, NSString!, NSString!, NSString!, NSString!) {
         
@@ -182,14 +192,16 @@ class ClassTimeViewController: UIViewController, NSURLConnectionDataDelegate {
         
     }
     
+    // MARK: button
+    
     @IBAction func refreshClassTimeTable(sender: AnyObject) {
         
         var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         var accountInfo:NSDictionary? = userDefaults.objectForKey("accountInfo") as NSDictionary?
         if let temp = accountInfo {
             
-            if isLogIn() {
-                
+            switch isLogIn() {
+            case 1:
                 var courses:NSArray? = userDefaults.objectForKey("courses") as NSArray?
                 var req:NSURLRequest = NSURLRequest(URL: NSURL(string: "http://222.30.32.10/xsxk/selectedAction.do?operation=kebiao")!)
                 classTimeTableWebView.loadRequest(req)
@@ -199,21 +211,25 @@ class ClassTimeViewController: UIViewController, NSURLConnectionDataDelegate {
                 }
                 else {
                     var alert:UIAlertView = UIAlertView(title: "错误", message: "没有网络你让我怎么查课表捏？", delegate: nil, cancelButtonTitle: "好吧，那我去弄点网")
+                    alert.show()
                 }
-                
-            }
-            else {
+            case 0:
                 self.performSegueWithIdentifier("login", sender: nil)
+            default:
+                var alertView:UIAlertView = UIAlertView(title: "网络错误", message: "木有网我没法加载课程表诶，这个试用版本的课程表还是从网上加载的呢", delegate: nil, cancelButtonTitle: "知道啦，开发者加油赶紧搞下一个版本")
+                alertView.show()
             }
+            
         }
             
         else {
-            //  self.performSegueWithIdentifier("saveAccountInfo", sender: nil)
             var alert:UIAlertView = UIAlertView(title: "请先登录", message: "登陆后方可查看课表，请到设置中登录！", delegate: nil, cancelButtonTitle: "知道了！")
             alert.show()
         }
         
     }
+    
+    // MARK: NSURLConnectionDelegate
     
     func connection(connection: NSURLConnection, didReceiveData data: NSData) {
         self.receivedData.appendData(data)
@@ -223,6 +239,8 @@ class ClassTimeViewController: UIViewController, NSURLConnectionDataDelegate {
         var encoding:NSStringEncoding = CFStringConvertEncodingToNSStringEncoding(0x0632)
         var html:NSString = NSString(data: self.receivedData!, encoding: encoding)!
         loadAllCourseInfoWithHtml(html)
+        
+        //for Debug
         /*    var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         var courses:NSMutableArray = userDefaults.objectForKey("courses") as NSMutableArray
         for (var i=0;i<courses.count;i++) {
@@ -239,6 +257,7 @@ class ClassTimeViewController: UIViewController, NSURLConnectionDataDelegate {
         print("\nclassID=\(classID) classNumber=\(classNumber) className=\(className) weekOddEven=\(weekOddEven) classroom=\(classroom) teacherName=\(teacherName) 星期\(day)第\(startSection)节--第\(startSection + sectionNumber - 1)节\n")
         }
         */
+        
     }
     
 }

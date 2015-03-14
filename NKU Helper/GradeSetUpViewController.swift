@@ -65,9 +65,14 @@ class GradeSetUpViewController: UIViewController, UIAlertViewDelegate {
                     alert.show()
                 }
                 else{
+                    if error == "验证码错误" {
                     var alert:UIAlertView = UIAlertView(title: "登录失败", message: "验证码错误", delegate: self, cancelButtonTitle: "好，重新输入验证码")
                     alert.show()
                     self.refreshImage()
+                    }
+                    else {
+                        var alertView:UIAlertView = UIAlertView(title: "网络错误", message: "没有网没法登陆", delegate: nil, cancelButtonTitle: "好，知道啦，现在就去搞点网")
+                    }
                 }
             }
             else{

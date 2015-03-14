@@ -15,7 +15,7 @@ class TodayViewController: UIViewController ,UIScrollViewDelegate {
     @IBOutlet var currentCourseView: UIView!
     @IBOutlet var dateView: UIView!
     @IBOutlet var weatherConditionView: UIView!
-
+    
     @IBOutlet var mainScrollView: UIScrollView!
     
     @IBOutlet var weatherImageView: UIImageView!
@@ -38,28 +38,18 @@ class TodayViewController: UIViewController ,UIScrollViewDelegate {
     var timer:NSTimer!
     var receivedWeatherData:NSMutableData?
     
-    var weatherEncodeToWeatherCondition:NSDictionary = ["00":"晴", "01":"多云", "02":"阴", "03":"阵雨", "04":"雷阵雨", "05":"雷阵雨伴有冰雹", "06":"雨夹雪", "07":"小雨", "08":"中雨", "09":"大雨", "10":"暴雨", "11":"大暴雨", "12":"特大暴雨", "13":"阵雪", "14":"小雪", "15":"中雪", "16":"大雪", "17":"暴雪", "18":"雾", "19":"冻雨", "20":"沙尘暴", "21":"小到中雨", "22":"中到大雨", "23":"大到暴雨", "24":"暴雨到大暴雨", "25":"大暴雨到特大暴雨", "26":"小到中雪", "27":"中到大雪", "28":"大到暴雪", "29":"浮尘", "30":"扬沙", "31":"强沙尘暴", "53":"霾", "99":"无"]
+    let weatherEncodeToWeatherCondition:NSDictionary = ["00":"晴", "01":"多云", "02":"阴", "03":"阵雨", "04":"雷阵雨", "05":"雷阵雨伴有冰雹", "06":"雨夹雪", "07":"小雨", "08":"中雨", "09":"大雨", "10":"暴雨", "11":"大暴雨", "12":"特大暴雨", "13":"阵雪", "14":"小雪", "15":"中雪", "16":"大雪", "17":"暴雪", "18":"雾", "19":"冻雨", "20":"沙尘暴", "21":"小到中雨", "22":"中到大雨", "23":"大到暴雨", "24":"暴雨到大暴雨", "25":"大暴雨到特大暴雨", "26":"小到中雪", "27":"中到大雪", "28":"大到暴雪", "29":"浮尘", "30":"扬沙", "31":"强沙尘暴", "53":"霾", "99":"无"]
     
     // MARK: LifeLoopFunction
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         mainScrollView.contentInset.top = 1
         mainScrollView.alwaysBounceVertical = true
         mainScrollView.delegate = self
-        self.storeHouseRefreshControl = CBStoreHouseRefreshControl.attachToScrollView(self.mainScrollView, target: self, refreshAction: "refreshTriggered", plist: "NKU", color: UIColor.whiteColor(), lineWidth: 1.5, dropHeight: 80, scale: 1, horizontalRandomness: 150, reverseLoadingAnimation: false, internalAnimationFactor: 0.5)
-        
-        
-        var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        var account:NSDictionary? = userDefaults.objectForKey("accountInfo") as NSDictionary?
-        if let temp = account {
-            
-        }
-        else {
-            var alert:UIAlertView = UIAlertView(title: "您尚未登录", message: "登录后方可使用NKU Helper\n登录选项位于设置选项卡中", delegate: nil, cancelButtonTitle: "好的")
-            alert.show()
-        }
+        self.storeHouseRefreshControl = CBStoreHouseRefreshControl.attachToScrollView(self.mainScrollView, target: self, refreshAction: "refreshTriggered", plist: "NKU", color: UIColor.whiteColor(), lineWidth: 1.5, dropHeight: 50, scale: 1, horizontalRandomness: 150, reverseLoadingAnimation: false, internalAnimationFactor: 0.5)
         
         statusLabel.adjustsFontSizeToFitWidth = true
         currentCourseNameLabel.adjustsFontSizeToFitWidth = true
@@ -76,15 +66,21 @@ class TodayViewController: UIViewController ,UIScrollViewDelegate {
     override func viewWillAppear(animated: Bool) {
         
         super.viewWillAppear(animated)
-        refreshWeatherCondition()
+        
         var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         var account:NSDictionary? = userDefaults.objectForKey("accountInfo") as NSDictionary?
         if let temp = account {
             handleStatus()
+            refreshWeatherCondition()
             timer = NSTimer.scheduledTimerWithTimeInterval(30, target: self, selector: "handleStatus", userInfo: nil, repeats: true)
         }
         else {
-            
+            currentCourseClassroomLabel.text = "N/A"
+            currentCourseNameLabel.text = "N/A"
+            currentCourseTeacherNameLabel.text = "N/A"
+            statusLabel.text = "N/A"
+            var alert:UIAlertView = UIAlertView(title: "您尚未登录", message: "登录后方可使用NKU Helper\n登录选项位于设置选项卡中", delegate: nil, cancelButtonTitle: "好的")
+            alert.show()
         }
         
     }
@@ -147,17 +143,18 @@ class TodayViewController: UIViewController ,UIScrollViewDelegate {
         if minute.length < 2 {
             minute = "0" + minute
         }
-
+        
         dateLabel.text = month + "月" + day + "日"
         weekdayLabel.text = weekday
         hourLabel.text = hour + ":" + minute
         
-        //sectionNumber=13意思是太早了，sectionNumber=14意思是下课了，sectionNumber=15意思是太晚了
         var hourInt:Double = Double(components.hour) + Double(components.minute)/60
         var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         var courseStatus:NSArray = userDefaults.objectForKey("courseStatus") as NSArray
         var todayCourseStatus:NSArray = courseStatus.objectAtIndex(weekdayInt) as NSArray
         var courses:NSArray = userDefaults.objectForKey("courses") as NSArray
+        var todayCourses:NSArray = handleTodayCourses(weekdayInt)
+        
         switch (hourInt) {
         case 0..<7:
             statusLabel.text = "充足的睡眠是美好一天的开始！"
@@ -311,6 +308,37 @@ class TodayViewController: UIViewController ,UIScrollViewDelegate {
         
     }
     
+    func handleTodayCourses(weekday:Int) -> NSArray {
+        
+        var todayCourses:NSMutableArray = NSMutableArray()
+        var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        var courses:NSArray = userDefaults.objectForKey("courses") as NSArray
+        var i:Int = 0
+        var course:NSDictionary = courses.objectAtIndex(i) as NSDictionary
+        var courseDay:Int = course.objectForKey("day") as Int
+        while (courseDay != weekday) {
+            i++
+            if i>=courses.count - 1 {
+                break;
+            }
+            course = courses.objectAtIndex(i) as NSDictionary
+            courseDay = course.objectForKey("day") as Int
+        }
+        while courseDay == weekday {
+            todayCourses.addObject(i)
+            i++
+            if (i<courses.count-1) {
+                course = courses.objectAtIndex(i) as NSDictionary
+                courseDay = course.objectForKey("day") as Int
+            }
+            else {
+                break
+            }
+        }
+        
+        return todayCourses
+    }
+    
     func showCourseInfo(weekdayInt:Int, whichSection:Int) {
         
         var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
@@ -331,7 +359,6 @@ class TodayViewController: UIViewController ,UIScrollViewDelegate {
             currentCourseClassroomLabel.text = "@ " + currentCourseClassroomLabel.text!
             currentCourseTeacherNameLabel.text = course.objectForKey("teacherName") as? String
         }
-
         
     }
     
@@ -339,65 +366,72 @@ class TodayViewController: UIViewController ,UIScrollViewDelegate {
         
         var weatherGetter:WeatherConditionGetter = WeatherConditionGetter()
         var API:NSString = weatherGetter.getAPI()
-       // print(API)
+        // print(API)
         var url:NSURL = NSURL(string: API)!
-
+        
         
         var req:NSMutableURLRequest = NSMutableURLRequest(URL: url)
         req.HTTPMethod = "GET"
         
-        var returnData:NSData = NSData(contentsOfURL: url)!
-        var returnString:NSString = NSString(data: returnData, encoding: NSUTF8StringEncoding)!
-     //   print(returnString)
-    //    print("\n**********************\n")
-        
-        let jsonData:NSDictionary = NSJSONSerialization.JSONObjectWithData(returnData, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
-        let temp:NSDictionary = jsonData.objectForKey("f") as NSDictionary
-        let forecastAll = temp.objectForKey("f1") as NSArray
-        var theFirstDayForecast:NSDictionary = forecastAll.objectAtIndex(0) as NSDictionary
-        
-        var date = NSDate()
-        var calender:NSCalendar = NSCalendar(identifier: NSGregorianCalendar)!
-        var unitFlags:NSCalendarUnit = NSCalendarUnit.HourCalendarUnit | NSCalendarUnit.MinuteCalendarUnit
-        var components:NSDateComponents = calender.components(unitFlags, fromDate: date)
-        var hour:NSString = "\(components.hour)"
-        var minute:NSString = "\(components.minute)"
-        var time:Double = Double(components.hour) + Double(components.minute)/60
-        if time<18 {
+        var returnData:NSData? = NSData(contentsOfURL: url)
+        if let temp = returnData {
             
-            var weather = theFirstDayForecast.objectForKey("fa") as NSString
-            var temperature = theFirstDayForecast.objectForKey("fc") as NSString
-            var windDirection = theFirstDayForecast.objectForKey("fe") as NSString
-            var windStrenth = theFirstDayForecast.objectForKey("fg") as NSString
+            //For Debug
+            /*
+            var returnString:NSString = NSString(data: returnData!, encoding: NSUTF8StringEncoding)!
+            print(returnString)
+            print("\n**********************\n")
+            */
             
-            var weatherImage = "day" + weather + ".png"
-            weatherImageView.image = UIImage(named: weatherImage)
-            temperatureLabel.text = temperature + "℃"
-            weatherConditionLabel.text = weatherEncodeToWeatherCondition.objectForKey(weather) as NSString
+            let jsonData:NSDictionary = NSJSONSerialization.JSONObjectWithData(returnData!, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
+            let temp:NSDictionary = jsonData.objectForKey("f") as NSDictionary
+            let forecastAll = temp.objectForKey("f1") as NSArray
+            var theFirstDayForecast:NSDictionary = forecastAll.objectAtIndex(0) as NSDictionary
             
+            var date = NSDate()
+            var calender:NSCalendar = NSCalendar(identifier: NSGregorianCalendar)!
+            var unitFlags:NSCalendarUnit = NSCalendarUnit.HourCalendarUnit | NSCalendarUnit.MinuteCalendarUnit
+            var components:NSDateComponents = calender.components(unitFlags, fromDate: date)
+            var hour:NSString = "\(components.hour)"
+            var minute:NSString = "\(components.minute)"
+            var time:Double = Double(components.hour) + Double(components.minute)/60
+            if (time<18) && (time>8) {
+                
+                var weather = theFirstDayForecast.objectForKey("fa") as NSString
+                var temperature = theFirstDayForecast.objectForKey("fc") as NSString
+                var windDirection = theFirstDayForecast.objectForKey("fe") as NSString
+                var windStrenth = theFirstDayForecast.objectForKey("fg") as NSString
+                
+                var weatherImage = "day" + weather + ".png"
+                weatherImageView.image = UIImage(named: weatherImage)
+                temperatureLabel.text = temperature + "℃"
+                weatherConditionLabel.text = weatherEncodeToWeatherCondition.objectForKey(weather) as NSString
+                
+            }
+            else {
+                
+                var weather = theFirstDayForecast.objectForKey("fb") as NSString
+                var temperature = theFirstDayForecast.objectForKey("fd") as NSString
+                var windDirection = theFirstDayForecast.objectForKey("ff") as NSString
+                var windStrenth = theFirstDayForecast.objectForKey("fh") as NSString
+                
+                var weatherImage = "night" + weather + ".png"
+                weatherImageView.image = UIImage(named: weatherImage)
+                temperatureLabel.text = temperature + "℃"
+                weatherConditionLabel.text = weatherEncodeToWeatherCondition.objectForKey(weather) as NSString
+                
+            }
         }
         else {
             
-            var weather = theFirstDayForecast.objectForKey("fb") as NSString
-            var temperature = theFirstDayForecast.objectForKey("fd") as NSString
-            var windDirection = theFirstDayForecast.objectForKey("ff") as NSString
-            var windStrenth = theFirstDayForecast.objectForKey("fh") as NSString
-            
-            var weatherImage = "night" + weather + ".png"
-            weatherImageView.image = UIImage(named: weatherImage)
-            temperatureLabel.text = temperature + "℃"
-            weatherConditionLabel.text = weatherEncodeToWeatherCondition.objectForKey(weather) as NSString
+            var alertView:UIAlertView = UIAlertView(title: "获取天气数据错误！", message: "木有网络\n我小小NKU Helper也没法知道天气喽\no(╯□╰)o", delegate: nil, cancelButtonTitle: "有道理，不难为你了~")
+            alertView.show()
+            weatherConditionLabel.text = "N/A"
+            temperatureLabel.text = "N/A"
+            weatherImageView.image = nil
+            pm25Label.text = "N/A"
+        }
 
-        }
- /*
-        var connection:NSURLConnection? = NSURLConnection(request: req, delegate: self)
-        if let temp = connection {
-            receivedWeatherData = NSMutableData()
-        }
-        else {
-            
-        }
-   */
     }
     
     // MARK: seguesInsideTheView

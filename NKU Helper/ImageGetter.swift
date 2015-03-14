@@ -38,7 +38,9 @@ class imageGetter: NSObject ,NSURLConnectionDataDelegate {
             print("Image Connection Setting Succeed\n")
             readyToStart = true
         }
-
+        else {
+            var alertView:UIAlertView = UIAlertView(title: "网络错误", message: "没有网无法加载验证码", delegate: nil, cancelButtonTitle: "好，现在就去弄点网")
+        }
     }
     
     func connection(connection: NSURLConnection, didReceiveData data: NSData) {
