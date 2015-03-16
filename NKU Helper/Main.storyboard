@@ -475,7 +475,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="Svd-mg-JG8" kind="relationship" relationship="viewControllers" id="nfi-0V-J9f"/>
+                        <segue destination="fXl-TY-kk3" kind="relationship" relationship="viewControllers" id="5Tw-Zp-0oM"/>
                         <segue destination="lQe-5i-hkC" kind="relationship" relationship="viewControllers" id="pG5-XO-cU2"/>
                         <segue destination="p27-lO-dTl" kind="relationship" relationship="viewControllers" id="Hdp-Q6-a5u"/>
                         <segue destination="rd0-uX-S1b" kind="relationship" relationship="viewControllers" id="4FA-ds-lOM"/>
@@ -485,130 +485,148 @@
             </objects>
             <point key="canvasLocation" x="-477" y="-431"/>
         </scene>
-        <!--Today View Controller-->
-        <scene sceneID="SGz-lg-Paf">
+        <!--Today Table View Controller-->
+        <scene sceneID="gj8-q0-z7b">
             <objects>
-                <viewController id="xij-Pe-hff" customClass="TodayViewController" customModule="NKU_Helper" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="25j-bz-nYf">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                <tableViewController id="ZHd-dY-aDI" customClass="TodayTableViewController" customModule="NKU_Helper" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="99" sectionHeaderHeight="22" sectionFooterHeight="22" id="em5-xI-RCF">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundImage.jpg" id="01z-jY-3Ic">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="kHO-es-Bv8">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="520"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" id="nng-lc-W8g" userLabel="WeatherCondition">
-                                        <rect key="frame" x="140" y="10" width="88" height="88"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PM2.5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Rd0-le-qrN">
-                                                <rect key="frame" x="12" y="59" width="65" height="21"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0℃" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3kz-CF-ixu">
-                                                <rect key="frame" x="12" y="33" width="65" height="21"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="多云" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Wvd-5v-CWx">
-                                                <rect key="frame" x="12" y="8" width="65" height="21"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </view>
-                                    <view contentMode="scaleToFill" id="2s7-CS-jc1" userLabel="Date &amp; Hour">
-                                        <rect key="frame" x="8" y="10" width="124" height="88"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="星期三" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7jc-Ss-Fa5">
-                                                <rect key="frame" x="77" y="8" width="47" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3月11日" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lfE-ok-iTm">
-                                                <rect key="frame" x="16" y="8" width="61" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23:25" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gk0-l5-3oL">
-                                                <rect key="frame" x="16" y="32" width="108" height="56"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </view>
-                                    <view contentMode="scaleToFill" id="OC2-6V-Zls" userLabel="CourseInfo">
-                                        <rect key="frame" x="2" y="90" width="315" height="133"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uCY-3b-MD9">
-                                                <rect key="frame" x="160" y="102" width="152" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ltl-zu-SeG">
-                                                <rect key="frame" x="8" y="102" width="144" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uR4-UE-fi0">
-                                                <rect key="frame" x="5" y="19" width="304" height="36"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" id="sK1-sX-xUn">
-                                                <rect key="frame" x="5" y="53" width="304" height="2"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            </progressView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="32F-w6-JaY">
-                                                <rect key="frame" x="5" y="37" width="304" height="95"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <connections>
-                                            <outletCollection property="gestureRecognizers" destination="bLJ-fZ-Yja" appends="YES" id="XPw-1K-3ai"/>
-                                        </connections>
-                                    </view>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="night01.png" id="woB-2K-7RY">
-                                        <rect key="frame" x="229" y="10" width="88" height="88"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                </subviews>
-                            </scrollView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
-                    <navigationItem key="navigationItem" id="pHi-BH-66W">
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="time_weather" rowHeight="100" id="Nen-hx-LVc" customClass="time_weatherTableViewCell" customModule="NKU_Helper" customModuleProvider="target">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Nen-hx-LVc" id="Mes-5l-gJ5">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" id="ql7-5q-gKt" userLabel="Date &amp; Hour">
+                                            <rect key="frame" x="8" y="6" width="124" height="88"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="星期三" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xFI-51-uPq">
+                                                    <rect key="frame" x="77" y="8" width="47" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3月11日" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Xh9-LH-Qd8">
+                                                    <rect key="frame" x="16" y="8" width="61" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23:25" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Scx-Ua-7Sb">
+                                                    <rect key="frame" x="16" y="32" width="108" height="56"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <view contentMode="scaleToFill" id="llR-0y-Kjz" userLabel="WeatherCondition">
+                                            <rect key="frame" x="140" y="6" width="88" height="88"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PM2.5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="umQ-9A-MFP">
+                                                    <rect key="frame" x="12" y="59" width="65" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0℃" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Uly-h8-gym">
+                                                    <rect key="frame" x="12" y="33" width="65" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="多云" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Dn6-cp-ak4">
+                                                    <rect key="frame" x="12" y="8" width="65" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="night01.png" id="ED3-Zz-43n">
+                                            <rect key="frame" x="224" y="12" width="88" height="88"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="PM25Label" destination="umQ-9A-MFP" id="Fpx-h7-Vrt"/>
+                                    <outlet property="dateLabel" destination="Xh9-LH-Qd8" id="IOM-Ld-DBO"/>
+                                    <outlet property="date_weatherView" destination="ql7-5q-gKt" id="1b4-eo-pbZ"/>
+                                    <outlet property="hourLabel" destination="Scx-Ua-7Sb" id="dC7-Zc-Y0w"/>
+                                    <outlet property="temperatureLabel" destination="Uly-h8-gym" id="nJl-rJ-FBN"/>
+                                    <outlet property="weatherConditionLabel" destination="Dn6-cp-ak4" id="hn1-re-7nt"/>
+                                    <outlet property="weatherConditionView" destination="llR-0y-Kjz" id="qkZ-Oe-2Bb"/>
+                                    <outlet property="weatherImageView" destination="ED3-Zz-43n" id="PUH-hJ-h2P"/>
+                                    <outlet property="weekdayLabel" destination="xFI-51-uPq" id="cYn-dC-um3"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="courseCurrent" rowHeight="150" id="O1i-Hz-UbB" customClass="courseCurrentTableViewCell" customModule="NKU_Helper" customModuleProvider="target">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="O1i-Hz-UbB" id="TcP-bJ-Ntm">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" id="ObW-FU-eeO">
+                                            <rect key="frame" x="8" y="47" width="304" height="2"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </progressView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gEt-jg-RVl" userLabel="teacherName">
+                                            <rect key="frame" x="160" y="98" width="152" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rDV-hh-pem" userLabel="classroom">
+                                            <rect key="frame" x="8" y="98" width="144" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tnP-dH-gP3" userLabel="status">
+                                            <rect key="frame" x="8" y="8" width="304" height="36"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="15r-pU-Kei" userLabel="className">
+                                            <rect key="frame" x="8" y="27" width="304" height="95"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="currentCourseClassroomLabel" destination="rDV-hh-pem" id="5XD-36-cml"/>
+                                    <outlet property="currentCourseNameLabel" destination="15r-pU-Kei" id="lfm-8P-HQW"/>
+                                    <outlet property="currentCourseTeacherNameLabel" destination="gEt-jg-RVl" id="0jq-Dq-zxd"/>
+                                    <outlet property="progressIndicator" destination="ObW-FU-eeO" id="Qi4-hP-C4J"/>
+                                    <outlet property="statusLabel" destination="tnP-dH-gP3" id="Unb-7n-Xum"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ZHd-dY-aDI" id="QUE-20-5TC"/>
+                            <outlet property="delegate" destination="ZHd-dY-aDI" id="QiE-9K-DNh"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="JeA-tH-nMC">
                         <nil key="title"/>
-                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="YIr-E5-PM0">
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="ipe-Dh-bah">
                             <rect key="frame" x="89.5" y="7.5" width="141" height="29"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
@@ -616,37 +634,12 @@
                                 <segment title="Overview"/>
                             </segments>
                         </segmentedControl>
-                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="7O7-Oo-XeR"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="KWX-Zn-gef"/>
                     </navigationItem>
-                    <connections>
-                        <outlet property="currentCourseClassroomLabel" destination="Ltl-zu-SeG" id="1Wl-qP-Oeq"/>
-                        <outlet property="currentCourseNameLabel" destination="32F-w6-JaY" id="xqh-hR-DJU"/>
-                        <outlet property="currentCourseTeacherNameLabel" destination="uCY-3b-MD9" id="pBF-G2-LNq"/>
-                        <outlet property="currentCourseView" destination="OC2-6V-Zls" id="hV2-8Y-P2U"/>
-                        <outlet property="dateLabel" destination="lfE-ok-iTm" id="AYs-X0-R0Q"/>
-                        <outlet property="dateView" destination="2s7-CS-jc1" id="aLK-w7-1Zt"/>
-                        <outlet property="hourLabel" destination="gk0-l5-3oL" id="oJA-yb-LVO"/>
-                        <outlet property="mainScrollView" destination="kHO-es-Bv8" id="dEN-Bi-Jeh"/>
-                        <outlet property="pm25Label" destination="Rd0-le-qrN" id="dFm-92-z19"/>
-                        <outlet property="progressIndicator" destination="sK1-sX-xUn" id="nt5-De-Ukf"/>
-                        <outlet property="statusLabel" destination="uR4-UE-fi0" id="7NS-Tf-SFw"/>
-                        <outlet property="tapperOnCurrentCourse" destination="bLJ-fZ-Yja" id="EEi-hu-fOZ"/>
-                        <outlet property="temperatureLabel" destination="3kz-CF-ixu" id="emn-eY-Tuj"/>
-                        <outlet property="weatherConditionLabel" destination="Wvd-5v-CWx" id="4em-7W-CDA"/>
-                        <outlet property="weatherConditionView" destination="nng-lc-W8g" id="0Ws-Vi-XWb"/>
-                        <outlet property="weatherImageView" destination="woB-2K-7RY" id="Dpo-eb-9bX"/>
-                        <outlet property="weekdayLabel" destination="7jc-Ss-Fa5" id="baD-ws-Tv3"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UTb-aY-k73" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="bLJ-fZ-Yja">
-                    <connections>
-                        <action selector="tapOnCurrentCourse:" destination="xij-Pe-hff" id="EWZ-aT-LXm"/>
-                        <segue destination="Hw9-AF-LPa" kind="push" id="Cxt-bx-bcM"/>
-                    </connections>
-                </tapGestureRecognizer>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5rS-xp-ynd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1567" y="-1531"/>
+            <point key="canvasLocation" x="1391" y="-1501"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="H3H-2t-gce">
@@ -661,7 +654,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I9t-u6-ZZC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2137" y="-2043"/>
+            <point key="canvasLocation" x="1861" y="-1819"/>
         </scene>
         <!--课程表-->
         <scene sceneID="KJp-g8-xo7">
@@ -702,29 +695,27 @@
             <point key="canvasLocation" x="859" y="2491"/>
         </scene>
         <!--今天-->
-        <scene sceneID="OMx-j7-oPo">
+        <scene sceneID="ONy-NC-Moz">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Svd-mg-JG8" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="今天" image="course_down.png" id="0nM-SG-1KZ"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fXl-TY-kk3" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="今天" image="course_up.png" id="BDg-hR-o7i"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5ra-a8-Xg5">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="obW-RU-xAH">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="xij-Pe-hff" kind="relationship" relationship="rootViewController" id="3q7-TZ-vec"/>
+                        <segue destination="ZHd-dY-aDI" kind="relationship" relationship="rootViewController" id="Ini-iQ-0TH"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7b4-5S-m5j" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dzV-wd-Dhl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="859" y="-1531"/>
+            <point key="canvasLocation" x="859" y="-1501"/>
         </scene>
     </scenes>
     <resources>
         <image name="Settings.png" width="25" height="25"/>
-        <image name="backgroundImage.jpg" width="640" height="1136"/>
-        <image name="course_down.png" width="36" height="22"/>
         <image name="course_up.png" width="36" height="22"/>
         <image name="night01.png" width="120" height="120"/>
     </resources>
