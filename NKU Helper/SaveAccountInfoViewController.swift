@@ -88,6 +88,8 @@ class SaveAccountInfoViewController: UIViewController, UIAlertViewDelegate, NSUR
         accountInfo.setObject(departmentAdmitted!, forKey: "departmentAdmitted")
         accountInfo.setObject(majorAdmitted!, forKey: "majorAdmitted")
         userDefaults.removeObjectForKey("accountInfo")
+        userDefaults.removeObjectForKey("courses")
+        userDefaults.removeObjectForKey("courseStatus")
         userDefaults.setObject(accountInfo, forKey: "accountInfo")
         userDefaults.synchronize()
 

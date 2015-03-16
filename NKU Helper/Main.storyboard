@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14D87h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="6TT-Vh-y8q">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14D98g" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="6TT-Vh-y8q">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
@@ -51,7 +51,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2240" y="220"/>
+            <point key="canvasLocation" x="2137" y="316"/>
         </scene>
         <!--😈😈😈-->
         <scene sceneID="pHj-vM-bni">
@@ -114,7 +114,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lKf-Ve-Iri" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2656" y="220"/>
+            <point key="canvasLocation" x="2660" y="316"/>
         </scene>
         <!--Function Table View Controller-->
         <scene sceneID="35J-CL-FEZ">
@@ -144,7 +144,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eBD-8b-pWi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1751" y="220"/>
+            <point key="canvasLocation" x="1567" y="316"/>
         </scene>
         <!--Class Time View Controller-->
         <scene sceneID="TA3-hL-XnT">
@@ -177,7 +177,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zvr-l2-dvi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1751" y="-577"/>
+            <point key="canvasLocation" x="1567" y="-561"/>
         </scene>
         <!--Log In View Controller-->
         <scene sceneID="PBF-PO-e9j">
@@ -202,7 +202,13 @@
                                 <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
-                                    <navigationItem title="输入验证码以查询课表" id="vIL-hv-N5l"/>
+                                    <navigationItem title="输入验证码以查询课表" id="vIL-hv-N5l">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="wBR-qV-8yX">
+                                            <connections>
+                                                <action selector="cancelButtonClicked:" destination="JxO-gb-eEZ" id="w1o-K8-fjU"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入验证码" minimumFontSize="17" id="eG4-Ka-2a1">
@@ -232,13 +238,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3mW-9S-djJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2257" y="-577"/>
+            <point key="canvasLocation" x="2137" y="-561"/>
         </scene>
         <!--功能-->
         <scene sceneID="0L9-rU-f8t">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="p27-lO-dTl" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="4" title="功能" id="fsg-Bf-oFB"/>
+                    <tabBarItem key="tabBarItem" tag="4" title="功能" image="Settings.png" id="fsg-Bf-oFB"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="b6E-e4-iEt">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -251,7 +257,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CJ2-dw-ggr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1219" y="220"/>
+            <point key="canvasLocation" x="859" y="316"/>
         </scene>
         <!--Setting Table View Controller-->
         <scene sceneID="Av4-Mo-IvS">
@@ -333,7 +339,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JvK-fg-MYR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1773" y="1463"/>
+            <point key="canvasLocation" x="1567" y="2491"/>
         </scene>
         <!--Detail Account Info Table View Controller-->
         <scene sceneID="ZO3-Kz-0hN">
@@ -392,7 +398,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jq7-cX-n72" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2240" y="1549"/>
+            <point key="canvasLocation" x="2137" y="2900"/>
         </scene>
         <!--Save Account Info View Controller-->
         <scene sceneID="s0P-Sn-VF6">
@@ -455,7 +461,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bdg-j0-ZA5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2240" y="871"/>
+            <point key="canvasLocation" x="2137" y="2081"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="SXM-Ky-DWM">
@@ -640,7 +646,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1751" y="-1553"/>
+            <point key="canvasLocation" x="1567" y="-1531"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="H3H-2t-gce">
@@ -655,13 +661,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I9t-u6-ZZC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3369" y="-1811"/>
+            <point key="canvasLocation" x="2137" y="-2043"/>
         </scene>
         <!--课程表-->
         <scene sceneID="KJp-g8-xo7">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lQe-5i-hkC" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="2" title="课程表" id="FEv-uC-Qda"/>
+                    <tabBarItem key="tabBarItem" tag="2" title="课程表" image="course_up.png" id="FEv-uC-Qda"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vLK-e7-WGz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -674,13 +680,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6WE-et-5uS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1219" y="-577"/>
+            <point key="canvasLocation" x="859" y="-561"/>
         </scene>
         <!--设置-->
         <scene sceneID="xn6-uy-XyL">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rd0-uX-S1b" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="5" title="设置" id="xFE-9p-Nuz"/>
+                    <tabBarItem key="tabBarItem" tag="5" title="设置" image="Settings.png" id="xFE-9p-Nuz"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="VdU-VH-Bbz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -693,13 +699,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YME-ee-rXw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1219" y="1463"/>
+            <point key="canvasLocation" x="859" y="2491"/>
         </scene>
         <!--今天-->
         <scene sceneID="OMx-j7-oPo">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Svd-mg-JG8" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="今天" id="0nM-SG-1KZ"/>
+                    <tabBarItem key="tabBarItem" title="今天" image="course_down.png" id="0nM-SG-1KZ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="5ra-a8-Xg5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -712,11 +718,14 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7b4-5S-m5j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1219" y="-1553"/>
+            <point key="canvasLocation" x="859" y="-1531"/>
         </scene>
     </scenes>
     <resources>
+        <image name="Settings.png" width="25" height="25"/>
         <image name="backgroundImage.jpg" width="640" height="1136"/>
+        <image name="course_down.png" width="36" height="22"/>
+        <image name="course_up.png" width="36" height="22"/>
         <image name="night01.png" width="120" height="120"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

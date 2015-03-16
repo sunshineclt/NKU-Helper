@@ -150,162 +150,175 @@ class TodayViewController: UIViewController ,UIScrollViewDelegate {
         
         var hourInt:Double = Double(components.hour) + Double(components.minute)/60
         var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        var courses:NSArray? = userDefaults.objectForKey("courses") as? NSArray
+        
+        if let temp = courses {
+        
         var courseStatus:NSArray = userDefaults.objectForKey("courseStatus") as NSArray
-        var todayCourseStatus:NSArray = courseStatus.objectAtIndex(weekdayInt) as NSArray
-        var courses:NSArray = userDefaults.objectForKey("courses") as NSArray
-        var todayCourses:NSArray = handleTodayCourses(weekdayInt)
-        
-        switch (hourInt) {
-        case 0..<7:
-            statusLabel.text = "充足的睡眠是美好一天的开始！"
-            currentCourseNameLabel.text = "Have a neat sleep!"
-            currentCourseClassroomLabel.text = "@ 寝室"
-            currentCourseTeacherNameLabel.text = ""
-            var progress:Float = Float(hourInt+2)/9
-            progressIndicator.setProgress(progress, animated: true)
-        case 7..<8:
-            statusLabel.text = "早上好，第一节课是"
-            showCourseInfo(weekdayInt, whichSection: 0)
-            var progress:Float = Float(hourInt-7)
-            progressIndicator.setProgress(progress, animated: true)
-        case 8..<35/4:
-            statusLabel.text = "第一节课进行中"
-            showCourseInfo(weekdayInt, whichSection: 0)
-            var progress:Float = Float(hourInt-8)*4/3
-            progressIndicator.setProgress(progress, animated: true)
-        case 35/4..<107/12:
-            statusLabel.text = "下课中，即将开始第二节课"
-            showCourseInfo(weekdayInt, whichSection: 1)
-            var progress:Float = Float(hourInt-35/4)*6
-            progressIndicator.setProgress(progress, animated: true)
-        case 107/12..<29/3:
-            statusLabel.text = "第二节课进行中"
-            showCourseInfo(weekdayInt, whichSection: 1)
-            var progress:Float = Float(hourInt-107/12)*4/3
-            progressIndicator.setProgress(progress, animated: true)
-        case 29/3..<10:
-            statusLabel.text = "下课中，即将开始第三节课"
-            showCourseInfo(weekdayInt, whichSection: 2)
-            var progress:Float = Float(hourInt-29/3)*3
-            progressIndicator.setProgress(progress, animated: true)
-        case 10..<43/4:
-            statusLabel.text = "第三节课进行中"
-            showCourseInfo(weekdayInt, whichSection: 2)
-            var progress:Float = Float(hourInt-10)*4/3
-            progressIndicator.setProgress(progress, animated: true)
-        case 43/4..<131/12:
-            statusLabel.text = "下课中，即将开始第四节课"
-            showCourseInfo(weekdayInt, whichSection: 3)
-            var progress:Float = Float(hourInt-43/4)*6
-            progressIndicator.setProgress(progress, animated: true)
-        case 131/12..<35/3:
-            statusLabel.text = "第四节课进行中"
-            showCourseInfo(weekdayInt, whichSection: 3)
-            var progress:Float = Float(hourInt-131/12)*4/3
-            progressIndicator.setProgress(progress, animated: true)
-        case 35/3..<13:
-            statusLabel.text = "午饭及午休时间"
-            currentCourseNameLabel.text = "Have a nice lunch and sleep!"
-            currentCourseClassroomLabel.text = "@ 食堂&寝室"
-            currentCourseTeacherNameLabel.text = "木有老师~"
-            var progress:Float = Float(hourInt-35/3)*3/4
-            progressIndicator.setProgress(progress, animated: true)
-        case 13..<14:
-            statusLabel.text = "下午好，第五节课是"
-            showCourseInfo(weekdayInt, whichSection: 4)
-            var progress:Float = Float(hourInt-13)
-            progressIndicator.setProgress(progress, animated: true)
-        case 14..<59/4:
-            statusLabel.text = "第五节课进行中"
-            showCourseInfo(weekdayInt, whichSection: 4)
-            var progress:Float = Float(hourInt-14)*4/3
-            progressIndicator.setProgress(progress, animated: true)
-        case 59/4..<179/12:
-            statusLabel.text = "下课中，即将开始第六节课"
-            showCourseInfo(weekdayInt, whichSection: 5)
-            var progress:Float = Float(hourInt-59/4)*6
-            progressIndicator.setProgress(progress, animated: true)
-        case 179/12..<47/3:
-            statusLabel.text = "第六节课进行中"
-            showCourseInfo(weekdayInt, whichSection: 5)
-            var progress:Float = Float(hourInt-179/12)*4/3
-            progressIndicator.setProgress(progress, animated: true)
-        case 47/3..<16:
-            statusLabel.text = "下课中，即将开始第七节课"
-            showCourseInfo(weekdayInt, whichSection: 6)
-            var progress:Float = Float(hourInt-47/3)*3
-            progressIndicator.setProgress(progress, animated: true)
-        case 16..<67/4:
-            statusLabel.text = "第七节课进行中"
-            showCourseInfo(weekdayInt, whichSection: 6)
-            var progress:Float = Float(hourInt-16)*4/3
-            progressIndicator.setProgress(progress, animated: true)
-        case 67/4..<203/12:
-            statusLabel.text = "下课中，即将开始第八节课"
-            showCourseInfo(weekdayInt, whichSection: 7)
-            var progress:Float = Float(hourInt-67/4)*6
-            progressIndicator.setProgress(progress, animated: true)
-        case 203/12..<53/3:
-            statusLabel.text = "第八节课进行中"
-            showCourseInfo(weekdayInt, whichSection: 7)
-            var progress:Float = Float(hourInt-203/12)*4/3
-            progressIndicator.setProgress(progress, animated: true)
-        case 53/3..<18:
-            statusLabel.text = "晚餐时间"
-            currentCourseNameLabel.text = "Have a nice dinner!"
-            currentCourseClassroomLabel.text = "@ 食堂"
-            currentCourseTeacherNameLabel.text = "木有老师~"
-            var progress:Float = Float(hourInt-53/3)*3
-            progressIndicator.setProgress(progress, animated: true)
-        case 18..<18.5:
-            statusLabel.text = "晚上好，第九节课是"
-            showCourseInfo(weekdayInt, whichSection: 8)
-            var progress:Float = Float(hourInt-18)*2
-            progressIndicator.setProgress(progress, animated: true)
-        case 18.5..<77/4:
-            statusLabel.text = "第九节课进行中"
-            showCourseInfo(weekdayInt, whichSection: 8)
-            var progress:Float = Float(hourInt-18.5)*4/3
-            progressIndicator.setProgress(progress, animated: true)
-        case 77/4..<233/12:
-            statusLabel.text = "下课中，即将开始第十节课"
-            showCourseInfo(weekdayInt, whichSection: 9)
-            var progress:Float = Float(hourInt-77/4)*6
-            progressIndicator.setProgress(progress, animated: true)
-        case 233/12..<121/6:
-            statusLabel.text = "第十节课进行中"
-            showCourseInfo(weekdayInt, whichSection: 9)
-            var progress:Float = Float(hourInt-233/12)*4/3
-            progressIndicator.setProgress(progress, animated: true)
-        case 121/6..<61/3:
-            statusLabel.text = "下课中，即将开始第十一节课"
-            showCourseInfo(weekdayInt, whichSection: 10)
-            var progress:Float = Float(hourInt-121/6)*6
-            progressIndicator.setProgress(progress, animated: true)
-        case 61/3..<253/12:
-            statusLabel.text = "第十一节课进行中"
-            showCourseInfo(weekdayInt, whichSection: 10)
-            var progress:Float = Float(hourInt-61/3)*4/3
-            progressIndicator.setProgress(progress, animated: true)
-        case 253/12..<85/4:
-            statusLabel.text = "下课中，即将开始第十二节课"
-            showCourseInfo(weekdayInt, whichSection: 11)
-            var progress:Float = Float(hourInt-253/12)*6
-            progressIndicator.setProgress(progress, animated: true)
-        case 85/4..<22:
-            statusLabel.text = "第十二节课进行中"
-            showCourseInfo(weekdayInt, whichSection: 11)
-            var progress:Float = Float(hourInt-85/4)*4/3
-            progressIndicator.setProgress(progress, animated: true)
-        default:
-            statusLabel.text = "忙碌的一天结束啦"
-            currentCourseNameLabel.text = "Have a neat sleep!"
-            currentCourseClassroomLabel.text = "@ 寝室"
-            currentCourseTeacherNameLabel.text = ""
-            var progress:Float = Float(hourInt-22)/9
-            progressIndicator.setProgress(progress, animated: true)
+            var todayCourseStatus:NSArray = courseStatus.objectAtIndex(weekdayInt) as NSArray
+            var todayCourses:NSArray = handleTodayCourses(weekdayInt)
+            
+            switch (hourInt) {
+            case 0..<7:
+                statusLabel.text = "充足的睡眠是美好一天的开始！"
+                currentCourseNameLabel.text = "Have a neat sleep!"
+                currentCourseClassroomLabel.text = "@ 寝室"
+                currentCourseTeacherNameLabel.text = ""
+                var progress:Float = Float(hourInt+2)/9
+                progressIndicator.setProgress(progress, animated: true)
+            case 7..<8:
+                statusLabel.text = "早上好，第一节课是"
+                showCourseInfo(weekdayInt, whichSection: 0)
+                var progress:Float = Float(hourInt-7)
+                progressIndicator.setProgress(progress, animated: true)
+            case 8..<35/4:
+                statusLabel.text = "第一节课进行中"
+                showCourseInfo(weekdayInt, whichSection: 0)
+                var progress:Float = Float(hourInt-8)*4/3
+                progressIndicator.setProgress(progress, animated: true)
+            case 35/4..<107/12:
+                statusLabel.text = "下课中，即将开始第二节课"
+                showCourseInfo(weekdayInt, whichSection: 1)
+                var progress:Float = Float(hourInt-35/4)*6
+                progressIndicator.setProgress(progress, animated: true)
+            case 107/12..<29/3:
+                statusLabel.text = "第二节课进行中"
+                showCourseInfo(weekdayInt, whichSection: 1)
+                var progress:Float = Float(hourInt-107/12)*4/3
+                progressIndicator.setProgress(progress, animated: true)
+            case 29/3..<10:
+                statusLabel.text = "下课中，即将开始第三节课"
+                showCourseInfo(weekdayInt, whichSection: 2)
+                var progress:Float = Float(hourInt-29/3)*3
+                progressIndicator.setProgress(progress, animated: true)
+            case 10..<43/4:
+                statusLabel.text = "第三节课进行中"
+                showCourseInfo(weekdayInt, whichSection: 2)
+                var progress:Float = Float(hourInt-10)*4/3
+                progressIndicator.setProgress(progress, animated: true)
+            case 43/4..<131/12:
+                statusLabel.text = "下课中，即将开始第四节课"
+                showCourseInfo(weekdayInt, whichSection: 3)
+                var progress:Float = Float(hourInt-43/4)*6
+                progressIndicator.setProgress(progress, animated: true)
+            case 131/12..<35/3:
+                statusLabel.text = "第四节课进行中"
+                showCourseInfo(weekdayInt, whichSection: 3)
+                var progress:Float = Float(hourInt-131/12)*4/3
+                progressIndicator.setProgress(progress, animated: true)
+            case 35/3..<13:
+                statusLabel.text = "午饭及午休时间"
+                currentCourseNameLabel.text = "Have a nice lunch and sleep!"
+                currentCourseClassroomLabel.text = "@ 食堂&寝室"
+                currentCourseTeacherNameLabel.text = "木有老师~"
+                var progress:Float = Float(hourInt-35/3)*3/4
+                progressIndicator.setProgress(progress, animated: true)
+            case 13..<14:
+                statusLabel.text = "下午好，第五节课是"
+                showCourseInfo(weekdayInt, whichSection: 4)
+                var progress:Float = Float(hourInt-13)
+                progressIndicator.setProgress(progress, animated: true)
+            case 14..<59/4:
+                statusLabel.text = "第五节课进行中"
+                showCourseInfo(weekdayInt, whichSection: 4)
+                var progress:Float = Float(hourInt-14)*4/3
+                progressIndicator.setProgress(progress, animated: true)
+            case 59/4..<179/12:
+                statusLabel.text = "下课中，即将开始第六节课"
+                showCourseInfo(weekdayInt, whichSection: 5)
+                var progress:Float = Float(hourInt-59/4)*6
+                progressIndicator.setProgress(progress, animated: true)
+            case 179/12..<47/3:
+                statusLabel.text = "第六节课进行中"
+                showCourseInfo(weekdayInt, whichSection: 5)
+                var progress:Float = Float(hourInt-179/12)*4/3
+                progressIndicator.setProgress(progress, animated: true)
+            case 47/3..<16:
+                statusLabel.text = "下课中，即将开始第七节课"
+                showCourseInfo(weekdayInt, whichSection: 6)
+                var progress:Float = Float(hourInt-47/3)*3
+                progressIndicator.setProgress(progress, animated: true)
+            case 16..<67/4:
+                statusLabel.text = "第七节课进行中"
+                showCourseInfo(weekdayInt, whichSection: 6)
+                var progress:Float = Float(hourInt-16)*4/3
+                progressIndicator.setProgress(progress, animated: true)
+            case 67/4..<203/12:
+                statusLabel.text = "下课中，即将开始第八节课"
+                showCourseInfo(weekdayInt, whichSection: 7)
+                var progress:Float = Float(hourInt-67/4)*6
+                progressIndicator.setProgress(progress, animated: true)
+            case 203/12..<53/3:
+                statusLabel.text = "第八节课进行中"
+                showCourseInfo(weekdayInt, whichSection: 7)
+                var progress:Float = Float(hourInt-203/12)*4/3
+                progressIndicator.setProgress(progress, animated: true)
+            case 53/3..<18:
+                statusLabel.text = "晚餐时间"
+                currentCourseNameLabel.text = "Have a nice dinner!"
+                currentCourseClassroomLabel.text = "@ 食堂"
+                currentCourseTeacherNameLabel.text = "木有老师~"
+                var progress:Float = Float(hourInt-53/3)*3
+                progressIndicator.setProgress(progress, animated: true)
+            case 18..<18.5:
+                statusLabel.text = "晚上好，第九节课是"
+                showCourseInfo(weekdayInt, whichSection: 8)
+                var progress:Float = Float(hourInt-18)*2
+                progressIndicator.setProgress(progress, animated: true)
+            case 18.5..<77/4:
+                statusLabel.text = "第九节课进行中"
+                showCourseInfo(weekdayInt, whichSection: 8)
+                var progress:Float = Float(hourInt-18.5)*4/3
+                progressIndicator.setProgress(progress, animated: true)
+            case 77/4..<233/12:
+                statusLabel.text = "下课中，即将开始第十节课"
+                showCourseInfo(weekdayInt, whichSection: 9)
+                var progress:Float = Float(hourInt-77/4)*6
+                progressIndicator.setProgress(progress, animated: true)
+            case 233/12..<121/6:
+                statusLabel.text = "第十节课进行中"
+                showCourseInfo(weekdayInt, whichSection: 9)
+                var progress:Float = Float(hourInt-233/12)*4/3
+                progressIndicator.setProgress(progress, animated: true)
+            case 121/6..<61/3:
+                statusLabel.text = "下课中，即将开始第十一节课"
+                showCourseInfo(weekdayInt, whichSection: 10)
+                var progress:Float = Float(hourInt-121/6)*6
+                progressIndicator.setProgress(progress, animated: true)
+            case 61/3..<253/12:
+                statusLabel.text = "第十一节课进行中"
+                showCourseInfo(weekdayInt, whichSection: 10)
+                var progress:Float = Float(hourInt-61/3)*4/3
+                progressIndicator.setProgress(progress, animated: true)
+            case 253/12..<85/4:
+                statusLabel.text = "下课中，即将开始第十二节课"
+                showCourseInfo(weekdayInt, whichSection: 11)
+                var progress:Float = Float(hourInt-253/12)*6
+                progressIndicator.setProgress(progress, animated: true)
+            case 85/4..<22:
+                statusLabel.text = "第十二节课进行中"
+                showCourseInfo(weekdayInt, whichSection: 11)
+                var progress:Float = Float(hourInt-85/4)*4/3
+                progressIndicator.setProgress(progress, animated: true)
+            default:
+                statusLabel.text = "忙碌的一天结束啦"
+                currentCourseNameLabel.text = "Have a neat sleep!"
+                currentCourseClassroomLabel.text = "@ 寝室"
+                currentCourseTeacherNameLabel.text = ""
+                var progress:Float = Float(hourInt-22)/9
+                progressIndicator.setProgress(progress, animated: true)
+            }
         }
-        
+        else {
+            
+            //没有course信息
+            statusLabel.text = "不知道诶！"
+            currentCourseNameLabel.text = "不知道诶!"
+            currentCourseClassroomLabel.text = "@ 不知道诶！"
+            currentCourseTeacherNameLabel.text = "不知道诶！"
+            var alert:UIAlertView = UIAlertView(title: "数据错误", message: "还未加载课程数据\n请先到课程表页面加载课程数据", delegate: nil, cancelButtonTitle: "好的，马上去！")
+            alert.show()
+        }
     }
     
     func handleTodayCourses(weekday:Int) -> NSArray {
@@ -372,6 +385,7 @@ class TodayViewController: UIViewController ,UIScrollViewDelegate {
         
         var req:NSMutableURLRequest = NSMutableURLRequest(URL: url)
         req.HTTPMethod = "GET"
+        req.timeoutInterval = 10
         
         var returnData:NSData? = NSData(contentsOfURL: url)
         if let temp = returnData {

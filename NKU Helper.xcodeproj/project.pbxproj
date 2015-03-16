@@ -101,6 +101,7 @@
 		E9ACA1251AB2D93E001083C1 /* BarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E9ACA1241AB2D93E001083C1 /* BarItem.m */; };
 		E9B8C4AF1AA82D6E00E0DD50 /* AccountInfo in Resources */ = {isa = PBXBuildFile; fileRef = E9B8C4AE1AA82D6E00E0DD50 /* AccountInfo */; };
 		E9D4DC461AAEF45900A02327 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D4DC451AAEF45900A02327 /* TodayViewController.swift */; };
+		E9D9EBED1AB58C48005BBF8C /* Settings.png in Resources */ = {isa = PBXBuildFile; fileRef = E9D9EBEC1AB58C48005BBF8C /* Settings.png */; };
 		E9FAACD41AA9762A000FE24D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9FAACD31AA9762A000FE24D /* LaunchScreen.xib */; };
 		E9FDA2431AB15BB600B25E7E /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FDA2421AB15BB600B25E7E /* Base64.m */; };
 		E9FDA2451AB15F6B00B25E7E /* WeatherConditionGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FDA2441AB15F6B00B25E7E /* WeatherConditionGetter.swift */; };
@@ -218,6 +219,7 @@
 		E9ACA1241AB2D93E001083C1 /* BarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarItem.m; sourceTree = "<group>"; };
 		E9B8C4AE1AA82D6E00E0DD50 /* AccountInfo */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AccountInfo; sourceTree = "<group>"; };
 		E9D4DC451AAEF45900A02327 /* TodayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		E9D9EBEC1AB58C48005BBF8C /* Settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Settings.png; sourceTree = "<group>"; };
 		E9FAACD31AA9762A000FE24D /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		E9FDA2411AB15BB600B25E7E /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
 		E9FDA2421AB15BB600B25E7E /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
@@ -273,6 +275,7 @@
 				E98F94DF1AA319CD00885992 /* Function */,
 				E98F94E11AA319EE00885992 /* Settings */,
 				E95C8F3F1AAF507F00D3D8EE /* weatherIcon */,
+				E9D9EBE31AB583E5005BBF8C /* icons */,
 				E95C8F391AAF2BA900D3D8EE /* backgroundImage.jpg */,
 				E95C8F3B1AAF30E700D3D8EE /* course_up.png */,
 				E95C8F3C1AAF30E700D3D8EE /* course_down.png */,
@@ -470,6 +473,14 @@
 			name = Today;
 			sourceTree = "<group>";
 		};
+		E9D9EBE31AB583E5005BBF8C /* icons */ = {
+			isa = PBXGroup;
+			children = (
+				E9D9EBEC1AB58C48005BBF8C /* Settings.png */,
+			);
+			name = icons;
+			sourceTree = "<group>";
+		};
 		E9DB7EBC1AAB5EB0000D4182 /* AccountInfo */ = {
 			isa = PBXGroup;
 			children = (
@@ -567,6 +578,7 @@
 				E95C8FB91AAF51A700D3D8EE /* night20.png in Resources */,
 				E95C8FAC1AAF51A700D3D8EE /* night07.png in Resources */,
 				E95C8F801AAF50A400D3D8EE /* day29.png in Resources */,
+				E9D9EBED1AB58C48005BBF8C /* Settings.png in Resources */,
 				E95C8F731AAF50A400D3D8EE /* day16.png in Resources */,
 				E95C8F721AAF50A400D3D8EE /* day15.png in Resources */,
 				E95C8F661AAF50A400D3D8EE /* day03.png in Resources */,

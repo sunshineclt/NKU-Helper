@@ -76,4 +76,10 @@ class LogInViewController: UIViewController, UIAlertViewDelegate {
         }
     }
     
+    @IBAction func cancelButtonClicked(sender: UIBarButtonItem) {
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
+        
+    }
+    
 }
