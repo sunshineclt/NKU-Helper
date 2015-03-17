@@ -494,7 +494,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="time_weather" rowHeight="100" id="Nen-hx-LVc" customClass="time_weatherTableViewCell" customModule="NKU_Helper" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="time_weather" rowHeight="100" id="Nen-hx-LVc" customClass="time_weatherTableViewCell" customModule="NKU_Helper" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Nen-hx-LVc" id="Mes-5l-gJ5">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -571,7 +571,7 @@
                                     <outlet property="weekdayLabel" destination="xFI-51-uPq" id="cYn-dC-um3"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="courseCurrent" rowHeight="150" id="O1i-Hz-UbB" customClass="courseCurrentTableViewCell" customModule="NKU_Helper" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="courseCurrent" rowHeight="150" id="O1i-Hz-UbB" customClass="courseCurrentTableViewCell" customModule="NKU_Helper" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="O1i-Hz-UbB" id="TcP-bJ-Ntm">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -618,6 +618,65 @@
                                     <outlet property="statusLabel" destination="tnP-dH-gP3" id="Unb-7n-Xum"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="coursesOverview" rowHeight="150" id="VUv-HT-JQB" customClass="coursesOverViewTableViewCell" customModule="NKU_Helper" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VUv-HT-JQB" id="1du-DV-m3m">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fr6-eO-mOQ" userLabel="classroom">
+                                            <rect key="frame" x="16" y="104" width="136" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Axe-DU-su2" userLabel="teacherName">
+                                            <rect key="frame" x="160" y="104" width="144" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="至" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Zd5-fA-Tv2">
+                                            <rect key="frame" x="152" y="75" width="17" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ogb-AR-1z7" userLabel="startSection">
+                                            <rect key="frame" x="74" y="74" width="70" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cUe-ie-tXc" userLabel="endSection">
+                                            <rect key="frame" x="177" y="74" width="70" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CA4-ZC-WHy" userLabel="className">
+                                            <rect key="frame" x="16" y="8" width="288" height="87"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="0.45000000000000001" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="classNameLabel" destination="CA4-ZC-WHy" id="Q3P-kC-DuH"/>
+                                    <outlet property="classroomLabel" destination="fr6-eO-mOQ" id="hMg-UZ-kEo"/>
+                                    <outlet property="endSectionLabel" destination="cUe-ie-tXc" id="ePa-1V-ZeL"/>
+                                    <outlet property="startSectionLabel" destination="Ogb-AR-1z7" id="CPw-22-CYN"/>
+                                    <outlet property="teacherNameLabel" destination="Axe-DU-su2" id="Yje-Ee-zsh"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="ZHd-dY-aDI" id="QUE-20-5TC"/>
@@ -633,9 +692,15 @@
                                 <segment title="Now"/>
                                 <segment title="Overview"/>
                             </segments>
+                            <connections>
+                                <action selector="segmentedControlValueChanged:" destination="ZHd-dY-aDI" eventType="valueChanged" id="pY1-40-kec"/>
+                            </connections>
                         </segmentedControl>
                         <barButtonItem key="rightBarButtonItem" systemItem="action" id="KWX-Zn-gef"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="segmentedController" destination="ipe-Dh-bah" id="OgO-un-anc"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5rS-xp-ynd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -92,6 +92,7 @@
 		E95C8FC51AAF51A700D3D8EE /* night53.png in Resources */ = {isa = PBXBuildFile; fileRef = E95C8FA41AAF51A700D3D8EE /* night53.png */; };
 		E96419D21AA8971B00397691 /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96419D11AA8971B00397691 /* AccountTableViewCell.swift */; };
 		E96419D41AA8BC9800397691 /* DetailAccountInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96419D31AA8BC9800397691 /* DetailAccountInfoTableViewController.swift */; };
+		E9658F761AB74ACD000A39A8 /* coursesOverViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9658F751AB74ACD000A39A8 /* coursesOverViewTableViewCell.swift */; };
 		E969370A1AAAA55100D8CAF5 /* DetailClassInfoContent in Resources */ = {isa = PBXBuildFile; fileRef = E96937091AAAA55100D8CAF5 /* DetailClassInfoContent */; };
 		E988B5371AB005DF006818FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E988B5361AB005DF006818FA /* Main.storyboard */; };
 		E98F94D61AA3180700885992 /* ClassTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98F94D51AA3180700885992 /* ClassTimeViewController.swift */; };
@@ -210,6 +211,7 @@
 		E95C8FA41AAF51A700D3D8EE /* night53.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = night53.png; sourceTree = "<group>"; };
 		E96419D11AA8971B00397691 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
 		E96419D31AA8BC9800397691 /* DetailAccountInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailAccountInfoTableViewController.swift; sourceTree = "<group>"; };
+		E9658F751AB74ACD000A39A8 /* coursesOverViewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = coursesOverViewTableViewCell.swift; sourceTree = "<group>"; };
 		E96937091AAAA55100D8CAF5 /* DetailClassInfoContent */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DetailClassInfoContent; sourceTree = "<group>"; };
 		E988B5361AB005DF006818FA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E98F94D51AA3180700885992 /* ClassTimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassTimeViewController.swift; sourceTree = "<group>"; };
@@ -472,6 +474,7 @@
 				E9A83E2D1AB709400021C2D0 /* TodayTableViewController.swift */,
 				E9A83E311AB70A3A0021C2D0 /* time_weatherTableViewCell.swift */,
 				E9A83E331AB70A640021C2D0 /* courseCurrentTableViewCell.swift */,
+				E9658F751AB74ACD000A39A8 /* coursesOverViewTableViewCell.swift */,
 				E9FDA2441AB15F6B00B25E7E /* WeatherConditionGetter.swift */,
 				E926CD761AB3405800A5076A /* making kay */,
 				E9ACA1221AB2D6E7001083C1 /* RefreshControl */,
@@ -687,6 +690,7 @@
 				E96419D41AA8BC9800397691 /* DetailAccountInfoTableViewController.swift in Sources */,
 				E9ACA1251AB2D93E001083C1 /* BarItem.m in Sources */,
 				E9A83E341AB70A640021C2D0 /* courseCurrentTableViewCell.swift in Sources */,
+				E9658F761AB74ACD000A39A8 /* coursesOverViewTableViewCell.swift in Sources */,
 				E91E5F4F1A90FAED009F3B2B /* GradeShowerTableViewController.swift in Sources */,
 				E98F94D61AA3180700885992 /* ClassTimeViewController.swift in Sources */,
 				E94286581AA5500C00A4242C /* SaveAccountInfoViewController.swift in Sources */,

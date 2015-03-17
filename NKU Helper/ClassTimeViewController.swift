@@ -124,7 +124,7 @@ class ClassTimeViewController: UIViewController, NSURLConnectionDataDelegate {
     func loadAllCourseInfoWithHtml(html:NSString) {
         var regularExpression1:NSRegularExpression = NSRegularExpression(pattern: "(coursearrangeseq=.*)(&&classroomincode=.*)(&&week=.*)(&&begphase=.*)(&&ifkebiao=yes)", options: NSRegularExpressionOptions.CaseInsensitive, error: nil)!
         var matches:NSArray = regularExpression1.matchesInString(html, options: NSMatchingOptions.ReportProgress, range: NSMakeRange(0, html.length))
-        var day:Int = 1
+        var day:Int = 0
         var startSection:Int = 1
         var courses:NSMutableArray = NSMutableArray()
         var courseCount:Int = -1

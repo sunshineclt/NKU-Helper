@@ -21,6 +21,7 @@ class courseCurrentTableViewCell: UITableViewCell {
     @IBOutlet var progressIndicator: UIProgressView!
 
     override func awakeFromNib() {
+        
         super.awakeFromNib()
         
         statusLabel.adjustsFontSizeToFitWidth = true
