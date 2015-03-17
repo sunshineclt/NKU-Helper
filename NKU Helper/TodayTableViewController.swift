@@ -22,6 +22,7 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate {
     
     // MARK: 与weather有关
     
+    var recentRefreshWeather:NSDate!
     var timer:NSTimer!
     var receivedWeatherData:NSMutableData?
     let weatherEncodeToWeatherCondition:NSDictionary = ["00":"晴", "01":"多云", "02":"阴", "03":"阵雨", "04":"雷阵雨", "05":"雷阵雨伴有冰雹", "06":"雨夹雪", "07":"小雨", "08":"中雨", "09":"大雨", "10":"暴雨", "11":"大暴雨", "12":"特大暴雨", "13":"阵雪", "14":"小雪", "15":"中雪", "16":"大雪", "17":"暴雪", "18":"雾", "19":"冻雨", "20":"沙尘暴", "21":"小到中雨", "22":"中到大雨", "23":"大到暴雨", "24":"暴雨到大暴雨", "25":"大暴雨到特大暴雨", "26":"小到中雪", "27":"中到大雪", "28":"大到暴雪", "29":"浮尘", "30":"扬沙", "31":"强沙尘暴", "53":"霾", "99":"无"]
@@ -119,7 +120,16 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate {
                 var account:NSDictionary? = userDefaults.objectForKey("accountInfo") as NSDictionary?
                 if let temp = account {
                     handleDate(cell)
-                    refreshWeatherCondition(cell)
+                    if let temp = recentRefreshWeather {
+                        if -recentRefreshWeather.timeIntervalSinceNow > 600 {
+                            refreshWeatherCondition(cell)
+                            recentRefreshWeather = NSDate()
+                        }
+                    }
+                    else {
+                        refreshWeatherCondition(cell)
+                        recentRefreshWeather = NSDate()
+                    }
                 }
                 else {
                     var alert:UIAlertView = UIAlertView(title: "您尚未登录", message: "登录后方可使用NKU Helper\n登录选项位于设置选项卡中", delegate: nil, cancelButtonTitle: "好的")
@@ -188,7 +198,7 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate {
             var imageView:UIImageView = UIImageView(frame: CGRectMake(16, 16, 288, 126))
             var colorIndex:Int = Int(arc4random()) % 12
             while usedColor.objectAtIndex(colorIndex) as Int == 0 {
-                var colorIndex:Int = Int(arc4random()) % 12
+                colorIndex = Int(arc4random()) % 12
 
             }
             imageView.backgroundColor = colors.objectAtIndex(colorIndex) as? UIColor
@@ -517,7 +527,7 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate {
             }
         }
         if (section == 13) {
-            cell.statusLabel.text = "今天已经木有课啦~"
+            cell.statusLabel.text = cell.statusLabel.text! + "今天已经木有课啦~"
             cell.currentCourseNameLabel.text = "无课"
             cell.currentCourseClassroomLabel.text = ""
             cell.currentCourseTeacherNameLabel.text = ""
@@ -642,7 +652,7 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate {
 
         }
         else {
-            NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "finishRefreshControl", userInfo: nil, repeats: false)
+            NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "finishRefreshControl", userInfo: nil, repeats: false)
             tableView.reloadData()
 
         }
