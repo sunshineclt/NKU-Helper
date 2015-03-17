@@ -21,6 +21,8 @@
 		E94286501AA4CD2A00A4242C /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E942864F1AA4CD2A00A4242C /* LogInViewController.swift */; };
 		E94286541AA5494800A4242C /* LogIner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94286531AA5494800A4242C /* LogIner.swift */; };
 		E94286581AA5500C00A4242C /* SaveAccountInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94286571AA5500C00A4242C /* SaveAccountInfoViewController.swift */; };
+		E947DCAE1AB885EA003E4169 /* 今天.png in Resources */ = {isa = PBXBuildFile; fileRef = E947DCAC1AB885EA003E4169 /* 今天.png */; };
+		E947DCAF1AB885EA003E4169 /* 课程.png in Resources */ = {isa = PBXBuildFile; fileRef = E947DCAD1AB885EA003E4169 /* 课程.png */; };
 		E95C8F3A1AAF2BA900D3D8EE /* backgroundImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E95C8F391AAF2BA900D3D8EE /* backgroundImage.jpg */; };
 		E95C8F3D1AAF30E700D3D8EE /* course_up.png in Resources */ = {isa = PBXBuildFile; fileRef = E95C8F3B1AAF30E700D3D8EE /* course_up.png */; };
 		E95C8F3E1AAF30E700D3D8EE /* course_down.png in Resources */ = {isa = PBXBuildFile; fileRef = E95C8F3C1AAF30E700D3D8EE /* course_down.png */; };
@@ -104,7 +106,6 @@
 		E9ACA1211AB2D6E2001083C1 /* CBStoreHouseRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = E9ACA1201AB2D6E2001083C1 /* CBStoreHouseRefreshControl.m */; };
 		E9ACA1251AB2D93E001083C1 /* BarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E9ACA1241AB2D93E001083C1 /* BarItem.m */; };
 		E9B8C4AF1AA82D6E00E0DD50 /* AccountInfo in Resources */ = {isa = PBXBuildFile; fileRef = E9B8C4AE1AA82D6E00E0DD50 /* AccountInfo */; };
-		E9D9EBED1AB58C48005BBF8C /* Settings.png in Resources */ = {isa = PBXBuildFile; fileRef = E9D9EBEC1AB58C48005BBF8C /* Settings.png */; };
 		E9FAACD41AA9762A000FE24D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9FAACD31AA9762A000FE24D /* LaunchScreen.xib */; };
 		E9FDA2431AB15BB600B25E7E /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FDA2421AB15BB600B25E7E /* Base64.m */; };
 		E9FDA2451AB15F6B00B25E7E /* WeatherConditionGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FDA2441AB15F6B00B25E7E /* WeatherConditionGetter.swift */; };
@@ -140,6 +141,8 @@
 		E942864F1AA4CD2A00A4242C /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		E94286531AA5494800A4242C /* LogIner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogIner.swift; sourceTree = "<group>"; };
 		E94286571AA5500C00A4242C /* SaveAccountInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveAccountInfoViewController.swift; sourceTree = "<group>"; };
+		E947DCAC1AB885EA003E4169 /* 今天.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "今天.png"; sourceTree = "<group>"; };
+		E947DCAD1AB885EA003E4169 /* 课程.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "课程.png"; sourceTree = "<group>"; };
 		E95C8F391AAF2BA900D3D8EE /* backgroundImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = backgroundImage.jpg; sourceTree = "<group>"; };
 		E95C8F3B1AAF30E700D3D8EE /* course_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = course_up.png; sourceTree = "<group>"; };
 		E95C8F3C1AAF30E700D3D8EE /* course_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = course_down.png; sourceTree = "<group>"; };
@@ -225,7 +228,6 @@
 		E9ACA1231AB2D93E001083C1 /* BarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarItem.h; sourceTree = "<group>"; };
 		E9ACA1241AB2D93E001083C1 /* BarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarItem.m; sourceTree = "<group>"; };
 		E9B8C4AE1AA82D6E00E0DD50 /* AccountInfo */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AccountInfo; sourceTree = "<group>"; };
-		E9D9EBEC1AB58C48005BBF8C /* Settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Settings.png; sourceTree = "<group>"; };
 		E9FAACD31AA9762A000FE24D /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		E9FDA2411AB15BB600B25E7E /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
 		E9FDA2421AB15BB600B25E7E /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
@@ -485,7 +487,8 @@
 		E9D9EBE31AB583E5005BBF8C /* icons */ = {
 			isa = PBXGroup;
 			children = (
-				E9D9EBEC1AB58C48005BBF8C /* Settings.png */,
+				E947DCAC1AB885EA003E4169 /* 今天.png */,
+				E947DCAD1AB885EA003E4169 /* 课程.png */,
 			);
 			name = icons;
 			sourceTree = "<group>";
@@ -582,12 +585,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E947DCAF1AB885EA003E4169 /* 课程.png in Resources */,
 				E95C8FC01AAF51A700D3D8EE /* night27.png in Resources */,
 				E95C8FBB1AAF51A700D3D8EE /* night22.png in Resources */,
 				E95C8FB91AAF51A700D3D8EE /* night20.png in Resources */,
 				E95C8FAC1AAF51A700D3D8EE /* night07.png in Resources */,
 				E95C8F801AAF50A400D3D8EE /* day29.png in Resources */,
-				E9D9EBED1AB58C48005BBF8C /* Settings.png in Resources */,
 				E95C8F731AAF50A400D3D8EE /* day16.png in Resources */,
 				E95C8F721AAF50A400D3D8EE /* day15.png in Resources */,
 				E95C8F661AAF50A400D3D8EE /* day03.png in Resources */,
@@ -625,6 +628,7 @@
 				E95C8FC21AAF51A700D3D8EE /* night29.png in Resources */,
 				E95C8F6D1AAF50A400D3D8EE /* day10.png in Resources */,
 				E95C8FAE1AAF51A700D3D8EE /* night09.png in Resources */,
+				E947DCAE1AB885EA003E4169 /* 今天.png in Resources */,
 				E95C8F811AAF50A400D3D8EE /* day30.png in Resources */,
 				E95C8F771AAF50A400D3D8EE /* day20.png in Resources */,
 				E95C8F631AAF50A400D3D8EE /* day00.png in Resources */,

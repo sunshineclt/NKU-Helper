@@ -725,7 +725,7 @@
         <scene sceneID="KJp-g8-xo7">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lQe-5i-hkC" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="2" title="课程表" image="course_up.png" id="FEv-uC-Qda"/>
+                    <tabBarItem key="tabBarItem" tag="2" title="课程表" image="课程.png" id="FEv-uC-Qda"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vLK-e7-WGz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -763,7 +763,7 @@
         <scene sceneID="ONy-NC-Moz">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fXl-TY-kk3" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="今天" image="course_up.png" id="BDg-hR-o7i"/>
+                    <tabBarItem key="tabBarItem" title="今天" image="今天.png" id="BDg-hR-o7i"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="obW-RU-xAH">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -781,8 +781,9 @@
     </scenes>
     <resources>
         <image name="Settings.png" width="25" height="25"/>
-        <image name="course_up.png" width="36" height="22"/>
         <image name="night01.png" width="120" height="120"/>
+        <image name="今天.png" width="25" height="25"/>
+        <image name="课程.png" width="25" height="25"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
