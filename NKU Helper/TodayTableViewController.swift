@@ -121,9 +121,22 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate {
                 if let temp = account {
                     handleDate(cell)
                     if let temp = recentRefreshWeather {
-                        if -recentRefreshWeather.timeIntervalSinceNow > 600 {
+                        
+                        var date = NSDate()
+                        var calender:NSCalendar = NSCalendar(identifier: NSGregorianCalendar)!
+                        var unitFlags:NSCalendarUnit = NSCalendarUnit.DayCalendarUnit | NSCalendarUnit.HourCalendarUnit
+
+                        var components:NSDateComponents = calender.components(unitFlags, fromDate: date)
+                        var hourNow:Int = components.hour
+                        var dayNow:Int = components.day
+                        
+                        components = calender.components(unitFlags, fromDate: recentRefreshWeather)
+                        var hourRecent:Int = components.hour
+                        var dayRecent:Int = components.day
+                        
+                        if (dayNow != dayRecent) || ((hourRecent >= 6) && (hourRecent < 8) && (hourNow >= 8)) || ((hourRecent >= 8) && (hourRecent < 11) && (hourNow >= 11)) || ((hourRecent >= 11) && (hourRecent < 18) && (hourNow >= 18)) {
                             refreshWeatherCondition(cell)
-                            recentRefreshWeather = NSDate()
+                            recentRefreshWeather = date
                         }
                     }
                     else {
@@ -313,7 +326,6 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate {
             
             var courseStatus:NSArray = userDefaults.objectForKey("courseStatus") as NSArray
             var todayCourseStatus:NSArray = courseStatus.objectAtIndex(weekdayInt) as NSArray
-            var todayCourses:NSArray = handleTodayCourses(weekdayInt)
             
             switch (hourInt) {
             case 0..<7:
@@ -329,37 +341,37 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate {
                 var progress:Float = Float(hourInt-7)
                 cell.progressIndicator.setProgress(progress, animated: true)
             case 8..<35/4:
-                cell.statusLabel.text = "第一节课进行中,"
+                cell.statusLabel.text = "第一节课进行中，"
                 showCourseInfo(weekdayInt, whichSection: 0, cell: cell)
                 var progress:Float = Float(hourInt-8)*4/3
                 cell.progressIndicator.setProgress(progress, animated: true)
             case 35/4..<107/12:
-                cell.statusLabel.text = "下课中，即将开始第二节课,"
+                cell.statusLabel.text = "第一节课下课中，"
                 showCourseInfo(weekdayInt, whichSection: 1, cell: cell)
                 var progress:Float = Float(hourInt-35/4)*6
                 cell.progressIndicator.setProgress(progress, animated: true)
             case 107/12..<29/3:
-                cell.statusLabel.text = "第二节课进行中,"
+                cell.statusLabel.text = "第二节课进行中，"
                 showCourseInfo(weekdayInt, whichSection: 1, cell: cell)
                 var progress:Float = Float(hourInt-107/12)*4/3
                 cell.progressIndicator.setProgress(progress, animated: true)
             case 29/3..<10:
-                cell.statusLabel.text = "下课中，即将开始第三节课,"
+                cell.statusLabel.text = "第二节课下课中，"
                 showCourseInfo(weekdayInt, whichSection: 2, cell: cell)
                 var progress:Float = Float(hourInt-29/3)*3
                 cell.progressIndicator.setProgress(progress, animated: true)
             case 10..<43/4:
-                cell.statusLabel.text = "第三节课进行中,"
+                cell.statusLabel.text = "第三节课进行中，"
                 showCourseInfo(weekdayInt, whichSection: 2, cell: cell)
                 var progress:Float = Float(hourInt-10)*4/3
                 cell.progressIndicator.setProgress(progress, animated: true)
             case 43/4..<131/12:
-                cell.statusLabel.text = "下课中，即将开始第四节课,"
+                cell.statusLabel.text = "第三节课下课中，"
                 showCourseInfo(weekdayInt, whichSection: 3, cell: cell)
                 var progress:Float = Float(hourInt-43/4)*6
                 cell.progressIndicator.setProgress(progress, animated: true)
             case 131/12..<35/3:
-                cell.statusLabel.text = "第四节课进行中,"
+                cell.statusLabel.text = "第四节课进行中，"
                 showCourseInfo(weekdayInt, whichSection: 3, cell: cell)
                 var progress:Float = Float(hourInt-131/12)*4/3
                 cell.progressIndicator.setProgress(progress, animated: true)
@@ -376,37 +388,37 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate {
                 var progress:Float = Float(hourInt-12.5)*2/3
                 cell.progressIndicator.setProgress(progress, animated: true)
             case 14..<59/4:
-                cell.statusLabel.text = "第五节课进行中,"
+                cell.statusLabel.text = "第五节课进行中，"
                 showCourseInfo(weekdayInt, whichSection: 4, cell: cell)
                 var progress:Float = Float(hourInt-14)*4/3
                 cell.progressIndicator.setProgress(progress, animated: true)
             case 59/4..<179/12:
-                cell.statusLabel.text = "下课中，即将开始第六节课,"
+                cell.statusLabel.text = "第五节课下课中，"
                 showCourseInfo(weekdayInt, whichSection: 5, cell: cell)
                 var progress:Float = Float(hourInt-59/4)*6
                 cell.progressIndicator.setProgress(progress, animated: true)
             case 179/12..<47/3:
-                cell.statusLabel.text = "第六节课进行中,"
+                cell.statusLabel.text = "第六节课进行中，"
                 showCourseInfo(weekdayInt, whichSection: 5, cell: cell)
                 var progress:Float = Float(hourInt-179/12)*4/3
                 cell.progressIndicator.setProgress(progress, animated: true)
             case 47/3..<16:
-                cell.statusLabel.text = "下课中，即将开始第七节课,"
+                cell.statusLabel.text = "第六节课下课中，"
                 showCourseInfo(weekdayInt, whichSection: 6, cell: cell)
                 var progress:Float = Float(hourInt-47/3)*3
                 cell.progressIndicator.setProgress(progress, animated: true)
             case 16..<67/4:
-                cell.statusLabel.text = "第七节课进行中,"
+                cell.statusLabel.text = "第七节课进行中，"
                 showCourseInfo(weekdayInt, whichSection: 6, cell: cell)
                 var progress:Float = Float(hourInt-16)*4/3
                 cell.progressIndicator.setProgress(progress, animated: true)
             case 67/4..<203/12:
-                cell.statusLabel.text = "下课中，即将开始第八节课,"
+                cell.statusLabel.text = "第七节课下课中，"
                 showCourseInfo(weekdayInt, whichSection: 7, cell: cell)
                 var progress:Float = Float(hourInt-67/4)*6
                 cell.progressIndicator.setProgress(progress, animated: true)
             case 203/12..<53/3:
-                cell.statusLabel.text = "第八节课进行中,"
+                cell.statusLabel.text = "第八节课进行中，"
                 showCourseInfo(weekdayInt, whichSection: 7, cell: cell)
                 var progress:Float = Float(hourInt-203/12)*4/3
                 cell.progressIndicator.setProgress(progress, animated: true)
@@ -423,37 +435,37 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate {
                 var progress:Float = Float(hourInt-18)*2
                 cell.progressIndicator.setProgress(progress, animated: true)
             case 18.5..<77/4:
-                cell.statusLabel.text = "第九节课进行中,"
+                cell.statusLabel.text = "第九节课进行中，"
                 showCourseInfo(weekdayInt, whichSection: 8, cell: cell)
                 var progress:Float = Float(hourInt-18.5)*4/3
                 cell.progressIndicator.setProgress(progress, animated: true)
             case 77/4..<233/12:
-                cell.statusLabel.text = "下课中，即将开始第十节课,"
+                cell.statusLabel.text = "第九节课下课中，"
                 showCourseInfo(weekdayInt, whichSection: 9, cell: cell)
                 var progress:Float = Float(hourInt-77/4)*6
                 cell.progressIndicator.setProgress(progress, animated: true)
             case 233/12..<121/6:
-                cell.statusLabel.text = "第十节课进行中,"
+                cell.statusLabel.text = "第十节课进行中，"
                 showCourseInfo(weekdayInt, whichSection: 9, cell: cell)
                 var progress:Float = Float(hourInt-233/12)*4/3
                 cell.progressIndicator.setProgress(progress, animated: true)
             case 121/6..<61/3:
-                cell.statusLabel.text = "下课中，即将开始第十一节课,"
+                cell.statusLabel.text = "第十节课下课中，"
                 showCourseInfo(weekdayInt, whichSection: 10, cell: cell)
                 var progress:Float = Float(hourInt-121/6)*6
                 cell.progressIndicator.setProgress(progress, animated: true)
             case 61/3..<253/12:
-                cell.statusLabel.text = "第十一节课进行中,"
+                cell.statusLabel.text = "第十一节课进行中，"
                 showCourseInfo(weekdayInt, whichSection: 10, cell: cell)
                 var progress:Float = Float(hourInt-61/3)*4/3
                 cell.progressIndicator.setProgress(progress, animated: true)
             case 253/12..<85/4:
-                cell.statusLabel.text = "下课中，即将开始第十二节课,"
+                cell.statusLabel.text = "第十一节课下课中，"
                 showCourseInfo(weekdayInt, whichSection: 11, cell: cell)
                 var progress:Float = Float(hourInt-253/12)*6
                 cell.progressIndicator.setProgress(progress, animated: true)
             case 85/4..<22:
-                cell.statusLabel.text = "第十二节课进行中,"
+                cell.statusLabel.text = "第十二节课进行中，"
                 showCourseInfo(weekdayInt, whichSection: 11, cell: cell)
                 var progress:Float = Float(hourInt-85/4)*4/3
                 cell.progressIndicator.setProgress(progress, animated: true)
@@ -488,7 +500,7 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate {
         var courseDay:Int = course.objectForKey("day") as Int
         while (courseDay != weekday) {
             i++
-            if i>=courses.count - 1 {
+            if i>=courses.count {
                 break;
             }
             course = courses.objectAtIndex(i) as NSDictionary
@@ -519,14 +531,14 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate {
         var status = todayCourseStatus.objectAtIndex(section) as Int
         while status == -1 {
             section++
-            if section == 13 {
+            if section == 12 {
                 break
             }
             else {
-                status = todayCourseStatus.objectAtIndex(whichSection) as Int
+                status = todayCourseStatus.objectAtIndex(section) as Int
             }
         }
-        if (section == 13) {
+        if (section == 12) {
             cell.statusLabel.text = cell.statusLabel.text! + "今天已经木有课啦~"
             cell.currentCourseNameLabel.text = "无课"
             cell.currentCourseClassroomLabel.text = ""
@@ -540,7 +552,7 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate {
             cell.currentCourseTeacherNameLabel.text = course.objectForKey("teacherName") as? String
             var startSection:Int = course.objectForKey("startSection") as Int
             var sectionNumber:Int = course.objectForKey("sectionNumber") as Int
-            cell.statusLabel.text = cell.statusLabel.text! + "最近一节课是第\(startSection)节到第\(startSection + sectionNumber - 1)节课"
+            cell.statusLabel.text = cell.statusLabel.text! + "最近一节课是\(startSection)至\(startSection + sectionNumber - 1)节课"
         }
     }
     
@@ -565,8 +577,6 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate {
             
             let jsonData:NSDictionary = NSJSONSerialization.JSONObjectWithData(returnData!, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
             let temp:NSDictionary = jsonData.objectForKey("f") as NSDictionary
-            let forecastAll = temp.objectForKey("f1") as NSArray
-            var theFirstDayForecast:NSDictionary = forecastAll.objectAtIndex(0) as NSDictionary
             
             var date = NSDate()
             var calender:NSCalendar = NSCalendar(identifier: NSGregorianCalendar)!
@@ -575,7 +585,43 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate {
             var hour:NSString = "\(components.hour)"
             var minute:NSString = "\(components.minute)"
             var time:Double = Double(components.hour) + Double(components.minute)/60
-            if (time<18) && (time>8) {
+            
+            if (time < 6) || (time > 8) {
+                
+                let forecastAll = temp.objectForKey("f1") as NSArray
+                var theFirstDayForecast:NSDictionary = forecastAll.objectAtIndex(0) as NSDictionary
+                
+                
+                if (time<18) && (time>8) {
+                    
+                    var weather = theFirstDayForecast.objectForKey("fa") as NSString
+                    var temperature = theFirstDayForecast.objectForKey("fc") as NSString
+                    var windDirection = theFirstDayForecast.objectForKey("fe") as NSString
+                    var windStrenth = theFirstDayForecast.objectForKey("fg") as NSString
+                    
+                    var weatherImage = "day" + weather + ".png"
+                    cell.weatherImageView.image = UIImage(named: weatherImage)
+                    cell.temperatureLabel.text = temperature + "℃"
+                    cell.weatherConditionLabel.text = weatherEncodeToWeatherCondition.objectForKey(weather) as NSString
+                    
+                }
+                else {
+                    
+                    var weather = theFirstDayForecast.objectForKey("fb") as NSString
+                    var temperature = theFirstDayForecast.objectForKey("fd") as NSString
+                    var windDirection = theFirstDayForecast.objectForKey("ff") as NSString
+                    var windStrenth = theFirstDayForecast.objectForKey("fh") as NSString
+                    
+                    var weatherImage = "night" + weather + ".png"
+                    cell.weatherImageView.image = UIImage(named: weatherImage)
+                    cell.temperatureLabel.text = temperature + "℃"
+                    cell.weatherConditionLabel.text = weatherEncodeToWeatherCondition.objectForKey(weather) as NSString
+                    
+                }
+            }
+            else {
+                let forecastAll = temp.objectForKey("f1") as NSArray
+                var theFirstDayForecast:NSDictionary = forecastAll.objectAtIndex(1) as NSDictionary
                 
                 var weather = theFirstDayForecast.objectForKey("fa") as NSString
                 var temperature = theFirstDayForecast.objectForKey("fc") as NSString
@@ -583,19 +629,6 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate {
                 var windStrenth = theFirstDayForecast.objectForKey("fg") as NSString
                 
                 var weatherImage = "day" + weather + ".png"
-                cell.weatherImageView.image = UIImage(named: weatherImage)
-                cell.temperatureLabel.text = temperature + "℃"
-                cell.weatherConditionLabel.text = weatherEncodeToWeatherCondition.objectForKey(weather) as NSString
-                
-            }
-            else {
-                
-                var weather = theFirstDayForecast.objectForKey("fb") as NSString
-                var temperature = theFirstDayForecast.objectForKey("fd") as NSString
-                var windDirection = theFirstDayForecast.objectForKey("ff") as NSString
-                var windStrenth = theFirstDayForecast.objectForKey("fh") as NSString
-                
-                var weatherImage = "night" + weather + ".png"
                 cell.weatherImageView.image = UIImage(named: weatherImage)
                 cell.temperatureLabel.text = temperature + "℃"
                 cell.weatherConditionLabel.text = weatherEncodeToWeatherCondition.objectForKey(weather) as NSString
@@ -610,6 +643,8 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate {
             cell.temperatureLabel.text = "N/A"
             cell.PM25Label.text = "N/A"
             cell.weatherImageView.image = nil
+            
+            recentRefreshWeather = nil
         }
         
     }
