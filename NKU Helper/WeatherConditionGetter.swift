@@ -10,11 +10,18 @@ import Foundation
 class WeatherConditionGetter: NSObject {
     
     let areaid:NSString = "101030100"
-    let type:NSString = "forecast_v"
+    var type:NSString = "forecast_v"
     var date:NSString!
     let appid:NSString = "8133cf32c98ad57d"
     let private_key:NSString = "321736_SmartWeatherAPI_274766d"
     var key:NSString!
+    
+    init(type:NSString) {
+        super.init()
+        self.type = type
+        date = getDate()
+
+    }
     
     override init() {
         super.init()

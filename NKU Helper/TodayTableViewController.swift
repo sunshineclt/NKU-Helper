@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TodayTableViewController: UITableViewController, UIScrollViewDelegate {
+class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIApplicationDelegate {
 
     // MARK: 下拉刷新的property
     
@@ -18,7 +18,18 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate {
     // MARK: 渲染Overview Class的颜色
     
     var usedColor:NSMutableArray!
-    let colors:NSArray = [UIColor.redColor(), UIColor.greenColor(), UIColor.blueColor(), UIColor.cyanColor(), UIColor.yellowColor(), UIColor.magentaColor(), UIColor.orangeColor(), UIColor.purpleColor(), UIColor.brownColor(), UIColor.blackColor(), UIColor.darkGrayColor(), UIColor.lightGrayColor()]
+    let colors:NSArray = [
+                            UIColor(red: 190/255, green: 150/255, blue: 210/255, alpha: 1),
+                            UIColor(red: 168/255, green: 239/255, blue: 233/255, alpha: 1),
+                            UIColor(red: 193/255, green: 233/255, blue: 241/255, alpha: 1),
+                            UIColor(red: 186/255, green: 241/255, blue: 209/255, alpha: 1),
+                            UIColor(red: 34/255, green: 202/255, blue: 179/255, alpha: 1),
+                            UIColor(red: 230/255, green: 225/255, blue: 187/255, alpha: 1),
+                            UIColor(red: 236/255, green: 206/255, blue: 178/255, alpha: 1),
+                            UIColor(red: 217/255, green: 189/255, blue: 126/255, alpha: 0.9),
+                            UIColor(red: 241/255, green: 174/255, blue: 165/255, alpha: 1),
+                            UIColor(red: 250/255, green: 98/255, blue: 110/255, alpha: 0.8)]
+
     
     // MARK: 与weather有关
     
@@ -37,10 +48,11 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate {
         self.tableView.backgroundView = UIImageView(image: UIImage(named: "backgroundImage.jpg"))
         self.storeHouseRefreshControl = CBStoreHouseRefreshControl.attachToScrollView(self.tableView, target: self, refreshAction: "refreshTriggered", plist: "NKU", color: UIColor.whiteColor(), lineWidth: 1.5, dropHeight: 75, scale: 1, horizontalRandomness: 150, reverseLoadingAnimation: false, internalAnimationFactor: 0.5)
         
-        timer = NSTimer.scheduledTimerWithTimeInterval(30, target: self, selector: "reload", userInfo: nil, repeats: true)
-
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "resignActive", name: UIApplicationWillResignActiveNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "enterForeground", name: UIApplicationWillEnterForegroundNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "becomeActive", name: UIApplicationDidBecomeActiveNotification, object: nil)
     }
-
+    
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         if let temp = timer {
@@ -55,6 +67,20 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate {
     
     func reload() {
         self.tableView.reloadData()
+    }
+    
+    func resignActive() {
+        if let temp = timer {
+            timer.invalidate()
+        }
+    }
+    
+    func enterForeground() {
+        self.tableView.reloadData()
+    }
+    
+    func becomeActive() {
+        timer = NSTimer.scheduledTimerWithTimeInterval(30, target: self, selector: "reload", userInfo: nil, repeats: true)
     }
     
     // MARK: tableView Data Source
@@ -120,6 +146,7 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate {
                 var account:NSDictionary? = userDefaults.objectForKey("accountInfo") as NSDictionary?
                 if let temp = account {
                     handleDate(cell)
+          //          refreshLifeIndex()
                     if let temp = recentRefreshWeather {
                         
                         var date = NSDate()
@@ -136,11 +163,13 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate {
                         
                         if (dayNow != dayRecent) || ((hourRecent >= 6) && (hourRecent < 8) && (hourNow >= 8)) || ((hourRecent >= 8) && (hourRecent < 11) && (hourNow >= 11)) || ((hourRecent >= 11) && (hourRecent < 18) && (hourNow >= 18)) {
                             refreshWeatherCondition(cell)
+                            refreshPM25(cell)
                             recentRefreshWeather = date
                         }
                     }
                     else {
                         refreshWeatherCondition(cell)
+                        refreshPM25(cell)
                         recentRefreshWeather = NSDate()
                     }
                 }
@@ -209,13 +238,19 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate {
             cell.endSectionLabel.text = "第\(startSection + sectionNumber - 1)节"
             
             var imageView:UIImageView = UIImageView(frame: CGRectMake(16, 16, 288, 126))
-            var colorIndex:Int = Int(arc4random()) % 12
-            while usedColor.objectAtIndex(colorIndex) as Int == 0 {
-                colorIndex = Int(arc4random()) % 12
+            var likedColors:NSArray = userDefaults.objectForKey("preferredColors") as NSArray
+            var colorIndex:Int = Int(arc4random()) % colors.count
+            var count:Int = 0
+            while (usedColor.objectAtIndex(colorIndex) as Int == 0) || (likedColors.objectAtIndex(colorIndex) as Int == 0) {
+                colorIndex = Int(arc4random()) % colors.count
+                count++
+                if count>1000 {
+                    break
+                }
 
             }
             imageView.backgroundColor = colors.objectAtIndex(colorIndex) as? UIColor
-            imageView.alpha = 0.5
+            imageView.alpha = 1
             imageView.layer.cornerRadius = 8
             cell.backgroundView?.addSubview(imageView)
             usedColor.replaceObjectAtIndex(colorIndex, withObject: 0)
@@ -227,7 +262,7 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate {
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if segmentedController.selectedSegmentIndex == 0 {
             if indexPath.row == 0 {
-                return 100
+                return 110
             }
             else {
                 return 150
@@ -240,7 +275,7 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate {
         }
     }
     
-    // MARK: handle Date、Course、Weather to be presented on view
+    // MARK: handle Date、Course、Weather、AQI to be presented on view
     
     func handleDate(cell: time_weatherTableViewCell) {
         
@@ -539,7 +574,7 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate {
             }
         }
         if (section == 12) {
-            cell.statusLabel.text = cell.statusLabel.text! + "今天已经木有课啦~"
+            cell.statusLabel.text = "今天已经木有课啦~"
             cell.currentCourseNameLabel.text = "无课"
             cell.currentCourseClassroomLabel.text = ""
             cell.currentCourseTeacherNameLabel.text = ""
@@ -561,10 +596,6 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate {
         var weatherGetter:WeatherConditionGetter = WeatherConditionGetter()
         var API:NSString = weatherGetter.getAPI()
         var url:NSURL = NSURL(string: API)!
-        var req:NSMutableURLRequest = NSMutableURLRequest(URL: url)
-        req.HTTPMethod = "GET"
-        req.timeoutInterval = 10
-        
         var returnData:NSData? = NSData(contentsOfURL: url)
         if let temp = returnData {
             
@@ -647,6 +678,56 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate {
             recentRefreshWeather = nil
         }
         
+    }
+    
+    func refreshPM25(cell: time_weatherTableViewCell) {
+        
+        var urlString:NSString = "http://www.pm25.in/api/querys/only_aqi.json?city=tianjin&token=5j1znBVAsnSf5xQyNQyq&stations=no"
+        var url:NSURL = NSURL(string: urlString)!
+        var returnData:NSData? = NSData(contentsOfURL: url)
+        if let temp = returnData {
+            let jsonData:NSArray = NSJSONSerialization.JSONObjectWithData(returnData!, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSArray
+            let aqiData:NSDictionary = jsonData.objectAtIndex(0) as NSDictionary
+            let aqi:Int = aqiData.objectForKey("aqi") as Int
+            let quality:NSString = aqiData.objectForKey("quality") as NSString
+            cell.PM25Label.text = "AQI:\(aqi)"
+            cell.airQualityLabel.text = quality
+        }
+        else {
+            cell.PM25Label.text = "N/A"
+            cell.airQualityLabel.text = "N/A"
+        }
+    }
+    
+    func refreshLifeIndex() {
+        
+        var weatherGetter:WeatherConditionGetter = WeatherConditionGetter(type: "index_v")
+        var API:NSString = weatherGetter.getAPI()
+        var url:NSURL = NSURL(string: API)!
+        var returnData:NSData? = NSData(contentsOfURL: url)
+        let jsonData:NSDictionary = NSJSONSerialization.JSONObjectWithData(returnData!, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
+        let indexData:NSArray = jsonData.objectForKey("i") as NSArray
+        var index1Data:NSDictionary = indexData.objectAtIndex(0) as NSDictionary
+        print(index1Data.objectForKey("i2"))
+        print("\n")
+        print(index1Data.objectForKey("i4"))
+        print("\n")
+        print(index1Data.objectForKey("i5"))
+        print("\n")
+        index1Data = indexData.objectAtIndex(1) as NSDictionary
+        print(index1Data.objectForKey("i2"))
+        print("\n")
+        print(index1Data.objectForKey("i4"))
+        print("\n")
+        print(index1Data.objectForKey("i5"))
+        print("\n")
+        index1Data = indexData.objectAtIndex(2) as NSDictionary
+        print(index1Data.objectForKey("i2"))
+        print("\n")
+        print(index1Data.objectForKey("i4"))
+        print("\n")
+        print(index1Data.objectForKey("i5"))
+        print("\n")
     }
     
     // MARK: seguesInsideTheView

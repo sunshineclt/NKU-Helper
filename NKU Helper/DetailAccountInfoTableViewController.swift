@@ -77,6 +77,9 @@ class DetailAccountInfoTableViewController: UITableViewController {
         if indexPath.section == 1 {
             var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
             userDefaults.removeObjectForKey("accountInfo")
+            userDefaults.removeObjectForKey("courses")
+            userDefaults.removeObjectForKey("courseStatus")
+            userDefaults.removeObjectForKey("preferredColors")
             userDefaults.synchronize()
             navigationController?.popToRootViewControllerAnimated(true)
         }

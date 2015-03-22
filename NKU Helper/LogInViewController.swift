@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LogInViewController: UIViewController, UIAlertViewDelegate {
+class LogInViewController: UIViewController, UIAlertViewDelegate, UITextFieldDelegate {
     
     @IBOutlet var validateCodeTextField: UITextField!
     @IBOutlet var validateCodeImageView: UIImageView!
@@ -82,4 +82,7 @@ class LogInViewController: UIViewController, UIAlertViewDelegate {
         
     }
     
+    @IBAction func validateCodeTextFieldDidEnd(sender: AnyObject) {
+        login("FromReturnKey")
+    }
 }

@@ -102,6 +102,9 @@
 		E9ACA1211AB2D6E2001083C1 /* CBStoreHouseRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = E9ACA1201AB2D6E2001083C1 /* CBStoreHouseRefreshControl.m */; };
 		E9ACA1251AB2D93E001083C1 /* BarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E9ACA1241AB2D93E001083C1 /* BarItem.m */; };
 		E9B8C4AF1AA82D6E00E0DD50 /* AccountInfo in Resources */ = {isa = PBXBuildFile; fileRef = E9B8C4AE1AA82D6E00E0DD50 /* AccountInfo */; };
+		E9CCF4B61ABC64B2002076F2 /* ColorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CCF4B51ABC64B2002076F2 /* ColorTableViewCell.swift */; };
+		E9CCF4B81ABC653E002076F2 /* ColorChooseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CCF4B71ABC653E002076F2 /* ColorChooseTableViewController.swift */; };
+		E9CCF4BA1ABC6578002076F2 /* ColorChooseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CCF4B91ABC6578002076F2 /* ColorChooseTableViewCell.swift */; };
 		E9FDA2431AB15BB600B25E7E /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FDA2421AB15BB600B25E7E /* Base64.m */; };
 		E9FDA2451AB15F6B00B25E7E /* WeatherConditionGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FDA2441AB15F6B00B25E7E /* WeatherConditionGetter.swift */; };
 /* End PBXBuildFile section */
@@ -219,6 +222,9 @@
 		E9ACA1231AB2D93E001083C1 /* BarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarItem.h; sourceTree = "<group>"; };
 		E9ACA1241AB2D93E001083C1 /* BarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarItem.m; sourceTree = "<group>"; };
 		E9B8C4AE1AA82D6E00E0DD50 /* AccountInfo */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AccountInfo; sourceTree = "<group>"; };
+		E9CCF4B51ABC64B2002076F2 /* ColorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTableViewCell.swift; sourceTree = "<group>"; };
+		E9CCF4B71ABC653E002076F2 /* ColorChooseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorChooseTableViewController.swift; sourceTree = "<group>"; };
+		E9CCF4B91ABC6578002076F2 /* ColorChooseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorChooseTableViewCell.swift; sourceTree = "<group>"; };
 		E9FDA2411AB15BB600B25E7E /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
 		E9FDA2421AB15BB600B25E7E /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
 		E9FDA2441AB15F6B00B25E7E /* WeatherConditionGetter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherConditionGetter.swift; sourceTree = "<group>"; };
@@ -405,6 +411,16 @@
 			name = night;
 			sourceTree = "<group>";
 		};
+		E97A94AF1ABF19F200998A07 /* PreferredColors */ = {
+			isa = PBXGroup;
+			children = (
+				E9CCF4B51ABC64B2002076F2 /* ColorTableViewCell.swift */,
+				E9CCF4B71ABC653E002076F2 /* ColorChooseTableViewController.swift */,
+				E9CCF4B91ABC6578002076F2 /* ColorChooseTableViewCell.swift */,
+			);
+			name = PreferredColors;
+			sourceTree = "<group>";
+		};
 		E98F94D21AA317B100885992 /* GetGrade */ = {
 			isa = PBXGroup;
 			children = (
@@ -430,6 +446,7 @@
 			children = (
 				E98F94D91AA3191F00885992 /* SettingTableViewController.swift */,
 				E9DB7EBC1AAB5EB0000D4182 /* AccountInfo */,
+				E97A94AF1ABF19F200998A07 /* PreferredColors */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -657,6 +674,7 @@
 				E90AE2311A8F813900AD0D78 /* NKU_Helper.xcdatamodeld in Sources */,
 				E90AE2511A8F814C00AD0D78 /* ImageGetter.swift in Sources */,
 				E9FDA2431AB15BB600B25E7E /* Base64.m in Sources */,
+				E9CCF4B61ABC64B2002076F2 /* ColorTableViewCell.swift in Sources */,
 				E9A83E2E1AB709400021C2D0 /* TodayTableViewController.swift in Sources */,
 				E96419D21AA8971B00397691 /* AccountTableViewCell.swift in Sources */,
 				E94286541AA5494800A4242C /* LogIner.swift in Sources */,
@@ -667,9 +685,11 @@
 				E9ACA1251AB2D93E001083C1 /* BarItem.m in Sources */,
 				E9A83E341AB70A640021C2D0 /* courseCurrentTableViewCell.swift in Sources */,
 				E9658F761AB74ACD000A39A8 /* coursesOverViewTableViewCell.swift in Sources */,
+				E9CCF4BA1ABC6578002076F2 /* ColorChooseTableViewCell.swift in Sources */,
 				E91E5F4F1A90FAED009F3B2B /* GradeShowerTableViewController.swift in Sources */,
 				E98F94D61AA3180700885992 /* ClassTimeViewController.swift in Sources */,
 				E94286581AA5500C00A4242C /* SaveAccountInfoViewController.swift in Sources */,
+				E9CCF4B81ABC653E002076F2 /* ColorChooseTableViewController.swift in Sources */,
 				E9A83E321AB70A3A0021C2D0 /* time_weatherTableViewCell.swift in Sources */,
 				E94286501AA4CD2A00A4242C /* LogInViewController.swift in Sources */,
 				E91E5F551A9103DF009F3B2B /* GradeCell.swift in Sources */,

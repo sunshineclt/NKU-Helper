@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GradeSetUpViewController: UIViewController, UIAlertViewDelegate {
+class GradeSetUpViewController: UIViewController, UIAlertViewDelegate, UITextFieldDelegate {
 
     var gradeResult:NSArray = NSArray()
     
@@ -109,6 +109,9 @@ class GradeSetUpViewController: UIViewController, UIAlertViewDelegate {
         
     }
     
+    @IBAction func validateCodeTextFieldDidEnd(sender: AnyObject) {
+        login("FromReturnKey")
+    }
  /*   func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
         if alertView.buttonTitleAtIndex(buttonIndex) == "好，重新设置用户名和密码" {
             self.performSegueWithIdentifier("editAccountInfo", sender: nil)

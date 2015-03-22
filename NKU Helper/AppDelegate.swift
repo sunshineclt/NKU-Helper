@@ -21,6 +21,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate{
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
         UINavigationBar.appearance().titleTextAttributes = NSDictionary(object: UIColor.whiteColor(), forKey: NSForegroundColorAttributeName)
 
+        var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        var preferredColors:NSMutableArray? = userDefaults.objectForKey("preferredColors") as? NSMutableArray
+        if let temp = preferredColors {
+            
+        }
+        else {
+            preferredColors = NSMutableArray()
+            for (var i=0;i<10;i++) {
+                preferredColors?.addObject(1)
+            }
+            userDefaults.setObject(preferredColors, forKey: "preferredColors")
+            userDefaults.synchronize()
+        }
+        
         // Override point for customization after application launch.
         return true
     }

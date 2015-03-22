@@ -15,20 +15,28 @@ class SettingTableViewController: UITableViewController {
         tableView.reloadData()
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch (section) {
-        case 0:return "账户信息"
-        default:return ""
-        }
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 44
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch (section) {
+        case 0:return "账户信息"
+        case 1:return "偏好设置"
+        default:return ""
+        }
+    }
+
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var numberOfRowsInSection:Int = 1
-        return numberOfRowsInSection
+        switch section {
+        case 0:return 1
+        case 1:return 1
+        default:return 0
+        }
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -58,10 +66,9 @@ class SettingTableViewController: UITableViewController {
                 return cell
 
             }
-            //case 1:
-            
-            //cell = tableView.dequeueReusableCellWithIdentifier("1234") as UITableViewCell
-            
+        case 1:
+            var cell = tableView.dequeueReusableCellWithIdentifier("color") as ColorTableViewCell
+            return cell
         default: var cell = tableView.dequeueReusableCellWithIdentifier("1234") as UITableViewCell
         return cell
 
@@ -69,7 +76,6 @@ class SettingTableViewController: UITableViewController {
             
         }
     }
-
     
     
 }

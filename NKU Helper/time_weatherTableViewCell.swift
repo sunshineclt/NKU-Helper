@@ -13,7 +13,6 @@ class time_weatherTableViewCell: UITableViewCell {
     @IBOutlet var date_weatherView: UIView!
     @IBOutlet var weatherConditionView: UIView!
     
-    
     @IBOutlet var weekdayLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var hourLabel: UILabel!
@@ -21,6 +20,7 @@ class time_weatherTableViewCell: UITableViewCell {
     @IBOutlet var PM25Label: UILabel!
     @IBOutlet var temperatureLabel: UILabel!
     @IBOutlet var weatherConditionLabel: UILabel!
+    @IBOutlet var airQualityLabel: UILabel!
     
     @IBOutlet var weatherImageView: UIImageView!
     
@@ -31,7 +31,7 @@ class time_weatherTableViewCell: UITableViewCell {
         weatherConditionLabel.adjustsFontSizeToFitWidth = true
         temperatureLabel.adjustsFontSizeToFitWidth = true
         PM25Label.adjustsFontSizeToFitWidth = true
-
+        
         self.backgroundColor = UIColor.clearColor()
     }
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SaveAccountInfoViewController: UIViewController, UIAlertViewDelegate, NSURLConnectionDataDelegate {
+class SaveAccountInfoViewController: UIViewController, UIAlertViewDelegate, NSURLConnectionDataDelegate, UITextFieldDelegate {
     
     @IBOutlet var userIDTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
@@ -90,6 +90,7 @@ class SaveAccountInfoViewController: UIViewController, UIAlertViewDelegate, NSUR
         userDefaults.removeObjectForKey("accountInfo")
         userDefaults.removeObjectForKey("courses")
         userDefaults.removeObjectForKey("courseStatus")
+        userDefaults.removeObjectForKey("preferredColors")
         userDefaults.setObject(accountInfo, forKey: "accountInfo")
         userDefaults.synchronize()
 
@@ -142,4 +143,16 @@ class SaveAccountInfoViewController: UIViewController, UIAlertViewDelegate, NSUR
 
     }
     
+    @IBAction func nameTextFieldDidEnd(sender: AnyObject) {
+        passwordTextField.becomeFirstResponder()
+    }
+
+    @IBAction func passwordTextFieldDidEnd(sender: AnyObject) {
+        validateCodeTextField.becomeFirstResponder()
+    }
+    
+    @IBAction func validateCodeTextFieldDidEnd(sender: AnyObject) {
+        sender.resignFirstResponder()
+        login("FromReturnKey")
+    }
 }
