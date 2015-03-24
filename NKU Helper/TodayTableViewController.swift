@@ -146,7 +146,6 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
                 var account:NSDictionary? = userDefaults.objectForKey("accountInfo") as NSDictionary?
                 if let temp = account {
                     handleDate(cell)
-          //          refreshLifeIndex()
                     if let temp = recentRefreshWeather {
                         
                         var date = NSDate()
@@ -162,15 +161,17 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
                         var dayRecent:Int = components.day
                         
                         if (dayNow != dayRecent) || ((hourRecent >= 6) && (hourRecent < 8) && (hourNow >= 8)) || ((hourRecent >= 8) && (hourRecent < 11) && (hourNow >= 11)) || ((hourRecent >= 11) && (hourRecent < 18) && (hourNow >= 18)) {
+                            recentRefreshWeather = date
                             refreshWeatherCondition(cell)
                             refreshPM25(cell)
-                            recentRefreshWeather = date
+                            refreshLifeIndex()
                         }
                     }
                     else {
+                        recentRefreshWeather = NSDate()
                         refreshWeatherCondition(cell)
                         refreshPM25(cell)
-                        recentRefreshWeather = NSDate()
+                        refreshLifeIndex()
                     }
                 }
                 else {
@@ -224,9 +225,10 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
                 weekdayInt = 5
             default:weekdayInt = -1
             }
+            
+            var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
             var todayCourses:NSArray = handleTodayCourses(weekdayInt)
             var courseIndex:Int = todayCourses.objectAtIndex(indexPath.row) as Int
-            var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
             var courses:NSArray = userDefaults.objectForKey("courses") as NSArray
             var course:NSDictionary = courses.objectAtIndex(courseIndex) as NSDictionary
             cell.classNameLabel.text = course.objectForKey("className") as? NSString
@@ -237,12 +239,13 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
             cell.startSectionLabel.text = "第\(startSection)节"
             cell.endSectionLabel.text = "第\(startSection + sectionNumber - 1)节"
             
-            var imageView:UIImageView = UIImageView(frame: CGRectMake(16, 16, 288, 126))
+            var imageView:UIImageView = UIImageView(frame: CGRectMake(16, 16, UIScreen.mainScreen().bounds.width - 32, 126))
             var likedColors:NSArray = userDefaults.objectForKey("preferredColors") as NSArray
-            var colorIndex:Int = Int(arc4random()) % colors.count
             var count:Int = 0
+            var colorIndex = Int(arc4random_uniform(10))
+            
             while (usedColor.objectAtIndex(colorIndex) as Int == 0) || (likedColors.objectAtIndex(colorIndex) as Int == 0) {
-                colorIndex = Int(arc4random()) % colors.count
+                colorIndex = Int(arc4random_uniform(10))
                 count++
                 if count>1000 {
                     break
@@ -254,7 +257,7 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
             imageView.layer.cornerRadius = 8
             cell.backgroundView?.addSubview(imageView)
             usedColor.replaceObjectAtIndex(colorIndex, withObject: 0)
-            
+
             return cell
         }
     }
@@ -705,6 +708,7 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
         var API:NSString = weatherGetter.getAPI()
         var url:NSURL = NSURL(string: API)!
         var returnData:NSData? = NSData(contentsOfURL: url)
+        if let temp = returnData {
         let jsonData:NSDictionary = NSJSONSerialization.JSONObjectWithData(returnData!, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
         let indexData:NSArray = jsonData.objectForKey("i") as NSArray
         var index1Data:NSDictionary = indexData.objectAtIndex(0) as NSDictionary
@@ -728,6 +732,7 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
         print("\n")
         print(index1Data.objectForKey("i5"))
         print("\n")
+        }
     }
     
     // MARK: seguesInsideTheView

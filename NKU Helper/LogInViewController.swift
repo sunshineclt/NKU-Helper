@@ -15,7 +15,7 @@ class LogInViewController: UIViewController, UIAlertViewDelegate, UITextFieldDel
     
     @IBOutlet var imageLoadActivityIndicator: UIActivityIndicatorView!
     override func viewWillAppear(animated: Bool) {
-        var view:UIView = UIView(frame: CGRectMake(0, 0, 320, 20))
+        var view:UIView = UIView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, 20))
         view.backgroundColor = UINavigationBar.appearance().barTintColor
         self.view.addSubview(view)
         imageLoadActivityIndicator.hidesWhenStopped = true

@@ -479,8 +479,8 @@
 				E9A83E2D1AB709400021C2D0 /* TodayTableViewController.swift */,
 				E9A83E311AB70A3A0021C2D0 /* time_weatherTableViewCell.swift */,
 				E9A83E331AB70A640021C2D0 /* courseCurrentTableViewCell.swift */,
-				E9658F751AB74ACD000A39A8 /* coursesOverViewTableViewCell.swift */,
 				E9FDA2441AB15F6B00B25E7E /* WeatherConditionGetter.swift */,
+				E9658F751AB74ACD000A39A8 /* coursesOverViewTableViewCell.swift */,
 				E926CD761AB3405800A5076A /* making kay */,
 				E9ACA1221AB2D6E7001083C1 /* RefreshControl */,
 			);

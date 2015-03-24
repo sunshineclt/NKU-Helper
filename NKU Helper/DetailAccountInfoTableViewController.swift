@@ -43,7 +43,6 @@ class DetailAccountInfoTableViewController: UITableViewController {
             return 1
         }
     }
-
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
@@ -79,7 +78,6 @@ class DetailAccountInfoTableViewController: UITableViewController {
             userDefaults.removeObjectForKey("accountInfo")
             userDefaults.removeObjectForKey("courses")
             userDefaults.removeObjectForKey("courseStatus")
-            userDefaults.removeObjectForKey("preferredColors")
             userDefaults.synchronize()
             navigationController?.popToRootViewControllerAnimated(true)
         }

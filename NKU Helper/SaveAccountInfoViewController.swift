@@ -90,7 +90,6 @@ class SaveAccountInfoViewController: UIViewController, UIAlertViewDelegate, NSUR
         userDefaults.removeObjectForKey("accountInfo")
         userDefaults.removeObjectForKey("courses")
         userDefaults.removeObjectForKey("courseStatus")
-        userDefaults.removeObjectForKey("preferredColors")
         userDefaults.setObject(accountInfo, forKey: "accountInfo")
         userDefaults.synchronize()
 

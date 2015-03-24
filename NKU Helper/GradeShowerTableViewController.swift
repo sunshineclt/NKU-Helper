@@ -19,7 +19,7 @@ class GradeShowerTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        var view:UIView = UIView(frame: CGRectMake(0, 0, 320, 20))
+        var view:UIView = UIView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, 20))
         view.backgroundColor = UIColor(red: 0.9215, green: 0.9215, blue: 0.9450, alpha: 1)
         
         var classNameLabel:UILabel = UILabel(frame: CGRectMake(0, 0, 70, 20))
@@ -29,21 +29,21 @@ class GradeShowerTableViewController: UITableViewController {
         classNameLabel.textColor = UIColor(red: 0.3529, green: 0.3529, blue: 0.3725, alpha: 1)
         view.addSubview(classNameLabel)
         
-        var classTypeLabel:UILabel = UILabel(frame: CGRectMake(145, 0, 80, 20))
+        var classTypeLabel:UILabel = UILabel(frame: CGRectMake(UIScreen.mainScreen().bounds.width - 175, 0, 80, 20))
         classTypeLabel.font = UIFont.systemFontOfSize(14)
         classTypeLabel.text = "课程类型"
         classTypeLabel.textAlignment = NSTextAlignment.Center
         classTypeLabel.textColor = UIColor(red: 0.3529, green: 0.3529, blue: 0.3725, alpha: 1)
         view.addSubview(classTypeLabel)
         
-        var gradeLabel:UILabel = UILabel(frame: CGRectMake(223, 0, 40, 20))
+        var gradeLabel:UILabel = UILabel(frame: CGRectMake(UIScreen.mainScreen().bounds.width - 97, 0, 40, 20))
         gradeLabel.text = "分数"
         gradeLabel.font = UIFont.systemFontOfSize(14)
         gradeLabel.textAlignment = NSTextAlignment.Center
         gradeLabel.textColor = UIColor(red: 0.3529, green: 0.3529, blue: 0.3725, alpha: 1)
         view.addSubview(gradeLabel)
         
-        var creditLabel:UILabel = UILabel(frame: CGRectMake(272, 0, 40, 20))
+        var creditLabel:UILabel = UILabel(frame: CGRectMake(UIScreen.mainScreen().bounds.width - 48, 0, 40, 20))
         creditLabel.text = "学分"
         creditLabel.font = UIFont.systemFontOfSize(14)
         creditLabel.textAlignment = NSTextAlignment.Center
@@ -55,7 +55,7 @@ class GradeShowerTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         
-        var view:UIView = UIView(frame: CGRectMake(0, 0, 320, 20))
+        var view:UIView = UIView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, 20))
         view.backgroundColor = UIColor(red: 0.9215, green: 0.9215, blue: 0.9450, alpha: 1)
         
         var creditLabel:UILabel = UILabel(frame: CGRectMake(80, 0, 100, 20))
@@ -66,7 +66,7 @@ class GradeShowerTableViewController: UITableViewController {
         view.addSubview(creditLabel)
         
         GPA = GPA / allCredit
-        var gpaLabel:UILabel = UILabel(frame: CGRectMake(170, 0, 140, 20))
+        var gpaLabel:UILabel = UILabel(frame: CGRectMake(UIScreen.mainScreen().bounds.width - 150, 0, 140, 20))
         gpaLabel.text = "学分绩：\(GPA)"
         gpaLabel.textAlignment = NSTextAlignment.Right
         gpaLabel.font = UIFont.systemFontOfSize(14)
