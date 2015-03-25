@@ -793,7 +793,34 @@
                                     <outlet property="weekdayLabel" destination="xFI-51-uPq" id="cYn-dC-um3"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="courseCurrent" rowHeight="150" id="O1i-Hz-UbB" customClass="courseCurrentTableViewCell" customModule="NKU_Helper" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="lifeIndex" rowHeight="120" id="Sc7-2P-u4x" userLabel="lifeIndex" customClass="LifeIndexTableViewCell" customModule="NKU_Helper" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Sc7-2P-u4x" id="ZaN-yJ-6eC">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kZM-TK-7OA">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
+                                        </scrollView>
+                                        <pageControl opaque="NO" tag="300" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="rCB-9D-OE2">
+                                            <rect key="frame" x="155.5" y="92" width="39" height="37"/>
+                                        </pageControl>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="kZM-TK-7OA" secondAttribute="trailing" id="J34-Nm-2T8"/>
+                                        <constraint firstItem="kZM-TK-7OA" firstAttribute="leading" secondItem="ZaN-yJ-6eC" secondAttribute="leading" id="SGT-L4-CuA"/>
+                                        <constraint firstItem="rCB-9D-OE2" firstAttribute="top" secondItem="ZaN-yJ-6eC" secondAttribute="topMargin" constant="84" id="Xdp-YZ-a1x"/>
+                                        <constraint firstAttribute="centerX" secondItem="rCB-9D-OE2" secondAttribute="centerX" constant="-15" id="i6U-St-DSj"/>
+                                        <constraint firstItem="kZM-TK-7OA" firstAttribute="top" secondItem="ZaN-yJ-6eC" secondAttribute="top" id="svI-dw-q6X"/>
+                                        <constraint firstAttribute="bottom" secondItem="kZM-TK-7OA" secondAttribute="bottom" id="wv6-uP-9gJ"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="mainScrollView" destination="kZM-TK-7OA" id="IWc-FI-4Yd"/>
+                                    <outlet property="pageController" destination="rCB-9D-OE2" id="7Vn-jV-qOj"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="courseCurrent" rowHeight="140" id="O1i-Hz-UbB" customClass="courseCurrentTableViewCell" customModule="NKU_Helper" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="O1i-Hz-UbB" id="TcP-bJ-Ntm">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -801,16 +828,6 @@
                                         <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ObW-FU-eeO">
                                             <rect key="frame" x="0.0" y="47" width="320" height="2"/>
                                         </progressView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gEt-jg-RVl" userLabel="teacherName">
-                                            <rect key="frame" x="152" y="98" width="168" height="30"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="30" id="6Bk-5B-2IB"/>
-                                                <constraint firstAttribute="width" constant="168" id="r0W-ne-xvp"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tnP-dH-gP3" userLabel="status">
                                             <rect key="frame" x="0.0" y="8" width="320" height="36"/>
                                             <constraints>
@@ -821,7 +838,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="15r-pU-Kei" userLabel="className">
-                                            <rect key="frame" x="8" y="27" width="304" height="95"/>
+                                            <rect key="frame" x="8" y="22" width="304" height="95"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="95" id="ut3-hV-HSt"/>
                                                 <constraint firstAttribute="width" constant="304" id="yC4-hM-9NI"/>
@@ -831,10 +848,20 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rDV-hh-pem" userLabel="classroom">
-                                            <rect key="frame" x="16" y="98" width="128" height="30"/>
+                                            <rect key="frame" x="16" y="85" width="128" height="47"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="30" id="GJw-P5-oeT"/>
+                                                <constraint firstAttribute="height" constant="47" id="GJw-P5-oeT"/>
                                                 <constraint firstAttribute="width" constant="128" id="eOD-ii-DwT"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gEt-jg-RVl" userLabel="teacherName">
+                                            <rect key="frame" x="152" y="85" width="168" height="47"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="47" id="6Bk-5B-2IB"/>
+                                                <constraint firstAttribute="width" constant="168" id="r0W-ne-xvp"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -844,13 +871,13 @@
                                     <constraints>
                                         <constraint firstItem="tnP-dH-gP3" firstAttribute="trailing" secondItem="TcP-bJ-Ntm" secondAttribute="trailingMargin" constant="8" id="2cZ-XM-T9F"/>
                                         <constraint firstItem="ObW-FU-eeO" firstAttribute="trailing" secondItem="TcP-bJ-Ntm" secondAttribute="trailingMargin" constant="8" id="7Oj-ng-J4r"/>
-                                        <constraint firstAttribute="centerY" secondItem="rDV-hh-pem" secondAttribute="centerY" constant="-38" id="EjL-aA-U7S"/>
+                                        <constraint firstAttribute="centerY" secondItem="rDV-hh-pem" secondAttribute="centerY" constant="-38.5" id="EjL-aA-U7S"/>
                                         <constraint firstAttribute="centerX" secondItem="gEt-jg-RVl" secondAttribute="centerX" constant="-76" id="Hu1-gf-FdM"/>
                                         <constraint firstAttribute="centerX" secondItem="rDV-hh-pem" secondAttribute="centerX" constant="80" id="QKx-ZX-Fgr"/>
                                         <constraint firstItem="tnP-dH-gP3" firstAttribute="leading" secondItem="TcP-bJ-Ntm" secondAttribute="leadingMargin" constant="-8" id="etx-3K-be7"/>
                                         <constraint firstItem="ObW-FU-eeO" firstAttribute="leading" secondItem="TcP-bJ-Ntm" secondAttribute="leadingMargin" constant="-8" id="gbJ-XO-aec"/>
                                         <constraint firstAttribute="centerX" secondItem="15r-pU-Kei" secondAttribute="centerX" id="lk6-fz-aqH"/>
-                                        <constraint firstAttribute="centerY" secondItem="gEt-jg-RVl" secondAttribute="centerY" constant="-38" id="pd0-kJ-HA8"/>
+                                        <constraint firstAttribute="centerY" secondItem="gEt-jg-RVl" secondAttribute="centerY" constant="-38.5" id="pd0-kJ-HA8"/>
                                         <constraint firstAttribute="centerY" secondItem="15r-pU-Kei" secondAttribute="centerY" id="uYr-Eq-RUu"/>
                                         <constraint firstItem="ObW-FU-eeO" firstAttribute="top" secondItem="TcP-bJ-Ntm" secondAttribute="topMargin" constant="39" id="uhp-LQ-4TY"/>
                                         <constraint firstItem="tnP-dH-gP3" firstAttribute="top" secondItem="TcP-bJ-Ntm" secondAttribute="topMargin" id="xLd-JU-3g8"/>

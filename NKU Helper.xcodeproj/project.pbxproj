@@ -96,6 +96,7 @@
 		E98F94D61AA3180700885992 /* ClassTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98F94D51AA3180700885992 /* ClassTimeViewController.swift */; };
 		E98F94D81AA318EF00885992 /* FunctionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98F94D71AA318EF00885992 /* FunctionTableViewController.swift */; };
 		E98F94DA1AA3191F00885992 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98F94D91AA3191F00885992 /* SettingTableViewController.swift */; };
+		E997700E1AC16CC700C3977B /* LifeIndexTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E997700D1AC16CC700C3977B /* LifeIndexTableViewCell.swift */; };
 		E9A83E2E1AB709400021C2D0 /* TodayTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A83E2D1AB709400021C2D0 /* TodayTableViewController.swift */; };
 		E9A83E321AB70A3A0021C2D0 /* time_weatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A83E311AB70A3A0021C2D0 /* time_weatherTableViewCell.swift */; };
 		E9A83E341AB70A640021C2D0 /* courseCurrentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A83E331AB70A640021C2D0 /* courseCurrentTableViewCell.swift */; };
@@ -214,6 +215,7 @@
 		E98F94D51AA3180700885992 /* ClassTimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassTimeViewController.swift; sourceTree = "<group>"; };
 		E98F94D71AA318EF00885992 /* FunctionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunctionTableViewController.swift; sourceTree = "<group>"; };
 		E98F94D91AA3191F00885992 /* SettingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
+		E997700D1AC16CC700C3977B /* LifeIndexTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifeIndexTableViewCell.swift; sourceTree = "<group>"; };
 		E9A83E2D1AB709400021C2D0 /* TodayTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayTableViewController.swift; sourceTree = "<group>"; };
 		E9A83E311AB70A3A0021C2D0 /* time_weatherTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = time_weatherTableViewCell.swift; sourceTree = "<group>"; };
 		E9A83E331AB70A640021C2D0 /* courseCurrentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = courseCurrentTableViewCell.swift; sourceTree = "<group>"; };
@@ -478,8 +480,9 @@
 			children = (
 				E9A83E2D1AB709400021C2D0 /* TodayTableViewController.swift */,
 				E9A83E311AB70A3A0021C2D0 /* time_weatherTableViewCell.swift */,
-				E9A83E331AB70A640021C2D0 /* courseCurrentTableViewCell.swift */,
 				E9FDA2441AB15F6B00B25E7E /* WeatherConditionGetter.swift */,
+				E9A83E331AB70A640021C2D0 /* courseCurrentTableViewCell.swift */,
+				E997700D1AC16CC700C3977B /* LifeIndexTableViewCell.swift */,
 				E9658F751AB74ACD000A39A8 /* coursesOverViewTableViewCell.swift */,
 				E926CD761AB3405800A5076A /* making kay */,
 				E9ACA1221AB2D6E7001083C1 /* RefreshControl */,
@@ -691,6 +694,7 @@
 				E94286581AA5500C00A4242C /* SaveAccountInfoViewController.swift in Sources */,
 				E9CCF4B81ABC653E002076F2 /* ColorChooseTableViewController.swift in Sources */,
 				E9A83E321AB70A3A0021C2D0 /* time_weatherTableViewCell.swift in Sources */,
+				E997700E1AC16CC700C3977B /* LifeIndexTableViewCell.swift in Sources */,
 				E94286501AA4CD2A00A4242C /* LogInViewController.swift in Sources */,
 				E91E5F551A9103DF009F3B2B /* GradeCell.swift in Sources */,
 				E90AE2531A8F948300AD0D78 /* GradeGetter.swift in Sources */,

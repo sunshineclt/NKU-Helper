@@ -9,7 +9,7 @@
 import UIKit
 
 class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIApplicationDelegate {
-
+    
     // MARK: 下拉刷新的property
     
     @IBOutlet var segmentedController: UISegmentedControl!
@@ -19,17 +19,17 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
     
     var usedColor:NSMutableArray!
     let colors:NSArray = [
-                            UIColor(red: 190/255, green: 150/255, blue: 210/255, alpha: 1),
-                            UIColor(red: 168/255, green: 239/255, blue: 233/255, alpha: 1),
-                            UIColor(red: 193/255, green: 233/255, blue: 241/255, alpha: 1),
-                            UIColor(red: 186/255, green: 241/255, blue: 209/255, alpha: 1),
-                            UIColor(red: 34/255, green: 202/255, blue: 179/255, alpha: 1),
-                            UIColor(red: 230/255, green: 225/255, blue: 187/255, alpha: 1),
-                            UIColor(red: 236/255, green: 206/255, blue: 178/255, alpha: 1),
-                            UIColor(red: 217/255, green: 189/255, blue: 126/255, alpha: 0.9),
-                            UIColor(red: 241/255, green: 174/255, blue: 165/255, alpha: 1),
-                            UIColor(red: 250/255, green: 98/255, blue: 110/255, alpha: 0.8)]
-
+        UIColor(red: 190/255, green: 150/255, blue: 210/255, alpha: 1),
+        UIColor(red: 168/255, green: 239/255, blue: 233/255, alpha: 1),
+        UIColor(red: 193/255, green: 233/255, blue: 241/255, alpha: 1),
+        UIColor(red: 186/255, green: 241/255, blue: 209/255, alpha: 1),
+        UIColor(red: 34/255, green: 202/255, blue: 179/255, alpha: 1),
+        UIColor(red: 230/255, green: 225/255, blue: 187/255, alpha: 1),
+        UIColor(red: 236/255, green: 206/255, blue: 178/255, alpha: 1),
+        UIColor(red: 217/255, green: 189/255, blue: 126/255, alpha: 0.9),
+        UIColor(red: 241/255, green: 174/255, blue: 165/255, alpha: 1),
+        UIColor(red: 250/255, green: 98/255, blue: 110/255, alpha: 0.8)]
+    
     
     // MARK: 与weather有关
     
@@ -37,6 +37,7 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
     var timer:NSTimer!
     var receivedWeatherData:NSMutableData?
     let weatherEncodeToWeatherCondition:NSDictionary = ["00":"晴", "01":"多云", "02":"阴", "03":"阵雨", "04":"雷阵雨", "05":"雷阵雨伴有冰雹", "06":"雨夹雪", "07":"小雨", "08":"中雨", "09":"大雨", "10":"暴雨", "11":"大暴雨", "12":"特大暴雨", "13":"阵雪", "14":"小雪", "15":"中雪", "16":"大雪", "17":"暴雪", "18":"雾", "19":"冻雨", "20":"沙尘暴", "21":"小到中雨", "22":"中到大雨", "23":"大到暴雨", "24":"暴雨到大暴雨", "25":"大暴雨到特大暴雨", "26":"小到中雪", "27":"中到大雪", "28":"大到暴雪", "29":"浮尘", "30":"扬沙", "31":"强沙尘暴", "53":"霾", "99":"无"]
+    var recentRefreshLifeIndex:NSDate!
     
     // MARK: LifeLoopFunction
     
@@ -95,7 +96,7 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if segmentedController.selectedSegmentIndex == 0 {
-            return 2
+            return 3
         }
         else {
             var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
@@ -124,7 +125,7 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
                     weekdayInt = 5
                 default:weekdayInt = -1
                 }
-
+                
                 var course:NSArray = handleTodayCourses(weekdayInt)
                 return course.count
             }
@@ -151,7 +152,7 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
                         var date = NSDate()
                         var calender:NSCalendar = NSCalendar(identifier: NSGregorianCalendar)!
                         var unitFlags:NSCalendarUnit = NSCalendarUnit.DayCalendarUnit | NSCalendarUnit.HourCalendarUnit
-
+                        
                         var components:NSDateComponents = calender.components(unitFlags, fromDate: date)
                         var hourNow:Int = components.hour
                         var dayNow:Int = components.day
@@ -160,18 +161,16 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
                         var hourRecent:Int = components.hour
                         var dayRecent:Int = components.day
                         
-                        if (dayNow != dayRecent) || ((hourRecent >= 6) && (hourRecent < 8) && (hourNow >= 8)) || ((hourRecent >= 8) && (hourRecent < 11) && (hourNow >= 11)) || ((hourRecent >= 11) && (hourRecent < 18) && (hourNow >= 18)) {
+                        if (dayNow != dayRecent) || ((hourRecent < 6) && (hourNow >= 6)) || ((hourRecent >= 6) && (hourRecent < 8) && (hourNow >= 8)) || ((hourRecent >= 8) && (hourRecent < 11) && (hourNow >= 11)) || ((hourRecent >= 11) && (hourRecent < 18) && (hourNow >= 18)) {
                             recentRefreshWeather = date
                             refreshWeatherCondition(cell)
                             refreshPM25(cell)
-                            refreshLifeIndex()
                         }
                     }
                     else {
                         recentRefreshWeather = NSDate()
                         refreshWeatherCondition(cell)
                         refreshPM25(cell)
-                        refreshLifeIndex()
                     }
                 }
                 else {
@@ -196,7 +195,41 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
                 
                 return cell
             default:
-                var cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("???") as UITableViewCell
+                //lifeIndexCell
+                
+                var cell:LifeIndexTableViewCell = tableView.dequeueReusableCellWithIdentifier("lifeIndex") as LifeIndexTableViewCell
+                cell.mainScrollView.delegate = self
+                cell.mainScrollView.contentSize = CGSizeMake(UIScreen.mainScreen().bounds.width * 3, 100)
+                var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+                var account:NSDictionary? = userDefaults.objectForKey("accountInfo") as NSDictionary?
+                if let temp = account {
+                    if let temp = recentRefreshLifeIndex {
+                        
+                        var date = NSDate()
+                        var calender:NSCalendar = NSCalendar(identifier: NSGregorianCalendar)!
+                        var unitFlags:NSCalendarUnit = NSCalendarUnit.DayCalendarUnit | NSCalendarUnit.HourCalendarUnit
+                        
+                        var components:NSDateComponents = calender.components(unitFlags, fromDate: date)
+                        var hourNow:Int = components.hour
+                        var dayNow:Int = components.day
+                        
+                        components = calender.components(unitFlags, fromDate: recentRefreshLifeIndex)
+                        var hourRecent:Int = components.hour
+                        var dayRecent:Int = components.day
+                        
+                        if (dayNow != dayRecent) || ((hourRecent < 6) && (hourNow >= 6)) || ((hourRecent >= 6) && (hourRecent < 8) && (hourNow >= 8)) || ((hourRecent >= 8) && (hourRecent < 11) && (hourNow >= 11)) || ((hourRecent >= 11) && (hourRecent < 18) && (hourNow >= 18)) {
+                            recentRefreshLifeIndex = NSDate()
+                            refreshLifeIndex(cell)
+                        }
+                    }
+                    else {
+                        recentRefreshLifeIndex = NSDate()
+                        refreshLifeIndex(cell)
+                    }
+                }
+                
+                
+                
                 return cell
             }
         }
@@ -250,25 +283,24 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
                 if count>1000 {
                     break
                 }
-
+                
             }
             imageView.backgroundColor = colors.objectAtIndex(colorIndex) as? UIColor
             imageView.alpha = 1
             imageView.layer.cornerRadius = 8
             cell.backgroundView?.addSubview(imageView)
             usedColor.replaceObjectAtIndex(colorIndex, withObject: 0)
-
+            
             return cell
         }
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if segmentedController.selectedSegmentIndex == 0 {
-            if indexPath.row == 0 {
-                return 110
-            }
-            else {
-                return 150
+            switch indexPath.row {
+            case 0:return 110
+            case 1:return 140
+            default:return 120
             }
         }
         else {
@@ -355,7 +387,7 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
         if minute.length < 2 {
             minute = "0" + minute
         }
-
+        
         var hourInt:Double = Double(components.hour) + Double(components.minute)/60
         var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         var courses:NSArray? = userDefaults.objectForKey("courses") as? NSArray
@@ -702,36 +734,59 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
         }
     }
     
-    func refreshLifeIndex() {
+    func refreshLifeIndex(cell: LifeIndexTableViewCell) {
         
         var weatherGetter:WeatherConditionGetter = WeatherConditionGetter(type: "index_v")
         var API:NSString = weatherGetter.getAPI()
         var url:NSURL = NSURL(string: API)!
         var returnData:NSData? = NSData(contentsOfURL: url)
         if let temp = returnData {
-        let jsonData:NSDictionary = NSJSONSerialization.JSONObjectWithData(returnData!, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
-        let indexData:NSArray = jsonData.objectForKey("i") as NSArray
-        var index1Data:NSDictionary = indexData.objectAtIndex(0) as NSDictionary
-        print(index1Data.objectForKey("i2"))
-        print("\n")
-        print(index1Data.objectForKey("i4"))
-        print("\n")
-        print(index1Data.objectForKey("i5"))
-        print("\n")
-        index1Data = indexData.objectAtIndex(1) as NSDictionary
-        print(index1Data.objectForKey("i2"))
-        print("\n")
-        print(index1Data.objectForKey("i4"))
-        print("\n")
-        print(index1Data.objectForKey("i5"))
-        print("\n")
-        index1Data = indexData.objectAtIndex(2) as NSDictionary
-        print(index1Data.objectForKey("i2"))
-        print("\n")
-        print(index1Data.objectForKey("i4"))
-        print("\n")
-        print(index1Data.objectForKey("i5"))
-        print("\n")
+            let jsonData:NSDictionary = NSJSONSerialization.JSONObjectWithData(returnData!, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
+            let indexData:NSArray = jsonData.objectForKey("i") as NSArray
+            
+            for (var i=0;i<3;i++) {
+                
+                var indexDataNow:NSDictionary = indexData.objectAtIndex(i) as NSDictionary
+                var indexName:NSString = indexDataNow.objectForKey("i2") as NSString
+                var indexBrief:NSString = indexDataNow.objectForKey("i4") as NSString
+                var indexDetail:NSString = indexDataNow.objectForKey("i5") as NSString
+                
+                /*
+                print(indexDataNow.objectForKey("i2"))
+                print("\n")
+                print(indexDataNow.objectForKey("i4"))
+                print("\n")
+                print(indexDataNow.objectForKey("i5"))
+                print("\n")
+                */
+                
+                var offset:CGFloat = UIScreen.mainScreen().bounds.width * CGFloat(i)
+                
+                var imageView:UIImageView = UIImageView(frame: CGRectMake(offset, 10, 100, 100))
+                switch i {
+                case 0:imageView.image = UIImage(named: "晨练.png")
+                case 1:imageView.image = UIImage(named: "舒适.png")
+                default:imageView.image = UIImage(named: "穿衣.png")
+                }
+                cell.mainScrollView.addSubview(imageView)
+                
+                var briefLabel:UILabel = UILabel(frame: CGRectMake(offset+100, 5, UIScreen.mainScreen().bounds.width - 110, 30))
+                briefLabel.font = UIFont.systemFontOfSize(22)
+                briefLabel.text = indexName + "：" + indexBrief
+                briefLabel.textColor = UIColor.whiteColor()
+                cell.mainScrollView.addSubview(briefLabel)
+                
+                var detailLabel:UILabel = UILabel(frame: CGRectMake(offset+100, 30, UIScreen.mainScreen().bounds.width - 110, 80))
+                detailLabel.numberOfLines = 0
+                detailLabel.font = UIFont.systemFontOfSize(13)
+                detailLabel.text = indexDetail
+                detailLabel.textColor = UIColor.lightTextColor()
+                cell.mainScrollView.addSubview(detailLabel)
+                
+            }
+        }
+        else {
+            recentRefreshLifeIndex = nil
         }
     }
     
@@ -758,11 +813,21 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
     // MARK: storeHouseRefreshControl
     
     override func scrollViewDidScroll(scrollView: UIScrollView) {
-        self.storeHouseRefreshControl.scrollViewDidScroll()
+        if scrollView.tag == 0 {
+            self.storeHouseRefreshControl.scrollViewDidScroll()
+        }
+        else {
+            //           print("scrollView 1 scrolled")
+        }
     }
     
     override func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        self.storeHouseRefreshControl.scrollViewDidEndDragging()
+        if scrollView.tag == 0 {
+            self.storeHouseRefreshControl.scrollViewDidEndDragging()
+        }
+        else {
+            
+        }
     }
     
     func refreshTriggered() {
@@ -770,18 +835,27 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
         if segmentedController.selectedSegmentIndex == 0 {
             NSTimer.scheduledTimerWithTimeInterval(2.43, target: self, selector: "finishRefreshControl", userInfo: nil, repeats: false)
             tableView.reloadData()
-
+            
         }
         else {
             NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "finishRefreshControl", userInfo: nil, repeats: false)
             tableView.reloadData()
-
+            
         }
-
+        
     }
     
     func finishRefreshControl() {
         self.storeHouseRefreshControl.finishingLoading()
+    }
+    
+    override func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        if scrollView.tag == 1{
+            var current = scrollView.contentOffset.x / UIScreen.mainScreen().bounds.size.width
+            
+            var page:UIPageControl = self.view.viewWithTag(Int(300)) as UIPageControl
+            page.currentPage = Int(current)
+        }
     }
     
 }

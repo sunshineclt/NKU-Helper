@@ -28,8 +28,10 @@ class courseCurrentTableViewCell: UITableViewCell {
         currentCourseNameLabel.adjustsFontSizeToFitWidth = true
         currentCourseClassroomLabel.adjustsFontSizeToFitWidth = true
         currentCourseTeacherNameLabel.adjustsFontSizeToFitWidth = true
-        
+     
         self.backgroundColor = UIColor.clearColor()
+
+        
     }
     
 }
