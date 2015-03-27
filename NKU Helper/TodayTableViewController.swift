@@ -717,7 +717,7 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
     
     func refreshPM25(cell: time_weatherTableViewCell) {
         
-        var urlString:NSString = "http://www.pm25.in/api/querys/only_aqi.json?city=tianjin&token=5j1znBVAsnSf5xQyNQyq&stations=no"
+        var urlString:NSString = "http://www.pm25.in/api/querys/only_aqi.json?city=tianjin&token=K4BcCM5m1pdnwo3AGe7p&stations=no"
         var url:NSURL = NSURL(string: urlString)!
         var returnData:NSData? = NSData(contentsOfURL: url)
         if let temp = returnData {
