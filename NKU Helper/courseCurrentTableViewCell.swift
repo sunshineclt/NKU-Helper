@@ -8,18 +8,17 @@
 
 import UIKit
 
-class courseCurrentTableViewCell: UITableViewCell {
-
-    @IBOutlet var courseInfoView: UIView!
+class courseCurrentTableViewCell: UITableViewCell {    
     
+    let courseCurrentViewHeight:CGFloat = 260
     
     @IBOutlet var statusLabel: UILabel!
     @IBOutlet var currentCourseNameLabel: UILabel!
     @IBOutlet var currentCourseClassroomLabel: UILabel!
     @IBOutlet var currentCourseTeacherNameLabel: UILabel!
+    @IBOutlet var animateView: UIView!
+    @IBOutlet var graphicsView: UIView!
     
-    @IBOutlet var progressIndicator: UIProgressView!
-
     override func awakeFromNib() {
         
         super.awakeFromNib()
@@ -31,6 +30,75 @@ class courseCurrentTableViewCell: UITableViewCell {
      
         self.backgroundColor = UIColor.clearColor()
 
+        // 绘制轨道
+        
+        UIGraphicsBeginImageContextWithOptions(CGSizeMake(320, 200), false, 0)
+        var refTrack = UIGraphicsGetCurrentContext()
+        CGContextAddArc(refTrack, UIScreen.mainScreen().bounds.width / 2, courseCurrentViewHeight / 2, courseCurrentViewHeight / 2 - 5, CGFloat(-M_PI_2), CGFloat(M_PI + M_PI_2), 0)
+        var layerTrack:CAShapeLayer = CAShapeLayer()
+        layerTrack.strokeColor = UIColor(red: 135/255, green: 175/255, blue: 196/255, alpha: 0.3).CGColor
+        layerTrack.lineWidth = 10
+        layerTrack.fillColor = nil
+        layerTrack.lineCap = kCALineCapRound
+        layerTrack.path = CGContextCopyPath(refTrack)
+        UIGraphicsEndImageContext()
+        self.graphicsView.layer.addSublayer(layerTrack)
+        
+        // 绘制目前课程背景
+        
+        UIGraphicsBeginImageContextWithOptions(CGSizeMake(320, 200), false, 0)
+        var refCourse = UIGraphicsGetCurrentContext()
+        CGContextAddArc(refCourse, UIScreen.mainScreen().bounds.width / 2, courseCurrentViewHeight / 2, courseCurrentViewHeight / 2 - 10, CGFloat(-M_PI), 0, 0)
+        var layerCourse:CAShapeLayer = CAShapeLayer()
+        layerCourse.lineWidth = 0
+        layerCourse.fillColor = UIColor(red: 250/255, green: 128/255, blue: 114/255, alpha: 1).CGColor
+        layerCourse.path = CGContextCopyPath(refCourse)
+        UIGraphicsEndImageContext()
+        self.graphicsView.layer.addSublayer(layerCourse)
+        
+        // 绘制上课地点背景
+        
+        UIGraphicsBeginImageContextWithOptions(CGSizeMake(320, 200), false, 0)
+        var refClassroom = UIGraphicsGetCurrentContext()
+        CGContextAddArc(refClassroom, UIScreen.mainScreen().bounds.width / 2, courseCurrentViewHeight / 2, courseCurrentViewHeight / 2 - 10, CGFloat(M_PI_2), CGFloat(M_PI), 0)
+        CGContextAddLineToPoint(refClassroom, UIScreen.mainScreen().bounds.width / 2, courseCurrentViewHeight / 2)
+        CGContextClosePath(refClassroom)
+        var layerClassroom:CAShapeLayer = CAShapeLayer()
+        layerClassroom.lineWidth = 0
+        layerClassroom.fillColor = UIColor(red: 144/255, green: 238/255, blue: 144/255, alpha: 1).CGColor
+        layerClassroom.path = CGContextCopyPath(refClassroom)
+        UIGraphicsEndImageContext()
+        self.graphicsView.layer.addSublayer(layerClassroom)
+        
+        // 绘制教师背景
+        
+        UIGraphicsBeginImageContextWithOptions(CGSizeMake(320, 200), false, 0)
+        var refTeacher = UIGraphicsGetCurrentContext()
+        CGContextAddArc(refTeacher, UIScreen.mainScreen().bounds.width / 2, courseCurrentViewHeight / 2, courseCurrentViewHeight / 2 - 10, 0, CGFloat(M_PI_2), 0)
+        CGContextAddLineToPoint(refTeacher, UIScreen.mainScreen().bounds.width / 2, courseCurrentViewHeight / 2)
+        CGContextClosePath(refTeacher)
+        var layerTeacher:CAShapeLayer = CAShapeLayer()
+        layerTeacher.lineWidth = 0
+        layerTeacher.fillColor = UIColor(red: 135/255, green: 206/255, blue: 250/255, alpha: 1).CGColor
+        layerTeacher.path = CGContextCopyPath(refTeacher)
+        UIGraphicsEndImageContext()
+        self.graphicsView.layer.addSublayer(layerTeacher)
+        
+        
+        // 绘制进度条
+        
+        UIGraphicsBeginImageContextWithOptions(CGSizeMake(320, 200), false, 0)
+        var ref = UIGraphicsGetCurrentContext()
+        CGContextAddArc(ref, UIScreen.mainScreen().bounds.width / 2, courseCurrentViewHeight / 2, courseCurrentViewHeight / 2 - 5, CGFloat(-M_PI_2), CGFloat(M_PI + M_PI_2), 0)
+        var layer:CAShapeLayer = CAShapeLayer()
+        layer.strokeColor = UIColor.orangeColor().CGColor
+        layer.lineWidth = 5
+        layer.fillColor = nil
+        layer.lineCap = kCALineCapRound
+        layer.path = CGContextCopyPath(ref)
+        UIGraphicsEndImageContext()
+        layer.strokeEnd = 0
+        self.animateView.layer.addSublayer(layer)
         
     }
     

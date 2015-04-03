@@ -10,6 +10,8 @@ import UIKit
 
 class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIApplicationDelegate {
     
+    let courseCurrentViewHeight:CGFloat = 260
+    
     // MARK: 下拉刷新的property
     
     @IBOutlet var segmentedController: UISegmentedControl!
@@ -39,7 +41,7 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
     let weatherEncodeToWeatherCondition:NSDictionary = ["00":"晴", "01":"多云", "02":"阴", "03":"阵雨", "04":"雷阵雨", "05":"雷阵雨伴有冰雹", "06":"雨夹雪", "07":"小雨", "08":"中雨", "09":"大雨", "10":"暴雨", "11":"大暴雨", "12":"特大暴雨", "13":"阵雪", "14":"小雪", "15":"中雪", "16":"大雪", "17":"暴雪", "18":"雾", "19":"冻雨", "20":"沙尘暴", "21":"小到中雨", "22":"中到大雨", "23":"大到暴雨", "24":"暴雨到大暴雨", "25":"大暴雨到特大暴雨", "26":"小到中雪", "27":"中到大雪", "28":"大到暴雪", "29":"浮尘", "30":"扬沙", "31":"强沙尘暴", "53":"霾", "99":"无"]
     var recentRefreshLifeIndex:NSDate!
     
-    // MARK: LifeLoopFunction
+    // MARK: View LifeCycle
     
     override func viewDidLoad() {
         
@@ -184,7 +186,19 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
                 var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
                 var account:NSDictionary? = userDefaults.objectForKey("accountInfo") as NSDictionary?
                 if let temp = account {
-                    handleStatus(cell)
+
+                    var anim:POPBasicAnimation = POPBasicAnimation(propertyNamed: kPOPShapeLayerStrokeEnd)
+                    anim.duration = 1
+                    anim.toValue = handleStatus(cell)
+                    anim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+                    let layers = cell.animateView.layer.sublayers
+                    for i in layers {
+                        if i.isKindOfClass(CAShapeLayer) {
+                            let layer = i as CAShapeLayer
+                            layer.pop_addAnimation(anim, forKey: "show")
+                        }
+                    }
+
                 }
                 else {
                     cell.currentCourseClassroomLabel.text = "N/A"
@@ -299,7 +313,7 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
         if segmentedController.selectedSegmentIndex == 0 {
             switch indexPath.row {
             case 0:return 110
-            case 1:return 140
+            case 1:return courseCurrentViewHeight
             default:return 120
             }
         }
@@ -355,7 +369,7 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
         
     }
     
-    func handleStatus(cell: courseCurrentTableViewCell) {
+    func handleStatus(cell: courseCurrentTableViewCell) -> Float! {
         
         var date = NSDate()
         var calender:NSCalendar = NSCalendar(identifier: NSGregorianCalendar)!
@@ -404,148 +418,148 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
                 cell.currentCourseClassroomLabel.text = "@ 寝室"
                 cell.currentCourseTeacherNameLabel.text = ""
                 var progress:Float = Float(hourInt+2)/9
-                cell.progressIndicator.setProgress(progress, animated: true)
+                return progress
             case 7..<8:
                 cell.statusLabel.text = "早上好，"
                 showCourseInfo(weekdayInt, whichSection: 0, cell: cell)
                 var progress:Float = Float(hourInt-7)
-                cell.progressIndicator.setProgress(progress, animated: true)
+                return progress
             case 8..<35/4:
                 cell.statusLabel.text = "第一节课进行中，"
                 showCourseInfo(weekdayInt, whichSection: 0, cell: cell)
                 var progress:Float = Float(hourInt-8)*4/3
-                cell.progressIndicator.setProgress(progress, animated: true)
+                return progress
             case 35/4..<107/12:
                 cell.statusLabel.text = "第一节课下课中，"
                 showCourseInfo(weekdayInt, whichSection: 1, cell: cell)
                 var progress:Float = Float(hourInt-35/4)*6
-                cell.progressIndicator.setProgress(progress, animated: true)
+                return progress
             case 107/12..<29/3:
                 cell.statusLabel.text = "第二节课进行中，"
                 showCourseInfo(weekdayInt, whichSection: 1, cell: cell)
                 var progress:Float = Float(hourInt-107/12)*4/3
-                cell.progressIndicator.setProgress(progress, animated: true)
+                return progress
             case 29/3..<10:
                 cell.statusLabel.text = "第二节课下课中，"
                 showCourseInfo(weekdayInt, whichSection: 2, cell: cell)
                 var progress:Float = Float(hourInt-29/3)*3
-                cell.progressIndicator.setProgress(progress, animated: true)
+                return progress
             case 10..<43/4:
                 cell.statusLabel.text = "第三节课进行中，"
                 showCourseInfo(weekdayInt, whichSection: 2, cell: cell)
                 var progress:Float = Float(hourInt-10)*4/3
-                cell.progressIndicator.setProgress(progress, animated: true)
+                return progress
             case 43/4..<131/12:
                 cell.statusLabel.text = "第三节课下课中，"
                 showCourseInfo(weekdayInt, whichSection: 3, cell: cell)
                 var progress:Float = Float(hourInt-43/4)*6
-                cell.progressIndicator.setProgress(progress, animated: true)
+                return progress
             case 131/12..<35/3:
                 cell.statusLabel.text = "第四节课进行中，"
                 showCourseInfo(weekdayInt, whichSection: 3, cell: cell)
                 var progress:Float = Float(hourInt-131/12)*4/3
-                cell.progressIndicator.setProgress(progress, animated: true)
+                return progress
             case 35/3..<12.5:
                 cell.statusLabel.text = "午饭及午休时间"
                 cell.currentCourseNameLabel.text = "Have a nice lunch and sleep!"
                 cell.currentCourseClassroomLabel.text = "@ 食堂&寝室"
                 cell.currentCourseTeacherNameLabel.text = "木有老师~"
                 var progress:Float = Float(hourInt-35/3)*6/5
-                cell.progressIndicator.setProgress(progress, animated: true)
+                return progress
             case 12.5..<14:
                 cell.statusLabel.text = "下午好，"
                 showCourseInfo(weekdayInt, whichSection: 4, cell: cell)
                 var progress:Float = Float(hourInt-12.5)*2/3
-                cell.progressIndicator.setProgress(progress, animated: true)
+                return progress
             case 14..<59/4:
                 cell.statusLabel.text = "第五节课进行中，"
                 showCourseInfo(weekdayInt, whichSection: 4, cell: cell)
                 var progress:Float = Float(hourInt-14)*4/3
-                cell.progressIndicator.setProgress(progress, animated: true)
+                return progress
             case 59/4..<179/12:
                 cell.statusLabel.text = "第五节课下课中，"
                 showCourseInfo(weekdayInt, whichSection: 5, cell: cell)
                 var progress:Float = Float(hourInt-59/4)*6
-                cell.progressIndicator.setProgress(progress, animated: true)
+                return progress
             case 179/12..<47/3:
                 cell.statusLabel.text = "第六节课进行中，"
                 showCourseInfo(weekdayInt, whichSection: 5, cell: cell)
                 var progress:Float = Float(hourInt-179/12)*4/3
-                cell.progressIndicator.setProgress(progress, animated: true)
+                return progress
             case 47/3..<16:
                 cell.statusLabel.text = "第六节课下课中，"
                 showCourseInfo(weekdayInt, whichSection: 6, cell: cell)
                 var progress:Float = Float(hourInt-47/3)*3
-                cell.progressIndicator.setProgress(progress, animated: true)
+                return progress
             case 16..<67/4:
                 cell.statusLabel.text = "第七节课进行中，"
                 showCourseInfo(weekdayInt, whichSection: 6, cell: cell)
                 var progress:Float = Float(hourInt-16)*4/3
-                cell.progressIndicator.setProgress(progress, animated: true)
+                return progress
             case 67/4..<203/12:
                 cell.statusLabel.text = "第七节课下课中，"
                 showCourseInfo(weekdayInt, whichSection: 7, cell: cell)
                 var progress:Float = Float(hourInt-67/4)*6
-                cell.progressIndicator.setProgress(progress, animated: true)
+                return progress
             case 203/12..<53/3:
                 cell.statusLabel.text = "第八节课进行中，"
                 showCourseInfo(weekdayInt, whichSection: 7, cell: cell)
                 var progress:Float = Float(hourInt-203/12)*4/3
-                cell.progressIndicator.setProgress(progress, animated: true)
+                return progress
             case 53/3..<18:
                 cell.statusLabel.text = "晚餐时间"
                 cell.currentCourseNameLabel.text = "Have a nice dinner!"
                 cell.currentCourseClassroomLabel.text = "@ 食堂"
                 cell.currentCourseTeacherNameLabel.text = "木有老师~"
                 var progress:Float = Float(hourInt-53/3)*3
-                cell.progressIndicator.setProgress(progress, animated: true)
+                return progress
             case 18..<18.5:
                 cell.statusLabel.text = "晚上好，"
                 showCourseInfo(weekdayInt, whichSection: 8, cell: cell)
                 var progress:Float = Float(hourInt-18)*2
-                cell.progressIndicator.setProgress(progress, animated: true)
+                return progress
             case 18.5..<77/4:
                 cell.statusLabel.text = "第九节课进行中，"
                 showCourseInfo(weekdayInt, whichSection: 8, cell: cell)
                 var progress:Float = Float(hourInt-18.5)*4/3
-                cell.progressIndicator.setProgress(progress, animated: true)
+                return progress
             case 77/4..<233/12:
                 cell.statusLabel.text = "第九节课下课中，"
                 showCourseInfo(weekdayInt, whichSection: 9, cell: cell)
                 var progress:Float = Float(hourInt-77/4)*6
-                cell.progressIndicator.setProgress(progress, animated: true)
+                return progress
             case 233/12..<121/6:
                 cell.statusLabel.text = "第十节课进行中，"
                 showCourseInfo(weekdayInt, whichSection: 9, cell: cell)
                 var progress:Float = Float(hourInt-233/12)*4/3
-                cell.progressIndicator.setProgress(progress, animated: true)
+                return progress
             case 121/6..<61/3:
                 cell.statusLabel.text = "第十节课下课中，"
                 showCourseInfo(weekdayInt, whichSection: 10, cell: cell)
                 var progress:Float = Float(hourInt-121/6)*6
-                cell.progressIndicator.setProgress(progress, animated: true)
+                return progress
             case 61/3..<253/12:
                 cell.statusLabel.text = "第十一节课进行中，"
                 showCourseInfo(weekdayInt, whichSection: 10, cell: cell)
                 var progress:Float = Float(hourInt-61/3)*4/3
-                cell.progressIndicator.setProgress(progress, animated: true)
+                return progress
             case 253/12..<85/4:
                 cell.statusLabel.text = "第十一节课下课中，"
                 showCourseInfo(weekdayInt, whichSection: 11, cell: cell)
                 var progress:Float = Float(hourInt-253/12)*6
-                cell.progressIndicator.setProgress(progress, animated: true)
+                return progress
             case 85/4..<22:
                 cell.statusLabel.text = "第十二节课进行中，"
                 showCourseInfo(weekdayInt, whichSection: 11, cell: cell)
                 var progress:Float = Float(hourInt-85/4)*4/3
-                cell.progressIndicator.setProgress(progress, animated: true)
+                return progress
             default:
                 cell.statusLabel.text = "忙碌的一天结束啦"
                 cell.currentCourseNameLabel.text = "Have a neat sleep!"
                 cell.currentCourseClassroomLabel.text = "@ 寝室"
                 cell.currentCourseTeacherNameLabel.text = ""
                 var progress:Float = Float(hourInt-22)/9
-                cell.progressIndicator.setProgress(progress, animated: true)
+                return progress
             }
         }
         else {
@@ -557,6 +571,7 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
             cell.currentCourseTeacherNameLabel.text = "不知道诶！"
             var alert:UIAlertView = UIAlertView(title: "数据错误", message: "还未加载课程数据\n请先到课程表页面加载课程数据", delegate: nil, cancelButtonTitle: "好的，马上去！")
             alert.show()
+            return nil
         }
     }
     
@@ -609,7 +624,7 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
             }
         }
         if (section == 12) {
-            cell.statusLabel.text = "今天已经木有课啦~"
+            cell.statusLabel.text = cell.statusLabel.text! + "\n今天已经木有课啦~"
             cell.currentCourseNameLabel.text = "无课"
             cell.currentCourseClassroomLabel.text = ""
             cell.currentCourseTeacherNameLabel.text = ""
@@ -741,6 +756,11 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
         var url:NSURL = NSURL(string: API)!
         var returnData:NSData? = NSData(contentsOfURL: url)
         if let temp = returnData {
+            
+            for i in cell.mainScrollView.subviews {
+                i.removeFromSuperview()
+            }
+            
             let jsonData:NSDictionary = NSJSONSerialization.JSONObjectWithData(returnData!, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
             let indexData:NSArray = jsonData.objectForKey("i") as NSArray
             
@@ -810,7 +830,7 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
         
     }
     
-    // MARK: storeHouseRefreshControl
+    // MARK: storeHouseRefreshControl & ScrollViewDelegate
     
     override func scrollViewDidScroll(scrollView: UIScrollView) {
         if scrollView.tag == 0 {
