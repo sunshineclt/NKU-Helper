@@ -10,12 +10,12 @@ import UIKit
 
 class time_weatherTableViewCell: UITableViewCell {
 
-    @IBOutlet var date_weatherView: UIView!
+    @IBOutlet var dateView: UIView!
+    @IBOutlet var weatherDetailView: UIView!
     @IBOutlet var weatherConditionView: UIView!
     
     @IBOutlet var weekdayLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
-    @IBOutlet var hourLabel: UILabel!
     
     @IBOutlet var PM25Label: UILabel!
     @IBOutlet var temperatureLabel: UILabel!
@@ -27,7 +27,6 @@ class time_weatherTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        hourLabel.adjustsFontSizeToFitWidth = true
         weatherConditionLabel.adjustsFontSizeToFitWidth = true
         temperatureLabel.adjustsFontSizeToFitWidth = true
         PM25Label.adjustsFontSizeToFitWidth = true

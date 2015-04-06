@@ -8,47 +8,73 @@
 
 import UIKit
 
-class ClassTimeViewController: UIViewController, NSURLConnectionDataDelegate {
+class ClassTimeViewController: UIViewController, NSURLConnectionDataDelegate, UIScrollViewDelegate {
     
-    @IBOutlet var classTimeTableWebView: UIWebView!
+    @IBOutlet var shadowView: UIView!
+    
+    @IBOutlet var classScrollView: UIScrollView!
+    
+    var testView:UIView!
+    
     var receivedData:NSMutableData! = nil
+    
+    let rowHeight:CGFloat = 50
+    let columnWidth:CGFloat = UIScreen.mainScreen().bounds.width / 8
+    
+    let colors:NSArray = [
+        UIColor(red: 190/255, green: 150/255, blue: 210/255, alpha: 1),
+        UIColor(red: 168/255, green: 239/255, blue: 233/255, alpha: 1),
+        UIColor(red: 193/255, green: 233/255, blue: 241/255, alpha: 1),
+        UIColor(red: 186/255, green: 241/255, blue: 209/255, alpha: 1),
+        UIColor(red: 34/255, green: 202/255, blue: 179/255, alpha: 1),
+        UIColor(red: 230/255, green: 225/255, blue: 187/255, alpha: 1),
+        UIColor(red: 236/255, green: 206/255, blue: 178/255, alpha: 1),
+        UIColor(red: 217/255, green: 189/255, blue: 126/255, alpha: 0.9),
+        UIColor(red: 241/255, green: 174/255, blue: 165/255, alpha: 1),
+        UIColor(red: 250/255, green: 98/255, blue: 110/255, alpha: 0.8)]
     
     // MARK: MethodsRelatedToGetCourseData
     
     override func viewDidLoad() {
         
+        testView = UIView(frame: CGRectMake(100, 100, 100, 100))
+        testView.backgroundColor = UIColor.blackColor()
+        self.view.addSubview(testView)
+        drawBackground()
+        
         var nc:NSNotificationCenter = NSNotificationCenter.defaultCenter()
-        nc.addObserver(self, selector: "refreshClassTimeTable1", name: "loginComplete", object: nil)
+        nc.addObserver(self, selector: "refreshClassTimeTable:", name: "loginComplete", object: nil)
+        
+        classScrollView.delegate = self
         
         var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         var accountInfo:NSDictionary? = userDefaults.objectForKey("accountInfo") as NSDictionary?
         if let temp = accountInfo {
-            /*
+            
             var courses:NSArray? = userDefaults.objectForKey("courses") as NSArray?
             if let temp = courses {
-            var req:NSURLRequest = NSURLRequest(URL: NSURL(string: "http://222.30.32.10/xsxk/selectedAction.do?operation=kebiao")!)
-            classTimeTableWebView.loadRequest(req)
+                drawClassTimeTable()
             }
-            else {  */
-            switch isLogIn() {
-            case 1:
-                var req:NSURLRequest = NSURLRequest(URL: NSURL(string: "http://222.30.32.10/xsxk/selectedAction.do?operation=kebiao")!)
-                classTimeTableWebView.loadRequest(req)
-                var connection:NSURLConnection? = NSURLConnection(request: req, delegate: self)
-                if let temp = connection {
-                    receivedData = NSMutableData()
+            else {
+                switch isLogIn() {
+                case 1:
+                    var req:NSURLRequest = NSURLRequest(URL: NSURL(string: "http://222.30.32.10/xsxk/selectedAction.do?operation=kebiao")!)
+                    var connection:NSURLConnection? = NSURLConnection(request: req, delegate: self)
+                    if let temp = connection {
+                        loadBeginAnimation()
+                        receivedData = NSMutableData()
+                    }
+                    else {
+                        var alert:UIAlertView = UIAlertView(title: "错误", message: "没有网络你让我怎么查课表捏？", delegate: nil, cancelButtonTitle: "好吧，那我去弄点网")
+                        alert.show()
+                    }
+                case 0:
+                    self.performSegueWithIdentifier("login", sender: nil)
+                default:
+                    var alertView:UIAlertView = UIAlertView(title: "网络错误", message: "木有网我没法加载课程表诶", delegate: nil, cancelButtonTitle: "知道啦")
+                    alertView.show()
                 }
-                else {
-                    var alert:UIAlertView = UIAlertView(title: "错误", message: "没有网络你让我怎么查课表捏？", delegate: nil, cancelButtonTitle: "好吧，那我去弄点网")
-                    alert.show()
-                }
-            case 0:
-                self.performSegueWithIdentifier("login", sender: nil)
-            default:
-                var alertView:UIAlertView = UIAlertView(title: "网络错误", message: "木有网我没法加载课程表诶，这个试用版本的课程表还是从网上加载的呢", delegate: nil, cancelButtonTitle: "知道啦，开发者加油赶紧搞下一个版本")
-                alertView.show()
             }
-            //  }
         }
             
         else {
@@ -60,11 +86,7 @@ class ClassTimeViewController: UIViewController, NSURLConnectionDataDelegate {
         
       
     }
-    
-    func refreshClassTimeTable1() {
-        refreshClassTimeTable("")
-    }
-    
+
     func isLogIn() -> Int {
         var req:NSURLRequest = NSURLRequest(URL: NSURL(string: "http://222.30.32.10/xsxk/selectedAction.do?operation=kebiao")!)
         var response:NSHTTPURLResponse = NSHTTPURLResponse()
@@ -122,6 +144,8 @@ class ClassTimeViewController: UIViewController, NSURLConnectionDataDelegate {
     }
     
     func loadAllCourseInfoWithHtml(html:NSString) {
+        print("\n")
+        print("Start Get Course Info")
         var regularExpression1:NSRegularExpression = NSRegularExpression(pattern: "(coursearrangeseq=.*)(&&classroomincode=.*)(&&week=.*)(&&begphase=.*)(&&ifkebiao=yes)", options: NSRegularExpressionOptions.CaseInsensitive, error: nil)!
         var matches:NSArray = regularExpression1.matchesInString(html, options: NSMatchingOptions.ReportProgress, range: NSMakeRange(0, html.length))
         var day:Int = 0
@@ -136,38 +160,44 @@ class ClassTimeViewController: UIViewController, NSURLConnectionDataDelegate {
                 var urlString = "http://222.30.32.10/xsxk/selectedAllAction.do?" + html.substringWithRange(presentRange.range)
                 var url:NSURL = NSURL(string: urlString)!
                 var req:NSURLRequest = NSURLRequest(URL: url)
-                var receivedData:NSData = NSURLConnection.sendSynchronousRequest(req, returningResponse: nil, error: nil)!
-                var encoding:NSStringEncoding = CFStringConvertEncodingToNSStringEncoding(0x0632)
-                var courseDetailInfoHtml:NSString = NSString(data: receivedData, encoding: encoding)!
-                
-                var subString:NSString = html.substringWithRange(NSMakeRange(presentRange.range.location - 98, 2))
-                var sectionNumber:Int = subString.integerValue / 23
-                
-                var classID,classNumber,className,weekOddEven,classroom,teacherName:NSString!
-                (classID,classNumber,className,weekOddEven,classroom,teacherName) = handleHtml(courseDetailInfoHtml)
-                var courseDetailInfo:NSMutableDictionary = NSMutableDictionary()
-                courseDetailInfo.setObject(classID, forKey: "classID")
-                courseDetailInfo.setObject(classNumber, forKey: "classNumber")
-                courseDetailInfo.setObject(className, forKey: "className")
-                courseDetailInfo.setObject(weekOddEven, forKey: "weekOddEven")
-                courseDetailInfo.setObject(classroom, forKey: "classroom")
-                courseDetailInfo.setObject(teacherName, forKey: "teacherName")
-                courseDetailInfo.setObject(day, forKey: "day")
-                courseDetailInfo.setObject(startSection, forKey: "startSection")
-                courseDetailInfo.setObject(sectionNumber, forKey: "sectionNumber")
-                
-                courses.addObject(courseDetailInfo)
-                courseCount++
-                for (var j=0;j<sectionNumber;j++) {
-                    eachDaySectionCourseStatus.addObject(courseCount)
-                }
-                startSection = startSection + sectionNumber
-                if startSection > 12 {
-                    day++
-                    startSection = 1
-                    courseStatus.addObject(eachDaySectionCourseStatus)
-                    eachDaySectionCourseStatus = NSMutableArray()
-                }
+                NSURLConnection.sendAsynchronousRequest(req, queue: NSOperationQueue.mainQueue(), completionHandler: { (response, receivedData, err) -> Void in
+                    var receivedData:NSData = NSURLConnection.sendSynchronousRequest(req, returningResponse: nil, error: nil)!
+                    var encoding:NSStringEncoding = CFStringConvertEncodingToNSStringEncoding(0x0632)
+                    var courseDetailInfoHtml:NSString = NSString(data: receivedData, encoding: encoding)!
+                    
+                    var subString:NSString = html.substringWithRange(NSMakeRange(presentRange.range.location - 98, 2))
+                    var sectionNumber:Int = subString.integerValue / 23
+                    
+                    var classID,classNumber,className,weekOddEven,classroom,teacherName:NSString!
+                    (classID,classNumber,className,weekOddEven,classroom,teacherName) = self.handleHtml(courseDetailInfoHtml)
+                    var courseDetailInfo:NSMutableDictionary = NSMutableDictionary()
+                    courseDetailInfo.setObject(classID, forKey: "classID")
+                    courseDetailInfo.setObject(classNumber, forKey: "classNumber")
+                    courseDetailInfo.setObject(className, forKey: "className")
+                    courseDetailInfo.setObject(weekOddEven, forKey: "weekOddEven")
+                    courseDetailInfo.setObject(classroom, forKey: "classroom")
+                    courseDetailInfo.setObject(teacherName, forKey: "teacherName")
+                    courseDetailInfo.setObject(day, forKey: "day")
+                    courseDetailInfo.setObject(startSection, forKey: "startSection")
+                    courseDetailInfo.setObject(sectionNumber, forKey: "sectionNumber")
+                    
+                    courses.addObject(courseDetailInfo)
+                    courseCount++
+                    for (var j=0;j<sectionNumber;j++) {
+                        eachDaySectionCourseStatus.addObject(courseCount)
+                    }
+                    startSection = startSection + sectionNumber
+                    if startSection > 12 {
+                        day++
+                        startSection = 1
+                        courseStatus.addObject(eachDaySectionCourseStatus)
+                        eachDaySectionCourseStatus = NSMutableArray()
+                    }
+                    
+                    var progress:Float = (Float(i + 1)) / Float(matches.count)
+                    self.loadAnimation(progress)
+                    
+                })
             }
             else {
                 startSection++
@@ -189,6 +219,134 @@ class ClassTimeViewController: UIViewController, NSURLConnectionDataDelegate {
         userDefaults.setObject(courses, forKey: "courses")
         userDefaults.setObject(courseStatus, forKey: "courseStatus")
         userDefaults.synchronize()
+        drawClassTimeTable()
+    }
+    
+    // MARK: 绘制课程表
+    
+    func drawBackground() {
+    
+        classScrollView.contentSize = CGSizeMake(UIScreen.mainScreen().bounds.width, 50*12)
+        
+        for (var i=0;i<=11;i++) {
+            var row:UIView = UIView(frame: CGRectMake(0, CGFloat(i) * rowHeight, UIScreen.mainScreen().bounds.width, CGFloat(rowHeight)))
+            row.backgroundColor = UIColor(red: 236/255, green: 240/255, blue: 241/255, alpha: 1)
+            row.layer.borderWidth = 0.5
+            row.layer.borderColor = UIColor(red: 216/255, green: 224/255, blue: 226/255, alpha: 1).CGColor
+            
+            var time:UILabel = UILabel(frame: CGRectMake(5, 5, 30, 20))
+            time.adjustsFontSizeToFitWidth = true
+            time.textAlignment = NSTextAlignment.Center
+            time.textColor = UIColor(red: 151/255, green: 151/255, blue: 151/255, alpha: 1)
+            
+            var section:UILabel = UILabel(frame: CGRectMake(0, 25, 40, 20))
+            section.adjustsFontSizeToFitWidth = true
+            section.textAlignment = NSTextAlignment.Center
+            section.textColor = UIColor(red: 104/255, green: 102/255, blue: 102/255, alpha: 1)
+            
+            switch i {
+            case 0:
+                time.text = "8:00"
+                section.text = "1"
+            case 1:
+                time.text = "8:55"
+                section.text = "2"
+            case 2:
+                time.text = "10:00"
+                section.text = "3"
+            case 3:
+                time.text = "10:55"
+                section.text = "4"
+            case 4:
+                time.text = "14:00"
+                section.text = "5"
+            case 5:
+                time.text = "14:55"
+                section.text = "6"
+            case 6:
+                time.text = "16:00"
+                section.text = "7"
+            case 7:
+                time.text = "16:55"
+                section.text = "8"
+            case 8:
+                time.text = "18:30"
+                section.text = "9"
+            case 9:
+                time.text = "19:25"
+                section.text = "10"
+            case 10:
+                time.text = "20:20"
+                section.text = "11"
+            default:
+                time.text = "21:15"
+                section.text = "12"
+            }
+            
+            row.addSubview(time)
+            row.addSubview(section)
+            
+            classScrollView.addSubview(row)
+        }
+     
+        shadowView.layer.shadowColor = UIColor.grayColor().CGColor
+        shadowView.layer.shadowOffset = CGSizeMake(0, 2)
+        shadowView.layer.shadowOpacity = 0.3
+        
+    }
+    
+    func drawClassTimeTable() {
+        
+        var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        var courses:NSArray = userDefaults.objectForKey("courses") as NSArray
+        for (var i=0;i<courses.count;i++) {
+            var current:NSDictionary = courses.objectAtIndex(i) as NSDictionary
+            var day:Int = current.objectForKey("day") as Int
+            var startSection:Int = current.objectForKey("startSection") as Int
+            var sectionNumber:Int = current.objectForKey("sectionNumber") as Int
+            var name:NSString = current.objectForKey("className") as NSString
+            var classroom:NSString = current.objectForKey("classroom") as NSString
+            
+            var course:UIView = UIView(frame: CGRectMake(CGFloat(day+1) * columnWidth, CGFloat(startSection - 1) * rowHeight, columnWidth, rowHeight * CGFloat(sectionNumber)))
+            course.backgroundColor = colors.objectAtIndex(i % 10) as? UIColor
+            
+            var courseName:UILabel = UILabel(frame: CGRectMake(5, 5, columnWidth - 10, rowHeight))
+            courseName.numberOfLines = 0
+            courseName.textAlignment = NSTextAlignment.Center
+            courseName.font = UIFont.systemFontOfSize(10)
+            courseName.textColor = UIColor.whiteColor()
+            courseName.text = name
+            var size = name.boundingRectWithSize(CGSizeMake(columnWidth - 10, 100), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: NSDictionary(object: courseName.font, forKey: NSFontAttributeName), context: nil).size
+            courseName.frame.size.height = size.height
+            course.addSubview(courseName)
+            
+            var classroomLabel:UILabel = UILabel(frame: CGRectMake(5, courseName.frame.height + 5, columnWidth - 10, rowHeight - 5))
+            classroomLabel.numberOfLines = 0
+            classroomLabel.textAlignment = NSTextAlignment.Center
+            classroomLabel.font = UIFont.systemFontOfSize(10)
+            classroomLabel.textColor = UIColor.whiteColor()
+            classroomLabel.text = "@" + classroom
+            course.addSubview(classroomLabel)
+            
+            self.classScrollView.addSubview(course)
+        }
+        
+    }
+    
+    // MARK: 课程表加载动画
+    
+    func loadBeginAnimation() {
+
+        
+    }
+    
+    func loadAnimation(progress:Float) {
+        
+        
+        
+    }
+    
+    func loadEndAnimation() {
         
     }
     
@@ -202,11 +360,10 @@ class ClassTimeViewController: UIViewController, NSURLConnectionDataDelegate {
             
             switch isLogIn() {
             case 1:
-                var courses:NSArray? = userDefaults.objectForKey("courses") as NSArray?
                 var req:NSURLRequest = NSURLRequest(URL: NSURL(string: "http://222.30.32.10/xsxk/selectedAction.do?operation=kebiao")!)
-                classTimeTableWebView.loadRequest(req)
                 var connection:NSURLConnection? = NSURLConnection(request: req, delegate: self)
                 if let temp = connection {
+                    loadBeginAnimation()
                     receivedData = NSMutableData()
                 }
                 else {
@@ -216,7 +373,7 @@ class ClassTimeViewController: UIViewController, NSURLConnectionDataDelegate {
             case 0:
                 self.performSegueWithIdentifier("login", sender: nil)
             default:
-                var alertView:UIAlertView = UIAlertView(title: "网络错误", message: "木有网我没法加载课程表诶，这个试用版本的课程表还是从网上加载的呢", delegate: nil, cancelButtonTitle: "知道啦，开发者加油赶紧搞下一个版本")
+                var alertView:UIAlertView = UIAlertView(title: "网络错误", message: "木有网我没法加载课程表诶", delegate: nil, cancelButtonTitle: "知道啦")
                 alertView.show()
             }
             
@@ -239,6 +396,9 @@ class ClassTimeViewController: UIViewController, NSURLConnectionDataDelegate {
         var encoding:NSStringEncoding = CFStringConvertEncodingToNSStringEncoding(0x0632)
         var html:NSString = NSString(data: self.receivedData!, encoding: encoding)!
         loadAllCourseInfoWithHtml(html)
+        loadEndAnimation()
+        drawClassTimeTable()
+
         
         //for Debug
         /*    var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
@@ -257,6 +417,20 @@ class ClassTimeViewController: UIViewController, NSURLConnectionDataDelegate {
         print("\nclassID=\(classID) classNumber=\(classNumber) className=\(className) weekOddEven=\(weekOddEven) classroom=\(classroom) teacherName=\(teacherName) 星期\(day)第\(startSection)节--第\(startSection + sectionNumber - 1)节\n")
         }
         */
+        
+    }
+    
+    // MARK: ScrollViewDelegate
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        
+    }
+    
+    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        
+    }
+    
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         
     }
     

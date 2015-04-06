@@ -189,13 +189,16 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
 
                     var anim:POPBasicAnimation = POPBasicAnimation(propertyNamed: kPOPShapeLayerStrokeEnd)
                     anim.duration = 1
-                    anim.toValue = handleStatus(cell)
-                    anim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-                    let layers = cell.animateView.layer.sublayers
-                    for i in layers {
-                        if i.isKindOfClass(CAShapeLayer) {
-                            let layer = i as CAShapeLayer
-                            layer.pop_addAnimation(anim, forKey: "show")
+                    var toValue:Float! = handleStatus(cell)
+                    if let valueTemp = toValue {
+                        anim.toValue = handleStatus(cell)
+                        anim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+                        let layers = cell.animateView.layer.sublayers
+                        for i in layers {
+                            if i.isKindOfClass(CAShapeLayer) {
+                                let layer = i as CAShapeLayer
+                                layer.pop_addAnimation(anim, forKey: "show")
+                            }
                         }
                     }
 
@@ -365,7 +368,6 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
         
         cell.dateLabel.text = month + "月" + day + "日"
         cell.weekdayLabel.text = weekday
-        cell.hourLabel.text = hour + ":" + minute
         
     }
     
@@ -833,7 +835,7 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
     // MARK: storeHouseRefreshControl & ScrollViewDelegate
     
     override func scrollViewDidScroll(scrollView: UIScrollView) {
-        if scrollView.tag == 0 {
+        if scrollView.tag == 100 {
             self.storeHouseRefreshControl.scrollViewDidScroll()
         }
         else {
@@ -842,7 +844,7 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
     }
     
     override func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        if scrollView.tag == 0 {
+        if scrollView.tag == 100 {
             self.storeHouseRefreshControl.scrollViewDidEndDragging()
         }
         else {
@@ -870,10 +872,10 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
     }
     
     override func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        if scrollView.tag == 1{
+        if scrollView.tag == 101{
             var current = scrollView.contentOffset.x / UIScreen.mainScreen().bounds.size.width
             
-            var page:UIPageControl = self.view.viewWithTag(Int(300)) as UIPageControl
+            var page:UIPageControl = self.view.viewWithTag(Int(102)) as UIPageControl
             page.currentPage = Int(current)
         }
     }
