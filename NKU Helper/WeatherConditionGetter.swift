@@ -69,9 +69,9 @@ class WeatherConditionGetter: NSObject {
         let keyBytes = secretData.bytes
         let dataBytes = stringData.bytes
         
-        var outs = malloc(UInt(CC_SHA1_DIGEST_LENGTH))
+        var outs = malloc(Int(CC_SHA1_DIGEST_LENGTH))
         
-        CCHmac(CCHmacAlgorithm(kCCHmacAlgSHA1), keyBytes, UInt(secretData.length), dataBytes, UInt(stringData.length), outs)
+        CCHmac(CCHmacAlgorithm(kCCHmacAlgSHA1), keyBytes, Int(secretData.length), dataBytes, Int(stringData.length), outs)
 
         var signatureData:NSData = NSData(bytesNoCopy: outs, length: 20, freeWhenDone: true)
         

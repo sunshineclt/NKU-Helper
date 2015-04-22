@@ -87,19 +87,19 @@ class GradeShowerTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         var cellIndentifier = "GradeCell"
-        var cell:GradeCell = tableView.dequeueReusableCellWithIdentifier(cellIndentifier, forIndexPath: indexPath) as GradeCell
+        var cell:GradeCell = tableView.dequeueReusableCellWithIdentifier(cellIndentifier, forIndexPath: indexPath) as! GradeCell
 
         
-        var now:NSDictionary = gradeResult.objectAtIndex(indexPath.row) as NSDictionary
-        var className:NSString = now.objectForKey("className") as NSString
-        var classType:NSString = now.objectForKey("classType") as NSString
-        var grade:NSString = now.objectForKey("grade") as NSString
-        var credit:NSString = now.objectForKey("credit") as NSString
+        var now:NSDictionary = gradeResult.objectAtIndex(indexPath.row) as! NSDictionary
+        var className:NSString = now.objectForKey("className") as! NSString
+        var classType:NSString = now.objectForKey("classType") as! NSString
+        var grade:NSString = now.objectForKey("grade") as! NSString
+        var credit:NSString = now.objectForKey("credit") as! NSString
         
-        cell.ClassNameLabel.text = className
-        cell.ClassTypeLabel.text = classType
-        cell.GradeLabel.text = grade
-        cell.CreditLabel.text = credit
+        cell.ClassNameLabel.text = className as String
+        cell.ClassTypeLabel.text = classType as String
+        cell.GradeLabel.text = grade as String
+        cell.CreditLabel.text = credit as String
         
         var creditNumber:Float = credit.floatValue
         var gradeNumber:Float = grade.floatValue

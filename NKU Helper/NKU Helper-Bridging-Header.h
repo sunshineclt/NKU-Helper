@@ -6,3 +6,4 @@
 #import <CommonCrypto/CommonHMAC.h>
 #import "CBStoreHouseRefreshControl.h"
 #import <POP/POP.h>
+#import <UAProgressView.h>

@@ -43,9 +43,9 @@ class LogInViewController: UIViewController, UIAlertViewDelegate, UITextFieldDel
         
         
         var userDefaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        var accountInfo:NSDictionary = userDefaults.objectForKey("accountInfo") as NSDictionary
-        var userID:String = accountInfo.objectForKey("userID") as String
-        var password:String = accountInfo.objectForKey("password") as String
+        var accountInfo:NSDictionary = userDefaults.objectForKey("accountInfo") as! NSDictionary
+        var userID:String = accountInfo.objectForKey("userID") as! String
+        var password:String = accountInfo.objectForKey("password") as! String
         
         var loginer:LogIner = LogIner(userID: userID, password: password, validateCode: validateCodeTextField.text)
         loginer.login { (error) -> Void in

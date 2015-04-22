@@ -11,10 +11,11 @@ import UIKit
 class ClassTimeViewController: UIViewController, NSURLConnectionDataDelegate, UIScrollViewDelegate {
     
     @IBOutlet var shadowView: UIView!
-    
     @IBOutlet var classScrollView: UIScrollView!
+    @IBOutlet var refreshBarButton: UIBarButtonItem!
     
-    var testView:UIView!
+    var UALoadView:UAProgressView!
+    var overlayView:UIView!
     
     var receivedData:NSMutableData! = nil
     
@@ -36,10 +37,7 @@ class ClassTimeViewController: UIViewController, NSURLConnectionDataDelegate, UI
     // MARK: MethodsRelatedToGetCourseData
     
     override func viewDidLoad() {
-        
-        testView = UIView(frame: CGRectMake(100, 100, 100, 100))
-        testView.backgroundColor = UIColor.blackColor()
-        self.view.addSubview(testView)
+
         drawBackground()
         
         var nc:NSNotificationCenter = NSNotificationCenter.defaultCenter()
@@ -48,10 +46,10 @@ class ClassTimeViewController: UIViewController, NSURLConnectionDataDelegate, UI
         classScrollView.delegate = self
         
         var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        var accountInfo:NSDictionary? = userDefaults.objectForKey("accountInfo") as NSDictionary?
+        var accountInfo:NSDictionary? = userDefaults.objectForKey("accountInfo") as! NSDictionary?
         if let temp = accountInfo {
             
-            var courses:NSArray? = userDefaults.objectForKey("courses") as NSArray?
+            var courses:NSArray? = userDefaults.objectForKey("courses") as! NSArray?
             if let temp = courses {
                 drawClassTimeTable()
             }
@@ -147,7 +145,7 @@ class ClassTimeViewController: UIViewController, NSURLConnectionDataDelegate, UI
         print("\n")
         print("Start Get Course Info")
         var regularExpression1:NSRegularExpression = NSRegularExpression(pattern: "(coursearrangeseq=.*)(&&classroomincode=.*)(&&week=.*)(&&begphase=.*)(&&ifkebiao=yes)", options: NSRegularExpressionOptions.CaseInsensitive, error: nil)!
-        var matches:NSArray = regularExpression1.matchesInString(html, options: NSMatchingOptions.ReportProgress, range: NSMakeRange(0, html.length))
+        var matches:NSArray = regularExpression1.matchesInString(html as String, options: NSMatchingOptions.ReportProgress, range: NSMakeRange(0, html.length))
         var day:Int = 0
         var startSection:Int = 1
         var courses:NSMutableArray = NSMutableArray()
@@ -155,49 +153,45 @@ class ClassTimeViewController: UIViewController, NSURLConnectionDataDelegate, UI
         var courseStatus:NSMutableArray = NSMutableArray()
         var eachDaySectionCourseStatus:NSMutableArray = NSMutableArray()
         for (var i=0;i<matches.count;i++) {
-            var presentRange = matches.objectAtIndex(i) as NSTextCheckingResult
+            var presentRange = matches.objectAtIndex(i) as! NSTextCheckingResult
             if presentRange.range.length > 67 {
                 var urlString = "http://222.30.32.10/xsxk/selectedAllAction.do?" + html.substringWithRange(presentRange.range)
                 var url:NSURL = NSURL(string: urlString)!
                 var req:NSURLRequest = NSURLRequest(URL: url)
-                NSURLConnection.sendAsynchronousRequest(req, queue: NSOperationQueue.mainQueue(), completionHandler: { (response, receivedData, err) -> Void in
-                    var receivedData:NSData = NSURLConnection.sendSynchronousRequest(req, returningResponse: nil, error: nil)!
-                    var encoding:NSStringEncoding = CFStringConvertEncodingToNSStringEncoding(0x0632)
-                    var courseDetailInfoHtml:NSString = NSString(data: receivedData, encoding: encoding)!
-                    
-                    var subString:NSString = html.substringWithRange(NSMakeRange(presentRange.range.location - 98, 2))
-                    var sectionNumber:Int = subString.integerValue / 23
-                    
-                    var classID,classNumber,className,weekOddEven,classroom,teacherName:NSString!
-                    (classID,classNumber,className,weekOddEven,classroom,teacherName) = self.handleHtml(courseDetailInfoHtml)
-                    var courseDetailInfo:NSMutableDictionary = NSMutableDictionary()
-                    courseDetailInfo.setObject(classID, forKey: "classID")
-                    courseDetailInfo.setObject(classNumber, forKey: "classNumber")
-                    courseDetailInfo.setObject(className, forKey: "className")
-                    courseDetailInfo.setObject(weekOddEven, forKey: "weekOddEven")
-                    courseDetailInfo.setObject(classroom, forKey: "classroom")
-                    courseDetailInfo.setObject(teacherName, forKey: "teacherName")
-                    courseDetailInfo.setObject(day, forKey: "day")
-                    courseDetailInfo.setObject(startSection, forKey: "startSection")
-                    courseDetailInfo.setObject(sectionNumber, forKey: "sectionNumber")
-                    
-                    courses.addObject(courseDetailInfo)
-                    courseCount++
-                    for (var j=0;j<sectionNumber;j++) {
-                        eachDaySectionCourseStatus.addObject(courseCount)
-                    }
-                    startSection = startSection + sectionNumber
-                    if startSection > 12 {
-                        day++
-                        startSection = 1
-                        courseStatus.addObject(eachDaySectionCourseStatus)
-                        eachDaySectionCourseStatus = NSMutableArray()
-                    }
-                    
-                    var progress:Float = (Float(i + 1)) / Float(matches.count)
-                    self.loadAnimation(progress)
-                    
-                })
+                var receivedData:NSData = NSURLConnection.sendSynchronousRequest(req, returningResponse: nil, error: nil)!
+                var encoding:NSStringEncoding = CFStringConvertEncodingToNSStringEncoding(0x0632)
+                var courseDetailInfoHtml:NSString = NSString(data: receivedData, encoding: encoding)!
+                
+                var subString:NSString = html.substringWithRange(NSMakeRange(presentRange.range.location - 98, 2))
+                var sectionNumber:Int = subString.integerValue / 23
+                
+                var classID,classNumber,className,weekOddEven,classroom,teacherName:NSString!
+                (classID,classNumber,className,weekOddEven,classroom,teacherName) = self.handleHtml(courseDetailInfoHtml)
+                var courseDetailInfo:NSMutableDictionary = NSMutableDictionary()
+                courseDetailInfo.setObject(classID, forKey: "classID")
+                courseDetailInfo.setObject(classNumber, forKey: "classNumber")
+                courseDetailInfo.setObject(className, forKey: "className")
+                courseDetailInfo.setObject(weekOddEven, forKey: "weekOddEven")
+                courseDetailInfo.setObject(classroom, forKey: "classroom")
+                courseDetailInfo.setObject(teacherName, forKey: "teacherName")
+                courseDetailInfo.setObject(day, forKey: "day")
+                courseDetailInfo.setObject(startSection, forKey: "startSection")
+                courseDetailInfo.setObject(sectionNumber, forKey: "sectionNumber")
+                
+                courses.addObject(courseDetailInfo)
+                courseCount++
+                for (var j=0;j<sectionNumber;j++) {
+                    eachDaySectionCourseStatus.addObject(courseCount)
+                }
+                startSection = startSection + sectionNumber
+                if startSection > 12 {
+                    day++
+                    startSection = 1
+                    courseStatus.addObject(eachDaySectionCourseStatus)
+                    eachDaySectionCourseStatus = NSMutableArray()
+                }
+                
+                
             }
             else {
                 startSection++
@@ -209,7 +203,11 @@ class ClassTimeViewController: UIViewController, NSURLConnectionDataDelegate, UI
                     eachDaySectionCourseStatus = NSMutableArray()
                 }
             }
-            
+            var progress:Float = (Float(i + 1)) / Float(matches.count)
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.loadAnimation(progress)
+
+            })
             
         }
         
@@ -298,14 +296,14 @@ class ClassTimeViewController: UIViewController, NSURLConnectionDataDelegate, UI
     func drawClassTimeTable() {
         
         var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        var courses:NSArray = userDefaults.objectForKey("courses") as NSArray
+        var courses:NSArray = userDefaults.objectForKey("courses") as! NSArray
         for (var i=0;i<courses.count;i++) {
-            var current:NSDictionary = courses.objectAtIndex(i) as NSDictionary
-            var day:Int = current.objectForKey("day") as Int
-            var startSection:Int = current.objectForKey("startSection") as Int
-            var sectionNumber:Int = current.objectForKey("sectionNumber") as Int
-            var name:NSString = current.objectForKey("className") as NSString
-            var classroom:NSString = current.objectForKey("classroom") as NSString
+            var current:NSDictionary = courses.objectAtIndex(i) as! NSDictionary
+            var day:Int = current.objectForKey("day") as! Int
+            var startSection:Int = current.objectForKey("startSection") as! Int
+            var sectionNumber:Int = current.objectForKey("sectionNumber") as! Int
+            var name:NSString = current.objectForKey("className") as! NSString
+            var classroom:NSString = current.objectForKey("classroom") as! NSString
             
             var course:UIView = UIView(frame: CGRectMake(CGFloat(day+1) * columnWidth, CGFloat(startSection - 1) * rowHeight, columnWidth, rowHeight * CGFloat(sectionNumber)))
             course.backgroundColor = colors.objectAtIndex(i % 10) as? UIColor
@@ -315,8 +313,8 @@ class ClassTimeViewController: UIViewController, NSURLConnectionDataDelegate, UI
             courseName.textAlignment = NSTextAlignment.Center
             courseName.font = UIFont.systemFontOfSize(10)
             courseName.textColor = UIColor.whiteColor()
-            courseName.text = name
-            var size = name.boundingRectWithSize(CGSizeMake(columnWidth - 10, 100), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: NSDictionary(object: courseName.font, forKey: NSFontAttributeName), context: nil).size
+            courseName.text = name as String
+            var size = name.boundingRectWithSize(CGSizeMake(columnWidth - 10, 100), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: NSDictionary(object: courseName.font, forKey: NSFontAttributeName) as [NSObject : AnyObject], context: nil).size
             courseName.frame.size.height = size.height
             course.addSubview(courseName)
             
@@ -325,7 +323,7 @@ class ClassTimeViewController: UIViewController, NSURLConnectionDataDelegate, UI
             classroomLabel.textAlignment = NSTextAlignment.Center
             classroomLabel.font = UIFont.systemFontOfSize(10)
             classroomLabel.textColor = UIColor.whiteColor()
-            classroomLabel.text = "@" + classroom
+            classroomLabel.text = "@" + (classroom as String)
             course.addSubview(classroomLabel)
             
             self.classScrollView.addSubview(course)
@@ -337,25 +335,79 @@ class ClassTimeViewController: UIViewController, NSURLConnectionDataDelegate, UI
     
     func loadBeginAnimation() {
 
+        overlayView = UIView(frame: CGRectMake(self.view.bounds.width / 2, self.view.bounds.height / 2, 0, 0))
+        overlayView.backgroundColor = UIColor.blackColor()
+        overlayView.alpha = 0.7
+        self.view.addSubview(overlayView)
         
+        var overlayViewIn:POPBasicAnimation = POPBasicAnimation(propertyNamed: kPOPViewBounds)
+        overlayViewIn.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        overlayViewIn.toValue = NSValue(CGRect: CGRectMake(0, 64, self.classScrollView.frame.width, self.classScrollView.frame.height + 30))
+        overlayViewIn.duration = 0.5
+        overlayView.pop_addAnimation(overlayViewIn, forKey: "overlayViewIn")
+        
+        UALoadView = UAProgressView(frame: CGRectMake(self.view.bounds.width / 2 - 100, self.view.bounds.height / 2 - 100, 200, 200))
+        UALoadView.tintColor = UIColor(red: 34/255, green: 205/255, blue: 198/255, alpha: 1)
+        UALoadView.lineWidth = 5
+        UALoadView.alpha = 0
+        var textLabel:UILabel = UILabel(frame: CGRectMake(20, 0, 160.0, 132.0))
+        textLabel.font = UIFont(name: "HelveticaNeue-UltraLight", size: 40)
+        textLabel.textAlignment = NSTextAlignment.Center;
+        textLabel.textColor = self.UALoadView.tintColor;
+        textLabel.backgroundColor = UIColor.clearColor();
+        textLabel.text = "0%"
+        self.UALoadView.centralView = textLabel
+        self.view.addSubview(UALoadView)
+        
+        var UALoadViewFadeIn:POPBasicAnimation = POPBasicAnimation(propertyNamed: kPOPViewAlpha)
+        UALoadViewFadeIn.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        UALoadViewFadeIn.toValue = 1
+        UALoadViewFadeIn.duration = 0.5
+        UALoadView.pop_addAnimation(UALoadViewFadeIn, forKey: "UALoadViewFadeIn")
     }
     
     func loadAnimation(progress:Float) {
         
-        
-        
+        UALoadView.setProgress(progress, animated: true)
+        var label:UILabel = UALoadView.centralView as! UILabel
+        label.text = NSString(format: "%2.0f%%", progress*100) as String
     }
     
     func loadEndAnimation() {
         
+        var overlayViewFadeOut:POPBasicAnimation = POPBasicAnimation(propertyNamed: kPOPViewAlpha)
+        overlayViewFadeOut.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        overlayViewFadeOut.duration = 1
+        overlayViewFadeOut.toValue = 0
+        overlayViewFadeOut.beginTime = CACurrentMediaTime() + 1
+        overlayView.pop_addAnimation(overlayViewFadeOut, forKey: "overlayViewFadeOut")
+        
+        var UALoadViewFadeOut:POPBasicAnimation = POPBasicAnimation(propertyNamed: kPOPViewAlpha)
+        UALoadViewFadeOut.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        UALoadViewFadeOut.duration = 1
+        UALoadViewFadeOut.toValue = 0
+        UALoadViewFadeOut.beginTime = CACurrentMediaTime() + 1
+        
+        var UALoadViewUp:POPBasicAnimation = POPBasicAnimation(propertyNamed: kPOPLayerTranslationY)
+        UALoadViewUp.duration = 1
+        UALoadViewUp.toValue = -100
+        UALoadViewUp.beginTime = CACurrentMediaTime() + 1
+        UALoadViewUp.completionBlock = { (anim:POPAnimation!, finished:Bool) -> Void in
+            if finished {
+                self.refreshBarButton.enabled = true
+            }
+        }
+        
+        UALoadView.layer.pop_addAnimation(UALoadViewUp, forKey: "UALoadViewUp")
+        UALoadView.pop_addAnimation(UALoadViewFadeOut, forKey: "UALoadViewFadeOut")
     }
     
     // MARK: button
     
     @IBAction func refreshClassTimeTable(sender: AnyObject) {
-        
+        refreshBarButton.enabled = false
         var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        var accountInfo:NSDictionary? = userDefaults.objectForKey("accountInfo") as NSDictionary?
+        var accountInfo:NSDictionary? = userDefaults.objectForKey("accountInfo") as! NSDictionary?
         if let temp = accountInfo {
             
             switch isLogIn() {
@@ -369,12 +421,15 @@ class ClassTimeViewController: UIViewController, NSURLConnectionDataDelegate, UI
                 else {
                     var alert:UIAlertView = UIAlertView(title: "错误", message: "没有网络你让我怎么查课表捏？", delegate: nil, cancelButtonTitle: "好吧，那我去弄点网")
                     alert.show()
+                    refreshBarButton.enabled = true
                 }
             case 0:
+                refreshBarButton.enabled = true
                 self.performSegueWithIdentifier("login", sender: nil)
             default:
                 var alertView:UIAlertView = UIAlertView(title: "网络错误", message: "木有网我没法加载课程表诶", delegate: nil, cancelButtonTitle: "知道啦")
                 alertView.show()
+                refreshBarButton.enabled = true
             }
             
         }
@@ -382,6 +437,7 @@ class ClassTimeViewController: UIViewController, NSURLConnectionDataDelegate, UI
         else {
             var alert:UIAlertView = UIAlertView(title: "请先登录", message: "登陆后方可查看课表，请到设置中登录！", delegate: nil, cancelButtonTitle: "知道了！")
             alert.show()
+            refreshBarButton.enabled = true
         }
         
     }
@@ -395,9 +451,14 @@ class ClassTimeViewController: UIViewController, NSURLConnectionDataDelegate, UI
     func connectionDidFinishLoading(connection: NSURLConnection) {
         var encoding:NSStringEncoding = CFStringConvertEncodingToNSStringEncoding(0x0632)
         var html:NSString = NSString(data: self.receivedData!, encoding: encoding)!
-        loadAllCourseInfoWithHtml(html)
-        loadEndAnimation()
-        drawClassTimeTable()
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), { () -> Void in
+            self.loadAllCourseInfoWithHtml(html)
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.loadEndAnimation()
+                self.drawClassTimeTable()
+            })
+        })
+
 
         
         //for Debug

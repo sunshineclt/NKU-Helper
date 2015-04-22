@@ -75,19 +75,19 @@ class GradeGetter: NSObject, NSURLConnectionDataDelegate {
         
         var regularXP1:NSRegularExpression = NSRegularExpression(pattern: "<tr", options: NSRegularExpressionOptions.CaseInsensitive, error: nil)!
         var regularXP2:NSRegularExpression = NSRegularExpression(pattern: "(<td.*?>)(.*?)(\t)(</td>)", options: NSRegularExpressionOptions.DotMatchesLineSeparators, error: nil)!
-        var matches:NSArray = regularXP1.matchesInString(ans, options: NSMatchingOptions.ReportProgress, range: NSMakeRange(0, ans.length))
+        var matches:NSArray = regularXP1.matchesInString(ans as String, options: NSMatchingOptions.ReportProgress, range: NSMakeRange(0, ans.length))
         for var i=0; i<matches.count; i++ {
-            var r1:NSTextCheckingResult = matches.objectAtIndex(i) as NSTextCheckingResult
+            var r1:NSTextCheckingResult = matches.objectAtIndex(i) as! NSTextCheckingResult
             var r2:NSTextCheckingResult
             var now:NSString
             if (i < matches.count-1){
-                r2 = matches.objectAtIndex(i+1) as NSTextCheckingResult
+                r2 = matches.objectAtIndex(i+1) as! NSTextCheckingResult
                 now = ans.substringWithRange(NSMakeRange(r1.range.location, r2.range.location-r1.range.location))
             }
             else{
                 now = ans.substringFromIndex(r1.range.location)
             }
-            var items:NSArray = regularXP2.matchesInString(now, options: NSMatchingOptions.ReportProgress, range: NSMakeRange(0, now.length))
+            var items:NSArray = regularXP2.matchesInString(now as String, options: NSMatchingOptions.ReportProgress, range: NSMakeRange(0, now.length))
             
 /*
             print("*********************************************\n")

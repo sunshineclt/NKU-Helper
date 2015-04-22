@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate{
         
         UINavigationBar.appearance().barTintColor = UIColor(red: 0, green: 0.75, blue: 1, alpha: 1)
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
-        UINavigationBar.appearance().titleTextAttributes = NSDictionary(object: UIColor.whiteColor(), forKey: NSForegroundColorAttributeName)
+        UINavigationBar.appearance().titleTextAttributes = NSDictionary(object: UIColor.whiteColor(), forKey: NSForegroundColorAttributeName) as [NSObject : AnyObject]
 
         var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         var preferredColors:NSMutableArray? = userDefaults.objectForKey("preferredColors") as? NSMutableArray
@@ -68,7 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate{
     lazy var applicationDocumentsDirectory: NSURL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "April-Sunshine.NKU_Helper" in the application's documents Application Support directory.
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
-        return urls[urls.count-1] as NSURL
+        return urls[urls.count-1] as! NSURL
     }()
 
     lazy var managedObjectModel: NSManagedObjectModel = {
@@ -91,7 +91,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate{
             dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data"
             dict[NSLocalizedFailureReasonErrorKey] = failureReason
             dict[NSUnderlyingErrorKey] = error
-            error = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict)
+            error = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict as [NSObject : AnyObject])
             // Replace this with code to handle the error appropriately.
             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
             NSLog("Unresolved error \(error), \(error!.userInfo)")

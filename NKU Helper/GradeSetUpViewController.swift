@@ -54,9 +54,9 @@ class GradeSetUpViewController: UIViewController, UIAlertViewDelegate, UITextFie
     @IBAction func login(sender: AnyObject) {
         
         var userDefaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        var accountInfo:NSDictionary = userDefaults.objectForKey("accountInfo") as NSDictionary
-        var userID:String = accountInfo.objectForKey("userID") as String
-        var password:String = accountInfo.objectForKey("password") as String
+        var accountInfo:NSDictionary = userDefaults.objectForKey("accountInfo") as! NSDictionary
+        var userID:String = accountInfo.objectForKey("userID") as! String
+        var password:String = accountInfo.objectForKey("password") as! String
         var loginer:LogIner = LogIner(userID: userID, password: password, validateCode: validateCodeTextField.text)
         loginer.login { (error) -> Void in
             if let temp = error {
@@ -103,7 +103,7 @@ class GradeSetUpViewController: UIViewController, UIAlertViewDelegate, UITextFie
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "ShowGrade" {
-            var destination:GradeShowerTableViewController = segue.destinationViewController as GradeShowerTableViewController
+            var destination:GradeShowerTableViewController = segue.destinationViewController as! GradeShowerTableViewController
             destination.gradeResult = self.gradeResult
         }
         

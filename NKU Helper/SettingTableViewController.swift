@@ -43,23 +43,23 @@ class SettingTableViewController: UITableViewController {
         switch indexPath.section {
         case 0:
             var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-            var accountInfo:NSDictionary? = userDefaults.objectForKey("accountInfo") as NSDictionary?
+            var accountInfo:NSDictionary? = userDefaults.objectForKey("accountInfo") as! NSDictionary?
             if let temp = accountInfo {
-                var cell:AccountTableViewCell = tableView.dequeueReusableCellWithIdentifier("Account") as AccountTableViewCell
-                var userID:String = accountInfo!.objectForKey("userID") as String
-                var name:String = accountInfo?.objectForKey("name") as String
-                var departmentAdmitted:String = accountInfo?.objectForKey("departmentAdmitted") as String
+                var cell:AccountTableViewCell = tableView.dequeueReusableCellWithIdentifier("Account") as! AccountTableViewCell
+                var userID:String = accountInfo!.objectForKey("userID") as! String
+                var name:String = accountInfo?.objectForKey("name") as! String
+                var departmentAdmitted:String = accountInfo?.objectForKey("departmentAdmitted") as! String
                 
-                var timeEnteringSchool:NSString = accountInfo?.objectForKey("timeEnteringSchool") as NSString
+                var timeEnteringSchool:NSString = accountInfo?.objectForKey("timeEnteringSchool") as! NSString
                 timeEnteringSchool = timeEnteringSchool.substringWithRange(NSMakeRange(2, 2))
                 cell.nameLabel.text = name
                 cell.userIDLabel.text = userID
-                cell.departmentLabel.text = departmentAdmitted + timeEnteringSchool + "级本科生"
+                cell.departmentLabel.text = departmentAdmitted + (timeEnteringSchool as String) + "级本科生"
                 return cell
 
             }
             else {
-                var cell = tableView.dequeueReusableCellWithIdentifier("AddAccount") as UITableViewCell
+                var cell = tableView.dequeueReusableCellWithIdentifier("AddAccount") as! UITableViewCell
                 
                 cell.textLabel?.text = "请先登录！"
                 cell.detailTextLabel?.text = "欢迎使用NKU Helper！"
@@ -67,9 +67,9 @@ class SettingTableViewController: UITableViewController {
 
             }
         case 1:
-            var cell = tableView.dequeueReusableCellWithIdentifier("color") as ColorTableViewCell
+            var cell = tableView.dequeueReusableCellWithIdentifier("color") as! ColorTableViewCell
             return cell
-        default: var cell = tableView.dequeueReusableCellWithIdentifier("1234") as UITableViewCell
+        default: var cell = tableView.dequeueReusableCellWithIdentifier("1234") as! UITableViewCell
         return cell
 
             

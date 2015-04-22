@@ -233,7 +233,7 @@
                                             <constraint firstAttribute="height" constant="21" id="Ht6-Yj-wUC"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -253,7 +253,7 @@
                                             <constraint firstAttribute="width" constant="29" id="xTi-qQ-7jm"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -273,7 +273,7 @@
                                             <constraint firstAttribute="height" constant="21" id="JtL-vk-NVy"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -293,7 +293,7 @@
                                             <constraint firstAttribute="height" constant="21" id="CQX-Wx-y6X"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -313,7 +313,7 @@
                                             <constraint firstAttribute="width" constant="29" id="Zlq-JB-IyS"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -333,7 +333,7 @@
                                             <constraint firstAttribute="height" constant="21" id="8Eu-wQ-TDi"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -353,7 +353,7 @@
                                             <constraint firstAttribute="width" constant="29" id="Wk5-ln-ynd"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -416,8 +416,10 @@
                     </navigationItem>
                     <connections>
                         <outlet property="classScrollView" destination="2F2-PM-Sex" id="aEJ-VA-RQ8"/>
+                        <outlet property="refreshBarButton" destination="N8S-dq-Sve" id="L78-1S-JSr"/>
                         <outlet property="shadowView" destination="O1g-1G-R3x" id="Rc0-Fr-iaK"/>
                         <segue destination="JxO-gb-eEZ" kind="modal" identifier="login" id="BUn-8p-Q6f"/>
+                        <segue destination="ABN-7o-Bhx" kind="push" identifier="showCourseDetail" id="CMu-aS-OG2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zvr-l2-dvi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1051,6 +1053,7 @@
                                     <outlet property="currentCourseTeacherNameLabel" destination="gEt-jg-RVl" id="0jq-Dq-zxd"/>
                                     <outlet property="graphicsView" destination="YHi-Ft-KNU" id="M2A-Df-tln"/>
                                     <outlet property="statusLabel" destination="tnP-dH-gP3" id="Unb-7n-Xum"/>
+                                    <segue destination="ABN-7o-Bhx" kind="push" identifier="showCourseDetail" id="YOJ-pm-slv"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="lifeIndex" rowHeight="120" id="Sc7-2P-u4x" userLabel="lifeIndex" customClass="LifeIndexTableViewCell" customModule="NKU_Helper" customModuleProvider="target">
@@ -1198,6 +1201,47 @@
             </objects>
             <point key="canvasLocation" x="1578.6666666666667" y="-1495.7333333333333"/>
         </scene>
+        <!--Table View Controller-->
+        <scene sceneID="hla-8b-GeY">
+            <objects>
+                <tableViewController id="ABN-7o-Bhx" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="3Ky-uo-Ngz">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="courseDetail" textLabel="wjU-Fm-qqQ" detailTextLabel="8E7-uw-DiI" style="IBUITableViewCellStyleValue1" id="4vq-1K-k7h">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4vq-1K-k7h" id="Rde-ec-HDD">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wjU-Fm-qqQ">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8E7-uw-DiI">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ABN-7o-Bhx" id="mkj-3W-L6a"/>
+                            <outlet property="delegate" destination="ABN-7o-Bhx" id="0KB-ag-XgJ"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="hWC-Jp-lgD"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q1e-GP-RCl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2203" y="-1496"/>
+        </scene>
         <!--课程表-->
         <scene sceneID="KJp-g8-xo7">
             <objects>
@@ -1268,4 +1312,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="YOJ-pm-slv"/>
+    </inferredMetricsTieBreakers>
 </document>
