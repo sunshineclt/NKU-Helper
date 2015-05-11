@@ -8,39 +8,30 @@
 
 import Foundation
 class imageGetter: NSObject ,NSURLConnectionDataDelegate {
+    
     var connection:NSURLConnection?
     var responseData:NSMutableData?
-    var readyToStart:Bool = false
-    var block:((data:NSData?, err:NSError?)->Void)
+    var block:((data:NSData?, err:String?)->Void)!
     
-    func getImageWithBlock(theBlock:(data:NSData?, err:NSError?)->Void){
+    func getImageWithBlock(theBlock:(data:NSData?, err:String?)->Void) {
+        
         block = theBlock
-        if readyToStart {
-            responseData = NSMutableData()
-            connection?.start()
-            print("Image Receiving Data!\n")
+        var req:NSURLRequest = NSURLRequest(URL: NSURL(string: "http://222.30.32.10/ValidateCode")!)
+        responseData = NSMutableData()
+        connection = NSURLConnection(request: req, delegate: self)
+        if let temp = connection {
+            print("Image Connection Setting Succeed\n")
         }
-        else{
-            print("Image Not Ready To Start Connection!!!\n")
+        else {
+            block(data: nil, err:"网络错误")
         }
     }
     
     override init() {
-        block = {(data:NSData?, err:NSError?)->Void in
-        
-        }
         super.init()
-        var req:NSURLRequest = NSURLRequest(URL: NSURL(string: "http://222.30.32.10/ValidateCode")!)
-        connection = NSURLConnection(request: req, delegate: self, startImmediately: false)
-        readyToStart = false
+        connection = nil
         responseData = nil
-        if let temp = connection {
-            print("Image Connection Setting Succeed\n")
-            readyToStart = true
-        }
-        else {
-            var alertView:UIAlertView = UIAlertView(title: "网络错误", message: "没有网无法加载验证码", delegate: nil, cancelButtonTitle: "好，现在就去弄点网")
-        }
+        block = nil
     }
     
     func connection(connection: NSURLConnection, didReceiveData data: NSData) {
@@ -49,11 +40,8 @@ class imageGetter: NSObject ,NSURLConnectionDataDelegate {
     }
     
     func connectionDidFinishLoading(connection: NSURLConnection) {
-        
         print("Image connection Did Finish Loading!\n")
         block(data: responseData, err: nil)
-
-        
     }
     
 }

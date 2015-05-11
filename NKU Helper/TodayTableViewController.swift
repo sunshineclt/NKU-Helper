@@ -16,10 +16,11 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
     
     @IBOutlet var segmentedController: UISegmentedControl!
     var storeHouseRefreshControl:CBStoreHouseRefreshControl!
+  //  var isRefreshControllerAnimating:Bool = false
     
     // MARK: 渲染Overview Class的颜色
     
-    var usedColor:NSMutableArray!
+    var usedColor:[Int]!
     let colors:NSArray = [
         UIColor(red: 190/255, green: 150/255, blue: 210/255, alpha: 1),
         UIColor(red: 168/255, green: 239/255, blue: 233/255, alpha: 1),
@@ -35,11 +36,11 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
     
     // MARK: 与weather有关
     
-    var recentRefreshWeather:NSDate!
     var timer:NSTimer!
     var receivedWeatherData:NSMutableData?
-    let weatherEncodeToWeatherCondition:NSDictionary = ["00":"晴", "01":"多云", "02":"阴", "03":"阵雨", "04":"雷阵雨", "05":"雷阵雨伴有冰雹", "06":"雨夹雪", "07":"小雨", "08":"中雨", "09":"大雨", "10":"暴雨", "11":"大暴雨", "12":"特大暴雨", "13":"阵雪", "14":"小雪", "15":"中雪", "16":"大雪", "17":"暴雪", "18":"雾", "19":"冻雨", "20":"沙尘暴", "21":"小到中雨", "22":"中到大雨", "23":"大到暴雨", "24":"暴雨到大暴雨", "25":"大暴雨到特大暴雨", "26":"小到中雪", "27":"中到大雪", "28":"大到暴雪", "29":"浮尘", "30":"扬沙", "31":"强沙尘暴", "53":"霾", "99":"无"]
-    var recentRefreshLifeIndex:NSDate!
+    let weatherEncodeToWeatherCondition:Dictionary<String, String> = ["00":"晴", "01":"多云", "02":"阴", "03":"阵雨", "04":"雷阵雨", "05":"雷阵雨伴有冰雹", "06":"雨夹雪", "07":"小雨", "08":"中雨", "09":"大雨", "10":"暴雨", "11":"大暴雨", "12":"特大暴雨", "13":"阵雪", "14":"小雪", "15":"中雪", "16":"大雪", "17":"暴雪", "18":"雾", "19":"冻雨", "20":"沙尘暴", "21":"小到中雨", "22":"中到大雨", "23":"大到暴雨", "24":"暴雨到大暴雨", "25":"大暴雨到特大暴雨", "26":"小到中雪", "27":"中到大雪", "28":"大到暴雪", "29":"浮尘", "30":"扬沙", "31":"强沙尘暴", "53":"霾", "99":"无"]
+    
+    //
     
     var currentCourse:Int!
     
@@ -56,8 +57,12 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "resignActive", name: UIApplicationWillResignActiveNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "enterForeground", name: UIApplicationWillEnterForegroundNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "becomeActive", name: UIApplicationDidBecomeActiveNotification, object: nil)
+        
+        self.tableView.contentOffset = CGPointMake(0, -100)
+        self.storeHouseRefreshControl.scrollViewDidEndDragging()
+
     }
-    
+
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         if let temp = timer {
@@ -91,16 +96,16 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
     // MARK: tableView Data Source
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        usedColor = NSMutableArray()
+        usedColor = []
         for var i=0;i<12;i++ {
-            usedColor.addObject(1)
+            usedColor.append(1)
         }
         return 1
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if segmentedController.selectedSegmentIndex == 0 {
-            return 3
+            return 2
         }
         else {
             var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
@@ -143,59 +148,32 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         if segmentedController.selectedSegmentIndex == 0 {
+            // Now页面
+            
             switch (indexPath.row) {
             case 0:
-                var cell:time_weatherTableViewCell = (tableView.dequeueReusableCellWithIdentifier("time_weather") as? time_weatherTableViewCell)!
-
-                var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-                var account:NSDictionary? = (userDefaults.objectForKey("accountInfo") as? NSDictionary?)!
-                if let temp = account {
-                    handleDate(cell)
-                    if let temp = recentRefreshWeather {
-                        
-                        var date = NSDate()
-                        var calender:NSCalendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)!
-                        var unitFlags:NSCalendarUnit = NSCalendarUnit.CalendarUnitDay | NSCalendarUnit.CalendarUnitHour
-                    //    var calender:NSCalendar = NSCalendar(identifier: NSGregorianCalendar)!
-                      //  var unitFlags:NSCalendarUnit = NSCalendarUnit.DayCalendarUnit | NSCalendarUnit.HourCalendarUnit
-                        
-                        var components:NSDateComponents = calender.components(unitFlags, fromDate: date)
-                        var hourNow:Int = components.hour
-                        var dayNow:Int = components.day
-                        
-                        components = calender.components(unitFlags, fromDate: recentRefreshWeather)
-                        var hourRecent:Int = components.hour
-                        var dayRecent:Int = components.day
-                        
-                        if (dayNow != dayRecent) || ((hourRecent < 6) && (hourNow >= 6)) || ((hourRecent >= 6) && (hourRecent < 8) && (hourNow >= 8)) || ((hourRecent >= 8) && (hourRecent < 11) && (hourNow >= 11)) || ((hourRecent >= 11) && (hourRecent < 18) && (hourNow >= 18)) {
-                            recentRefreshWeather = date
-                            refreshWeatherCondition(cell)
-                            refreshPM25(cell)
-                        }
-                    }
-                    else {
-                        recentRefreshWeather = NSDate()
-                        refreshWeatherCondition(cell)
-                        refreshPM25(cell)
-                    }
-                }
-                else {
-                    var alert:UIAlertView = UIAlertView(title: "您尚未登录", message: "登录后方可使用NKU Helper\n登录选项位于设置选项卡中", delegate: nil, cancelButtonTitle: "好的")
-                    alert.show()
-                }
+                // 显示天气、日期、状态条
+                var cell:TimeWeatherStatusTableViewCell = tableView.dequeueReusableCellWithIdentifier("time_weather") as! TimeWeatherStatusTableViewCell
+                
+                handleDate(cell)
+                refreshWeatherCondition(cell)
+                refreshPM25(cell)
+                
                 return cell
             case 1:
+                // 显示当前课程
+                
                 var cell:courseCurrentTableViewCell = tableView.dequeueReusableCellWithIdentifier("courseCurrent") as! courseCurrentTableViewCell
                 
                 var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-                var account:NSDictionary? = userDefaults.objectForKey("accountInfo") as! NSDictionary?
+                var account:NSDictionary? = userDefaults.objectForKey("accountInfo") as? NSDictionary
                 if let temp = account {
 
-                    var anim:POPBasicAnimation = POPBasicAnimation(propertyNamed: kPOPShapeLayerStrokeEnd)
-                    anim.duration = 1
                     var toValue:Float! = handleStatus(cell)
                     if let valueTemp = toValue {
-                        anim.toValue = handleStatus(cell)
+                        var anim:POPBasicAnimation = POPBasicAnimation(propertyNamed: kPOPShapeLayerStrokeEnd)
+                        anim.duration = 1
+                        anim.toValue = toValue
                         anim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
                         let layers = cell.animateView.layer.sublayers
                         for i in layers {
@@ -205,58 +183,28 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
                             }
                         }
                     }
-
+                    
                 }
                 else {
-                    cell.currentCourseClassroomLabel.text = "N/A"
-                    cell.currentCourseNameLabel.text = "N/A"
-                    cell.currentCourseTeacherNameLabel.text = "N/A"
-                    cell.statusLabel.text = "N/A"
+                    
+                    var alert:UIAlertView = UIAlertView(title: "您尚未登录", message: "登录后方可使用NKU Helper\n登录选项位于设置选项卡中", delegate: nil, cancelButtonTitle: "好的")
+                    alert.show()
+                    
+                    cell.currentCourseClassroomLabel.text = "不知道诶！"
+                    cell.currentCourseNameLabel.text = "不知道诶！"
+                    cell.currentCourseTeacherNameLabel.text = "不知道诶！"
+                    cell.statusLabel.text = "不知道诶！"
                 }
                 
                 return cell
             default:
-                //lifeIndexCell
-                
-                var cell:LifeIndexTableViewCell = tableView.dequeueReusableCellWithIdentifier("lifeIndex") as! LifeIndexTableViewCell
-                cell.mainScrollView.delegate = self
-                cell.mainScrollView.contentSize = CGSizeMake(UIScreen.mainScreen().bounds.width * 3, 100)
-                var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-                var account:NSDictionary? = userDefaults.objectForKey("accountInfo") as! NSDictionary?
-                if let temp = account {
-                    if let temp = recentRefreshLifeIndex {
-                        
-                        var date = NSDate()
-                        var calender:NSCalendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)!
-                        var unitFlags:NSCalendarUnit = NSCalendarUnit.CalendarUnitDay | NSCalendarUnit.CalendarUnitHour
-                  //      var calender:NSCalendar = NSCalendar(identifier: NSGregorianCalendar)!
-                    //    var unitFlags:NSCalendarUnit = NSCalendarUnit.DayCalendarUnit | NSCalendarUnit.HourCalendarUnit
-                        
-                        var components:NSDateComponents = calender.components(unitFlags, fromDate: date)
-                        var hourNow:Int = components.hour
-                        var dayNow:Int = components.day
-                        
-                        components = calender.components(unitFlags, fromDate: recentRefreshLifeIndex)
-                        var hourRecent:Int = components.hour
-                        var dayRecent:Int = components.day
-                        
-                        if (dayNow != dayRecent) || ((hourRecent < 6) && (hourNow >= 6)) || ((hourRecent >= 6) && (hourRecent < 8) && (hourNow >= 8)) || ((hourRecent >= 8) && (hourRecent < 11) && (hourNow >= 11)) || ((hourRecent >= 11) && (hourRecent < 18) && (hourNow >= 18)) {
-                            recentRefreshLifeIndex = NSDate()
-                            refreshLifeIndex(cell)
-                        }
-                    }
-                    else {
-                        recentRefreshLifeIndex = NSDate()
-                        refreshLifeIndex(cell)
-                    }
-                }
-                
-                
-                
-                return cell
+                var 💩:UITableViewCell? = self.tableView.dequeueReusableCellWithIdentifier("miaomiao") as? UITableViewCell
+                return 💩!
             }
         }
         else {
+            // courseOverView
+            
             var cell:coursesOverViewTableViewCell = tableView.dequeueReusableCellWithIdentifier("coursesOverview") as! coursesOverViewTableViewCell
             
             var date = NSDate()
@@ -300,7 +248,7 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
             var count:Int = 0
             var colorIndex = Int(arc4random_uniform(10))
             
-            while (usedColor.objectAtIndex(colorIndex) as! Int == 0) || (likedColors.objectAtIndex(colorIndex) as! Int == 0) {
+            while (usedColor[colorIndex] == 0) || (likedColors.objectAtIndex(colorIndex) as! Int == 0) {
                 colorIndex = Int(arc4random_uniform(10))
                 count++
                 if count>1000 {
@@ -312,7 +260,7 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
             imageView.alpha = 1
             imageView.layer.cornerRadius = 8
             cell.backgroundView?.addSubview(imageView)
-            usedColor.replaceObjectAtIndex(colorIndex, withObject: 0)
+            usedColor[colorIndex] = 0
             
             return cell
         }
@@ -321,7 +269,7 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if segmentedController.selectedSegmentIndex == 0 {
             switch indexPath.row {
-            case 0:return 110
+            case 0:return 100
             case 1:return courseCurrentViewHeight
             default:return 120
             }
@@ -335,7 +283,7 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
     
     // MARK: handle Date、Course、Weather、AQI to be presented on view
     
-    func handleDate(cell: time_weatherTableViewCell) {
+    func handleDate(cell: TimeWeatherStatusTableViewCell) {
         
         var date = NSDate()
         var calender:NSCalendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)!
@@ -344,8 +292,8 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
         var year:String = "\(components.year)"
         var month:String = "\(components.month)"
         var day:String = "\(components.day)"
-        var hour:NSString = "\(components.hour)"
-        var minute:NSString = "\(components.minute)"
+        var hour:String = "\(components.hour)"
+        var minute:String = "\(components.minute)"
         var second:String = "\(components.second)"
         var weekday:String
         switch (components.weekday) {
@@ -363,13 +311,13 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
             weekday = "星期五"
         case 7:
             weekday = "星期六"
-        default:weekday = "哈？星期N"
+        default:weekday = "星期N"
         }
-        if hour.length < 2 {
-            hour = "0" + (hour as String)
+        if count(hour) < 2 {
+            hour = "0" + hour
         }
-        if minute.length < 2 {
-            minute = "0" + (minute as String)
+        if count(minute) < 2 {
+            minute = "0" + minute
         }
         
         cell.dateLabel.text = month + "月" + day + "日"
@@ -383,8 +331,6 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
         var calender:NSCalendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)!
         var unitFlags:NSCalendarUnit = NSCalendarUnit.CalendarUnitWeekday | NSCalendarUnit.CalendarUnitHour | NSCalendarUnit.CalendarUnitMinute
         var components:NSDateComponents = calender.components(unitFlags, fromDate: date)
-        var hour:NSString = "\(components.hour)"
-        var minute:NSString = "\(components.minute)"
         var weekdayInt:Int = -1
         switch (components.weekday) {
         case 1:
@@ -403,12 +349,6 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
             weekdayInt = 5
         default:weekdayInt = -1
         }
-        if hour.length < 2 {
-            hour = "0" + (hour as String)
-        }
-        if minute.length < 2 {
-            minute = "0" + (minute as String)
-        }
         
         var hourInt:Double = Double(components.hour) + Double(components.minute)/60
         var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
@@ -421,57 +361,57 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
             
             switch (hourInt) {
             case 0..<7:
-                cell.statusLabel.text = "充足的睡眠是美好一天的开始！"
-                cell.currentCourseNameLabel.text = "Have a neat sleep!"
+//                cell.statusLabel.text = "充足的睡眠是美好一天的开始！"
+                cell.currentCourseNameLabel.text = "充足的睡眠是美好一天的开始!"
                 cell.currentCourseClassroomLabel.text = "@ 寝室"
                 cell.currentCourseTeacherNameLabel.text = ""
-                var progress:Float = Float(hourInt+2)/9
+                var progress:Float = Float(hourInt+2)/10
                 currentCourse = -1
                 return progress
             case 7..<8:
-                cell.statusLabel.text = "早上好，"
+                cell.statusLabel.text = "早上好"
                 showCourseInfo(weekdayInt, whichSection: 0, cell: cell)
                 currentCourse = 0
-                var progress:Float = Float(hourInt-7)
+                var progress:Float = Float(hourInt+2)/10
                 return progress
             case 8..<35/4:
-                cell.statusLabel.text = "第一节课进行中，"
+                cell.statusLabel.text = "第一节课进行中"
                 showCourseInfo(weekdayInt, whichSection: 0, cell: cell)
                 currentCourse = 0
                 var progress:Float = Float(hourInt-8)*4/3
                 return progress
             case 35/4..<107/12:
-                cell.statusLabel.text = "第一节课下课中，"
+                cell.statusLabel.text = "第一节课下课中"
                 showCourseInfo(weekdayInt, whichSection: 1, cell: cell)
                 currentCourse = 1
                 var progress:Float = Float(hourInt-35/4)*6
                 return progress
             case 107/12..<29/3:
-                cell.statusLabel.text = "第二节课进行中，"
+                cell.statusLabel.text = "第二节课进行中"
                 showCourseInfo(weekdayInt, whichSection: 1, cell: cell)
                 currentCourse = 1
                 var progress:Float = Float(hourInt-107/12)*4/3
                 return progress
             case 29/3..<10:
-                cell.statusLabel.text = "第二节课下课中，"
+                cell.statusLabel.text = "第二节课下课中"
                 showCourseInfo(weekdayInt, whichSection: 2, cell: cell)
                 currentCourse = 2
                 var progress:Float = Float(hourInt-29/3)*3
                 return progress
             case 10..<43/4:
-                cell.statusLabel.text = "第三节课进行中，"
+                cell.statusLabel.text = "第三节课进行中"
                 showCourseInfo(weekdayInt, whichSection: 2, cell: cell)
                 currentCourse = 2
                 var progress:Float = Float(hourInt-10)*4/3
                 return progress
             case 43/4..<131/12:
-                cell.statusLabel.text = "第三节课下课中，"
+                cell.statusLabel.text = "第三节课下课中"
                 showCourseInfo(weekdayInt, whichSection: 3, cell: cell)
                 currentCourse = 3
                 var progress:Float = Float(hourInt-43/4)*6
                 return progress
             case 131/12..<35/3:
-                cell.statusLabel.text = "第四节课进行中，"
+                cell.statusLabel.text = "第四节课进行中"
                 showCourseInfo(weekdayInt, whichSection: 3, cell: cell)
                 currentCourse = 3
                 var progress:Float = Float(hourInt-131/12)*4/3
@@ -482,52 +422,52 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
                 cell.currentCourseClassroomLabel.text = "@ 食堂&寝室"
                 cell.currentCourseTeacherNameLabel.text = "木有老师~"
                 currentCourse = -1
-                var progress:Float = Float(hourInt-35/3)*6/5
+                var progress:Float = Float(hourInt-35/3)*3/7
                 return progress
             case 12.5..<14:
-                cell.statusLabel.text = "下午好，"
+                cell.statusLabel.text = "下午好"
                 showCourseInfo(weekdayInt, whichSection: 4, cell: cell)
                 currentCourse = 4
-                var progress:Float = Float(hourInt-12.5)*2/3
+                var progress:Float = Float(hourInt-35/3)*3/7
                 return progress
             case 14..<59/4:
-                cell.statusLabel.text = "第五节课进行中，"
+                cell.statusLabel.text = "第五节课进行中"
                 showCourseInfo(weekdayInt, whichSection: 4, cell: cell)
                 currentCourse = 4
                 var progress:Float = Float(hourInt-14)*4/3
                 return progress
             case 59/4..<179/12:
-                cell.statusLabel.text = "第五节课下课中，"
+                cell.statusLabel.text = "第五节课下课中"
                 showCourseInfo(weekdayInt, whichSection: 5, cell: cell)
                 currentCourse = 5
                 var progress:Float = Float(hourInt-59/4)*6
                 return progress
             case 179/12..<47/3:
-                cell.statusLabel.text = "第六节课进行中，"
+                cell.statusLabel.text = "第六节课进行中"
                 showCourseInfo(weekdayInt, whichSection: 5, cell: cell)
                 currentCourse = 5
                 var progress:Float = Float(hourInt-179/12)*4/3
                 return progress
             case 47/3..<16:
-                cell.statusLabel.text = "第六节课下课中，"
+                cell.statusLabel.text = "第六节课下课中"
                 showCourseInfo(weekdayInt, whichSection: 6, cell: cell)
                 currentCourse = 6
                 var progress:Float = Float(hourInt-47/3)*3
                 return progress
             case 16..<67/4:
-                cell.statusLabel.text = "第七节课进行中，"
+                cell.statusLabel.text = "第七节课进行中"
                 showCourseInfo(weekdayInt, whichSection: 6, cell: cell)
                 currentCourse = 6
                 var progress:Float = Float(hourInt-16)*4/3
                 return progress
             case 67/4..<203/12:
-                cell.statusLabel.text = "第七节课下课中，"
+                cell.statusLabel.text = "第七节课下课中"
                 showCourseInfo(weekdayInt, whichSection: 7, cell: cell)
                 currentCourse = 7
                 var progress:Float = Float(hourInt-67/4)*6
                 return progress
             case 203/12..<53/3:
-                cell.statusLabel.text = "第八节课进行中，"
+                cell.statusLabel.text = "第八节课进行中"
                 showCourseInfo(weekdayInt, whichSection: 7, cell: cell)
                 currentCourse = 7
                 var progress:Float = Float(hourInt-203/12)*4/3
@@ -538,52 +478,52 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
                 cell.currentCourseClassroomLabel.text = "@ 食堂"
                 cell.currentCourseTeacherNameLabel.text = "木有老师~"
                 currentCourse = -1
-                var progress:Float = Float(hourInt-53/3)*3
+                var progress:Float = Float(hourInt-53/3)*6/5
                 return progress
             case 18..<18.5:
-                cell.statusLabel.text = "晚上好，"
+                cell.statusLabel.text = "晚上好"
                 showCourseInfo(weekdayInt, whichSection: 8, cell: cell)
                 currentCourse = 8
-                var progress:Float = Float(hourInt-18)*2
+                var progress:Float = Float(hourInt-53/3)*6/5
                 return progress
             case 18.5..<77/4:
-                cell.statusLabel.text = "第九节课进行中，"
+                cell.statusLabel.text = "第九节课进行中"
                 showCourseInfo(weekdayInt, whichSection: 8, cell: cell)
                 currentCourse = 8
                 var progress:Float = Float(hourInt-18.5)*4/3
                 return progress
             case 77/4..<233/12:
-                cell.statusLabel.text = "第九节课下课中，"
+                cell.statusLabel.text = "第九节课下课中"
                 showCourseInfo(weekdayInt, whichSection: 9, cell: cell)
                 currentCourse = 9
                 var progress:Float = Float(hourInt-77/4)*6
                 return progress
             case 233/12..<121/6:
-                cell.statusLabel.text = "第十节课进行中，"
+                cell.statusLabel.text = "第十节课进行中"
                 showCourseInfo(weekdayInt, whichSection: 9, cell: cell)
                 currentCourse = 9
                 var progress:Float = Float(hourInt-233/12)*4/3
                 return progress
             case 121/6..<61/3:
-                cell.statusLabel.text = "第十节课下课中，"
+                cell.statusLabel.text = "第十节课下课中"
                 showCourseInfo(weekdayInt, whichSection: 10, cell: cell)
                 currentCourse = 10
                 var progress:Float = Float(hourInt-121/6)*6
                 return progress
             case 61/3..<253/12:
-                cell.statusLabel.text = "第十一节课进行中，"
+                cell.statusLabel.text = "第十一节课进行中"
                 showCourseInfo(weekdayInt, whichSection: 10, cell: cell)
                 currentCourse = 10
                 var progress:Float = Float(hourInt-61/3)*4/3
                 return progress
             case 253/12..<85/4:
-                cell.statusLabel.text = "第十一节课下课中，"
+                cell.statusLabel.text = "第十一节课下课中"
                 showCourseInfo(weekdayInt, whichSection: 11, cell: cell)
                 currentCourse = 11
                 var progress:Float = Float(hourInt-253/12)*6
                 return progress
             case 85/4..<22:
-                cell.statusLabel.text = "第十二节课进行中，"
+                cell.statusLabel.text = "第十二节课进行中"
                 showCourseInfo(weekdayInt, whichSection: 11, cell: cell)
                 currentCourse = 11
                 var progress:Float = Float(hourInt-85/4)*4/3
@@ -594,7 +534,7 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
                 cell.currentCourseClassroomLabel.text = "@ 寝室"
                 cell.currentCourseTeacherNameLabel.text = ""
                 currentCourse = -1
-                var progress:Float = Float(hourInt-22)/9
+                var progress:Float = Float(hourInt-22)/10
                 return progress
             }
         }
@@ -651,7 +591,9 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
         var courses:NSArray = userDefaults.objectForKey("courses") as! NSArray
         var section = whichSection
         var status = todayCourseStatus.objectAtIndex(section) as! Int
+        var isPresentCourse = true
         while status == -1 {
+            isPresentCourse = true
             section++
             if section == 12 {
                 break
@@ -661,7 +603,7 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
             }
         }
         if (section == 12) {
-            cell.statusLabel.text = cell.statusLabel.text! + "\n今天已经木有课啦~"
+            cell.statusLabel.text = "今天已经木有课啦~"
             cell.currentCourseNameLabel.text = "无课"
             cell.currentCourseClassroomLabel.text = ""
             cell.currentCourseTeacherNameLabel.text = ""
@@ -674,177 +616,84 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
             cell.currentCourseTeacherNameLabel.text = course.objectForKey("teacherName") as? String
             var startSection:Int = course.objectForKey("startSection") as! Int
             var sectionNumber:Int = course.objectForKey("sectionNumber") as! Int
-            cell.statusLabel.text = cell.statusLabel.text! + "最近一节课是\(startSection)至\(startSection + sectionNumber - 1)节课"
+            if !isPresentCourse {
+                cell.statusLabel.text = "最近一节课是\(startSection)至\(startSection + sectionNumber - 1)节课"
+            }
         }
     }
     
-    func refreshWeatherCondition(cell: time_weatherTableViewCell) {
+    func refreshWeatherCondition(cell: TimeWeatherStatusTableViewCell) {
         
-        var weatherGetter:WeatherConditionGetter = WeatherConditionGetter()
-        var API:NSString = weatherGetter.getAPI()
-        var url:NSURL = NSURL(string: API as String)!
-        var returnData:NSData? = NSData(contentsOfURL: url)
-        if let temp = returnData {
+        var date = NSDate()
+        var calender:NSCalendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)!
+        var unitFlags:NSCalendarUnit = NSCalendarUnit.CalendarUnitHour | NSCalendarUnit.CalendarUnitMinute
+        var components:NSDateComponents = calender.components(unitFlags, fromDate: date)
+        var hour:NSString = "\(components.hour)"
+        var minute:NSString = "\(components.minute)"
+        var time:Double = Double(components.hour) + Double(components.minute)/60
+        
+        var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        var weather:NSDictionary? = userDefaults.objectForKey("weather") as? NSDictionary
+        
+        if let temp = weather {
             
-            //For Debug
-            /*
-            var returnString:NSString = NSString(data: returnData!, encoding: NSUTF8StringEncoding)!
-            print(returnString)
-            print("\n**********************\n")
-            */
+            var firstDay:NSDictionary = temp.objectForKey("firstDay") as! NSDictionary
+            var secondDay:NSDictionary = temp.objectForKey("secondDay") as! NSDictionary
             
-            let jsonData:NSDictionary = NSJSONSerialization.JSONObjectWithData(returnData!, options: NSJSONReadingOptions.MutableContainers, error: nil) as! NSDictionary
-            let temp:NSDictionary = jsonData.objectForKey("f") as! NSDictionary
+            switch time {
+            case 0...6:
+                fallthrough
+            case 18...24:
+                var weatherCondition = firstDay.objectForKey("nightWeather") as! String
+                var weatherImage = "night" + weatherCondition + ".png"
+                cell.weatherImageView.image = UIImage(named: weatherImage)
+                cell.temperatureLabel.text = "温度：" + (firstDay.objectForKey("nightTemperature") as! String) + "℃"
+                cell.weatherConditionLabel.text = weatherEncodeToWeatherCondition[weatherCondition]
+            case 6...8:
+                var weatherCondition = secondDay.objectForKey("dayWeather") as! String
+                var weatherImage = "day" + weatherCondition + ".png"
+                cell.weatherImageView.image = UIImage(named: weatherImage)
+                cell.temperatureLabel.text = "温度：" + (firstDay.objectForKey("dayTemperature") as! String) + "℃"
+                cell.weatherConditionLabel.text = weatherEncodeToWeatherCondition[weatherCondition]
+            case 8...18:
+                var weatherCondition = firstDay.objectForKey("dayWeather") as! String
+                var weatherImage = "day" + weatherCondition + ".png"
+                cell.weatherImageView.image = UIImage(named: weatherImage)
+                cell.temperatureLabel.text = "温度：" + (firstDay.objectForKey("dayTemperature") as! String) + "℃"
+                cell.weatherConditionLabel.text = weatherEncodeToWeatherCondition[weatherCondition]
+            default:
+                cell.weatherConditionLabel.text = "???"
+            }
+        }
+        else {
+            cell.weatherImageView.image = UIImage(named: "day00.png")
+            cell.temperatureLabel.text = "不知道"
+            cell.weatherConditionLabel.text = "不知道"
+        }
+    }
+    
+    func refreshPM25(cell: TimeWeatherStatusTableViewCell) {
+        
+        var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        var weather:NSDictionary? = userDefaults.objectForKey("weather") as? NSDictionary
+        if let temp = weather {
             
-            var date = NSDate()
-            var calender:NSCalendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)!
-            var unitFlags:NSCalendarUnit = NSCalendarUnit.CalendarUnitHour | NSCalendarUnit.CalendarUnitMinute
-            var components:NSDateComponents = calender.components(unitFlags, fromDate: date)
-            var hour:NSString = "\(components.hour)"
-            var minute:NSString = "\(components.minute)"
-            var time:Double = Double(components.hour) + Double(components.minute)/60
-            
-            if (time < 6) || (time > 8) {
-                
-                let forecastAll = temp.objectForKey("f1") as! NSArray
-                var theFirstDayForecast:NSDictionary = forecastAll.objectAtIndex(0) as! NSDictionary
-                
-                
-                if (time<18) && (time>8) {
-                    
-                    var weather = theFirstDayForecast.objectForKey("fa") as! NSString
-                    var temperature = theFirstDayForecast.objectForKey("fc") as! NSString
-                    var windDirection = theFirstDayForecast.objectForKey("fe") as! NSString
-                    var windStrenth = theFirstDayForecast.objectForKey("fg") as! NSString
-                    
-                    var weatherImage = "day" + (weather as String) + ".png"
-                    cell.weatherImageView.image = UIImage(named: weatherImage)
-                    cell.temperatureLabel.text = (temperature as String) + "℃"
-                    cell.weatherConditionLabel.text = weatherEncodeToWeatherCondition.objectForKey(weather) as? String
-                    
-                }
-                else {
-                    
-                    var weather = theFirstDayForecast.objectForKey("fb") as! NSString
-                    var temperature = theFirstDayForecast.objectForKey("fd") as! NSString
-                    var windDirection = theFirstDayForecast.objectForKey("ff") as! NSString
-                    var windStrenth = theFirstDayForecast.objectForKey("fh") as! NSString
-                    
-                    var weatherImage = "night" + (weather as String) + ".png"
-                    cell.weatherImageView.image = UIImage(named: weatherImage)
-                    cell.temperatureLabel.text = (temperature as String) + "℃"
-                    cell.weatherConditionLabel.text = weatherEncodeToWeatherCondition.objectForKey(weather) as? String
-                    
-                }
+            var aqi:Int? = weather?.objectForKey("aqi") as? Int
+            var quality:String? = weather?.objectForKey("quality") as? String
+            if let qualitytemp = quality {
+                cell.PM25Label.text = "AQI:\(aqi!)"
+                cell.airQualityLabel.text = quality
             }
             else {
-                let forecastAll = temp.objectForKey("f1") as! NSArray
-                var theFirstDayForecast:NSDictionary = forecastAll.objectAtIndex(1) as! NSDictionary
-                
-                var weather = theFirstDayForecast.objectForKey("fa") as! NSString
-                var temperature = theFirstDayForecast.objectForKey("fc") as! NSString
-                var windDirection = theFirstDayForecast.objectForKey("fe") as! NSString
-                var windStrenth = theFirstDayForecast.objectForKey("fg") as! NSString
-                
-                var weatherImage = "day" + (weather as String) + ".png"
-                cell.weatherImageView.image = UIImage(named: weatherImage)
-                cell.temperatureLabel.text = (temperature as String) + "℃"
-                cell.weatherConditionLabel.text = weatherEncodeToWeatherCondition.objectForKey(weather) as? String
-                
+                cell.PM25Label.text = "不知道"
+                cell.airQualityLabel.text = "不知道"
             }
         }
         else {
-            
-            var alertView:UIAlertView = UIAlertView(title: "获取天气数据错误！", message: "网络错误\n我小小NKU Helper也没法知道天气喽\no(╯□╰)o", delegate: nil, cancelButtonTitle: "有道理，不难为你了~")
-            alertView.show()
-            cell.weatherConditionLabel.text = "N/A"
-            cell.temperatureLabel.text = "N/A"
-            cell.PM25Label.text = "N/A"
-            cell.weatherImageView.image = nil
-            
-            recentRefreshWeather = nil
+            cell.PM25Label.text = "不知道"
+            cell.airQualityLabel.text = "不知道"
         }
         
-    }
-    
-    func refreshPM25(cell: time_weatherTableViewCell) {
-        
-        var urlString:NSString = "http://www.pm25.in/api/querys/only_aqi.json?city=tianjin&token=K4BcCM5m1pdnwo3AGe7p&stations=no"
-        var url:NSURL = NSURL(string: urlString as String)!
-        var returnData:NSData? = NSData(contentsOfURL: url)
-        if let temp = returnData {
-            let jsonData:NSArray = NSJSONSerialization.JSONObjectWithData(returnData!, options: NSJSONReadingOptions.MutableContainers, error: nil) as! NSArray
-            let aqiData:NSDictionary = jsonData.objectAtIndex(0) as! NSDictionary
-            let aqi:Int = aqiData.objectForKey("aqi") as! Int
-            let quality:NSString = aqiData.objectForKey("quality") as! NSString
-            cell.PM25Label.text = "AQI:\(aqi)"
-            cell.airQualityLabel.text = quality as String
-        }
-        else {
-            cell.PM25Label.text = "N/A"
-            cell.airQualityLabel.text = "N/A"
-        }
-    }
-    
-    func refreshLifeIndex(cell: LifeIndexTableViewCell) {
-        
-        var weatherGetter:WeatherConditionGetter = WeatherConditionGetter(type: "index_v")
-        var API:NSString = weatherGetter.getAPI()
-        var url:NSURL = NSURL(string: API as String)!
-        var returnData:NSData? = NSData(contentsOfURL: url)
-        if let temp = returnData {
-            
-            for i in cell.mainScrollView.subviews {
-                i.removeFromSuperview()
-            }
-            
-            let jsonData:NSDictionary = NSJSONSerialization.JSONObjectWithData(returnData!, options: NSJSONReadingOptions.MutableContainers, error: nil) as! NSDictionary
-            let indexData:NSArray = jsonData.objectForKey("i") as! NSArray
-            
-            for (var i=0;i<3;i++) {
-                
-                var indexDataNow:NSDictionary = indexData.objectAtIndex(i) as! NSDictionary
-                var indexName:NSString = indexDataNow.objectForKey("i2") as! NSString
-                var indexBrief:NSString = indexDataNow.objectForKey("i4") as! NSString
-                var indexDetail:NSString = indexDataNow.objectForKey("i5") as! NSString
-                
-                /*
-                print(indexDataNow.objectForKey("i2"))
-                print("\n")
-                print(indexDataNow.objectForKey("i4"))
-                print("\n")
-                print(indexDataNow.objectForKey("i5"))
-                print("\n")
-                */
-                
-                var offset:CGFloat = UIScreen.mainScreen().bounds.width * CGFloat(i)
-                
-                var imageView:UIImageView = UIImageView(frame: CGRectMake(offset, 10, 100, 100))
-                switch i {
-                case 0:imageView.image = UIImage(named: "晨练.png")
-                case 1:imageView.image = UIImage(named: "舒适.png")
-                default:imageView.image = UIImage(named: "穿衣.png")
-                }
-                cell.mainScrollView.addSubview(imageView)
-                
-                var briefLabel:UILabel = UILabel(frame: CGRectMake(offset+100, 5, UIScreen.mainScreen().bounds.width - 110, 30))
-                briefLabel.font = UIFont.systemFontOfSize(22)
-                briefLabel.text = (indexName as String) + "：" + (indexBrief as String)
-                briefLabel.textColor = UIColor.whiteColor()
-                cell.mainScrollView.addSubview(briefLabel)
-                
-                var detailLabel:UILabel = UILabel(frame: CGRectMake(offset+100, 30, UIScreen.mainScreen().bounds.width - 110, 80))
-                detailLabel.numberOfLines = 0
-                detailLabel.font = UIFont.systemFontOfSize(13)
-                detailLabel.text = indexDetail as String
-                detailLabel.textColor = UIColor.lightTextColor()
-                cell.mainScrollView.addSubview(detailLabel)
-                
-            }
-        }
-        else {
-            recentRefreshLifeIndex = nil
-        }
     }
     
     // MARK: seguesInsideTheView
@@ -855,6 +704,8 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
         if segmentedController.selectedSegmentIndex == 0 {
             self.tableView.backgroundColor = nil
             self.tableView.backgroundView = UIImageView(image: UIImage(named: "backgroundImage.jpg"))
+            self.storeHouseRefreshControl.finishingLoading()
+            self.storeHouseRefreshControl = nil
             self.storeHouseRefreshControl = CBStoreHouseRefreshControl.attachToScrollView(self.tableView, target: self, refreshAction: "refreshTriggered", plist: "NKU", color: UIColor.whiteColor(), lineWidth: 1.5, dropHeight: 75, scale: 1, horizontalRandomness: 150, reverseLoadingAnimation: false, internalAnimationFactor: 0.5)
             timer = NSTimer.scheduledTimerWithTimeInterval(30, target: self, selector: "reload", userInfo: nil, repeats: true)
         }
@@ -862,6 +713,8 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
             timer.invalidate()
             self.tableView.backgroundView = nil
             self.tableView.backgroundColor = UIColor.whiteColor()
+            self.storeHouseRefreshControl.finishingLoading()
+            self.storeHouseRefreshControl = nil
             self.storeHouseRefreshControl = CBStoreHouseRefreshControl.attachToScrollView(self.tableView, target: self, refreshAction: "refreshTriggered", plist: "NKU", color: UIColor.blackColor(), lineWidth: 1.5, dropHeight: 75, scale: 1, horizontalRandomness: 150, reverseLoadingAnimation: false, internalAnimationFactor: 0.5)
         }
         
@@ -922,9 +775,16 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
     func refreshTriggered() {
         
         if segmentedController.selectedSegmentIndex == 0 {
-            NSTimer.scheduledTimerWithTimeInterval(2.43, target: self, selector: "finishRefreshControl", userInfo: nil, repeats: false)
-            tableView.reloadData()
-            
+            var weatherInfoGetter:WeatherInfoGetter = WeatherInfoGetter { () -> Void in
+                self.finishRefreshControl()
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.tableView.reloadData()
+
+                })
+            }
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), { () -> Void in
+                weatherInfoGetter.getAllWeatherInfo()
+            })
         }
         else {
             NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "finishRefreshControl", userInfo: nil, repeats: false)
@@ -935,7 +795,14 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
     }
     
     func finishRefreshControl() {
-        self.storeHouseRefreshControl.finishingLoading()
+        if segmentedController.selectedSegmentIndex == 0 {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), { () -> Void in
+                self.storeHouseRefreshControl.finishingLoading()
+            })
+        }
+        else {
+            self.storeHouseRefreshControl.finishingLoading()
+        }
     }
     
     override func scrollViewDidEndDecelerating(scrollView: UIScrollView) {

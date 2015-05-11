@@ -13,15 +13,13 @@ class LogIner:NSObject, NSURLConnectionDataDelegate{
     var password:String
     var validateCode:String
     var receivedData:NSMutableData?
-    var succeedOrNot:Bool
-    var block:((error:String?)->Void)?
+    var block:((error:String?)->Void)!
     
     init(userID:String, password:String, validateCode:String) {
         self.userID = userID
         self.password = password
         self.validateCode = validateCode
         self.receivedData = nil
-        self.succeedOrNot = false
         self.block = nil
     }
     
@@ -32,9 +30,9 @@ class LogIner:NSObject, NSURLConnectionDataDelegate{
         var data:NSString = NSString(format: "operation=&usercode_text=%@&userpwd_text=%@&checkcode_text=%@&submittype=%%C8%%B7+%%C8%%CF", userID, password, validateCode)
         req.HTTPBody = data.dataUsingEncoding(NSUTF8StringEncoding)
         req.HTTPMethod = "POST"
+        receivedData = NSMutableData()
         var connection:NSURLConnection? = NSURLConnection(request: req, delegate: self)
         if let temp = connection {
-            receivedData = NSMutableData()
         }
         else {
             block(error: "没有网")
@@ -57,8 +55,7 @@ class LogIner:NSObject, NSURLConnectionDataDelegate{
         }
         else{
             print("Login Succeed!")
-            succeedOrNot = true
-            block!(error: nil)
+            block(error: nil)
         }
 
     }

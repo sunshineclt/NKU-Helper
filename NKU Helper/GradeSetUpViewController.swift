@@ -43,6 +43,7 @@ class GradeSetUpViewController: UIViewController, UIAlertViewDelegate, UITextFie
             self.imageLoadActivityIndicator.stopAnimating()
             if let temp = err {
                 print("Validate Loading Error!\n")
+                var alert:UIAlertView = UIAlertView(title: "网络错误", message: "没有网没法获取验证码耶！", delegate: nil, cancelButtonTitle: "知道啦，现在就去搞点网")
             }
             else {
                 print("Validate Loading Succeed!\n")
@@ -61,14 +62,16 @@ class GradeSetUpViewController: UIViewController, UIAlertViewDelegate, UITextFie
         loginer.login { (error) -> Void in
             if let temp = error {
                 if error == "用户不存在或密码错误" {
+                    self.validateCodeTextField.text = ""
                     var alert:UIAlertView = UIAlertView(title: "登录失败", message: "用户不存在或密码错误", delegate: self, cancelButtonTitle: nil, otherButtonTitles: "好，重新设置用户名和密码")
                     alert.show()
                 }
                 else{
                     if error == "验证码错误" {
-                    var alert:UIAlertView = UIAlertView(title: "登录失败", message: "验证码错误", delegate: self, cancelButtonTitle: "好，重新输入验证码")
-                    alert.show()
-                    self.refreshImage()
+                        self.validateCodeTextField.text = ""
+                        var alert:UIAlertView = UIAlertView(title: "登录失败", message: "验证码错误", delegate: self, cancelButtonTitle: "好，重新输入验证码")
+                        alert.show()
+                        self.refreshImage()
                     }
                     else {
                         var alertView:UIAlertView = UIAlertView(title: "网络错误", message: "没有网没法登陆", delegate: nil, cancelButtonTitle: "好，知道啦，现在就去搞点网")
@@ -76,7 +79,7 @@ class GradeSetUpViewController: UIViewController, UIAlertViewDelegate, UITextFie
                 }
             }
             else{
-                print("Login Succeed!")
+                //                print("Login Succeed!")
                 var 😌gradeGetter:GradeGetter = GradeGetter()
                 😌gradeGetter.getGrade() { (result, error) -> Void in
                     

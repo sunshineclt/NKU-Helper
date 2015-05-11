@@ -12,21 +12,22 @@ class courseCurrentTableViewCell: UITableViewCell {
     
     let courseCurrentViewHeight:CGFloat = 260
     
-    @IBOutlet var statusLabel: UILabel!
     @IBOutlet var currentCourseNameLabel: UILabel!
     @IBOutlet var currentCourseClassroomLabel: UILabel!
     @IBOutlet var currentCourseTeacherNameLabel: UILabel!
     @IBOutlet var animateView: UIView!
     @IBOutlet var graphicsView: UIView!
+    @IBOutlet var statusLabel: UILabel!
     
     override func awakeFromNib() {
         
         super.awakeFromNib()
         
-        statusLabel.adjustsFontSizeToFitWidth = true
         currentCourseNameLabel.adjustsFontSizeToFitWidth = true
         currentCourseClassroomLabel.adjustsFontSizeToFitWidth = true
         currentCourseTeacherNameLabel.adjustsFontSizeToFitWidth = true
+        
+        statusLabel.adjustsFontSizeToFitWidth = true
      
         self.backgroundColor = UIColor.clearColor()
 

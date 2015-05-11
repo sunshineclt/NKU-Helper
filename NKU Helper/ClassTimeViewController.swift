@@ -46,10 +46,10 @@ class ClassTimeViewController: UIViewController, NSURLConnectionDataDelegate, UI
         classScrollView.delegate = self
         
         var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        var accountInfo:NSDictionary? = userDefaults.objectForKey("accountInfo") as! NSDictionary?
+        var accountInfo:NSDictionary? = userDefaults.objectForKey("accountInfo") as? NSDictionary
         if let temp = accountInfo {
             
-            var courses:NSArray? = userDefaults.objectForKey("courses") as! NSArray?
+            var courses:NSArray? = userDefaults.objectForKey("courses") as? NSArray
             if let temp = courses {
                 drawClassTimeTable()
             }
@@ -335,18 +335,18 @@ class ClassTimeViewController: UIViewController, NSURLConnectionDataDelegate, UI
     
     func loadBeginAnimation() {
 
-        overlayView = UIView(frame: CGRectMake(self.view.bounds.width / 2, self.view.bounds.height / 2, 0, 0))
+        overlayView = UIView(frame: CGRectMake(self.view.frame.width / 2, self.classScrollView.frame.height / 2 - 50, 0, 0))
         overlayView.backgroundColor = UIColor.blackColor()
         overlayView.alpha = 0.7
         self.view.addSubview(overlayView)
         
-        var overlayViewIn:POPBasicAnimation = POPBasicAnimation(propertyNamed: kPOPViewBounds)
+        var overlayViewIn:POPBasicAnimation = POPBasicAnimation(propertyNamed: kPOPViewFrame)
         overlayViewIn.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-        overlayViewIn.toValue = NSValue(CGRect: CGRectMake(0, 64, self.classScrollView.frame.width, self.classScrollView.frame.height + 30))
+        overlayViewIn.toValue = NSValue(CGRect: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height))
         overlayViewIn.duration = 0.5
         overlayView.pop_addAnimation(overlayViewIn, forKey: "overlayViewIn")
         
-        UALoadView = UAProgressView(frame: CGRectMake(self.view.bounds.width / 2 - 100, self.view.bounds.height / 2 - 100, 200, 200))
+        UALoadView = UAProgressView(frame: CGRectMake(UIScreen.mainScreen().bounds.width / 2 - 100, UIScreen.mainScreen().bounds.height / 2 - 150, 200, 200))
         UALoadView.tintColor = UIColor(red: 34/255, green: 205/255, blue: 198/255, alpha: 1)
         UALoadView.lineWidth = 5
         UALoadView.alpha = 0
@@ -379,19 +379,19 @@ class ClassTimeViewController: UIViewController, NSURLConnectionDataDelegate, UI
         overlayViewFadeOut.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         overlayViewFadeOut.duration = 1
         overlayViewFadeOut.toValue = 0
-        overlayViewFadeOut.beginTime = CACurrentMediaTime() + 1
+        overlayViewFadeOut.beginTime = CACurrentMediaTime() + 0.8
         overlayView.pop_addAnimation(overlayViewFadeOut, forKey: "overlayViewFadeOut")
         
         var UALoadViewFadeOut:POPBasicAnimation = POPBasicAnimation(propertyNamed: kPOPViewAlpha)
         UALoadViewFadeOut.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         UALoadViewFadeOut.duration = 1
         UALoadViewFadeOut.toValue = 0
-        UALoadViewFadeOut.beginTime = CACurrentMediaTime() + 1
+        UALoadViewFadeOut.beginTime = CACurrentMediaTime() + 0.8
         
         var UALoadViewUp:POPBasicAnimation = POPBasicAnimation(propertyNamed: kPOPLayerTranslationY)
         UALoadViewUp.duration = 1
         UALoadViewUp.toValue = -100
-        UALoadViewUp.beginTime = CACurrentMediaTime() + 1
+        UALoadViewUp.beginTime = CACurrentMediaTime() + 0.8
         UALoadViewUp.completionBlock = { (anim:POPAnimation!, finished:Bool) -> Void in
             if finished {
                 self.refreshBarButton.enabled = true
