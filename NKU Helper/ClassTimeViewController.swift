@@ -10,6 +10,8 @@ import UIKit
 
 class ClassTimeViewController: UIViewController, NSURLConnectionDataDelegate, UIScrollViewDelegate {
     
+    var whichSection:Int!
+    
     @IBOutlet var shadowView: UIView!
     @IBOutlet var classScrollView: UIScrollView!
     @IBOutlet var refreshBarButton: UIBarButtonItem!
@@ -354,9 +356,27 @@ class ClassTimeViewController: UIViewController, NSURLConnectionDataDelegate, UI
             classroomLabel.textColor = UIColor.whiteColor()
             classroomLabel.text = "@" + (classroom as String)
             course.addSubview(classroomLabel)
+            course.tag = i
+            var tapGesture = UITapGestureRecognizer()
+            tapGesture.addTarget(self, action: "showCourseDetail:")
+            course.addGestureRecognizer(tapGesture)
             
             self.classScrollView.addSubview(course)
         }
+        
+    }
+    
+    func showCourseDetail(tapGesture:UITapGestureRecognizer) {
+        
+        whichSection = tapGesture.view?.tag
+        self.performSegueWithIdentifier("showCourseDetail", sender: nil)
+        
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        var vc:CourseDetailTableViewController = segue.destinationViewController as! CourseDetailTableViewController
+        vc.whichCourse = whichSection
         
     }
     
