@@ -22,17 +22,7 @@ class ClassTimeViewController: UIViewController, NSURLConnectionDataDelegate, UI
     let rowHeight:CGFloat = 50
     let columnWidth:CGFloat = UIScreen.mainScreen().bounds.width / 8
     
-    let colors:NSArray = [
-        UIColor(red: 190/255, green: 150/255, blue: 210/255, alpha: 1),
-        UIColor(red: 168/255, green: 239/255, blue: 233/255, alpha: 1),
-        UIColor(red: 193/255, green: 233/255, blue: 241/255, alpha: 1),
-        UIColor(red: 186/255, green: 241/255, blue: 209/255, alpha: 1),
-        UIColor(red: 34/255, green: 202/255, blue: 179/255, alpha: 1),
-        UIColor(red: 230/255, green: 225/255, blue: 187/255, alpha: 1),
-        UIColor(red: 236/255, green: 206/255, blue: 178/255, alpha: 1),
-        UIColor(red: 217/255, green: 189/255, blue: 126/255, alpha: 0.9),
-        UIColor(red: 241/255, green: 174/255, blue: 165/255, alpha: 1),
-        UIColor(red: 250/255, green: 98/255, blue: 110/255, alpha: 0.8)]
+    let colors:Colors = Colors()
     
     // MARK: MethodsRelatedToGetCourseData
     
@@ -295,6 +285,13 @@ class ClassTimeViewController: UIViewController, NSURLConnectionDataDelegate, UI
     
     func drawClassTimeTable() {
         
+        var usedColor:[Int] = []
+        for var i=0;i<colors.colors.count;i++ {
+            usedColor.append(1)
+        }
+        
+        var coloredCourse = Dictionary<String, Int>()
+        
         var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         var courses:NSArray = userDefaults.objectForKey("courses") as! NSArray
         for (var i=0;i<courses.count;i++) {
@@ -304,9 +301,41 @@ class ClassTimeViewController: UIViewController, NSURLConnectionDataDelegate, UI
             var sectionNumber:Int = current.objectForKey("sectionNumber") as! Int
             var name:NSString = current.objectForKey("className") as! NSString
             var classroom:NSString = current.objectForKey("classroom") as! NSString
+            var classID:NSString = current.objectForKey("classID") as! String
             
             var course:UIView = UIView(frame: CGRectMake(CGFloat(day+1) * columnWidth, CGFloat(startSection - 1) * rowHeight, columnWidth, rowHeight * CGFloat(sectionNumber)))
-            course.backgroundColor = colors.objectAtIndex(i % 10) as? UIColor
+            
+            var isClassHaveHad:Bool = false
+            for (key, value) in coloredCourse {
+                if key == classID {
+                    isClassHaveHad = true
+                    course.backgroundColor = colors.colors[value]
+                    break
+                }
+                if isClassHaveHad {
+                    break
+                }
+            }
+            
+            if !isClassHaveHad {
+                var likedColors:NSArray = userDefaults.objectForKey("preferredColors") as! NSArray
+                var count:Int = 0
+                var colorIndex = Int(arc4random_uniform(UInt32(colors.colors.count)))
+                
+                while (usedColor[colorIndex] == 0) || (likedColors.objectAtIndex(colorIndex) as! Int == 0) {
+                    colorIndex = Int(arc4random_uniform(UInt32(colors.colors.count)))
+                    count++
+                    if count>1000 {
+                        break
+                    }
+                    
+                }
+                
+                coloredCourse[classID as String] = colorIndex
+                course.backgroundColor = colors.colors[colorIndex]
+                usedColor[colorIndex] = 0
+                
+            }
             
             var courseName:UILabel = UILabel(frame: CGRectMake(5, 5, columnWidth - 10, rowHeight))
             courseName.numberOfLines = 0

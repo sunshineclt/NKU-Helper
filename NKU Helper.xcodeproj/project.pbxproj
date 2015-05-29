@@ -96,6 +96,8 @@
 		E96419D41AA8BC9800397691 /* DetailAccountInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96419D31AA8BC9800397691 /* DetailAccountInfoTableViewController.swift */; };
 		E9658F761AB74ACD000A39A8 /* coursesOverViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9658F751AB74ACD000A39A8 /* coursesOverViewTableViewCell.swift */; };
 		E969370A1AAAA55100D8CAF5 /* DetailClassInfoContent in Resources */ = {isa = PBXBuildFile; fileRef = E96937091AAAA55100D8CAF5 /* DetailClassInfoContent */; };
+		E97176761B1488CA004DADB2 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97176751B1488CA004DADB2 /* AboutViewController.swift */; };
+		E97176781B149292004DADB2 /* CourseDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97176771B149292004DADB2 /* CourseDetailTableViewController.swift */; };
 		E988B5371AB005DF006818FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E988B5361AB005DF006818FA /* Main.storyboard */; };
 		E98F94D61AA3180700885992 /* ClassTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98F94D51AA3180700885992 /* ClassTimeViewController.swift */; };
 		E98F94D81AA318EF00885992 /* FunctionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98F94D71AA318EF00885992 /* FunctionTableViewController.swift */; };
@@ -104,12 +106,13 @@
 		E9A83E2E1AB709400021C2D0 /* TodayTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A83E2D1AB709400021C2D0 /* TodayTableViewController.swift */; };
 		E9A83E341AB70A640021C2D0 /* courseCurrentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A83E331AB70A640021C2D0 /* courseCurrentTableViewCell.swift */; };
 		E9B8C4AF1AA82D6E00E0DD50 /* AccountInfo in Resources */ = {isa = PBXBuildFile; fileRef = E9B8C4AE1AA82D6E00E0DD50 /* AccountInfo */; };
+		E9C2ECC01B183E8B005C1F5F /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9C2ECBF1B183E8B005C1F5F /* MessageUI.framework */; };
 		E9CCF4B61ABC64B2002076F2 /* ColorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CCF4B51ABC64B2002076F2 /* ColorTableViewCell.swift */; };
 		E9CCF4B81ABC653E002076F2 /* ColorChooseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CCF4B71ABC653E002076F2 /* ColorChooseTableViewController.swift */; };
 		E9CCF4BA1ABC6578002076F2 /* ColorChooseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CCF4B91ABC6578002076F2 /* ColorChooseTableViewCell.swift */; };
-		E9DF779C1AD3F6660040E9A7 /* CourseDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DF779B1AD3F6660040E9A7 /* CourseDetailTableViewController.swift */; };
 		E9FDA2431AB15BB600B25E7E /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FDA2421AB15BB600B25E7E /* Base64.m */; };
 		E9FDA2451AB15F6B00B25E7E /* WeatherConditionGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FDA2441AB15F6B00B25E7E /* WeatherConditionGetter.swift */; };
+		E9FE26141B137FEC00FCBB32 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FE26131B137FEC00FCBB32 /* Colors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -219,6 +222,8 @@
 		E96419D31AA8BC9800397691 /* DetailAccountInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailAccountInfoTableViewController.swift; sourceTree = "<group>"; };
 		E9658F751AB74ACD000A39A8 /* coursesOverViewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = coursesOverViewTableViewCell.swift; sourceTree = "<group>"; };
 		E96937091AAAA55100D8CAF5 /* DetailClassInfoContent */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DetailClassInfoContent; sourceTree = "<group>"; };
+		E97176751B1488CA004DADB2 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		E97176771B149292004DADB2 /* CourseDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseDetailTableViewController.swift; sourceTree = "<group>"; };
 		E988B5361AB005DF006818FA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E98F94D51AA3180700885992 /* ClassTimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassTimeViewController.swift; sourceTree = "<group>"; };
 		E98F94D71AA318EF00885992 /* FunctionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunctionTableViewController.swift; sourceTree = "<group>"; };
@@ -227,13 +232,14 @@
 		E9A83E2D1AB709400021C2D0 /* TodayTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayTableViewController.swift; sourceTree = "<group>"; };
 		E9A83E331AB70A640021C2D0 /* courseCurrentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = courseCurrentTableViewCell.swift; sourceTree = "<group>"; };
 		E9B8C4AE1AA82D6E00E0DD50 /* AccountInfo */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AccountInfo; sourceTree = "<group>"; };
+		E9C2ECBF1B183E8B005C1F5F /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		E9CCF4B51ABC64B2002076F2 /* ColorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTableViewCell.swift; sourceTree = "<group>"; };
 		E9CCF4B71ABC653E002076F2 /* ColorChooseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorChooseTableViewController.swift; sourceTree = "<group>"; };
 		E9CCF4B91ABC6578002076F2 /* ColorChooseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorChooseTableViewCell.swift; sourceTree = "<group>"; };
-		E9DF779B1AD3F6660040E9A7 /* CourseDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseDetailTableViewController.swift; sourceTree = "<group>"; };
 		E9FDA2411AB15BB600B25E7E /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
 		E9FDA2421AB15BB600B25E7E /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
 		E9FDA2441AB15F6B00B25E7E /* WeatherConditionGetter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherConditionGetter.swift; sourceTree = "<group>"; };
+		E9FE26131B137FEC00FCBB32 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,6 +247,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9C2ECC01B183E8B005C1F5F /* MessageUI.framework in Frameworks */,
 				3978EAE3BAA89E16102DF10A /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -267,6 +274,7 @@
 		911897253CF7E957EC7F6666 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E9C2ECBF1B183E8B005C1F5F /* MessageUI.framework */,
 				38A37A23D9C2030561917586 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -297,8 +305,7 @@
 			children = (
 				E90AE22D1A8F813900AD0D78 /* AppDelegate.swift */,
 				E988B5361AB005DF006818FA /* Main.storyboard */,
-				E94286531AA5494800A4242C /* LogIner.swift */,
-				E90AE2501A8F814C00AD0D78 /* ImageGetter.swift */,
+				E9FE26151B13800700FCBB32 /* Classes */,
 				E9D4DC471AAEF45D00A02327 /* Today */,
 				E98F94E21AA31A1A00885992 /* ClassTime */,
 				E98F94DF1AA319CD00885992 /* Function */,
@@ -482,6 +489,7 @@
 			isa = PBXGroup;
 			children = (
 				E98F94D91AA3191F00885992 /* SettingTableViewController.swift */,
+				E97176751B1488CA004DADB2 /* AboutViewController.swift */,
 				E9DB7EBC1AAB5EB0000D4182 /* AccountInfo */,
 				E97A94AF1ABF19F200998A07 /* PreferredColors */,
 			);
@@ -514,7 +522,7 @@
 				E90285CB1AEA910B00DA5513 /* WeatherInfoGetter.swift */,
 				E9FDA2441AB15F6B00B25E7E /* WeatherConditionGetter.swift */,
 				E94211BD1B00B99F00087846 /* Cell */,
-				E9DF779B1AD3F6660040E9A7 /* CourseDetailTableViewController.swift */,
+				E97176771B149292004DADB2 /* CourseDetailTableViewController.swift */,
 				E926CD761AB3405800A5076A /* making kay */,
 				E9ACA1221AB2D6E7001083C1 /* RefreshControl */,
 			);
@@ -530,6 +538,16 @@
 				E96419D31AA8BC9800397691 /* DetailAccountInfoTableViewController.swift */,
 			);
 			name = AccountInfo;
+			sourceTree = "<group>";
+		};
+		E9FE26151B13800700FCBB32 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				E94286531AA5494800A4242C /* LogIner.swift */,
+				E90AE2501A8F814C00AD0D78 /* ImageGetter.swift */,
+				E9FE26131B137FEC00FCBB32 /* Colors.swift */,
+			);
+			name = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -749,6 +767,7 @@
 				E9A83E2E1AB709400021C2D0 /* TodayTableViewController.swift in Sources */,
 				E96419D21AA8971B00397691 /* AccountTableViewCell.swift in Sources */,
 				E94286541AA5494800A4242C /* LogIner.swift in Sources */,
+				E97176781B149292004DADB2 /* CourseDetailTableViewController.swift in Sources */,
 				E98F94DA1AA3191F00885992 /* SettingTableViewController.swift in Sources */,
 				E9FDA2451AB15F6B00B25E7E /* WeatherConditionGetter.swift in Sources */,
 				E96419D41AA8BC9800397691 /* DetailAccountInfoTableViewController.swift in Sources */,
@@ -756,8 +775,9 @@
 				E9658F761AB74ACD000A39A8 /* coursesOverViewTableViewCell.swift in Sources */,
 				E9CCF4BA1ABC6578002076F2 /* ColorChooseTableViewCell.swift in Sources */,
 				E91E5F4F1A90FAED009F3B2B /* GradeShowerTableViewController.swift in Sources */,
+				E97176761B1488CA004DADB2 /* AboutViewController.swift in Sources */,
 				E98F94D61AA3180700885992 /* ClassTimeViewController.swift in Sources */,
-				E9DF779C1AD3F6660040E9A7 /* CourseDetailTableViewController.swift in Sources */,
+				E9FE26141B137FEC00FCBB32 /* Colors.swift in Sources */,
 				E94286581AA5500C00A4242C /* SaveAccountInfoViewController.swift in Sources */,
 				E9CCF4B81ABC653E002076F2 /* ColorChooseTableViewController.swift in Sources */,
 				E997700E1AC16CC700C3977B /* LifeIndexTableViewCell.swift in Sources */,

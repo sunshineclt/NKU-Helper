@@ -14,7 +14,7 @@ class courseCurrentTableViewCell: UITableViewCell {
     
     @IBOutlet var currentCourseNameLabel: UILabel!
     @IBOutlet var currentCourseClassroomLabel: UILabel!
-    @IBOutlet var currentCourseTeacherNameLabel: UILabel!
+    @IBOutlet var currentCourseTimeLabel: UILabel!
     @IBOutlet var animateView: UIView!
     @IBOutlet var graphicsView: UIView!
     @IBOutlet var statusLabel: UILabel!
@@ -25,7 +25,7 @@ class courseCurrentTableViewCell: UITableViewCell {
         
         currentCourseNameLabel.adjustsFontSizeToFitWidth = true
         currentCourseClassroomLabel.adjustsFontSizeToFitWidth = true
-        currentCourseTeacherNameLabel.adjustsFontSizeToFitWidth = true
+        currentCourseTimeLabel.adjustsFontSizeToFitWidth = true
         
         statusLabel.adjustsFontSizeToFitWidth = true
      

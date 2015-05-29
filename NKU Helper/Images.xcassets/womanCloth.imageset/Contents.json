@@ -2,16 +2,18 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "Babybody.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "cloth.png"
+      "filename" : "Babybody@2x.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "3x"
+      "scale" : "3x",
+      "filename" : "Babybody@3x.png"
     }
   ],
   "info" : {

@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate{
         
         UINavigationBar.appearance().barTintColor = UIColor(red: 0, green: 0.75, blue: 1, alpha: 1)
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+        UIBarButtonItem.appearance().tintColor = UIColor.whiteColor()
         UINavigationBar.appearance().titleTextAttributes = NSDictionary(object: UIColor.whiteColor(), forKey: NSForegroundColorAttributeName) as [NSObject : AnyObject]
 
         var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
@@ -28,7 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate{
         }
         else {
             preferredColors = NSMutableArray()
-            for (var i=0;i<10;i++) {
+            var colors:Colors = Colors()
+            for (var i=0;i<colors.colors.count;i++) {
                 preferredColors?.addObject(1)
             }
             userDefaults.setObject(preferredColors, forKey: "preferredColors")
