@@ -13,6 +13,13 @@ class imageGetter: NSObject ,NSURLConnectionDataDelegate {
     var responseData:NSMutableData?
     var block:((data:NSData?, err:String?)->Void)!
     
+    override init() {
+        super.init()
+        connection = nil
+        responseData = nil
+        block = nil
+    }
+    
     func getImageWithBlock(theBlock:(data:NSData?, err:String?)->Void) {
         
         block = theBlock
@@ -26,14 +33,7 @@ class imageGetter: NSObject ,NSURLConnectionDataDelegate {
             block(data: nil, err:"网络错误")
         }
     }
-    
-    override init() {
-        super.init()
-        connection = nil
-        responseData = nil
-        block = nil
-    }
-    
+
     func connection(connection: NSURLConnection, didReceiveData data: NSData) {
         responseData?.appendData(data)
         print("Image didReceiveData!\n")
