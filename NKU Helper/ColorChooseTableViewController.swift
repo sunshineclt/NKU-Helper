@@ -33,11 +33,11 @@ class ColorChooseTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell:ColorChooseTableViewCell = tableView.dequeueReusableCellWithIdentifier("colorChoose") as! ColorChooseTableViewCell
+        let cell:ColorChooseTableViewCell = tableView.dequeueReusableCellWithIdentifier("colorChoose") as! ColorChooseTableViewCell
         cell.colorView.backgroundColor = colors.colors[indexPath.row]
-        var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        var preferredColors:NSMutableArray = userDefaults.objectForKey("preferredColors") as! NSMutableArray
-        var isLiked:Int = preferredColors.objectAtIndex(indexPath.row) as! Int
+        let userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        let preferredColors:NSMutableArray = userDefaults.objectForKey("preferredColors") as! NSMutableArray
+        let isLiked:Int = preferredColors.objectAtIndex(indexPath.row) as! Int
         if  isLiked == 0 {
             cell.accessoryType = UITableViewCellAccessoryType.None
         }
@@ -50,13 +50,13 @@ class ColorChooseTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        var cell = self.tableView(self.tableView, cellForRowAtIndexPath: indexPath)
+        let cell = self.tableView(self.tableView, cellForRowAtIndexPath: indexPath)
         if cell.accessoryType == UITableViewCellAccessoryType.None {
             cell.accessoryType = UITableViewCellAccessoryType.Checkmark
-            var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-            var preferredColors:NSMutableArray = userDefaults.objectForKey("preferredColors") as! NSMutableArray
-            print(indexPath.row)
-            var preferredColors1:NSMutableArray = NSMutableArray()
+            let userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+            let preferredColors:NSMutableArray = userDefaults.objectForKey("preferredColors") as! NSMutableArray
+            print(indexPath.row, terminator: "")
+            let preferredColors1:NSMutableArray = NSMutableArray()
             preferredColors1.addObjectsFromArray(preferredColors as [AnyObject])
             preferredColors1.replaceObjectAtIndex(indexPath.row, withObject: 1)
             userDefaults.removeObjectForKey("preferredColors")
@@ -65,10 +65,10 @@ class ColorChooseTableViewController: UITableViewController {
         }
         else {
             cell.accessoryType = UITableViewCellAccessoryType.None
-            var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-            var preferredColors:NSMutableArray = userDefaults.objectForKey("preferredColors") as! NSMutableArray
-            print(indexPath.row)
-            var preferredColors1:NSMutableArray = NSMutableArray()
+            let userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+            let preferredColors:NSMutableArray = userDefaults.objectForKey("preferredColors") as! NSMutableArray
+            print(indexPath.row, terminator: "")
+            let preferredColors1:NSMutableArray = NSMutableArray()
             preferredColors1.addObjectsFromArray(preferredColors as [AnyObject])
             preferredColors1.replaceObjectAtIndex(indexPath.row, withObject: 0)
             userDefaults.removeObjectForKey("preferredColors")

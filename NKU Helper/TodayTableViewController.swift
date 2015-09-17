@@ -8,22 +8,20 @@
 
 import UIKit
 
-class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIApplicationDelegate {
-    
+class TodayTableViewController: UITableViewController, UIApplicationDelegate {
+
     let courseCurrentViewHeight:CGFloat = 260
     
     // MARK: 下拉刷新的property
     
     @IBOutlet var segmentedController: UISegmentedControl!
     var storeHouseRefreshControl:CBStoreHouseRefreshControl!
-  //  var isRefreshControllerAnimating:Bool = false
     
     // MARK: 渲染Overview Class的颜色
     
     var usedColor:[Int]!
     var colors:Colors = Colors()
-    
-    
+
     // MARK: 与weather有关
     
     var receivedWeatherData:NSMutableData?
@@ -38,21 +36,33 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
         self.tableView.alwaysBounceVertical = true
         self.tableView.backgroundView = UIImageView(image: UIImage(named: "backgroundImage.jpg"))
         self.storeHouseRefreshControl = CBStoreHouseRefreshControl.attachToScrollView(self.tableView, target: self, refreshAction: "refreshTriggered", plist: "NKU", color: UIColor.whiteColor(), lineWidth: 1.5, dropHeight: 75, scale: 1, horizontalRandomness: 150, reverseLoadingAnimation: false, internalAnimationFactor: 0.5)
-        
+        self.segmentedController.tintColor = UIColor(red: 16/255, green: 128/255, blue: 207/255, alpha: 1)
         self.tableView.contentOffset = CGPointMake(0, -100)
         self.storeHouseRefreshControl.scrollViewDidEndDragging()
-
+        self.tableView.estimatedRowHeight = self.tableView.rowHeight
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        let userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        let accountInfo:NSDictionary? = userDefaults.objectForKey("accountInfo") as? NSDictionary
+        if let _ = accountInfo {
+            
+        }
+        else {
+            
+            self.performSegueWithIdentifier("login", sender: nil)
+            
+        }
+            
 
+    }
+    
     // MARK: tableView Data Source
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -69,43 +79,20 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
             return 2
         }
         else {
-            var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-            var courses:NSArray? = userDefaults.objectForKey("courses") as? NSArray
-            if let temp = courses {
+            let userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+            let courses:NSArray? = userDefaults.objectForKey("courses") as? NSArray
+            if let _ = courses {
                 
-                var date = NSDate()
-                var calender:NSCalendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)!
-                var unitFlags:NSCalendarUnit = NSCalendarUnit.CalendarUnitWeekday
-                var components:NSDateComponents = calender.components(unitFlags, fromDate: date)
-                var weekdayInt:Int = -1
-                switch (components.weekday) {
-                case 1:
-                    weekdayInt = 6
-                case 2:
-                    weekdayInt = 0
-                case 3:
-                    weekdayInt = 1
-                case 4:
-                    weekdayInt = 2
-                case 5:
-                    weekdayInt = 3
-                case 6:
-                    weekdayInt = 4
-                case 7:
-                    weekdayInt = 5
-                default:weekdayInt = -1
-                }
-                
-                var course:NSArray = handleTodayCourses(weekdayInt)
+                let weekdayInt = CalendarConverter.sharedInstance.weekdayInt()
+                let course:NSArray = handleTodayCourses(weekdayInt)
                 return course.count
+                
             }
             else {
-                
                 return 0
             }
         }
     }
-    
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
@@ -115,7 +102,7 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
             switch (indexPath.row) {
             case 0:
                 // 显示天气、日期、状态条
-                var cell:TimeWeatherStatusTableViewCell = tableView.dequeueReusableCellWithIdentifier("time_weather") as! TimeWeatherStatusTableViewCell
+                let cell:TimeWeatherStatusTableViewCell = tableView.dequeueReusableCellWithIdentifier("time_weather") as! TimeWeatherStatusTableViewCell
                 
                 handleDate(cell)
                 refreshWeatherCondition(cell)
@@ -125,20 +112,20 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
             case 1:
                 // 显示当前课程
                 
-                var cell:courseCurrentTableViewCell = tableView.dequeueReusableCellWithIdentifier("courseCurrent") as! courseCurrentTableViewCell
+                let cell:courseCurrentTableViewCell = tableView.dequeueReusableCellWithIdentifier("courseCurrent") as! courseCurrentTableViewCell
                 
-                var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-                var account:NSDictionary? = userDefaults.objectForKey("accountInfo") as? NSDictionary
-                if let temp = account {
+                let userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+                let account:NSDictionary? = userDefaults.objectForKey("accountInfo") as? NSDictionary
+                if let _ = account {
 
-                    var toValue:Float! = handleStatus(cell)
-                    if let valueTemp = toValue {
-                        var anim:POPBasicAnimation = POPBasicAnimation(propertyNamed: kPOPShapeLayerStrokeEnd)
+                    let toValue:Float! = handleStatus(cell)
+                    if let _ = toValue {
+                        let anim:POPBasicAnimation = POPBasicAnimation(propertyNamed: kPOPShapeLayerStrokeEnd)
                         anim.duration = 1
                         anim.toValue = toValue
                         anim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
                         let layers = cell.animateView.layer.sublayers
-                        for i in layers {
+                        for i in layers! {
                             if i.isKindOfClass(CAShapeLayer) {
                                 let layer = i as! CAShapeLayer
                                 layer.pop_addAnimation(anim, forKey: "show")
@@ -149,9 +136,6 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
                 }
                 else {
                     
-                    var alert:UIAlertView = UIAlertView(title: "您尚未登录", message: "登录后方可使用NKU Helper\n登录选项位于设置选项卡中", delegate: nil, cancelButtonTitle: "好的")
-                    alert.show()
-                    
                     cell.currentCourseClassroomLabel.text = "不知道诶！"
                     cell.currentCourseNameLabel.text = "不知道诶！"
                     cell.currentCourseTimeLabel.text = "不知道诶！"
@@ -160,53 +144,32 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
                 
                 return cell
             default:
-                var 💩:UITableViewCell? = self.tableView.dequeueReusableCellWithIdentifier("miaomiao") as? UITableViewCell
+                let 💩:UITableViewCell? = self.tableView.dequeueReusableCellWithIdentifier("miaomiao") as UITableViewCell?
                 return 💩!
             }
         }
         else {
             // courseOverView
             
-            var cell:coursesOverViewTableViewCell = tableView.dequeueReusableCellWithIdentifier("coursesOverview") as! coursesOverViewTableViewCell
+            let cell:coursesOverViewTableViewCell = tableView.dequeueReusableCellWithIdentifier("coursesOverview") as! coursesOverViewTableViewCell
             
-            var date = NSDate()
-            var calender:NSCalendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)!
-            var unitFlags:NSCalendarUnit = NSCalendarUnit.CalendarUnitWeekday
-            var components:NSDateComponents = calender.components(unitFlags, fromDate: date)
-            var weekdayInt:Int = -1
-            switch (components.weekday) {
-            case 1:
-                weekdayInt = 6
-            case 2:
-                weekdayInt = 0
-            case 3:
-                weekdayInt = 1
-            case 4:
-                weekdayInt = 2
-            case 5:
-                weekdayInt = 3
-            case 6:
-                weekdayInt = 4
-            case 7:
-                weekdayInt = 5
-            default:weekdayInt = -1
-            }
+            let weekdayInt = CalendarConverter.sharedInstance.weekdayInt()
             
-            var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-            var todayCourses:NSArray = handleTodayCourses(weekdayInt)
-            var courseIndex:Int = todayCourses.objectAtIndex(indexPath.row) as! Int
-            var courses:NSArray = userDefaults.objectForKey("courses") as! NSArray
-            var course:NSDictionary = courses.objectAtIndex(courseIndex) as! NSDictionary
+            let userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+            let todayCourses:NSArray = handleTodayCourses(weekdayInt)
+            let courseIndex:Int = todayCourses.objectAtIndex(indexPath.row) as! Int
+            let courses:NSArray = userDefaults.objectForKey("courses") as! NSArray
+            let course:NSDictionary = courses.objectAtIndex(courseIndex) as! NSDictionary
             cell.classNameLabel.text = course.objectForKey("className") as? String
             cell.classroomLabel.text = course.objectForKey("classroom") as? String
             cell.teacherNameLabel.text = course.objectForKey("teacherName") as? String
-            var startSection:Int = course.objectForKey("startSection") as! Int
-            var sectionNumber:Int = course.objectForKey("sectionNumber") as! Int
+            let startSection:Int = course.objectForKey("startSection") as! Int
+            let sectionNumber:Int = course.objectForKey("sectionNumber") as! Int
             cell.startSectionLabel.text = "第\(startSection)节"
             cell.endSectionLabel.text = "第\(startSection + sectionNumber - 1)节"
             
-            var imageView:UIImageView = UIImageView(frame: CGRectMake(16, 16, UIScreen.mainScreen().bounds.width - 32, 126))
-            var likedColors:NSArray = userDefaults.objectForKey("preferredColors") as! NSArray
+            let imageView:UIImageView = UIImageView(frame: CGRectMake(16, 16, UIScreen.mainScreen().bounds.width - 32, 126))
+            let likedColors:NSArray = userDefaults.objectForKey("preferredColors") as! NSArray
             var count:Int = 0
             var colorIndex = Int(arc4random_uniform(UInt32(colors.colors.count)))
             
@@ -247,40 +210,7 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
     
     func handleDate(cell: TimeWeatherStatusTableViewCell) {
         
-        var date = NSDate()
-        var calender:NSCalendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)!
-        var unitFlags:NSCalendarUnit = NSCalendarUnit.CalendarUnitWeekday | NSCalendarUnit.CalendarUnitYear | NSCalendarUnit.CalendarUnitMonth | NSCalendarUnit.CalendarUnitDay | NSCalendarUnit.CalendarUnitHour | NSCalendarUnit.CalendarUnitMinute | NSCalendarUnit.CalendarUnitSecond
-        var components:NSDateComponents = calender.components(unitFlags, fromDate: date)
-        var year:String = "\(components.year)"
-        var month:String = "\(components.month)"
-        var day:String = "\(components.day)"
-        var hour:String = "\(components.hour)"
-        var minute:String = "\(components.minute)"
-        var second:String = "\(components.second)"
-        var weekday:String
-        switch (components.weekday) {
-        case 1:
-            weekday = "星期天"
-        case 2:
-            weekday = "星期一"
-        case 3:
-            weekday = "星期二"
-        case 4:
-            weekday = "星期三"
-        case 5:
-            weekday = "星期四"
-        case 6:
-            weekday = "星期五"
-        case 7:
-            weekday = "星期六"
-        default:weekday = "星期N"
-        }
-        if count(hour) < 2 {
-            hour = "0" + hour
-        }
-        if count(minute) < 2 {
-            minute = "0" + minute
-        }
+        let (month, day, weekday) = CalendarConverter.sharedInstance.monthDayWeekdayString()
         
         cell.dateLabel.text = month + "月" + day + "日"
         cell.weekdayLabel.text = weekday
@@ -289,86 +219,61 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
     
     func handleStatus(cell: courseCurrentTableViewCell) -> Float! {
         
-        var date = NSDate()
-        var calender:NSCalendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)!
-        var unitFlags:NSCalendarUnit = NSCalendarUnit.CalendarUnitWeekday | NSCalendarUnit.CalendarUnitHour | NSCalendarUnit.CalendarUnitMinute
-        var components:NSDateComponents = calender.components(unitFlags, fromDate: date)
-        var weekdayInt:Int = -1
-        switch (components.weekday) {
-        case 1:
-            weekdayInt = 6
-        case 2:
-            weekdayInt = 0
-        case 3:
-            weekdayInt = 1
-        case 4:
-            weekdayInt = 2
-        case 5:
-            weekdayInt = 3
-        case 6:
-            weekdayInt = 4
-        case 7:
-            weekdayInt = 5
-        default:weekdayInt = -1
-        }
+        let (weekdayInt, timeInt) = CalendarConverter.sharedInstance.weekdayTimeInt()
         
-        var hourInt:Double = Double(components.hour) + Double(components.minute)/60
-        var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        var courses:NSArray? = userDefaults.objectForKey("courses") as? NSArray
+        let userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        let courses:NSArray? = userDefaults.objectForKey("courses") as? NSArray
         
-        if let temp = courses {
+        if let _ = courses {
             
-            var courseStatus:NSArray = userDefaults.objectForKey("courseStatus") as! NSArray
-            var todayCourseStatus:NSArray = courseStatus.objectAtIndex(weekdayInt) as! NSArray
-            
-            switch (hourInt) {
+            switch (timeInt) {
             case 0..<7:
                 cell.statusLabel.text = "充足的睡眠是美好一天的开始！"
                 cell.currentCourseNameLabel.text = "充足的睡眠是美好一天的开始!"
                 cell.currentCourseClassroomLabel.text = "@ 寝室"
                 cell.currentCourseTimeLabel.text = "睡到七点吧~"
                 currentCourse = -1
-                var progress:Float = Float(hourInt+2)/10
+                let progress:Float = Float(timeInt+2)/10
                 return progress
             case 7..<8:
                 cell.statusLabel.text = "早上好，最近一节课是"
                 showCourseInfo(weekdayInt, whichSection: 0, cell: cell)
-                var progress:Float = Float(hourInt+2)/10
+                let progress:Float = Float(timeInt+2)/10
                 return progress
             case 8..<35/4:
                 cell.statusLabel.text = "第一节课进行中"
                 showCourseInfo(weekdayInt, whichSection: 0, cell: cell)
-                var progress:Float = Float(hourInt-8)*4/3
+                let progress:Float = Float(timeInt-8)*4/3
                 return progress
             case 35/4..<107/12:
                 cell.statusLabel.text = "第一节课下课中"
                 showCourseInfo(weekdayInt, whichSection: 1, cell: cell)
-                var progress:Float = Float(hourInt-35/4)*6
+                let progress:Float = Float(timeInt-35/4)*6
                 return progress
             case 107/12..<29/3:
                 cell.statusLabel.text = "第二节课进行中"
                 showCourseInfo(weekdayInt, whichSection: 1, cell: cell)
-                var progress:Float = Float(hourInt-107/12)*4/3
+                let progress:Float = Float(timeInt-107/12)*4/3
                 return progress
             case 29/3..<10:
                 cell.statusLabel.text = "第二节课下课中"
                 showCourseInfo(weekdayInt, whichSection: 2, cell: cell)
-                var progress:Float = Float(hourInt-29/3)*3
+                let progress:Float = Float(timeInt-29/3)*3
                 return progress
             case 10..<43/4:
                 cell.statusLabel.text = "第三节课进行中"
                 showCourseInfo(weekdayInt, whichSection: 2, cell: cell)
-                var progress:Float = Float(hourInt-10)*4/3
+                let progress:Float = Float(timeInt-10)*4/3
                 return progress
             case 43/4..<131/12:
                 cell.statusLabel.text = "第三节课下课中"
                 showCourseInfo(weekdayInt, whichSection: 3, cell: cell)
-                var progress:Float = Float(hourInt-43/4)*6
+                let progress:Float = Float(timeInt-43/4)*6
                 return progress
             case 131/12..<35/3:
                 cell.statusLabel.text = "第四节课进行中"
                 showCourseInfo(weekdayInt, whichSection: 3, cell: cell)
-                var progress:Float = Float(hourInt-131/12)*4/3
+                let progress:Float = Float(timeInt-131/12)*4/3
                 return progress
             case 35/3..<12.5:
                 cell.statusLabel.text = "午饭及午休时间"
@@ -376,47 +281,47 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
                 cell.currentCourseClassroomLabel.text = "@ 食堂&寝室"
                 cell.currentCourseTimeLabel.text = "睡到一点半吧~"
                 currentCourse = -1
-                var progress:Float = Float(hourInt-35/3)*3/7
+                let progress:Float = Float(timeInt-35/3)*3/7
                 return progress
             case 12.5..<14:
                 cell.statusLabel.text = "下午好，最近一节课是"
                 showCourseInfo(weekdayInt, whichSection: 4, cell: cell)
-                var progress:Float = Float(hourInt-35/3)*3/7
+                let progress:Float = Float(timeInt-35/3)*3/7
                 return progress
             case 14..<59/4:
                 cell.statusLabel.text = "第五节课进行中"
                 showCourseInfo(weekdayInt, whichSection: 4, cell: cell)
-                var progress:Float = Float(hourInt-14)*4/3
+                let progress:Float = Float(timeInt-14)*4/3
                 return progress
             case 59/4..<179/12:
                 cell.statusLabel.text = "第五节课下课中"
                 showCourseInfo(weekdayInt, whichSection: 5, cell: cell)
-                var progress:Float = Float(hourInt-59/4)*6
+                let progress:Float = Float(timeInt-59/4)*6
                 return progress
             case 179/12..<47/3:
                 cell.statusLabel.text = "第六节课进行中"
                 showCourseInfo(weekdayInt, whichSection: 5, cell: cell)
-                var progress:Float = Float(hourInt-179/12)*4/3
+                let progress:Float = Float(timeInt-179/12)*4/3
                 return progress
             case 47/3..<16:
                 cell.statusLabel.text = "第六节课下课中"
                 showCourseInfo(weekdayInt, whichSection: 6, cell: cell)
-                var progress:Float = Float(hourInt-47/3)*3
+                let progress:Float = Float(timeInt-47/3)*3
                 return progress
             case 16..<67/4:
                 cell.statusLabel.text = "第七节课进行中"
                 showCourseInfo(weekdayInt, whichSection: 6, cell: cell)
-                var progress:Float = Float(hourInt-16)*4/3
+                let progress:Float = Float(timeInt-16)*4/3
                 return progress
             case 67/4..<203/12:
                 cell.statusLabel.text = "第七节课下课中"
                 showCourseInfo(weekdayInt, whichSection: 7, cell: cell)
-                var progress:Float = Float(hourInt-67/4)*6
+                let progress:Float = Float(timeInt-67/4)*6
                 return progress
             case 203/12..<53/3:
                 cell.statusLabel.text = "第八节课进行中"
                 showCourseInfo(weekdayInt, whichSection: 7, cell: cell)
-                var progress:Float = Float(hourInt-203/12)*4/3
+                let progress:Float = Float(timeInt-203/12)*4/3
                 return progress
             case 53/3..<18:
                 cell.statusLabel.text = "晚餐时间"
@@ -424,47 +329,47 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
                 cell.currentCourseClassroomLabel.text = "@ 食堂"
                 cell.currentCourseTimeLabel.text = "细嚼慢咽助消化~"
                 currentCourse = -1
-                var progress:Float = Float(hourInt-53/3)*6/5
+                let progress:Float = Float(timeInt-53/3)*6/5
                 return progress
             case 18..<18.5:
                 cell.statusLabel.text = "晚上好，最近一节课是"
                 showCourseInfo(weekdayInt, whichSection: 8, cell: cell)
-                var progress:Float = Float(hourInt-53/3)*6/5
+                let progress:Float = Float(timeInt-53/3)*6/5
                 return progress
             case 18.5..<77/4:
                 cell.statusLabel.text = "第九节课进行中"
                 showCourseInfo(weekdayInt, whichSection: 8, cell: cell)
-                var progress:Float = Float(hourInt-18.5)*4/3
+                let progress:Float = Float(timeInt-18.5)*4/3
                 return progress
             case 77/4..<233/12:
                 cell.statusLabel.text = "第九节课下课中"
                 showCourseInfo(weekdayInt, whichSection: 9, cell: cell)
-                var progress:Float = Float(hourInt-77/4)*6
+                let progress:Float = Float(timeInt-77/4)*6
                 return progress
             case 233/12..<121/6:
                 cell.statusLabel.text = "第十节课进行中"
                 showCourseInfo(weekdayInt, whichSection: 9, cell: cell)
-                var progress:Float = Float(hourInt-233/12)*4/3
+                let progress:Float = Float(timeInt-233/12)*4/3
                 return progress
             case 121/6..<61/3:
                 cell.statusLabel.text = "第十节课下课中"
                 showCourseInfo(weekdayInt, whichSection: 10, cell: cell)
-                var progress:Float = Float(hourInt-121/6)*6
+                let progress:Float = Float(timeInt-121/6)*6
                 return progress
             case 61/3..<253/12:
                 cell.statusLabel.text = "第十一节课进行中"
                 showCourseInfo(weekdayInt, whichSection: 10, cell: cell)
-                var progress:Float = Float(hourInt-61/3)*4/3
+                let progress:Float = Float(timeInt-61/3)*4/3
                 return progress
             case 253/12..<85/4:
                 cell.statusLabel.text = "第十一节课下课中"
                 showCourseInfo(weekdayInt, whichSection: 11, cell: cell)
-                var progress:Float = Float(hourInt-253/12)*6
+                let progress:Float = Float(timeInt-253/12)*6
                 return progress
             case 85/4..<22:
                 cell.statusLabel.text = "第十二节课进行中"
                 showCourseInfo(weekdayInt, whichSection: 11, cell: cell)
-                var progress:Float = Float(hourInt-85/4)*4/3
+                let progress:Float = Float(timeInt-85/4)*4/3
                 return progress
             default:
                 cell.statusLabel.text = "忙碌的一天结束啦"
@@ -472,7 +377,7 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
                 cell.currentCourseClassroomLabel.text = "@ 寝室"
                 cell.currentCourseTimeLabel.text = "睡到七点吧~"
                 currentCourse = -1
-                var progress:Float = Float(hourInt-22)/10
+                let progress:Float = Float(timeInt-22)/10
                 return progress
             }
         }
@@ -483,7 +388,7 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
             cell.currentCourseNameLabel.text = "不知道诶!"
             cell.currentCourseClassroomLabel.text = "@ 不知道诶！"
             cell.currentCourseTimeLabel.text = "不知道诶！"
-            var alert:UIAlertView = UIAlertView(title: "数据错误", message: "还未加载课程数据\n请先到课程表页面加载课程数据", delegate: nil, cancelButtonTitle: "好的，马上去！")
+            let alert:UIAlertView = UIAlertView(title: "数据错误", message: "还未加载课程数据\n请先到课程表页面加载课程数据", delegate: nil, cancelButtonTitle: "好的，马上去！")
             currentCourse = -1
             alert.show()
             return nil
@@ -492,41 +397,42 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
     
     func handleTodayCourses(weekday:Int) -> NSArray {
         
-        var todayCourses:NSMutableArray = NSMutableArray()
-        var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        var courses:NSArray = userDefaults.objectForKey("courses") as! NSArray
-        var i:Int = 0
-        var course:NSDictionary = courses.objectAtIndex(i) as! NSDictionary
-        var courseDay:Int = course.objectForKey("day") as! Int
-        while (courseDay != weekday) {
-            i++
-            if i>=courses.count {
-                break;
-            }
-            course = courses.objectAtIndex(i) as! NSDictionary
-            courseDay = course.objectForKey("day") as! Int
-        }
-        while courseDay == weekday {
-            todayCourses.addObject(i)
-            i++
-            if (i<=courses.count-1) {
-                course = courses.objectAtIndex(i) as! NSDictionary
+        let todayCourses:NSMutableArray = NSMutableArray()
+        let userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        let courses:NSArray? = userDefaults.objectForKey("courses") as? NSArray
+        if let _ = courses {
+            var i:Int = 0
+            var course:NSDictionary = courses!.objectAtIndex(i) as! NSDictionary
+            var courseDay:Int = course.objectForKey("day") as! Int
+            while (courseDay != weekday) {
+                i++
+                if i>=courses!.count {
+                    break;
+                }
+                course = courses!.objectAtIndex(i) as! NSDictionary
                 courseDay = course.objectForKey("day") as! Int
             }
-            else {
-                break
+            while courseDay == weekday {
+                todayCourses.addObject(i)
+                i++
+                if (i<=courses!.count-1) {
+                    course = courses!.objectAtIndex(i) as! NSDictionary
+                    courseDay = course.objectForKey("day") as! Int
+                }
+                else {
+                    break
+                }
             }
         }
-        
         return todayCourses
     }
     
     func showCourseInfo(weekdayInt:Int, whichSection:Int, cell: courseCurrentTableViewCell) {
         
-        var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        var courseStatus:NSArray = userDefaults.objectForKey("courseStatus") as! NSArray
-        var todayCourseStatus:NSArray = courseStatus.objectAtIndex(weekdayInt) as! NSArray
-        var courses:NSArray = userDefaults.objectForKey("courses") as! NSArray
+        let userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        let courseStatus:NSArray = userDefaults.objectForKey("courseStatus") as! NSArray
+        let todayCourseStatus:NSArray = courseStatus.objectAtIndex(weekdayInt) as! NSArray
+        let courses:NSArray = userDefaults.objectForKey("courses") as! NSArray
         var section = whichSection
         var status = todayCourseStatus.objectAtIndex(section) as! Int
         var isPresentCourse = true
@@ -548,13 +454,13 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
             currentCourse = -1
         }
         else {
-            var course:NSDictionary = courses.objectAtIndex(status) as! NSDictionary
+            let course:NSDictionary = courses.objectAtIndex(status) as! NSDictionary
             currentCourse = status
             cell.currentCourseNameLabel.text = course.objectForKey("className") as? String
             cell.currentCourseClassroomLabel.text = course.objectForKey("classroom") as? String
             cell.currentCourseClassroomLabel.text = "@ " + cell.currentCourseClassroomLabel.text!
-            var startSection = course.objectForKey("startSection") as! Int
-            var sectionNumber = course.objectForKey("sectionNumber") as! Int
+            let startSection = course.objectForKey("startSection") as! Int
+            let sectionNumber = course.objectForKey("sectionNumber") as! Int
             cell.currentCourseTimeLabel.text = "第\(startSection)节至第\(startSection + sectionNumber - 1)节"
             if !isPresentCourse {
                 cell.statusLabel.text = "最近一节课是"
@@ -564,40 +470,34 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
     
     func refreshWeatherCondition(cell: TimeWeatherStatusTableViewCell) {
         
-        var date = NSDate()
-        var calender:NSCalendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)!
-        var unitFlags:NSCalendarUnit = NSCalendarUnit.CalendarUnitHour | NSCalendarUnit.CalendarUnitMinute
-        var components:NSDateComponents = calender.components(unitFlags, fromDate: date)
-        var hour:NSString = "\(components.hour)"
-        var minute:NSString = "\(components.minute)"
-        var time:Double = Double(components.hour) + Double(components.minute)/60
+        let time = CalendarConverter.sharedInstance.timeInt()
         
-        var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        var weather:NSDictionary? = userDefaults.objectForKey("weather") as? NSDictionary
+        let userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        let weather:NSDictionary? = userDefaults.objectForKey("weather") as? NSDictionary
         
         if let temp = weather {
             
-            var firstDay:NSDictionary = temp.objectForKey("firstDay") as! NSDictionary
-            var secondDay:NSDictionary = temp.objectForKey("secondDay") as! NSDictionary
+            let firstDay:NSDictionary = temp.objectForKey("firstDay") as! NSDictionary
+            let secondDay:NSDictionary = temp.objectForKey("secondDay") as! NSDictionary
             
             switch time {
             case 0...6:
                 fallthrough
             case 18...24:
-                var weatherCondition = firstDay.objectForKey("nightWeather") as! String
-                var weatherImage = "night" + weatherCondition + ".png"
+                let weatherCondition = firstDay.objectForKey("nightWeather") as! String
+                let weatherImage = "night" + weatherCondition + ".png"
                 cell.weatherImageView.image = UIImage(named: weatherImage)
                 cell.temperatureLabel.text = "温度：" + (firstDay.objectForKey("nightTemperature") as! String) + "℃"
                 cell.weatherConditionLabel.text = weatherEncodeToWeatherCondition[weatherCondition]
             case 6...8:
-                var weatherCondition = secondDay.objectForKey("dayWeather") as! String
-                var weatherImage = "day" + weatherCondition + ".png"
+                let weatherCondition = secondDay.objectForKey("dayWeather") as! String
+                let weatherImage = "day" + weatherCondition + ".png"
                 cell.weatherImageView.image = UIImage(named: weatherImage)
                 cell.temperatureLabel.text = "温度：" + (secondDay.objectForKey("dayTemperature") as! String) + "℃"
                 cell.weatherConditionLabel.text = weatherEncodeToWeatherCondition[weatherCondition]
             case 8...18:
-                var weatherCondition = firstDay.objectForKey("dayWeather") as! String
-                var weatherImage = "day" + weatherCondition + ".png"
+                let weatherCondition = firstDay.objectForKey("dayWeather") as! String
+                let weatherImage = "day" + weatherCondition + ".png"
                 cell.weatherImageView.image = UIImage(named: weatherImage)
                 cell.temperatureLabel.text = "温度：" + (firstDay.objectForKey("dayTemperature") as! String) + "℃"
                 cell.weatherConditionLabel.text = weatherEncodeToWeatherCondition[weatherCondition]
@@ -614,13 +514,13 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
     
     func refreshPM25(cell: TimeWeatherStatusTableViewCell) {
         
-        var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        var weather:NSDictionary? = userDefaults.objectForKey("weather") as? NSDictionary
-        if let temp = weather {
+        let userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        let weather:NSDictionary? = userDefaults.objectForKey("weather") as? NSDictionary
+        if let _ = weather {
             
-            var aqi:Int? = weather?.objectForKey("aqi") as? Int
-            var quality:String? = weather?.objectForKey("quality") as? String
-            if let qualitytemp = quality {
+            let aqi:Int? = weather?.objectForKey("aqi") as? Int
+            let quality:String? = weather?.objectForKey("quality") as? String
+            if let _ = quality {
                 cell.PM25Label.text = "AQI:\(aqi!)"
                 cell.airQualityLabel.text = quality
             }
@@ -639,7 +539,7 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
     // MARK: seguesInsideTheView
     
     @IBAction func segmentedControlValueChanged(sender: UISegmentedControl) {
-        
+
         self.tableView.reloadData()
         if segmentedController.selectedSegmentIndex == 0 {
             self.tableView.backgroundColor = nil
@@ -660,11 +560,11 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
     
     // MARK: seguesOutsideTheView
     
-    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
         
         if identifier == "showCourseDetail" {
             
-            if let temp = currentCourse {
+            if let _ = currentCourse {
                 if currentCourse == -1 {
                     return false
                 }
@@ -684,7 +584,7 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
         
         if segue.identifier == "showCourseDetail" {
             
-            var vc = segue.destinationViewController as! CourseDetailTableViewController
+            let vc = segue.destinationViewController as! CourseDetailTableViewController
             vc.whichCourse = currentCourse
             
         }
@@ -693,7 +593,7 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
     
     @IBAction func currentCourseTapGesture(sender: UITapGestureRecognizer) {
         
-        if let temp = currentCourse {
+        if let _ = currentCourse {
             if currentCourse == -1 {
             }
             else {
@@ -703,6 +603,11 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
 
         
     }
+    
+    func launchJump() {
+        
+    }
+    
     // MARK: storeHouseRefreshControl & ScrollViewDelegate
     
     override func scrollViewDidScroll(scrollView: UIScrollView) {
@@ -726,7 +631,7 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
     func refreshTriggered() {
 
         if segmentedController.selectedSegmentIndex == 0 {
-            var weatherInfoGetter:WeatherInfoGetter = WeatherInfoGetter { () -> Void in
+            let weatherInfoGetter:WeatherInfoGetter = WeatherInfoGetter { () -> Void in
                 self.finishRefreshControl()
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.tableView.reloadData()
@@ -758,9 +663,9 @@ class TodayTableViewController: UITableViewController, UIScrollViewDelegate, UIA
     
     override func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         if scrollView.tag == 101{
-            var current = scrollView.contentOffset.x / UIScreen.mainScreen().bounds.size.width
+            let current = scrollView.contentOffset.x / UIScreen.mainScreen().bounds.size.width
             
-            var page:UIPageControl = self.view.viewWithTag(Int(102)) as! UIPageControl
+            let page:UIPageControl = self.view.viewWithTag(Int(102)) as! UIPageControl
             page.currentPage = Int(current)
         }
     }

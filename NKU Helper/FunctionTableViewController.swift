@@ -20,7 +20,7 @@ class FunctionTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("Functioner") as! UITableViewCell
+        let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("Functioner")!
         cell.textLabel!.text = "查询成绩"
         return cell
     }

@@ -9,13 +9,11 @@
 import Foundation
 class imageGetter: NSObject ,NSURLConnectionDataDelegate {
     
-    var connection:NSURLConnection?
     var responseData:NSMutableData?
     var block:((data:NSData?, err:String?)->Void)!
     
     override init() {
         super.init()
-        connection = nil
         responseData = nil
         block = nil
     }
@@ -23,11 +21,11 @@ class imageGetter: NSObject ,NSURLConnectionDataDelegate {
     func getImageWithBlock(theBlock:(data:NSData?, err:String?)->Void) {
         
         block = theBlock
-        var req:NSURLRequest = NSURLRequest(URL: NSURL(string: "http://222.30.32.10/ValidateCode")!)
+        let req:NSURLRequest = NSURLRequest(URL: NSURL(string: "http://222.30.32.10/ValidateCode")!)
         responseData = NSMutableData()
-        connection = NSURLConnection(request: req, delegate: self)
-        if let temp = connection {
-            print("Image Connection Setting Succeed\n")
+        let connection = NSURLConnection(request: req, delegate: self)
+        if let _ = connection {
+            print("Image Connection Setting Succeed\n", terminator: "")
         }
         else {
             block(data: nil, err:"网络错误")
@@ -36,11 +34,11 @@ class imageGetter: NSObject ,NSURLConnectionDataDelegate {
 
     func connection(connection: NSURLConnection, didReceiveData data: NSData) {
         responseData?.appendData(data)
-        print("Image didReceiveData!\n")
+        print("Image didReceiveData!\n", terminator: "")
     }
     
     func connectionDidFinishLoading(connection: NSURLConnection) {
-        print("Image connection Did Finish Loading!\n")
+        print("Image connection Did Finish Loading!\n", terminator: "")
         block(data: responseData, err: nil)
     }
     

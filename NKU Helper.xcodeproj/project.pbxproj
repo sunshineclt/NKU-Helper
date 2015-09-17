@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3978EAE3BAA89E16102DF10A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 38A37A23D9C2030561917586 /* libPods.a */; };
+		D122575C5C6528E699FD9529 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C0DDC58DAC19A29EB4B9EA0B /* libPods.a */; };
 		E90285CC1AEA910B00DA5513 /* WeatherInfoGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90285CB1AEA910B00DA5513 /* WeatherInfoGetter.swift */; };
 		E90AE22E1A8F813900AD0D78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90AE22D1A8F813900AD0D78 /* AppDelegate.swift */; };
 		E90AE2311A8F813900AD0D78 /* NKU_Helper.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E90AE22F1A8F813900AD0D78 /* NKU_Helper.xcdatamodeld */; };
@@ -20,7 +20,7 @@
 		E91E5F4F1A90FAED009F3B2B /* GradeShowerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91E5F4E1A90FAED009F3B2B /* GradeShowerTableViewController.swift */; };
 		E91E5F551A9103DF009F3B2B /* GradeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91E5F541A9103DF009F3B2B /* GradeCell.swift */; };
 		E926CD751AB33B1700A5076A /* NKU.plist in Resources */ = {isa = PBXBuildFile; fileRef = E926CD741AB33B1700A5076A /* NKU.plist */; };
-		E93E827E1AEA2461005D0D73 /* MyNKURefreshController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93E827D1AEA2461005D0D73 /* MyNKURefreshController.swift */; };
+		E92B2D011B48DB89008825A3 /* CalendarConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92B2D001B48DB89008825A3 /* CalendarConverter.swift */; };
 		E94211C31B00C1E600087846 /* TimeWeatherStatusTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94211C21B00C1E600087846 /* TimeWeatherStatusTableViewCell.swift */; };
 		E94286501AA4CD2A00A4242C /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E942864F1AA4CD2A00A4242C /* LogInViewController.swift */; };
 		E94286541AA5494800A4242C /* LogIner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94286531AA5494800A4242C /* LogIner.swift */; };
@@ -112,6 +112,7 @@
 		E9CCF4B61ABC64B2002076F2 /* ColorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CCF4B51ABC64B2002076F2 /* ColorTableViewCell.swift */; };
 		E9CCF4B81ABC653E002076F2 /* ColorChooseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CCF4B71ABC653E002076F2 /* ColorChooseTableViewController.swift */; };
 		E9CCF4BA1ABC6578002076F2 /* ColorChooseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CCF4B91ABC6578002076F2 /* ColorChooseTableViewCell.swift */; };
+		E9F674EC1BA80E7500BEF640 /* RSA.html in Resources */ = {isa = PBXBuildFile; fileRef = E9F674EB1BA80E7500BEF640 /* RSA.html */; settings = {ASSET_TAGS = (); }; };
 		E9FDA2431AB15BB600B25E7E /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FDA2421AB15BB600B25E7E /* Base64.m */; };
 		E9FDA2451AB15F6B00B25E7E /* WeatherConditionGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FDA2441AB15F6B00B25E7E /* WeatherConditionGetter.swift */; };
 		E9FE26141B137FEC00FCBB32 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FE26131B137FEC00FCBB32 /* Colors.swift */; };
@@ -128,9 +129,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		38A37A23D9C2030561917586 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3946864442A5C15BA15D6FBF /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		6FD8949EC36C0F05C3969D27 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		C0DDC58DAC19A29EB4B9EA0B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E90285CB1AEA910B00DA5513 /* WeatherInfoGetter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherInfoGetter.swift; sourceTree = "<group>"; };
 		E90AE2281A8F813900AD0D78 /* NKU Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NKU Helper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E90AE22C1A8F813900AD0D78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -148,7 +149,7 @@
 		E91E5F4E1A90FAED009F3B2B /* GradeShowerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeShowerTableViewController.swift; sourceTree = "<group>"; };
 		E91E5F541A9103DF009F3B2B /* GradeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeCell.swift; sourceTree = "<group>"; };
 		E926CD741AB33B1700A5076A /* NKU.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = NKU.plist; sourceTree = "<group>"; };
-		E93E827D1AEA2461005D0D73 /* MyNKURefreshController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyNKURefreshController.swift; sourceTree = "<group>"; };
+		E92B2D001B48DB89008825A3 /* CalendarConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarConverter.swift; sourceTree = "<group>"; };
 		E94211C21B00C1E600087846 /* TimeWeatherStatusTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeWeatherStatusTableViewCell.swift; sourceTree = "<group>"; };
 		E942864F1AA4CD2A00A4242C /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		E94286531AA5494800A4242C /* LogIner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogIner.swift; sourceTree = "<group>"; };
@@ -229,6 +230,10 @@
 		E97176751B1488CA004DADB2 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		E97176771B149292004DADB2 /* CourseDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseDetailTableViewController.swift; sourceTree = "<group>"; };
 		E988B5361AB005DF006818FA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		E98DC7291B8B13D100273510 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		E98DC72B1B8B13D600273510 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		E98DC72D1B8B13DE00273510 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		E98DC73E1B8B3BCC00273510 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = Alamofire.framework; path = "/Users/cjjlt/Library/Developer/Xcode/DerivedData/NKU_Helper-actrmporpjmihtakpjuvixzwymuh/Build/Products/Debug-iphoneos/Alamofire.framework"; sourceTree = "<absolute>"; };
 		E98F94D51AA3180700885992 /* ClassTimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassTimeViewController.swift; sourceTree = "<group>"; };
 		E98F94D71AA318EF00885992 /* FunctionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunctionTableViewController.swift; sourceTree = "<group>"; };
 		E98F94D91AA3191F00885992 /* SettingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
@@ -240,6 +245,7 @@
 		E9CCF4B51ABC64B2002076F2 /* ColorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTableViewCell.swift; sourceTree = "<group>"; };
 		E9CCF4B71ABC653E002076F2 /* ColorChooseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorChooseTableViewController.swift; sourceTree = "<group>"; };
 		E9CCF4B91ABC6578002076F2 /* ColorChooseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorChooseTableViewCell.swift; sourceTree = "<group>"; };
+		E9F674EB1BA80E7500BEF640 /* RSA.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = RSA.html; sourceTree = "<group>"; };
 		E9FDA2411AB15BB600B25E7E /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
 		E9FDA2421AB15BB600B25E7E /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
 		E9FDA2441AB15F6B00B25E7E /* WeatherConditionGetter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherConditionGetter.swift; sourceTree = "<group>"; };
@@ -252,7 +258,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9C2ECC01B183E8B005C1F5F /* MessageUI.framework in Frameworks */,
-				3978EAE3BAA89E16102DF10A /* libPods.a in Frameworks */,
+				D122575C5C6528E699FD9529 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,8 +284,12 @@
 		911897253CF7E957EC7F6666 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E98DC73E1B8B3BCC00273510 /* Alamofire.framework */,
+				E98DC72D1B8B13DE00273510 /* CoreGraphics.framework */,
+				E98DC72B1B8B13D600273510 /* UIKit.framework */,
+				E98DC7291B8B13D100273510 /* Foundation.framework */,
 				E9C2ECBF1B183E8B005C1F5F /* MessageUI.framework */,
-				38A37A23D9C2030561917586 /* libPods.a */,
+				C0DDC58DAC19A29EB4B9EA0B /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -315,12 +325,8 @@
 				E98F94DF1AA319CD00885992 /* Function */,
 				E98F94E11AA319EE00885992 /* Settings */,
 				E95C8F3F1AAF507F00D3D8EE /* weatherIcon */,
-				E95C8F391AAF2BA900D3D8EE /* backgroundImage.jpg */,
-				E90AE2371A8F813900AD0D78 /* Images.xcassets */,
-				E90AE2391A8F813900AD0D78 /* LaunchScreen.xib */,
-				E90AE22F1A8F813900AD0D78 /* NKU_Helper.xcdatamodeld */,
+				E95C37F81BA55B95004444FF /* images */,
 				E90AE22B1A8F813900AD0D78 /* Supporting Files */,
-				E91E5F4A1A90FA9E009F3B2B /* NKU Helper-Bridging-Header.h */,
 			);
 			path = "NKU Helper";
 			sourceTree = "<group>";
@@ -328,7 +334,10 @@
 		E90AE22B1A8F813900AD0D78 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E9F674EB1BA80E7500BEF640 /* RSA.html */,
+				E90AE22F1A8F813900AD0D78 /* NKU_Helper.xcdatamodeld */,
 				E90AE22C1A8F813900AD0D78 /* Info.plist */,
+				E91E5F4A1A90FA9E009F3B2B /* NKU Helper-Bridging-Header.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -368,6 +377,16 @@
 				E9658F751AB74ACD000A39A8 /* coursesOverViewTableViewCell.swift */,
 			);
 			name = Cell;
+			sourceTree = "<group>";
+		};
+		E95C37F81BA55B95004444FF /* images */ = {
+			isa = PBXGroup;
+			children = (
+				E95C8F391AAF2BA900D3D8EE /* backgroundImage.jpg */,
+				E90AE2371A8F813900AD0D78 /* Images.xcassets */,
+				E90AE2391A8F813900AD0D78 /* LaunchScreen.xib */,
+			);
+			name = images;
 			sourceTree = "<group>";
 		};
 		E95C8F3F1AAF507F00D3D8EE /* weatherIcon */ = {
@@ -516,7 +535,6 @@
 			isa = PBXGroup;
 			children = (
 				E926CD741AB33B1700A5076A /* NKU.plist */,
-				E93E827D1AEA2461005D0D73 /* MyNKURefreshController.swift */,
 			);
 			name = RefreshControl;
 			sourceTree = "<group>";
@@ -552,6 +570,7 @@
 				E94286531AA5494800A4242C /* LogIner.swift */,
 				E90AE2501A8F814C00AD0D78 /* ImageGetter.swift */,
 				E9FE26131B137FEC00FCBB32 /* Colors.swift */,
+				E92B2D001B48DB89008825A3 /* CalendarConverter.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -602,7 +621,9 @@
 		E90AE2201A8F813900AD0D78 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "&#38472;&#20048;&#22825;";
 				TargetAttributes = {
 					E90AE2271A8F813900AD0D78 = {
@@ -712,6 +733,7 @@
 				E95C8F751AAF50A400D3D8EE /* day18.png in Resources */,
 				E95C8FAB1AAF51A700D3D8EE /* night06.png in Resources */,
 				E95C8F691AAF50A400D3D8EE /* day06.png in Resources */,
+				E9F674EC1BA80E7500BEF640 /* RSA.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -766,6 +788,7 @@
 				E90285CC1AEA910B00DA5513 /* WeatherInfoGetter.swift in Sources */,
 				E90AE2331A8F813900AD0D78 /* GradeSetUpViewController.swift in Sources */,
 				E94211C31B00C1E600087846 /* TimeWeatherStatusTableViewCell.swift in Sources */,
+				E92B2D011B48DB89008825A3 /* CalendarConverter.swift in Sources */,
 				E90AE2311A8F813900AD0D78 /* NKU_Helper.xcdatamodeld in Sources */,
 				E90AE2511A8F814C00AD0D78 /* ImageGetter.swift in Sources */,
 				E9FDA2431AB15BB600B25E7E /* Base64.m in Sources */,
@@ -789,7 +812,6 @@
 				E94286581AA5500C00A4242C /* SaveAccountInfoViewController.swift in Sources */,
 				E9CCF4B81ABC653E002076F2 /* ColorChooseTableViewController.swift in Sources */,
 				E997700E1AC16CC700C3977B /* LifeIndexTableViewCell.swift in Sources */,
-				E93E827E1AEA2461005D0D73 /* MyNKURefreshController.swift in Sources */,
 				E94286501AA4CD2A00A4242C /* LogInViewController.swift in Sources */,
 				E91E5F551A9103DF009F3B2B /* GradeCell.swift in Sources */,
 				E90AE2531A8F948300AD0D78 /* GradeGetter.swift in Sources */,
@@ -846,7 +868,9 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -888,6 +912,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -912,8 +937,14 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/NKU_Helper-actrmporpjmihtakpjuvixzwymuh/Build/Products/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = "NKU Helper/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "April-Sunshine.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "NKU Helper/NKU Helper-Bridging-Header.h";
@@ -929,8 +960,14 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/NKU_Helper-actrmporpjmihtakpjuvixzwymuh/Build/Products/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = "NKU Helper/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "April-Sunshine.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "NKU Helper/NKU Helper-Bridging-Header.h";
@@ -951,6 +988,7 @@
 				);
 				INFOPLIST_FILE = "NKU HelperTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "April-Sunshine.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NKU Helper.app/NKU Helper";
 			};
@@ -966,6 +1004,7 @@
 				);
 				INFOPLIST_FILE = "NKU HelperTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "April-Sunshine.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NKU Helper.app/NKU Helper";
 			};

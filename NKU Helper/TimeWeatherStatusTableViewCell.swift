@@ -27,6 +27,9 @@ class TimeWeatherStatusTableViewCell: UITableViewCell {
         weatherConditionLabel.adjustsFontSizeToFitWidth = true
         temperatureLabel.adjustsFontSizeToFitWidth = true
         PM25Label.adjustsFontSizeToFitWidth = true
+        airQualityLabel.adjustsFontSizeToFitWidth = true
+        dateLabel.adjustsFontSizeToFitWidth = true
+        
         
     }
 }

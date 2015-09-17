@@ -29,7 +29,7 @@ class coursesOverViewTableViewCell: UITableViewCell {
         endSectionLabel.adjustsFontSizeToFitWidth = true
         
         self.backgroundColor = UIColor.clearColor()
-        var backgroundView:UIView = UIView(frame: CGRectMake(0, 0, 320, 150))
+        let backgroundView:UIView = UIView(frame: CGRectMake(0, 0, 320, 150))
         backgroundView.backgroundColor = UIColor.clearColor()
         self.backgroundView = backgroundView
         

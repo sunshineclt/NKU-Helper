@@ -5,5 +5,7 @@
 #import "Base64.h"
 #import <CommonCrypto/CommonHMAC.h>
 #import "CBStoreHouseRefreshControl.h"
-#import <POP/POP.h>
-#import <UAProgressView.h>
+#import <pop/POP.h>
+#import "UAProgressView.h"
+#import "MBProgressHUD.h"
+#import <AVOSCloud/AVOSCloud.h>

@@ -30,8 +30,8 @@ class WeatherConditionGetter: NSObject {
     
     func getDate() -> NSString {
         
-        var currentDate:NSDate = NSDate()
-        var dateFormatter:NSDateFormatter = NSDateFormatter()
+        let currentDate:NSDate = NSDate()
+        let dateFormatter:NSDateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyyMMddHHmmss"
         var dateCut:NSString = dateFormatter.stringFromDate(currentDate)
         dateCut = dateCut.substringToIndex(12)
@@ -39,7 +39,7 @@ class WeatherConditionGetter: NSObject {
     }
     
     func getPublicKey() -> NSString {
-        var result:NSString = NSString(format: "http://open.weather.com.cn/data/?areaid=%@&type=%@&date=%@&appid=%@", areaid, type, date, appid)
+        let result:NSString = NSString(format: "http://open.weather.com.cn/data/?areaid=%@&type=%@&date=%@&appid=%@", areaid, type, date, appid)
         return result
     }
     
@@ -48,32 +48,32 @@ class WeatherConditionGetter: NSObject {
         getDate()
         key = hmacSha1()
         key = stringByEncodingURLFormat()
-        var shortAppid = appid.substringToIndex(6)
-        var result:NSString = NSString(format: "http://open.weather.com.cn/data/?areaid=%@&type=%@&date=%@&appid=%@&key=%@", areaid, type, date, shortAppid, key)
+        let shortAppid = appid.substringToIndex(6)
+        let result:NSString = NSString(format: "http://open.weather.com.cn/data/?areaid=%@&type=%@&date=%@&appid=%@&key=%@", areaid, type, date, shortAppid, key)
         return result
     }
     
     func stringByEncodingURLFormat() -> NSString {
         
-        var encodedString:NSString = CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, key, nil, "!$&'()*+,-./:;=?@_~%#[]", CFStringBuiltInEncodings.UTF8.rawValue)
+        let encodedString:NSString = CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, key, nil, "!$&'()*+,-./:;=?@_~%#[]", CFStringBuiltInEncodings.UTF8.rawValue)
         return encodedString
         
     }
 
     func hmacSha1() -> NSString {
-        var public_key = getPublicKey()
+        let public_key = getPublicKey()
         
-        var secretData:NSData = private_key.dataUsingEncoding(NSUTF8StringEncoding)!
-        var stringData:NSData = public_key.dataUsingEncoding(NSUTF8StringEncoding)!
+        let secretData:NSData = private_key.dataUsingEncoding(NSUTF8StringEncoding)!
+        let stringData:NSData = public_key.dataUsingEncoding(NSUTF8StringEncoding)!
         
         let keyBytes = secretData.bytes
         let dataBytes = stringData.bytes
         
-        var outs = malloc(Int(CC_SHA1_DIGEST_LENGTH))
+        let outs = malloc(Int(CC_SHA1_DIGEST_LENGTH))
         
         CCHmac(CCHmacAlgorithm(kCCHmacAlgSHA1), keyBytes, Int(secretData.length), dataBytes, Int(stringData.length), outs)
 
-        var signatureData:NSData = NSData(bytesNoCopy: outs, length: 20, freeWhenDone: true)
+        let signatureData:NSData = NSData(bytesNoCopy: outs, length: 20, freeWhenDone: true)
         
         return signatureData.base64EncodedString()
         

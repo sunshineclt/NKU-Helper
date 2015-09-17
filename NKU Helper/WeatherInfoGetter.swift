@@ -28,11 +28,11 @@ class WeatherInfoGetter: NSObject {
     
     func getWeatherCondition() {
         
-        var weatherGetter:WeatherConditionGetter = WeatherConditionGetter()
-        var API:NSString = weatherGetter.getAPI()
-        var url:NSURL = NSURL(string: API as String)!
-        var returnData:NSData? = NSData(contentsOfURL: url)
-        if let temp = returnData {
+        let weatherGetter:WeatherConditionGetter = WeatherConditionGetter()
+        let API:NSString = weatherGetter.getAPI()
+        let url:NSURL = NSURL(string: API as String)!
+        let returnData:NSData? = NSData(contentsOfURL: url)
+        if let _ = returnData {
             
             //For Debug
             /*
@@ -40,14 +40,20 @@ class WeatherInfoGetter: NSObject {
             print(returnString)
             print("\n**********************\n")
             */
+            var jsonData:NSDictionary? = nil
+            do{
+                try jsonData = NSJSONSerialization.JSONObjectWithData(returnData!, options: NSJSONReadingOptions.MutableContainers) as? NSDictionary
+            }
+            catch {
+                
+            }
             
-            let jsonData:NSDictionary? = NSJSONSerialization.JSONObjectWithData(returnData!, options: NSJSONReadingOptions.MutableContainers, error: nil) as? NSDictionary
-            if let json = jsonData {
+            if let _ = jsonData {
                 let temp:NSDictionary = jsonData!.objectForKey("f") as! NSDictionary
                 let forecastAll = temp.objectForKey("f1") as! NSArray
                 
-                var theFirstDayForecast:NSDictionary = forecastAll.objectAtIndex(0) as! NSDictionary
-                var theFirstDay:NSMutableDictionary = NSMutableDictionary()
+                let theFirstDayForecast:NSDictionary = forecastAll.objectAtIndex(0) as! NSDictionary
+                let theFirstDay:NSMutableDictionary = NSMutableDictionary()
                 var weather = theFirstDayForecast.objectForKey("fa") as! String
                 var temperature = theFirstDayForecast.objectForKey("fc") as! String
                 var windDirection = theFirstDayForecast.objectForKey("fe") as! String
@@ -66,8 +72,8 @@ class WeatherInfoGetter: NSObject {
                 theFirstDay.setObject(windStrenth, forKey: "nightWindStrenth")
                 self.weather.setObject(theFirstDay, forKey: "firstDay")
                 
-                var theSecondDayForecast:NSDictionary = forecastAll.objectAtIndex(1) as! NSDictionary
-                var theSecondDay:NSMutableDictionary = NSMutableDictionary()
+                let theSecondDayForecast:NSDictionary = forecastAll.objectAtIndex(1) as! NSDictionary
+                let theSecondDay:NSMutableDictionary = NSMutableDictionary()
                 weather = theSecondDayForecast.objectForKey("fa") as! String
                 temperature = theSecondDayForecast.objectForKey("fc") as! String
                 windDirection = theSecondDayForecast.objectForKey("fe") as! String
@@ -99,12 +105,18 @@ class WeatherInfoGetter: NSObject {
     
     func getPM25() {
         
-        var urlString:String = "http://www.pm25.in/api/querys/only_aqi.json?city=tianjin&token=K4BcCM5m1pdnwo3AGe7p&stations=no"
-        var url:NSURL = NSURL(string: urlString)!
-        var returnData:NSData? = NSData(contentsOfURL: url)
-        if let temp = returnData {
-            let jsonData:NSArray? = NSJSONSerialization.JSONObjectWithData(returnData!, options: NSJSONReadingOptions.MutableContainers, error: nil) as? NSArray
-            if let json = jsonData {
+        let urlString:String = "http://www.pm25.in/api/querys/only_aqi.json?city=tianjin&token=K4BcCM5m1pdnwo3AGe7p&stations=no"
+        let url:NSURL = NSURL(string: urlString)!
+        let returnData:NSData? = NSData(contentsOfURL: url)
+        if let _ = returnData {
+            var jsonData:NSArray? = nil
+            do {
+                try jsonData = NSJSONSerialization.JSONObjectWithData(returnData!, options: NSJSONReadingOptions.MutableContainers) as? NSArray
+            }
+            catch {
+                
+            }
+            if let _ = jsonData {
                 let aqiData:NSDictionary = jsonData!.objectAtIndex(0) as! NSDictionary
                 let aqi:Int = aqiData.objectForKey("aqi") as! Int
                 let quality:NSString = aqiData.objectForKey("quality") as! NSString
@@ -125,26 +137,31 @@ class WeatherInfoGetter: NSObject {
     
     func getLifeIndex() {
         
-        var weatherGetter:WeatherConditionGetter = WeatherConditionGetter(type: "index_v")
-        var API:String = weatherGetter.getAPI() as String
-        var url:NSURL = NSURL(string: API)!
-        var returnData:NSData? = NSData(contentsOfURL: url)
-        if let temp = returnData {
-            
-            let jsonData:NSDictionary? = NSJSONSerialization.JSONObjectWithData(returnData!, options: NSJSONReadingOptions.MutableContainers, error: nil) as? NSDictionary
-            if let json = jsonData {
+        let weatherGetter:WeatherConditionGetter = WeatherConditionGetter(type: "index_v")
+        let API:String = weatherGetter.getAPI() as String
+        let url:NSURL = NSURL(string: API)!
+        let returnData:NSData? = NSData(contentsOfURL: url)
+        if let _ = returnData {
+            var jsonData:NSDictionary? = nil
+            do {
+                try jsonData = NSJSONSerialization.JSONObjectWithData(returnData!, options: NSJSONReadingOptions.MutableContainers) as? NSDictionary
+            }
+            catch {
+                
+            }
+            if let _ = jsonData {
                 let indexData:NSArray = jsonData!.objectForKey("i") as! NSArray
                 
-                var index:NSMutableDictionary = NSMutableDictionary()
+                let index:NSMutableDictionary = NSMutableDictionary()
                 
                 for (var i=0;i<3;i++) {
                     
-                    var indexAll = NSMutableDictionary()
+                    let indexAll = NSMutableDictionary()
                     
-                    var indexDataNow:NSDictionary = indexData.objectAtIndex(i) as! NSDictionary
-                    var indexName:NSString = indexDataNow.objectForKey("i2") as! NSString
-                    var indexBrief:NSString = indexDataNow.objectForKey("i4") as! NSString
-                    var indexDetail:NSString = indexDataNow.objectForKey("i5") as! NSString
+                    let indexDataNow:NSDictionary = indexData.objectAtIndex(i) as! NSDictionary
+                    let indexName:NSString = indexDataNow.objectForKey("i2") as! NSString
+                    let indexBrief:NSString = indexDataNow.objectForKey("i4") as! NSString
+                    let indexDetail:NSString = indexDataNow.objectForKey("i5") as! NSString
                     
                     indexAll.setObject(indexName, forKey: "name")
                     indexAll.setObject(indexBrief, forKey: "brief")
@@ -170,14 +187,14 @@ class WeatherInfoGetter: NSObject {
     }
     
     func save() {
-        var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        let userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         if !error {
             userDefaults.removeObjectForKey("weather")
             userDefaults.setObject(weather, forKey: "weather")
             userDefaults.synchronize()
         }
         else {
-            var alertView:UIAlertView = UIAlertView(title: "网络错误", message: "木有网不能刷新天气哦~", delegate: nil, cancelButtonTitle: "好")
+            let alertView:UIAlertView = UIAlertView(title: "网络错误", message: "木有网不能刷新天气哦~", delegate: nil, cancelButtonTitle: "好")
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 alertView.show()
             })

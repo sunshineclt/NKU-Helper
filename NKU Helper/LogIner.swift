@@ -25,14 +25,15 @@ class LogIner:NSObject, NSURLConnectionDataDelegate{
     
     func login(block:((error:String?)->Void)) {
         self.block = block
-        var url:NSURL = NSURL(string: "http://222.30.32.10/stdloginAction.do")!
-        var req:NSMutableURLRequest = NSMutableURLRequest(URL: url)
-        var data:NSString = NSString(format: "operation=&usercode_text=%@&userpwd_text=%@&checkcode_text=%@&submittype=%%C8%%B7+%%C8%%CF", userID, password, validateCode)
+        let url:NSURL = NSURL(string: "http://222.30.32.10/stdloginAction.do")!
+        let req:NSMutableURLRequest = NSMutableURLRequest(URL: url)
+        let data:NSString = NSString(format: "operation=&usercode_text=%@&userpwd_text=%@&checkcode_text=%@&submittype=%%C8%%B7+%%C8%%CF", userID, password, validateCode)
         req.HTTPBody = data.dataUsingEncoding(NSUTF8StringEncoding)
         req.HTTPMethod = "POST"
         receivedData = NSMutableData()
-        var connection:NSURLConnection? = NSURLConnection(request: req, delegate: self)
-        if let temp = connection {
+        let connection:NSURLConnection? = NSURLConnection(request: req, delegate: self)
+        connection?.start()
+        if let _ = connection {
         }
         else {
             block(error: "没有网")
@@ -44,8 +45,8 @@ class LogIner:NSObject, NSURLConnectionDataDelegate{
     }
     
     func connectionDidFinishLoading(connection: NSURLConnection) {
-        var encoding:NSStringEncoding = CFStringConvertEncodingToNSStringEncoding(0x0632)
-        var html:NSString = NSString(data: self.receivedData!, encoding: encoding)!
+        let encoding:NSStringEncoding = CFStringConvertEncodingToNSStringEncoding(0x0632)
+        let html:NSString = NSString(data: self.receivedData!, encoding: encoding)!
         if html.rangeOfString("用户不存在或密码错误").length > 0 {
             block!(error: "用户不存在或密码错误")
         }
@@ -54,7 +55,7 @@ class LogIner:NSObject, NSURLConnectionDataDelegate{
               block!(error: "验证码错误")
         }
         else{
-            print("Login Succeed!")
+            print("Login Succeed!", terminator: "")
             block(error: nil)
         }
 

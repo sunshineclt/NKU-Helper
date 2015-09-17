@@ -47,9 +47,9 @@ class DetailAccountInfoTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         if indexPath.section == 0 {
-            var cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("accountInfo") as! UITableViewCell
-            var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-            var accountInfo:NSDictionary = userDefaults.objectForKey("accountInfo") as! NSDictionary
+            let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("accountInfo")!
+            let userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+            let accountInfo:NSDictionary = userDefaults.objectForKey("accountInfo") as! NSDictionary
             switch indexPath.row {
             case 0:cell.textLabel?.text = "姓名"
                 cell.detailTextLabel?.text = accountInfo.objectForKey("name") as? String
@@ -66,7 +66,7 @@ class DetailAccountInfoTableViewController: UITableViewController {
             return cell
         }
         else {
-            var cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("logOut") as! UITableViewCell
+            let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("logOut")!
             return cell
         }
 
@@ -74,7 +74,7 @@ class DetailAccountInfoTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.section == 1 {
-            var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+            let userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
             userDefaults.removeObjectForKey("accountInfo")
             userDefaults.removeObjectForKey("courses")
             userDefaults.removeObjectForKey("courseStatus")

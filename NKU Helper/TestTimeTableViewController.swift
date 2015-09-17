@@ -21,27 +21,38 @@ class TestTimeTableViewController: UITableViewController {
     }
     
     func loadHtml() {
-
-        var regularExp1:NSRegularExpression = NSRegularExpression(pattern: "<tr bgcolor=\"#FFFFFF\" >", options: NSRegularExpressionOptions.CaseInsensitive, error: nil)!
-        var resultExp = regularExp1.matchesInString(html as! String, options: NSMatchingOptions.ReportProgress, range: NSMakeRange(0, html.length))
+        var regularExp1:NSRegularExpression?
+        do{
+            try regularExp1 = NSRegularExpression(pattern: "<tr bgcolor=\"#FFFFFF\" >", options: NSRegularExpressionOptions.CaseInsensitive)
+        }
+        catch {
+            
+        }
+        var resultExp = regularExp1!.matchesInString(html as String, options: NSMatchingOptions.ReportProgress, range: NSMakeRange(0, html.length))
         for (var i=0;i<resultExp.count;i++) {
-            var temp:NSString = html.substringWithRange(NSMakeRange(resultExp[i].range.location, 750))
-            print("\n**********************\n")
-            print(temp)
-            var regularExp2:NSRegularExpression = NSRegularExpression(pattern: "(<td align=\"center\" class=\"NavText\">).*?(</td>)", options: NSRegularExpressionOptions.CaseInsensitive, error: nil)!
-            var index = regularExp2.matchesInString(temp as! String, options: NSMatchingOptions.ReportProgress, range: NSMakeRange(0, temp.length))
+            let temp:NSString = html.substringWithRange(NSMakeRange(resultExp[i].range.location, 750))
+     //       print("\n**********************\n")
+     //       print(temp)
+            var regularExp2:NSRegularExpression? = nil
+            do{
+                try regularExp2 = NSRegularExpression(pattern: "(<td align=\"center\" class=\"NavText\">).*?(</td>)", options: NSRegularExpressionOptions.CaseInsensitive)
+            }
+            catch {
+                
+            }
+            var index = regularExp2!.matchesInString(temp as String, options: NSMatchingOptions.ReportProgress, range: NSMakeRange(0, temp.length))
             var dictionary:[String:String] = [:]
             for (var j=0;j<index.count;j++) {
                 switch j {
                 case 1,2,4,5:continue
                 case 0,3,6,7,8:
-                    var exact:NSString = temp.substringWithRange(index[j].range)
-                    var firstRange = exact.rangeOfString("NavText\">")
-                    var secondRange = exact.rangeOfString("</td>")
-                    var exactNeed:NSString = exact.substringWithRange(NSMakeRange(firstRange.location + 9, secondRange.location - firstRange.location - 9))
+                    let exact:NSString = temp.substringWithRange(index[j].range)
+                    let firstRange = exact.rangeOfString("NavText\">")
+                    let secondRange = exact.rangeOfString("</td>")
+                    let exactNeed:NSString = exact.substringWithRange(NSMakeRange(firstRange.location + 9, secondRange.location - firstRange.location - 9))
                     switch j {
                     case 0:
-                        dictionary["className"] = exactNeed as? String
+                        dictionary["className"] = exactNeed as String
                     case 3:
                         switch exactNeed {
                         case "1":dictionary["weekday"] = "星期一"
@@ -53,12 +64,12 @@ class TestTimeTableViewController: UITableViewController {
                         case "7":dictionary["weekday"] = "星期天"
                         default:continue
                         }
-                    case 6:dictionary["classroom"] = exactNeed as? String
+                    case 6:dictionary["classroom"] = exactNeed as String
                     case 7:
-                        var exactNeedShort = exactNeed.substringWithRange(NSMakeRange(5, 11))
+                        let exactNeedShort = exactNeed.substringWithRange(NSMakeRange(5, 11))
                         dictionary["startTime"] = exactNeedShort
                     case 8:
-                        var exactNeedShort = exactNeed.substringWithRange(NSMakeRange(5, 11))
+                        let exactNeedShort = exactNeed.substringWithRange(NSMakeRange(5, 11))
                         dictionary["endTime"] = exactNeedShort
                     default:continue
                     }
@@ -80,7 +91,7 @@ class TestTimeTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        var cell:TestTimeTableViewCell = tableView.dequeueReusableCellWithIdentifier("testTime") as! TestTimeTableViewCell
+        let cell:TestTimeTableViewCell = tableView.dequeueReusableCellWithIdentifier("testTime") as! TestTimeTableViewCell
         
         cell.classNameLabel.text = testTime[indexPath.row]["className"]
         cell.classroomLabel.text = testTime[indexPath.row]["classroom"]

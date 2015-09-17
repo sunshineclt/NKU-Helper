@@ -16,8 +16,8 @@ class CourseDetailTableViewController: UITableViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        var courses:NSArray = userDefaults.objectForKey("courses") as! NSArray
+        let userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        let courses:NSArray = userDefaults.objectForKey("courses") as! NSArray
         course = courses.objectAtIndex(whichCourse) as! NSDictionary
         
         // Uncomment the following line to preserve selection between presentations
@@ -48,33 +48,33 @@ class CourseDetailTableViewController: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("courseDetail", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("courseDetail", forIndexPath: indexPath) 
         
         
         
         switch indexPath.row {
         case 0:
-            var classID = course.objectForKey("classID") as! String
+            let classID = course.objectForKey("classID") as! String
             cell.textLabel?.text = "选课序号"
             cell.detailTextLabel?.text = classID
         case 1:
-            var classNumber = course.objectForKey("classNumber") as! String
+            let classNumber = course.objectForKey("classNumber") as! String
             cell.textLabel?.text = "课程编号"
             cell.detailTextLabel?.text = classNumber
         case 2:
-            var className = course.objectForKey("className") as! String
+            let className = course.objectForKey("className") as! String
             cell.textLabel?.text = "课程名称"
             cell.detailTextLabel?.text = className
         case 3:
-            var classOddEven = course.objectForKey("weekOddEven") as! String
+            let classOddEven = course.objectForKey("weekOddEven") as! String
             cell.textLabel?.text = "单双周"
             cell.detailTextLabel?.text = classOddEven
         case 4:
-            var classroom = course.objectForKey("classroom") as! String
+            let classroom = course.objectForKey("classroom") as! String
             cell.textLabel?.text = "教室"
             cell.detailTextLabel?.text = classroom
         default:
-            var teacherName = course.objectForKey("teacherName") as! String
+            let teacherName = course.objectForKey("teacherName") as! String
             cell.textLabel?.text = "教师姓名"
             cell.detailTextLabel?.text = teacherName
         }

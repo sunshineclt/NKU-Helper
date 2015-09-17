@@ -34,9 +34,9 @@ class courseCurrentTableViewCell: UITableViewCell {
         // 绘制轨道
         
         UIGraphicsBeginImageContextWithOptions(CGSizeMake(320, 200), false, 0)
-        var refTrack = UIGraphicsGetCurrentContext()
+        let refTrack = UIGraphicsGetCurrentContext()
         CGContextAddArc(refTrack, UIScreen.mainScreen().bounds.width / 2, courseCurrentViewHeight / 2, courseCurrentViewHeight / 2 - 5, CGFloat(-M_PI_2), CGFloat(M_PI + M_PI_2), 0)
-        var layerTrack:CAShapeLayer = CAShapeLayer()
+        let layerTrack:CAShapeLayer = CAShapeLayer()
         layerTrack.strokeColor = UIColor(red: 135/255, green: 175/255, blue: 196/255, alpha: 0.3).CGColor
         layerTrack.lineWidth = 12
         layerTrack.fillColor = nil
@@ -48,9 +48,9 @@ class courseCurrentTableViewCell: UITableViewCell {
         // 绘制目前课程背景
         
         UIGraphicsBeginImageContextWithOptions(CGSizeMake(320, 200), false, 0)
-        var refCourse = UIGraphicsGetCurrentContext()
+        let refCourse = UIGraphicsGetCurrentContext()
         CGContextAddArc(refCourse, UIScreen.mainScreen().bounds.width / 2, courseCurrentViewHeight / 2, courseCurrentViewHeight / 2 - 10, CGFloat(-M_PI), 0, 0)
-        var layerCourse:CAShapeLayer = CAShapeLayer()
+        let layerCourse:CAShapeLayer = CAShapeLayer()
         layerCourse.lineWidth = 1
         layerCourse.fillColor = UIColor(red: 250/255, green: 128/255, blue: 114/255, alpha: 1).CGColor
         layerCourse.strokeColor = UIColor(red: 95/255, green: 94/255, blue: 106/255, alpha: 1).CGColor
@@ -61,11 +61,11 @@ class courseCurrentTableViewCell: UITableViewCell {
         // 绘制上课地点背景
         
         UIGraphicsBeginImageContextWithOptions(CGSizeMake(320, 200), false, 0)
-        var refClassroom = UIGraphicsGetCurrentContext()
+        let refClassroom = UIGraphicsGetCurrentContext()
         CGContextAddArc(refClassroom, UIScreen.mainScreen().bounds.width / 2, courseCurrentViewHeight / 2, courseCurrentViewHeight / 2 - 10, CGFloat(M_PI_2), CGFloat(M_PI), 0)
         CGContextAddLineToPoint(refClassroom, UIScreen.mainScreen().bounds.width / 2, courseCurrentViewHeight / 2)
         CGContextClosePath(refClassroom)
-        var layerClassroom:CAShapeLayer = CAShapeLayer()
+        let layerClassroom:CAShapeLayer = CAShapeLayer()
         layerClassroom.lineWidth = 1
         layerClassroom.fillColor = UIColor(red: 144/255, green: 238/255, blue: 144/255, alpha: 1).CGColor
         layerClassroom.strokeColor = UIColor(red: 95/255, green: 94/255, blue: 106/255, alpha: 1).CGColor
@@ -76,11 +76,11 @@ class courseCurrentTableViewCell: UITableViewCell {
         // 绘制教师背景
         
         UIGraphicsBeginImageContextWithOptions(CGSizeMake(320, 200), false, 0)
-        var refTeacher = UIGraphicsGetCurrentContext()
+        let refTeacher = UIGraphicsGetCurrentContext()
         CGContextAddArc(refTeacher, UIScreen.mainScreen().bounds.width / 2, courseCurrentViewHeight / 2, courseCurrentViewHeight / 2 - 10, 0, CGFloat(M_PI_2), 0)
         CGContextAddLineToPoint(refTeacher, UIScreen.mainScreen().bounds.width / 2, courseCurrentViewHeight / 2)
         CGContextClosePath(refTeacher)
-        var layerTeacher:CAShapeLayer = CAShapeLayer()
+        let layerTeacher:CAShapeLayer = CAShapeLayer()
         layerTeacher.lineWidth = 1
         layerTeacher.fillColor = UIColor(red: 135/255, green: 206/255, blue: 250/255, alpha: 1).CGColor
         layerTeacher.strokeColor = UIColor(red: 95/255, green: 94/255, blue: 106/255, alpha: 1).CGColor
@@ -92,9 +92,9 @@ class courseCurrentTableViewCell: UITableViewCell {
         // 绘制进度条
         
         UIGraphicsBeginImageContextWithOptions(CGSizeMake(320, 200), false, 0)
-        var ref = UIGraphicsGetCurrentContext()
+        let ref = UIGraphicsGetCurrentContext()
         CGContextAddArc(ref, UIScreen.mainScreen().bounds.width / 2, courseCurrentViewHeight / 2, courseCurrentViewHeight / 2 - 5, CGFloat(-M_PI_2), CGFloat(M_PI + M_PI_2), 0)
-        var layer:CAShapeLayer = CAShapeLayer()
+        let layer:CAShapeLayer = CAShapeLayer()
         layer.strokeColor = UIColor.orangeColor().CGColor
         layer.lineWidth = 5
         layer.fillColor = nil

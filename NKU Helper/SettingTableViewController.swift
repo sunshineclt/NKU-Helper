@@ -53,13 +53,13 @@ class SettingTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-            var userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-            var accountInfo:NSDictionary? = userDefaults.objectForKey("accountInfo") as! NSDictionary?
-            if let temp = accountInfo {
-                var cell:AccountTableViewCell = tableView.dequeueReusableCellWithIdentifier("Account") as! AccountTableViewCell
-                var userID:String = accountInfo!.objectForKey("userID") as! String
-                var name:String = accountInfo?.objectForKey("name") as! String
-                var departmentAdmitted:String = accountInfo?.objectForKey("departmentAdmitted") as! String
+            let userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+            let accountInfo:NSDictionary? = userDefaults.objectForKey("accountInfo") as? NSDictionary
+            if let _ = accountInfo {
+                let cell:AccountTableViewCell = tableView.dequeueReusableCellWithIdentifier("Account") as! AccountTableViewCell
+                let userID:String = accountInfo!.objectForKey("userID") as! String
+                let name:String = accountInfo?.objectForKey("name") as! String
+                let departmentAdmitted:String = accountInfo?.objectForKey("departmentAdmitted") as! String
                 
                 var timeEnteringSchool:NSString = accountInfo?.objectForKey("timeEnteringSchool") as! NSString
                 timeEnteringSchool = timeEnteringSchool.substringWithRange(NSMakeRange(2, 2))
@@ -70,7 +70,7 @@ class SettingTableViewController: UITableViewController {
 
             }
             else {
-                var cell = tableView.dequeueReusableCellWithIdentifier("AddAccount") as! UITableViewCell
+                let cell = tableView.dequeueReusableCellWithIdentifier("AddAccount")!
                 
                 cell.textLabel?.text = "请先登录！"
                 cell.detailTextLabel?.text = "欢迎使用NKU Helper！"
@@ -78,17 +78,17 @@ class SettingTableViewController: UITableViewController {
 
             }
         case 1:
-            var cell = tableView.dequeueReusableCellWithIdentifier("color") as! ColorTableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("color") as! ColorTableViewCell
             return cell
         case 2:
-            var cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("support") as! UITableViewCell
+            let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("support")!
             cell.textLabel?.text = "请开发团队喝一杯咖啡"
             return cell
         case 3:
-            var cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("about") as! UITableViewCell
+            let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("about")!
             cell.textLabel?.text = "关于"
             return cell
-        default: var cell = tableView.dequeueReusableCellWithIdentifier("1234") as! UITableViewCell
+        default: let cell = tableView.dequeueReusableCellWithIdentifier("1234")!
         return cell
 
             
@@ -98,7 +98,7 @@ class SettingTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.section == 2 {
-            var url:NSURL = NSURL(string: "https://qr.alipay.com/ae5g3m2kfloxr5tte5")!
+            let url:NSURL = NSURL(string: "https://qr.alipay.com/ae5g3m2kfloxr5tte5")!
             UIApplication.sharedApplication().openURL(url)
         }
     }
