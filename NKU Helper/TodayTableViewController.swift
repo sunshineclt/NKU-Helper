@@ -83,7 +83,7 @@ class TodayTableViewController: UITableViewController, UIApplicationDelegate {
             let courses:NSArray? = userDefaults.objectForKey("courses") as? NSArray
             if let _ = courses {
                 
-                let weekdayInt = CalendarConverter.sharedInstance.weekdayInt()
+                let weekdayInt = CalendarConverter.weekdayInt()
                 let course:NSArray = handleTodayCourses(weekdayInt)
                 return course.count
                 
@@ -153,18 +153,19 @@ class TodayTableViewController: UITableViewController, UIApplicationDelegate {
             
             let cell:coursesOverViewTableViewCell = tableView.dequeueReusableCellWithIdentifier("coursesOverview") as! coursesOverViewTableViewCell
             
-            let weekdayInt = CalendarConverter.sharedInstance.weekdayInt()
+            let weekdayInt = CalendarConverter.weekdayInt()
             
             let userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
             let todayCourses:NSArray = handleTodayCourses(weekdayInt)
             let courseIndex:Int = todayCourses.objectAtIndex(indexPath.row) as! Int
             let courses:NSArray = userDefaults.objectForKey("courses") as! NSArray
-            let course:NSDictionary = courses.objectAtIndex(courseIndex) as! NSDictionary
-            cell.classNameLabel.text = course.objectForKey("className") as? String
-            cell.classroomLabel.text = course.objectForKey("classroom") as? String
-            cell.teacherNameLabel.text = course.objectForKey("teacherName") as? String
-            let startSection:Int = course.objectForKey("startSection") as! Int
-            let sectionNumber:Int = course.objectForKey("sectionNumber") as! Int
+            let courseData = courses.objectAtIndex(courseIndex) as! NSData
+            let course = NSKeyedUnarchiver.unarchiveObjectWithData(courseData) as! Course
+            cell.classNameLabel.text = course.name
+            cell.classroomLabel.text = course.classroom
+            cell.teacherNameLabel.text = course.teacherName
+            let startSection:Int = course.startSection
+            let sectionNumber:Int = course.sectionNumber
             cell.startSectionLabel.text = "第\(startSection)节"
             cell.endSectionLabel.text = "第\(startSection + sectionNumber - 1)节"
             
@@ -210,7 +211,7 @@ class TodayTableViewController: UITableViewController, UIApplicationDelegate {
     
     func handleDate(cell: TimeWeatherStatusTableViewCell) {
         
-        let (month, day, weekday) = CalendarConverter.sharedInstance.monthDayWeekdayString()
+        let (month, day, weekday) = CalendarConverter.monthDayWeekdayString()
         
         cell.dateLabel.text = month + "月" + day + "日"
         cell.weekdayLabel.text = weekday
@@ -219,7 +220,7 @@ class TodayTableViewController: UITableViewController, UIApplicationDelegate {
     
     func handleStatus(cell: courseCurrentTableViewCell) -> Float! {
         
-        let (weekdayInt, timeInt) = CalendarConverter.sharedInstance.weekdayTimeInt()
+        let (weekdayInt, timeInt) = CalendarConverter.weekdayTimeInt()
         
         let userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         let courses:NSArray? = userDefaults.objectForKey("courses") as? NSArray
@@ -402,22 +403,26 @@ class TodayTableViewController: UITableViewController, UIApplicationDelegate {
         let courses:NSArray? = userDefaults.objectForKey("courses") as? NSArray
         if let _ = courses {
             var i:Int = 0
-            var course:NSDictionary = courses!.objectAtIndex(i) as! NSDictionary
-            var courseDay:Int = course.objectForKey("day") as! Int
+            
+            var courseData = courses!.objectAtIndex(i) as! NSData
+            var course = NSKeyedUnarchiver.unarchiveObjectWithData(courseData) as! Course
+            var courseDay:Int = course.day
             while (courseDay != weekday) {
                 i++
                 if i>=courses!.count {
                     break;
                 }
-                course = courses!.objectAtIndex(i) as! NSDictionary
-                courseDay = course.objectForKey("day") as! Int
+                courseData = courses!.objectAtIndex(i) as! NSData
+                let course = NSKeyedUnarchiver.unarchiveObjectWithData(courseData) as! Course
+                courseDay = course.day
             }
             while courseDay == weekday {
                 todayCourses.addObject(i)
                 i++
                 if (i<=courses!.count-1) {
-                    course = courses!.objectAtIndex(i) as! NSDictionary
-                    courseDay = course.objectForKey("day") as! Int
+                    courseData = courses!.objectAtIndex(i) as! NSData
+                    course = NSKeyedUnarchiver.unarchiveObjectWithData(courseData) as! Course
+                    courseDay = course.day
                 }
                 else {
                     break
@@ -454,13 +459,14 @@ class TodayTableViewController: UITableViewController, UIApplicationDelegate {
             currentCourse = -1
         }
         else {
-            let course:NSDictionary = courses.objectAtIndex(status) as! NSDictionary
+            let courseData = courses.objectAtIndex(status) as! NSData
+            let course = NSKeyedUnarchiver.unarchiveObjectWithData(courseData) as! Course
             currentCourse = status
-            cell.currentCourseNameLabel.text = course.objectForKey("className") as? String
-            cell.currentCourseClassroomLabel.text = course.objectForKey("classroom") as? String
+            cell.currentCourseNameLabel.text = course.name
+            cell.currentCourseClassroomLabel.text = course.classroom
             cell.currentCourseClassroomLabel.text = "@ " + cell.currentCourseClassroomLabel.text!
-            let startSection = course.objectForKey("startSection") as! Int
-            let sectionNumber = course.objectForKey("sectionNumber") as! Int
+            let startSection = course.startSection
+            let sectionNumber = course.sectionNumber
             cell.currentCourseTimeLabel.text = "第\(startSection)节至第\(startSection + sectionNumber - 1)节"
             if !isPresentCourse {
                 cell.statusLabel.text = "最近一节课是"
@@ -470,7 +476,7 @@ class TodayTableViewController: UITableViewController, UIApplicationDelegate {
     
     func refreshWeatherCondition(cell: TimeWeatherStatusTableViewCell) {
         
-        let time = CalendarConverter.sharedInstance.timeInt()
+        let time = CalendarConverter.timeInt()
         
         let userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         let weather:NSDictionary? = userDefaults.objectForKey("weather") as? NSDictionary

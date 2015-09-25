@@ -11,7 +11,7 @@ class CalendarConverter: NSObject {
     
     static let sharedInstance = CalendarConverter()
     
-    func weekdayInt() -> Int {
+    static func weekdayInt() -> Int {
         
         let date = NSDate()
         let calender:NSCalendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)!
@@ -40,7 +40,7 @@ class CalendarConverter: NSObject {
         
     }
     
-    func monthDayWeekdayString() -> (String, String, String) {
+    static func monthDayWeekdayString() -> (String, String, String) {
         
         let date = NSDate()
         let calender:NSCalendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)!
@@ -72,7 +72,7 @@ class CalendarConverter: NSObject {
             
     }
     
-    func weekdayTimeInt() -> (Int, Double) {
+    static func weekdayTimeInt() -> (Int, Double) {
         
         let date = NSDate()
         let calender:NSCalendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)!
@@ -102,7 +102,7 @@ class CalendarConverter: NSObject {
         return (weekdayInt, hourInt)
     }
     
-    func timeInt() -> Double {
+    static func timeInt() -> Double {
         
         let date = NSDate()
         let calender:NSCalendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)!
@@ -112,4 +112,5 @@ class CalendarConverter: NSObject {
         
         return time
     }
+    
 }

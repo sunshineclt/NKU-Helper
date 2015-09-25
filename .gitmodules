@@ -1,3 +1,6 @@
 [submodule "Alamofire"]
 	path = Alamofire
 	url = https://github.com/Alamofire/Alamofire.git
+[submodule "Pitaya"]
+	path = Pitaya
+	url = https://github.com/johnlui/Pitaya.git

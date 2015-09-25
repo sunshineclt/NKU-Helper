@@ -6,9 +6,7 @@
 //  Copyright (c) 2015年 &#38472;&#20048;&#22825;. All rights reserved.
 //
 
-import UIKit
-
-class Colors:NSObject {
+struct Colors {
     
     let colors:[UIColor] = [
         UIColor(red:0.63, green:0.366, blue:0.734, alpha:1),

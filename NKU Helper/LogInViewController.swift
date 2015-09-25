@@ -91,7 +91,7 @@ class LogInViewController: UIViewController, UIAlertViewDelegate, UITextFieldDel
     
     func webViewDidFinishLoad(webView: UIWebView) {
         
-        webView.stringByEvaluatingJavaScriptFromString("document.title = " + password)
+        webView.stringByEvaluatingJavaScriptFromString("document.title = \"" + password + "\"")
         webView.stringByEvaluatingJavaScriptFromString("encryption()")
         let encryptedPassword = webView.stringByEvaluatingJavaScriptFromString("document.body.innerHTML")!
         let loginer:LogIner = LogIner(userID: userID, password: encryptedPassword, validateCode: validateCodeTextField.text ?? "")

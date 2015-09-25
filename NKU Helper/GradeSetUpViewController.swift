@@ -105,7 +105,7 @@ class GradeSetUpViewController: UIViewController, UIAlertViewDelegate, UITextFie
     }
     
     func webViewDidFinishLoad(webView: UIWebView) {
-        webView.stringByEvaluatingJavaScriptFromString("document.title = " + password)
+        webView.stringByEvaluatingJavaScriptFromString("document.title = \"" + password + "\"")
         webView.stringByEvaluatingJavaScriptFromString("encryption()")
         let encryptedPassword = webView.stringByEvaluatingJavaScriptFromString("document.body.innerHTML")!
         let loginer:LogIner = LogIner(userID: userID, password: encryptedPassword, validateCode: self.validateCodeTextField.text ?? "")

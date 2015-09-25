@@ -31,7 +31,7 @@ class LogIner:NSObject, NSURLConnectionDataDelegate{
         req.HTTPBody = data.dataUsingEncoding(NSUTF8StringEncoding)
         req.HTTPMethod = "POST"
         receivedData = NSMutableData()
-        let connection:NSURLConnection? = NSURLConnection(request: req, delegate: self)
+        let connection = NSURLConnection(request: req, delegate: self)
         connection?.start()
         if let _ = connection {
         }

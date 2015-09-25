@@ -53,8 +53,8 @@ class SettingTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-            let userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-            let accountInfo:NSDictionary? = userDefaults.objectForKey("accountInfo") as? NSDictionary
+            let userDefaults = NSUserDefaults.standardUserDefaults()
+            let accountInfo = userDefaults.objectForKey("accountInfo") as? NSDictionary
             if let _ = accountInfo {
                 let cell:AccountTableViewCell = tableView.dequeueReusableCellWithIdentifier("Account") as! AccountTableViewCell
                 let userID:String = accountInfo!.objectForKey("userID") as! String
