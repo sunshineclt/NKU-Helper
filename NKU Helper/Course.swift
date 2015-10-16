@@ -69,39 +69,39 @@ class Course: NSObject, NSCoding {
         var todayCourses = [Course]()
         let userDefaults = NSUserDefaults.standardUserDefaults()
         let courses:NSArray? = userDefaults.objectForKey("courses") as? NSArray
-        if let _ = courses {
-            
-            var i:Int = 0
-            var courseData = courses!.objectAtIndex(i) as! NSData
-            var course = NSKeyedUnarchiver.unarchiveObjectWithData(courseData) as! Course
-            var courseDay = course.day
-            while (courseDay != weekday) {
-                i++
-                if i>=courses!.count {
-                    break;
-                }
+        guard courses != nil else {
+            return todayCourses
+        }
+        var i:Int = 0
+        var courseData = courses!.objectAtIndex(i) as! NSData
+        var course = NSKeyedUnarchiver.unarchiveObjectWithData(courseData) as! Course
+        var courseDay = course.day
+        while (courseDay != weekday) {
+            i++
+            if i>=courses!.count {
+                break;
+            }
+            courseData = courses!.objectAtIndex(i) as! NSData
+            course = NSKeyedUnarchiver.unarchiveObjectWithData(courseData) as! Course
+            courseDay = course.day
+        }
+        while courseDay == weekday {
+            todayCourses.append(course)
+            i++
+            if (i<=courses!.count-1) {
                 courseData = courses!.objectAtIndex(i) as! NSData
                 course = NSKeyedUnarchiver.unarchiveObjectWithData(courseData) as! Course
                 courseDay = course.day
             }
-            while courseDay == weekday {
-                todayCourses.append(course)
-                i++
-                if (i<=courses!.count-1) {
-                    courseData = courses!.objectAtIndex(i) as! NSData
-                    course = NSKeyedUnarchiver.unarchiveObjectWithData(courseData) as! Course
-                    courseDay = course.day
-                }
-                else {
-                    break
-                }
+            else {
+                break
             }
         }
         return todayCourses
     }
     /*
     func isCurrnetClass() {
-        
+    
         let (weekdayInt, timeInt) = CalendarConverter.weekdayTimeInt()
         
         switch (timeInt) {

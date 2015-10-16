@@ -16,6 +16,16 @@ class GradeShowerTableViewController: UITableViewController {
     var allCredit:Float = 0
     
     override func viewDidLoad() {
+        
+        for (var i=0; i < gradeResult.count; i++) {
+            let now:NSDictionary = gradeResult.objectAtIndex(i) as! NSDictionary
+            let grade:NSString = now.objectForKey("grade") as! NSString
+            let credit:NSString = now.objectForKey("credit") as! NSString
+            let creditNumber:Float = credit.floatValue
+            let gradeNumber:Float = grade.floatValue
+            GPA = GPA + gradeNumber * creditNumber
+            allCredit = allCredit + creditNumber
+        }
         super.viewDidLoad()
     }
     
@@ -112,11 +122,6 @@ class GradeShowerTableViewController: UITableViewController {
         cell.ClassTypeLabel.text = classType as String
         cell.GradeLabel.text = grade as String
         cell.CreditLabel.text = credit as String
-        
-        let creditNumber:Float = credit.floatValue
-        let gradeNumber:Float = grade.floatValue
-        GPA = GPA + gradeNumber * creditNumber
-        allCredit = allCredit + creditNumber
         
         cell.ClassNameLabel.adjustsFontSizeToFitWidth = true
         

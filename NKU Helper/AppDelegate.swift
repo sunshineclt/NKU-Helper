@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate{
@@ -16,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate{
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        AVOSCloud.setApplicationId("055g5bmps1ev974d15awu6zysndnsftvioje1o5cp257b9mn", clientKey: "vcefeij7jqeg5hvg2msr73lthukhb6uidfwvgqbgfbob0uqu")
+        AVOSCloud.setApplicationId("2Ot4Qst88l7L50oHgGHpRUij", clientKey: "gN4rJ9GizYYRS6tqLPioUBoS")
         AVAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
         
         UINavigationBar.appearance().barTintColor = UIColor.whiteColor()
@@ -27,12 +26,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate{
         let userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         var preferredColors:NSMutableArray? = userDefaults.objectForKey("preferredColors") as? NSMutableArray
         if let _ = preferredColors {
-            
+            let newPreferredColors = NSMutableArray(array: preferredColors!)
+            if Colors.colors.count > preferredColors!.count {
+                for _ in 1...Colors.colors.count - preferredColors!.count {
+                    newPreferredColors.addObject(1)
+                }
+                userDefaults.removeObjectForKey("preferredColors")
+                userDefaults.setObject(newPreferredColors, forKey: "preferredColors")
+                userDefaults.synchronize()
+            }
         }
         else {
             preferredColors = NSMutableArray()
-            let colors:Colors = Colors()
-            for (var i=0;i<colors.colors.count;i++) {
+            for (var i=0;i<Colors.colors.count;i++) {
                 preferredColors?.addObject(1)
             }
             userDefaults.setObject(preferredColors, forKey: "preferredColors")
@@ -77,7 +83,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate{
     }
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
-        
         let action:NSDictionary = userInfo["action"] as! NSDictionary
         let type:Int = action.objectForKey("type") as! Int
         let rootvc = self.window?.rootViewController as! UITabBarController
@@ -85,8 +90,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate{
         if application.applicationState != UIApplicationState.Active {
             AVAnalytics.trackAppOpenedWithRemoteNotificationPayload(userInfo)
         }
-
-        
     }
     
     func applicationWillResignActive(application: UIApplication) {

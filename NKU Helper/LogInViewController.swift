@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LogInViewController: UIViewController, UIAlertViewDelegate, UITextFieldDelegate, UIWebViewDelegate {
+class LogInViewController: UIViewController, UIAlertViewDelegate, UIWebViewDelegate {
     
     @IBOutlet var validateCodeTextField: UITextField!
     @IBOutlet var validateCodeImageView: UIImageView!
@@ -95,34 +95,19 @@ class LogInViewController: UIViewController, UIAlertViewDelegate, UITextFieldDel
         webView.stringByEvaluatingJavaScriptFromString("encryption()")
         let encryptedPassword = webView.stringByEvaluatingJavaScriptFromString("document.body.innerHTML")!
         let loginer:LogIner = LogIner(userID: userID, password: encryptedPassword, validateCode: validateCodeTextField.text ?? "")
-        loginer.login { (error) -> Void in
-            self.progressHud.removeFromSuperview()
-            if let _ = error {
-                if error == "用户不存在或密码错误" {
-                    self.validateCodeTextField.text = ""
-                    let alert:UIAlertView = UIAlertView(title: "登录失败", message: "用户不存在或密码错误", delegate: self, cancelButtonTitle: nil, otherButtonTitles: "好，重新设置用户名和密码")
-                    alert.show()
-                }
-                else{
-                    if error == "验证码错误" {
-                        self.validateCodeTextField.text = ""
-                        let alert:UIAlertView = UIAlertView(title: "登录失败", message: "验证码错误", delegate: self, cancelButtonTitle: "好，重新输入验证码")
-                        alert.show()
-                        self.refreshImage()
-                    }
-                    else  {
-                        let alert:UIAlertView = UIAlertView(title: "网络错误", message: "木有网不能够登陆哦", delegate: nil, cancelButtonTitle: "知道啦，先去弄点网")
-                        alert.show()
-                    }
-                }
-            }
-            else{
+        loginer.login(errorHandler: { (error) -> Void in
+            self.refreshImage()
+            self.validateCodeTextField.text = ""
+            let alert = UIAlertController(title: error.dynamicType.title, message: error.dynamicType.message, preferredStyle: .Alert)
+            let action = UIAlertAction(title: error.dynamicType.cancelButtonTitle, style: .Cancel, handler: nil)
+            alert.addAction(action)
+            self.presentViewController(alert, animated: true, completion: nil)
+            }, completion: {
                 self.dismissViewControllerAnimated(true, completion: { () -> Void in
                     NSNotificationCenter.defaultCenter().postNotificationName("loginComplete", object: self)
                     
                 })
-                
-            }
-        }
+        })
+
     }
 }

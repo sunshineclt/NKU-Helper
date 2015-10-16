@@ -109,49 +109,30 @@ class GradeSetUpViewController: UIViewController, UIAlertViewDelegate, UITextFie
         webView.stringByEvaluatingJavaScriptFromString("encryption()")
         let encryptedPassword = webView.stringByEvaluatingJavaScriptFromString("document.body.innerHTML")!
         let loginer:LogIner = LogIner(userID: userID, password: encryptedPassword, validateCode: self.validateCodeTextField.text ?? "")
-        loginer.login { (error) -> Void in
+        loginer.login(errorHandler: { (error) in
             self.progressHud.removeFromSuperview()
-            if let _ = error {
-                if error == "用户不存在或密码错误" {
-                    self.validateCodeTextField.text = ""
-                    let alert:UIAlertView = UIAlertView(title: "登录失败", message: "用户不存在或密码错误", delegate: self, cancelButtonTitle: nil, otherButtonTitles: "好，重新设置用户名和密码")
-                    alert.show()
-                }
-                else{
-                    if error == "验证码错误" {
-                        self.validateCodeTextField.text = ""
-                        let alert:UIAlertView = UIAlertView(title: "登录失败", message: "验证码错误", delegate: self, cancelButtonTitle: "好，重新输入验证码")
-                        alert.show()
-                        self.refreshImage()
-                    }
-                    else {
-                        let alertView:UIAlertView = UIAlertView(title: "网络错误", message: "没有网没法登陆", delegate: nil, cancelButtonTitle: "好，知道啦，现在就去搞点网")
-                        alertView.show()
-                    }
-                }
-            }
-            else{
-                let 😌gradeGetter:GradeGetter = GradeGetter()
+            self.validateCodeTextField.text = ""
+            let alert = UIAlertController(title: error.dynamicType.title, message: error.dynamicType.message, preferredStyle: .Alert)
+            let action = UIAlertAction(title: error.dynamicType.cancelButtonTitle, style: .Cancel, handler: nil)
+            alert.addAction(action)
+            self.presentViewController(alert, animated: true, completion: nil)
+            }, completion: {
+                self.progressHud.removeFromSuperview()
+                let 😌gradeGetter = GradeGetter()
                 😌gradeGetter.getGrade() { (result, abcgpa, error) -> Void in
-                    
                     if let _ = error {
                         let alert:UIAlertView = UIAlertView(title: "失败", message: error!, delegate: nil, cancelButtonTitle: "知道了！")
                         alert.show()
                         self.refreshImage()
                     }
-                        
                     else {
                         self.gradeResult = result!
                         self.abcgpa = abcgpa!
                         self.performSegueWithIdentifier("ShowGrade", sender: nil)
                     }
-                    
                 }
-                
-                
-            }
-        }
 
+        })
     }
     
 }

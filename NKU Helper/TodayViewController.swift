@@ -18,23 +18,37 @@ class TodayViewController: UIViewController {
         }
     }
     
-    @IBOutlet var todayTableView: UITableView!
+    @IBOutlet var courseTableView: UITableView! {
+        didSet {
+            self.courseTableView.emptyDataSetSource = self
+            self.courseTableView.emptyDataSetDelegate = self
+        }
+    }
+    @IBOutlet var thingsTableView: UITableView! {
+        didSet {
+            self.thingsTableView.emptyDataSetSource = self
+            self.thingsTableView.emptyDataSetDelegate = self;
+        }
+    }
     
     var todayCourse = [Course]()
+    var thingsToDo = [ThingToDo]()
     
     override func viewDidLoad() {
         
-        todayTableView.estimatedRowHeight = 200
-        todayTableView.rowHeight = UITableViewAutomaticDimension
+        courseTableView.estimatedRowHeight = 200
+        courseTableView.rowHeight = UITableViewAutomaticDimension
+        thingsToDo = ThingToDo.thingsUpdate()
+        self.thingsTableView.tableFooterView = UIView()
+        
     }
     
     override func viewWillAppear(animated: Bool) {
         
         super.viewWillAppear(animated)
         todayCourse = Course.coursesOnWeekday(CalendarConverter.weekdayInt())
-
-        self.todayTableView.reloadData()
-        
+        self.courseTableView.reloadData()
+        self.thingsTableView.reloadData()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -45,12 +59,26 @@ class TodayViewController: UIViewController {
         if accountInfo == nil {
             self.performSegueWithIdentifier(SegueIdentifier.Login, sender: nil)
         }
-        if todayCourse.isEmpty {
+        if NSUserDefaults.standardUserDefaults().objectForKey("courses") as? NSArray == nil {
             let alertView = UIAlertController(title: ErrorHandler.ClassNotExist.title, message: ErrorHandler.ClassNotExist.message, preferredStyle: .Alert)
             let cancel = UIAlertAction(title: ErrorHandler.ClassNotExist.cancelButtonTitle, style: .Cancel, handler: nil)
             alertView.addAction(cancel)
             self.presentViewController(alertView, animated: true, completion: nil)
         }
+        newToDo?.becomeFirstResponder()
+    }
+    
+    var isAddMode = false
+    var newToDo:UITextField?
+
+    @IBAction func plusButtonClicked(sender: UIButton) {
+        isAddMode = true
+        CATransaction.begin()
+        CATransaction.setCompletionBlock { () -> Void in
+            newToDo?.becomeFirstResponder()
+        }
+        thingsTableView.reloadData()
+        CATransaction.commit()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -61,6 +89,8 @@ class TodayViewController: UIViewController {
                     let senderCell = sender as! LeftToDoCell
                     destinationVC.course = senderCell.course
                 }
+            case SegueIdentifier.CreateAlarmedToDo:
+                break;
             default:break
             }
         }
@@ -70,30 +100,124 @@ class TodayViewController: UIViewController {
 
 // MARK: TableViewDelegate
 extension TodayViewController:UITableViewDelegate {
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-    }
 }
 
 
 // MARK: TableViewDataSource
-extension TodayViewController:UITableViewDataSource {
+extension TodayViewController:UITableViewDataSource, CheckBoxClickedDelegate {
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        if tableView.tag == 1 { thingsToDo = ThingToDo.thingsLeft() }
         return 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         courseCountLabel.text = "还剩\(todayCourse.count)节"
-        return todayCourse.count
+        thingCountLabel.text = "还剩\(ThingToDo.thingsLeftCount())件事"
+        return tableView.tag == 0 ? todayCourse.count : (isAddMode ? thingsToDo.count+1 : thingsToDo.count)
+    }
+    
+    func leftToDo(tableView:UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> LeftToDoCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.LeftToDo) as! LeftToDoCell
+        cell.course = todayCourse[indexPath.row]
+        return cell
+    }
+    
+    func rightShortToDo(tableView:UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> RightShortToDoCell {
+        let thing = thingsToDo[(isAddMode ? indexPath.row-1 : indexPath.row)]
+            let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.RightShortToDo) as! RightShortToDoCell
+            cell.thing = thing
+            cell.nameTextField?.enabled = false
+            cell.delegate = self
+            return cell
+    }
+    
+    func saveCheckState(cell: RightShortToDoCell) {
+        
+        let indexPath = self.thingsTableView.indexPathForCell(cell)!
+        var actualIndexPathRow = isAddMode ? indexPath.row - 1 : indexPath.row
+        if actualIndexPathRow >= 0 {
+            actualIndexPathRow = tableView(thingsTableView, numberOfRowsInSection: 0) - actualIndexPathRow - 1
+            let userDefaults = NSUserDefaults.standardUserDefaults()
+            let savedThings = (userDefaults.objectForKey("things") as! NSArray)
+            var beforeThings = savedThings as! [NSData]
+            let thing = NSKeyedUnarchiver.unarchiveObjectWithData(beforeThings[actualIndexPathRow]) as! ThingToDo
+            thing.done = cell.checkBoxState
+            let data = NSKeyedArchiver.archivedDataWithRootObject(thing)
+            beforeThings[actualIndexPathRow] = data
+            let thingsToSave:NSArray = beforeThings
+            userDefaults.removeObjectForKey("things")
+            userDefaults.setObject(thingsToSave, forKey: "things")
+            userDefaults.synchronize()
+        }
+        thingsTableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+    }
+    
+    func rightAlarmedToDo(tableView:UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> RightShortToDoCell {
+        //let thing = thingsToDo[(isAddMode ? indexPath.row-1 : indexPath.row)]
+        let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.RightShortToDo) as! RightShortToDoCell
+        return cell
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.LeftToDo) as! LeftToDoCell
-        cell.course = todayCourse[indexPath.row]
-        
-        return cell
-        
+        if tableView.tag == 0 {
+            let cell = leftToDo(tableView, cellForRowAtIndexPath: indexPath)
+            return cell
+        } else {
+            if isAddMode && (indexPath.row == 0) {
+                let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.RightShortToDo) as! RightShortToDoCell
+                cell.nameTextField.text = ""
+                cell.nameTextField.becomeFirstResponder()
+                cell.nameTextField.enabled = true
+                cell.nameTextField.delegate = self
+                cell.checkBoxState = false
+                cell.checkBox.image = UIImage(named: "CheckBox.png")
+                newToDo = cell.nameTextField
+                return cell
+            }
+            let thing = thingsToDo[(isAddMode ? indexPath.row-1 : indexPath.row)]
+            switch thing.type {
+            case .Short:
+                let cell = rightShortToDo(tableView, cellForRowAtIndexPath: indexPath)
+                return cell
+            case .Alarmed:
+                let cell = rightAlarmedToDo(tableView, cellForRowAtIndexPath: indexPath)
+                return cell
+            }
+        }
     }
+}
+
+extension TodayViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        if scrollView.tag == 0 {
+            return NSAttributedString(string: "今天木有课呢", attributes: [NSForegroundColorAttributeName : UIColor(red: 160/255, green: 160/255, blue: 160/255, alpha: 1), NSFontAttributeName : UIFont(name: "HelveticaNeue", size: 15)!])
+        } else {
+            return NSAttributedString(string: "暂时木有事情要做", attributes: [NSForegroundColorAttributeName : UIColor(red: 160/255, green: 160/255, blue: 160/255, alpha: 1), NSFontAttributeName : UIFont(name: "HelveticaNeue", size: 15)!])
+        }
+    }
+}
+
+extension TodayViewController:UITextFieldDelegate {
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        isAddMode = false
+        newToDo = nil
+        if textField.text != "" {
+            let userDefaults = NSUserDefaults.standardUserDefaults()
+            let savedThings = (userDefaults.objectForKey("things") as? NSArray) ?? NSArray()
+            var beforeThings = savedThings as! [NSData]
+            let thing = ThingToDo(name: textField.text ?? "", time: nil, place: nil, type: .Short)
+            let data = NSKeyedArchiver.archivedDataWithRootObject(thing)
+            beforeThings.append(data)
+            let thingsToSave:NSArray = beforeThings
+            userDefaults.removeObjectForKey("things")
+            userDefaults.setObject(thingsToSave, forKey: "things")
+            userDefaults.synchronize()
+        }
+        self.thingsTableView.reloadData()
+        return true
+    }
+    
 }

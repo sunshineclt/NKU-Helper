@@ -9,8 +9,6 @@
 import UIKit
 
 class ColorChooseTableViewController: UITableViewController {
-
-    let colors:Colors = Colors()
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 60
@@ -21,7 +19,7 @@ class ColorChooseTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "勾选你喜欢的颜色，勾掉你不喜欢的颜色喽~\n这些颜色将会用于'今天'界面的Overview和课程表页面哦~"
+        return "勾选你喜欢的颜色，勾掉你不喜欢的颜色喽~\n这些颜色将会用于课程表页面哦~"
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -29,12 +27,12 @@ class ColorChooseTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return colors.colors.count
+        return Colors.colors.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell:ColorChooseTableViewCell = tableView.dequeueReusableCellWithIdentifier("colorChoose") as! ColorChooseTableViewCell
-        cell.colorView.backgroundColor = colors.colors[indexPath.row]
+        cell.colorView.backgroundColor = Colors.colors[indexPath.row]
         let userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         let preferredColors:NSMutableArray = userDefaults.objectForKey("preferredColors") as! NSMutableArray
         let isLiked:Int = preferredColors.objectAtIndex(indexPath.row) as! Int

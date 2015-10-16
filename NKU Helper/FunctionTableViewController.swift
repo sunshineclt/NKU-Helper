@@ -16,17 +16,21 @@ class FunctionTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 2
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("Functioner")!
-        cell.textLabel!.text = "查询成绩"
-        return cell
-    }
-    
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
+        switch indexPath.row {
+        case 0:
+            let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("Functioner")!
+            cell.textLabel?.text = "查询成绩"
+            return cell
+        case 1:
+            let cell = tableView.dequeueReusableCellWithIdentifier("MoreFunction")!
+            cell.textLabel?.text = "更多功能敬请期待（等学校网站开放）"
+            return cell
+        default:return UITableViewCell()
+        }
     }
     
 }

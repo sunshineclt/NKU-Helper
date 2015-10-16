@@ -74,8 +74,12 @@ class SaveAccountInfoViewController: UIViewController, UIAlertViewDelegate, UITe
                 self.saveAccountInfo()
                 self.navigationController?.popViewControllerAnimated(true)
                 self.dismissViewControllerAnimated(true, completion: nil)
+            } else {
+                let alert = UIAlertController(title: ErrorHandler.NetworkError.title, message: ErrorHandler.NetworkError.message, preferredStyle: .Alert)
+                let cancel = UIAlertAction(title: ErrorHandler.NetworkError.cancelButtonTitle, style: .Cancel, handler: nil)
+                alert.addAction(cancel)
+                self.presentViewController(alert, animated: true, completion: nil)
             }
-            
         }
         /*
         let url:NSURL = NSURL(string: "http://222.30.32.10/studymanager/stdbaseinfo/queryAction.do")!
@@ -183,34 +187,18 @@ class SaveAccountInfoViewController: UIViewController, UIAlertViewDelegate, UITe
         
         let content = encryptPassword()
         let loginer = LogIner(userID: userIDTextField.text ?? "", password: content, validateCode: validateCodeTextField.text ?? "")
-        loginer.login { (error) -> Void in
+        loginer.login(errorHandler: { (error) -> Void in
             self.progressHud.removeFromSuperview()
-            if let _ = error {
-                if error == "用户不存在或密码错误" {
-                    let alert = UIAlertController(title: ErrorHandler.UserNameOrPasswordWrong.title, message: ErrorHandler.UserNameOrPasswordWrong.message, preferredStyle: .Alert)
-                    let cancel = UIAlertAction(title: ErrorHandler.UserNameOrPasswordWrong.cancelButtonTitle, style: .Cancel, handler: nil)
-                    alert.addAction(cancel)
-                    self.presentViewController(alert, animated: true, completion: nil)
-                }
-                else {
-                    if error == "验证码错误" {
-                        let alert = UIAlertController(title: ErrorHandler.ValidateCodeWrong.title, message: ErrorHandler.ValidateCodeWrong.message, preferredStyle: .Alert)
-                        let cancel = UIAlertAction(title: ErrorHandler.ValidateCodeWrong.cancelButtonTitle, style: .Cancel, handler: nil)
-                        alert.addAction(cancel)
-                        self.presentViewController(alert, animated: true, completion: nil)
-                    } else {
-                        let alert = UIAlertController(title: ErrorHandler.NetworkError.title, message: ErrorHandler.NetworkError.message, preferredStyle: .Alert)
-                        let cancel = UIAlertAction(title: ErrorHandler.NetworkError.cancelButtonTitle, style: .Cancel, handler: nil)
-                        alert.addAction(cancel)
-                        self.presentViewController(alert, animated: true, completion: nil)
-                    }
-                }
-                self.refreshImage()
-                self.validateCodeTextField.text = ""
-            } else {
+            self.refreshImage()
+            self.validateCodeTextField.text = ""
+            let alert = UIAlertController(title: error.dynamicType.title, message: error.dynamicType.message, preferredStyle: .Alert)
+            let action = UIAlertAction(title: error.dynamicType.cancelButtonTitle, style: .Cancel, handler: nil)
+            alert.addAction(action)
+            self.presentViewController(alert, animated: true, completion: nil)
+            }, completion: {
+                self.progressHud.removeFromSuperview()
                 self.getAllAccountInfo()
-            }
-        }
+        })
     }
     
 }

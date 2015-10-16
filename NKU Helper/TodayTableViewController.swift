@@ -68,7 +68,7 @@ class TodayTableViewController: UITableViewController, UIApplicationDelegate {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         currentCourse = -1
         usedColor = []
-        for var i=0;i<colors.colors.count;i++ {
+        for var i=0;i<Colors.colors.count;i++ {
             usedColor.append(1)
         }
         return 1
@@ -172,17 +172,17 @@ class TodayTableViewController: UITableViewController, UIApplicationDelegate {
             let imageView:UIImageView = UIImageView(frame: CGRectMake(16, 16, UIScreen.mainScreen().bounds.width - 32, 126))
             let likedColors:NSArray = userDefaults.objectForKey("preferredColors") as! NSArray
             var count:Int = 0
-            var colorIndex = Int(arc4random_uniform(UInt32(colors.colors.count)))
+            var colorIndex = Int(arc4random_uniform(UInt32(Colors.colors.count)))
             
             while (usedColor[colorIndex] == 0) || (likedColors.objectAtIndex(colorIndex) as! Int == 0) {
-                colorIndex = Int(arc4random_uniform(UInt32(colors.colors.count)))
+                colorIndex = Int(arc4random_uniform(UInt32(Colors.colors.count)))
                 count++
                 if count>1000 {
                     break
                 }
                 
             }
-            imageView.backgroundColor = colors.colors[colorIndex]
+            imageView.backgroundColor = Colors.colors[colorIndex]
             imageView.alpha = 1
             imageView.layer.cornerRadius = 8
             cell.backgroundView?.addSubview(imageView)

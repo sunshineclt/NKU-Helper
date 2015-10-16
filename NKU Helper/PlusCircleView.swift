@@ -34,10 +34,7 @@ class PlusCircleView: UIView {
         circle.lineCapStyle = .Round
         circle.lineJoinStyle = .Round
         UIColor(red: 128/255, green: 173/255, blue: 174/255, alpha: 1).setStroke()
-        //UIColor(red: 128/255, green: 173/255, blue: 174/255, alpha: 1).setFill()
-        circle.stroke()
-        //circle.fill()
-        
+        circle.stroke()        
         
     }
     

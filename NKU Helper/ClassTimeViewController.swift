@@ -327,7 +327,7 @@ class ClassTimeViewController: UIViewController, UIScrollViewDelegate {
         drawBackground()
         
         var usedColor:[Int] = []
-        for var i=0;i<colors.colors.count;i++ {
+        for var i=0;i<Colors.colors.count;i++ {
             usedColor.append(1)
         }
         
@@ -351,7 +351,7 @@ class ClassTimeViewController: UIViewController, UIScrollViewDelegate {
             for (key, value) in coloredCourse {
                 if key == classID {
                     isClassHaveHad = true
-                    course.backgroundColor = colors.colors[value]
+                    course.backgroundColor = Colors.colors[value]
                     break
                 }
                 if isClassHaveHad {
@@ -362,17 +362,17 @@ class ClassTimeViewController: UIViewController, UIScrollViewDelegate {
             if !isClassHaveHad {
                 let likedColors = userDefaults.objectForKey("preferredColors") as! NSArray
                 var count = 0
-                var colorIndex = Int(arc4random_uniform(UInt32(colors.colors.count)))
+                var colorIndex = Int(arc4random_uniform(UInt32(Colors.colors.count)))
                 
                 while (usedColor[colorIndex] == 0) || (likedColors.objectAtIndex(colorIndex) as! Int == 0) {
-                    colorIndex = Int(arc4random_uniform(UInt32(colors.colors.count)))
+                    colorIndex = Int(arc4random_uniform(UInt32(Colors.colors.count)))
                     count++
                     if count>1000 {
                         break
                     }
                 }
                 coloredCourse[classID as String] = colorIndex
-                course.backgroundColor = colors.colors[colorIndex]
+                course.backgroundColor = Colors.colors[colorIndex]
                 usedColor[colorIndex] = 0
             }
             
