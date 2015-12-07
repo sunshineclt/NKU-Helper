@@ -81,18 +81,6 @@ class SaveAccountInfoViewController: UIViewController, UIAlertViewDelegate, UITe
                 self.presentViewController(alert, animated: true, completion: nil)
             }
         }
-        /*
-        let url:NSURL = NSURL(string: "http://222.30.32.10/studymanager/stdbaseinfo/queryAction.do")!
-        let req:NSURLRequest = NSURLRequest(URL: url)
-        let connection:NSURLConnection? = NSURLConnection(request: req, delegate: self)
-        if let _ = connection {
-            receivedData = NSMutableData()
-        }
-        else {
-            let alertView:UIAlertView = UIAlertView(title: "网络错误", message: "木有网无法查证身份信息", delegate: nil, cancelButtonTitle: "好，知道了，这就去弄点网")
-            alertView.show()
-        }
-*/
     }
     
     func saveAccountInfo() {
@@ -144,25 +132,7 @@ class SaveAccountInfoViewController: UIViewController, UIAlertViewDelegate, UITe
         return result
         
     }
-    /*
-    func connection(connection: NSURLConnection, didReceiveData data: NSData) {
-        receivedData?.appendData(data)
-    }
     
-    func connectionDidFinishLoading(connection: NSURLConnection) {
-        let encoding:NSStringEncoding = CFStringConvertEncodingToNSStringEncoding(0x0632)
-        let html:NSString = NSString(data: self.receivedData!, encoding: encoding)!
-        
-        name = cutUpString(html, specificString1: ";名</td>", specificString2: "NavText", specificString3: "</td>")
-        timeEnteringScohol = cutUpString(html, specificString1: ">入学时间</td>", specificString2: "NavText", specificString3: "</td>")
-        departmentAdmitted = cutUpString(html, specificString1: ">录取院系<", specificString2: "span=", specificString3: "</td>")
-        majorAdmitted = cutUpString(html, specificString1: ">录取专业<", specificString2: "span=", specificString3: "</td>")
-        
-        self.saveAccountInfo()
-        self.navigationController?.popViewControllerAnimated(true)
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    */
     @IBAction func nameTextFieldDidEnd(sender: AnyObject) {
         passwordTextField.becomeFirstResponder()
     }

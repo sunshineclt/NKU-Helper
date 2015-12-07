@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="6TT-Vh-y8q">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="6TT-Vh-y8q">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--成绩查询-->
@@ -51,7 +52,7 @@
                                     <constraint firstAttribute="width" constant="65" id="jyW-xV-kUE"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="登陆">
+                                <state key="normal" title="登录">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -638,15 +639,23 @@
                                 <action selector="refreshClassTimeTable:" destination="s3Y-Tb-7w6" id="r2H-s7-nEH"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="考试时间" id="RAz-y3-lb2">
-                            <connections>
-                                <action selector="lookUpTestTime:" destination="s3Y-Tb-7w6" id="5WR-ID-Q40"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="考试时间" id="RAz-y3-lb2">
+                                <connections>
+                                    <action selector="lookUpTestTime:" destination="s3Y-Tb-7w6" id="5WR-ID-Q40"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="action" id="9xj-K2-tbA">
+                                <connections>
+                                    <action selector="shareClassTable:" destination="s3Y-Tb-7w6" id="y8u-Kb-h3E"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="classScrollView" destination="2F2-PM-Sex" id="aEJ-VA-RQ8"/>
                         <outlet property="headScrollView" destination="du2-6G-jTz" id="Cpt-c1-BJE"/>
+                        <outlet property="navigationTitle" destination="eJX-zR-et7" id="KiA-en-eIW"/>
                         <outlet property="refreshBarButton" destination="N8S-dq-Sve" id="L78-1S-JSr"/>
                         <outlet property="shadowView" destination="O1g-1G-R3x" id="Rc0-Fr-iaK"/>
                         <segue destination="JxO-gb-eEZ" kind="presentation" identifier="Login" id="BUn-8p-Q6f"/>
@@ -678,7 +687,7 @@
                                     <constraint firstAttribute="width" constant="65" id="z8S-ZL-NxP"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="登陆">
+                                <state key="normal" title="登录">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -1593,7 +1602,7 @@
         <image name="课程" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="CMu-aS-OG2"/>
         <segue reference="uE5-gI-bjZ"/>
-        <segue reference="vQd-Gp-Doc"/>
     </inferredMetricsTieBreakers>
 </document>

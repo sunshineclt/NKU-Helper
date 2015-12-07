@@ -13,7 +13,9 @@ class GradeShowerTableViewController: UITableViewController {
     var gradeResult:NSArray = NSArray()
     var GPA:Float = 0
     var ABCGPA:String!
+    var ABCDGPA:Float = 0
     var allCredit:Float = 0
+    var ABCDCredit:Float = 0
     
     override func viewDidLoad() {
         
@@ -24,6 +26,11 @@ class GradeShowerTableViewController: UITableViewController {
             let creditNumber:Float = credit.floatValue
             let gradeNumber:Float = grade.floatValue
             GPA = GPA + gradeNumber * creditNumber
+            let classType = now.objectForKey("classType") as! String
+            if ((classType == "A") || (classType == "B") || (classType == "C") || (classType == "D")) {
+                ABCDGPA += gradeNumber * creditNumber
+                ABCDCredit += creditNumber
+            }
             allCredit = allCredit + creditNumber
         }
         super.viewDidLoad()
@@ -73,27 +80,38 @@ class GradeShowerTableViewController: UITableViewController {
         let view:UIView = UIView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, 40))
         view.backgroundColor = UIColor(red: 0.9215, green: 0.9215, blue: 0.9450, alpha: 1)
         
-        let creditLabel:UILabel = UILabel(frame: CGRectMake(80, 0, 100, 20))
+        let creditLabel:UILabel = UILabel(frame: CGRectMake(10, 0, 100, 20))
         creditLabel.text = "总学分：\(allCredit)"
-        creditLabel.textAlignment = NSTextAlignment.Right
+        creditLabel.textAlignment = NSTextAlignment.Left
         creditLabel.font = UIFont.systemFontOfSize(14)
         creditLabel.textColor = UIColor(red: 0.3529, green: 0.3529, blue: 0.3725, alpha: 1)
         view.addSubview(creditLabel)
         
-        GPA = GPA / allCredit
-        let gpaLabel:UILabel = UILabel(frame: CGRectMake(UIScreen.mainScreen().bounds.width - 150, 0, 140, 20))
+        GPA = Float(Int(GPA / allCredit * 100)) / 100
+        let gpaLabel:UILabel = UILabel(frame: CGRectMake(10, 20, 190, 20))
         gpaLabel.text = "学分绩：\(GPA)"
-        gpaLabel.textAlignment = NSTextAlignment.Right
+        gpaLabel.textAlignment = NSTextAlignment.Left
         gpaLabel.font = UIFont.systemFontOfSize(14)
         gpaLabel.textColor = UIColor(red: 0.3529, green: 0.3529, blue: 0.3725, alpha: 1)
         view.addSubview(gpaLabel)
         
-        let abcgpaLabel:UILabel = UILabel(frame: CGRectMake(UIScreen.mainScreen().bounds.width - 200, 20, 190, 20))
-        abcgpaLabel.text = "ABC类学分绩：" + ABCGPA
+        var ABCGPACut = ABCGPA as NSString
+        let index = ABCGPACut.rangeOfString(".")
+        ABCGPACut = ABCGPACut.substringWithRange(NSMakeRange(0, index.location + 3))
+        let abcgpaLabel:UILabel = UILabel(frame: CGRectMake(UIScreen.mainScreen().bounds.width - 150, 0, 140, 20))
+        abcgpaLabel.text = "ABC类学分绩：" + (ABCGPACut as String)
         abcgpaLabel.textAlignment = NSTextAlignment.Right
         abcgpaLabel.font = UIFont.systemFontOfSize(14)
         abcgpaLabel.textColor = UIColor(red: 0.3529, green: 0.3529, blue: 0.3725, alpha: 1)
         view.addSubview(abcgpaLabel)
+        
+        ABCDGPA = Float(Int(ABCDGPA / ABCDCredit * 100)) / 100
+        let abcdgpaLabel:UILabel = UILabel(frame: CGRectMake(UIScreen.mainScreen().bounds.width - 200, 20, 190, 20))
+        abcdgpaLabel.text = "ABCD类学分绩：\(ABCDGPA)"
+        abcdgpaLabel.textAlignment = NSTextAlignment.Right
+        abcdgpaLabel.font = UIFont.systemFontOfSize(14)
+        abcdgpaLabel.textColor = UIColor(red: 0.3529, green: 0.3529, blue: 0.3725, alpha: 1)
+        view.addSubview(abcdgpaLabel)
         
         return view
     }

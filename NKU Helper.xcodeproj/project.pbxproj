@@ -9,32 +9,35 @@
 /* Begin PBXBuildFile section */
 		9C394171364F77F26A81DA63 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 61B520D6BE456E9F6023DA0C /* libPods.a */; };
 		E90285CC1AEA910B00DA5513 /* WeatherInfoGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90285CB1AEA910B00DA5513 /* WeatherInfoGetter.swift */; };
-		E9084D7D1BB90EA300423566 /* CreateShortToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9084D7C1BB90EA300423566 /* CreateShortToDoViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		E9084D831BB94EB800423566 /* RightShortToDoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9084D821BB94EB800423566 /* RightShortToDoCell.swift */; settings = {ASSET_TAGS = (); }; };
+		E9084D7D1BB90EA300423566 /* CreateShortToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9084D7C1BB90EA300423566 /* CreateShortToDoViewController.swift */; };
+		E9084D831BB94EB800423566 /* RightShortToDoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9084D821BB94EB800423566 /* RightShortToDoCell.swift */; };
 		E90AE22E1A8F813900AD0D78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90AE22D1A8F813900AD0D78 /* AppDelegate.swift */; };
 		E90AE2331A8F813900AD0D78 /* GradeSetUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90AE2321A8F813900AD0D78 /* GradeSetUpViewController.swift */; };
 		E90AE2381A8F813900AD0D78 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E90AE2371A8F813900AD0D78 /* Images.xcassets */; };
-		E90AE2471A8F813900AD0D78 /* NKU_HelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90AE2461A8F813900AD0D78 /* NKU_HelperTests.swift */; };
 		E90AE2511A8F814C00AD0D78 /* ImageGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90AE2501A8F814C00AD0D78 /* ImageGetter.swift */; };
 		E90AE2531A8F948300AD0D78 /* GradeGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90AE2521A8F948300AD0D78 /* GradeGetter.swift */; };
 		E91E5F4F1A90FAED009F3B2B /* GradeShowerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91E5F4E1A90FAED009F3B2B /* GradeShowerTableViewController.swift */; };
 		E91E5F551A9103DF009F3B2B /* GradeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91E5F541A9103DF009F3B2B /* GradeCell.swift */; };
 		E926CD751AB33B1700A5076A /* NKU.plist in Resources */ = {isa = PBXBuildFile; fileRef = E926CD741AB33B1700A5076A /* NKU.plist */; };
 		E92B2D011B48DB89008825A3 /* CalendarConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92B2D001B48DB89008825A3 /* CalendarConverter.swift */; };
+		E92FB3E61BF3676F004C6B7C /* Version Log in Resources */ = {isa = PBXBuildFile; fileRef = E92FB3E51BF3676F004C6B7C /* Version Log */; };
+		E92FB3F11BF3726F004C6B7C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E92FB3F01BF3726F004C6B7C /* SystemConfiguration.framework */; };
+		E92FB3F51BF37298004C6B7C /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E92FB3F41BF37298004C6B7C /* libsqlite3.0.tbd */; };
+		E92FB3F61BF372BB004C6B7C /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E92FB3F21BF37279004C6B7C /* libz.tbd */; };
 		E93C0C971BB54076001303CF /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E93C0C8E1BB54042001303CF /* Alamofire.framework */; };
 		E93C0C981BB54076001303CF /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E93C0C8E1BB54042001303CF /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E93C0F181BB54B54001303CF /* ThingToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93C0F171BB54B54001303CF /* ThingToDo.swift */; settings = {ASSET_TAGS = (); }; };
+		E93C0F181BB54B54001303CF /* ThingToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93C0F171BB54B54001303CF /* ThingToDo.swift */; };
 		E94211C31B00C1E600087846 /* TimeWeatherStatusTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94211C21B00C1E600087846 /* TimeWeatherStatusTableViewCell.swift */; };
 		E94286501AA4CD2A00A4242C /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E942864F1AA4CD2A00A4242C /* LogInViewController.swift */; };
 		E94286541AA5494800A4242C /* LogIner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94286531AA5494800A4242C /* LogIner.swift */; };
 		E94286581AA5500C00A4242C /* SaveAccountInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94286571AA5500C00A4242C /* SaveAccountInfoViewController.swift */; };
 		E9462A461B24A1E00002C21A /* TestTimeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9462A451B24A1E00002C21A /* TestTimeTableViewController.swift */; };
 		E9462A481B24A6480002C21A /* TestTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9462A471B24A6480002C21A /* TestTimeTableViewCell.swift */; };
-		E94BD9781BABE2A100B76E03 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E94BD9771BABE2A100B76E03 /* 1.jpg */; settings = {ASSET_TAGS = (); }; };
-		E94BD97A1BABE9A500B76E03 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94BD9791BABE9A500B76E03 /* TodayViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		E94BD97C1BAC043500B76E03 /* LeftToDoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94BD97B1BAC043500B76E03 /* LeftToDoCell.swift */; settings = {ASSET_TAGS = (); }; };
-		E94BD97E1BAC054E00B76E03 /* CellIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94BD97D1BAC054E00B76E03 /* CellIdentifier.swift */; settings = {ASSET_TAGS = (); }; };
-		E94BD9801BAC06E300B76E03 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94BD97F1BAC06E300B76E03 /* Course.swift */; settings = {ASSET_TAGS = (); }; };
+		E94BD9781BABE2A100B76E03 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E94BD9771BABE2A100B76E03 /* 1.jpg */; };
+		E94BD97A1BABE9A500B76E03 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94BD9791BABE9A500B76E03 /* TodayViewController.swift */; };
+		E94BD97C1BAC043500B76E03 /* LeftToDoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94BD97B1BAC043500B76E03 /* LeftToDoCell.swift */; };
+		E94BD97E1BAC054E00B76E03 /* CellIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94BD97D1BAC054E00B76E03 /* CellIdentifier.swift */; };
+		E94BD9801BAC06E300B76E03 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94BD97F1BAC06E300B76E03 /* Course.swift */; };
 		E95C8F3A1AAF2BA900D3D8EE /* backgroundImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E95C8F391AAF2BA900D3D8EE /* backgroundImage.jpg */; };
 		E95C8F631AAF50A400D3D8EE /* day00.png in Resources */ = {isa = PBXBuildFile; fileRef = E95C8F421AAF50A400D3D8EE /* day00.png */; };
 		E95C8F641AAF50A400D3D8EE /* day01.png in Resources */ = {isa = PBXBuildFile; fileRef = E95C8F431AAF50A400D3D8EE /* day01.png */; };
@@ -105,10 +108,10 @@
 		E96419D21AA8971B00397691 /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96419D11AA8971B00397691 /* AccountTableViewCell.swift */; };
 		E96419D41AA8BC9800397691 /* DetailAccountInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96419D31AA8BC9800397691 /* DetailAccountInfoTableViewController.swift */; };
 		E9658F761AB74ACD000A39A8 /* coursesOverViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9658F751AB74ACD000A39A8 /* coursesOverViewTableViewCell.swift */; };
-		E96E73A01BBBFC3400B62663 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E96E739F1BBBFC3400B62663 /* Launch.storyboard */; settings = {ASSET_TAGS = (); }; };
+		E96E73A01BBBFC3400B62663 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E96E739F1BBBFC3400B62663 /* Launch.storyboard */; };
 		E97176761B1488CA004DADB2 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97176751B1488CA004DADB2 /* AboutViewController.swift */; };
 		E97176781B149292004DADB2 /* CourseDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97176771B149292004DADB2 /* CourseDetailTableViewController.swift */; };
-		E971EB821BAAFEE8005E6E55 /* PlusCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E971EB811BAAFEE8005E6E55 /* PlusCircleView.swift */; settings = {ASSET_TAGS = (); }; };
+		E971EB821BAAFEE8005E6E55 /* PlusCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E971EB811BAAFEE8005E6E55 /* PlusCircleView.swift */; };
 		E988B5371AB005DF006818FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E988B5361AB005DF006818FA /* Main.storyboard */; };
 		E98F94D61AA3180700885992 /* ClassTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98F94D51AA3180700885992 /* ClassTimeViewController.swift */; };
 		E98F94D81AA318EF00885992 /* FunctionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98F94D71AA318EF00885992 /* FunctionTableViewController.swift */; };
@@ -117,27 +120,21 @@
 		E9A83E2E1AB709400021C2D0 /* TodayTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A83E2D1AB709400021C2D0 /* TodayTableViewController.swift */; };
 		E9A83E341AB70A640021C2D0 /* courseCurrentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A83E331AB70A640021C2D0 /* courseCurrentTableViewCell.swift */; };
 		E9B8C4AF1AA82D6E00E0DD50 /* AccountInfo in Resources */ = {isa = PBXBuildFile; fileRef = E9B8C4AE1AA82D6E00E0DD50 /* AccountInfo */; };
-		E9B8C5C41BBA7CBE00CFDE19 /* ColorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B8C5C31BBA7CBE00CFDE19 /* ColorTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		E9B8C5C41BBA7CBE00CFDE19 /* ColorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B8C5C31BBA7CBE00CFDE19 /* ColorTableViewCell.swift */; };
 		E9C2ECC01B183E8B005C1F5F /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9C2ECBF1B183E8B005C1F5F /* MessageUI.framework */; };
-		E9C3EF5A1BB2BCB600D1C91D /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C3EF591BB2BCB600D1C91D /* ErrorHandler.swift */; settings = {ASSET_TAGS = (); }; };
-		E9C3EF5C1BB2C52400D1C91D /* WebRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C3EF5B1BB2C52400D1C91D /* WebRouter.swift */; settings = {ASSET_TAGS = (); }; };
-		E9C3EF5E1BB2D03E00D1C91D /* SegueIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C3EF5D1BB2D03E00D1C91D /* SegueIdentifier.swift */; settings = {ASSET_TAGS = (); }; };
+		E9C3EF5A1BB2BCB600D1C91D /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C3EF591BB2BCB600D1C91D /* ErrorHandler.swift */; };
+		E9C3EF5C1BB2C52400D1C91D /* WebRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C3EF5B1BB2C52400D1C91D /* WebRouter.swift */; };
+		E9C3EF5E1BB2D03E00D1C91D /* SegueIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C3EF5D1BB2D03E00D1C91D /* SegueIdentifier.swift */; };
 		E9CCF4B81ABC653E002076F2 /* ColorChooseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CCF4B71ABC653E002076F2 /* ColorChooseTableViewController.swift */; };
 		E9CCF4BA1ABC6578002076F2 /* ColorChooseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CCF4B91ABC6578002076F2 /* ColorChooseTableViewCell.swift */; };
-		E9F674EC1BA80E7500BEF640 /* RSA.html in Resources */ = {isa = PBXBuildFile; fileRef = E9F674EB1BA80E7500BEF640 /* RSA.html */; settings = {ASSET_TAGS = (); }; };
+		E9E0DF971C128C5A00149A41 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E9E0DF941C128C5A00149A41 /* libWeChatSDK.a */; };
+		E9F674EC1BA80E7500BEF640 /* RSA.html in Resources */ = {isa = PBXBuildFile; fileRef = E9F674EB1BA80E7500BEF640 /* RSA.html */; };
 		E9FDA2431AB15BB600B25E7E /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FDA2421AB15BB600B25E7E /* Base64.m */; };
 		E9FDA2451AB15F6B00B25E7E /* WeatherConditionGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FDA2441AB15F6B00B25E7E /* WeatherConditionGetter.swift */; };
 		E9FE26141B137FEC00FCBB32 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FE26131B137FEC00FCBB32 /* Colors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		E90AE2411A8F813900AD0D78 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E90AE2201A8F813900AD0D78 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E90AE2271A8F813900AD0D78;
-			remoteInfo = "NKU Helper";
-		};
 		E93C0C8D1BB54042001303CF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E93C0C851BB54041001303CF /* Alamofire.xcodeproj */;
@@ -209,7 +206,6 @@
 		E90AE22D1A8F813900AD0D78 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AppDelegate.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E90AE2321A8F813900AD0D78 /* GradeSetUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeSetUpViewController.swift; sourceTree = "<group>"; };
 		E90AE2371A8F813900AD0D78 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		E90AE2401A8F813900AD0D78 /* NKU HelperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NKU HelperTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E90AE2451A8F813900AD0D78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E90AE2461A8F813900AD0D78 /* NKU_HelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NKU_HelperTests.swift; sourceTree = "<group>"; };
 		E90AE2501A8F814C00AD0D78 /* ImageGetter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageGetter.swift; sourceTree = "<group>"; };
@@ -219,6 +215,10 @@
 		E91E5F541A9103DF009F3B2B /* GradeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeCell.swift; sourceTree = "<group>"; };
 		E926CD741AB33B1700A5076A /* NKU.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = NKU.plist; sourceTree = "<group>"; };
 		E92B2D001B48DB89008825A3 /* CalendarConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarConverter.swift; sourceTree = "<group>"; };
+		E92FB3E51BF3676F004C6B7C /* Version Log */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Version Log"; sourceTree = "<group>"; };
+		E92FB3F01BF3726F004C6B7C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		E92FB3F21BF37279004C6B7C /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		E92FB3F41BF37298004C6B7C /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		E93C0C851BB54041001303CF /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		E93C0F171BB54B54001303CF /* ThingToDo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThingToDo.swift; sourceTree = "<group>"; };
 		E94211C21B00C1E600087846 /* TimeWeatherStatusTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeWeatherStatusTableViewCell.swift; sourceTree = "<group>"; };
@@ -306,6 +306,7 @@
 		E97176751B1488CA004DADB2 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		E97176771B149292004DADB2 /* CourseDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseDetailTableViewController.swift; sourceTree = "<group>"; };
 		E971EB811BAAFEE8005E6E55 /* PlusCircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlusCircleView.swift; sourceTree = "<group>"; };
+		E975B7D21C154F3100240D4C /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		E988B5361AB005DF006818FA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E98DC7291B8B13D100273510 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E98DC72B1B8B13D600273510 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -325,6 +326,9 @@
 		E9C3EF5D1BB2D03E00D1C91D /* SegueIdentifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueIdentifier.swift; sourceTree = "<group>"; };
 		E9CCF4B71ABC653E002076F2 /* ColorChooseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorChooseTableViewController.swift; sourceTree = "<group>"; };
 		E9CCF4B91ABC6578002076F2 /* ColorChooseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorChooseTableViewCell.swift; sourceTree = "<group>"; };
+		E9E0DF941C128C5A00149A41 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		E9E0DF951C128C5A00149A41 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		E9E0DF961C128C5A00149A41 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		E9F674EB1BA80E7500BEF640 /* RSA.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = RSA.html; sourceTree = "<group>"; };
 		E9FDA2411AB15BB600B25E7E /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
 		E9FDA2421AB15BB600B25E7E /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
@@ -338,16 +342,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9E0DF971C128C5A00149A41 /* libWeChatSDK.a in Frameworks */,
+				E92FB3F61BF372BB004C6B7C /* libz.tbd in Frameworks */,
+				E92FB3F51BF37298004C6B7C /* libsqlite3.0.tbd in Frameworks */,
+				E92FB3F11BF3726F004C6B7C /* SystemConfiguration.framework in Frameworks */,
 				E9C2ECC01B183E8B005C1F5F /* MessageUI.framework in Frameworks */,
 				9C394171364F77F26A81DA63 /* libPods.a in Frameworks */,
 				E93C0C971BB54076001303CF /* Alamofire.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E90AE23D1A8F813900AD0D78 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,6 +368,10 @@
 		911897253CF7E957EC7F6666 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E975B7D21C154F3100240D4C /* libc++.tbd */,
+				E92FB3F41BF37298004C6B7C /* libsqlite3.0.tbd */,
+				E92FB3F21BF37279004C6B7C /* libz.tbd */,
+				E92FB3F01BF3726F004C6B7C /* SystemConfiguration.framework */,
 				E98DC73E1B8B3BCC00273510 /* Alamofire.framework */,
 				E98DC72D1B8B13DE00273510 /* CoreGraphics.framework */,
 				E98DC72B1B8B13D600273510 /* UIKit.framework */,
@@ -381,6 +386,7 @@
 		E90AE21F1A8F813900AD0D78 = {
 			isa = PBXGroup;
 			children = (
+				E92FB3E51BF3676F004C6B7C /* Version Log */,
 				E90AE22A1A8F813900AD0D78 /* NKU Helper */,
 				E90AE2431A8F813900AD0D78 /* NKU HelperTests */,
 				E90AE2291A8F813900AD0D78 /* Products */,
@@ -394,7 +400,6 @@
 			isa = PBXGroup;
 			children = (
 				E90AE2281A8F813900AD0D78 /* NKU Helper.app */,
-				E90AE2401A8F813900AD0D78 /* NKU HelperTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -413,6 +418,7 @@
 				E9C3EF581BB2BB8000D1C91D /* Structures */,
 				E95C37F81BA55B95004444FF /* images */,
 				E90AE22B1A8F813900AD0D78 /* Supporting Files */,
+				E92FB3EF1BF37213004C6B7C /* WXSDK */,
 			);
 			path = "NKU Helper";
 			sourceTree = "<group>";
@@ -450,6 +456,16 @@
 				E9FDA2421AB15BB600B25E7E /* Base64.m */,
 			);
 			name = "making kay";
+			sourceTree = "<group>";
+		};
+		E92FB3EF1BF37213004C6B7C /* WXSDK */ = {
+			isa = PBXGroup;
+			children = (
+				E9E0DF941C128C5A00149A41 /* libWeChatSDK.a */,
+				E9E0DF951C128C5A00149A41 /* WXApi.h */,
+				E9E0DF961C128C5A00149A41 /* WXApiObject.h */,
+			);
+			name = WXSDK;
 			sourceTree = "<group>";
 		};
 		E93B59A21BB294500052938D /* PreviousVersion */ = {
@@ -746,24 +762,6 @@
 			productReference = E90AE2281A8F813900AD0D78 /* NKU Helper.app */;
 			productType = "com.apple.product-type.application";
 		};
-		E90AE23F1A8F813900AD0D78 /* NKU HelperTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E90AE24D1A8F813900AD0D78 /* Build configuration list for PBXNativeTarget "NKU HelperTests" */;
-			buildPhases = (
-				E90AE23C1A8F813900AD0D78 /* Sources */,
-				E90AE23D1A8F813900AD0D78 /* Frameworks */,
-				E90AE23E1A8F813900AD0D78 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				E90AE2421A8F813900AD0D78 /* PBXTargetDependency */,
-			);
-			name = "NKU HelperTests";
-			productName = "NKU HelperTests";
-			productReference = E90AE2401A8F813900AD0D78 /* NKU HelperTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -778,10 +776,6 @@
 					E90AE2271A8F813900AD0D78 = {
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = E9FBJ6HPDB;
-					};
-					E90AE23F1A8F813900AD0D78 = {
-						CreatedOnToolsVersion = 6.1.1;
-						TestTargetID = E90AE2271A8F813900AD0D78;
 					};
 				};
 			};
@@ -805,7 +799,6 @@
 			projectRoot = "";
 			targets = (
 				E90AE2271A8F813900AD0D78 /* NKU Helper */,
-				E90AE23F1A8F813900AD0D78 /* NKU HelperTests */,
 			);
 		};
 /* End PBXProject section */
@@ -874,6 +867,7 @@
 				E95C8F641AAF50A400D3D8EE /* day01.png in Resources */,
 				E95C8F831AAF50A400D3D8EE /* day53.png in Resources */,
 				E95C8FB21AAF51A700D3D8EE /* night13.png in Resources */,
+				E92FB3E61BF3676F004C6B7C /* Version Log in Resources */,
 				E95C8F7F1AAF50A400D3D8EE /* day28.png in Resources */,
 				E9B8C4AF1AA82D6E00E0DD50 /* AccountInfo in Resources */,
 				E95C8FAA1AAF51A700D3D8EE /* night05.png in Resources */,
@@ -927,13 +921,6 @@
 				E95C8FAB1AAF51A700D3D8EE /* night06.png in Resources */,
 				E95C8F691AAF50A400D3D8EE /* day06.png in Resources */,
 				E9F674EC1BA80E7500BEF640 /* RSA.html in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E90AE23E1A8F813900AD0D78 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1022,22 +1009,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E90AE23C1A8F813900AD0D78 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E90AE2471A8F813900AD0D78 /* NKU_HelperTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		E90AE2421A8F813900AD0D78 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E90AE2271A8F813900AD0D78 /* NKU Helper */;
-			targetProxy = E90AE2411A8F813900AD0D78 /* PBXContainerItemProxy */;
-		};
 		E93C0C9A1BB54076001303CF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Alamofire iOS";
@@ -1094,28 +1068,19 @@
 				DEFINES_MODULE = NO;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = "\"$(PROJECT_DIR)/NKU Helper\"";
 				INFOPLIST_FILE = "NKU Helper/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(PROJECT_DIR)/NKU Helper\"",
+					"$(inherited)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "April-Sunshine.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "NKU Helper/NKU Helper-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = "ad hoc Distribution";
-		};
-		E90A3B331BB829830015EA0D /* ad hoc Distribution */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = "NKU HelperTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "April-Sunshine.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NKU Helper.app/NKU Helper";
 			};
 			name = "ad hoc Distribution";
 		};
@@ -1210,10 +1175,14 @@
 				DEFINES_MODULE = NO;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = "\"$(PROJECT_DIR)/NKU Helper\"";
 				INFOPLIST_FILE = "NKU Helper/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(PROJECT_DIR)/NKU Helper\"",
+					"$(inherited)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "April-Sunshine.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1234,45 +1203,19 @@
 				DEFINES_MODULE = NO;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = "\"$(PROJECT_DIR)/NKU Helper\"";
 				INFOPLIST_FILE = "NKU Helper/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(PROJECT_DIR)/NKU Helper\"",
+					"$(inherited)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "April-Sunshine.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "NKU Helper/NKU Helper-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		E90AE24E1A8F813900AD0D78 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "NKU HelperTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "April-Sunshine.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NKU Helper.app/NKU Helper";
-			};
-			name = Debug;
-		};
-		E90AE24F1A8F813900AD0D78 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = "NKU HelperTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "April-Sunshine.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NKU Helper.app/NKU Helper";
 			};
 			name = Release;
 		};
@@ -1295,16 +1238,6 @@
 				E90AE24B1A8F813900AD0D78 /* Debug */,
 				E90AE24C1A8F813900AD0D78 /* Release */,
 				E90A3B321BB829830015EA0D /* ad hoc Distribution */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E90AE24D1A8F813900AD0D78 /* Build configuration list for PBXNativeTarget "NKU HelperTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E90AE24E1A8F813900AD0D78 /* Debug */,
-				E90AE24F1A8F813900AD0D78 /* Release */,
-				E90A3B331BB829830015EA0D /* ad hoc Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

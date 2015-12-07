@@ -59,11 +59,13 @@ class TodayViewController: UIViewController {
         if accountInfo == nil {
             self.performSegueWithIdentifier(SegueIdentifier.Login, sender: nil)
         }
-        if NSUserDefaults.standardUserDefaults().objectForKey("courses") as? NSArray == nil {
-            let alertView = UIAlertController(title: ErrorHandler.ClassNotExist.title, message: ErrorHandler.ClassNotExist.message, preferredStyle: .Alert)
-            let cancel = UIAlertAction(title: ErrorHandler.ClassNotExist.cancelButtonTitle, style: .Cancel, handler: nil)
-            alertView.addAction(cancel)
-            self.presentViewController(alertView, animated: true, completion: nil)
+        else {
+            if NSUserDefaults.standardUserDefaults().objectForKey("courses") as? NSArray == nil {
+                let alertView = UIAlertController(title: ErrorHandler.ClassNotExist.title, message: ErrorHandler.ClassNotExist.message, preferredStyle: .Alert)
+                let cancel = UIAlertAction(title: ErrorHandler.ClassNotExist.cancelButtonTitle, style: .Cancel, handler: nil)
+                alertView.addAction(cancel)
+                self.presentViewController(alertView, animated: true, completion: nil)
+            }
         }
         newToDo?.becomeFirstResponder()
     }
@@ -75,7 +77,7 @@ class TodayViewController: UIViewController {
         isAddMode = true
         CATransaction.begin()
         CATransaction.setCompletionBlock { () -> Void in
-            newToDo?.becomeFirstResponder()
+            self.newToDo?.becomeFirstResponder()
         }
         thingsTableView.reloadData()
         CATransaction.commit()

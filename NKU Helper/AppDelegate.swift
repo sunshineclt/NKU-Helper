@@ -9,14 +9,18 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate{
+class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, WXApiDelegate{
 
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        AVOSCloud.setApplicationId("2Ot4Qst88l7L50oHgGHpRUij", clientKey: "gN4rJ9GizYYRS6tqLPioUBoS")
-        AVAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), { () -> Void in
+                AVOSCloud.setApplicationId("2Ot4Qst88l7L50oHgGHpRUij", clientKey: "gN4rJ9GizYYRS6tqLPioUBoS")
+                AVAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
+            })
+
+        WXApi.registerApp("wx311e5377578127f1")
         
         UINavigationBar.appearance().barTintColor = UIColor.whiteColor()
         UINavigationBar.appearance().tintColor = UIColor.blackColor()
@@ -89,6 +93,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate{
         rootvc.selectedIndex = type
         if application.applicationState != UIApplicationState.Active {
             AVAnalytics.trackAppOpenedWithRemoteNotificationPayload(userInfo)
+        }
+    }
+    
+    func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
+        return WXApi.handleOpenURL(url, delegate: self)
+    }
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        let isSuc = WXApi.handleOpenURL(url, delegate: self)
+        print("Open \(url) \(isSuc)")
+        return isSuc
+    }
+    
+    func onResp(resp: BaseResp!) {
+        if resp.isKindOfClass(SendMessageToWXResp().dynamicType) {
+            print("分享到微信错误")
         }
     }
     

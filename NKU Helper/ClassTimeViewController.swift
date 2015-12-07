@@ -9,7 +9,9 @@
 import UIKit
 import Alamofire
 
-class ClassTimeViewController: UIViewController, UIScrollViewDelegate {
+class ClassTimeViewController: UIViewController, UIScrollViewDelegate, WXApiDelegate {
+    
+    // MARK: Properties
     
     var whichSection:Int!
     
@@ -25,6 +27,7 @@ class ClassTimeViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     @IBOutlet var refreshBarButton: UIBarButtonItem!
+    @IBOutlet var navigationTitle: UINavigationItem!
     
     var UALoadView:UAProgressView!
     var overlayView:UIView!
@@ -34,8 +37,17 @@ class ClassTimeViewController: UIViewController, UIScrollViewDelegate {
     
     let rowHeight:CGFloat = 50
     let columnWidth:CGFloat = UIScreen.mainScreen().bounds.width / 6
+    var week:Int! {
+        didSet {
+            if canDrawClassTimeTable() {
+                updateClassTimeTableWithWeek()
+            }
+        }
+    }
     
     let colors = Colors()
+    
+    // MARK: General
     
     override func viewDidLoad() {
 
@@ -44,51 +56,18 @@ class ClassTimeViewController: UIViewController, UIScrollViewDelegate {
         let nc:NSNotificationCenter = NSNotificationCenter.defaultCenter()
         nc.addObserver(self, selector: "refreshClassTimeTable:", name: "loginComplete", object: nil)
         
-        let userDefaults = NSUserDefaults.standardUserDefaults()
-        let accountInfo = userDefaults.objectForKey("accountInfo") as? NSDictionary
-        if let _ = accountInfo {
-            
-            let courses:NSArray? = userDefaults.objectForKey("courses") as? NSArray
-            if let _ = courses {
-                drawClassTimeTable()
-            }
-            else {
-                switch isLogIn() {
-                case 1:
-                    loadBeginAnimation()
-                    Alamofire.request(.GET, "http://222.30.32.10/xsxk/selectedAction.do?operation=kebiao").responseString(encoding: CFStringConvertEncodingToNSStringEncoding(0x0632), completionHandler: { (response:Response<String, NSError>) -> Void in
-                        if let html = response.result.value {
-                            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), { () -> Void in
-                                self.loadAllCourseInfoWithHtml(html)
-                                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                    self.loadEndAnimation()
-                                    self.drawClassTimeTable()
-                                })
-                            })
-                        } else {
-                            let alertView = UIAlertController(title: ErrorHandler.NetworkError.title, message: ErrorHandler.NetworkError.message, preferredStyle: .Alert)
-                            let cancel = UIAlertAction(title: ErrorHandler.NetworkError.cancelButtonTitle, style: .Cancel, handler: nil)
-                            alertView.addAction(cancel)
-                            self.presentViewController(alertView, animated: true, completion: nil)
-                        }
-                    })
-                case 0:
-                    self.performSegueWithIdentifier(SegueIdentifier.Login, sender: nil)
-                default:
-                    let alertView = UIAlertController(title: ErrorHandler.NetworkError.title, message: ErrorHandler.NetworkError.message, preferredStyle: .Alert)
-                    let cancel = UIAlertAction(title: ErrorHandler.NetworkError.cancelButtonTitle, style: .Cancel, handler: nil)
-                    alertView.addAction(cancel)
-                    self.presentViewController(alertView, animated: true, completion: nil)
-                }
-            }
-        } else {
-            let alertView = UIAlertController(title: ErrorHandler.NotLoggedIn.title, message: ErrorHandler.NotLoggedIn.message, preferredStyle: .Alert)
-            let cancel = UIAlertAction(title: ErrorHandler.NotLoggedIn.cancelButtonTitle, style: .Cancel, handler: nil)
-            alertView.addAction(cancel)
-            self.presentViewController(alertView, animated: true, completion: nil)
-            
+        if canDrawClassTimeTable() {
+            drawClassTimeTable()
         }
         
+        Alamofire.request(.GET, "http://115.28.141.95/CodeIgniter/index.php/info/week").responseString { (response:Response<String, NSError>) -> Void in
+            if let week = response.result.value {
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.navigationTitle.title = "第\(week)周"
+                    self.week = (week as NSString).integerValue
+                })
+            }
+        }
       
     }
     
@@ -196,7 +175,6 @@ class ClassTimeViewController: UIViewController, UIScrollViewDelegate {
         //   drawClassTimeTable()
     }
 
-
     func isLogIn() -> Int {
         let req:NSURLRequest = NSURLRequest(URL: NSURL(string: "http://222.30.32.10/xsxk/selectedAction.do?operation=kebiao")!)
         let receivedData:NSData? = try? NSURLConnection.sendSynchronousRequest(req, returningResponse: nil)
@@ -215,10 +193,65 @@ class ClassTimeViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     
+    func canDrawClassTimeTable() -> Bool {
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        let accountInfo = userDefaults.objectForKey("accountInfo") as? NSDictionary
+        if let _ = accountInfo {
+            
+            let courses:NSArray? = userDefaults.objectForKey("courses") as? NSArray
+            if let _ = courses {
+                return true
+            }
+            else {
+                switch isLogIn() {
+                case 1:
+                    loadBeginAnimation()
+                    Alamofire.request(.GET, "http://222.30.32.10/xsxk/selectedAction.do?operation=kebiao").responseString(encoding: CFStringConvertEncodingToNSStringEncoding(0x0632), completionHandler: { (response:Response<String, NSError>) -> Void in
+                        if let html = response.result.value {
+                            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), { () -> Void in
+                                self.loadAllCourseInfoWithHtml(html)
+                                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                    self.loadEndAnimation()
+                                    self.drawClassTimeTable()
+                                })
+                            })
+                        } else {
+                            let alertView = UIAlertController(title: ErrorHandler.NetworkError.title, message: ErrorHandler.NetworkError.message, preferredStyle: .Alert)
+                            let cancel = UIAlertAction(title: ErrorHandler.NetworkError.cancelButtonTitle, style: .Cancel, handler: nil)
+                            alertView.addAction(cancel)
+                            self.presentViewController(alertView, animated: true, completion: nil)
+                        }
+                    })
+                    return false
+                case 0:
+                    self.performSegueWithIdentifier(SegueIdentifier.Login, sender: nil)
+                    return false
+                default:
+                    let alertView = UIAlertController(title: ErrorHandler.NetworkError.title, message: ErrorHandler.NetworkError.message, preferredStyle: .Alert)
+                    let cancel = UIAlertAction(title: ErrorHandler.NetworkError.cancelButtonTitle, style: .Cancel, handler: nil)
+                    alertView.addAction(cancel)
+                    self.presentViewController(alertView, animated: true, completion: nil)
+                    return false
+                }
+            }
+        } else {
+            let alertView = UIAlertController(title: ErrorHandler.NotLoggedIn.title, message: ErrorHandler.NotLoggedIn.message, preferredStyle: .Alert)
+            let cancel = UIAlertAction(title: ErrorHandler.NotLoggedIn.cancelButtonTitle, style: .Cancel, handler: nil)
+            alertView.addAction(cancel)
+            self.presentViewController(alertView, animated: true, completion: nil)
+            return false
+        }
+    }
+    
     // MARK: 绘制课程表
     
     func drawBackground() {
-    
+        
+        // 防止多画背景，背景画一次即可
+        if !(headScrollView.subviews.isEmpty) {
+            return
+        }
+        
         headScrollView.contentSize = CGSizeMake(columnWidth * 8, 30)
         
         for (var i=1;i<=7;i++) {
@@ -309,10 +342,11 @@ class ClassTimeViewController: UIViewController, UIScrollViewDelegate {
             
             row.addSubview(time)
             row.addSubview(section)
+            row.tag = -1
             
             classScrollView.addSubview(row)
         }
-     
+        
         shadowView.layer.shadowColor = UIColor.grayColor().CGColor
         shadowView.layer.shadowOffset = CGSizeMake(0, 2)
         shadowView.layer.shadowOpacity = 0.3
@@ -322,7 +356,9 @@ class ClassTimeViewController: UIViewController, UIScrollViewDelegate {
     func drawClassTimeTable() {
         
         for view in classScrollView.subviews {
-            view.removeFromSuperview()
+            if (view.tag != -1) {               // -1代表是背景中的第几节课及时间等
+                view.removeFromSuperview()
+            }
         }
         drawBackground()
         
@@ -344,8 +380,15 @@ class ClassTimeViewController: UIViewController, UIScrollViewDelegate {
             let name = current.name
             let classroom = current.classroom
             let classID = current.ID
+            let weekOddEven = current.weekOddEven
             
             let course:UIView = UIView(frame: CGRectMake(CGFloat(day+1) * columnWidth, CGFloat(startSection - 1) * rowHeight, columnWidth, rowHeight * CGFloat(sectionNumber)))
+            
+            if let _ = week {
+                if ((weekOddEven == "单 周") && (week % 2 == 0) || (weekOddEven == "双 周" && (week % 2 == 1))) {
+                    course.alpha = 0.5
+                }
+            }
             
             var isClassHaveHad:Bool = false
             for (key, value) in coloredCourse {
@@ -401,6 +444,22 @@ class ClassTimeViewController: UIViewController, UIScrollViewDelegate {
             self.classScrollView.addSubview(course)
         }
         
+    }
+    
+    func updateClassTimeTableWithWeek() {
+        let userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        let courses:NSArray = userDefaults.objectForKey("courses") as! NSArray
+        for (var i=0;i<courses.count;i++) {
+            let currentData = courses.objectAtIndex(i) as! NSData
+            let current = NSKeyedUnarchiver.unarchiveObjectWithData(currentData) as! Course
+            let weekOddEven = current.weekOddEven
+            
+            let course = self.classScrollView.viewWithTag(i)!
+            
+            if ((weekOddEven == "单 周") && (week % 2 == 0) || (weekOddEven == "双 周" && (week % 2 == 1))) {
+                course.alpha = 0.5
+            }
+        }
     }
     
     // MARK: Segue
@@ -593,24 +652,88 @@ class ClassTimeViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     
-    // MARK: NSURLConnectionDelegate
-    /*
-    func connection(connection: NSURLConnection, didReceiveData data: NSData) {
-        self.receivedData.appendData(data)
+    @IBAction func shareClassTable(sender: UIBarButtonItem) {
+        
+        guard WXApi.isWXAppInstalled() && WXApi.isWXAppSupportApi() else {
+            let alert = UIAlertController(title: "分享错误", message: "未安装微信或微信版本过低", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "安装最新版微信", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
+                UIApplication.sharedApplication().openURL(NSURL(string: WXApi.getWXAppInstallUrl())!)
+            }))
+            alert.addAction(UIAlertAction(title: "算了", style: UIAlertActionStyle.Cancel, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+            return
+        }
+        
+        // 获取星期的headView
+        UIGraphicsBeginImageContextWithOptions(self.headScrollView.contentSize, false, 0)
+        let savedHeadContentOffset = self.headScrollView.contentOffset
+        let savedHeadFrame = self.headScrollView.frame
+        self.headScrollView.contentOffset = CGPointZero
+        self.headScrollView.frame = CGRectMake(0, 0, self.headScrollView.contentSize.width, self.headScrollView.contentSize.height)
+        self.headScrollView.layer.renderInContext(UIGraphicsGetCurrentContext()!)
+        let headImage = UIGraphicsGetImageFromCurrentImageContext()
+        self.headScrollView.contentOffset = savedHeadContentOffset
+        self.headScrollView.frame = savedHeadFrame
+        UIGraphicsEndImageContext()
+        
+        // 获取课程表
+        UIGraphicsBeginImageContextWithOptions(self.classScrollView.contentSize, false, 0)
+        let savedContentOffset = self.classScrollView.contentOffset
+        let savedFrame = self.classScrollView.frame
+        self.classScrollView.contentOffset = CGPointZero
+        self.classScrollView.frame = CGRectMake(0, 0, self.classScrollView.contentSize.width, self.classScrollView.contentSize.height)
+        self.classScrollView.layer.renderInContext(UIGraphicsGetCurrentContext()!)
+        let classTimeTableImage = UIGraphicsGetImageFromCurrentImageContext()
+        self.classScrollView.contentOffset = savedContentOffset
+        self.classScrollView.frame = savedFrame
+        UIGraphicsEndImageContext()
+        
+        // 合并星期的HeadView和课程表
+        UIGraphicsBeginImageContextWithOptions(CGSizeMake(self.classScrollView.contentSize.width, self.classScrollView.contentSize.height+self.headScrollView.contentSize.height), false, 0)
+        headImage.drawAtPoint(CGPointZero)
+        classTimeTableImage.drawAtPoint(CGPointMake(0, self.headScrollView.contentSize.height))
+        CGContextSetFillColorWithColor(UIGraphicsGetCurrentContext(), UIColor.whiteColor().CGColor)
+        CGContextFillRect(UIGraphicsGetCurrentContext(), CGRectMake(0, 0, columnWidth, 30))
+        let combinedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        // 绘制缩略图
+        UIGraphicsBeginImageContextWithOptions(CGSizeMake(self.classScrollView.contentSize.width, self.classScrollView.contentSize.height+self.headScrollView.contentSize.height), false, 1)
+        headImage.drawAtPoint(CGPointZero)
+        classTimeTableImage.drawAtPoint(CGPointMake(0, self.headScrollView.contentSize.height))
+        CGContextSetFillColorWithColor(UIGraphicsGetCurrentContext(), UIColor.whiteColor().CGColor)
+        CGContextFillRect(UIGraphicsGetCurrentContext(), CGRectMake(0, 0, columnWidth, 30))
+        let thumbImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        // 制作微信跳转过去的信息
+        let message = WXMediaMessage()
+        let ext = WXImageObject()
+        ext.imageData = UIImagePNGRepresentation(combinedImage)
+        message.mediaObject = ext
+        message.title = "课表"
+        message.description = "课表"
+        message.thumbData = UIImageJPEGRepresentation(thumbImage, 0.1)
+        let req = SendMessageToWXReq()
+        req.bText = false;
+        req.message = message
+        
+        let alert = UIAlertController(title: "选择你想要分享的方式", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        alert.addAction(UIAlertAction(title: "分享给微信好友", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
+            req.scene = 0  //聊天界面
+            WXApi.sendReq(req)
+        }))
+        alert.addAction(UIAlertAction(title: "分享到朋友圈", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
+            req.scene = 1  //朋友圈
+            WXApi.sendReq(req)
+        }))
+        alert.addAction(UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel, handler: { (action) -> Void in
+            alert.dismissViewControllerAnimated(true, completion: nil)
+        }))
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+        
     }
-    
-    func connectionDidFinishLoading(connection: NSURLConnection) {
-        let encoding:NSStringEncoding = CFStringConvertEncodingToNSStringEncoding(0x0632)
-        let html:NSString = NSString(data: self.receivedData!, encoding: encoding)!
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), { () -> Void in
-            self.loadAllCourseInfoWithHtml(html)
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.loadEndAnimation()
-                self.drawClassTimeTable()
-            })
-        })
-
-*/
     
     // MARK: ScrollViewDelegate
     
