@@ -8,6 +8,8 @@
 
 import UIKit
 
+var tableViewActionType:Int? = nil
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, WXApiDelegate{
 
@@ -15,10 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, WXAp
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), { () -> Void in
-                AVOSCloud.setApplicationId("2Ot4Qst88l7L50oHgGHpRUij", clientKey: "gN4rJ9GizYYRS6tqLPioUBoS")
-                AVAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
-            })
+        AVOSCloud.setApplicationId("2Ot4Qst88l7L50oHgGHpRUij", clientKey: "gN4rJ9GizYYRS6tqLPioUBoS")
+        AVAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
 
         WXApi.registerApp("wx311e5377578127f1")
         
@@ -57,10 +57,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, WXAp
             
             let notificationPayload:NSDictionary = launchOption[UIApplicationLaunchOptionsRemoteNotificationKey] as! NSDictionary
             let action:NSDictionary = notificationPayload.objectForKey("action") as! NSDictionary
-            let actionType:Int = action.objectForKey("type") as! Int
+            let actionType1:Int = action.objectForKey("type1") as! Int  // 一级TabViewController的导航
+            let actionType2:Int = action.objectForKey("type2") as! Int  // 二级TableViewController的导航
             let rootvc = self.window?.rootViewController as! UITabBarController
-            rootvc.selectedIndex = actionType
-            
+            rootvc.selectedIndex = actionType1
+            tableViewActionType = actionType2
         }
         
         return true
@@ -71,6 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, WXAp
         print("Register For Remote Notification With Device Token Successfully")
         let currentInstallation = AVInstallation.currentInstallation()
         currentInstallation.setDeviceTokenFromData(deviceToken)
+        print(deviceToken)
         currentInstallation.saveInBackgroundWithBlock { (succeeded, error) -> Void in
             if succeeded {
                 print("Save Device Token Successfully")

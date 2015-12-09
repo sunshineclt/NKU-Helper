@@ -19,6 +19,16 @@ class FunctionTableViewController: UITableViewController {
         }
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        if let actionType = tableViewActionType {
+            if actionType == 0 {
+                self.performSegueWithIdentifier(CellIdentifier.notiCenter, sender: nil)
+            }
+            tableViewActionType = nil
+        }
+    }
+    
     override func viewWillAppear(animated: Bool) {
         if NSUserDefaults.standardUserDefaults().objectForKey("accountInfo") as? NSDictionary == nil {
             let alert = UIAlertController(title: ErrorHandler.NotLoggedIn.title, message: ErrorHandler.NotLoggedIn.message, preferredStyle: .Alert)

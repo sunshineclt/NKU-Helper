@@ -12,4 +12,5 @@ struct CellIdentifier {
     static let RightAlarmedToDo = "RightAlarmedToDo"
     static let noti = "noti"
     static let notiShowDetail = "notiShowDetail"
+    static let notiCenter = "notiCenter"
 }

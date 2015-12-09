@@ -26,7 +26,7 @@ class NotiCenterTableViewController: UITableViewController {
         let footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: "fetchMoreData")
         footer.setTitle("正在加载更多通知", forState: MJRefreshState.Refreshing)
         footer.setTitle("没有更多通知啦", forState: MJRefreshState.NoMoreData)
-        footer.stateLabel?.font = UIFont(name: "HelveticaNeue", size: 17)
+        footer.stateLabel?.font = UIFont(name: "HelveticaNeue", size: 15)
         footer.stateLabel?.textColor = UIColor.whiteColor()
         footer.activityIndicatorViewStyle = .White
         footer.backgroundColor = UIColor(red: 155/255, green: 92/255, blue: 180/255, alpha: 1)
