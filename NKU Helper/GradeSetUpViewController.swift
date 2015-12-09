@@ -24,18 +24,12 @@ class GradeSetUpViewController: UIViewController, UIAlertViewDelegate, UITextFie
         super.viewDidLoad()
         imageLoadActivityIndicator.hidesWhenStopped = true
 
-        // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func viewWillAppear(animated: Bool) {
         refreshImage()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     func refreshImage() {
         
         validateCodeTextField.becomeFirstResponder()

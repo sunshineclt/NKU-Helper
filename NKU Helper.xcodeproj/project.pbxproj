@@ -117,6 +117,10 @@
 		E98F94D81AA318EF00885992 /* FunctionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98F94D71AA318EF00885992 /* FunctionTableViewController.swift */; };
 		E98F94DA1AA3191F00885992 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98F94D91AA3191F00885992 /* SettingTableViewController.swift */; };
 		E997700E1AC16CC700C3977B /* LifeIndexTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E997700D1AC16CC700C3977B /* LifeIndexTableViewCell.swift */; };
+		E99D67041C16C8CF00E27B08 /* NotiCenterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99D67031C16C8CF00E27B08 /* NotiCenterTableViewController.swift */; };
+		E99D670A1C16C9EB00E27B08 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99D67091C16C9EB00E27B08 /* Notification.swift */; };
+		E99D67131C16F6E800E27B08 /* NotiTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99D67121C16F6E700E27B08 /* NotiTableViewCell.swift */; };
+		E99D675C1C17401B00E27B08 /* NotiDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99D675B1C17401B00E27B08 /* NotiDetailViewController.swift */; };
 		E9A83E2E1AB709400021C2D0 /* TodayTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A83E2D1AB709400021C2D0 /* TodayTableViewController.swift */; };
 		E9A83E341AB70A640021C2D0 /* courseCurrentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A83E331AB70A640021C2D0 /* courseCurrentTableViewCell.swift */; };
 		E9B8C4AF1AA82D6E00E0DD50 /* AccountInfo in Resources */ = {isa = PBXBuildFile; fileRef = E9B8C4AE1AA82D6E00E0DD50 /* AccountInfo */; };
@@ -316,6 +320,10 @@
 		E98F94D71AA318EF00885992 /* FunctionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunctionTableViewController.swift; sourceTree = "<group>"; };
 		E98F94D91AA3191F00885992 /* SettingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 		E997700D1AC16CC700C3977B /* LifeIndexTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifeIndexTableViewCell.swift; sourceTree = "<group>"; };
+		E99D67031C16C8CF00E27B08 /* NotiCenterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotiCenterTableViewController.swift; sourceTree = "<group>"; };
+		E99D67091C16C9EB00E27B08 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		E99D67121C16F6E700E27B08 /* NotiTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotiTableViewCell.swift; sourceTree = "<group>"; };
+		E99D675B1C17401B00E27B08 /* NotiDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotiDetailViewController.swift; sourceTree = "<group>"; };
 		E9A83E2D1AB709400021C2D0 /* TodayTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayTableViewController.swift; sourceTree = "<group>"; };
 		E9A83E331AB70A640021C2D0 /* courseCurrentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = courseCurrentTableViewCell.swift; sourceTree = "<group>"; };
 		E9B8C4AE1AA82D6E00E0DD50 /* AccountInfo */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AccountInfo; sourceTree = "<group>"; };
@@ -418,7 +426,7 @@
 				E9C3EF581BB2BB8000D1C91D /* Structures */,
 				E95C37F81BA55B95004444FF /* images */,
 				E90AE22B1A8F813900AD0D78 /* Supporting Files */,
-				E92FB3EF1BF37213004C6B7C /* WXSDK */,
+				E99D674B1C173A7500E27B08 /* Third Party */,
 			);
 			path = "NKU Helper";
 			sourceTree = "<group>";
@@ -647,6 +655,7 @@
 			isa = PBXGroup;
 			children = (
 				E98F94D71AA318EF00885992 /* FunctionTableViewController.swift */,
+				E99D670B1C16CA8600E27B08 /* NotificationCenter */,
 				E98F94D21AA317B100885992 /* GetGrade */,
 			);
 			name = Function;
@@ -671,6 +680,25 @@
 				E942864F1AA4CD2A00A4242C /* LogInViewController.swift */,
 			);
 			name = ClassTime;
+			sourceTree = "<group>";
+		};
+		E99D670B1C16CA8600E27B08 /* NotificationCenter */ = {
+			isa = PBXGroup;
+			children = (
+				E99D67031C16C8CF00E27B08 /* NotiCenterTableViewController.swift */,
+				E99D67091C16C9EB00E27B08 /* Notification.swift */,
+				E99D67121C16F6E700E27B08 /* NotiTableViewCell.swift */,
+				E99D675B1C17401B00E27B08 /* NotiDetailViewController.swift */,
+			);
+			name = NotificationCenter;
+			sourceTree = "<group>";
+		};
+		E99D674B1C173A7500E27B08 /* Third Party */ = {
+			isa = PBXGroup;
+			children = (
+				E92FB3EF1BF37213004C6B7C /* WXSDK */,
+			);
+			name = "Third Party";
 			sourceTree = "<group>";
 		};
 		E9ACA1221AB2D6E7001083C1 /* RefreshControl */ = {
@@ -751,6 +779,7 @@
 				E90AE2261A8F813900AD0D78 /* Resources */,
 				642727BA95690BE645293FBC /* Copy Pods Resources */,
 				E93C0C9B1BB54077001303CF /* Embed Frameworks */,
+				D3CD9C91163442A899DF2781 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -942,6 +971,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D3CD9C91163442A899DF2781 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		F38524AC852A2B2873A537BD /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -972,6 +1016,7 @@
 				E92B2D011B48DB89008825A3 /* CalendarConverter.swift in Sources */,
 				E93C0F181BB54B54001303CF /* ThingToDo.swift in Sources */,
 				E9C3EF5A1BB2BCB600D1C91D /* ErrorHandler.swift in Sources */,
+				E99D670A1C16C9EB00E27B08 /* Notification.swift in Sources */,
 				E90AE2511A8F814C00AD0D78 /* ImageGetter.swift in Sources */,
 				E9FDA2431AB15BB600B25E7E /* Base64.m in Sources */,
 				E9462A481B24A6480002C21A /* TestTimeTableViewCell.swift in Sources */,
@@ -984,6 +1029,7 @@
 				E98F94DA1AA3191F00885992 /* SettingTableViewController.swift in Sources */,
 				E9FDA2451AB15F6B00B25E7E /* WeatherConditionGetter.swift in Sources */,
 				E96419D41AA8BC9800397691 /* DetailAccountInfoTableViewController.swift in Sources */,
+				E99D67041C16C8CF00E27B08 /* NotiCenterTableViewController.swift in Sources */,
 				E9084D831BB94EB800423566 /* RightShortToDoCell.swift in Sources */,
 				E9A83E341AB70A640021C2D0 /* courseCurrentTableViewCell.swift in Sources */,
 				E94BD97C1BAC043500B76E03 /* LeftToDoCell.swift in Sources */,
@@ -993,9 +1039,11 @@
 				E971EB821BAAFEE8005E6E55 /* PlusCircleView.swift in Sources */,
 				E91E5F4F1A90FAED009F3B2B /* GradeShowerTableViewController.swift in Sources */,
 				E97176761B1488CA004DADB2 /* AboutViewController.swift in Sources */,
+				E99D67131C16F6E800E27B08 /* NotiTableViewCell.swift in Sources */,
 				E9B8C5C41BBA7CBE00CFDE19 /* ColorTableViewCell.swift in Sources */,
 				E94BD97A1BABE9A500B76E03 /* TodayViewController.swift in Sources */,
 				E98F94D61AA3180700885992 /* ClassTimeViewController.swift in Sources */,
+				E99D675C1C17401B00E27B08 /* NotiDetailViewController.swift in Sources */,
 				E9FE26141B137FEC00FCBB32 /* Colors.swift in Sources */,
 				E94286581AA5500C00A4242C /* SaveAccountInfoViewController.swift in Sources */,
 				E9CCF4B81ABC653E002076F2 /* ColorChooseTableViewController.swift in Sources */,

@@ -6,6 +6,8 @@
 //  Copyright © 2015年 &#38472;&#20048;&#22825;. All rights reserved.
 //
 
+import UIKit
+
 protocol ErrorHandlerProtocol {
     
     static var title:String {get}
@@ -39,5 +41,16 @@ struct ErrorHandler {
         static let title = "尚未获取课程表"
         static let message = "请到课程表页面获取课程表"
         static let cancelButtonTitle = "好！"
+    }
+    struct GetNotiFailed:ErrorHandlerProtocol {
+        static let title = "获取通知列表失败"
+        static let message = "请稍后再试或通知开发者"
+        static let cancelButtonTitle = "好"
+    }
+    
+    static func alert(error:ErrorHandlerProtocol) -> UIAlertController {
+        let alert = UIAlertController(title: error.dynamicType.title, message: error.dynamicType.message, preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: error.dynamicType.cancelButtonTitle, style: .Cancel, handler: nil))
+        return alert
     }
 }

@@ -59,6 +59,36 @@ class ClassTimeViewController: UIViewController, UIScrollViewDelegate, WXApiDele
         if canDrawClassTimeTable() {
             drawClassTimeTable()
         }
+        else {
+            switch isLogIn() {
+            case 1:
+                loadBeginAnimation()
+                Alamofire.request(.GET, "http://222.30.32.10/xsxk/selectedAction.do?operation=kebiao").responseString(encoding: CFStringConvertEncodingToNSStringEncoding(0x0632), completionHandler: { (response:Response<String, NSError>) -> Void in
+                    if let html = response.result.value {
+                        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), { () -> Void in
+                            self.loadAllCourseInfoWithHtml(html)
+                            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                self.loadEndAnimation()
+                                self.drawClassTimeTable()
+                            })
+                        })
+                    } else {
+                        let alertView = UIAlertController(title: ErrorHandler.NetworkError.title, message: ErrorHandler.NetworkError.message, preferredStyle: .Alert)
+                        let cancel = UIAlertAction(title: ErrorHandler.NetworkError.cancelButtonTitle, style: .Cancel, handler: nil)
+                        alertView.addAction(cancel)
+                        self.presentViewController(alertView, animated: true, completion: nil)
+                    }
+                })
+            case 0:
+                self.performSegueWithIdentifier(SegueIdentifier.Login, sender: nil)
+            default:
+                let alertView = UIAlertController(title: ErrorHandler.NetworkError.title, message: ErrorHandler.NetworkError.message, preferredStyle: .Alert)
+                let cancel = UIAlertAction(title: ErrorHandler.NetworkError.cancelButtonTitle, style: .Cancel, handler: nil)
+                alertView.addAction(cancel)
+                self.presentViewController(alertView, animated: true, completion: nil)
+            }
+
+        }
         
         Alamofire.request(.GET, "http://115.28.141.95/CodeIgniter/index.php/info/week").responseString { (response:Response<String, NSError>) -> Void in
             if let week = response.result.value {
@@ -203,36 +233,7 @@ class ClassTimeViewController: UIViewController, UIScrollViewDelegate, WXApiDele
                 return true
             }
             else {
-                switch isLogIn() {
-                case 1:
-                    loadBeginAnimation()
-                    Alamofire.request(.GET, "http://222.30.32.10/xsxk/selectedAction.do?operation=kebiao").responseString(encoding: CFStringConvertEncodingToNSStringEncoding(0x0632), completionHandler: { (response:Response<String, NSError>) -> Void in
-                        if let html = response.result.value {
-                            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), { () -> Void in
-                                self.loadAllCourseInfoWithHtml(html)
-                                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                    self.loadEndAnimation()
-                                    self.drawClassTimeTable()
-                                })
-                            })
-                        } else {
-                            let alertView = UIAlertController(title: ErrorHandler.NetworkError.title, message: ErrorHandler.NetworkError.message, preferredStyle: .Alert)
-                            let cancel = UIAlertAction(title: ErrorHandler.NetworkError.cancelButtonTitle, style: .Cancel, handler: nil)
-                            alertView.addAction(cancel)
-                            self.presentViewController(alertView, animated: true, completion: nil)
-                        }
-                    })
-                    return false
-                case 0:
-                    self.performSegueWithIdentifier(SegueIdentifier.Login, sender: nil)
-                    return false
-                default:
-                    let alertView = UIAlertController(title: ErrorHandler.NetworkError.title, message: ErrorHandler.NetworkError.message, preferredStyle: .Alert)
-                    let cancel = UIAlertAction(title: ErrorHandler.NetworkError.cancelButtonTitle, style: .Cancel, handler: nil)
-                    alertView.addAction(cancel)
-                    self.presentViewController(alertView, animated: true, completion: nil)
-                    return false
-                }
+                return false
             }
         } else {
             let alertView = UIAlertController(title: ErrorHandler.NotLoggedIn.title, message: ErrorHandler.NotLoggedIn.message, preferredStyle: .Alert)
