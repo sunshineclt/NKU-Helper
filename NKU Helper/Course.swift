@@ -69,7 +69,7 @@ class Course: NSObject, NSCoding {
         var todayCourses = [Course]()
         let userDefaults = NSUserDefaults.standardUserDefaults()
         let courses:NSArray? = userDefaults.objectForKey("courses") as? NSArray
-        guard courses != nil else {
+        guard (courses != nil) && (courses?.count != 0) else {
             return todayCourses
         }
         var i:Int = 0

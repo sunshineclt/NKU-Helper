@@ -98,11 +98,13 @@ class LogInViewController: UIViewController, UIAlertViewDelegate, UIWebViewDeleg
         loginer.login(errorHandler: { (error) -> Void in
             self.refreshImage()
             self.validateCodeTextField.text = ""
+            self.progressHud.removeFromSuperview()
             let alert = UIAlertController(title: error.dynamicType.title, message: error.dynamicType.message, preferredStyle: .Alert)
             let action = UIAlertAction(title: error.dynamicType.cancelButtonTitle, style: .Cancel, handler: nil)
             alert.addAction(action)
             self.presentViewController(alert, animated: true, completion: nil)
             }, completion: {
+                self.progressHud.removeFromSuperview()
                 self.dismissViewControllerAnimated(true, completion: { () -> Void in
                     NSNotificationCenter.defaultCenter().postNotificationName("loginComplete", object: self)
                     

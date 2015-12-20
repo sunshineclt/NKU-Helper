@@ -15,7 +15,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.1</string>
+	<string>1.1.1</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
@@ -32,7 +32,11 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1101</string>
+	<string>1112</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>weixin</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -55,14 +59,5 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
-    <key>LSApplicationQueriesSchemes</key>
-    <array>
-        <string>weixin</string>
-    </array>
-    <key>NSAppTransportSecurity</key>
-    <dict>
-        <key>NSAllowsArbitraryLoads</key>
-        <true/>
-    </dict>
 </dict>
 </plist>

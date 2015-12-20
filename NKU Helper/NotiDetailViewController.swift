@@ -42,4 +42,9 @@ class NotiDetailViewController: UIViewController, NJKWebViewProgressDelegate, UI
         self.title = webView.stringByEvaluatingJavaScriptFromString("document.title")
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        progressView.removeFromSuperview()
+    }
+    
 }

@@ -57,11 +57,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, WXAp
             
             let notificationPayload:NSDictionary = launchOption[UIApplicationLaunchOptionsRemoteNotificationKey] as! NSDictionary
             let action:NSDictionary = notificationPayload.objectForKey("action") as! NSDictionary
-            let actionType1:Int = action.objectForKey("type1") as! Int  // 一级TabViewController的导航
-            let actionType2:Int = action.objectForKey("type2") as! Int  // 二级TableViewController的导航
-            let rootvc = self.window?.rootViewController as! UITabBarController
-            rootvc.selectedIndex = actionType1
-            tableViewActionType = actionType2
+            let actionType1 = action.objectForKey("type1") as? Int  // 一级TabViewController的导航
+            let actionType2 = action.objectForKey("type2") as? Int  // 二级TableViewController的导航
+            if let _ = actionType1 {
+                let rootvc = self.window?.rootViewController as! UITabBarController
+                rootvc.selectedIndex = actionType1!
+                if let _ = actionType2 {
+                    tableViewActionType = actionType2!
+                }
+            }
         }
         
         return true
@@ -90,11 +94,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, WXAp
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
         let action:NSDictionary = userInfo["action"] as! NSDictionary
-        let type:Int = action.objectForKey("type") as! Int
-        let rootvc = self.window?.rootViewController as! UITabBarController
-        rootvc.selectedIndex = type
-        if application.applicationState != UIApplicationState.Active {
-            AVAnalytics.trackAppOpenedWithRemoteNotificationPayload(userInfo)
+        let actionType1 = action.objectForKey("type1") as? Int  // 一级TabViewController的导航
+        let actionType2 = action.objectForKey("type2") as? Int  // 二级TableViewController的导航
+        if let _ = actionType1 {
+            let rootvc = self.window?.rootViewController as! UITabBarController
+            rootvc.selectedIndex = actionType1!
+            if application.applicationState != UIApplicationState.Active {
+                AVAnalytics.trackAppOpenedWithRemoteNotificationPayload(userInfo)
+            }
+            if let _ = actionType2 {
+                tableViewActionType = actionType2!
+            }
         }
     }
     
