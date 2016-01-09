@@ -950,6 +950,11 @@
                                         <constraint firstItem="BAc-ke-VWA" firstAttribute="top" secondItem="gly-W0-KGI" secondAttribute="bottom" constant="4" id="x34-Ia-Ucr"/>
                                         <constraint firstItem="Mek-OX-jlA" firstAttribute="top" secondItem="BAc-ke-VWA" secondAttribute="bottom" constant="4" id="xRs-HE-l6M"/>
                                     </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="4Jm-LF-n8b"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="classNameLabel" destination="PZ9-3l-k59" id="70f-EY-FNI"/>
