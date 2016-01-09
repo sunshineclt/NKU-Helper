@@ -336,7 +336,7 @@ class ClassTimeViewController: UIViewController, UIScrollViewDelegate, WXApiDele
                 time.text = "20:20"
                 section.text = "13"
             case 13:
-                time.text = "23:15"
+                time.text = "21:15"
                 section.text = "14"
             default:break
             }
