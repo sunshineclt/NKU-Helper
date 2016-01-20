@@ -47,6 +47,18 @@ struct ErrorHandler {
         static let message = "请稍后再试或通知开发者"
         static let cancelButtonTitle = "好"
     }
+    struct SelectCourseFail:ErrorHandlerProtocol {
+        static let title = "选课失败"
+        static let message = "选课失败"
+        static let cancelButtonTitle = "好"
+    }
+    struct HtmlAnalyseFail:ErrorHandlerProtocol {
+        static let title = "解析失败"
+        static let message = "请重试,若仍然出现问题请通知开发者"
+        static let cancelButtonTitle = "好"
+    }
+    
+    
     
     static func alert(error:ErrorHandlerProtocol) -> UIAlertController {
         let alert = UIAlertController(title: error.dynamicType.title, message: error.dynamicType.message, preferredStyle: .Alert)

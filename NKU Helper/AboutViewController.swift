@@ -23,7 +23,6 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
             alertView.show()
         }
         else {
-            
             let mailView = MFMailComposeViewController()
             mailView.title = "NKU Helper的反馈信息"
             mailView.setSubject("NKU Helper的反馈信息")
@@ -31,7 +30,6 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
             mailView.mailComposeDelegate = self
             self.presentViewController(mailView, animated: true, completion: nil)
         }
-        
     }
     
     func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
@@ -39,7 +37,6 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     }
     
     @IBAction func backwardAction(sender: UIButton) {
-        
         self.dismissViewControllerAnimated(true, completion: nil)
         
     }

@@ -10,6 +10,7 @@ import UIKit
 
 class TodayViewController: UIViewController {
 
+    // MARK: ViewProperty
     @IBOutlet var courseCountLabel: UILabel!
     @IBOutlet var thingCountLabel: UILabel!
     @IBOutlet var plusCircleView: PlusCircleView! {
@@ -17,7 +18,6 @@ class TodayViewController: UIViewController {
             plusCircleView.backgroundColor = UIColor.clearColor()
         }
     }
-    
     @IBOutlet var courseTableView: UITableView! {
         didSet {
             self.courseTableView.emptyDataSetSource = self
@@ -31,9 +31,11 @@ class TodayViewController: UIViewController {
         }
     }
     
+    // MARK: Model
     var todayCourse = [Course]()
     var thingsToDo = [ThingToDo]()
     
+    // MARK: ViewControllerLifeCycle
     override func viewDidLoad() {
         
         courseTableView.estimatedRowHeight = 200
@@ -46,28 +48,26 @@ class TodayViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         
         super.viewWillAppear(animated)
-        todayCourse = Course.coursesOnWeekday(CalendarConverter.weekdayInt())
-        self.courseTableView.reloadData()
-        self.thingsTableView.reloadData()
+
     }
     
     override func viewDidAppear(animated: Bool) {
         
         super.viewDidAppear(animated)
-        let userDefaults = NSUserDefaults.standardUserDefaults()
-        let accountInfo = userDefaults.objectForKey("accountInfo") as? NSDictionary
-        if accountInfo == nil {
-            self.performSegueWithIdentifier(SegueIdentifier.Login, sender: nil)
-        }
-        else {
-            if NSUserDefaults.standardUserDefaults().objectForKey("courses") as? NSArray == nil {
-                let alertView = UIAlertController(title: ErrorHandler.ClassNotExist.title, message: ErrorHandler.ClassNotExist.message, preferredStyle: .Alert)
-                let cancel = UIAlertAction(title: ErrorHandler.ClassNotExist.cancelButtonTitle, style: .Cancel, handler: nil)
-                alertView.addAction(cancel)
-                self.presentViewController(alertView, animated: true, completion: nil)
-            }
-        }
+        
         newToDo?.becomeFirstResponder()
+        self.thingsTableView.reloadData()
+        
+        guard UserAgent.sharedInstance.getData() != nil else {
+            self.performSegueWithIdentifier(SegueIdentifier.Login, sender: "TodayViewController")
+            return
+        }
+        guard let courses = Course.coursesOnWeekday(CalendarConverter.weekdayInt()) else {
+            self.presentViewController(ErrorHandler.alert(ErrorHandler.ClassNotExist()), animated: true, completion: nil)
+            return
+        }
+        todayCourse = courses
+        self.courseTableView.reloadData()
     }
     
     var isAddMode = false

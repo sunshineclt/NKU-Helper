@@ -36,7 +36,6 @@ class NotiCenterTableViewController: UITableViewController {
         fetchMoreData()
         
         progressHud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        progressHud.mode = MBProgressHUDMode.Indeterminate
     }
     
     // MARK: - Table view data source
@@ -64,38 +63,23 @@ class NotiCenterTableViewController: UITableViewController {
     func fetchMoreData() {
         if !self.isUpdatingData && !self.isEndOfData {
             self.isUpdatingData = true
-            Alamofire.request(.GET, "http://115.28.141.95/CodeIgniter/index.php/Notification/getNoti/\(self.currentPage+1)").responseJSON { (response:Response<AnyObject, NSError>) -> Void in
+            let notiFetcher = NKNetworkFetchNoti()
+            notiFetcher.fetchNotiOnPage(currentPage, WithBlock: { (result:NKNetworkFetchNotiResult) -> Void in
                 MBProgressHUD.hideHUDForView(self.view, animated: true)
-                print(response.request?.URL)
                 self.isUpdatingData = false
                 self.tableView.mj_footer.endRefreshing()
                 self.currentPage++
-                guard let value = response.result.value as? NSDictionary else {
-                    self.presentViewController(ErrorHandler.alert(ErrorHandler.NetworkError()), animated: true, completion: nil)
-                    return
-                }
-                let code = value.objectForKey("code") as! Int
-                switch code {
-                case 0:   //正常获取数据
-                    let data = value.objectForKey("data") as! NSArray
-                    for singleData in data {
-                        let nowData = singleData as! NSDictionary
-                        let title = nowData.objectForKey("title") as! String
-                        let time = nowData.objectForKey("time") as! String
-                        let url = nowData.objectForKey("url") as! String
-                        let text = nowData.objectForKey("text") as! String
-                        let readCount = nowData.objectForKey("readcount") as! Int
-                        let noti = Notification(title: title, time: time, url: url, text: text, readCount: readCount)
-                        self.noti.append(noti)
-                        self.tableView.reloadData()
-                    }
-                case 1:  //已经到达数据底端
+                switch (result) {
+                case .Success(notis: let notis):
+                    self.noti = notis
+                    self.tableView.reloadData()
+                case .End:
                     self.isEndOfData = true
                     self.tableView.mj_footer.endRefreshingWithNoMoreData()
-                default:
+                case .Fail:
                     self.presentViewController(ErrorHandler.alert(ErrorHandler.GetNotiFailed()), animated: true, completion: nil)
                 }
-            }
+            })
         }
     }
     

@@ -10,8 +10,9 @@ import UIKit
 
 class FunctionTableViewController: UITableViewController {
 
+    /// 是否已经输入用户名和密码
     var isLoggedIn:Bool {
-        if let _ = NSUserDefaults.standardUserDefaults().objectForKey("accountInfo") as? NSDictionary {
+        if let _ = UserAgent().getData() {
             return true
         }
         else {
@@ -20,10 +21,8 @@ class FunctionTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        if NSUserDefaults.standardUserDefaults().objectForKey("accountInfo") as? NSDictionary == nil {
-            let alert = UIAlertController(title: ErrorHandler.NotLoggedIn.title, message: ErrorHandler.NotLoggedIn.message, preferredStyle: .Alert)
-            alert.addAction(UIAlertAction(title: ErrorHandler.NotLoggedIn.cancelButtonTitle, style: .Cancel, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
+        if UserAgent().getData() == nil {
+            self.presentViewController(ErrorHandler.alert(ErrorHandler.NotLoggedIn()), animated: true, completion: nil)
         }
         self.tableView.reloadData()
         super.viewWillAppear(animated)
@@ -68,5 +67,5 @@ class FunctionTableViewController: UITableViewController {
         default:return UITableViewCell()
         }
     }
-    
+
 }

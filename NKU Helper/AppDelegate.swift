@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Fabric
+import Crashlytics
 
 var tableViewActionType:Int? = nil
 
@@ -17,53 +19,83 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, WXAp
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        AVOSCloud.setApplicationId("2Ot4Qst88l7L50oHgGHpRUij", clientKey: "gN4rJ9GizYYRS6tqLPioUBoS")
-        AVAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
-
-        WXApi.registerApp("wx311e5377578127f1")
+        /**
+         To set up Flurry(App Analyse), Fabric.Crashlytics(Crash Analyse), AVOS(Push Service), WXApi(WX share)
+         */
+        func setUpAllTools() {
+            Flurry.setCrashReportingEnabled(true)
+            Flurry.startSession("D8H6SM7VPWF8745QMR42")
+            
+            Fabric.with([Crashlytics.self])
+            
+            AVOSCloud.setApplicationId("2Ot4Qst88l7L50oHgGHpRUij", clientKey: "gN4rJ9GizYYRS6tqLPioUBoS")
+            AVAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
+            
+            WXApi.registerApp("wx311e5377578127f1")
+        }
         
-        UINavigationBar.appearance().barTintColor = UIColor.whiteColor()
-        UINavigationBar.appearance().tintColor = UIColor.blackColor()
-        UIBarButtonItem.appearance().tintColor = UIColor(red: 16/255, green: 128/255, blue: 207/255, alpha: 1)
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.blackColor()]
+        /**
+         set up App Appearance
+         */
+        func setUpApperance() {
+            UINavigationBar.appearance().barTintColor = UIColor.whiteColor()
+            UINavigationBar.appearance().tintColor = UIColor.blackColor()
+            UIBarButtonItem.appearance().tintColor = UIColor(red: 16/255, green: 128/255, blue: 207/255, alpha: 1)
+            UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.blackColor()]
+        }
+        
+        /**
+         load Preferred Colors
+         */
+        func loadPreferredColors() {
+            var preferredColors = PreferredColorAgent.sharedInstance.getData()
+            if let _ = preferredColors {
+                let newPreferredColors = NSMutableArray(array: preferredColors!)
+                if Colors.colors.count > preferredColors!.count {
+                    for _ in 1...Colors.colors.count - preferredColors!.count {
+                        newPreferredColors.addObject(1)
+                    }
+                    PreferredColorAgent.sharedInstance.saveData(newPreferredColors)
 
-        let userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        var preferredColors:NSMutableArray? = userDefaults.objectForKey("preferredColors") as? NSMutableArray
-        if let _ = preferredColors {
-            let newPreferredColors = NSMutableArray(array: preferredColors!)
-            if Colors.colors.count > preferredColors!.count {
-                for _ in 1...Colors.colors.count - preferredColors!.count {
-                    newPreferredColors.addObject(1)
                 }
-                userDefaults.removeObjectForKey("preferredColors")
-                userDefaults.setObject(newPreferredColors, forKey: "preferredColors")
-                userDefaults.synchronize()
+            }
+            else {
+                preferredColors = NSMutableArray()
+                for (var i=0;i<Colors.colors.count;i++) {
+                    preferredColors?.addObject(1)
+                }
+                PreferredColorAgent.sharedInstance.saveData(preferredColors!)
             }
         }
-        else {
-            preferredColors = NSMutableArray()
-            for (var i=0;i<Colors.colors.count;i++) {
-                preferredColors?.addObject(1)
-            }
-            userDefaults.setObject(preferredColors, forKey: "preferredColors")
-            userDefaults.synchronize()
+        
+        /**
+         set up notification
+         */
+        func setUpNotification() {
+            let settings = UIUserNotificationSettings(forTypes: [UIUserNotificationType.Badge, UIUserNotificationType.Alert, UIUserNotificationType.Sound], categories: nil)
+            application.registerUserNotificationSettings(settings)
+            application.registerForRemoteNotifications()
         }
         
-        let settings = UIUserNotificationSettings(forTypes: [UIUserNotificationType.Badge, UIUserNotificationType.Alert, UIUserNotificationType.Sound], categories: nil)
-        application.registerUserNotificationSettings(settings)
-        application.registerForRemoteNotifications()
         
+        setUpAllTools()
+        setUpApperance()
+        loadPreferredColors()
+        setUpNotification()
+
+        /// 推送来的消息需要打开哪个页面
         if let launchOption = launchOptions {
             
             let notificationPayload:NSDictionary = launchOption[UIApplicationLaunchOptionsRemoteNotificationKey] as! NSDictionary
-            let action:NSDictionary = notificationPayload.objectForKey("action") as! NSDictionary
-            let actionType1 = action.objectForKey("type1") as? Int  // 一级TabViewController的导航
-            let actionType2 = action.objectForKey("type2") as? Int  // 二级TableViewController的导航
-            if let _ = actionType1 {
-                let rootvc = self.window?.rootViewController as! UITabBarController
-                rootvc.selectedIndex = actionType1!
-                if let _ = actionType2 {
-                    tableViewActionType = actionType2!
+            if let action = notificationPayload.objectForKey("action") as? NSDictionary {
+                let actionType1 = action.objectForKey("type1") as? Int  // 一级TabViewController的导航
+                let actionType2 = action.objectForKey("type2") as? Int  // 二级TableViewController的导航
+                if let _ = actionType1 {
+                    let rootvc = self.window?.rootViewController as! UITabBarController
+                    rootvc.selectedIndex = actionType1!
+                    if let _ = actionType2 {
+                        tableViewActionType = actionType2!
+                    }
                 }
             }
         }
@@ -92,21 +124,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, WXAp
         print("Register For Remote Notification With Device Token Unsuccessfully")
     }
     
+    /**
+     推送来的消息需要打开哪个页面
+     */
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
-        let action:NSDictionary = userInfo["action"] as! NSDictionary
-        let actionType1 = action.objectForKey("type1") as? Int  // 一级TabViewController的导航
-        let actionType2 = action.objectForKey("type2") as? Int  // 二级TableViewController的导航
-        if let _ = actionType1 {
-            let rootvc = self.window?.rootViewController as! UITabBarController
-            rootvc.selectedIndex = actionType1!
-            if application.applicationState != UIApplicationState.Active {
-                AVAnalytics.trackAppOpenedWithRemoteNotificationPayload(userInfo)
-            }
-            if let _ = actionType2 {
-                tableViewActionType = actionType2!
+        if let action = userInfo["action"] as? NSDictionary {
+            let actionType1 = action.objectForKey("type1") as? Int  // 一级TabViewController的导航
+            let actionType2 = action.objectForKey("type2") as? Int  // 二级TableViewController的导航
+            if let _ = actionType1 {
+                let rootvc = self.window?.rootViewController as! UITabBarController
+                rootvc.selectedIndex = actionType1!
+                if application.applicationState != UIApplicationState.Active {
+                    AVAnalytics.trackAppOpenedWithRemoteNotificationPayload(userInfo)
+                }
+                if let _ = actionType2 {
+                    tableViewActionType = actionType2!
+                }
             }
         }
     }
+    
     
     func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
         return WXApi.handleOpenURL(url, delegate: self)

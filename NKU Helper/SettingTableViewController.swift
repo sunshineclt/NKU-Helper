@@ -15,10 +15,6 @@ class SettingTableViewController: UITableViewController {
         tableView.reloadData()
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 44
-    }
-    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 5
     }
@@ -45,37 +41,32 @@ class SettingTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case 0,1,2,3:return 1
-        default:return 0
+        case 0,1,2,3:
+            return 1
+        case 4:
+            return 0
+        default:
+            return 0
         }
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-            let userDefaults = NSUserDefaults.standardUserDefaults()
-            let accountInfo = userDefaults.objectForKey("accountInfo") as? NSDictionary
-            if let _ = accountInfo {
-                let cell:AccountTableViewCell = tableView.dequeueReusableCellWithIdentifier("Account") as! AccountTableViewCell
-                let userID:String = accountInfo!.objectForKey("userID") as! String
-                let name:String = accountInfo?.objectForKey("name") as! String
-                let departmentAdmitted:String = accountInfo?.objectForKey("departmentAdmitted") as! String
-                
-                var timeEnteringSchool:NSString = accountInfo?.objectForKey("timeEnteringSchool") as! NSString
-                timeEnteringSchool = timeEnteringSchool.substringWithRange(NSMakeRange(2, 2))
-                cell.nameLabel.text = name
-                cell.userIDLabel.text = userID
-                cell.departmentLabel.text = departmentAdmitted + (timeEnteringSchool as String) + "级本科生"
+            let accountInfo = UserDetailInfoAgent.sharedInstance.getData()
+            if let user = accountInfo {
+                let cell = tableView.dequeueReusableCellWithIdentifier("Account") as! AccountTableViewCell
+                let timeEnteringSchool = (user.TimeEnteringSchool as NSString).substringWithRange(NSMakeRange(2, 2))
+                cell.nameLabel.text = user.Name
+                cell.userIDLabel.text = user.UserID
+                cell.departmentLabel.text = user.DepartmentAdmitted + (timeEnteringSchool as String) + "级本科生"
                 return cell
-
             }
             else {
                 let cell = tableView.dequeueReusableCellWithIdentifier("AddAccount")!
-                
                 cell.textLabel?.text = "请先登录！"
                 cell.detailTextLabel?.text = "欢迎使用NKU Helper！"
                 return cell
-
             }
         case 1:
             let cell = tableView.dequeueReusableCellWithIdentifier("color")!
@@ -88,11 +79,9 @@ class SettingTableViewController: UITableViewController {
             let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("about")!
             cell.textLabel?.text = "关于"
             return cell
-        default: let cell = tableView.dequeueReusableCellWithIdentifier("1234")!
-        return cell
-
-            
-            
+        default:
+            let cell = tableView.dequeueReusableCellWithIdentifier("1234")!
+            return cell
         }
     }
 

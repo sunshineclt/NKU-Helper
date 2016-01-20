@@ -11,7 +11,7 @@ import UIKit
 class GradeCell: UITableViewCell {
 
     @IBOutlet var ClassNameLabel: UILabel!
-    @IBOutlet var ClassTypeLabel: UILabel!
     @IBOutlet var GradeLabel: UILabel!
     @IBOutlet var CreditLabel: UILabel!
+    @IBOutlet var gradeImageView: UIImageView!
 }

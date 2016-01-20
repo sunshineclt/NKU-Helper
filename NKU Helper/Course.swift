@@ -64,12 +64,15 @@ class Course: NSObject, NSCoding {
         aCoder.encodeObject(sectionNumber, forKey: "sectionNumber")
     }
     
-    class func coursesOnWeekday(weekday:Int) -> [Course] {
+    class func coursesOnWeekday(weekday:Int) -> [Course]? {
         
         var todayCourses = [Course]()
         let userDefaults = NSUserDefaults.standardUserDefaults()
         let courses:NSArray? = userDefaults.objectForKey("courses") as? NSArray
-        guard (courses != nil) && (courses?.count != 0) else {
+        guard (courses != nil) else {
+            return nil
+        }
+        guard (courses!.count != 0) else {
             return todayCourses
         }
         var i:Int = 0

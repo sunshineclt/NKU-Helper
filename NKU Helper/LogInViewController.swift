@@ -18,9 +18,6 @@ class LogInViewController: UIViewController, UIAlertViewDelegate, UIWebViewDeleg
     var progressHud:MBProgressHUD!
     
     override func viewWillAppear(animated: Bool) {
-        let view:UIView = UIView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, 20))
-        view.backgroundColor = UINavigationBar.appearance().barTintColor
-        self.view.addSubview(view)
         imageLoadActivityIndicator.hidesWhenStopped = true
         refreshImage()
         validateCodeTextField.becomeFirstResponder()
@@ -28,55 +25,42 @@ class LogInViewController: UIViewController, UIAlertViewDelegate, UIWebViewDeleg
     
     func refreshImage() {
         
-        let validateCodeGetter:imageGetter = imageGetter()
         imageLoadActivityIndicator.startAnimating()
-        validateCodeGetter.getImageWithBlock { (data, err) -> Void in
+        let validateCodeGetter = NKNetworkValidateCodeGetter()
+        validateCodeGetter.getValidateCodeWithBlock { (data, err) -> Void in
             self.imageLoadActivityIndicator.stopAnimating()
             if let _ = err {
-                print("Validate Loading Error!\n", terminator: "")
-                let alert:UIAlertView = UIAlertView(title: "网络错误", message: "没有网没法获取验证码耶！", delegate: nil, cancelButtonTitle: "知道啦，现在就去搞点网")
-                alert.show()
+                self.presentViewController(ErrorHandler.alert(ErrorHandler.NetworkError()), animated: true, completion: nil)
             }
             else {
-                print("Validate Loading Succeed!\n", terminator: "")
                 self.validateCodeImageView.image = UIImage(data: data!)
             }
         }
     }
     
-    var userID:String {
-        let userDefaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        let accountInfo:NSDictionary = userDefaults.objectForKey("accountInfo") as! NSDictionary
-        return accountInfo.objectForKey("userID") as! String
-    }
-    
-    var password:String {
-        let userDefaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        let accountInfo:NSDictionary = userDefaults.objectForKey("accountInfo") as! NSDictionary
-        return accountInfo.objectForKey("password") as! String
-    }
+    let loginer = NKNetworkLogin()
     
     @IBAction func login(sender: AnyObject) {
         
-        progressHud = MBProgressHUD(window: self.view.window)
-        progressHud.mode = MBProgressHUDMode.Indeterminate
-        self.view.addSubview(progressHud)
-        progressHud.show(true)
+        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         
-        let webView = UIWebView()
-        let filePath = NSBundle.mainBundle().pathForResource("RSA", ofType: "html")
-        var htmlString:NSString?
-        do {
-            try htmlString = NSString(contentsOfFile: filePath!, encoding: NSUTF8StringEncoding)
-            
+        loginer.loginWithValidateCode(validateCodeTextField.text ?? "", onView: self.view) { (result) -> Void in
+            MBProgressHUD.hideHUDForView(self.view, animated: true)
+            switch result {
+            case .Success:
+                self.dismissViewControllerAnimated(true, completion: { () -> Void in
+                    NSNotificationCenter.defaultCenter().postNotificationName("loginComplete", object: self)
+                })
+            case .NetWorkError:
+                self.presentViewController(ErrorHandler.alert(ErrorHandler.NetworkError()), animated: true, completion: nil)
+            case .UserNameOrPasswordWrong:
+                self.presentViewController(ErrorHandler.alert(ErrorHandler.UserNameOrPasswordWrong()), animated: true, completion: nil)
+                self.refreshImage()
+            case .ValidateCodeWrong:
+                self.presentViewController(ErrorHandler.alert(ErrorHandler.ValidateCodeWrong()), animated: true, completion: nil)
+                self.refreshImage()
+            }
         }
-        catch {
-            
-        }
-        webView.loadHTMLString(htmlString! as String, baseURL: nil)
-        self.view.addSubview(webView)
-        webView.delegate = self
-        
     }
     
     @IBAction func cancelButtonClicked(sender: UIBarButtonItem) {
@@ -89,27 +73,4 @@ class LogInViewController: UIViewController, UIAlertViewDelegate, UIWebViewDeleg
         login("FromReturnKey")
     }
     
-    func webViewDidFinishLoad(webView: UIWebView) {
-        
-        webView.stringByEvaluatingJavaScriptFromString("document.title = \"" + password + "\"")
-        webView.stringByEvaluatingJavaScriptFromString("encryption()")
-        let encryptedPassword = webView.stringByEvaluatingJavaScriptFromString("document.body.innerHTML")!
-        let loginer:LogIner = LogIner(userID: userID, password: encryptedPassword, validateCode: validateCodeTextField.text ?? "")
-        loginer.login(errorHandler: { (error) -> Void in
-            self.refreshImage()
-            self.validateCodeTextField.text = ""
-            self.progressHud.removeFromSuperview()
-            let alert = UIAlertController(title: error.dynamicType.title, message: error.dynamicType.message, preferredStyle: .Alert)
-            let action = UIAlertAction(title: error.dynamicType.cancelButtonTitle, style: .Cancel, handler: nil)
-            alert.addAction(action)
-            self.presentViewController(alert, animated: true, completion: nil)
-            }, completion: {
-                self.progressHud.removeFromSuperview()
-                self.dismissViewControllerAnimated(true, completion: { () -> Void in
-                    NSNotificationCenter.defaultCenter().postNotificationName("loginComplete", object: self)
-                    
-                })
-        })
-
-    }
 }

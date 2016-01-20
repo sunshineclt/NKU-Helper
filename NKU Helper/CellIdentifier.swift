@@ -13,4 +13,6 @@ struct CellIdentifier {
     static let noti = "noti"
     static let notiShowDetail = "notiShowDetail"
     static let notiCenter = "notiCenter"
+    static let selectCourse = "selectCourse"
+    static let gradeCell = "GradeCell"
 }

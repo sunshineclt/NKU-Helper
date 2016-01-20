@@ -5,7 +5,7 @@
 #import "Base64.h"
 #import <CommonCrypto/CommonHMAC.h>
 #import "CBStoreHouseRefreshControl.h"
-#import <pop/POP.h>
+@import pop;
 #import "UAProgressView.h"
 #import "MBProgressHUD.h"
 #import <AVOSCloud/AVOSCloud.h>
@@ -15,3 +15,5 @@
 #import "MJRefresh.h"
 #import "NJKWebViewProgress.h"
 #import "NJKWebViewProgressView.h"
+#import "Flurry.h"
+#import "SVProgressHUD.h"
