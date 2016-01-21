@@ -74,8 +74,9 @@ class NKNetworkFetchGrade: NKNetworkBase {
             let classType = now.substringWithRange(items[3].rangeAtIndex(2))
             let grade = now.substringWithRange(items[4].rangeAtIndex(2))
             let credit = now.substringWithRange(items[5].rangeAtIndex(2))
+            let retakeGrade = now.substringWithRange(items[6].rangeAtIndex(2))
             
-            let courseGrade = Grade(className: className, classType: classType, grade: grade, credit: credit)
+            let courseGrade = Grade(className: className, classType: classType, grade: grade, credit: credit, retakeGrade: retakeGrade)
             
             finalResult.append(courseGrade)
         }

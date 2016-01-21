@@ -12,7 +12,9 @@ enum GradeValue {
     case OK(grade: Double, credit:Double)
     case notEvaluate
     case pass
-    case retake
+    case notPass
+    case needRetake(grade: Double)
+    case retakeDone(grade: Double, credit:Double)
     case unKnown
 }
 
@@ -22,19 +24,29 @@ class Grade {
     var classType: String
     var grade: GradeValue
     
-    init(className:NSString, classType:NSString, grade:NSString,credit:NSString) {
+    init(className:NSString, classType:NSString, grade:NSString, credit:NSString, retakeGrade:NSString) {
         self.className = className as String
         self.classType = classType as String
         if grade == "未评价" {
             self.grade = .notEvaluate
             return
         }
-        if grade == "通过" {
-            self.grade = .pass
+        if grade.containsString("通过") {
+            if grade == "通过" {
+                self.grade = .pass
+            }
+            else {
+                self.grade = .notPass
+            }
             return
         }
-        if (grade.doubleValue > 0) && (credit.doubleValue == 0) {
-            
+        if retakeGrade != "" {
+            self.grade = .retakeDone(grade: grade.doubleValue, credit: credit.doubleValue)
+            return
+        }
+        if (grade.doubleValue > 0) && (grade.doubleValue < 60) && (credit.doubleValue == 0) {
+            self.grade = .needRetake(grade: grade.doubleValue)
+            return
         }
         if (grade.doubleValue > 0) && (credit.doubleValue > 0) {
             self.grade = .OK(grade: grade.doubleValue, credit: credit.doubleValue)
@@ -51,8 +63,12 @@ class Grade {
             return "未评教"
         case .pass:
             return "通过"
-        case .retake:
-            return "重修"
+        case .notPass:
+            return "未通过"
+        case .needRetake(let grade):
+            return "\(grade)"
+        case .retakeDone(let grade, _):
+            return "\(grade)"
         case .unKnown:
             return "不清楚"
         }
@@ -66,8 +82,12 @@ class Grade {
             return "未评教"
         case .pass:
             return "通过"
-        case .retake:
-            return "重修"
+        case .notPass:
+            return "未通过"
+        case .needRetake:
+            return "需重修"
+        case .retakeDone(_, let credit):
+            return "\(credit)"
         case .unKnown:
             return "不清楚"
         }
@@ -84,10 +104,13 @@ class Grade {
                     credit += thisCredit
                 case .notEvaluate:
                     break
-                case .pass:
+                case .pass, .notPass:
                     break
-                case .retake:
+                case .needRetake:
                     break
+                case .retakeDone(let thisGrade, let thisCredit):
+                    GPA += thisGrade * thisCredit
+                    credit += thisCredit
                 case .unKnown:
                     break
                 }
@@ -108,10 +131,12 @@ class Grade {
                     credit += thisCredit
                 case .notEvaluate:
                     break
-                case .pass:
+                case .pass, .notPass:
                     break
-                case .retake:
+                case .needRetake:
                     break
+                case .retakeDone(_, let thisCredit):
+                    credit += thisCredit
                 case .unKnown:
                     break
                 }
