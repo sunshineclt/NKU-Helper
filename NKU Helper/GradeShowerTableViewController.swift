@@ -154,7 +154,7 @@ extension GradeShowerTableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if MajorOrMinorSegmentControl.selectedSegmentIndex == 0 {
             if section == 5 {
-                return 3
+                return 4
             }
         }
         else {
@@ -214,8 +214,12 @@ extension GradeShowerTableViewController {
                     cell.ClassNameLabel.text = "ABCDE类课"
                     grade = Grade.computeGPA(gradeResult, WithCourseType: ["A","B","C","D","E"])
                     cell.GradeLabel.text = NSString(format: "%.2lf", grade) as String
-                    cell.CreditLabel.text = NSString(format: "%.1lf", Grade.computeCredit(gradeResult, WithCourseType: ["A","B","C","D","E","FC","FD"])) as String
-                    
+                    cell.CreditLabel.text = NSString(format: "%.1lf", Grade.computeCredit(gradeResult, WithCourseType: ["A","B","C","D","E"])) as String
+                case 3:
+                    cell.ClassNameLabel.text = "BCD类课"
+                    grade = Grade.computeGPA(gradeResult, WithCourseType: ["B","C","D"])
+                    cell.GradeLabel.text = NSString(format: "%.2lf", grade) as String
+                    cell.CreditLabel.text = NSString(format: "%.1lf", Grade.computeCredit(gradeResult, WithCourseType: ["B","C","D"])) as String
                 default:
                     return cell
                 }
