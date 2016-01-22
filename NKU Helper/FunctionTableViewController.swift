@@ -20,6 +20,12 @@ class FunctionTableViewController: UITableViewController {
         }
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.tableView.estimatedRowHeight = 150
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+    }
+    
     override func viewWillAppear(animated: Bool) {
         if UserAgent().getData() == nil {
             self.presentViewController(ErrorHandler.alert(ErrorHandler.NotLoggedIn()), animated: true, completion: nil)
@@ -38,35 +44,51 @@ class FunctionTableViewController: UITableViewController {
         }
     }
     
-    /*
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
         
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 4
+    }
+
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        switch indexPath.row {
+        case 0: //通知中心
+            cell.backgroundColor = UIColor(red: 173/255, green: 114/255, blue: 195/255, alpha: 1)
+        case 1: //查询成绩
+            cell.backgroundColor = UIColor(red: 131/255, green: 176/255, blue: 252/255, alpha: 1)
+        case 2: //评教
+            cell.backgroundColor = UIColor(red: 255/255, green: 110/255, blue: 0/255, alpha: 1)
+        case 3: //更多
+            cell.backgroundColor = UIColor(red: 250/255, green: 191/255, blue: 131/255, alpha: 1)
+        default:
+            break
+        }
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         switch indexPath.row {
-        case 0:
+        case 0: //通知中心
             let cell = tableView.dequeueReusableCellWithIdentifier("noticenter")!
-            cell.textLabel?.text = "通知中心"
             cell.userInteractionEnabled = isLoggedIn
             return cell
-        case 1:
+        case 1: //查询成绩
             let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("gradeGetter")!
-            cell.textLabel?.text = "查询成绩"
             cell.userInteractionEnabled = isLoggedIn
             return cell
-        case 2:
+        case 2: //评教
+            let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("evaluate")!
+            cell.userInteractionEnabled = isLoggedIn
+            return cell
+        case 3: //更多
             let cell = tableView.dequeueReusableCellWithIdentifier("MoreFunction")!
-            cell.textLabel?.text = "更多功能敬请期待（等学校网站开放）"
             cell.userInteractionEnabled = isLoggedIn
             return cell
         default:return UITableViewCell()
         }
     }
-*/
+
 }

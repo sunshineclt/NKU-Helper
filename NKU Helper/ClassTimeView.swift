@@ -17,8 +17,16 @@ class ClassTimeView: UIView {
     var UALoadView:UAProgressView!
     var overlayView:UIView!
     
-    let rowHeight:CGFloat = 50
-    let columnWidth:CGFloat = UIScreen.mainScreen().bounds.width / 6
+    var orientation: UIInterfaceOrientation?
+    let rowHeight: CGFloat = 50
+    var columnWidth: CGFloat {
+        if (orientation == UIInterfaceOrientation.LandscapeLeft) || (orientation == UIInterfaceOrientation.LandscapeRight) {
+            return self.frame.width / 8
+        }
+        else {
+            return self.frame.width / 6
+        }
+    }
     
     var week:Int!
     
@@ -26,11 +34,10 @@ class ClassTimeView: UIView {
     
     func drawBackground() {
         
-        // 防止多画背景，背景画一次即可
-        if !(headScrollView.subviews.isEmpty) {
-            return
+        for view in headScrollView.subviews {
+            view.removeFromSuperview()
         }
-        
+
         headScrollView.contentSize = CGSizeMake(columnWidth * 8, 30)
         
         for (var i=1;i<=7;i++) {

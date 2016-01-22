@@ -81,6 +81,15 @@ class ClassTimeViewController: UIViewController, UIScrollViewDelegate, WXApiDele
         }
     }
     
+    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+        self.classTimeView.orientation = toInterfaceOrientation
+    }
+    
+    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+        self.classTimeView.drawBackground()
+        self.classTimeView.drawClassTimeTableOnViewController(self)
+    }
+    
     // MARK: NKNetworkLoadCourseDelegate
     
     func didSuccessToReceiveCourseData() {
