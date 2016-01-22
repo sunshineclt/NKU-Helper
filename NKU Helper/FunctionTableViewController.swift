@@ -38,6 +38,7 @@ class FunctionTableViewController: UITableViewController {
         }
     }
     
+    /*
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
         
@@ -55,7 +56,7 @@ class FunctionTableViewController: UITableViewController {
             cell.userInteractionEnabled = isLoggedIn
             return cell
         case 1:
-            let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("Functioner")!
+            let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("gradeGetter")!
             cell.textLabel?.text = "查询成绩"
             cell.userInteractionEnabled = isLoggedIn
             return cell
@@ -67,5 +68,5 @@ class FunctionTableViewController: UITableViewController {
         default:return UITableViewCell()
         }
     }
-
+*/
 }

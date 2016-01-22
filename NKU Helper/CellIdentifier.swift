@@ -15,4 +15,8 @@ struct CellIdentifier {
     static let notiCenter = "notiCenter"
     static let selectCourse = "selectCourse"
     static let gradeCell = "GradeCell"
+    static let classToEvaluate = "classToEvaluate"
+    static let evaluateDetail = "evaluateDetail"
+    static let evaluateOpinion = "evaluateOpinion"
+    static let evaluateSubmit = "evaluateSubmit"
 }

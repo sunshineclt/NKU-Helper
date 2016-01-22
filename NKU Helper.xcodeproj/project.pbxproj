@@ -34,12 +34,10 @@
 		E9462A461B24A1E00002C21A /* TestTimeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9462A451B24A1E00002C21A /* TestTimeTableViewController.swift */; };
 		E9462A481B24A6480002C21A /* TestTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9462A471B24A6480002C21A /* TestTimeTableViewCell.swift */; };
 		E94BC1FA1C476C5000BD9726 /* NKNetworkValidateCodeGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94BC1F91C476C5000BD9726 /* NKNetworkValidateCodeGetter.swift */; };
-		E94BD9781BABE2A100B76E03 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E94BD9771BABE2A100B76E03 /* 1.jpg */; };
 		E94BD97A1BABE9A500B76E03 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94BD9791BABE9A500B76E03 /* TodayViewController.swift */; };
 		E94BD97C1BAC043500B76E03 /* LeftToDoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94BD97B1BAC043500B76E03 /* LeftToDoCell.swift */; };
 		E94BD97E1BAC054E00B76E03 /* CellIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94BD97D1BAC054E00B76E03 /* CellIdentifier.swift */; };
 		E94BD9801BAC06E300B76E03 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94BD97F1BAC06E300B76E03 /* Course.swift */; };
-		E95C8F3A1AAF2BA900D3D8EE /* backgroundImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E95C8F391AAF2BA900D3D8EE /* backgroundImage.jpg */; };
 		E95C8F631AAF50A400D3D8EE /* day00.png in Resources */ = {isa = PBXBuildFile; fileRef = E95C8F421AAF50A400D3D8EE /* day00.png */; };
 		E95C8F641AAF50A400D3D8EE /* day01.png in Resources */ = {isa = PBXBuildFile; fileRef = E95C8F431AAF50A400D3D8EE /* day01.png */; };
 		E95C8F651AAF50A400D3D8EE /* day02.png in Resources */ = {isa = PBXBuildFile; fileRef = E95C8F441AAF50A400D3D8EE /* day02.png */; };
@@ -109,6 +107,17 @@
 		E95F93C61C4E6CD100CEEC12 /* Grade.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F93C51C4E6CD100CEEC12 /* Grade.swift */; };
 		E95F93D71C4FB23900CEEC12 /* UserDetailInfoAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F93D61C4FB23900CEEC12 /* UserDetailInfoAgent.swift */; };
 		E95F93D91C4FC04500CEEC12 /* NKNetworkFetchUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F93D81C4FC04500CEEC12 /* NKNetworkFetchUserInfo.swift */; };
+		E95F93DD1C50CEAA00CEEC12 /* EvaluateTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F93DC1C50CEAA00CEEC12 /* EvaluateTableViewController.swift */; };
+		E95F93DF1C50CF2900CEEC12 /* NKNetworkEvaluate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F93DE1C50CF2900CEEC12 /* NKNetworkEvaluate.swift */; };
+		E95F93E11C50EF2800CEEC12 /* ClassToEvaluate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F93E01C50EF2800CEEC12 /* ClassToEvaluate.swift */; };
+		E95F93E31C50F7E100CEEC12 /* ClassToEvaluateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F93E21C50F7E100CEEC12 /* ClassToEvaluateTableViewCell.swift */; };
+		E95F93E51C50FAEB00CEEC12 /* EvaluateDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F93E41C50FAEB00CEEC12 /* EvaluateDetailTableViewController.swift */; };
+		E95F93E71C50FE8800CEEC12 /* EvaluateDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F93E61C50FE8800CEEC12 /* EvaluateDetailTableViewCell.swift */; };
+		E95F93E91C51024800CEEC12 /* NKNetworkEvaluateDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F93E81C51024800CEEC12 /* NKNetworkEvaluateDetail.swift */; };
+		E95F93EB1C512B8B00CEEC12 /* DetailEvaluateInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F93EA1C512B8B00CEEC12 /* DetailEvaluateInfo.swift */; };
+		E95F93ED1C51377300CEEC12 /* EvaluateOpinionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F93EC1C51377300CEEC12 /* EvaluateOpinionTableViewCell.swift */; };
+		E95F93EF1C51394800CEEC12 /* NKNetworkEvaluateSubmit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F93EE1C51394800CEEC12 /* NKNetworkEvaluateSubmit.swift */; };
+		E95F93F31C52074900CEEC12 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E95F93F21C52074900CEEC12 /* 1.jpg */; };
 		E96419D21AA8971B00397691 /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96419D11AA8971B00397691 /* AccountTableViewCell.swift */; };
 		E96419D41AA8BC9800397691 /* DetailAccountInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96419D31AA8BC9800397691 /* DetailAccountInfoTableViewController.swift */; };
 		E9658F761AB74ACD000A39A8 /* coursesOverViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9658F751AB74ACD000A39A8 /* coursesOverViewTableViewCell.swift */; };
@@ -206,12 +215,10 @@
 		E9462A451B24A1E00002C21A /* TestTimeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestTimeTableViewController.swift; sourceTree = "<group>"; };
 		E9462A471B24A6480002C21A /* TestTimeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestTimeTableViewCell.swift; sourceTree = "<group>"; };
 		E94BC1F91C476C5000BD9726 /* NKNetworkValidateCodeGetter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkValidateCodeGetter.swift; sourceTree = "<group>"; };
-		E94BD9771BABE2A100B76E03 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
 		E94BD9791BABE9A500B76E03 /* TodayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		E94BD97B1BAC043500B76E03 /* LeftToDoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftToDoCell.swift; sourceTree = "<group>"; };
 		E94BD97D1BAC054E00B76E03 /* CellIdentifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellIdentifier.swift; sourceTree = "<group>"; };
 		E94BD97F1BAC06E300B76E03 /* Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
-		E95C8F391AAF2BA900D3D8EE /* backgroundImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = backgroundImage.jpg; sourceTree = "<group>"; };
 		E95C8F421AAF50A400D3D8EE /* day00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = day00.png; sourceTree = "<group>"; };
 		E95C8F431AAF50A400D3D8EE /* day01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = day01.png; sourceTree = "<group>"; };
 		E95C8F441AAF50A400D3D8EE /* day02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = day02.png; sourceTree = "<group>"; };
@@ -281,6 +288,17 @@
 		E95F93C51C4E6CD100CEEC12 /* Grade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grade.swift; sourceTree = "<group>"; };
 		E95F93D61C4FB23900CEEC12 /* UserDetailInfoAgent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailInfoAgent.swift; sourceTree = "<group>"; };
 		E95F93D81C4FC04500CEEC12 /* NKNetworkFetchUserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkFetchUserInfo.swift; sourceTree = "<group>"; };
+		E95F93DC1C50CEAA00CEEC12 /* EvaluateTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EvaluateTableViewController.swift; sourceTree = "<group>"; };
+		E95F93DE1C50CF2900CEEC12 /* NKNetworkEvaluate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkEvaluate.swift; sourceTree = "<group>"; };
+		E95F93E01C50EF2800CEEC12 /* ClassToEvaluate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassToEvaluate.swift; sourceTree = "<group>"; };
+		E95F93E21C50F7E100CEEC12 /* ClassToEvaluateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassToEvaluateTableViewCell.swift; sourceTree = "<group>"; };
+		E95F93E41C50FAEB00CEEC12 /* EvaluateDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EvaluateDetailTableViewController.swift; sourceTree = "<group>"; };
+		E95F93E61C50FE8800CEEC12 /* EvaluateDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EvaluateDetailTableViewCell.swift; sourceTree = "<group>"; };
+		E95F93E81C51024800CEEC12 /* NKNetworkEvaluateDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkEvaluateDetail.swift; sourceTree = "<group>"; };
+		E95F93EA1C512B8B00CEEC12 /* DetailEvaluateInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailEvaluateInfo.swift; sourceTree = "<group>"; };
+		E95F93EC1C51377300CEEC12 /* EvaluateOpinionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EvaluateOpinionTableViewCell.swift; sourceTree = "<group>"; };
+		E95F93EE1C51394800CEEC12 /* NKNetworkEvaluateSubmit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkEvaluateSubmit.swift; sourceTree = "<group>"; };
+		E95F93F21C52074900CEEC12 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
 		E96419D11AA8971B00397691 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AccountTableViewCell.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E96419D31AA8BC9800397691 /* DetailAccountInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailAccountInfoTableViewController.swift; sourceTree = "<group>"; };
 		E9658F751AB74ACD000A39A8 /* coursesOverViewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = coursesOverViewTableViewCell.swift; sourceTree = "<group>"; };
@@ -468,6 +486,9 @@
 				E9762F6F1C48DE77002CEF03 /* NKNetworkFetchNoti.swift */,
 				E9929C9A1C49068000D508C8 /* NKNetworkFetchGrade.swift */,
 				E95F93D81C4FC04500CEEC12 /* NKNetworkFetchUserInfo.swift */,
+				E95F93DE1C50CF2900CEEC12 /* NKNetworkEvaluate.swift */,
+				E95F93E81C51024800CEEC12 /* NKNetworkEvaluateDetail.swift */,
+				E95F93EE1C51394800CEEC12 /* NKNetworkEvaluateSubmit.swift */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -544,8 +565,7 @@
 			isa = PBXGroup;
 			children = (
 				E95C8F3F1AAF507F00D3D8EE /* weatherIcon */,
-				E95C8F391AAF2BA900D3D8EE /* backgroundImage.jpg */,
-				E94BD9771BABE2A100B76E03 /* 1.jpg */,
+				E95F93F21C52074900CEEC12 /* 1.jpg */,
 				E90AE2371A8F813900AD0D78 /* Images.xcassets */,
 				E96E739F1BBBFC3400B62663 /* Launch.storyboard */,
 			);
@@ -641,6 +661,20 @@
 			name = night;
 			sourceTree = "<group>";
 		};
+		E95F93DB1C50CE9100CEEC12 /* Evaluate */ = {
+			isa = PBXGroup;
+			children = (
+				E95F93DC1C50CEAA00CEEC12 /* EvaluateTableViewController.swift */,
+				E95F93E01C50EF2800CEEC12 /* ClassToEvaluate.swift */,
+				E95F93E21C50F7E100CEEC12 /* ClassToEvaluateTableViewCell.swift */,
+				E95F93E41C50FAEB00CEEC12 /* EvaluateDetailTableViewController.swift */,
+				E95F93E61C50FE8800CEEC12 /* EvaluateDetailTableViewCell.swift */,
+				E95F93EC1C51377300CEEC12 /* EvaluateOpinionTableViewCell.swift */,
+				E95F93EA1C512B8B00CEEC12 /* DetailEvaluateInfo.swift */,
+			);
+			name = Evaluate;
+			sourceTree = "<group>";
+		};
 		E97A94AF1ABF19F200998A07 /* PreferredColors */ = {
 			isa = PBXGroup;
 			children = (
@@ -681,6 +715,7 @@
 				E98F94D71AA318EF00885992 /* FunctionTableViewController.swift */,
 				E99D670B1C16CA8600E27B08 /* NotificationCenter */,
 				E98F94D21AA317B100885992 /* GetGrade */,
+				E95F93DB1C50CE9100CEEC12 /* Evaluate */,
 				E90E87271C40F2F400E6BE3A /* SelectCourse */,
 			);
 			name = Function;
@@ -900,12 +935,11 @@
 				E95C8F6C1AAF50A400D3D8EE /* day09.png in Resources */,
 				E95C8F6F1AAF50A400D3D8EE /* day12.png in Resources */,
 				E95C8FB61AAF51A700D3D8EE /* night17.png in Resources */,
-				E95C8F3A1AAF2BA900D3D8EE /* backgroundImage.jpg in Resources */,
 				E95C8FBA1AAF51A700D3D8EE /* night21.png in Resources */,
 				E95C8F7A1AAF50A400D3D8EE /* day23.png in Resources */,
 				E95C8FC21AAF51A700D3D8EE /* night29.png in Resources */,
+				E95F93F31C52074900CEEC12 /* 1.jpg in Resources */,
 				E95C8F6D1AAF50A400D3D8EE /* day10.png in Resources */,
-				E94BD9781BABE2A100B76E03 /* 1.jpg in Resources */,
 				E95C8FAE1AAF51A700D3D8EE /* night09.png in Resources */,
 				E95C8F811AAF50A400D3D8EE /* day30.png in Resources */,
 				E95C8F771AAF50A400D3D8EE /* day20.png in Resources */,
@@ -985,12 +1019,15 @@
 			files = (
 				E98F94D81AA318EF00885992 /* FunctionTableViewController.swift in Sources */,
 				E98E2B4E1C46469700CF82BE /* CourseAgent.swift in Sources */,
+				E95F93DD1C50CEAA00CEEC12 /* EvaluateTableViewController.swift in Sources */,
 				E9762F701C48DE77002CEF03 /* NKNetworkFetchNoti.swift in Sources */,
 				E98E2B4B1C4639EC00CF82BE /* PreferredColorAgent.swift in Sources */,
+				E95F93ED1C51377300CEEC12 /* EvaluateOpinionTableViewCell.swift in Sources */,
 				E90285CC1AEA910B00DA5513 /* WeatherInfoGetter.swift in Sources */,
 				E9C3EF5C1BB2C52400D1C91D /* WebRouter.swift in Sources */,
 				E9929C9B1C49068000D508C8 /* NKNetworkFetchGrade.swift in Sources */,
 				E94211C31B00C1E600087846 /* TimeWeatherStatusTableViewCell.swift in Sources */,
+				E95F93EB1C512B8B00CEEC12 /* DetailEvaluateInfo.swift in Sources */,
 				E92B2D011B48DB89008825A3 /* CalendarConverter.swift in Sources */,
 				E93C0F181BB54B54001303CF /* ThingToDo.swift in Sources */,
 				E94BC1FA1C476C5000BD9726 /* NKNetworkValidateCodeGetter.swift in Sources */,
@@ -1001,15 +1038,19 @@
 				E9462A481B24A6480002C21A /* TestTimeTableViewCell.swift in Sources */,
 				E90E87431C4139FD00E6BE3A /* NKNetworkSearchCourse.swift in Sources */,
 				E9A83E2E1AB709400021C2D0 /* TodayTableViewController.swift in Sources */,
+				E95F93E91C51024800CEEC12 /* NKNetworkEvaluateDetail.swift in Sources */,
 				E95F93C61C4E6CD100CEEC12 /* Grade.swift in Sources */,
 				E96419D21AA8971B00397691 /* AccountTableViewCell.swift in Sources */,
+				E95F93E51C50FAEB00CEEC12 /* EvaluateDetailTableViewController.swift in Sources */,
 				E9C3EF5E1BB2D03E00D1C91D /* SegueIdentifier.swift in Sources */,
+				E95F93E71C50FE8800CEEC12 /* EvaluateDetailTableViewCell.swift in Sources */,
 				E94286541AA5494800A4242C /* LogIner.swift in Sources */,
 				E98E2B471C4638C800CF82BE /* StoreProtocol.swift in Sources */,
 				E97176781B149292004DADB2 /* CourseDetailTableViewController.swift in Sources */,
 				E9462A461B24A1E00002C21A /* TestTimeTableViewController.swift in Sources */,
 				E98F94DA1AA3191F00885992 /* SettingTableViewController.swift in Sources */,
 				E9FDA2451AB15F6B00B25E7E /* WeatherConditionGetter.swift in Sources */,
+				E95F93E31C50F7E100CEEC12 /* ClassToEvaluateTableViewCell.swift in Sources */,
 				E96419D41AA8BC9800397691 /* DetailAccountInfoTableViewController.swift in Sources */,
 				E90E872B1C40FCE700E6BE3A /* SelectCourseTableViewController.swift in Sources */,
 				E98E2B8B1C46ABE400CF82BE /* ClassTimeView.swift in Sources */,
@@ -1026,6 +1067,7 @@
 				E91E5F4F1A90FAED009F3B2B /* GradeShowerTableViewController.swift in Sources */,
 				E90E872D1C41002E00E6BE3A /* NKNetworkSelectCourse.swift in Sources */,
 				E97176761B1488CA004DADB2 /* AboutViewController.swift in Sources */,
+				E95F93DF1C50CF2900CEEC12 /* NKNetworkEvaluate.swift in Sources */,
 				E95F93D91C4FC04500CEEC12 /* NKNetworkFetchUserInfo.swift in Sources */,
 				E99D67131C16F6E800E27B08 /* NotiTableViewCell.swift in Sources */,
 				E9B8C5C41BBA7CBE00CFDE19 /* ColorTableViewCell.swift in Sources */,
@@ -1037,6 +1079,7 @@
 				E9CA9C961C4274F60030AF49 /* NKNetworkLogin.swift in Sources */,
 				E9CCF4B81ABC653E002076F2 /* ColorChooseTableViewController.swift in Sources */,
 				E997700E1AC16CC700C3977B /* LifeIndexTableViewCell.swift in Sources */,
+				E95F93EF1C51394800CEEC12 /* NKNetworkEvaluateSubmit.swift in Sources */,
 				E94286501AA4CD2A00A4242C /* LogInViewController.swift in Sources */,
 				E91E5F551A9103DF009F3B2B /* GradeCell.swift in Sources */,
 				E98E2B501C46492900CF82BE /* NKNetworkLoadCourse.swift in Sources */,
@@ -1045,6 +1088,7 @@
 				E9CA9C901C4272BC0030AF49 /* StoreAgent.swift in Sources */,
 				E90E87241C40E58B00E6BE3A /* NKNetworkBase.swift in Sources */,
 				E90AE22E1A8F813900AD0D78 /* AppDelegate.swift in Sources */,
+				E95F93E11C50EF2800CEEC12 /* ClassToEvaluate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

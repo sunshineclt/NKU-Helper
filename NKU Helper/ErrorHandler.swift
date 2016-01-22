@@ -57,8 +57,21 @@ struct ErrorHandler {
         static let message = "请重试,若仍然出现问题请通知开发者"
         static let cancelButtonTitle = "好"
     }
-    
-    
+    struct EvaluateSystemNotOpen:ErrorHandlerProtocol {
+        static let title = "评教系统未开"
+        static let message = "若评教系统实际已开放请练习开发者"
+        static let cancelButtonTitle = "好"
+    }
+    struct EvaluateHasDone:ErrorHandlerProtocol {
+        static let title = "已评教"
+        static let message = "此课程已评教"
+        static let cancelButtonTitle = "好"
+    }
+    struct EvaluateSubmitFail:ErrorHandlerProtocol {
+        static let title = "评教失败"
+        static let message = "评教提交失败"
+        static let cancelButtonTitle = "好"
+    }
     
     static func alert(error:ErrorHandlerProtocol) -> UIAlertController {
         let alert = UIAlertController(title: error.dynamicType.title, message: error.dynamicType.message, preferredStyle: .Alert)

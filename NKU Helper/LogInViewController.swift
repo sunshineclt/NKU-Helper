@@ -56,9 +56,13 @@ class LogInViewController: UIViewController, UIAlertViewDelegate, UIWebViewDeleg
             case .UserNameOrPasswordWrong:
                 self.presentViewController(ErrorHandler.alert(ErrorHandler.UserNameOrPasswordWrong()), animated: true, completion: nil)
                 self.refreshImage()
+                self.validateCodeTextField.text = ""
+                self.validateCodeTextField.becomeFirstResponder()
             case .ValidateCodeWrong:
                 self.presentViewController(ErrorHandler.alert(ErrorHandler.ValidateCodeWrong()), animated: true, completion: nil)
                 self.refreshImage()
+                self.validateCodeTextField.text = ""
+                self.validateCodeTextField.becomeFirstResponder()
             }
         }
     }

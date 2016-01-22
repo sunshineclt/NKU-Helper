@@ -2,18 +2,16 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "Cloudsrainbow.png"
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "scale" : "2x",
-      "filename" : "Cloudsrainbow@2x.png"
+      "filename" : "classNotEvaluated.png",
+      "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "scale" : "3x",
-      "filename" : "Cloudsrainbow@3x.png"
+      "scale" : "3x"
     }
   ],
   "info" : {
