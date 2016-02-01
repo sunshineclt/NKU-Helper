@@ -41,7 +41,7 @@ class Grade {
             return
         }
         if retakeGrade != "" {
-            self.grade = .retakeDone(grade: grade.doubleValue, credit: credit.doubleValue)
+            self.grade = .retakeDone(grade: retakeGrade.doubleValue, credit: credit.doubleValue)
             return
         }
         if (grade.doubleValue > 0) && (grade.doubleValue < 60) && (credit.doubleValue == 0) {
