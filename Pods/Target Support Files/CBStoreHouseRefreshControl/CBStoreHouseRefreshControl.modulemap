@@ -1,0 +1,6 @@
+framework module CBStoreHouseRefreshControl {
+  umbrella header "CBStoreHouseRefreshControl-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>64EC6BC8-D203-467C-BF3C-87AAD107972E</string>
+	<key>IDESourceControlProjectName</key>
+	<string>NKU Helper</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>91A00B24689FA3E072B16DE0A6C7A272BE6EF4E0</key>
+		<string>https://github.com/sunshineclt/NKU-Helper.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>NKU Helper.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>91A00B24689FA3E072B16DE0A6C7A272BE6EF4E0</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/sunshineclt/NKU-Helper.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>91A00B24689FA3E072B16DE0A6C7A272BE6EF4E0</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>91A00B24689FA3E072B16DE0A6C7A272BE6EF4E0</string>
+			<key>IDESourceControlWCCName</key>
+			<string>NKU%20Helper</string>
+		</dict>
+	</array>
+</dict>
+</plist>

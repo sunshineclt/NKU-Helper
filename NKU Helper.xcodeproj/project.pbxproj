@@ -477,18 +477,14 @@
 			isa = PBXGroup;
 			children = (
 				E90E87231C40E58B00E6BE3A /* NKNetworkBase.swift */,
-				E9CA9C951C4274F60030AF49 /* NKNetworkLogin.swift */,
-				E94BC1F91C476C5000BD9726 /* NKNetworkValidateCodeGetter.swift */,
-				E90E87251C40E5C700E6BE3A /* NKNetworkIsLogin.swift */,
+				E92BDD041C62230F005A5CB8 /* 登陆 */,
 				E98E2B4F1C46492900CF82BE /* NKNetworkLoadCourse.swift */,
 				E90E872C1C41002E00E6BE3A /* NKNetworkSelectCourse.swift */,
 				E90E87421C4139FD00E6BE3A /* NKNetworkSearchCourse.swift */,
 				E9762F6F1C48DE77002CEF03 /* NKNetworkFetchNoti.swift */,
 				E9929C9A1C49068000D508C8 /* NKNetworkFetchGrade.swift */,
 				E95F93D81C4FC04500CEEC12 /* NKNetworkFetchUserInfo.swift */,
-				E95F93DE1C50CF2900CEEC12 /* NKNetworkEvaluate.swift */,
-				E95F93E81C51024800CEEC12 /* NKNetworkEvaluateDetail.swift */,
-				E95F93EE1C51394800CEEC12 /* NKNetworkEvaluateSubmit.swift */,
+				E92BDD031C622304005A5CB8 /* 评教 */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -508,6 +504,26 @@
 				E9FDA2421AB15BB600B25E7E /* Base64.m */,
 			);
 			name = "making kay";
+			sourceTree = "<group>";
+		};
+		E92BDD031C622304005A5CB8 /* 评教 */ = {
+			isa = PBXGroup;
+			children = (
+				E95F93DE1C50CF2900CEEC12 /* NKNetworkEvaluate.swift */,
+				E95F93E81C51024800CEEC12 /* NKNetworkEvaluateDetail.swift */,
+				E95F93EE1C51394800CEEC12 /* NKNetworkEvaluateSubmit.swift */,
+			);
+			name = "评教";
+			sourceTree = "<group>";
+		};
+		E92BDD041C62230F005A5CB8 /* 登陆 */ = {
+			isa = PBXGroup;
+			children = (
+				E9CA9C951C4274F60030AF49 /* NKNetworkLogin.swift */,
+				E94BC1F91C476C5000BD9726 /* NKNetworkValidateCodeGetter.swift */,
+				E90E87251C40E5C700E6BE3A /* NKNetworkIsLogin.swift */,
+			);
+			name = "登陆";
 			sourceTree = "<group>";
 		};
 		E92FB3EF1BF37213004C6B7C /* WXSDK */ = {

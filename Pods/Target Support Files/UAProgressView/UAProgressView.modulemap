@@ -1,0 +1,6 @@
+framework module UAProgressView {
+  umbrella header "UAProgressView-umbrella.h"
+
+  export *
+  module * { export * }
+}

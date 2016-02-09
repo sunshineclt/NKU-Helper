@@ -1,0 +1,6 @@
+framework module Pods_NKU_Helper {
+  umbrella header "Pods-NKU Helper-umbrella.h"
+
+  export *
+  module * { export * }
+}
