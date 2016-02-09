@@ -190,8 +190,6 @@
 		E90AE22C1A8F813900AD0D78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E90AE22D1A8F813900AD0D78 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AppDelegate.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E90AE2371A8F813900AD0D78 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		E90AE2451A8F813900AD0D78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E90AE2461A8F813900AD0D78 /* NKU_HelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NKU_HelperTests.swift; sourceTree = "<group>"; };
 		E90AE2501A8F814C00AD0D78 /* ImageGetter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageGetter.swift; sourceTree = "<group>"; };
 		E90E87231C40E58B00E6BE3A /* NKNetworkBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkBase.swift; sourceTree = "<group>"; };
 		E90E87251C40E5C700E6BE3A /* NKNetworkIsLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkIsLogin.swift; sourceTree = "<group>"; };
@@ -411,7 +409,6 @@
 			children = (
 				E92FB3E51BF3676F004C6B7C /* Version Log */,
 				E90AE22A1A8F813900AD0D78 /* NKU Helper */,
-				E90AE2431A8F813900AD0D78 /* NKU HelperTests */,
 				E90AE2291A8F813900AD0D78 /* Products */,
 				911897253CF7E957EC7F6666 /* Frameworks */,
 				8F5DEA3CECF40E65ECEB1512 /* Pods */,
@@ -452,23 +449,6 @@
 			children = (
 				E90AE22C1A8F813900AD0D78 /* Info.plist */,
 				E91E5F4A1A90FA9E009F3B2B /* NKU Helper-Bridging-Header.h */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		E90AE2431A8F813900AD0D78 /* NKU HelperTests */ = {
-			isa = PBXGroup;
-			children = (
-				E90AE2461A8F813900AD0D78 /* NKU_HelperTests.swift */,
-				E90AE2441A8F813900AD0D78 /* Supporting Files */,
-			);
-			path = "NKU HelperTests";
-			sourceTree = "<group>";
-		};
-		E90AE2441A8F813900AD0D78 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				E90AE2451A8F813900AD0D78 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
