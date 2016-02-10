@@ -14,7 +14,7 @@
 @property (nonatomic, strong) NSString *signature;
 @property (nonatomic) int64_t timestamp;
 @property (nonatomic, strong) NSString *nonce;
-@property (nonatomic, strong) NSString *action  AVDeprecated("2.6.4");
+@property (nonatomic, strong) NSString *action  AV_DEPRECATED("2.6.4");
 @property (nonatomic, strong) NSArray *signedPeerIds;
 @property (nonatomic, strong) NSError *error;
 
@@ -26,8 +26,8 @@
 - (AVSignature *)signatureForGroupWithPeerId:(NSString *)peerId groupId:(NSString *)groupId groupPeerIds:(NSArray *)groupPeerIds action:(NSString *)action;
 
 
-- (AVSignature *)createSignature:(NSString *)peerId watchedPeerIds:(NSArray *)watchedPeerIds AVDeprecated("2.6.4");
-- (AVSignature *)createSessionSignature:(NSString *)peerId watchedPeerIds:(NSArray *)watchedPeerIds action:(NSString *)action AVDeprecated("2.6.4");
-- (AVSignature *)createGroupSignature:(NSString *)peerId groupPeerIds:(NSArray *)groupPeerIds action:(NSString *)action AVDeprecated("2.6.4");
-- (AVSignature *)createGroupSignature:(NSString *)peerId groupId:(NSString *)groupId groupPeerIds:(NSArray *)groupPeerIds action:(NSString *)action AVDeprecated("2.6.4");
+- (AVSignature *)createSignature:(NSString *)peerId watchedPeerIds:(NSArray *)watchedPeerIds AV_DEPRECATED("2.6.4");
+- (AVSignature *)createSessionSignature:(NSString *)peerId watchedPeerIds:(NSArray *)watchedPeerIds action:(NSString *)action AV_DEPRECATED("2.6.4");
+- (AVSignature *)createGroupSignature:(NSString *)peerId groupPeerIds:(NSArray *)groupPeerIds action:(NSString *)action AV_DEPRECATED("2.6.4");
+- (AVSignature *)createGroupSignature:(NSString *)peerId groupId:(NSString *)groupId groupPeerIds:(NSArray *)groupPeerIds action:(NSString *)action AV_DEPRECATED("2.6.4");
 @end

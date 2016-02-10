@@ -10,6 +10,7 @@
 
 // Public headers
 
+#import "AVAvailability.h"
 #import "AVConstants.h"
 #import "AVLogger.h"
 
@@ -18,6 +19,9 @@
 #import "AVObject+Subclass.h"
 #import "AVSubclassing.h"
 #import "AVRelation.h"
+
+// Option
+#import "AVSaveOption.h"
 
 // Query
 #import "AVQuery.h"
@@ -52,7 +56,7 @@
 #import "AVACL.h"
 #import "AVRole.h"
 
-#if AVOS_IOS_ONLY && !TARGET_OS_WATCH
+#if AV_IOS_ONLY && !TARGET_OS_WATCH
 // IM 1.0
 #import "AVSession.h"
 #import "AVSignature.h"
@@ -62,27 +66,21 @@
 #import "AVHistoryMessageQuery.h"
 #endif
 
-#if AVOS_IOS_ONLY && !TARGET_OS_WATCH
+#if AV_IOS_ONLY && !TARGET_OS_WATCH
 // Analytics
 #import "AVAnalytics.h"
 #endif
 
-FOUNDATION_EXPORT NSString *const LCDefaultRESTAPIHost;
-FOUNDATION_EXPORT NSString *const LCFoundationCertificate;
-
 /**
  *  Storage Type
  */
-typedef NS_ENUM(int, AVStorageType) {
-    /// Qiniu
+typedef NS_ENUM(NSInteger, AVStorageType) {
     AVStorageTypeQiniu = 0,
-    
-    /// Parse
     AVStorageTypeParse,
-    
-    /// AWS S3
     AVStorageTypeS3,
 
+    /* Default service region */
+    AVStorageTypeDefault = AVStorageTypeQiniu
 } ;
 
 typedef enum AVLogLevel : NSUInteger {
@@ -93,6 +91,15 @@ typedef enum AVLogLevel : NSUInteger {
     AVLogLevelVerbose   = 1 << 3,
     AVLogLevelDefault   = AVLogLevelError | AVLogLevelWarning
 } AVLogLevel;
+
+typedef NS_ENUM(NSInteger, AVServiceRegion) {
+    AVServiceRegionCN = 1,
+    AVServiceRegionUS,
+    AVServiceRegionUrulu AV_DEPRECATED("Deprecated in AVOSCloud SDK 3.2.3. You should not use this value."),
+
+    /* Default service region */
+    AVServiceRegionDefault = AVServiceRegionCN
+};
 
 #define kAVDefaultNetworkTimeoutInterval 10.0
 
@@ -154,8 +161,6 @@ typedef enum AVLogLevel : NSUInteger {
  */
 +(void)clearLastModifyCache;
 
-+ (void)useAVCloud AVDeprecated("2.3.3以后废除");
-
 /**
  *  Set third party file storage service. If uses China server, the default is Qiniu, if uses US server, the default is AWS S3.
  *  @param type Qiniu or AWS S3
@@ -163,14 +168,10 @@ typedef enum AVLogLevel : NSUInteger {
 + (void)setStorageType:(AVStorageType)type;
 
 /**
- *  Use LeanCloud US server.
+ * Use specified region.
+ * If not specified, AVServiceRegionCN will be used.
  */
-+ (void)useAVCloudUS;
-
-/**
- *  Use LeanCloud China Sever. Default option.
- */
-+ (void)useAVCloudCN;
++ (void)setServiceRegion:(AVServiceRegion)region;
 
 /**
  *  Get the timeout interval for network requests. Default is kAVDefaultNetworkTimeoutInterval (10 seconds)
@@ -191,19 +192,6 @@ typedef enum AVLogLevel : NSUInteger {
 + (AVLogLevel)logLevel;
 
 #pragma mark Schedule work
-
-/**
- * Register remote notification with types.
- * @param types Notification types.
- * @param categories A set of UIUserNotificationCategory objects that define the groups of actions a notification may include.
- * NOTE: categories only supported by iOS 8 and later. If application run below iOS 8, categories will be ignored.
- */
-+ (void)registerForRemoteNotificationTypes:(NSUInteger)types categories:(NSSet *)categories AV_TV_UNAVAILABLE AV_WATCH_UNAVAILABLE;
-
-/**
- * Register remote notification with all types (badge, alert, sound) and empty categories.
- */
-+ (void)registerForRemoteNotification AV_TV_UNAVAILABLE AV_WATCH_UNAVAILABLE;
 
 /**
  *  get the query cache expired days
@@ -300,5 +288,36 @@ typedef enum AVLogLevel : NSUInteger {
  * @param block 回调结果。
  */
 + (void)getServerDateWithBlock:(void(^)(NSDate *date, NSError *error))block;
+
+@end
+
+#pragma mark - Deprecated API
+
+@interface AVOSCloud (AVDeprecated)
+
++ (void)useAVCloud AV_DEPRECATED("Deprecated in AVOSCloud SDK 2.3.3.");
+
+/**
+ * Use LeanCloud US server.
+ */
++ (void)useAVCloudUS AV_DEPRECATED("Deprecated in AVOSCloud SDK 3.2.3. Use +[AVOSCloud setServiceRegion:] instead.");
+
+/**
+ * Use LeanCloud China Sever. Default option.
+ */
++ (void)useAVCloudCN AV_DEPRECATED("Deprecated in AVOSCloud SDK 3.2.3. Use +[AVOSCloud setServiceRegion:] instead.");
+
+/**
+ * Register remote notification with types.
+ * @param types Notification types.
+ * @param categories A set of UIUserNotificationCategory objects that define the groups of actions a notification may include.
+ * NOTE: categories only supported by iOS 8 and later. If application run below iOS 8, categories will be ignored.
+ */
++ (void)registerForRemoteNotificationTypes:(NSUInteger)types categories:(NSSet *)categories AV_TV_UNAVAILABLE AV_WATCH_UNAVAILABLE AV_DEPRECATED("Deprecated in AVOSCloud SDK 3.1.7.2. Use -[AVOSCloudIM registerForRemoteNotificationTypes:categories:] instead.");
+
+/**
+ * Register remote notification with all types (badge, alert, sound) and empty categories.
+ */
++ (void)registerForRemoteNotification AV_TV_UNAVAILABLE AV_WATCH_UNAVAILABLE AV_DEPRECATED("Deprecated in AVOSCloud SDK 3.1.7.2. Use -[AVOSCloudIM registerForRemoteNotification] instead.");
 
 @end

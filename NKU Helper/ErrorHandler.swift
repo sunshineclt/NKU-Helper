@@ -72,10 +72,21 @@ struct ErrorHandler {
         static let message = "评教提交失败"
         static let cancelButtonTitle = "好"
     }
+    struct shareFail:ErrorHandlerProtocol {
+        static let title = "分享失败"
+        static let message = "请检查网络"
+        static let cancelButtonTitle = "好"
+    }
     
     static func alert(error:ErrorHandlerProtocol) -> UIAlertController {
         let alert = UIAlertController(title: error.dynamicType.title, message: error.dynamicType.message, preferredStyle: .Alert)
         alert.addAction(UIAlertAction(title: error.dynamicType.cancelButtonTitle, style: .Cancel, handler: nil))
+        return alert
+    }
+    
+    static func alertWithAlertTitle(title: String?, message: String?, cancelButtonTitle: String?) -> UIAlertController {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: cancelButtonTitle, style: .Cancel, handler: nil))
         return alert
     }
 }
