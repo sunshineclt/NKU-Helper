@@ -120,6 +120,8 @@
 		E95F93F31C52074900CEEC12 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E95F93F21C52074900CEEC12 /* 1.jpg */; };
 		E96419D21AA8971B00397691 /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96419D11AA8971B00397691 /* AccountTableViewCell.swift */; };
 		E96419D41AA8BC9800397691 /* DetailAccountInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96419D31AA8BC9800397691 /* DetailAccountInfoTableViewController.swift */; };
+		E9657B7B1C6B0D9A00D57C7F /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9D754B61C6A469400619BAC /* JavaScriptCore.framework */; };
+		E9657B7C1C6B104700D57C7F /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9D754EF1C6AD19800619BAC /* AdSupport.framework */; };
 		E9658F761AB74ACD000A39A8 /* coursesOverViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9658F751AB74ACD000A39A8 /* coursesOverViewTableViewCell.swift */; };
 		E96E73A01BBBFC3400B62663 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E96E739F1BBBFC3400B62663 /* Launch.storyboard */; };
 		E97176761B1488CA004DADB2 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97176751B1488CA004DADB2 /* AboutViewController.swift */; };
@@ -164,7 +166,6 @@
 		E9D754B11C69C29A00619BAC /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9D754B01C69C29A00619BAC /* CoreTelephony.framework */; };
 		E9D754B31C69C2A300619BAC /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E9D754B21C69C2A300619BAC /* libstdc++.tbd */; };
 		E9D754B51C6A468300619BAC /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E9D754B41C6A468300619BAC /* libicucore.tbd */; };
-		E9D754B71C6A469400619BAC /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9D754B61C6A469400619BAC /* JavaScriptCore.framework */; };
 		E9D754DE1C6ACDC500619BAC /* ShareSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9D754B91C6ACDC500619BAC /* ShareSDK.framework */; };
 		E9D754DF1C6ACDC500619BAC /* ShareSDKExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9D754BC1C6ACDC500619BAC /* ShareSDKExtension.framework */; };
 		E9D754E01C6ACDC500619BAC /* ShareSDKUI.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E9D754BD1C6ACDC500619BAC /* ShareSDKUI.bundle */; };
@@ -181,7 +182,6 @@
 		E9D754EB1C6ACDC500619BAC /* ShareSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E9D754DC1C6ACDC500619BAC /* ShareSDK.bundle */; };
 		E9D754EC1C6ACDC500619BAC /* ShareSDKConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9D754DD1C6ACDC500619BAC /* ShareSDKConnector.framework */; };
 		E9D754EE1C6AD19100619BAC /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9D754ED1C6AD19100619BAC /* ImageIO.framework */; };
-		E9D754F01C6AD19800619BAC /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9D754EF1C6AD19800619BAC /* AdSupport.framework */; };
 		E9D754F21C6AD19E00619BAC /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E9D754F11C6AD19E00619BAC /* libsqlite3.tbd */; };
 		E9D754FB1C6ADB8500619BAC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E9D754FD1C6ADB8500619BAC /* Localizable.strings */; };
 		E9F674EC1BA80E7500BEF640 /* RSA.html in Resources */ = {isa = PBXBuildFile; fileRef = E9F674EB1BA80E7500BEF640 /* RSA.html */; };
@@ -419,12 +419,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9657B7C1C6B104700D57C7F /* AdSupport.framework in Frameworks */,
+				E9657B7B1C6B0D9A00D57C7F /* JavaScriptCore.framework in Frameworks */,
 				E9D754F21C6AD19E00619BAC /* libsqlite3.tbd in Frameworks */,
-				E9D754F01C6AD19800619BAC /* AdSupport.framework in Frameworks */,
 				E9D754EE1C6AD19100619BAC /* ImageIO.framework in Frameworks */,
 				E9D754B51C6A468300619BAC /* libicucore.tbd in Frameworks */,
 				E9D754EA1C6ACDC500619BAC /* MOBFoundation.framework in Frameworks */,
-				E9D754B71C6A469400619BAC /* JavaScriptCore.framework in Frameworks */,
 				E9D754E61C6ACDC500619BAC /* libWeiboSDK.a in Frameworks */,
 				E9D754B31C69C2A300619BAC /* libstdc++.tbd in Frameworks */,
 				E9D754B11C69C29A00619BAC /* CoreTelephony.framework in Frameworks */,
