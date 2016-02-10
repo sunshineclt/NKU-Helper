@@ -65,7 +65,7 @@ typedef enum : NSUInteger {
  */
 - (void)openWithPeerId:(NSString *)peerId watchedPeerIds:(NSArray *)peerIds;
 
-- (void)open:(NSString *)selfId withPeerIds:(NSArray *)peerIds AVDeprecated("2.6.4");
+- (void)open:(NSString *)selfId withPeerIds:(NSArray *)peerIds AV_DEPRECATED("2.6.4");
 
 /*!
  *  增量关注一组 peerIds
@@ -74,7 +74,7 @@ typedef enum : NSUInteger {
 - (void)watchPeerIds:(NSArray *)peerIds;
 - (void)watchPeerIds:(NSArray *)peerIds callback:(AVBooleanResultBlock)callback;
 
-- (BOOL)watchPeers:(NSArray *)peerIds  AVDeprecated("2.6.4");
+- (BOOL)watchPeers:(NSArray *)peerIds  AV_DEPRECATED("2.6.4");
 
 /*!
  *  取消关注一组 peerIds
@@ -83,7 +83,7 @@ typedef enum : NSUInteger {
 - (void)unwatchPeerIds:(NSArray *)peerIds;
 - (void)unwatchPeerIds:(NSArray *)peerIds callback:(AVBooleanResultBlock)callback;
 
-- (void)unwatchPeers:(NSArray *)peerIds AVDeprecated("2.6.4");
+- (void)unwatchPeers:(NSArray *)peerIds AV_DEPRECATED("2.6.4");
 
 /*!
  *  发送消息
@@ -106,7 +106,7 @@ typedef enum : NSUInteger {
  */
 - (void)sendMessage:(AVMessage *)message requestReceipt:(BOOL)requestReceipt;
 
-- (void)sendMessage:(NSString *)message isTransient:(BOOL)transient toPeerIds:(NSArray *)peerIds AVDeprecated("2.6.4");
+- (void)sendMessage:(NSString *)message isTransient:(BOOL)transient toPeerIds:(NSArray *)peerIds AV_DEPRECATED("2.6.4");
 
 /*!
  *  关闭 session
@@ -133,7 +133,7 @@ typedef enum : NSUInteger {
  */
 - (BOOL)peerIdIsOnline:(NSString *)peerId;
 
-- (BOOL)isOnline:(NSString *)peerId AVDeprecated("2.6.4");
+- (BOOL)isOnline:(NSString *)peerId AV_DEPRECATED("2.6.4");
 
 /*!
  *  判断是否 watch 了某个用户
@@ -142,13 +142,13 @@ typedef enum : NSUInteger {
  */
 - (BOOL)peerIdIsWatching:(NSString *)peerId;
 
-- (BOOL)isWatching:(NSString *)peerId AVDeprecated("2.6.4");
+- (BOOL)isWatching:(NSString *)peerId AV_DEPRECATED("2.6.4");
 
 /*!
  *  获取自己的 peer id
  *  @return 用户的 peer id
  */
-- (NSString *)getSelfPeerId AVDeprecated("2.6.4");
+- (NSString *)getSelfPeerId AV_DEPRECATED("2.6.4");
 
 /*!
  *  获取已经 watch 的那部分用户中，当前在线的用户
@@ -156,7 +156,7 @@ typedef enum : NSUInteger {
  */
 - (NSArray *)onlinePeerIds;
 
-- (NSArray *)getOnlinePeers AVDeprecated("2.6.4");
+- (NSArray *)getOnlinePeers AV_DEPRECATED("2.6.4");
 
 /*!
  *  获取传入的用户数组中，当前在线的用户
@@ -165,7 +165,7 @@ typedef enum : NSUInteger {
  */
 - (void)queryOnlinePeerIdsInPeerIds:(NSArray *)peerIds callback:(AVArrayResultBlock)callback;
 
-- (void)getOnlinePeers:(NSArray *)peerIds withBlock:(AVArrayResultBlock)block AVDeprecated("2.6.4");
+- (void)getOnlinePeers:(NSArray *)peerIds withBlock:(AVArrayResultBlock)block AV_DEPRECATED("2.6.4");
 
 /*!
  *  获取已经 watch 的用户列表
@@ -173,13 +173,13 @@ typedef enum : NSUInteger {
  */
 - (NSArray *)watchedPeerIds;
 
-- (NSArray *)getAllPeers AVDeprecated("2.6.4");
+- (NSArray *)getAllPeers AV_DEPRECATED("2.6.4");
 
 /*!
  *  根据groupId构建一个AVGroup对象
  *  @return 如果已经存在groupId的group对象，则返回该对象，否则新建一个对象
  */
-- (AVGroup *)getGroup:(NSString *)groupId AVDeprecated("2.6.4");
+- (AVGroup *)getGroup:(NSString *)groupId AV_DEPRECATED("2.6.4");
 
 @end
 
@@ -210,14 +210,14 @@ typedef enum : NSUInteger {
 - (void)session:(AVSession *)session messageArrived:(AVMessage *)message;
 
 
-- (void)onSessionOpen:(AVSession *)session AVDeprecated("2.6.4");
-- (void)onSessionPaused:(AVSession *)session AVDeprecated("2.6.4");
-- (void)onSessionResumed:(AVSession *)seesion AVDeprecated("2.6.4");
-- (void)onSessionMessage:(AVSession *)session message:(NSString *)message peerId:(NSString *)peerId AVDeprecated("2.6.4");
-- (void)onSessionMessageSent:(AVSession *)session message:(NSString *)message toPeerIds:(NSArray *)peerIds AVDeprecated("2.6.4");
-- (void)onSessionMessageFailure:(AVSession *)session message:(NSString *)message toPeerIds:(NSArray *)peerIds AVDeprecated("2.6.4");
-- (void)onSessionStatusOnline:(AVSession *)session peers:(NSArray *)peerIds AVDeprecated("2.6.4");
-- (void)onSessionStatusOffline:(AVSession *)session peers:(NSArray *)peerId AVDeprecated("2.6.4");
-- (void)onSessionError:(AVSession *)session withException:(NSException *)exception AVDeprecated("2.6.4");
+- (void)onSessionOpen:(AVSession *)session AV_DEPRECATED("2.6.4");
+- (void)onSessionPaused:(AVSession *)session AV_DEPRECATED("2.6.4");
+- (void)onSessionResumed:(AVSession *)seesion AV_DEPRECATED("2.6.4");
+- (void)onSessionMessage:(AVSession *)session message:(NSString *)message peerId:(NSString *)peerId AV_DEPRECATED("2.6.4");
+- (void)onSessionMessageSent:(AVSession *)session message:(NSString *)message toPeerIds:(NSArray *)peerIds AV_DEPRECATED("2.6.4");
+- (void)onSessionMessageFailure:(AVSession *)session message:(NSString *)message toPeerIds:(NSArray *)peerIds AV_DEPRECATED("2.6.4");
+- (void)onSessionStatusOnline:(AVSession *)session peers:(NSArray *)peerIds AV_DEPRECATED("2.6.4");
+- (void)onSessionStatusOffline:(AVSession *)session peers:(NSArray *)peerId AV_DEPRECATED("2.6.4");
+- (void)onSessionError:(AVSession *)session withException:(NSException *)exception AV_DEPRECATED("2.6.4");
 
 @end

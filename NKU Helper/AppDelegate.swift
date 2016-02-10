@@ -32,6 +32,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, WXAp
             AVAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
             
             WXApi.registerApp("wx311e5377578127f1")
+            
+            ShareSDK.registerApp("f61adcd245a4", activePlatforms: [SSDKPlatformType.TypeWechat.rawValue,
+                                                                    SSDKPlatformType.TypeSinaWeibo.rawValue,
+                                                                    SSDKPlatformType.TypeQQ.rawValue,
+                                                                    SSDKPlatformType.TypeFacebook.rawValue,
+                                                                    SSDKPlatformType.TypeMail.rawValue,
+                                                                    SSDKPlatformType.TypeCopy.rawValue,
+                                                                    SSDKPlatformType.TypePrint.rawValue]
+                , onImport: { (platform: SSDKPlatformType) -> Void in
+                    switch platform {
+                    case .TypeWechat:
+                        ShareSDKConnector.connectWeChat(WXApi.classForCoder())
+                    case .TypeQQ:
+                        ShareSDKConnector.connectQQ(QQApiInterface.classForCoder(), tencentOAuthClass: TencentOAuth.classForCoder())
+                    case .TypeSinaWeibo:
+                        ShareSDKConnector.connectWeibo(WeiboSDK.classForCoder())
+                    default:
+                        break;
+                    }
+                }) { (platform: SSDKPlatformType, appInfo: NSMutableDictionary!) -> Void in
+                    switch platform {
+                    case SSDKPlatformType.TypeSinaWeibo:
+                        //设置新浪微博应用信息,其中authType设置为使用SSO＋Web形式授权
+                        appInfo.SSDKSetupSinaWeiboByAppKey("636310608",
+                            appSecret : "46dfb45a86650ba929532b1730fdd1af",
+                            redirectUri : "http://www.sharesdk.cn",
+                            authType : SSDKAuthTypeBoth)
+                    case SSDKPlatformType.TypeWechat:
+                        //设置微信应用信息
+                        appInfo.SSDKSetupWeChatByAppId("wx311e5377578127f1", appSecret: "83c6080bc1957d3f8f7306f946eb3667")
+                    case SSDKPlatformType.TypeQQ:
+                        appInfo.SSDKSetupQQByAppId("1104934641", appKey: "W66uuRWLP9ZnFlkC", authType: SSDKAuthTypeBoth)
+                    case SSDKPlatformType.TypeFacebook:
+                        //设置Facebook应用信息，其中authType设置为只用SSO形式授权
+                        appInfo.SSDKSetupFacebookByApiKey("576897682460678", appSecret: "20c9e13a474f9d603e488272a033d7d9", authType: SSDKAuthTypeSSO)
+                    default:
+                        break
+                    }
+            }
         }
         
         /**
@@ -142,17 +181,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, WXAp
                 }
             }
         }
-    }
-    
-    
-    func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
-        return WXApi.handleOpenURL(url, delegate: self)
-    }
-    
-    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
-        let isSuc = WXApi.handleOpenURL(url, delegate: self)
-        print("Open \(url) \(isSuc)")
-        return isSuc
     }
     
     func onResp(resp: BaseResp!) {

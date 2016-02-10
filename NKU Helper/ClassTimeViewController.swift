@@ -221,16 +221,6 @@ class ClassTimeViewController: UIViewController, UIScrollViewDelegate, WXApiDele
     
     @IBAction func shareClassTable(sender: UIBarButtonItem) {
         
-        guard WXApi.isWXAppInstalled() && WXApi.isWXAppSupportApi() else {
-            let alert = UIAlertController(title: "分享错误", message: "未安装微信或微信版本过低", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "安装最新版微信", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
-                UIApplication.sharedApplication().openURL(NSURL(string: WXApi.getWXAppInstallUrl())!)
-            }))
-            alert.addAction(UIAlertAction(title: "算了", style: UIAlertActionStyle.Cancel, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
-            return
-        }
-        
         let columnWidth:CGFloat = UIScreen.mainScreen().bounds.width / 6
         
         // 获取星期的headView
@@ -286,22 +276,26 @@ class ClassTimeViewController: UIViewController, UIScrollViewDelegate, WXApiDele
         let req = SendMessageToWXReq()
         req.bText = false;
         req.message = message
-        
-        let alert = UIAlertController(title: "选择你想要分享的方式", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
-        alert.addAction(UIAlertAction(title: "分享给微信好友", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
-            req.scene = 0  //聊天界面
-            WXApi.sendReq(req)
-        }))
-        alert.addAction(UIAlertAction(title: "分享到朋友圈", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
-            req.scene = 1  //朋友圈
-            WXApi.sendReq(req)
-        }))
-        alert.addAction(UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel, handler: { (action) -> Void in
-            alert.dismissViewControllerAnimated(true, completion: nil)
-        }))
-        self.presentViewController(alert, animated: true, completion: nil)
-        
-        
+
+        let shareParams = NSMutableDictionary()
+        shareParams.SSDKSetupShareParamsByText("我的课程表", images: combinedImage, url: nil, title: "课程表", type: SSDKContentType.Image)
+        ShareSDK.showShareActionSheet(nil, items: nil, shareParams: shareParams) { (state, platformType, userData, contentEntity, ErrorType, end) -> Void in
+            switch (state) {
+            case .Success:
+                self.presentViewController(ErrorHandler.alertWithAlertTitle("分享成功", message: nil, cancelButtonTitle: "好"), animated: true, completion: nil)
+            case .Fail:
+                if platformType == .SubTypeQZone {
+                    self.presentViewController(ErrorHandler.alertWithAlertTitle("分享失败", message: "QQ空间暂不支持图片分享", cancelButtonTitle: "好"), animated: true, completion: nil)
+                }
+                else {
+                    self.presentViewController(ErrorHandler.alert(ErrorHandler.shareFail()), animated: true, completion: nil)
+                }
+            case .Cancel:
+                break;
+            default:
+                break;
+            }
+        }        
     }
     
     // MARK: ScrollViewDelegate

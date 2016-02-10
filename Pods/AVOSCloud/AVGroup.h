@@ -93,7 +93,7 @@ typedef void (^AVGroupResultBlock)(AVGroup *group, NSError *error);
  */
 - (void)sendMessage:(AVMessage *)message transient:(BOOL)transient;
 
-- (void)sendMessage:(NSString *)message isTransient:(BOOL)transient AVDeprecated("2.6.4");
+- (void)sendMessage:(NSString *)message isTransient:(BOOL)transient AV_DEPRECATED("2.6.4");
 
 /*!
  *  将指定peerIds踢出group
@@ -108,7 +108,7 @@ typedef void (^AVGroupResultBlock)(AVGroup *group, NSError *error);
  */
 - (void)kickPeerIds:(NSArray *)peerIds callback:(AVArrayResultBlock)callback;
 
-- (BOOL)kick:(NSArray *)peerIds AVDeprecated("2.6.4");
+- (BOOL)kick:(NSArray *)peerIds AV_DEPRECATED("2.6.4");
 
 /*!
  *  邀请peerIds加入group
@@ -123,7 +123,7 @@ typedef void (^AVGroupResultBlock)(AVGroup *group, NSError *error);
  */
 - (void)invitePeerIds:(NSArray *)peerIds callback:(AVArrayResultBlock)callback;
 
-- (BOOL)invite:(NSArray *)peerIds  AVDeprecated("2.6.4");
+- (BOOL)invite:(NSArray *)peerIds  AV_DEPRECATED("2.6.4");
 
 /*!
  *  退出group
@@ -140,8 +140,8 @@ typedef void (^AVGroupResultBlock)(AVGroup *group, NSError *error);
 - (void)group:(AVGroup *)group messageSendFailed:(AVMessage *)message error:(NSError *)error;
 
 
-- (void)session:(AVSession *)session group:(AVGroup *)group didReceiveGroupMessage:(NSString *)message fromPeerId:(NSString *)peerId  AVDeprecated("2.6.4");
-- (void)session:(AVSession *)session group:(AVGroup *)group didReceiveGroupEvent:(AVGroupEvent)event memberIds:(NSArray *)memberIds  AVDeprecated("2.6.4");
-- (void)session:(AVSession *)session group:(AVGroup *)group messageSent:(NSString *)message success:(BOOL)success  AVDeprecated("2.6.4");
+- (void)session:(AVSession *)session group:(AVGroup *)group didReceiveGroupMessage:(NSString *)message fromPeerId:(NSString *)peerId  AV_DEPRECATED("2.6.4");
+- (void)session:(AVSession *)session group:(AVGroup *)group didReceiveGroupEvent:(AVGroupEvent)event memberIds:(NSArray *)memberIds  AV_DEPRECATED("2.6.4");
+- (void)session:(AVSession *)session group:(AVGroup *)group messageSent:(NSString *)message success:(BOOL)success  AV_DEPRECATED("2.6.4");
 
 @end

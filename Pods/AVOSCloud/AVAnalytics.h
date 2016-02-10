@@ -75,7 +75,7 @@ typedef NS_ENUM(int, AVReportPolicy) {
  @param value 设置成 YES,就可以开启CrashReport收集.
  @return void.
  */
-+ (void)setCrashReportEnabled:(BOOL)value AVDeprecated("使用 AVOSCloudCrashReporting.framework");
++ (void)setCrashReportEnabled:(BOOL)value AV_DEPRECATED("使用 AVOSCloudCrashReporting.framework");
 
 /** 开启CrashReport收集, 默认是关闭状态.
  
@@ -83,7 +83,7 @@ typedef NS_ENUM(int, AVReportPolicy) {
  @param completion 设置完成后回调.
  @return void.
  */
-+ (void)setCrashReportEnabled:(BOOL)value completion:(void (^)(void))completion AVDeprecated("使用 AVOSCloudCrashReporting.framework");
++ (void)setCrashReportEnabled:(BOOL)value completion:(void (^)(void))completion AV_DEPRECATED("使用 AVOSCloudCrashReporting.framework");
 
 /** 开启CrashReport收集, 并且尝试忽略异常.
  @discuss 当异常被捕获后,如果开启了CrashReport功能,异常会被自动捕获,如果开启ignore,会尝试阻止app崩溃, 如果阻止成功,则会提示(UIAlertView)用户程序可能不稳定,请用户选择继续运行还是退出.
@@ -93,7 +93,7 @@ typedef NS_ENUM(int, AVReportPolicy) {
  @param ignore 设置成YES,可以尝试忽略异常.
  */
 
-+ (void)setCrashReportEnabled:(BOOL)value andIgnore:(BOOL)ignore AVDeprecated("使用 AVOSCloudCrashReporting.framework");
++ (void)setCrashReportEnabled:(BOOL)value andIgnore:(BOOL)ignore AV_DEPRECATED("使用 AVOSCloudCrashReporting.framework");
 
 
 /** 开启CrashReport收集, 并且尝试忽略异常.
@@ -105,7 +105,7 @@ typedef NS_ENUM(int, AVReportPolicy) {
  @param alertQuit `退出`按钮的文字
  @param alertContinue `继续`按钮的文字
  */
-+ (void)setCrashReportEnabled:(BOOL)value withIgnoreAlertTitle:(NSString*)alertTitle andMessage:(NSString*)alertMsg andQuitTitle:(NSString*)alertQuit andContinueTitle:(NSString*)alertContinue AVDeprecated("使用 AVOSCloudCrashReporting.framework");
++ (void)setCrashReportEnabled:(BOOL)value withIgnoreAlertTitle:(NSString*)alertTitle andMessage:(NSString*)alertMsg andQuitTitle:(NSString*)alertQuit andContinueTitle:(NSString*)alertContinue AV_DEPRECATED("使用 AVOSCloudCrashReporting.framework");
 
 
 /** 设置是否打印sdk的log信息,默认不开启
@@ -133,7 +133,7 @@ typedef NS_ENUM(int, AVReportPolicy) {
  https://leancloud.cn/stat.html?appid=YOUR_APP_ID&os=ios#/statconfig/trans_strategoy
  */
 
-+ (void)start AVDeprecated("1.4.3以后不再需要，请前往在线配置进行配置");
++ (void)start AV_DEPRECATED("1.4.3以后不再需要，请前往在线配置进行配置");
 
 /** 开启统计,默认以AV_BATCH方式发送log. 1.4.3以后不再需要，请前往在线配置进行配置。
  https://leancloud.cn/stat.html?appid=YOUR_APP_ID&os=ios#/statconfig/trans_strategoy
@@ -141,7 +141,7 @@ typedef NS_ENUM(int, AVReportPolicy) {
  @param rp 发送策略.
  @param cid 渠道名称,为nil或@""时,默认会被被当作@"App Store"渠道
  */
-+ (void)startWithReportPolicy:(AVReportPolicy)rp channelId:(NSString *)cid AVDeprecated("1.4.3以后不再需要，请前往在线配置进行配置");
++ (void)startWithReportPolicy:(AVReportPolicy)rp channelId:(NSString *)cid AV_DEPRECATED("1.4.3以后不再需要，请前往在线配置进行配置");
 
 
 /** 跟踪 app 打开情况
