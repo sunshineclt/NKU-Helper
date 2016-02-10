@@ -49,6 +49,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>YYText.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>pop.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -67,6 +72,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>31FAC4F4F72A3E58B2762637C48AFD9E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>4BE42DB6DF6A3DE525D05F5B914C4918</key>
 		<dict>
 			<key>primary</key>
@@ -77,27 +87,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6FDDA54031B6FACC00C938D811E26E5F</key>
+		<key>88F9E2582586B6DAA935914999F9E455</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>73C661DAA689999202DE05FF37B2D0D1</key>
+		<key>AB345E5676F2BED8C1C88AC8595A0333</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7553CFBA296B8099C5B498927247C342</key>
+		<key>AD16EA1E30C8BB919D2F62CA15F1B727</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D99274ED1F1F60BCF21680CA00F0ECEB</key>
+		<key>ADFAAE5AD96AD260273616D6D586381D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E62CB7F72981D666A2A3C2402BEA380D</key>
+		<key>CF5391ED2C79412496E56E10A7782E8C</key>
 		<dict>
 			<key>primary</key>
 			<true/>

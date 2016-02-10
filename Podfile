@@ -10,6 +10,7 @@ pod 'MJRefresh'
 pod 'NJKWebViewProgress'
 pod 'Alamofire'
 pod 'SVProgressHUD'
+pod 'YYText'
 
 target 'NKU Helper' do
 end

@@ -91,6 +91,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-NKU Helper/NJKWebViewProgress.framework"
   install_framework "Pods-NKU Helper/SVProgressHUD.framework"
   install_framework "Pods-NKU Helper/UAProgressView.framework"
+  install_framework "Pods-NKU Helper/YYText.framework"
   install_framework "Pods-NKU Helper/pop.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -101,6 +102,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-NKU Helper/NJKWebViewProgress.framework"
   install_framework "Pods-NKU Helper/SVProgressHUD.framework"
   install_framework "Pods-NKU Helper/UAProgressView.framework"
+  install_framework "Pods-NKU Helper/YYText.framework"
   install_framework "Pods-NKU Helper/pop.framework"
 fi
 if [[ "$CONFIGURATION" == "ad hoc Distribution" ]]; then
@@ -111,5 +113,6 @@ if [[ "$CONFIGURATION" == "ad hoc Distribution" ]]; then
   install_framework "Pods-NKU Helper/NJKWebViewProgress.framework"
   install_framework "Pods-NKU Helper/SVProgressHUD.framework"
   install_framework "Pods-NKU Helper/UAProgressView.framework"
+  install_framework "Pods-NKU Helper/YYText.framework"
   install_framework "Pods-NKU Helper/pop.framework"
 fi
