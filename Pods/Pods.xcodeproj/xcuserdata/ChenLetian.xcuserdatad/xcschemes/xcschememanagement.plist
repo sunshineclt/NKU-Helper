@@ -9,11 +9,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>CBStoreHouseRefreshControl.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>DZNEmptyDataSet.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -62,11 +57,6 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>092E6BDD85955229F4373EED6CAF687C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>16F31C27D7691C472C7158A34C79FC10</key>
 		<dict>
 			<key>primary</key>
@@ -87,27 +77,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5407F113F9301E4E2579D6504B7D90C9</key>
+		<key>6FDDA54031B6FACC00C938D811E26E5F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6A6EAD283E0FA60CDC331041684D19F3</key>
+		<key>73C661DAA689999202DE05FF37B2D0D1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C30BE231E3C973DD8D4B68FB21194D1A</key>
+		<key>7553CFBA296B8099C5B498927247C342</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CC25490DCE2C7EB83DE240BE7CE21BF6</key>
+		<key>D99274ED1F1F60BCF21680CA00F0ECEB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E2ECB349D5A976FE695FF48C08251E20</key>
+		<key>E62CB7F72981D666A2A3C2402BEA380D</key>
 		<dict>
 			<key>primary</key>
 			<true/>

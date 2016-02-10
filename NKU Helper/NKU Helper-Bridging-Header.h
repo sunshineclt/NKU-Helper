@@ -2,9 +2,7 @@
 //  Use this file to import your target's public headers that you would like to expose to Swift.
 //
 
-#import "Base64.h"
 #import <CommonCrypto/CommonHMAC.h>
-#import "CBStoreHouseRefreshControl.h"
 @import pop;
 #import "UAProgressView.h"
 #import "MBProgressHUD.h"
@@ -29,6 +27,3 @@
 
 //新浪微博SDK头文件
 #import "WeiboSDK.h"
-
-//人人SDK头文件
-#import <RennSDK/RennSDK.h>

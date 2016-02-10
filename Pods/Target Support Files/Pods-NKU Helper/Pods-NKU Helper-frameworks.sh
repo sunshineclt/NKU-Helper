@@ -85,7 +85,6 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-NKU Helper/Alamofire.framework"
-  install_framework "Pods-NKU Helper/CBStoreHouseRefreshControl.framework"
   install_framework "Pods-NKU Helper/DZNEmptyDataSet.framework"
   install_framework "Pods-NKU Helper/MBProgressHUD.framework"
   install_framework "Pods-NKU Helper/MJRefresh.framework"
@@ -96,7 +95,6 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-NKU Helper/Alamofire.framework"
-  install_framework "Pods-NKU Helper/CBStoreHouseRefreshControl.framework"
   install_framework "Pods-NKU Helper/DZNEmptyDataSet.framework"
   install_framework "Pods-NKU Helper/MBProgressHUD.framework"
   install_framework "Pods-NKU Helper/MJRefresh.framework"
@@ -107,7 +105,6 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
 fi
 if [[ "$CONFIGURATION" == "ad hoc Distribution" ]]; then
   install_framework "Pods-NKU Helper/Alamofire.framework"
-  install_framework "Pods-NKU Helper/CBStoreHouseRefreshControl.framework"
   install_framework "Pods-NKU Helper/DZNEmptyDataSet.framework"
   install_framework "Pods-NKU Helper/MBProgressHUD.framework"
   install_framework "Pods-NKU Helper/MJRefresh.framework"
