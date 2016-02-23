@@ -194,8 +194,9 @@
                                         <constraint firstItem="ND7-9B-Sx9" firstAttribute="top" secondItem="2w3-Fj-mpM" secondAttribute="topMargin" id="AB0-ao-T4h"/>
                                         <constraint firstItem="kY7-rS-zUv" firstAttribute="leading" secondItem="2w3-Fj-mpM" secondAttribute="leading" id="C6K-J5-xaH"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="ND7-9B-Sx9" secondAttribute="bottom" id="F4q-Co-sXp"/>
-                                        <constraint firstItem="eeD-1y-CcV" firstAttribute="leading" secondItem="kY7-rS-zUv" secondAttribute="trailing" constant="8" id="P5T-QU-wc8"/>
+                                        <constraint firstItem="eeD-1y-CcV" firstAttribute="leading" secondItem="kY7-rS-zUv" secondAttribute="trailing" constant="8" symbolic="YES" id="P5T-QU-wc8"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="eeD-1y-CcV" secondAttribute="bottom" id="UbR-1K-VOl"/>
+                                        <constraint firstItem="VlN-d2-zin" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="eeD-1y-CcV" secondAttribute="trailing" constant="8" symbolic="YES" id="aBb-0x-waf"/>
                                         <constraint firstItem="ND7-9B-Sx9" firstAttribute="trailing" secondItem="2w3-Fj-mpM" secondAttribute="trailingMargin" id="eTF-Us-rKO"/>
                                         <constraint firstItem="ND7-9B-Sx9" firstAttribute="leading" secondItem="VlN-d2-zin" secondAttribute="trailing" constant="8" symbolic="YES" id="eu2-dI-mIZ"/>
                                         <constraint firstAttribute="bottom" secondItem="kY7-rS-zUv" secondAttribute="bottom" id="f60-48-smc"/>
@@ -1842,7 +1843,7 @@
         <image name="课程" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="xh3-MK-Bwg"/>
+        <segue reference="Ka6-Bc-r7P"/>
         <segue reference="vQd-Gp-Doc"/>
         <segue reference="uE5-gI-bjZ"/>
     </inferredMetricsTieBreakers>
