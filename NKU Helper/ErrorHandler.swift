@@ -59,7 +59,7 @@ struct ErrorHandler {
     }
     struct EvaluateSystemNotOpen:ErrorHandlerProtocol {
         static let title = "评教系统未开"
-        static let message = "若评教系统实际已开放请练习开发者"
+        static let message = "若评教系统实际已开放请联系开发者"
         static let cancelButtonTitle = "好"
     }
     struct EvaluateHasDone:ErrorHandlerProtocol {
