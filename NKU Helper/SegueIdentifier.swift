@@ -13,4 +13,5 @@ struct SegueIdentifier {
     static let CreateAlarmedToDo = "CreateAlarmedToDo"
     static let showGrade = "showGrade"
     static let evaluateDetail = "evaluateDetail"
+    static let showClassSearchDetail = "showClassSearchDetail"
 }

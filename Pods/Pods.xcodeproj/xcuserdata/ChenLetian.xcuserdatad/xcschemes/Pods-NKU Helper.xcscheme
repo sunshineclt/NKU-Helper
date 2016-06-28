@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '3FD95F66F8A263707F7494C3'
+               BlueprintIdentifier = '7502B27BA103F802D6D4FEFE'
                BlueprintName = 'Pods-NKU Helper'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'Pods_NKU_Helper.framework'>
