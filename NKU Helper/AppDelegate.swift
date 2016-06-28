@@ -100,7 +100,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, WXAp
             }
             else {
                 preferredColors = NSMutableArray()
-                for (var i=0;i<Colors.colors.count;i++) {
+                for _ in 0 ..< Colors.colors.count {
                     preferredColors?.addObject(1)
                 }
                 PreferredColorAgent.sharedInstance.saveData(preferredColors!)

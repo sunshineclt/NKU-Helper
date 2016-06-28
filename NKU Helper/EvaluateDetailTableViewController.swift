@@ -103,7 +103,7 @@ extension EvaluateDetailTableViewController: EvaluateDetailStepperProtocol {
     
     func getQuestionIndexFromIndexPath(indexPath: NSIndexPath) -> Int {
         var index = 0
-        for var i=0;i<indexPath.section;i++ {
+        for i in 0 ..< indexPath.section {
             index += detailEvaluateList[i].question.count
         }
         index += indexPath.row

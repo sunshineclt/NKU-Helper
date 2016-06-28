@@ -82,7 +82,7 @@ class Course: NSObject, NSCoding {
         var course = NSKeyedUnarchiver.unarchiveObjectWithData(courseData) as! Course
         var courseDay = course.day
         while (courseDay != weekday) {
-            i++
+            i += 1
             if i>=courses!.count {
                 break;
             }
@@ -92,7 +92,7 @@ class Course: NSObject, NSCoding {
         }
         while courseDay == weekday {
             todayCourses.append(course)
-            i++
+            i += 1
             if (i<=courses!.count-1) {
                 courseData = courses!.objectAtIndex(i) as! NSData
                 course = NSKeyedUnarchiver.unarchiveObjectWithData(courseData) as! Course

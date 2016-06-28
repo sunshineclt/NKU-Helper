@@ -10,7 +10,7 @@
 *  存储访问类的协议
 */
 protocol StoreProtocol {
-    typealias dataForm
+    associatedtype dataForm
     var key:String {get}
     func getData() -> dataForm?
     func saveData(data: dataForm)

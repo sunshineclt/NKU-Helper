@@ -50,7 +50,7 @@ class NKNetworkEvaluate: NKNetworkBase {
         let regularExpression3 = try! NSRegularExpression(pattern: "(.*?)(index=)(.)(.*?)", options: .CaseInsensitive)
         let matches = regularExpression1.matchesInString(mainHtml, options: .ReportProgress, range: NSMakeRange(0, (mainHtml as NSString).length))
         var lessonsToEvaluate = [ClassToEvaluate]()
-        for var i=0; i < matches.count; i++ {
+        for i in 0 ..< matches.count {
             let lesson = (mainHtml as NSString).substringWithRange(matches[i].rangeAtIndex(2)) as NSString
             let items = regularExpression2.matchesInString(lesson as String, options: .ReportProgress, range: NSMakeRange(0, (lesson as NSString).length))
             

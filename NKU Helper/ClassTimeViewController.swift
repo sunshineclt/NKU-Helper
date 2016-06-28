@@ -45,7 +45,7 @@ class ClassTimeViewController: UIViewController, UIScrollViewDelegate, WXApiDele
                 courseHandler.getAllCourse()
             case .NotLoggedin:
                 let nc = NSNotificationCenter.defaultCenter()
-                nc.addObserver(self, selector: "refreshClassTimeTable:", name: "loginComplete", object: nil)
+                nc.addObserver(self, selector: #selector(ClassTimeViewController.refreshClassTimeTable(_:)), name: "loginComplete", object: nil)
                 self.performSegueWithIdentifier(SegueIdentifier.Login, sender: nil)
             case .UnKnown:
                 self.presentViewController(ErrorHandler.alert(ErrorHandler.NetworkError()), animated: true, completion: nil)
@@ -159,7 +159,7 @@ class ClassTimeViewController: UIViewController, UIScrollViewDelegate, WXApiDele
                     self.refreshBarButton.enabled = true
                 case .NotLoggedin:
                     let nc = NSNotificationCenter.defaultCenter()
-                    nc.addObserver(self, selector: "refreshClassTimeTable:", name: "loginComplete", object: nil)
+                    nc.addObserver(self, selector: #selector(ClassTimeViewController.refreshClassTimeTable(_:)), name: "loginComplete", object: nil)
                     self.performSegueWithIdentifier(SegueIdentifier.Login, sender: nil)
                 case .UnKnown:
                     self.presentViewController(ErrorHandler.alert(ErrorHandler.NetworkError()), animated: true, completion: nil)
@@ -188,7 +188,7 @@ class ClassTimeViewController: UIViewController, UIScrollViewDelegate, WXApiDele
                     }
                 case .NotLoggedin:
                     let nc:NSNotificationCenter = NSNotificationCenter.defaultCenter()
-                    nc.addObserver(self, selector: "showTestTime", name: "loginComplete", object: nil)
+                    nc.addObserver(self, selector: #selector(ClassTimeViewController.showTestTime), name: "loginComplete", object: nil)
                     self.performSegueWithIdentifier(SegueIdentifier.Login, sender: nil)
                 case .UnKnown:
                     self.presentViewController(ErrorHandler.alert(ErrorHandler.NetworkError()), animated: true, completion: nil)

@@ -22,7 +22,7 @@ class NKNetworkEvaluateSubmit: NKNetworkBase {
         let url = NSURL(string: "http://222.30.32.10/evaluate/stdevatea/queryTargetAction.do")!
         let req = NSMutableURLRequest(URL: url)
         var data = String(format: "operation=Store")
-        for var i=0;i<grade.count;i++ {
+        for i in 0 ..< grade.count {
             let gradeString = "&array[\(i)]=\(grade[i])"
             data = data.stringByAppendingString(gradeString)
         }

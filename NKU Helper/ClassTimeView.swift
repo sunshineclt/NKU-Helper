@@ -40,7 +40,7 @@ class ClassTimeView: UIView {
 
         headScrollView.contentSize = CGSizeMake(columnWidth * 8, 30)
         
-        for (var i=1;i<=7;i++) {
+        for i in 1...7 {
             let column = UIView(frame: CGRectMake(columnWidth * CGFloat(i), 0, columnWidth, 30))
             column.backgroundColor = UIColor.whiteColor()
             let weekday = UILabel()
@@ -64,7 +64,7 @@ class ClassTimeView: UIView {
         
         classScrollView.contentSize = CGSizeMake(columnWidth * 8, rowHeight*14)
         
-        for (var i=0;i<=13;i++) {
+        for i in 0...13 {
             let row:UIView = UIView(frame: CGRectMake(0, CGFloat(i) * rowHeight, columnWidth * 8, CGFloat(rowHeight)))
             row.backgroundColor = UIColor(red: 236/255, green: 240/255, blue: 241/255, alpha: 1)
             row.layer.borderWidth = 0.5
@@ -149,7 +149,7 @@ class ClassTimeView: UIView {
         drawBackground()
         
         var usedColor:[Int] = []
-        for var i=0;i<Colors.colors.count;i++ {
+        for _ in 0 ..< Colors.colors.count {
             usedColor.append(1)
         }
         
@@ -157,7 +157,7 @@ class ClassTimeView: UIView {
         
         let userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         let courses:NSArray = userDefaults.objectForKey("courses") as! NSArray
-        for (var i=0;i<courses.count;i++) {
+        for i in 0 ..< courses.count {
             let currentData = courses.objectAtIndex(i) as! NSData
             let current = NSKeyedUnarchiver.unarchiveObjectWithData(currentData) as! Course
             let day = current.day
@@ -195,7 +195,7 @@ class ClassTimeView: UIView {
                 
                 while (usedColor[colorIndex] == 0) || (likedColors.objectAtIndex(colorIndex) as! Int == 0) {
                     colorIndex = Int(arc4random_uniform(UInt32(Colors.colors.count)))
-                    count++
+                    count += 1
                     if count>1000 {
                         break
                     }
@@ -224,7 +224,7 @@ class ClassTimeView: UIView {
             course.addSubview(classroomLabel)
             course.tag = i
             let tapGesture = UITapGestureRecognizer()
-            tapGesture.addTarget(viewController, action: "showCourseDetail:")
+            tapGesture.addTarget(viewController, action: #selector(ClassTimeViewController.showCourseDetail(_:)))
             course.addGestureRecognizer(tapGesture)
             
             self.classScrollView.addSubview(course)
@@ -235,7 +235,7 @@ class ClassTimeView: UIView {
     func updateClassTimeTableWithWeek(week: Int) {
         let userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         let courses:NSArray = userDefaults.objectForKey("courses") as! NSArray
-        for (var i=0;i<courses.count;i++) {
+        for i in 0 ..< courses.count {
             let currentData = courses.objectAtIndex(i) as! NSData
             let current = NSKeyedUnarchiver.unarchiveObjectWithData(currentData) as! Course
             let weekOddEven = current.weekOddEven

@@ -31,7 +31,7 @@ class TestTimeTableViewController: UITableViewController {
             
         }
         var resultExp = regularExp1!.matchesInString(html as String, options: NSMatchingOptions.ReportProgress, range: NSMakeRange(0, html.length))
-        for (var i=0;i<resultExp.count;i++) {
+        for i in 0 ..< resultExp.count {
             let temp:NSString = html.substringWithRange(NSMakeRange(resultExp[i].range.location, 750))
      //       print("\n**********************\n")
      //       print(temp)
@@ -44,7 +44,7 @@ class TestTimeTableViewController: UITableViewController {
             }
             var index = regularExp2!.matchesInString(temp as String, options: NSMatchingOptions.ReportProgress, range: NSMakeRange(0, temp.length))
             var dictionary:[String:String] = [:]
-            for (var j=0;j<index.count;j++) {
+            for j in 0 ..< index.count {
                 switch j {
                 case 1,2,4,5:continue
                 case 0,3,6,7,8:

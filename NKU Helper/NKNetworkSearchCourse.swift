@@ -40,7 +40,7 @@ class NKNetworkSearchCourse: NKNetworkBase{
                 }
                 let data = json["data"].arrayValue
                 var searchResult = [CourseSelecting]()
-                for (var i=1; i<data.count; i++) {
+                for i in 1 ..< data.count {
                     let now = data[i].arrayValue
                     let jiHuaNei = now[2].intValue
                     let xianXuan = now[3].intValue
@@ -69,7 +69,7 @@ class NKNetworkSearchCourse: NKNetworkBase{
     func searchCourseWithClassID(ID: String) {
         let url = "http://115.28.141.95:25000/class/classname/" + NSString(string: ID).stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
         Alamofire.request(.GET, url).responseJSON { (response: Response<AnyObject, NSError>) -> Void in
-            guard let result = response.result.value as? NSDictionary else {
+            guard (response.result.value as? NSDictionary) != nil else {
                 self.delegate?.didReceiveSearchResult([])
                 return
             }
@@ -80,7 +80,7 @@ class NKNetworkSearchCourse: NKNetworkBase{
     func searchCourseWithTeachername(teachername: String) {
         let url = "http://115.28.141.95:25000/class/classname/" + NSString(string: teachername).stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
         Alamofire.request(.GET, url).responseJSON { (response: Response<AnyObject, NSError>) -> Void in
-            guard let result = response.result.value as? NSDictionary else {
+            guard (response.result.value as? NSDictionary) != nil else {
                 self.delegate?.didReceiveSearchResult([])
                 return
             }
@@ -91,7 +91,7 @@ class NKNetworkSearchCourse: NKNetworkBase{
     func searchCourseWithDepartcode(departcode: String) {
         let url = "http://115.28.141.95:25000/class/classname/" + NSString(string: departcode).stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
         Alamofire.request(.GET, url).responseJSON { (response: Response<AnyObject, NSError>) -> Void in
-            guard let result = response.result.value as? NSDictionary else {
+            guard (response.result.value as? NSDictionary) != nil else {
                 self.delegate?.didReceiveSearchResult([])
                 return
             }

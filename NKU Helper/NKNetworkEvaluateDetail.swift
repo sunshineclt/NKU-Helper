@@ -46,15 +46,15 @@ class NKNetworkEvaluateDetail: NKNetworkBase {
         var questionIndex = 0
         
         var detailEvaluateList = [DetailEvaluateSection]()
-        for var i=0; i < headerMatches.count; i++ {
+        for i in 0 ..< headerMatches.count {
             let questionAmount = ((header as NSString).substringWithRange(headerMatches[i].rangeAtIndex(2)) as NSString).integerValue / 30
             let title = (header as NSString).substringWithRange(headerMatches[i].rangeAtIndex(4))
             
             var questions = [Question]()
-            for var j=0; j < questionAmount; j++ {
+            for _ in 0 ..< questionAmount {
                 let content = (html as NSString).substringWithRange(questionMatches[questionIndex].rangeAtIndex(2))
                 let grade = ((html as NSString).substringWithRange(questionMatches[questionIndex].rangeAtIndex(4)) as NSString).integerValue
-                questionIndex++
+                questionIndex += 1
                 questions.append(Question(content: content, grade: grade))
             }
             detailEvaluateList.append(DetailEvaluateSection(title: title, question: questions))

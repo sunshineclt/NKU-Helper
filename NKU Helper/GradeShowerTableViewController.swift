@@ -31,7 +31,7 @@ class GradeShowerTableViewController: UITableViewController, NKNetworkFetchGrade
                     SVProgressHUD.show()
                     gradeGetter.fetchGrade()
                 case .NotLoggedin:
-                    NSNotificationCenter.defaultCenter().addObserver(self, selector: "loginComplete", name: "loginComplete", object: nil)
+                    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GradeShowerTableViewController.loginComplete), name: "loginComplete", object: nil)
                     self.performSegueWithIdentifier(SegueIdentifier.Login, sender: "GradeShowerTableViewController")
                 case .UnKnown:
                     self.presentViewController(ErrorHandler.alert(ErrorHandler.NetworkError()), animated: true, completion: nil)

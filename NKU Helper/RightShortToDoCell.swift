@@ -16,7 +16,7 @@ class RightShortToDoCell: UITableViewCell {
 
     @IBOutlet var checkBox: UIImageView! {
         didSet {
-            let tapGesture = UITapGestureRecognizer(target: self, action: "CheckBoxClicked")
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(RightShortToDoCell.CheckBoxClicked))
             tapGesture.numberOfTapsRequired = 1
             tapGesture.numberOfTouchesRequired = 1
             tapGesture.delegate = self

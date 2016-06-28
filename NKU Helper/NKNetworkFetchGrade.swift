@@ -58,7 +58,7 @@ class NKNetworkFetchGrade: NKNetworkBase {
         
         let matches = regularExpression1.matchesInString(interceptedHtml as String, options: .ReportProgress, range: NSMakeRange(0, interceptedHtml.length))
         
-        for var i=0; i<matches.count; i++ {
+        for i in 0 ..< matches.count {
             let r1 = matches[i]
             var now:NSString
             if (i < matches.count-1){

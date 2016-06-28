@@ -50,7 +50,7 @@ class ThingToDo: NSObject, NSCoding {
                 let aThingData = thingData as! NSData
                 let aThing = NSKeyedUnarchiver.unarchiveObjectWithData(aThingData) as! ThingToDo
                 if !aThing.done {
-                    count++
+                    count += 1
                 }
             }
         }

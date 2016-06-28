@@ -14,7 +14,7 @@ class EvaluateTableViewController: UITableViewController {
         super.viewDidLoad()
         self.tableView.emptyDataSetDelegate = self
         self.tableView.emptyDataSetSource = self
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "evaluateSubmitDidSuccess", name: "evaluateSubmitSuccess", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EvaluateTableViewController.evaluateSubmitDidSuccess), name: "evaluateSubmitSuccess", object: nil)
         SVProgressHUD.show()
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) { () -> Void in
             let loginResult = NKNetworkIsLogin.isLoggedin()
@@ -27,7 +27,7 @@ class EvaluateTableViewController: UITableViewController {
                     SVProgressHUD.show()
                     evaluater.getEvaluateList()
                 case .NotLoggedin:
-                    NSNotificationCenter.defaultCenter().addObserver(self, selector: "loginComplete", name: "loginComplete", object: nil)
+                    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EvaluateTableViewController.loginComplete), name: "loginComplete", object: nil)
                     self.performSegueWithIdentifier(SegueIdentifier.Login, sender: "EvaluateTableViewController")
                 case .UnKnown:
                     self.presentViewController(ErrorHandler.alert(ErrorHandler.NetworkError()), animated: true, completion: nil)

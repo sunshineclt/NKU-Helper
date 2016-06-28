@@ -23,7 +23,7 @@ class NotiCenterTableViewController: UITableViewController {
         
         super.viewDidLoad()
         
-        let footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: "fetchMoreData")
+        let footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(NotiCenterTableViewController.fetchMoreData))
         footer.setTitle("正在加载更多通知", forState: MJRefreshState.Refreshing)
         footer.setTitle("没有更多通知啦", forState: MJRefreshState.NoMoreData)
         footer.stateLabel?.font = UIFont(name: "HelveticaNeue", size: 15)
@@ -68,7 +68,7 @@ class NotiCenterTableViewController: UITableViewController {
                 MBProgressHUD.hideHUDForView(self.view, animated: true)
                 self.isUpdatingData = false
                 self.tableView.mj_footer.endRefreshing()
-                self.currentPage++
+                self.currentPage += 1
                 switch (result) {
                 case .Success(notis: let notis):
                     self.noti = notis

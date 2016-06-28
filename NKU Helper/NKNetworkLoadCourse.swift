@@ -83,7 +83,7 @@ class NKNetworkLoadCourse: NKNetworkBase {
         var courseCount:Int = -1
         let courseStatus:NSMutableArray = NSMutableArray()
         var eachDaySectionCourseStatus:NSMutableArray = NSMutableArray()
-        for (var i=0;i<matches.count;i++) {
+        for i in 0 ..< matches.count {
             let presentRange = matches.objectAtIndex(i) as! NSTextCheckingResult
             if presentRange.range.length > 67 {
                 let urlString = "http://222.30.32.10/xsxk/selectedAllAction.do?" + html.substringWithRange(presentRange.range)
@@ -102,13 +102,13 @@ class NKNetworkLoadCourse: NKNetworkBase {
                 
                 let data = NSKeyedArchiver.archivedDataWithRootObject(courseDetailInfo)
                 courses.addObject(data)
-                courseCount++
-                for (var j=0;j<sectionNumber;j++) {
+                courseCount += 1
+                for _ in 0 ..< sectionNumber {
                     eachDaySectionCourseStatus.addObject(courseCount)
                 }
                 startSection = startSection + sectionNumber
                 if startSection > 14 {
-                    day++
+                    day += 1
                     startSection = 1
                     courseStatus.addObject(eachDaySectionCourseStatus)
                     eachDaySectionCourseStatus = NSMutableArray()
@@ -117,10 +117,10 @@ class NKNetworkLoadCourse: NKNetworkBase {
                 
             }
             else {
-                startSection++
+                startSection += 1
                 eachDaySectionCourseStatus.addObject(-1)
                 if startSection > 14 {
-                    day++
+                    day += 1
                     startSection = 1
                     courseStatus.addObject(eachDaySectionCourseStatus)
                     eachDaySectionCourseStatus = NSMutableArray()
