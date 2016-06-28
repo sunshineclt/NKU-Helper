@@ -113,7 +113,7 @@ extern NSString *const kAVPushTargetPlatformWindowsPhone;
  *
  *  @param dateToPush   Defaults is now.
  */
-- (void)setPushDate:(NSDate*)dateToPush;
+- (void)setPushDate:(NSDate *)dateToPush;
 
 
 /*!
@@ -325,20 +325,6 @@ extern NSString *const kAVPushTargetPlatformWindowsPhone;
                                   block:(AVBooleanResultBlock)block;
 
 /*! @name Handling Notifications */
-
-/*!
- A default handler for push notifications while the app is active to mimic the behavior of iOS push notifications while the app is backgrounded or not running. Call this from didReceiveRemoteNotification.
- @param userInfo The userInfo dictionary you get in didReceiveRemoteNotification.
- */
-+ (void)handlePush:(NSDictionary *)userInfo;
-
-/*! @name Managing Channel Subscriptions */
-
-/*!
- Store the device token locally for push notifications. Usually called from you main app delegate's didRegisterForRemoteNotificationsWithDeviceToken.
- @param deviceToken Either as an NSData straight from didRegisterForRemoteNotificationsWithDeviceToken or as an NSString if you converted it yourself.
- */
-+ (void)storeDeviceToken:(id)deviceToken;
 
 /*!
  Get all the channels that this device is subscribed to.

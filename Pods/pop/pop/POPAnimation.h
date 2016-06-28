@@ -9,8 +9,8 @@
 
 #import <Foundation/NSObject.h>
 
-#import <pop/POPAnimationTracer.h>
-#import <pop/POPGeometry.h>
+#import "POPAnimationTracer.h"
+#import "POPGeometry.h"
 
 @class CAMediaTimingFunction;
 

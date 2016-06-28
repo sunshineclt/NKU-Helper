@@ -3,7 +3,7 @@
 //
 
 #import <CommonCrypto/CommonHMAC.h>
-@import pop;
+#import "pop/POP.h"
 #import "UAProgressView.h"
 #import "MBProgressHUD.h"
 #import <AVOSCloud/AVOSCloud.h>

@@ -2,13 +2,66 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>Alamofire.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>DZNEmptyDataSet.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>MBProgressHUD.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>MJRefresh.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>NJKWebViewProgress.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-NKU Helper.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SVProgressHUD.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SwiftyJSON.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>UAProgressView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>YYText.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>pop.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>00CCEF878E00E54C675220B8D6076AB1</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>16F31C27D7691C472C7158A34C79FC10</key>
 		<dict>
 			<key>primary</key>
@@ -19,7 +72,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>31834B632AA508CD3D6566B49C9B4494</key>
+		<key>2BD69C31585AB71071B8313DFEBD128D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2EAC2AC33AA114969AD35BBF60A24767</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>39AFD03214BB17DDC88BA1AA439E7EDF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -29,32 +92,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5070AB81C62E05BD6A7128D4B7934547</key>
+		<key>56CCDC0E9A1D0F17F9B2D65A2D0032E2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>74C8B833E452F92AE1AF10FDB6D3B1FC</key>
+		<key>689C0C1BE6B4EFC0C2C95A8E2C556485</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>78B7930C227EFA873FFFEDAB84902D26</key>
+		<key>C912EC9A21A05C029C0F32B1CA96F0A2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A532DFE6B2EB961E4B1A31AF1F5062C5</key>
+		<key>E00059E843E33FE7D276944CCC828769</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>F6050CB9C20133936F551B08325A5466</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F93FE99635DE611E9B41DCE91F070A77</key>
 		<dict>
 			<key>primary</key>
 			<true/>
