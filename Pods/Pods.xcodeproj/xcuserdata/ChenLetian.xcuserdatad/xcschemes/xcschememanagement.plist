@@ -34,12 +34,12 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods.xcscheme</key>
+		<key>SVProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>SVProgressHUD.xcscheme</key>
+		<key>SwiftyJSON.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -62,7 +62,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>092E6BDD85955229F4373EED6CAF687C</key>
+		<key>00CCEF878E00E54C675220B8D6076AB1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -73,6 +73,11 @@
 			<true/>
 		</dict>
 		<key>2799857F5478460E7F21F7EE970535DB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>31834B632AA508CD3D6566B49C9B4494</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -92,17 +97,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5407F113F9301E4E2579D6504B7D90C9</key>
+		<key>74C8B833E452F92AE1AF10FDB6D3B1FC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6A6EAD283E0FA60CDC331041684D19F3</key>
+		<key>78B7930C227EFA873FFFEDAB84902D26</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>88F9E2582586B6DAA935914999F9E455</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A532DFE6B2EB961E4B1A31AF1F5062C5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -122,27 +132,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C30BE231E3C973DD8D4B68FB21194D1A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>CC25490DCE2C7EB83DE240BE7CE21BF6</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>CF5391ED2C79412496E56E10A7782E8C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E2ECB349D5A976FE695FF48C08251E20</key>
+		<key>F6050CB9C20133936F551B08325A5466</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F6050CB9C20133936F551B08325A5466</key>
+		<key>F93FE99635DE611E9B41DCE91F070A77</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2FFB27A35CF079017F7A1FFC /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 737BD7F9EE56DE65FDF07935 /* Pods.framework */; };
 		E9084D831BB94EB800423566 /* RightShortToDoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9084D821BB94EB800423566 /* RightShortToDoCell.swift */; };
 		E90AE22E1A8F813900AD0D78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90AE22D1A8F813900AD0D78 /* AppDelegate.swift */; };
 		E90AE2381A8F813900AD0D78 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E90AE2371A8F813900AD0D78 /* Images.xcassets */; };
@@ -16,6 +15,9 @@
 		E90E872B1C40FCE700E6BE3A /* SelectCourseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90E872A1C40FCE700E6BE3A /* SelectCourseTableViewController.swift */; };
 		E90E872D1C41002E00E6BE3A /* NKNetworkSelectCourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90E872C1C41002E00E6BE3A /* NKNetworkSelectCourse.swift */; };
 		E90E87431C4139FD00E6BE3A /* NKNetworkSearchCourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90E87421C4139FD00E6BE3A /* NKNetworkSearchCourse.swift */; };
+		E91D2E561C846778002605F8 /* SearchCourseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91D2E551C846778002605F8 /* SearchCourseTableViewController.swift */; };
+		E91D2E581C8468B6002605F8 /* SearchCourseDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91D2E571C8468B6002605F8 /* SearchCourseDetailTableViewController.swift */; };
+		E91D2E5A1C846CA1002605F8 /* ClassInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91D2E591C846CA1002605F8 /* ClassInfoTableViewCell.swift */; };
 		E91E5F4F1A90FAED009F3B2B /* GradeShowerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91E5F4E1A90FAED009F3B2B /* GradeShowerTableViewController.swift */; };
 		E91E5F551A9103DF009F3B2B /* GradeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91E5F541A9103DF009F3B2B /* GradeCell.swift */; };
 		E926CD751AB33B1700A5076A /* NKU.plist in Resources */ = {isa = PBXBuildFile; fileRef = E926CD741AB33B1700A5076A /* NKU.plist */; };
@@ -34,6 +36,8 @@
 		E94BD97C1BAC043500B76E03 /* LeftToDoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94BD97B1BAC043500B76E03 /* LeftToDoCell.swift */; };
 		E94BD97E1BAC054E00B76E03 /* CellIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94BD97D1BAC054E00B76E03 /* CellIdentifier.swift */; };
 		E94BD9801BAC06E300B76E03 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94BD97F1BAC06E300B76E03 /* Course.swift */; };
+		E95B0F2D1C83E18700448F97 /* CourseSelecting.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95B0F2C1C83E18700448F97 /* CourseSelecting.swift */; };
+		E95B0F2F1C83F0B800448F97 /* NKNetworkDepartCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95B0F2E1C83F0B800448F97 /* NKNetworkDepartCode.swift */; };
 		E95C8F631AAF50A400D3D8EE /* day00.png in Resources */ = {isa = PBXBuildFile; fileRef = E95C8F421AAF50A400D3D8EE /* day00.png */; };
 		E95C8F641AAF50A400D3D8EE /* day01.png in Resources */ = {isa = PBXBuildFile; fileRef = E95C8F431AAF50A400D3D8EE /* day01.png */; };
 		E95C8F651AAF50A400D3D8EE /* day02.png in Resources */ = {isa = PBXBuildFile; fileRef = E95C8F441AAF50A400D3D8EE /* day02.png */; };
@@ -123,6 +127,7 @@
 		E97176781B149292004DADB2 /* CourseDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97176771B149292004DADB2 /* CourseDetailTableViewController.swift */; };
 		E971EB821BAAFEE8005E6E55 /* PlusCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E971EB811BAAFEE8005E6E55 /* PlusCircleView.swift */; };
 		E9762F701C48DE77002CEF03 /* NKNetworkFetchNoti.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9762F6F1C48DE77002CEF03 /* NKNetworkFetchNoti.swift */; };
+		E981C12D1C84A02D005CBF4E /* ClassModificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E981C12C1C84A02D005CBF4E /* ClassModificationTableViewCell.swift */; };
 		E988B5371AB005DF006818FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E988B5361AB005DF006818FA /* Main.storyboard */; };
 		E98E2B471C4638C800CF82BE /* StoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98E2B461C4638C800CF82BE /* StoreProtocol.swift */; };
 		E98E2B491C4639BB00CF82BE /* UserAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98E2B481C4639BB00CF82BE /* UserAgent.swift */; };
@@ -176,6 +181,7 @@
 		E9D754FB1C6ADB8500619BAC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E9D754FD1C6ADB8500619BAC /* Localizable.strings */; };
 		E9F674EC1BA80E7500BEF640 /* RSA.html in Resources */ = {isa = PBXBuildFile; fileRef = E9F674EB1BA80E7500BEF640 /* RSA.html */; };
 		E9FE26141B137FEC00FCBB32 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FE26131B137FEC00FCBB32 /* Colors.swift */; };
+		FA8323BB3FEBDA22E484C692 /* Pods_NKU_Helper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F98372E2657DA0ADA1D2B0B8 /* Pods_NKU_Helper.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -192,10 +198,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		092FFFB1D9501C75468CA1E0 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		5F85E0F537B7CC150B0807CC /* Pods.ad hoc distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods.ad hoc distribution.xcconfig"; path = "Pods/Target Support Files/Pods/Pods.ad hoc distribution.xcconfig"; sourceTree = "<group>"; };
 		737BD7F9EE56DE65FDF07935 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		768626AD8152D2BC69C8FB07 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		BB98963ED7A92CE2BCC1D677 /* Pods-NKU Helper.ad hoc distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NKU Helper.ad hoc distribution.xcconfig"; path = "Pods/Target Support Files/Pods-NKU Helper/Pods-NKU Helper.ad hoc distribution.xcconfig"; sourceTree = "<group>"; };
+		D3DD6AB1D5C63D3F39A68E3A /* Pods-NKU Helper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NKU Helper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NKU Helper/Pods-NKU Helper.debug.xcconfig"; sourceTree = "<group>"; };
+		D725F754DD7BA9939E9C6C79 /* Pods-NKU Helper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NKU Helper.release.xcconfig"; path = "Pods/Target Support Files/Pods-NKU Helper/Pods-NKU Helper.release.xcconfig"; sourceTree = "<group>"; };
 		E9084D821BB94EB800423566 /* RightShortToDoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightShortToDoCell.swift; sourceTree = "<group>"; };
 		E90AE2281A8F813900AD0D78 /* NKU Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NKU Helper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E90AE22C1A8F813900AD0D78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -206,6 +212,9 @@
 		E90E872A1C40FCE700E6BE3A /* SelectCourseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectCourseTableViewController.swift; sourceTree = "<group>"; };
 		E90E872C1C41002E00E6BE3A /* NKNetworkSelectCourse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkSelectCourse.swift; sourceTree = "<group>"; };
 		E90E87421C4139FD00E6BE3A /* NKNetworkSearchCourse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkSearchCourse.swift; sourceTree = "<group>"; };
+		E91D2E551C846778002605F8 /* SearchCourseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCourseTableViewController.swift; sourceTree = "<group>"; };
+		E91D2E571C8468B6002605F8 /* SearchCourseDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCourseDetailTableViewController.swift; sourceTree = "<group>"; };
+		E91D2E591C846CA1002605F8 /* ClassInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassInfoTableViewCell.swift; sourceTree = "<group>"; };
 		E91E5F4A1A90FA9E009F3B2B /* NKU Helper-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NKU Helper-Bridging-Header.h"; sourceTree = "<group>"; };
 		E91E5F4E1A90FAED009F3B2B /* GradeShowerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeShowerTableViewController.swift; sourceTree = "<group>"; };
 		E91E5F541A9103DF009F3B2B /* GradeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeCell.swift; sourceTree = "<group>"; };
@@ -225,6 +234,8 @@
 		E94BD97B1BAC043500B76E03 /* LeftToDoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftToDoCell.swift; sourceTree = "<group>"; };
 		E94BD97D1BAC054E00B76E03 /* CellIdentifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellIdentifier.swift; sourceTree = "<group>"; };
 		E94BD97F1BAC06E300B76E03 /* Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
+		E95B0F2C1C83E18700448F97 /* CourseSelecting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseSelecting.swift; sourceTree = "<group>"; };
+		E95B0F2E1C83F0B800448F97 /* NKNetworkDepartCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkDepartCode.swift; sourceTree = "<group>"; };
 		E95C8F421AAF50A400D3D8EE /* day00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = day00.png; sourceTree = "<group>"; };
 		E95C8F431AAF50A400D3D8EE /* day01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = day01.png; sourceTree = "<group>"; };
 		E95C8F441AAF50A400D3D8EE /* day02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = day02.png; sourceTree = "<group>"; };
@@ -313,6 +324,7 @@
 		E971EB811BAAFEE8005E6E55 /* PlusCircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlusCircleView.swift; sourceTree = "<group>"; };
 		E975B7D21C154F3100240D4C /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		E9762F6F1C48DE77002CEF03 /* NKNetworkFetchNoti.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkFetchNoti.swift; sourceTree = "<group>"; };
+		E981C12C1C84A02D005CBF4E /* ClassModificationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassModificationTableViewCell.swift; sourceTree = "<group>"; };
 		E988B5361AB005DF006818FA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E98DC7291B8B13D100273510 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E98DC72B1B8B13D600273510 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -387,6 +399,7 @@
 		E9D754FE1C6ADB9B00619BAC /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		E9F674EB1BA80E7500BEF640 /* RSA.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = RSA.html; sourceTree = "<group>"; };
 		E9FE26131B137FEC00FCBB32 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		F98372E2657DA0ADA1D2B0B8 /* Pods_NKU_Helper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NKU_Helper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -419,8 +432,8 @@
 				E92FB3F11BF3726F004C6B7C /* SystemConfiguration.framework in Frameworks */,
 				E9C2ECC01B183E8B005C1F5F /* MessageUI.framework in Frameworks */,
 				E9D754EC1C6ACDC500619BAC /* ShareSDKConnector.framework in Frameworks */,
-				2FFB27A35CF079017F7A1FFC /* Pods.framework in Frameworks */,
 				E9D754DF1C6ACDC500619BAC /* ShareSDKExtension.framework in Frameworks */,
+				FA8323BB3FEBDA22E484C692 /* Pods_NKU_Helper.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,9 +443,9 @@
 		8F5DEA3CECF40E65ECEB1512 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				768626AD8152D2BC69C8FB07 /* Pods.debug.xcconfig */,
-				092FFFB1D9501C75468CA1E0 /* Pods.release.xcconfig */,
-				5F85E0F537B7CC150B0807CC /* Pods.ad hoc distribution.xcconfig */,
+				D3DD6AB1D5C63D3F39A68E3A /* Pods-NKU Helper.debug.xcconfig */,
+				D725F754DD7BA9939E9C6C79 /* Pods-NKU Helper.release.xcconfig */,
+				BB98963ED7A92CE2BCC1D677 /* Pods-NKU Helper.ad hoc distribution.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -459,6 +472,7 @@
 				E98DC7291B8B13D100273510 /* Foundation.framework */,
 				E9C2ECBF1B183E8B005C1F5F /* MessageUI.framework */,
 				737BD7F9EE56DE65FDF07935 /* Pods.framework */,
+				F98372E2657DA0ADA1D2B0B8 /* Pods_NKU_Helper.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -518,11 +532,10 @@
 				E90E87231C40E58B00E6BE3A /* NKNetworkBase.swift */,
 				E92BDD041C62230F005A5CB8 /* 登陆 */,
 				E98E2B4F1C46492900CF82BE /* NKNetworkLoadCourse.swift */,
-				E90E872C1C41002E00E6BE3A /* NKNetworkSelectCourse.swift */,
-				E90E87421C4139FD00E6BE3A /* NKNetworkSearchCourse.swift */,
 				E9762F6F1C48DE77002CEF03 /* NKNetworkFetchNoti.swift */,
 				E9929C9A1C49068000D508C8 /* NKNetworkFetchGrade.swift */,
 				E95F93D81C4FC04500CEEC12 /* NKNetworkFetchUserInfo.swift */,
+				E9C3A0D71C7CB3F3009C6B21 /* 选课 */,
 				E92BDD031C622304005A5CB8 /* 评教 */,
 			);
 			name = Network;
@@ -532,6 +545,10 @@
 			isa = PBXGroup;
 			children = (
 				E90E872A1C40FCE700E6BE3A /* SelectCourseTableViewController.swift */,
+				E91D2E551C846778002605F8 /* SearchCourseTableViewController.swift */,
+				E91D2E591C846CA1002605F8 /* ClassInfoTableViewCell.swift */,
+				E91D2E571C8468B6002605F8 /* SearchCourseDetailTableViewController.swift */,
+				E981C12C1C84A02D005CBF4E /* ClassModificationTableViewCell.swift */,
 			);
 			name = SelectCourse;
 			sourceTree = "<group>";
@@ -786,6 +803,16 @@
 			name = RefreshControl;
 			sourceTree = "<group>";
 		};
+		E9C3A0D71C7CB3F3009C6B21 /* 选课 */ = {
+			isa = PBXGroup;
+			children = (
+				E90E872C1C41002E00E6BE3A /* NKNetworkSelectCourse.swift */,
+				E90E87421C4139FD00E6BE3A /* NKNetworkSearchCourse.swift */,
+				E95B0F2E1C83F0B800448F97 /* NKNetworkDepartCode.swift */,
+			);
+			name = "选课";
+			sourceTree = "<group>";
+		};
 		E9C3EF581BB2BB8000D1C91D /* Structures */ = {
 			isa = PBXGroup;
 			children = (
@@ -932,6 +959,7 @@
 			isa = PBXGroup;
 			children = (
 				E94BD97F1BAC06E300B76E03 /* Course.swift */,
+				E95B0F2C1C83E18700448F97 /* CourseSelecting.swift */,
 				E93C0F171BB54B54001303CF /* ThingToDo.swift */,
 				E9F3D2C21BB7F69100255F4B /* Helper Class */,
 				E9ACA1221AB2D6E7001083C1 /* RefreshControl */,
@@ -946,12 +974,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E90AE24A1A8F813900AD0D78 /* Build configuration list for PBXNativeTarget "NKU Helper" */;
 			buildPhases = (
+				A29095FB8E5D7CBA6942C33A /* Check Pods Manifest.lock */,
 				E90AE2241A8F813900AD0D78 /* Sources */,
 				E90AE2251A8F813900AD0D78 /* Frameworks */,
 				E90AE2261A8F813900AD0D78 /* Resources */,
 				E93C0C9B1BB54077001303CF /* Embed Frameworks */,
 				1FD4CA02164C766DCBCED682 /* Embed Pods Frameworks */,
 				E9D0A6DA1C43573100FF1A38 /* Run Script */,
+				AB48FB367663E7A7A79DD6EE /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1101,7 +1131,37 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NKU Helper/Pods-NKU Helper-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A29095FB8E5D7CBA6942C33A /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		AB48FB367663E7A7A79DD6EE /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NKU Helper/Pods-NKU Helper-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E9D0A6DA1C43573100FF1A38 /* Run Script */ = {
@@ -1126,6 +1186,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E98F94D81AA318EF00885992 /* FunctionTableViewController.swift in Sources */,
+				E95B0F2D1C83E18700448F97 /* CourseSelecting.swift in Sources */,
+				E981C12D1C84A02D005CBF4E /* ClassModificationTableViewCell.swift in Sources */,
+				E91D2E5A1C846CA1002605F8 /* ClassInfoTableViewCell.swift in Sources */,
 				E98E2B4E1C46469700CF82BE /* CourseAgent.swift in Sources */,
 				E95F93DD1C50CEAA00CEEC12 /* EvaluateTableViewController.swift in Sources */,
 				E9762F701C48DE77002CEF03 /* NKNetworkFetchNoti.swift in Sources */,
@@ -1136,12 +1199,14 @@
 				E95F93EB1C512B8B00CEEC12 /* DetailEvaluateInfo.swift in Sources */,
 				E92B2D011B48DB89008825A3 /* CalendarConverter.swift in Sources */,
 				E93C0F181BB54B54001303CF /* ThingToDo.swift in Sources */,
+				E91D2E561C846778002605F8 /* SearchCourseTableViewController.swift in Sources */,
 				E94BC1FA1C476C5000BD9726 /* NKNetworkValidateCodeGetter.swift in Sources */,
 				E9C3EF5A1BB2BCB600D1C91D /* ErrorHandler.swift in Sources */,
 				E99D670A1C16C9EB00E27B08 /* Notification.swift in Sources */,
 				E9462A481B24A6480002C21A /* TestTimeTableViewCell.swift in Sources */,
 				E90E87431C4139FD00E6BE3A /* NKNetworkSearchCourse.swift in Sources */,
 				E95F93E91C51024800CEEC12 /* NKNetworkEvaluateDetail.swift in Sources */,
+				E95B0F2F1C83F0B800448F97 /* NKNetworkDepartCode.swift in Sources */,
 				E95F93C61C4E6CD100CEEC12 /* Grade.swift in Sources */,
 				E96419D21AA8971B00397691 /* AccountTableViewCell.swift in Sources */,
 				E95F93E51C50FAEB00CEEC12 /* EvaluateDetailTableViewController.swift in Sources */,
@@ -1161,6 +1226,7 @@
 				E94BD97C1BAC043500B76E03 /* LeftToDoCell.swift in Sources */,
 				E90E87261C40E5C700E6BE3A /* NKNetworkIsLogin.swift in Sources */,
 				E94BD9801BAC06E300B76E03 /* Course.swift in Sources */,
+				E91D2E581C8468B6002605F8 /* SearchCourseDetailTableViewController.swift in Sources */,
 				E9CCF4BA1ABC6578002076F2 /* ColorChooseTableViewCell.swift in Sources */,
 				E971EB821BAAFEE8005E6E55 /* PlusCircleView.swift in Sources */,
 				E91E5F4F1A90FAED009F3B2B /* GradeShowerTableViewController.swift in Sources */,
@@ -1244,7 +1310,7 @@
 		};
 		E90A3B321BB829830015EA0D /* ad hoc Distribution */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5F85E0F537B7CC150B0807CC /* Pods.ad hoc distribution.xcconfig */;
+			baseConfigurationReference = BB98963ED7A92CE2BCC1D677 /* Pods-NKU Helper.ad hoc distribution.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = NO;
@@ -1363,7 +1429,7 @@
 		};
 		E90AE24B1A8F813900AD0D78 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 768626AD8152D2BC69C8FB07 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = D3DD6AB1D5C63D3F39A68E3A /* Pods-NKU Helper.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = NO;
@@ -1403,7 +1469,7 @@
 		};
 		E90AE24C1A8F813900AD0D78 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 092FFFB1D9501C75468CA1E0 /* Pods.release.xcconfig */;
+			baseConfigurationReference = D725F754DD7BA9939E9C6C79 /* Pods-NKU Helper.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = NO;

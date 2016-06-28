@@ -19,12 +19,14 @@ class Course: NSObject, NSCoding {
     var day:Int
     var startSection:Int
     var sectionNumber:Int
+    var startWeek:Int?
+    var endWeek:Int?
     
     var endSection:Int {
         return startSection + sectionNumber - 1
     }
     
-    init(ID:String, number:String, name:String, classroom:String, weekOddEven:String, teacherName:String, day:Int, startSection:Int, sectionNumber:Int) {
+    init(ID:String, number:String, name:String, classroom:String, weekOddEven:String, teacherName:String, day:Int, startSection:Int, sectionNumber:Int, startWeek:Int? = nil, endWeek:Int? = nil) {
         
         self.ID = ID
         self.number = number

@@ -51,7 +51,7 @@ class FunctionTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 5
     }
 
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -62,7 +62,9 @@ class FunctionTableViewController: UITableViewController {
             cell.backgroundColor = UIColor(red: 131/255, green: 176/255, blue: 252/255, alpha: 1)
         case 2: //评教
             cell.backgroundColor = UIColor(red: 255/255, green: 110/255, blue: 0/255, alpha: 1)
-        case 3: //更多
+        case 3:
+            cell.backgroundColor = UIColor.whiteColor()
+        case 4: //更多
             cell.backgroundColor = UIColor(red: 250/255, green: 191/255, blue: 131/255, alpha: 1)
         default:
             break
@@ -83,7 +85,11 @@ class FunctionTableViewController: UITableViewController {
             let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("evaluate")!
             cell.userInteractionEnabled = isLoggedIn
             return cell
-        case 3: //更多
+        case 3:
+            let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.selectCourse)!
+            cell.userInteractionEnabled = isLoggedIn
+            return cell
+        case 4: //更多
             let cell = tableView.dequeueReusableCellWithIdentifier("MoreFunction")!
             cell.userInteractionEnabled = isLoggedIn
             return cell
