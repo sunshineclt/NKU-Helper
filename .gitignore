@@ -163,3 +163,10 @@ fastlane/screenshots
 Icon?
 ehthumbs.db
 Thumbs.db
+.idea/
+NKU Helper/NJKWebViewProgress/
+NKU Helper/RxWebView/
+NKU Helper/RxWebViewController/
+NKU Helper/ShareSDK/Support/PlatformSDK/QQSDK/TencentOpenAPI.framework/Resources/
+NKU Helper/ShareSDK/Support/PlatformSDK/RenRenSDK/
+Pods/Local Podspecs/
