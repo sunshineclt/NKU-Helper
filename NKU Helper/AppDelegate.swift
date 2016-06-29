@@ -19,8 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, WXAp
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        /**
-         To set up Flurry(App Analyse), Fabric.Crashlytics(Crash Analyse), AVOS(Push Service), WXApi(WX share)
+        /*
+         To set up Flurry(App Analyse), Fabric.Crashlytics(Crash Analyse), AVOS(Push Service), ShareSDK
          */
         func setUpAllTools() {
             Flurry.setCrashReportingEnabled(true)
@@ -73,7 +73,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, WXAp
             }
         }
         
-        /**
+        /*
          set up App Appearance
          */
         func setUpApperance() {
@@ -83,7 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, WXAp
             UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.blackColor()]
         }
         
-        /**
+        /*
          load Preferred Colors
          */
         func loadPreferredColors() {
@@ -107,7 +107,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, WXAp
             }
         }
         
-        /**
+        /*
          set up notification
          */
         func setUpNotification() {
@@ -122,10 +122,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, WXAp
         loadPreferredColors()
         setUpNotification()
 
-        /// 推送来的消息需要打开哪个页面
+        // 推送来的消息需要打开哪个页面
         if let launchOption = launchOptions {
             
-            let notificationPayload:NSDictionary = launchOption[UIApplicationLaunchOptionsRemoteNotificationKey] as! NSDictionary
+            let notificationPayload = launchOption[UIApplicationLaunchOptionsRemoteNotificationKey] as! NSDictionary
             if let action = notificationPayload.objectForKey("action") as? NSDictionary {
                 let actionType1 = action.objectForKey("type1") as? Int  // 一级TabViewController的导航
                 let actionType2 = action.objectForKey("type2") as? Int  // 二级TableViewController的导航
@@ -163,7 +163,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, WXAp
         print("Register For Remote Notification With Device Token Unsuccessfully")
     }
     
-    /**
+    /*
      推送来的消息需要打开哪个页面
      */
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
