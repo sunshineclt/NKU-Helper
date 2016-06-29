@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'F6050CB9C20133936F551B08325A5466'
-               BlueprintName = 'MBProgressHUD'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'MBProgressHUD.framework'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "F6050CB9C20133936F551B08325A5466"
+               BlueprintName = "MBProgressHUD"
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "MBProgressHUD.framework">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
