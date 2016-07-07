@@ -63,12 +63,16 @@ class TodayViewController: UIViewController {
             self.performSegueWithIdentifier(SegueIdentifier.Login, sender: "TodayViewController")
             return
         }
-        guard let courses = Course.coursesOnWeekday(CalendarConverter.weekdayInt()) else {
+        do {
+            let courses = try Course.coursesOnWeekday(CalendarConverter.weekdayInt())
+            todayCourse = courses
+            self.courseTableView.reloadData()
+        } catch StoragedDataError.NoClassesInStorage {
             self.presentViewController(ErrorHandler.alert(ErrorHandler.ClassNotExist()), animated: true, completion: nil)
-            return
+        } catch {
+            
         }
-        todayCourse = courses
-        self.courseTableView.reloadData()
+        
     }
     
     var isAddMode = false

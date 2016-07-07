@@ -72,45 +72,53 @@ class Course: NSObject, NSCoding {
      
      - parameter weekday: 星期几（周日为0，周一为1）
      
+     - throws: StoragedDataError.NoClassesInStorage 存储中没有课程信息
+     
      - returns: 那一天的所有课程
      */
-    class func coursesOnWeekday(weekday:Int) -> [Course]? {
+    class func coursesOnWeekday(weekday:Int) throws -> [Course] {
         
         var todayCourses = [Course]()
         let userDefaults = NSUserDefaults.standardUserDefaults()
-        let courses = userDefaults.objectForKey("courses") as? NSArray
-        guard (courses != nil) else {
-            return nil
-        }
-        guard (courses!.count != 0) else {
-            return todayCourses
-        }
-        var i = 0
-        var courseData = courses!.objectAtIndex(i) as! NSData
-        var course = NSKeyedUnarchiver.unarchiveObjectWithData(courseData) as! Course
-        var courseDay = course.day
-        while (courseDay != weekday) {
-            i += 1
-            if i>=courses!.count {
-                break;
+        if let courseDatas = userDefaults.objectForKey("courses") as? [NSData] {
+            guard (courseDatas.count != 0) else {
+                return todayCourses
             }
-            courseData = courses!.objectAtIndex(i) as! NSData
-            course = NSKeyedUnarchiver.unarchiveObjectWithData(courseData) as! Course
-            courseDay = course.day
-        }
-        while courseDay == weekday {
-            todayCourses.append(course)
-            i += 1
-            if (i<=courses!.count-1) {
-                courseData = courses!.objectAtIndex(i) as! NSData
+            
+            // 从前往后找到这一天的起始课程
+            var index = 0
+            var courseData = courseDatas[index]
+            var course = NSKeyedUnarchiver.unarchiveObjectWithData(courseData) as! Course
+            var courseDay = course.day
+            while (courseDay != weekday) {
+                index += 1
+                if index >= courseDatas.count {
+                    break;
+                }
+                courseData = courseDatas[index]
                 course = NSKeyedUnarchiver.unarchiveObjectWithData(courseData) as! Course
                 courseDay = course.day
             }
-            else {
-                break
+            
+            // 把到下一天为止的所有课程加入结果
+            while courseDay == weekday {
+                todayCourses.append(course)
+                index += 1
+                if (index >= courseDatas.count) {
+                    break
+                }
+                courseData = courseDatas[index]
+                course = NSKeyedUnarchiver.unarchiveObjectWithData(courseData) as! Course
+                courseDay = course.day
             }
+            
+            return todayCourses
         }
-        return todayCourses
+        else {
+            // 存储中没有课程
+            throw StoragedDataError.NoClassesInStorage
+        }
+
     }
     
 }
