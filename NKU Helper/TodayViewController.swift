@@ -3,7 +3,7 @@
 //  NKU Helper
 //
 //  Created by 陈乐天 on 15/9/18.
-//  Copyright © 2015年 &#38472;&#20048;&#22825;. All rights reserved.
+//  Copyright © 2015年 陈乐天. All rights reserved.
 //
 
 import UIKit
@@ -38,18 +38,14 @@ class TodayViewController: UIViewController {
     // MARK: ViewControllerLifeCycle
     override func viewDidLoad() {
         
+        super.viewDidLoad()
+        
         courseTableView.estimatedRowHeight = 200
         courseTableView.rowHeight = UITableViewAutomaticDimension
         ThingToDo.updateStoredThings()
         thingsToDo = ThingToDo.getThings()
         self.thingsTableView.tableFooterView = UIView()
         
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        
-        super.viewWillAppear(animated)
-
     }
     
     override func viewDidAppear(animated: Bool) {
