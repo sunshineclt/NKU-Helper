@@ -48,10 +48,12 @@ class NKNetworkLogin: NKNetworkBase, UIWebViewDelegate {
         self.block = block
         self.validateCode = validateCode
         
-        let accountInfo = UserAgent().getData()
-        if accountInfo != nil {
-            userID = accountInfo!.UserID
-            password = accountInfo!.Password
+        do {
+            let accountInfo = try UserAgent().getData()
+            userID = accountInfo.UserID
+            password = accountInfo.Password
+        } catch {
+            
         }
         
         let webView = UIWebView()

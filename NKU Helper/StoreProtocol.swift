@@ -12,6 +12,6 @@
 protocol StoreProtocol {
     associatedtype dataForm
     var key:String {get}
-    func getData() -> dataForm?
+    func getData() throws -> dataForm
     func saveData(data: dataForm)
 }

@@ -55,14 +55,13 @@ class TodayViewController: UIViewController {
         newToDo?.becomeFirstResponder()
         self.thingsTableView.reloadData()
         
-        guard UserAgent.sharedInstance.getData() != nil else {
-            self.performSegueWithIdentifier(SegueIdentifier.Login, sender: "TodayViewController")
-            return
-        }
         do {
+            try UserAgent.sharedInstance.getData()
             let courses = try Course.coursesOnWeekday(CalendarHelper.getWeekdayInt())
             todayCourse = courses
             self.courseTableView.reloadData()
+        } catch StoragedDataError.NoUserInStorage {
+            self.performSegueWithIdentifier(SegueIdentifier.Login, sender: "TodayViewController")
         } catch StoragedDataError.NoClassesInStorage {
             self.presentViewController(ErrorHandler.alert(ErrorHandler.ClassNotExist()), animated: true, completion: nil)
         } catch {

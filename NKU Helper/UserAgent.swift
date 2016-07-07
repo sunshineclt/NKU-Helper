@@ -24,18 +24,28 @@ class UserAgent:StoreAgent, StoreProtocol {
     /**
      访问用户数据
      
+     - throws: StoragedDataError.NoUserInStorage
+     
      - returns: 用户ID和密码组成的元组
      */
-    func getData() -> dataForm? {
-        let userInfo = userDefaults.objectForKey(key) as? NSDictionary
-        guard userInfo != nil else {
-            return nil
+    func getData() throws -> dataForm {
+        
+        if let userInfo = userDefaults.objectForKey(key) as? NSDictionary {
+            let userID = userInfo.objectForKey("userID") as! String
+            let password = userInfo.objectForKey("password") as! String
+            return (userID, password)
         }
-        let userID = userInfo!.objectForKey("userID") as! String
-        let password = userInfo!.objectForKey("password") as! String
-        return (userID, password)
+        else {
+            throw StoragedDataError.NoUserInStorage
+        }
+        
     }
     
+    /**
+     存储用户信息（暂未实现）
+     
+     - parameter data: 需要存储的用户信息
+     */
     func saveData(data: dataForm) {
         
     }

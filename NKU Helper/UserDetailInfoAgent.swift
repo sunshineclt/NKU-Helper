@@ -24,24 +24,32 @@ class UserDetailInfoAgent:StoreAgent, StoreProtocol {
     /**
      访问用户详细数据
      
+     - throws: StoragedDataError.NoUserInStorage
+     
      - returns: 用户ID、密码、姓名、入学时间、录取院系、录取专业组成的元组
      */
-    func getData() -> dataForm? {
+    func getData() throws -> dataForm {
         
-        let userInfo = userDefaults.objectForKey(key) as? NSDictionary
-        guard userInfo != nil else {
-            return nil
+        if let userInfo = userDefaults.objectForKey(key) as? NSDictionary {
+            let userID = userInfo.objectForKey("userID") as! String
+            let password = userInfo.objectForKey("password") as! String
+            let name = userInfo.objectForKey("name") as! String
+            let timeEnteringSchool = userInfo.objectForKey("timeEnteringSchool") as! String
+            let departmentAdmitted = userInfo.objectForKey("departmentAdmitted") as! String
+            let majorAdmitted = userInfo.objectForKey("majorAdmitted") as! String
+            return (UserID: userID, Password: password, Name: name, TimeEnteringSchool: timeEnteringSchool, DepartmentAdmitted: departmentAdmitted, MajorAdmitted: majorAdmitted)
         }
-        let userID = userInfo!.objectForKey("userID") as! String
-        let password = userInfo!.objectForKey("password") as! String
-        let name = userInfo!.objectForKey("name") as! String
-        let timeEnteringSchool = userInfo!.objectForKey("timeEnteringSchool") as! String
-        let departmentAdmitted = userInfo!.objectForKey("departmentAdmitted") as! String
-        let majorAdmitted = userInfo!.objectForKey("majorAdmitted") as! String
-        return (UserID: userID, Password: password, Name: name, TimeEnteringSchool: timeEnteringSchool, DepartmentAdmitted: departmentAdmitted, MajorAdmitted: majorAdmitted)
-
+        else {
+            throw StoragedDataError.NoUserInStorage
+        }
+        
     }
     
+    /**
+     存储用户详细数据
+     
+     - parameter data: 需要存储的用户详细信息
+     */
     func saveData(data: dataForm) {
         
     }

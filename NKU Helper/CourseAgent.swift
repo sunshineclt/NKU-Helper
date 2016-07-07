@@ -22,12 +22,21 @@ class CourseAgent: StoreAgent, StoreProtocol {
     let key = "courses"
     
     /**
-     访问课程
+     获取所有课程
+     
+     - throws: StoragedDataError.NoClassesInStorage
      
      - returns: 课程组成的NSArray
      */
-    func getData() -> dataForm? {
-        return userDefaults.objectForKey(key) as? NSArray
+    func getData() throws -> dataForm {
+        
+        if let courseDatas = userDefaults.objectForKey(key) as? NSArray {
+            return courseDatas
+        }
+        else {
+            throw StoragedDataError.NoClassesInStorage
+        }
+        
     }
     
     func saveData(data: dataForm) {

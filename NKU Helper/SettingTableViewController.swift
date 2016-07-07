@@ -53,16 +53,15 @@ class SettingTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-            let accountInfo = UserDetailInfoAgent.sharedInstance.getData()
-            if let user = accountInfo {
+            do {
+                let user = try UserDetailInfoAgent.sharedInstance.getData()
                 let cell = tableView.dequeueReusableCellWithIdentifier("Account") as! AccountTableViewCell
                 let timeEnteringSchool = (user.TimeEnteringSchool as NSString).substringWithRange(NSMakeRange(2, 2))
                 cell.nameLabel.text = user.Name
                 cell.userIDLabel.text = user.UserID
                 cell.departmentLabel.text = user.DepartmentAdmitted + (timeEnteringSchool as String) + "级本科生"
                 return cell
-            }
-            else {
+            } catch {
                 let cell = tableView.dequeueReusableCellWithIdentifier("AddAccount")!
                 cell.textLabel?.text = "请先登录！"
                 cell.detailTextLabel?.text = "欢迎使用NKU Helper！"

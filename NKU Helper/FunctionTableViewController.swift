@@ -12,10 +12,10 @@ class FunctionTableViewController: UITableViewController {
 
     /// 是否已经输入用户名和密码
     var isLoggedIn:Bool {
-        if let _ = UserAgent().getData() {
+        do {
+            try UserAgent.sharedInstance.getData()
             return true
-        }
-        else {
+        } catch {
             return false
         }
     }
@@ -27,11 +27,13 @@ class FunctionTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        if UserAgent().getData() == nil {
+        do {
+            try UserAgent.sharedInstance.getData()
+            self.tableView.reloadData()
+            super.viewWillAppear(animated)
+        } catch {
             self.presentViewController(ErrorHandler.alert(ErrorHandler.NotLoggedIn()), animated: true, completion: nil)
         }
-        self.tableView.reloadData()
-        super.viewWillAppear(animated)
     }
     
     override func viewDidAppear(animated: Bool) {

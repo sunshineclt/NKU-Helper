@@ -20,14 +20,23 @@ class PreferredColorAgent: StoreAgent, StoreProtocol {
     typealias dataForm = NSMutableArray
     
     let key = "preferredColors"
-    
+
     /**
      访问颜色喜好
      
+     - throws: StoragedDataError.NoColorInStorage
+     
      - returns: 颜色喜好组成的NSMutableArray
      */
-    func getData() -> dataForm? {
-        return userDefaults.objectForKey(key) as? NSMutableArray
+    func getData() throws -> dataForm {
+
+        if let colorDatas = userDefaults.objectForKey(key) as? NSMutableArray {
+            return colorDatas
+        }
+        else {
+            throw StoragedDataError.NoColorInStorage
+        }
+        
     }
     
     /**

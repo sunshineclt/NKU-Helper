@@ -68,17 +68,20 @@ class ClassTimeViewController: UIViewController, UIScrollViewDelegate, WXApiDele
     }
     
     func canDrawClassTimeTable() -> Bool {
-        let accountInfo = UserAgent.sharedInstance.getData()
-        guard let _ = accountInfo else {
+        
+        do {
+            try UserAgent.sharedInstance.getData()
+            try CourseAgent.sharedInstance.getData()
+            return true
+        } catch StoragedDataError.NoUserInStorage {
             self.presentViewController(ErrorHandler.alert(ErrorHandler.NotLoggedIn()), animated: true, completion: nil)
             return false
-        }
-        if CourseAgent.sharedInstance.getData() != nil {
-            return true
-        }
-        else {
+        } catch StoragedDataError.NoClassesInStorage {
+            return false
+        } catch {
             return false
         }
+        
     }
     
     override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
@@ -140,32 +143,34 @@ class ClassTimeViewController: UIViewController, UIScrollViewDelegate, WXApiDele
     @IBAction func refreshClassTimeTable(sender: AnyObject) {
         let nc:NSNotificationCenter = NSNotificationCenter.defaultCenter()
         nc.removeObserver(self)
-        guard let _ = UserAgent.sharedInstance.getData() else {
+        do {
+            try UserAgent.sharedInstance.getData()
+            SVProgressHUD.show()
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) { () -> Void in
+                let loginResult = NKNetworkIsLogin.isLoggedin()
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    SVProgressHUD.dismiss()
+                    switch loginResult {
+                    case .Loggedin:
+                        self.refreshBarButton.enabled = false
+                        self.classTimeView.loadBeginAnimation()
+                        let courseHandler = NKNetworkLoadCourse()
+                        courseHandler.delegate = self
+                        courseHandler.getAllCourse()
+                        self.refreshBarButton.enabled = true
+                    case .NotLoggedin:
+                        let nc = NSNotificationCenter.defaultCenter()
+                        nc.addObserver(self, selector: #selector(ClassTimeViewController.refreshClassTimeTable(_:)), name: "loginComplete", object: nil)
+                        self.performSegueWithIdentifier(SegueIdentifier.Login, sender: nil)
+                    case .UnKnown:
+                        self.presentViewController(ErrorHandler.alert(ErrorHandler.NetworkError()), animated: true, completion: nil)
+                    }
+                })
+            }
+        } catch {
             self.presentViewController(ErrorHandler.alert(ErrorHandler.NotLoggedIn()), animated: true, completion: nil)
-            return
         }
-        SVProgressHUD.show()
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) { () -> Void in
-            let loginResult = NKNetworkIsLogin.isLoggedin()
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                SVProgressHUD.dismiss()
-                switch loginResult {
-                case .Loggedin:
-                    self.refreshBarButton.enabled = false
-                    self.classTimeView.loadBeginAnimation()
-                    let courseHandler = NKNetworkLoadCourse()
-                    courseHandler.delegate = self
-                    courseHandler.getAllCourse()
-                    self.refreshBarButton.enabled = true
-                case .NotLoggedin:
-                    let nc = NSNotificationCenter.defaultCenter()
-                    nc.addObserver(self, selector: #selector(ClassTimeViewController.refreshClassTimeTable(_:)), name: "loginComplete", object: nil)
-                    self.performSegueWithIdentifier(SegueIdentifier.Login, sender: nil)
-                case .UnKnown:
-                    self.presentViewController(ErrorHandler.alert(ErrorHandler.NetworkError()), animated: true, completion: nil)
-                }
-            })
-        }
+
     }
     
     @IBAction func lookUpTestTime(sender: UIBarButtonItem) {

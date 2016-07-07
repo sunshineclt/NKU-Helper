@@ -29,25 +29,29 @@ class DetailAccountInfoTableViewController: UITableViewController {
         
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier("accountInfo")!
-            let userInfo = UserDetailInfoAgent.sharedInstance.getData()!
-            switch indexPath.row {
-            case 0:
-                cell.textLabel?.text = "姓名"
-                cell.detailTextLabel?.text = userInfo.Name
-            case 1:
-                cell.textLabel?.text = "学号"
-                cell.detailTextLabel?.text = userInfo.UserID
-            case 2:
-                cell.textLabel?.text = "入学时间"
-                cell.detailTextLabel?.text = userInfo.TimeEnteringSchool
-            case 3:
-                cell.textLabel?.text = "所在院系"
-                cell.detailTextLabel?.text = userInfo.DepartmentAdmitted
-            case 4:
-                cell.textLabel?.text = "所在专业"
-                cell.detailTextLabel?.text = userInfo.MajorAdmitted
-            default:
-                break
+            do {
+                let userInfo = try UserDetailInfoAgent.sharedInstance.getData()
+                switch indexPath.row {
+                case 0:
+                    cell.textLabel?.text = "姓名"
+                    cell.detailTextLabel?.text = userInfo.Name
+                case 1:
+                    cell.textLabel?.text = "学号"
+                    cell.detailTextLabel?.text = userInfo.UserID
+                case 2:
+                    cell.textLabel?.text = "入学时间"
+                    cell.detailTextLabel?.text = userInfo.TimeEnteringSchool
+                case 3:
+                    cell.textLabel?.text = "所在院系"
+                    cell.detailTextLabel?.text = userInfo.DepartmentAdmitted
+                case 4:
+                    cell.textLabel?.text = "所在专业"
+                    cell.detailTextLabel?.text = userInfo.MajorAdmitted
+                default:
+                    break
+                }
+            } catch {
+                
             }
             return cell
         }

@@ -81,24 +81,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, WXAp
         
         // load Preferred Colors
         func loadPreferredColors() {
-            var preferredColors = PreferredColorAgent.sharedInstance.getData()
-            if let _ = preferredColors {
-                let newPreferredColors = NSMutableArray(array: preferredColors!)
-                if Colors.colors.count > preferredColors!.count {
-                    for _ in 1...Colors.colors.count - preferredColors!.count {
+            
+            do {
+                let preferredColors = try PreferredColorAgent.sharedInstance.getData()
+                let newPreferredColors = NSMutableArray(array: preferredColors)
+                if Colors.colors.count > preferredColors.count {
+                    for _ in 1...Colors.colors.count - preferredColors.count {
                         newPreferredColors.addObject(1)
                     }
                     PreferredColorAgent.sharedInstance.saveData(newPreferredColors)
-
+                    
                 }
-            }
-            else {
-                preferredColors = NSMutableArray()
+            } catch {
+                let preferredColors = NSMutableArray()
                 for _ in 0 ..< Colors.colors.count {
-                    preferredColors?.addObject(1)
+                    preferredColors.addObject(1)
                 }
-                PreferredColorAgent.sharedInstance.saveData(preferredColors!)
+                PreferredColorAgent.sharedInstance.saveData(preferredColors)
             }
+
         }
         
         // set up notification

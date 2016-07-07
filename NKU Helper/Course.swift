@@ -72,7 +72,7 @@ class Course: NSObject, NSCoding {
      
      - parameter weekday: 星期几（周日为0，周一为1）
      
-     - throws: StoragedDataError.NoClassesInStorage 存储中没有课程信息
+     - throws: StoragedDataError.NoClassesInStorage
      
      - returns: 那一天的所有课程
      */
