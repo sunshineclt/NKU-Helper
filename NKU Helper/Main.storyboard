@@ -254,7 +254,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3ui-wR-xq6" id="zYF-uq-ZO3">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="59.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="classEvaluated" translatesAutoresizingMaskIntoConstraints="NO" id="RIf-vx-Ekg">
@@ -1204,7 +1204,7 @@
                                         <rect key="frame" x="0.0" y="28" width="304" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="c9Y-aQ-dw4" id="Kng-Gp-dCi">
-                                            <rect key="frame" x="0.0" y="0.0" width="304" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="304" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CheckBox" translatesAutoresizingMaskIntoConstraints="NO" id="v8I-6M-buP">
@@ -1500,7 +1500,7 @@
                                 <rect key="frame" x="0.0" y="114" width="600" height="132"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zy3-DQ-cbw" id="kEW-kk-CX8">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="131.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="132"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="高等代数与解析几何2-2" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PZ9-3l-k59">

@@ -19,9 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, WXAp
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        /*
-         To set up Flurry(App Analyse), Fabric.Crashlytics(Crash Analyse), AVOS(Push Service), ShareSDK
-         */
+        // To set up Flurry(App Analyse), Fabric.Crashlytics(Crash Analyse), AVOS(Push Service), ShareSDK
         func setUpAllTools() {
             Flurry.setCrashReportingEnabled(true)
             Flurry.startSession("D8H6SM7VPWF8745QMR42")
@@ -73,9 +71,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, WXAp
             }
         }
         
-        /*
-         set up App Appearance
-         */
+        // set up App Appearance
         func setUpApperance() {
             UINavigationBar.appearance().barTintColor = UIColor.whiteColor()
             UINavigationBar.appearance().tintColor = UIColor.blackColor()
@@ -83,9 +79,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, WXAp
             UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.blackColor()]
         }
         
-        /*
-         load Preferred Colors
-         */
+        // load Preferred Colors
         func loadPreferredColors() {
             var preferredColors = PreferredColorAgent.sharedInstance.getData()
             if let _ = preferredColors {
@@ -107,9 +101,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, WXAp
             }
         }
         
-        /*
-         set up notification
-         */
+        // set up notification
         func setUpNotification() {
             let settings = UIUserNotificationSettings(forTypes: [UIUserNotificationType.Badge, UIUserNotificationType.Alert, UIUserNotificationType.Sound], categories: nil)
             application.registerUserNotificationSettings(settings)
@@ -163,9 +155,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, WXAp
         print("Register For Remote Notification With Device Token Unsuccessfully")
     }
     
-    /*
-     推送来的消息需要打开哪个页面
-     */
+    // 推送来的消息需要打开哪个页面
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
         if let action = userInfo["action"] as? NSDictionary {
             let actionType1 = action.objectForKey("type1") as? Int  // 一级TabViewController的导航
