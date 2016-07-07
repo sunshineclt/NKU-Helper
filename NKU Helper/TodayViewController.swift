@@ -64,7 +64,7 @@ class TodayViewController: UIViewController {
             return
         }
         do {
-            let courses = try Course.coursesOnWeekday(CalendarConverter.weekdayInt())
+            let courses = try Course.coursesOnWeekday(CalendarHelper.getWeekdayInt())
             todayCourse = courses
             self.courseTableView.reloadData()
         } catch StoragedDataError.NoClassesInStorage {

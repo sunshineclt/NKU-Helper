@@ -3,52 +3,53 @@
 //  NKU Helper
 //
 //  Created by 陈乐天 on 15/7/5.
-//  Copyright (c) 2015年 &#38472;&#20048;&#22825;. All rights reserved.
+//  Copyright (c) 2015年 陈乐天. All rights reserved.
 //
 
 import Foundation
-class CalendarConverter: NSObject {
+
+/// 获取日期信息的帮助类，规定周日为0，周一为1
+class CalendarHelper {
     
-    static let sharedInstance = CalendarConverter()
-    
-    static func weekdayInt() -> Int {
-        
-        let date = NSDate()
-        let calender:NSCalendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)!
-        let unitFlags:NSCalendarUnit = NSCalendarUnit.Weekday
-        let components:NSDateComponents = calender.components(unitFlags, fromDate: date)
-        var weekdayInt:Int = -1
+    /**
+     获取当前日期是星期几（数字形式）
+     
+     - returns: 当前日期是星期几
+     */
+    static func getWeekdayInt() -> Int {
+
+        let components = getNowDateComponent()
         switch (components.weekday) {
         case 1:
-            weekdayInt = 6
+            return 6
         case 2:
-            weekdayInt = 0
+            return 0
         case 3:
-            weekdayInt = 1
+            return 1
         case 4:
-            weekdayInt = 2
+            return 2
         case 5:
-            weekdayInt = 3
+            return 3
         case 6:
-            weekdayInt = 4
+            return 4
         case 7:
-            weekdayInt = 5
-        default:weekdayInt = -1
+            return 5
+        default:
+            return -1
         }
-
-        return weekdayInt
         
     }
     
-    static func monthDayWeekdayString() -> (String, String, String) {
+    /**
+     获取当前月份、日期、星期几信息（字符串形式）
+     
+     - returns: 当前月份、日期、星期几信息
+     */
+    static func getMonthDayWeekdayString() -> (String, String, String) {
         
-        let date = NSDate()
-        let calender:NSCalendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)!
-        
-        let unitFlags:NSCalendarUnit = [NSCalendarUnit.Weekday, NSCalendarUnit.Month, NSCalendarUnit.Day]
-        let components:NSDateComponents = calender.components(unitFlags, fromDate: date)
-        let month:String = "\(components.month)"
-        let day:String = "\(components.day)"
+        let components = getNowDateComponent()
+        let month = "\(components.month)"
+        let day = "\(components.day)"
         var weekday:String
         switch (components.weekday) {
         case 1:
@@ -65,52 +66,32 @@ class CalendarConverter: NSObject {
             weekday = "星期五"
         case 7:
             weekday = "星期六"
-        default:weekday = "星期N"
+        default:
+            weekday = "星期N"
         }
-        
         return (month, day, weekday)
             
     }
     
-    static func weekdayTimeInt() -> (Int, Double) {
+    /**
+     获取当前时间信息（数字形式）
+     
+     - returns: 当前时间信息（为小时+分钟/60）
+     */
+    static func getTimeInt() -> Double {
         
-        let date = NSDate()
-        let calender:NSCalendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)!
-        let unitFlags:NSCalendarUnit = [NSCalendarUnit.Weekday, NSCalendarUnit.Hour, NSCalendarUnit.Minute]
-        let components:NSDateComponents = calender.components(unitFlags, fromDate: date)
-        var weekdayInt:Int = -1
-        switch (components.weekday) {
-        case 1:
-            weekdayInt = 6
-        case 2:
-            weekdayInt = 0
-        case 3:
-            weekdayInt = 1
-        case 4:
-            weekdayInt = 2
-        case 5:
-            weekdayInt = 3
-        case 6:
-            weekdayInt = 4
-        case 7:
-            weekdayInt = 5
-        default:weekdayInt = -1
-        }
-        
-        let hourInt:Double = Double(components.hour) + Double(components.minute)/60
-        
-        return (weekdayInt, hourInt)
-    }
-    
-    static func timeInt() -> Double {
-        
-        let date = NSDate()
-        let calender:NSCalendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)!
-        let unitFlags:NSCalendarUnit = [NSCalendarUnit.Hour, NSCalendarUnit.Minute]
-        let components:NSDateComponents = calender.components(unitFlags, fromDate: date)
-        let time:Double = Double(components.hour) + Double(components.minute)/60
+        let components = getNowDateComponent()
+        let time = Double(components.hour) + Double(components.minute)/60
         
         return time
+    }
+    
+    static private func getNowDateComponent() -> NSDateComponents {
+        let date = NSDate()
+        let calender = NSCalendar(identifier: NSCalendarIdentifierGregorian)!
+        let unitFlags:NSCalendarUnit = [.Weekday, .Month, .Day, .Hour, .Minute]
+        let components = calender.components(unitFlags, fromDate: date)
+        return components
     }
     
 }
