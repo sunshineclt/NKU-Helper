@@ -39,6 +39,11 @@ class CourseAgent: StoreAgent, StoreProtocol {
         
     }
     
+    /**
+     存储课程信息（暂未实现）
+     
+     - parameter data: 要存储的课程信息
+     */
     func saveData(data: dataForm) {
         
     }
