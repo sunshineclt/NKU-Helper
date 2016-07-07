@@ -84,18 +84,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, WXAp
             
             do {
                 let preferredColors = try PreferredColorAgent.sharedInstance.getData()
-                let newPreferredColors = NSMutableArray(array: preferredColors)
+                var newPreferredColors = preferredColors
                 if Colors.colors.count > preferredColors.count {
                     for _ in 1...Colors.colors.count - preferredColors.count {
-                        newPreferredColors.addObject(1)
+                        newPreferredColors.append(1)
                     }
                     PreferredColorAgent.sharedInstance.saveData(newPreferredColors)
-                    
                 }
             } catch {
-                let preferredColors = NSMutableArray()
+                var preferredColors = [Int]()
                 for _ in 0 ..< Colors.colors.count {
-                    preferredColors.addObject(1)
+                    preferredColors.append(1)
                 }
                 PreferredColorAgent.sharedInstance.saveData(preferredColors)
             }

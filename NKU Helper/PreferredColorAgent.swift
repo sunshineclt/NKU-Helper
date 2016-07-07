@@ -17,7 +17,7 @@ class PreferredColorAgent: StoreAgent, StoreProtocol {
         return sharedStoreAgent
     }
     
-    typealias dataForm = NSMutableArray
+    typealias dataForm = [Int]
     
     let key = "preferredColors"
 
@@ -30,7 +30,7 @@ class PreferredColorAgent: StoreAgent, StoreProtocol {
      */
     func getData() throws -> dataForm {
 
-        if let colorDatas = userDefaults.objectForKey(key) as? NSMutableArray {
+        if let colorDatas = userDefaults.objectForKey(key) as? [Int] {
             return colorDatas
         }
         else {
