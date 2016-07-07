@@ -3,11 +3,12 @@
 //  NKU Helper
 //
 //  Created by 陈乐天 on 15/9/25.
-//  Copyright © 2015年 &#38472;&#20048;&#22825;. All rights reserved.
+//  Copyright © 2015年 陈乐天. All rights reserved.
 //
 
 import Foundation
 
+/// Thing的类
 class ThingToDo: NSObject, NSCoding {
     
     var name:String
@@ -41,58 +42,57 @@ class ThingToDo: NSObject, NSCoding {
         aCoder.encodeObject(self.type.rawValue, forKey: "type")
     }
     
-    class func thingsLeftCount() -> Int {
+    static let userDefaults = NSUserDefaults.standardUserDefaults()
+    
+    /**
+     获取剩余事情的数量（不包括已完成的事情）
+     
+     - returns: 剩余事情的数量（不包括已完成的事情）
+     */
+    class func getLeftThingsCount() -> Int {
         var count = 0
-        let userDefaults = NSUserDefaults.standardUserDefaults()
-        let thingsOption = userDefaults.objectForKey("things") as? NSArray
-        if let things = thingsOption {
-            for thingData in things {
-                let aThingData = thingData as! NSData
-                let aThing = NSKeyedUnarchiver.unarchiveObjectWithData(aThingData) as! ThingToDo
-                if !aThing.done {
-                    count += 1
-                }
-            }
+        if let thingDatas = userDefaults.objectForKey("things") as? [NSData] {
+            count = thingDatas.map({ (thingData) -> ThingToDo in
+                return NSKeyedUnarchiver.unarchiveObjectWithData(thingData) as! ThingToDo
+            }).reduce(0, combine: { (oldCount, aThing) -> Int in
+                return oldCount + (aThing.done ? 0 : 1)
+            })
         }
         return count
     }
     
-    class func thingsLeft() -> [ThingToDo] {
+    /**
+     获取所有的事情（包括已完成但未从存储中删去的事情）
+     
+     - returns: 所有的事情（包括已完成但未从存储中删去的事情）
+     */
+    class func getThings() -> [ThingToDo] {
         
         var thingsLeft = [ThingToDo]()
-        let userDefaults = NSUserDefaults.standardUserDefaults()
-        let thingsOption = userDefaults.objectForKey("things") as? NSArray
-        if let things = thingsOption {
-            for thingData in things {
-                let aThingData = thingData as! NSData
-                let aThing = NSKeyedUnarchiver.unarchiveObjectWithData(aThingData) as! ThingToDo
+        if let thingDatas = userDefaults.objectForKey("things") as? [NSData] {
+            thingDatas.forEach({ (thingData) in
+                let aThing = NSKeyedUnarchiver.unarchiveObjectWithData(thingData) as! ThingToDo
                 thingsLeft.insert(aThing, atIndex: 0)
-            }
+            })
         }
         return thingsLeft
     }
     
-    class func thingsUpdate() -> [ThingToDo] {
+    /**
+     更新存储中的事情，将已完成的事情删去（同步过程）
+     */
+    class func updateStoredThings() {
         
-        var thingsLeft = [ThingToDo]()
-        let thingsLeftData = NSMutableArray()
-        let userDefaults = NSUserDefaults.standardUserDefaults()
-        let thingsOption = userDefaults.objectForKey("things") as? NSArray
-        if let things = thingsOption {
-            for thingData in things {
-                let aThingData = thingData as! NSData
-                let aThing = NSKeyedUnarchiver.unarchiveObjectWithData(aThingData) as! ThingToDo
-                if !aThing.done {
-                    thingsLeft.insert(aThing, atIndex: 0)
-                    thingsLeftData.addObject(aThingData)
-                }
-            }
+        var thingsLeftData = [NSData]()
+        if let thingDatas = userDefaults.objectForKey("things") as? [NSData] {
+            thingsLeftData = thingDatas.filter({ (thingData) -> Bool in
+                let aThing = NSKeyedUnarchiver.unarchiveObjectWithData(thingData) as! ThingToDo
+                return !aThing.done
+            })
         }
-        let thingsToSave:NSArray = NSArray(array: thingsLeftData)
         userDefaults.removeObjectForKey("things")
-        userDefaults.setObject(thingsToSave, forKey: "things")
+        userDefaults.setObject(thingsLeftData, forKey: "things")
         userDefaults.synchronize()
-        return thingsLeft
     }
     
 }

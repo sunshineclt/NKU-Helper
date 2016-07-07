@@ -40,7 +40,8 @@ class TodayViewController: UIViewController {
         
         courseTableView.estimatedRowHeight = 200
         courseTableView.rowHeight = UITableViewAutomaticDimension
-        thingsToDo = ThingToDo.thingsUpdate()
+        ThingToDo.updateStoredThings()
+        thingsToDo = ThingToDo.getThings()
         self.thingsTableView.tableFooterView = UIView()
         
     }
@@ -109,13 +110,13 @@ extension TodayViewController:UITableViewDelegate {
 extension TodayViewController:UITableViewDataSource, CheckBoxClickedDelegate {
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if tableView.tag == 1 { thingsToDo = ThingToDo.thingsLeft() }
+        if tableView.tag == 1 { thingsToDo = ThingToDo.getThings() }
         return 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         courseCountLabel.text = "还剩\(todayCourse.count)节"
-        thingCountLabel.text = "还剩\(ThingToDo.thingsLeftCount())件事"
+        thingCountLabel.text = "还剩\(ThingToDo.getLeftThingsCount())件事"
         return tableView.tag == 0 ? todayCourse.count : (isAddMode ? thingsToDo.count+1 : thingsToDo.count)
     }
     
