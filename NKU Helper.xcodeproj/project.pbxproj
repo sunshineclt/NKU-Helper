@@ -119,6 +119,7 @@
 		E95F93ED1C51377300CEEC12 /* EvaluateOpinionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F93EC1C51377300CEEC12 /* EvaluateOpinionTableViewCell.swift */; };
 		E95F93EF1C51394800CEEC12 /* NKNetworkEvaluateSubmit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F93EE1C51394800CEEC12 /* NKNetworkEvaluateSubmit.swift */; };
 		E95F93F31C52074900CEEC12 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E95F93F21C52074900CEEC12 /* 1.jpg */; };
+		E961C83F1D2EAE740066C9C3 /* 编码规范.md in Sources */ = {isa = PBXBuildFile; fileRef = E961C83E1D2EAE740066C9C3 /* 编码规范.md */; };
 		E96419D21AA8971B00397691 /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96419D11AA8971B00397691 /* AccountTableViewCell.swift */; };
 		E96419D41AA8BC9800397691 /* DetailAccountInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96419D31AA8BC9800397691 /* DetailAccountInfoTableViewController.swift */; };
 		E9657B7B1C6B0D9A00D57C7F /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9D754B61C6A469400619BAC /* JavaScriptCore.framework */; };
@@ -318,6 +319,7 @@
 		E95F93EC1C51377300CEEC12 /* EvaluateOpinionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EvaluateOpinionTableViewCell.swift; sourceTree = "<group>"; };
 		E95F93EE1C51394800CEEC12 /* NKNetworkEvaluateSubmit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkEvaluateSubmit.swift; sourceTree = "<group>"; };
 		E95F93F21C52074900CEEC12 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
+		E961C83E1D2EAE740066C9C3 /* 编码规范.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "编码规范.md"; sourceTree = "<group>"; };
 		E96419D11AA8971B00397691 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AccountTableViewCell.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E96419D31AA8BC9800397691 /* DetailAccountInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailAccountInfoTableViewController.swift; sourceTree = "<group>"; };
 		E96E739F1BBBFC3400B62663 /* Launch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
@@ -483,6 +485,7 @@
 			isa = PBXGroup;
 			children = (
 				E92FB3E51BF3676F004C6B7C /* Version Log */,
+				E961C83E1D2EAE740066C9C3 /* 编码规范.md */,
 				E90AE22A1A8F813900AD0D78 /* NKU Helper */,
 				E90AE2291A8F813900AD0D78 /* Products */,
 				911897253CF7E957EC7F6666 /* Frameworks */,
@@ -1260,6 +1263,7 @@
 				E91E5F551A9103DF009F3B2B /* GradeCell.swift in Sources */,
 				E98E2B501C46492900CF82BE /* NKNetworkLoadCourse.swift in Sources */,
 				E98E2B491C4639BB00CF82BE /* UserAgent.swift in Sources */,
+				E961C83F1D2EAE740066C9C3 /* 编码规范.md in Sources */,
 				E94BD97E1BAC054E00B76E03 /* CellIdentifier.swift in Sources */,
 				E9CA9C901C4272BC0030AF49 /* StoreAgent.swift in Sources */,
 				E90E87241C40E58B00E6BE3A /* NKNetworkBase.swift in Sources */,
