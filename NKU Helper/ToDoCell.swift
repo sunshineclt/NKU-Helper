@@ -1,5 +1,5 @@
 //
-//  RightShortToDoCell.swift
+//  ToDoCell.swift
 //  NKU Helper
 //
 //  Created by 陈乐天 on 15/9/28.
@@ -9,14 +9,14 @@
 import UIKit
 
 protocol CheckBoxClickedDelegate {
-    func saveCheckState(cell: RightShortToDoCell)
+    func saveCheckState(cell: ToDoCell)
 }
 
-class RightShortToDoCell: UITableViewCell {
+class ToDoCell: UITableViewCell {
 
     @IBOutlet var checkBox: UIImageView! {
         didSet {
-            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(RightShortToDoCell.CheckBoxClicked))
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ToDoCell.CheckBoxClicked))
             tapGesture.numberOfTapsRequired = 1
             tapGesture.numberOfTouchesRequired = 1
             tapGesture.delegate = self

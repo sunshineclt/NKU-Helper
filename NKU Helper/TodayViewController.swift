@@ -10,7 +10,7 @@ import UIKit
 
 class TodayViewController: UIViewController {
 
-    // MARK: ViewProperty
+    // MARK: View Property
     @IBOutlet var courseCountLabel: UILabel!
     @IBOutlet var thingCountLabel: UILabel!
     @IBOutlet var plusCircleView: PlusCircleView! {
@@ -19,12 +19,14 @@ class TodayViewController: UIViewController {
         }
     }
     @IBOutlet var courseTableView: UITableView! {
+        // 设置无课时的显示
         didSet {
             self.courseTableView.emptyDataSetSource = self
             self.courseTableView.emptyDataSetDelegate = self
         }
     }
     @IBOutlet var thingsTableView: UITableView! {
+        // 设置无Things时的显示
         didSet {
             self.thingsTableView.emptyDataSetSource = self
             self.thingsTableView.emptyDataSetDelegate = self;
@@ -35,7 +37,7 @@ class TodayViewController: UIViewController {
     var todayCourse = [Course]()
     var thingsToDo = [ThingToDo]()
     
-    // MARK: ViewControllerLifeCycle
+    // MARK: VCLifeCycle
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -70,11 +72,16 @@ class TodayViewController: UIViewController {
         
     }
     
-    var isAddMode = false
+    // MARK: 状态Property
+    
+    // 是否处在添加Thins的模式
+    var isAddThingMode = false
     var newToDo:UITextField?
 
+    // MARK: 事件监听
+    
     @IBAction func plusButtonClicked(sender: UIButton) {
-        isAddMode = true
+        isAddThingMode = true
         CATransaction.begin()
         CATransaction.setCompletionBlock { () -> Void in
             self.newToDo?.becomeFirstResponder()
@@ -83,16 +90,16 @@ class TodayViewController: UIViewController {
         CATransaction.commit()
     }
     
+    // MARK: 页面间跳转
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier {
             switch identifier {
             case SegueIdentifier.ShowCourseDetail:
                 if let destinationVC = segue.destinationViewController as? CourseDetailTableViewController {
-                    let senderCell = sender as! LeftToDoCell
+                    let senderCell = sender as! CourseCell
                     destinationVC.course = senderCell.course
                 }
-            case SegueIdentifier.CreateAlarmedToDo:
-                break;
             default:break
             }
         }
@@ -108,36 +115,74 @@ extension TodayViewController:UITableViewDelegate {
 // MARK: TableViewDataSource
 extension TodayViewController:UITableViewDataSource, CheckBoxClickedDelegate {
     
+    /*
+     tag = 0代表是course的tableView
+     tag = 1代表是things的tableView
+     */
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if tableView.tag == 1 { thingsToDo = ThingToDo.getThings() }
+        // 更新Things列表
+        if tableView.tag == 1 {
+            thingsToDo = ThingToDo.getThings()
+        }
         return 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        courseCountLabel.text = "还剩\(todayCourse.count)节"
+        courseCountLabel.text = "今天有\(todayCourse.count)节课"
         thingCountLabel.text = "还剩\(ThingToDo.getLeftThingsCount())件事"
-        return tableView.tag == 0 ? todayCourse.count : (isAddMode ? thingsToDo.count+1 : thingsToDo.count)
+        return tableView.tag == 0 ? todayCourse.count : (isAddThingMode ? thingsToDo.count+1 : thingsToDo.count)
     }
     
-    func leftToDo(tableView:UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> LeftToDoCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.LeftToDo) as! LeftToDoCell
+    func getCourseCell(tableView:UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> CourseCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.CourseCell) as! CourseCell
         cell.course = todayCourse[indexPath.row]
         return cell
     }
     
-    func rightShortToDo(tableView:UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> RightShortToDoCell {
-        let thing = thingsToDo[(isAddMode ? indexPath.row-1 : indexPath.row)]
-            let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.RightShortToDo) as! RightShortToDoCell
-            cell.thing = thing
-            cell.nameTextField?.enabled = false
-            cell.delegate = self
-            return cell
+    func getToDoCell(tableView:UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> ToDoCell {
+        let thing = thingsToDo[(isAddThingMode ? indexPath.row-1 : indexPath.row)]
+        let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.ToDoCell) as! ToDoCell
+        cell.thing = thing
+        cell.nameTextField?.enabled = false
+        cell.delegate = self
+        return cell
+    }
+
+    func getNewToDoCell(tableView:UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> ToDoCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.ToDoCell) as! ToDoCell
+        cell.nameTextField.text = ""
+        cell.nameTextField.becomeFirstResponder()
+        cell.nameTextField.enabled = true
+        cell.nameTextField.delegate = self
+        cell.checkBoxState = false
+        cell.checkBox.image = UIImage(named: "CheckBox.png")
+        newToDo = cell.nameTextField
+        return cell
     }
     
-    func saveCheckState(cell: RightShortToDoCell) {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
+        if tableView.tag == 0 {
+            let cell = getCourseCell(tableView, cellForRowAtIndexPath: indexPath)
+            return cell
+        } else {
+            if isAddThingMode && (indexPath.row == 0) {
+                let cell = getNewToDoCell(tableView, cellForRowAtIndexPath: indexPath)
+                return cell
+            }
+            let thing = thingsToDo[(isAddThingMode ? indexPath.row-1 : indexPath.row)]
+            switch thing.type {
+            case .Normal:
+                let cell = getToDoCell(tableView, cellForRowAtIndexPath: indexPath)
+                return cell
+            }
+        }
+    }
+    
+    func saveCheckState(cell: ToDoCell) {
         let indexPath = self.thingsTableView.indexPathForCell(cell)!
-        var actualIndexPathRow = isAddMode ? indexPath.row - 1 : indexPath.row
+        var actualIndexPathRow = isAddThingMode ? indexPath.row - 1 : indexPath.row
         if actualIndexPathRow >= 0 {
             actualIndexPathRow = tableView(thingsTableView, numberOfRowsInSection: 0) - actualIndexPathRow - 1
             let userDefaults = NSUserDefaults.standardUserDefaults()
@@ -154,41 +199,6 @@ extension TodayViewController:UITableViewDataSource, CheckBoxClickedDelegate {
         }
         thingsTableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
     }
-    
-    func rightAlarmedToDo(tableView:UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> RightShortToDoCell {
-        //let thing = thingsToDo[(isAddMode ? indexPath.row-1 : indexPath.row)]
-        let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.RightShortToDo) as! RightShortToDoCell
-        return cell
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        if tableView.tag == 0 {
-            let cell = leftToDo(tableView, cellForRowAtIndexPath: indexPath)
-            return cell
-        } else {
-            if isAddMode && (indexPath.row == 0) {
-                let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.RightShortToDo) as! RightShortToDoCell
-                cell.nameTextField.text = ""
-                cell.nameTextField.becomeFirstResponder()
-                cell.nameTextField.enabled = true
-                cell.nameTextField.delegate = self
-                cell.checkBoxState = false
-                cell.checkBox.image = UIImage(named: "CheckBox.png")
-                newToDo = cell.nameTextField
-                return cell
-            }
-            let thing = thingsToDo[(isAddMode ? indexPath.row-1 : indexPath.row)]
-            switch thing.type {
-            case .Short:
-                let cell = rightShortToDo(tableView, cellForRowAtIndexPath: indexPath)
-                return cell
-            case .Alarmed:
-                let cell = rightAlarmedToDo(tableView, cellForRowAtIndexPath: indexPath)
-                return cell
-            }
-        }
-    }
 }
 
 extension TodayViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
@@ -204,13 +214,13 @@ extension TodayViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
 extension TodayViewController:UITextFieldDelegate {
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        isAddMode = false
+        isAddThingMode = false
         newToDo = nil
         if textField.text != "" {
             let userDefaults = NSUserDefaults.standardUserDefaults()
             let savedThings = (userDefaults.objectForKey("things") as? NSArray) ?? NSArray()
             var beforeThings = savedThings as! [NSData]
-            let thing = ThingToDo(name: textField.text ?? "", time: nil, place: nil, type: .Short)
+            let thing = ThingToDo(name: textField.text ?? "", time: nil, place: nil, type: .Normal)
             let data = NSKeyedArchiver.archivedDataWithRootObject(thing)
             beforeThings.append(data)
             let thingsToSave:NSArray = beforeThings

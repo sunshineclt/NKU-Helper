@@ -7,9 +7,8 @@
 //
 
 struct CellIdentifier {
-    static let LeftToDo = "LeftToDo"
-    static let RightShortToDo = "RightShortToDo"
-    static let RightAlarmedToDo = "RightAlarmedToDo"
+    static let CourseCell = "CourseCell"
+    static let ToDoCell = "ToDoCell"
     static let noti = "noti"
     static let notiShowDetail = "notiShowDetail"
     static let notiCenter = "notiCenter"

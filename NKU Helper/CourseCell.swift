@@ -1,5 +1,5 @@
 //
-//  LeftToDoCell.swift
+//  CourseCell.swift
 //  NKU Helper
 //
 //  Created by 陈乐天 on 15/9/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LeftToDoCell: UITableViewCell {
+class CourseCell: UITableViewCell {
 
     @IBOutlet var title: UILabel!
     @IBOutlet var timeLabel: UILabel!

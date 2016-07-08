@@ -98,6 +98,5 @@ class ThingToDo: NSObject, NSCoding {
 }
 
 enum ThingsType:Int {
-    case Short = 0
-    case Alarmed = 1
+    case Normal = 0
 }
