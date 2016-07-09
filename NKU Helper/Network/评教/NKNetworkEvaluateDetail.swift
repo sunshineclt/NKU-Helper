@@ -52,10 +52,16 @@ class NKNetworkEvaluateDetail: NKNetworkBase {
             
             var questions = [Question]()
             for _ in 0 ..< questionAmount {
-                let content = (html as NSString).substringWithRange(questionMatches[questionIndex].rangeAtIndex(2))
-                let grade = ((html as NSString).substringWithRange(questionMatches[questionIndex].rangeAtIndex(4)) as NSString).integerValue
-                questionIndex += 1
-                questions.append(Question(content: content, grade: grade))
+                if questionIndex >= questionMatches.count {
+                    questionIndex += 1
+                    questions.append(Question(content: "该教师给你的总体印象", grade: 10))
+                }
+                else {
+                    let content = (html as NSString).substringWithRange(questionMatches[questionIndex].rangeAtIndex(2))
+                    let grade = ((html as NSString).substringWithRange(questionMatches[questionIndex].rangeAtIndex(4)) as NSString).integerValue
+                    questionIndex += 1
+                    questions.append(Question(content: content, grade: grade))
+                }
             }
             detailEvaluateList.append(DetailEvaluateSection(title: title, question: questions))
         }
