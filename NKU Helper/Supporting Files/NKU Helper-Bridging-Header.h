@@ -11,7 +11,6 @@
 #import "MJRefresh.h"
 #import "NJKWebViewProgress.h"
 #import "NJKWebViewProgressView.h"
-#import "Flurry.h"
 #import "SVProgressHUD.h"
 
 #import <ShareSDK/ShareSDK.h>
@@ -24,8 +23,5 @@
 
 //微信SDK头文件
 #import "WXApi.h"
-
-//新浪微博SDK头文件
-#import "WeiboSDK.h"
 
 #import "YYText.h"
