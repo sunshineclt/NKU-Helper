@@ -1,10 +1,10 @@
 PODS:
   - Alamofire (3.4.1)
-  - AVOSCloud (3.3.4)
+  - AVOSCloud (3.3.5)
   - DZNEmptyDataSet (1.8.1)
   - MBProgressHUD (0.9.2)
-  - MJRefresh (3.1.9)
-  - MOBFoundation (2.0.1)
+  - MJRefresh (3.1.10)
+  - MOBFoundation (2.0.4)
   - NJKWebViewProgress (0.2.3):
     - NJKWebViewProgress/Core (= 0.2.3)
     - NJKWebViewProgress/ProgressView (= 0.2.3)
@@ -42,11 +42,11 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
-  AVOSCloud: d501e7f43719884b748214d3cb5a3da18a20fb46
+  AVOSCloud: 1fe170768bee7e05bc3ea86e38d5bddb105cb957
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
-  MJRefresh: c5f1f1653e5a1b932c90f78074f2bc86f3f9bd5e
-  MOBFoundation: a42168392e216fc56cbcbdfc3d5dcb3bbce5ef87
+  MJRefresh: bb72948c985914b0b5cecac573a2c69a8915fb02
+  MOBFoundation: e1f2d00e82a20fdc55c61baac4e15c9b9dd361e5
   NJKWebViewProgress: f481fd424cb5ecc27eacae11b5397db92fba9a4d
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
   ShareSDK3: c76cb96eb38e079952b8157071486d945faa2df2
@@ -55,6 +55,6 @@ SPEC CHECKSUMS:
   UAProgressView: ce49aee47c14df6dc372f6fd57852f570ca97e6b
   YYText: ac09660c9ccd9b817f409a20caa6f5587444d2ae
 
-PODFILE CHECKSUM: de95abcbd24185e1d10f629e94d2775ea9dc65d0
+PODFILE CHECKSUM: 545c98b5fdb826b53ac988d1ed028b044af61aa1
 
 COCOAPODS: 1.0.1
