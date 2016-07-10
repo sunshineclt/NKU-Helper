@@ -8,7 +8,7 @@
         <!--Log In View Controller-->
         <scene sceneID="PBF-PO-e9j">
             <objects>
-                <viewController id="JxO-gb-eEZ" customClass="LogInViewController" customModule="NKU_Helper" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LogInVC" id="JxO-gb-eEZ" customClass="LogInViewController" customModule="NKU_Helper" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="M3k-ta-1B6"/>
                         <viewControllerLayoutGuide type="bottom" id="qcd-QU-Vaa"/>
