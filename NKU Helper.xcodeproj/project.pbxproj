@@ -126,6 +126,7 @@
 		E9693E3E1D32441600D6135B /* LogIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9693E3D1D32441600D6135B /* LogIn.storyboard */; };
 		E9693E401D3245FB00D6135B /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9693E3F1D3245FB00D6135B /* Settings.storyboard */; };
 		E9693E441D32894000D6135B /* Today.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9693E431D32894000D6135B /* Today.storyboard */; };
+		E9693E461D3290AE00D6135B /* ClassTime.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9693E451D3290AE00D6135B /* ClassTime.storyboard */; };
 		E96E73A01BBBFC3400B62663 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E96E739F1BBBFC3400B62663 /* Launch.storyboard */; };
 		E97176761B1488CA004DADB2 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97176751B1488CA004DADB2 /* AboutViewController.swift */; };
 		E97176781B149292004DADB2 /* CourseDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97176771B149292004DADB2 /* CourseDetailTableViewController.swift */; };
@@ -313,6 +314,7 @@
 		E9693E3D1D32441600D6135B /* LogIn.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LogIn.storyboard; sourceTree = "<group>"; };
 		E9693E3F1D3245FB00D6135B /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Settings.storyboard; path = "NKU Helper/Settings.storyboard"; sourceTree = SOURCE_ROOT; };
 		E9693E431D32894000D6135B /* Today.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Today.storyboard; path = "NKU Helper/Today.storyboard"; sourceTree = SOURCE_ROOT; };
+		E9693E451D3290AE00D6135B /* ClassTime.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ClassTime.storyboard; sourceTree = "<group>"; };
 		E96E739F1BBBFC3400B62663 /* Launch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
 		E97176751B1488CA004DADB2 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		E97176771B149292004DADB2 /* CourseDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseDetailTableViewController.swift; sourceTree = "<group>"; };
@@ -448,6 +450,7 @@
 			children = (
 				E90AE22D1A8F813900AD0D78 /* AppDelegate.swift */,
 				E988B5361AB005DF006818FA /* Main.storyboard */,
+				E9693E451D3290AE00D6135B /* ClassTime.storyboard */,
 				E9693E3D1D32441600D6135B /* LogIn.storyboard */,
 				E9FE26151B13800700FCBB32 /* Classes */,
 				E9D4DC471AAEF45D00A02327 /* Today */,
@@ -905,6 +908,7 @@
 				E95C8FB91AAF51A700D3D8EE /* night20.png in Resources */,
 				E95C8FAC1AAF51A700D3D8EE /* night07.png in Resources */,
 				E9693E3E1D32441600D6135B /* LogIn.storyboard in Resources */,
+				E9693E461D3290AE00D6135B /* ClassTime.storyboard in Resources */,
 				E9D754FB1C6ADB8500619BAC /* Localizable.strings in Resources */,
 				E95C8F801AAF50A400D3D8EE /* day29.png in Resources */,
 				E95C8F731AAF50A400D3D8EE /* day16.png in Resources */,
