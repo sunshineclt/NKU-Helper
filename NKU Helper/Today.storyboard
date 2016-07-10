@@ -11,7 +11,7 @@
         <!--今天-->
         <scene sceneID="LyR-bA-z4E">
             <objects>
-                <viewController id="aZ6-99-zEz" customClass="TodayViewController" customModule="NKU_Helper" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TodayVC" id="aZ6-99-zEz" customClass="TodayViewController" customModule="NKU_Helper" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eYo-pp-VgQ"/>
                         <viewControllerLayoutGuide type="bottom" id="dIC-2L-L99"/>
@@ -292,12 +292,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GFf-9f-1iP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2966" y="-1482"/>
+            <point key="canvasLocation" x="2426" y="-1482"/>
         </scene>
         <!--课程详细信息-->
         <scene sceneID="hla-8b-GeY">
             <objects>
-                <tableViewController storyboardIdentifier="UITableViewController-ABN-7o-Bhx" id="ABN-7o-Bhx" customClass="CourseDetailTableViewController" customModule="NKU_Helper" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="CourseDetailVC" id="ABN-7o-Bhx" customClass="CourseDetailTableViewController" customModule="NKU_Helper" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="3Ky-uo-Ngz">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -338,12 +338,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q1e-GP-RCl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4006" y="-1482"/>
+            <point key="canvasLocation" x="3226" y="-1482"/>
         </scene>
         <!--今天-->
         <scene sceneID="eeu-DQ-g88">
             <objects>
-                <navigationController storyboardIdentifier="UINavigationController-qo1-e3-N3q" automaticallyAdjustsScrollViewInsets="NO" id="qo1-e3-N3q" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="TodayNC" automaticallyAdjustsScrollViewInsets="NO" id="qo1-e3-N3q" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="今天" image="今天" id="AwM-pQ-V16"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -366,7 +366,7 @@
                 <viewControllerPlaceholder storyboardName="Settings" referencedIdentifier="DetailLogInVC" id="Ihe-aY-uas" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L8F-t6-LHV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3861" y="-2346"/>
+            <point key="canvasLocation" x="2985" y="-1926"/>
         </scene>
     </scenes>
     <resources>
