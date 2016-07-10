@@ -123,6 +123,7 @@
 		E96419D41AA8BC9800397691 /* DetailAccountInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96419D31AA8BC9800397691 /* DetailAccountInfoTableViewController.swift */; };
 		E9657B7B1C6B0D9A00D57C7F /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9D754B61C6A469400619BAC /* JavaScriptCore.framework */; };
 		E9657B7C1C6B104700D57C7F /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9D754EF1C6AD19800619BAC /* AdSupport.framework */; };
+		E9693E3E1D32441600D6135B /* LogIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9693E3D1D32441600D6135B /* LogIn.storyboard */; };
 		E96E73A01BBBFC3400B62663 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E96E739F1BBBFC3400B62663 /* Launch.storyboard */; };
 		E97176761B1488CA004DADB2 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97176751B1488CA004DADB2 /* AboutViewController.swift */; };
 		E97176781B149292004DADB2 /* CourseDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97176771B149292004DADB2 /* CourseDetailTableViewController.swift */; };
@@ -307,6 +308,7 @@
 		E961C83E1D2EAE740066C9C3 /* 编码规范.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "编码规范.md"; sourceTree = "<group>"; };
 		E96419D11AA8971B00397691 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AccountTableViewCell.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E96419D31AA8BC9800397691 /* DetailAccountInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailAccountInfoTableViewController.swift; sourceTree = "<group>"; };
+		E9693E3D1D32441600D6135B /* LogIn.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LogIn.storyboard; sourceTree = "<group>"; };
 		E96E739F1BBBFC3400B62663 /* Launch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
 		E97176751B1488CA004DADB2 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		E97176771B149292004DADB2 /* CourseDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseDetailTableViewController.swift; sourceTree = "<group>"; };
@@ -442,6 +444,7 @@
 			children = (
 				E90AE22D1A8F813900AD0D78 /* AppDelegate.swift */,
 				E988B5361AB005DF006818FA /* Main.storyboard */,
+				E9693E3D1D32441600D6135B /* LogIn.storyboard */,
 				E9FE26151B13800700FCBB32 /* Classes */,
 				E9D4DC471AAEF45D00A02327 /* Today */,
 				E98F94E21AA31A1A00885992 /* ClassTime */,
@@ -895,6 +898,7 @@
 				E95C8FBB1AAF51A700D3D8EE /* night22.png in Resources */,
 				E95C8FB91AAF51A700D3D8EE /* night20.png in Resources */,
 				E95C8FAC1AAF51A700D3D8EE /* night07.png in Resources */,
+				E9693E3E1D32441600D6135B /* LogIn.storyboard in Resources */,
 				E9D754FB1C6ADB8500619BAC /* Localizable.strings in Resources */,
 				E95C8F801AAF50A400D3D8EE /* day29.png in Resources */,
 				E95C8F731AAF50A400D3D8EE /* day16.png in Resources */,
