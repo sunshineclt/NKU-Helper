@@ -233,7 +233,7 @@
                 <viewControllerPlaceholder storyboardName="LogIn" id="Wln-3O-rNo" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Av-F1-KkN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2847" y="-977"/>
+            <point key="canvasLocation" x="2847" y="-963"/>
         </scene>
         <!--CourseDetailTVC-->
         <scene sceneID="ukg-J3-lXS">
@@ -241,7 +241,7 @@
                 <viewControllerPlaceholder storyboardName="Today" referencedIdentifier="CourseDetailTVC" id="rsb-dm-aGc" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jRW-0e-DGx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2882" y="-1049"/>
+            <point key="canvasLocation" x="2882" y="-1161"/>
         </scene>
     </scenes>
     <resources>

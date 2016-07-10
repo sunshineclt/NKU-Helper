@@ -127,6 +127,11 @@
 		E9693E401D3245FB00D6135B /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9693E3F1D3245FB00D6135B /* Settings.storyboard */; };
 		E9693E441D32894000D6135B /* Today.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9693E431D32894000D6135B /* Today.storyboard */; };
 		E9693E461D3290AE00D6135B /* ClassTime.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9693E451D3290AE00D6135B /* ClassTime.storyboard */; };
+		E9693E481D32926300D6135B /* Function.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9693E471D32926300D6135B /* Function.storyboard */; };
+		E9693E4A1D32932500D6135B /* NotiCenter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9693E491D32932500D6135B /* NotiCenter.storyboard */; };
+		E9693E4C1D32945F00D6135B /* Grade.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9693E4B1D32945F00D6135B /* Grade.storyboard */; };
+		E9693E4E1D3294FA00D6135B /* Evaluate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9693E4D1D3294FA00D6135B /* Evaluate.storyboard */; };
+		E9693E501D32955500D6135B /* SelectCourse.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9693E4F1D32955500D6135B /* SelectCourse.storyboard */; };
 		E96E73A01BBBFC3400B62663 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E96E739F1BBBFC3400B62663 /* Launch.storyboard */; };
 		E97176761B1488CA004DADB2 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97176751B1488CA004DADB2 /* AboutViewController.swift */; };
 		E97176781B149292004DADB2 /* CourseDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97176771B149292004DADB2 /* CourseDetailTableViewController.swift */; };
@@ -314,7 +319,12 @@
 		E9693E3D1D32441600D6135B /* LogIn.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LogIn.storyboard; sourceTree = "<group>"; };
 		E9693E3F1D3245FB00D6135B /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Settings.storyboard; path = "NKU Helper/Settings.storyboard"; sourceTree = SOURCE_ROOT; };
 		E9693E431D32894000D6135B /* Today.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Today.storyboard; path = "NKU Helper/Today.storyboard"; sourceTree = SOURCE_ROOT; };
-		E9693E451D3290AE00D6135B /* ClassTime.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ClassTime.storyboard; sourceTree = "<group>"; };
+		E9693E451D3290AE00D6135B /* ClassTime.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = ClassTime.storyboard; path = "NKU Helper/ClassTime.storyboard"; sourceTree = SOURCE_ROOT; };
+		E9693E471D32926300D6135B /* Function.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Function.storyboard; path = "NKU Helper/Function.storyboard"; sourceTree = SOURCE_ROOT; };
+		E9693E491D32932500D6135B /* NotiCenter.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = NotiCenter.storyboard; path = "NKU Helper/NotiCenter.storyboard"; sourceTree = SOURCE_ROOT; };
+		E9693E4B1D32945F00D6135B /* Grade.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Grade.storyboard; path = "NKU Helper/Grade.storyboard"; sourceTree = SOURCE_ROOT; };
+		E9693E4D1D3294FA00D6135B /* Evaluate.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Evaluate.storyboard; path = "NKU Helper/Evaluate.storyboard"; sourceTree = SOURCE_ROOT; };
+		E9693E4F1D32955500D6135B /* SelectCourse.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SelectCourse.storyboard; path = "NKU Helper/SelectCourse.storyboard"; sourceTree = SOURCE_ROOT; };
 		E96E739F1BBBFC3400B62663 /* Launch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
 		E97176751B1488CA004DADB2 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		E97176771B149292004DADB2 /* CourseDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseDetailTableViewController.swift; sourceTree = "<group>"; };
@@ -450,7 +460,6 @@
 			children = (
 				E90AE22D1A8F813900AD0D78 /* AppDelegate.swift */,
 				E988B5361AB005DF006818FA /* Main.storyboard */,
-				E9693E451D3290AE00D6135B /* ClassTime.storyboard */,
 				E9693E3D1D32441600D6135B /* LogIn.storyboard */,
 				E9FE26151B13800700FCBB32 /* Classes */,
 				E9D4DC471AAEF45D00A02327 /* Today */,
@@ -496,6 +505,7 @@
 		E90E87271C40F2F400E6BE3A /* SelectCourse */ = {
 			isa = PBXGroup;
 			children = (
+				E9693E4F1D32955500D6135B /* SelectCourse.storyboard */,
 				E91D2E591C846CA1002605F8 /* ClassInfoTableViewCell.swift */,
 				E981C12C1C84A02D005CBF4E /* ClassModificationTableViewCell.swift */,
 				E91D2E571C8468B6002605F8 /* SearchCourseDetailTableViewController.swift */,
@@ -646,6 +656,7 @@
 		E95F93DB1C50CE9100CEEC12 /* Evaluate */ = {
 			isa = PBXGroup;
 			children = (
+				E9693E4D1D3294FA00D6135B /* Evaluate.storyboard */,
 				E95F93E01C50EF2800CEEC12 /* ClassToEvaluate.swift */,
 				E95F93E21C50F7E100CEEC12 /* ClassToEvaluateTableViewCell.swift */,
 				E95F93EA1C512B8B00CEEC12 /* DetailEvaluateInfo.swift */,
@@ -684,6 +695,7 @@
 		E98F94D21AA317B100885992 /* GetGrade */ = {
 			isa = PBXGroup;
 			children = (
+				E9693E4B1D32945F00D6135B /* Grade.storyboard */,
 				E95F93C51C4E6CD100CEEC12 /* Grade.swift */,
 				E91E5F541A9103DF009F3B2B /* GradeCell.swift */,
 				E91E5F4E1A90FAED009F3B2B /* GradeShowerTableViewController.swift */,
@@ -694,11 +706,12 @@
 		E98F94DF1AA319CD00885992 /* Function */ = {
 			isa = PBXGroup;
 			children = (
-				E95F93DB1C50CE9100CEEC12 /* Evaluate */,
-				E98F94D21AA317B100885992 /* GetGrade */,
-				E99D670B1C16CA8600E27B08 /* NotificationCenter */,
-				E90E87271C40F2F400E6BE3A /* SelectCourse */,
+				E9693E471D32926300D6135B /* Function.storyboard */,
 				E98F94D71AA318EF00885992 /* FunctionTableViewController.swift */,
+				E99D670B1C16CA8600E27B08 /* NotificationCenter */,
+				E98F94D21AA317B100885992 /* GetGrade */,
+				E95F93DB1C50CE9100CEEC12 /* Evaluate */,
+				E90E87271C40F2F400E6BE3A /* SelectCourse */,
 			);
 			path = Function;
 			sourceTree = "<group>";
@@ -718,6 +731,7 @@
 		E98F94E21AA31A1A00885992 /* ClassTime */ = {
 			isa = PBXGroup;
 			children = (
+				E9693E451D3290AE00D6135B /* ClassTime.storyboard */,
 				E93C0F191BB54E53001303CF /* Test Time */,
 				E98E2B8A1C46ABE400CF82BE /* ClassTimeView.swift */,
 				E98F94D51AA3180700885992 /* ClassTimeViewController.swift */,
@@ -737,6 +751,7 @@
 		E99D670B1C16CA8600E27B08 /* NotificationCenter */ = {
 			isa = PBXGroup;
 			children = (
+				E9693E491D32932500D6135B /* NotiCenter.storyboard */,
 				E99D67031C16C8CF00E27B08 /* NotiCenterTableViewController.swift */,
 				E99D675B1C17401B00E27B08 /* NotiDetailViewController.swift */,
 				E99D67121C16F6E700E27B08 /* NotiTableViewCell.swift */,
@@ -919,6 +934,7 @@
 				E95C8FAD1AAF51A700D3D8EE /* night08.png in Resources */,
 				E9693E401D3245FB00D6135B /* Settings.storyboard in Resources */,
 				E95C8F6A1AAF50A400D3D8EE /* day07.png in Resources */,
+				E9693E481D32926300D6135B /* Function.storyboard in Resources */,
 				E95C8FA51AAF51A700D3D8EE /* night00.png in Resources */,
 				E926CD751AB33B1700A5076A /* NKU.plist in Resources */,
 				E95C8F7B1AAF50A400D3D8EE /* day24.png in Resources */,
@@ -937,6 +953,7 @@
 				E95C8F681AAF50A400D3D8EE /* day05.png in Resources */,
 				E95C8FC41AAF51A700D3D8EE /* night31.png in Resources */,
 				E95C8F701AAF50A400D3D8EE /* day13.png in Resources */,
+				E9693E501D32955500D6135B /* SelectCourse.storyboard in Resources */,
 				E95C8FB51AAF51A700D3D8EE /* night16.png in Resources */,
 				E95C8F6C1AAF50A400D3D8EE /* day09.png in Resources */,
 				E95C8F6F1AAF50A400D3D8EE /* day12.png in Resources */,
@@ -952,6 +969,7 @@
 				E95C8F771AAF50A400D3D8EE /* day20.png in Resources */,
 				E95C8F631AAF50A400D3D8EE /* day00.png in Resources */,
 				E95C8FB11AAF51A700D3D8EE /* night12.png in Resources */,
+				E9693E4C1D32945F00D6135B /* Grade.storyboard in Resources */,
 				E95C8F7C1AAF50A400D3D8EE /* day25.png in Resources */,
 				E95C8FB01AAF51A700D3D8EE /* night11.png in Resources */,
 				E95C8F7D1AAF50A400D3D8EE /* day26.png in Resources */,
@@ -962,12 +980,14 @@
 				E95C8FB81AAF51A700D3D8EE /* night19.png in Resources */,
 				E95C8FA81AAF51A700D3D8EE /* night03.png in Resources */,
 				E95C8FBC1AAF51A700D3D8EE /* night23.png in Resources */,
+				E9693E4A1D32932500D6135B /* NotiCenter.storyboard in Resources */,
 				E95C8FAF1AAF51A700D3D8EE /* night10.png in Resources */,
 				E95C8F671AAF50A400D3D8EE /* day04.png in Resources */,
 				E95C8FC31AAF51A700D3D8EE /* night30.png in Resources */,
 				E95C8FA91AAF51A700D3D8EE /* night04.png in Resources */,
 				E95C8FB41AAF51A700D3D8EE /* night15.png in Resources */,
 				E95C8FA61AAF51A700D3D8EE /* night01.png in Resources */,
+				E9693E4E1D3294FA00D6135B /* Evaluate.storyboard in Resources */,
 				E95C8FA71AAF51A700D3D8EE /* night02.png in Resources */,
 				E95C8F761AAF50A400D3D8EE /* day19.png in Resources */,
 				E96E73A01BBBFC3400B62663 /* Launch.storyboard in Resources */,
