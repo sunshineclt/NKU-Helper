@@ -312,7 +312,7 @@
 		E96419D31AA8BC9800397691 /* DetailAccountInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailAccountInfoTableViewController.swift; sourceTree = "<group>"; };
 		E9693E3D1D32441600D6135B /* LogIn.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LogIn.storyboard; sourceTree = "<group>"; };
 		E9693E3F1D3245FB00D6135B /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Settings.storyboard; path = "NKU Helper/Settings.storyboard"; sourceTree = SOURCE_ROOT; };
-		E9693E431D32894000D6135B /* Today.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Today.storyboard; sourceTree = "<group>"; };
+		E9693E431D32894000D6135B /* Today.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Today.storyboard; path = "NKU Helper/Today.storyboard"; sourceTree = SOURCE_ROOT; };
 		E96E739F1BBBFC3400B62663 /* Launch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
 		E97176751B1488CA004DADB2 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		E97176771B149292004DADB2 /* CourseDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseDetailTableViewController.swift; sourceTree = "<group>"; };
@@ -448,7 +448,6 @@
 			children = (
 				E90AE22D1A8F813900AD0D78 /* AppDelegate.swift */,
 				E988B5361AB005DF006818FA /* Main.storyboard */,
-				E9693E431D32894000D6135B /* Today.storyboard */,
 				E9693E3D1D32441600D6135B /* LogIn.storyboard */,
 				E9FE26151B13800700FCBB32 /* Classes */,
 				E9D4DC471AAEF45D00A02327 /* Today */,
@@ -785,6 +784,7 @@
 		E9D4DC471AAEF45D00A02327 /* Today */ = {
 			isa = PBXGroup;
 			children = (
+				E9693E431D32894000D6135B /* Today.storyboard */,
 				E94211BD1B00B99F00087846 /* Cell */,
 				E97176771B149292004DADB2 /* CourseDetailTableViewController.swift */,
 				E971EB811BAAFEE8005E6E55 /* PlusCircleView.swift */,
