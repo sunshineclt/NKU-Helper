@@ -1629,29 +1629,29 @@
             </objects>
             <point key="canvasLocation" x="4868" y="-593"/>
         </scene>
-        <!--UIViewController-37A-HT-9kh-->
+        <!--DetailLogInVC-->
         <scene sceneID="bVL-dd-yb6">
             <objects>
-                <viewControllerPlaceholder storyboardName="Settings" referencedIdentifier="UIViewController-37A-HT-9kh" id="Ihe-aY-uas" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Settings" referencedIdentifier="DetailLogInVC" id="Ihe-aY-uas" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L8F-t6-LHV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4034" y="4442"/>
+            <point key="canvasLocation" x="3813.5" y="-2050"/>
         </scene>
-        <!--UINavigationController-rd0-uX-S1b-->
+        <!--SettingsNC-->
         <scene sceneID="GAf-gr-sPN">
             <objects>
-                <viewControllerPlaceholder storyboardName="Settings" referencedIdentifier="UINavigationController-rd0-uX-S1b" id="yKb-nV-iur" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Settings" referencedIdentifier="SettingsNC" id="yKb-nV-iur" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="9jR-fo-d7G"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PQy-bz-eG1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1518" y="4875"/>
+            <point key="canvasLocation" x="1433.5" y="1163"/>
         </scene>
     </scenes>
     <resources>
         <image name="1.jpg" width="2560" height="1600"/>
         <image name="CheckBox" width="50" height="50"/>
-        <image name="NanKai" width="200" height="200"/>
+        <image name="NanKai" width="25" height="25"/>
         <image name="building" width="60" height="60"/>
         <image name="classEvaluated" width="256" height="256"/>
         <image name="downArrow" width="60" height="60"/>
@@ -1667,7 +1667,7 @@
         <image name="课程" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="vQd-Gp-Doc"/>
-        <segue reference="xh3-MK-Bwg"/>
+        <segue reference="CMu-aS-OG2"/>
+        <segue reference="BUn-8p-Q6f"/>
     </inferredMetricsTieBreakers>
 </document>

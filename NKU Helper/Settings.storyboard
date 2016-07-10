@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -396,7 +395,7 @@
         <!--Save Account Info View Controller-->
         <scene sceneID="s0P-Sn-VF6">
             <objects>
-                <viewController storyboardIdentifier="UIViewController-37A-HT-9kh" hidesBottomBarWhenPushed="YES" id="37A-HT-9kh" customClass="SaveAccountInfoViewController" customModule="NKU_Helper" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailLogInVC" hidesBottomBarWhenPushed="YES" id="37A-HT-9kh" customClass="SaveAccountInfoViewController" customModule="NKU_Helper" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5dQ-5r-uzT"/>
                         <viewControllerLayoutGuide type="bottom" id="5yv-du-0b6"/>
@@ -502,7 +501,7 @@
         <!--设置-->
         <scene sceneID="xn6-uy-XyL">
             <objects>
-                <navigationController storyboardIdentifier="UINavigationController-rd0-uX-S1b" automaticallyAdjustsScrollViewInsets="NO" id="rd0-uX-S1b" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="SettingsNC" automaticallyAdjustsScrollViewInsets="NO" id="rd0-uX-S1b" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" tag="5" title="设置" image="设置" id="xFE-9p-Nuz"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
