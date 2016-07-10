@@ -17,9 +17,9 @@ class CourseDetailTableViewController: UITableViewController {
         
         super.viewDidLoad()
         if whichCourse != nil {
-            let userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-            let courses:NSArray = userDefaults.objectForKey("courses") as! NSArray
-            let courseData = courses.objectAtIndex(whichCourse) as! NSData
+            let userDefaults = NSUserDefaults.standardUserDefaults()
+            let courses = userDefaults.objectForKey("courses") as! [NSData]
+            let courseData = courses[whichCourse]
             course = NSKeyedUnarchiver.unarchiveObjectWithData(courseData) as! Course
         }
 
