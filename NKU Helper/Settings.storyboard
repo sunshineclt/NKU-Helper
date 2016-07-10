@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="rd0-uX-S1b">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -8,7 +8,7 @@
         <!--设置-->
         <scene sceneID="Av4-Mo-IvS">
             <objects>
-                <tableViewController id="szY-nW-d8x" customClass="SettingTableViewController" customModule="NKU_Helper" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SettingsVC" id="szY-nW-d8x" customClass="SettingTableViewController" customModule="NKU_Helper" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="atE-d6-UmS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -173,12 +173,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JvK-fg-MYR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2966" y="4875"/>
+            <point key="canvasLocation" x="2278" y="4875"/>
         </scene>
         <!--关于NKU Helper-->
         <scene sceneID="fCX-RG-0nx">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="IVh-3I-IHZ" customClass="AboutViewController" customModule="NKU_Helper" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AboutVC" hidesBottomBarWhenPushed="YES" id="IVh-3I-IHZ" customClass="AboutViewController" customModule="NKU_Helper" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ckj-xm-lom"/>
                         <viewControllerLayoutGuide type="bottom" id="wAn-Fq-V5z"/>
@@ -284,12 +284,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kqe-2P-8cC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3346" y="5626"/>
+            <point key="canvasLocation" x="2278" y="5637"/>
         </scene>
         <!--Color Choose Table View Controller-->
         <scene sceneID="fcy-Ke-7U4">
             <objects>
-                <tableViewController id="m9f-EW-dBc" customClass="ColorChooseTableViewController" customModule="NKU_Helper" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ColorChooseTVC" id="m9f-EW-dBc" customClass="ColorChooseTableViewController" customModule="NKU_Helper" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="fjl-9S-e6t">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -322,12 +322,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="79U-aU-bzR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4034" y="5179"/>
+            <point key="canvasLocation" x="3168" y="5637"/>
         </scene>
         <!--Detail Account Info Table View Controller-->
         <scene sceneID="ZO3-Kz-0hN">
             <objects>
-                <tableViewController id="MfM-hN-8u3" customClass="DetailAccountInfoTableViewController" customModule="NKU_Helper" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="DetailAccountInfoTVC" id="MfM-hN-8u3" customClass="DetailAccountInfoTableViewController" customModule="NKU_Helper" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="hSR-1Z-zak">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -390,7 +390,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jq7-cX-n72" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4747" y="4442"/>
+            <point key="canvasLocation" x="3168" y="4875"/>
         </scene>
         <!--Save Account Info View Controller-->
         <scene sceneID="s0P-Sn-VF6">
@@ -496,7 +496,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bdg-j0-ZA5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4034" y="4442"/>
+            <point key="canvasLocation" x="3168" y="4140"/>
         </scene>
         <!--设置-->
         <scene sceneID="xn6-uy-XyL">
