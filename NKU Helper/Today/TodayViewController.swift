@@ -33,6 +33,12 @@ class TodayViewController: UIViewController {
         }
     }
     
+// MARK: VC状态 property
+    
+    // 是否处在添加Thins的模式
+    var isAddThingMode = false
+    var newToDo:UITextField?
+    
 // MARK: Model
     var todayCourse = [Course]()
     var thingsToDo = [ThingToDo]()
@@ -71,12 +77,6 @@ class TodayViewController: UIViewController {
         }
         
     }
-    
-// MARK: VC状态 property
-    
-    // 是否处在添加Thins的模式
-    var isAddThingMode = false
-    var newToDo:UITextField?
 
 // MARK: 事件监听
     
