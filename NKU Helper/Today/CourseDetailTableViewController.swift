@@ -25,7 +25,7 @@ class CourseDetailTableViewController: UITableViewController {
 
     }
 
-    // MARK: - Table view data source
+// MARK: UITableViewDataSource
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1

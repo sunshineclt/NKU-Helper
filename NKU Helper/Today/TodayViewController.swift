@@ -10,7 +10,7 @@ import UIKit
 
 class TodayViewController: UIViewController {
 
-    // MARK: View Property
+// MARK: View Property
     @IBOutlet var courseCountLabel: UILabel!
     @IBOutlet var thingCountLabel: UILabel!
     @IBOutlet var plusCircleView: PlusCircleView! {
@@ -33,11 +33,11 @@ class TodayViewController: UIViewController {
         }
     }
     
-    // MARK: Model
+// MARK: Model
     var todayCourse = [Course]()
     var thingsToDo = [ThingToDo]()
     
-    // MARK: VCLifeCycle
+// MARK: VC Life Cycle
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -72,13 +72,13 @@ class TodayViewController: UIViewController {
         
     }
     
-    // MARK: 状态Property
+// MARK: VC状态 property
     
     // 是否处在添加Thins的模式
     var isAddThingMode = false
     var newToDo:UITextField?
 
-    // MARK: 事件监听
+// MARK: 事件监听
     
     @IBAction func plusButtonClicked(sender: UIButton) {
         isAddThingMode = true
@@ -90,7 +90,7 @@ class TodayViewController: UIViewController {
         CATransaction.commit()
     }
     
-    // MARK: 页面间跳转
+// MARK: 页面间跳转
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier {
@@ -201,6 +201,8 @@ extension TodayViewController:UITableViewDataSource, CheckBoxClickedDelegate {
     }
 }
 
+
+// MARK: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate
 extension TodayViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
         if scrollView.tag == 0 {
@@ -211,7 +213,9 @@ extension TodayViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     }
 }
 
-extension TodayViewController:UITextFieldDelegate {
+
+// MARK: UITextFieldDelegate
+extension TodayViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         isAddThingMode = false
