@@ -50,20 +50,22 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
                 self.presentViewController(ErrorHandler.alert(ErrorHandler.NetworkError()), animated: true, completion: nil)
             }
         }
-        
-        Alamofire.request(.GET, "http://115.28.141.95/info/week").responseString { (response:Response<String, NSError>) -> Void in
-            if let week = response.result.value {
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.navigationItem.title = "第\(week)周"
-                    let weekInt = (week as NSString).integerValue
-                    self.classTimeView.week = weekInt
-                    if self.canDrawClassTimeTable() {
-                        self.classTimeView.updateClassTimeTableWithWeek(weekInt)
-                    }
-                })
-            }
-        }
       
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        NKNetworkFetchInfo.fetchNowWeek { (nowWeek😈) in
+            guard let nowWeek = nowWeek😈 else {
+                return
+            }
+            dispatch_async(dispatch_get_main_queue(), {
+                self.navigationItem.title = "第\(nowWeek)周"
+                self.classTimeView.week = nowWeek
+                if self.canDrawClassTimeTable() {
+                    self.classTimeView.updateClassTimeTableWithWeek(nowWeek)
+                }
+            })
+        }
     }
     
 // MARK: 事件监听

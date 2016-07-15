@@ -14,9 +14,9 @@ class NKNetworkBase: NSObject {
 
     static var baseURL: String {
         #if DEBUG
-            return "http://pikkacho.cn/"
+            return "http://pikkacho.cn/api/v1/"
         #else
-            return "http://115.28.141.95/"
+            return "http://115.28.141.95/api/v1/"
         #endif
     }
     
