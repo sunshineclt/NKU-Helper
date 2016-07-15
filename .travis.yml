@@ -1,5 +1,4 @@
 osx_image: xcode7.2
 language: objective-c #语言种类
-script:
-  - xctool -workspace "NKU Helper.xcworkspace" -scheme "NKU Helper" clean build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
-  - xctool -workspace "NKU Helper.xcworkspace" -scheme "NKU Helper" run-tests -test-sdk iphonesimulator CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+xcode_workspace: "NKU Helper.xcworkspace" # 项目文件相对于.travis.yml文件的路径
+xcode_scheme: "NKU Helper" #你需要集成测试的scheme
