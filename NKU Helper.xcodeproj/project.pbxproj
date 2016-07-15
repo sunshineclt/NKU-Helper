@@ -208,7 +208,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		737BD7F9EE56DE65FDF07935 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A956B44EB87EC3E1C688431D /* Pods-NKU Helper.ad hoc distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NKU Helper.ad hoc distribution.xcconfig"; path = "Pods/Target Support Files/Pods-NKU Helper/Pods-NKU Helper.ad hoc distribution.xcconfig"; sourceTree = "<group>"; };
 		BCAC9CC81FE39D759978D217 /* Pods-NKU Helper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NKU Helper.release.xcconfig"; path = "Pods/Target Support Files/Pods-NKU Helper/Pods-NKU Helper.release.xcconfig"; sourceTree = "<group>"; };
 		C3D770C49EDC3D2371513DA0 /* Pods_NKU_Helper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NKU_Helper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -350,7 +349,6 @@
 		E98DC7291B8B13D100273510 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E98DC72B1B8B13D600273510 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E98DC72D1B8B13DE00273510 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		E98DC73E1B8B3BCC00273510 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = Alamofire.framework; path = "/Users/cjjlt/Library/Developer/Xcode/DerivedData/NKU_Helper-actrmporpjmihtakpjuvixzwymuh/Build/Products/Debug-iphoneos/Alamofire.framework"; sourceTree = "<absolute>"; };
 		E98E2B461C4638C800CF82BE /* StoreProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreProtocol.swift; sourceTree = "<group>"; };
 		E98E2B481C4639BB00CF82BE /* UserAgent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAgent.swift; sourceTree = "<group>"; };
 		E98E2B4A1C4639EC00CF82BE /* PreferredColorAgent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferredColorAgent.swift; sourceTree = "<group>"; };
@@ -451,12 +449,10 @@
 				E92FB3F41BF37298004C6B7C /* libsqlite3.0.tbd */,
 				E92FB3F21BF37279004C6B7C /* libz.tbd */,
 				E92FB3F01BF3726F004C6B7C /* SystemConfiguration.framework */,
-				E98DC73E1B8B3BCC00273510 /* Alamofire.framework */,
 				E98DC72D1B8B13DE00273510 /* CoreGraphics.framework */,
 				E98DC72B1B8B13D600273510 /* UIKit.framework */,
 				E98DC7291B8B13D100273510 /* Foundation.framework */,
 				E9C2ECBF1B183E8B005C1F5F /* MessageUI.framework */,
-				737BD7F9EE56DE65FDF07935 /* Pods.framework */,
 				C3D770C49EDC3D2371513DA0 /* Pods_NKU_Helper.framework */,
 			);
 			name = Frameworks;
