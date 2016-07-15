@@ -9,23 +9,22 @@
 import UIKit
 import Alamofire
 
-class ClassTimeViewController: UIViewController, UIScrollViewDelegate, WXApiDelegate, NKNetworkLoadCourseDelegate {
+class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCourseDelegate {
+    
+// MARK: View Property
     
     @IBOutlet var refreshBarButton: UIBarButtonItem!
-    
     var classTimeView:ClassTimeView {
         get {
             return ((self.view) as! ClassTimeView)
         }
     }
     
-    // MARK: Properties
+// MARK: Property
     
     var testTimeHtml:NSString!
     
-    let colors = Colors()
-    
-    // MARK: General
+// MARK: VC Life Cycle
     
     override func viewDidLoad() {
 
@@ -52,7 +51,7 @@ class ClassTimeViewController: UIViewController, UIScrollViewDelegate, WXApiDele
             }
         }
         
-        Alamofire.request(.GET, "http://115.28.141.95/CodeIgniter/index.php/info/week").responseString { (response:Response<String, NSError>) -> Void in
+        Alamofire.request(.GET, "http://115.28.141.95/info/week").responseString { (response:Response<String, NSError>) -> Void in
             if let week = response.result.value {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.navigationItem.title = "第\(week)周"
@@ -67,22 +66,7 @@ class ClassTimeViewController: UIViewController, UIScrollViewDelegate, WXApiDele
       
     }
     
-    func canDrawClassTimeTable() -> Bool {
-        
-        do {
-            try UserAgent.sharedInstance.getData()
-            try CourseAgent.sharedInstance.getData()
-            return true
-        } catch StoragedDataError.NoUserInStorage {
-            self.presentViewController(ErrorHandler.alert(ErrorHandler.NotLoggedIn()), animated: true, completion: nil)
-            return false
-        } catch StoragedDataError.NoClassesInStorage {
-            return false
-        } catch {
-            return false
-        }
-        
-    }
+// MARK: 事件监听
     
     override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
         self.classTimeView.orientation = toInterfaceOrientation
@@ -93,7 +77,7 @@ class ClassTimeViewController: UIViewController, UIScrollViewDelegate, WXApiDele
         self.classTimeView.drawClassTimeTableOnViewController(self)
     }
     
-    // MARK: NKNetworkLoadCourseDelegate
+// MARK: NKNetworkLoadCourseDelegate
     
     func didSuccessToReceiveCourseData() {
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -115,30 +99,7 @@ class ClassTimeViewController: UIViewController, UIScrollViewDelegate, WXApiDele
         })
     }
     
-    // MARK: Segue
-    
-    var whichSection:Int!
-    
-    func showCourseDetail(tapGesture:UITapGestureRecognizer) {
-        
-        whichSection = tapGesture.view?.tag
-        self.performSegueWithIdentifier(SegueIdentifier.ShowCourseDetail, sender: nil)
-        
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-        if segue.identifier == SegueIdentifier.ShowCourseDetail {
-            let vc:CourseDetailTableViewController = segue.destinationViewController as! CourseDetailTableViewController
-            vc.whichCourse = whichSection
-        }
-        else if segue.identifier == "showTestTime" {
-            let vc:TestTimeTableViewController = segue.destinationViewController as! TestTimeTableViewController
-            vc.html = testTimeHtml
-        }
-    }
-    
-    // MARK: button
+// MARK: 事件监听
     
     @IBAction func refreshClassTimeTable(sender: AnyObject) {
         let nc:NSNotificationCenter = NSNotificationCenter.defaultCenter()
@@ -196,28 +157,6 @@ class ClassTimeViewController: UIViewController, UIScrollViewDelegate, WXApiDele
                     nc.addObserver(self, selector: #selector(ClassTimeViewController.showTestTime), name: "loginComplete", object: nil)
                     self.performSegueWithIdentifier(SegueIdentifier.Login, sender: nil)
                 case .UnKnown:
-                    self.presentViewController(ErrorHandler.alert(ErrorHandler.NetworkError()), animated: true, completion: nil)
-                }
-            })
-        }
-    }
-    
-    func showTestTime() {
-        let nc:NSNotificationCenter = NSNotificationCenter.defaultCenter()
-        nc.removeObserver(self)
-        SVProgressHUD.show()
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) { () -> Void in
-            let url:NSURL = NSURL(string: "http://222.30.32.10/xxcx/stdexamarrange/listAction.do")!
-            let data:NSData? = NSData(contentsOfURL: url)
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                SVProgressHUD.dismiss()
-                if let _ = data {
-                    let encoding:NSStringEncoding = CFStringConvertEncodingToNSStringEncoding(0x0632)
-                    self.testTimeHtml = NSString(data: data!, encoding: encoding)!
-                    self.performSegueWithIdentifier("showTestTime", sender: nil)
-                    
-                }
-                else {
                     self.presentViewController(ErrorHandler.alert(ErrorHandler.NetworkError()), animated: true, completion: nil)
                 }
             })
@@ -303,7 +242,74 @@ class ClassTimeViewController: UIViewController, UIScrollViewDelegate, WXApiDele
         }        
     }
     
-    // MARK: ScrollViewDelegate
+// MARK: 页面间跳转
+    
+    var whichSection:Int!
+    
+    func showCourseDetail(tapGesture:UITapGestureRecognizer) {
+        
+        whichSection = tapGesture.view?.tag
+        self.performSegueWithIdentifier(SegueIdentifier.ShowCourseDetail, sender: nil)
+        
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == SegueIdentifier.ShowCourseDetail {
+            let vc:CourseDetailTableViewController = segue.destinationViewController as! CourseDetailTableViewController
+            vc.whichCourse = whichSection
+        }
+        else if segue.identifier == "showTestTime" {
+            let vc:TestTimeTableViewController = segue.destinationViewController as! TestTimeTableViewController
+            vc.html = testTimeHtml
+        }
+    }
+    
+// MARK: 私有方法
+    
+    private func canDrawClassTimeTable() -> Bool {
+        
+        do {
+            try UserAgent.sharedInstance.getData()
+            try CourseAgent.sharedInstance.getData()
+            return true
+        } catch StoragedDataError.NoUserInStorage {
+            self.presentViewController(ErrorHandler.alert(ErrorHandler.NotLoggedIn()), animated: true, completion: nil)
+            return false
+        } catch StoragedDataError.NoClassesInStorage {
+            return false
+        } catch {
+            return false
+        }
+        
+    }
+    
+    private func showTestTime() {
+        let nc:NSNotificationCenter = NSNotificationCenter.defaultCenter()
+        nc.removeObserver(self)
+        SVProgressHUD.show()
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) { () -> Void in
+            let url:NSURL = NSURL(string: "http://222.30.32.10/xxcx/stdexamarrange/listAction.do")!
+            let data:NSData? = NSData(contentsOfURL: url)
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                SVProgressHUD.dismiss()
+                if let _ = data {
+                    let encoding:NSStringEncoding = CFStringConvertEncodingToNSStringEncoding(0x0632)
+                    self.testTimeHtml = NSString(data: data!, encoding: encoding)!
+                    self.performSegueWithIdentifier("showTestTime", sender: nil)
+                    
+                }
+                else {
+                    self.presentViewController(ErrorHandler.alert(ErrorHandler.NetworkError()), animated: true, completion: nil)
+                }
+            })
+        }
+    }
+}
+
+// MARK: ScrollViewDelegate
+
+extension ClassTimeViewController: UIScrollViewDelegate {
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
         if scrollView.tag == 1 {
@@ -318,5 +324,4 @@ class ClassTimeViewController: UIViewController, UIScrollViewDelegate, WXApiDele
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         
     }
-    
 }

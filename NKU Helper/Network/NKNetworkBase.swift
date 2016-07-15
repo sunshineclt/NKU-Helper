@@ -12,5 +12,12 @@ import Alamofire
 /// 网络库的基类
 class NKNetworkBase: NSObject {
 
+    static var baseURL: String {
+        #if DEBUG
+            return "http://pikkacho.cn/"
+        #else
+            return "http://115.28.141.95/"
+        #endif
+    }
     
 }
