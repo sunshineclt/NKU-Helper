@@ -87,7 +87,7 @@ class NotiCenterTableViewController: UITableViewController {
         
         let cell = tableView.cellForRowAtIndexPath(indexPath) as! NotiTableViewCell
         let url = NSURL(string: cell.notiData.url)!
-        self.performSegueWithIdentifier(CellIdentifier.notiShowDetail, sender: url)
+        self.performSegueWithIdentifier(SegueIdentifier.ShowNotiDetail, sender: url)
         
     }
     

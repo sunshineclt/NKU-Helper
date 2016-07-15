@@ -203,7 +203,7 @@
                         <outlet property="departTextField" destination="dEW-4z-NQO" id="ISI-qF-bwa"/>
                         <outlet property="teachernameTextField" destination="2bq-XS-AfF" id="8NP-a8-fjR"/>
                         <segue destination="Wln-3O-rNo" kind="presentation" identifier="Login" id="dh4-ZX-0yP"/>
-                        <segue destination="4mf-Hc-aOk" kind="show" identifier="showClassSearchDetail" id="2fB-GJ-290"/>
+                        <segue destination="4mf-Hc-aOk" kind="show" identifier="ShowClassSearchDetail" id="2fB-GJ-290"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qjq-cA-ECV" userLabel="First Responder" sceneMemberID="firstResponder"/>

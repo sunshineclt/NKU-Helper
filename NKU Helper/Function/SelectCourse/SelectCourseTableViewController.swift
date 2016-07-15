@@ -45,7 +45,7 @@ class SelectCourseTableViewController: UITableViewController, NKNetworkSearchCou
     
     func didReceiveSearchResult(result: [CourseSelecting]) {
         searchResult = result
-        self.performSegueWithIdentifier(SegueIdentifier.showClassSearchDetail, sender: nil)
+        self.performSegueWithIdentifier(SegueIdentifier.ShowClassSearchDetail, sender: nil)
     }
     
     @IBAction func search(sender: UIButton) {
@@ -78,7 +78,7 @@ class SelectCourseTableViewController: UITableViewController, NKNetworkSearchCou
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == SegueIdentifier.showClassSearchDetail {
+        if segue.identifier == SegueIdentifier.ShowClassSearchDetail {
             if let vc = segue.destinationViewController as? SearchCourseTableViewController {
                 vc.courseSearchResult = searchResult ?? []
                 switch whichButtonIsClicked! {

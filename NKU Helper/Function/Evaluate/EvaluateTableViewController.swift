@@ -101,7 +101,7 @@ extension EvaluateTableViewController {
         let cell = tableView.cellForRowAtIndexPath(indexPath) as! ClassToEvaluateTableViewCell
         selectedIndex = cell.classToEvaluate.index
         if !cell.classToEvaluate.hasEvaluated {
-            self.performSegueWithIdentifier(SegueIdentifier.evaluateDetail, sender: nil)
+            self.performSegueWithIdentifier(SegueIdentifier.ShowEvaluateDetail, sender: nil)
         }
         else {
             self.presentViewController(ErrorHandler.alert(ErrorHandler.EvaluateHasDone()), animated: true, completion: nil)
@@ -109,7 +109,7 @@ extension EvaluateTableViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier! == SegueIdentifier.evaluateDetail {
+        if segue.identifier! == SegueIdentifier.ShowEvaluateDetail {
             let destinationVC = segue.destinationViewController as! EvaluateDetailTableViewController
             destinationVC.classIndexToEvaluate = selectedIndex
         }

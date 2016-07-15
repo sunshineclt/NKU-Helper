@@ -149,7 +149,7 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
                     if let _ = data {
                         let encoding:NSStringEncoding = CFStringConvertEncodingToNSStringEncoding(0x0632)
                         self.testTimeHtml = NSString(data: data!, encoding: encoding)!
-                        self.performSegueWithIdentifier("showTestTime", sender: nil)
+                        self.performSegueWithIdentifier(SegueIdentifier.ShowTestTime, sender: nil)
                     }
                     else {
                         self.presentViewController(ErrorHandler.alert(ErrorHandler.NetworkError()), animated: true, completion: nil)
@@ -262,7 +262,7 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
             case SegueIdentifier.ShowCourseDetail:
                 let vc = segue.destinationViewController as! CourseDetailTableViewController
                 vc.whichCourse = whichSection
-            case "showTestTime":
+            case SegueIdentifier.ShowTestTime:
                 let vc = segue.destinationViewController as! TestTimeTableViewController
                 vc.html = testTimeHtml
             default:
@@ -304,7 +304,7 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
                 if let _ = data {
                     let encoding:NSStringEncoding = CFStringConvertEncodingToNSStringEncoding(0x0632)
                     self.testTimeHtml = NSString(data: data!, encoding: encoding)!
-                    self.performSegueWithIdentifier("showTestTime", sender: nil)
+                    self.performSegueWithIdentifier(SegueIdentifier.ShowTestTime, sender: nil)
                     
                 }
                 else {

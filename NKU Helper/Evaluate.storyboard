@@ -63,7 +63,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="Wln-3O-rNo" kind="presentation" identifier="Login" id="xh3-MK-Bwg"/>
-                        <segue destination="8JN-Ud-FvR" kind="show" identifier="evaluateDetail" id="DjT-eL-i0B"/>
+                        <segue destination="8JN-Ud-FvR" kind="show" identifier="ShowEvaluateDetail" id="DjT-eL-i0B"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TBq-g6-w9Q" userLabel="First Responder" sceneMemberID="firstResponder"/>

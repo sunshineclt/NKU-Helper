@@ -159,7 +159,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="colorLabel" destination="MFB-Uu-GqY" id="dof-pO-mVN"/>
-                                    <segue destination="IVh-3I-IHZ" kind="presentation" identifier="about" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="JLH-iu-Tf3"/>
+                                    <segue destination="IVh-3I-IHZ" kind="presentation" identifier="" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="JLH-iu-Tf3"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

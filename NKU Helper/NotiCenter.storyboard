@@ -113,7 +113,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <segue destination="kFw-Si-mOQ" kind="show" identifier="notiShowDetail" id="bl6-7t-sWH"/>
+                        <segue destination="kFw-Si-mOQ" kind="show" identifier="ShowNotiDetail" id="bl6-7t-sWH"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="npA-XH-eOW" userLabel="First Responder" sceneMemberID="firstResponder"/>

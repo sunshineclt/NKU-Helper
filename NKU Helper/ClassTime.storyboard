@@ -74,7 +74,7 @@
                         <outlet property="refreshBarButton" destination="mLK-50-XO9" id="13y-1y-UzM"/>
                         <segue destination="Wln-3O-rNo" kind="presentation" identifier="Login" id="BUn-8p-Q6f"/>
                         <segue destination="rsb-dm-aGc" kind="show" identifier="ShowCourseDetail" id="CMu-aS-OG2"/>
-                        <segue destination="p8t-82-cpR" kind="show" identifier="showTestTime" id="P0x-3X-p1r"/>
+                        <segue destination="p8t-82-cpR" kind="show" identifier="ShowTestTime" id="P0x-3X-p1r"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zvr-l2-dvi" userLabel="First Responder" sceneMemberID="firstResponder"/>
