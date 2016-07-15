@@ -3,7 +3,7 @@
 //  NKU Helper
 //
 //  Created by 陈乐天 on 15/4/7.
-//  Copyright (c) 2015年 &#38472;&#20048;&#22825;. All rights reserved.
+//  Copyright (c) 2015年 陈乐天. All rights reserved.
 //
 
 import UIKit
@@ -17,15 +17,15 @@ class CourseDetailTableViewController: UITableViewController {
         
         super.viewDidLoad()
         if whichCourse != nil {
-            let userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-            let courses:NSArray = userDefaults.objectForKey("courses") as! NSArray
-            let courseData = courses.objectAtIndex(whichCourse) as! NSData
+            let userDefaults = NSUserDefaults.standardUserDefaults()
+            let courses = userDefaults.objectForKey("courses") as! [NSData]
+            let courseData = courses[whichCourse]
             course = NSKeyedUnarchiver.unarchiveObjectWithData(courseData) as! Course
         }
 
     }
 
-    // MARK: - Table view data source
+// MARK: UITableViewDataSource
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1

@@ -29,7 +29,7 @@ class NKNetworkSearchCourse: NKNetworkBase{
      - parameter name: 课程名称
      */
     func searchCourseWithClassName(name: String) {
-        let url = "http://115.28.141.95:25000/class/classname/" + NSString(string: name).stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+        let url = "http://115.28.141.95:25000/class/classname/" + NSString(string: name).stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.alphanumericCharacterSet())!
         Alamofire.request(.GET, url).responseJSON { (response: Response<AnyObject, NSError>) -> Void in
             switch response.result {
             case .Success(let value):
@@ -67,7 +67,7 @@ class NKNetworkSearchCourse: NKNetworkBase{
     }
     
     func searchCourseWithClassID(ID: String) {
-        let url = "http://115.28.141.95:25000/class/classname/" + NSString(string: ID).stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+        let url = "http://115.28.141.95:25000/class/classname/" + NSString(string: ID).stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.alphanumericCharacterSet())!
         Alamofire.request(.GET, url).responseJSON { (response: Response<AnyObject, NSError>) -> Void in
             guard (response.result.value as? NSDictionary) != nil else {
                 self.delegate?.didReceiveSearchResult([])
@@ -78,7 +78,7 @@ class NKNetworkSearchCourse: NKNetworkBase{
     }
     
     func searchCourseWithTeachername(teachername: String) {
-        let url = "http://115.28.141.95:25000/class/classname/" + NSString(string: teachername).stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+        let url = "http://115.28.141.95:25000/class/classname/" + NSString(string: teachername).stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.alphanumericCharacterSet())!
         Alamofire.request(.GET, url).responseJSON { (response: Response<AnyObject, NSError>) -> Void in
             guard (response.result.value as? NSDictionary) != nil else {
                 self.delegate?.didReceiveSearchResult([])
@@ -89,7 +89,7 @@ class NKNetworkSearchCourse: NKNetworkBase{
     }
     
     func searchCourseWithDepartcode(departcode: String) {
-        let url = "http://115.28.141.95:25000/class/classname/" + NSString(string: departcode).stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+        let url = "http://115.28.141.95:25000/class/classname/" + NSString(string: departcode).stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.alphanumericCharacterSet())!
         Alamofire.request(.GET, url).responseJSON { (response: Response<AnyObject, NSError>) -> Void in
             guard (response.result.value as? NSDictionary) != nil else {
                 self.delegate?.didReceiveSearchResult([])
