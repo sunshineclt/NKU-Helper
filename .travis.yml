@@ -1,6 +1,5 @@
 osx_image: xcode7.2
 language: objective-c #语言种类
 script:
-  - pod install
   - xctool -workspace "NKU Helper.xcworkspace" -scheme "NKU Helper" clean build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
   - xctool -workspace "NKU Helper.xcworkspace" -scheme "NKU Helper" run-tests -test-sdk iphonesimulator CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
