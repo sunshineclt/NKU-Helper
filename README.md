@@ -14,7 +14,7 @@
 ## 编码规范
 [编码规范](./编码规范.md)
 
-## 版本历史
+## 更新日志
 [VersionLog](./VersionLog.md)
 
 ## License
