@@ -20,4 +20,12 @@ class NKNetworkBase: NSObject {
         #endif
     }
     
+    class func getURLByAppendingBaseURLWithPath(path: String) -> NSURL {
+        return NSURL(string: getURLStringByAppendingBaseURLWithPath(path))!
+    }
+    
+    class func getURLStringByAppendingBaseURLWithPath(path: String) -> String {
+        return baseURL + path
+    }
+    
 }
