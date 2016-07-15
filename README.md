@@ -19,6 +19,7 @@
 
 ## License
 [GPL-3.0+](./LICENSE.txt)
+<br>
 **Notice:**根据GPL-3.0+协议,任何本作品的复制和衍生品均需开源且采用GPL-3.0+协议
 
 ## Make By 陈乐天
