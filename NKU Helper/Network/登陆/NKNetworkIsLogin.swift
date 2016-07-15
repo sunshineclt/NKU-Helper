@@ -30,8 +30,7 @@ class NKNetworkIsLogin: NKNetworkBase {
      - returns: 登录状态
      */
     class func isLoggedin() -> NKNetworkLoginStatus {
-        let req:NSURLRequest = NSURLRequest(URL: NSURL(string: "http://222.30.32.10/xsxk/selectedAction.do?operation=kebiao")!)
-        let receivedData:NSData? = try? NSURLConnection.sendSynchronousRequest(req, returningResponse: nil)
+        let receivedData = NSData(contentsOfURL: NSURL(string: "http://222.30.32.10/xsxk/selectedAction.do?operation=kebiao")!)
         if let _ = receivedData {
             let encoding:NSStringEncoding = CFStringConvertEncodingToNSStringEncoding(0x0632)
             let html:NSString = NSString(data: receivedData!, encoding: encoding)!

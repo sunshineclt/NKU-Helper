@@ -88,8 +88,7 @@ class NKNetworkLoadCourse: NKNetworkBase {
             if presentRange.range.length > 67 {
                 let urlString = "http://222.30.32.10/xsxk/selectedAllAction.do?" + html.substringWithRange(presentRange.range)
                 let url:NSURL = NSURL(string: urlString)!
-                let req:NSURLRequest = NSURLRequest(URL: url)
-                let receivedData = try! NSURLConnection.sendSynchronousRequest(req, returningResponse: nil)
+                let receivedData = NSData(contentsOfURL: url)!
                 let encoding = CFStringConvertEncodingToNSStringEncoding(0x0632)
                 let courseDetailInfoHtml = NSString(data: receivedData, encoding: encoding)!
                 

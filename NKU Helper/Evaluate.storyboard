@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="pTy-kp-D2v">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <scenes>
+        <!--评教-->
+        <scene sceneID="Jew-wv-Ecb">
+            <objects>
+                <tableViewController storyboardIdentifier="EvaluateTVC" id="pTy-kp-D2v" customClass="EvaluateTableViewController" customModule="NKU_Helper" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Kyo-7P-qkn">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="classToEvaluate" rowHeight="60" id="3ui-wR-xq6" customClass="ClassToEvaluateTableViewCell" customModule="NKU_Helper" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3ui-wR-xq6" id="zYF-uq-ZO3">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="59.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="classEvaluated" translatesAutoresizingMaskIntoConstraints="NO" id="RIf-vx-Ekg">
+                                            <rect key="frame" x="548" y="8" width="44" height="44"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="RIf-vx-Ekg" secondAttribute="height" multiplier="1:1" id="omJ-pd-HPJ"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mGc-2H-BOq">
+                                            <rect key="frame" x="8" y="8" width="532" height="44"/>
+                                            <string key="text">大学语文（理工类）- 胡学常	</string>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="leadingMargin" secondItem="mGc-2H-BOq" secondAttribute="leading" id="0hp-HA-rpx"/>
+                                        <constraint firstAttribute="topMargin" secondItem="mGc-2H-BOq" secondAttribute="top" id="ZQf-Od-4Tc"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="mGc-2H-BOq" secondAttribute="bottom" id="j1x-Qg-upV"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="RIf-vx-Ekg" secondAttribute="trailing" id="kJT-do-vv0"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="RIf-vx-Ekg" secondAttribute="bottom" id="p7o-i5-SNC"/>
+                                        <constraint firstItem="RIf-vx-Ekg" firstAttribute="leading" secondItem="mGc-2H-BOq" secondAttribute="trailing" constant="8" symbolic="YES" id="xUr-Mf-3a4"/>
+                                        <constraint firstItem="RIf-vx-Ekg" firstAttribute="top" secondItem="zYF-uq-ZO3" secondAttribute="topMargin" id="zxb-rL-MEU"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="classNameAndTeacherNameLabel" destination="mGc-2H-BOq" id="EKk-YT-Pca"/>
+                                    <outlet property="hasEvaluatedImageView" destination="RIf-vx-Ekg" id="dfk-qh-4NL"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="pTy-kp-D2v" id="N01-dX-IIZ"/>
+                            <outlet property="delegate" destination="pTy-kp-D2v" id="ha4-nY-rb2"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="评教" id="FdU-51-ylT"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="Wln-3O-rNo" kind="presentation" identifier="Login" id="xh3-MK-Bwg"/>
+                        <segue destination="8JN-Ud-FvR" kind="show" identifier="evaluateDetail" id="DjT-eL-i0B"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TBq-g6-w9Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2846" y="1184"/>
+        </scene>
+        <!--请评教-->
+        <scene sceneID="yEs-f2-bBp">
+            <objects>
+                <tableViewController storyboardIdentifier="EvaluateDetailTVC" id="8JN-Ud-FvR" customClass="EvaluateDetailTableViewController" customModule="NKU_Helper" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="BxW-yQ-auG">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="evaluateDetail" rowHeight="100" id="DH7-e3-5eQ" customClass="EvaluateDetailTableViewCell" customModule="NKU_Helper" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="113.5" width="600" height="100"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DH7-e3-5eQ" id="bGM-c6-P82">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="99.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="iUm-N5-Bs1">
+                                            <rect key="frame" x="498" y="36" width="94" height="29"/>
+                                            <connections>
+                                                <action selector="stepperDidChangeValue:" destination="DH7-e3-5eQ" eventType="valueChanged" id="Iky-UV-hyB"/>
+                                            </connections>
+                                        </stepper>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选取优秀教材，授课内容适合学生的水平和能力，课程进度安排合理（10）" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1cp-HF-TAP">
+                                            <rect key="frame" x="8" y="8" width="300" height="84"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pOM-5D-TGb">
+                                            <rect key="frame" x="470" y="8" width="20" height="84"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="20" id="8mK-II-JSc"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="1cp-HF-TAP" secondAttribute="bottom" id="0JV-CG-x1N"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="pOM-5D-TGb" secondAttribute="bottom" id="5oV-dY-QDV"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="iUm-N5-Bs1" secondAttribute="trailing" id="CTP-uK-Nt2"/>
+                                        <constraint firstItem="pOM-5D-TGb" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="1cp-HF-TAP" secondAttribute="trailing" constant="8" symbolic="YES" id="Duq-iD-2NR"/>
+                                        <constraint firstItem="1cp-HF-TAP" firstAttribute="width" secondItem="bGM-c6-P82" secondAttribute="width" multiplier="1/2" id="ScF-h1-qBT"/>
+                                        <constraint firstItem="iUm-N5-Bs1" firstAttribute="leading" secondItem="pOM-5D-TGb" secondAttribute="trailing" constant="8" symbolic="YES" id="Yp6-N6-Ku3"/>
+                                        <constraint firstAttribute="topMargin" secondItem="pOM-5D-TGb" secondAttribute="top" id="Zjs-2f-ONo"/>
+                                        <constraint firstItem="iUm-N5-Bs1" firstAttribute="centerY" secondItem="bGM-c6-P82" secondAttribute="centerY" id="mCi-2Z-KES"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="1cp-HF-TAP" secondAttribute="leading" id="mPm-Nn-5Iw"/>
+                                        <constraint firstAttribute="topMargin" secondItem="1cp-HF-TAP" secondAttribute="top" id="xDT-Ct-oxV"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="evaluateContentLabel" destination="1cp-HF-TAP" id="GRA-OP-WPi"/>
+                                    <outlet property="pointLabel" destination="pOM-5D-TGb" id="i5h-v2-TJx"/>
+                                    <outlet property="stepper" destination="iUm-N5-Bs1" id="kDA-c1-NJy"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="evaluateOpinion" rowHeight="100" id="s1O-dC-2Gq" customClass="EvaluateOpinionTableViewCell" customModule="NKU_Helper" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="213.5" width="600" height="100"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="s1O-dC-2Gq" id="wNw-UR-kiK">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="99.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" placeholder="意见建议（150字以内）" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W0l-Lm-kGc">
+                                            <rect key="frame" x="8" y="8" width="584" height="84"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="83.5" id="bHT-3n-WQW"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="leadingMargin" secondItem="W0l-Lm-kGc" secondAttribute="leading" id="0YG-oZ-gCo"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="W0l-Lm-kGc" secondAttribute="trailing" id="6eK-Ig-3oM"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="W0l-Lm-kGc" secondAttribute="bottom" id="Rl4-h8-mbd"/>
+                                        <constraint firstAttribute="topMargin" secondItem="W0l-Lm-kGc" secondAttribute="top" id="dGH-ws-iHX"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="opinionTextField" destination="W0l-Lm-kGc" id="3qz-KT-Kji"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="evaluateSubmit" id="4Kf-Na-WS5">
+                                <rect key="frame" x="0.0" y="313.5" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4Kf-Na-WS5" id="eBT-B5-gBg">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="khQ-k2-PvT">
+                                            <rect key="frame" x="285" y="7" width="30" height="30"/>
+                                            <state key="normal" title="提交">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="centerX" secondItem="khQ-k2-PvT" secondAttribute="centerX" id="9ER-XK-zAG"/>
+                                        <constraint firstAttribute="centerY" secondItem="khQ-k2-PvT" secondAttribute="centerY" constant="-0.25" id="b63-kd-JIa"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.2039215714" green="0.59607845540000004" blue="0.85882353779999998" alpha="1" colorSpace="calibratedRGB"/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="8JN-Ud-FvR" id="Nle-JI-tPx"/>
+                            <outlet property="delegate" destination="8JN-Ud-FvR" id="z2p-f6-ArU"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="请评教" id="fzi-fU-fvb"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5C4-IN-4Sf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3667" y="1184"/>
+        </scene>
+        <!--LogIn-->
+        <scene sceneID="evG-Pj-1Xy">
+            <objects>
+                <viewControllerPlaceholder storyboardName="LogIn" id="Wln-3O-rNo" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Av-F1-KkN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3400" y="773"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="classEvaluated" width="256" height="256"/>
+    </resources>
+</document>

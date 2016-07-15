@@ -12,7 +12,7 @@ import Alamofire
 class NKNetworkDepartCode: NKNetworkBase {
     
     func searchDepartCode(departCode: String) {
-        let url = "http://115.28.141.95:25000/departCode/" + NSString(string: departCode).stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+        let url = "http://115.28.141.95:25000/departCode/" + NSString(string: departCode).stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.alphanumericCharacterSet())!
         Alamofire.request(.GET, url).responseJSON { (response: Response<AnyObject, NSError>) -> Void in
             guard (response.result.value as? NSDictionary) != nil else {
     
