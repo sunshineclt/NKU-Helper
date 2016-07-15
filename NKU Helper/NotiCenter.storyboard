@@ -13,7 +13,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="noti" rowHeight="200" id="buG-PZ-5af" customClass="NotiTableViewCell" customModule="NKU_Helper" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="NotiCell" rowHeight="200" id="buG-PZ-5af" customClass="NotiTableViewCell" customModule="NKU_Helper" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="200"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="buG-PZ-5af" id="GcW-2N-Ewg">
@@ -140,6 +140,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="NanKai" width="60" height="60"/>
+        <image name="NanKai" width="124" height="124"/>
     </resources>
 </document>

@@ -194,7 +194,7 @@ extension GradeShowerTableViewController {
             
         }
         
-        let cell:GradeCell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.gradeCell, forIndexPath: indexPath) as! GradeCell
+        let cell:GradeCell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.GradeCell, forIndexPath: indexPath) as! GradeCell
         
         if MajorOrMinorSegmentControl.selectedSegmentIndex == 0 {
             guard indexPath.section != 5 else {

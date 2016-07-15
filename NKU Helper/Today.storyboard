@@ -303,7 +303,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="courseDetail" textLabel="wjU-Fm-qqQ" detailTextLabel="8E7-uw-DiI" style="IBUITableViewCellStyleValue1" id="4vq-1K-k7h">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CourseDetailCell" textLabel="wjU-Fm-qqQ" detailTextLabel="8E7-uw-DiI" style="IBUITableViewCellStyleValue1" id="4vq-1K-k7h">
                                 <rect key="frame" x="0.0" y="113.5" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4vq-1K-k7h" id="Rde-ec-HDD">

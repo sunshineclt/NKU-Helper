@@ -15,7 +15,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="noticenter" rowHeight="80" id="mDL-jZ-taT">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="NotiCenterCell" rowHeight="80" id="mDL-jZ-taT">
                                 <rect key="frame" x="0.0" y="86" width="600" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mDL-jZ-taT" id="diG-rw-vkz">
@@ -48,10 +48,10 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.61176470589999998" green="0.34901960780000002" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
-                                    <segue destination="XWb-6R-lWR" kind="show" identifier="notiCenter" id="qhO-km-gvT"/>
+                                    <segue destination="XWb-6R-lWR" kind="show" identifier="ShowNotiCenter" id="qhO-km-gvT"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="gradeGetter" rowHeight="80" id="ztR-Br-ZPV">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="GradeShowerCell" rowHeight="80" id="ztR-Br-ZPV">
                                 <rect key="frame" x="0.0" y="166" width="600" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ztR-Br-ZPV" id="cUb-Og-sQ2">
@@ -84,10 +84,10 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.50609725713729858" green="0.68362480401992798" blue="0.99904388189315796" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
-                                    <segue destination="Y31-yR-s4t" kind="show" identifier="showGrade" id="ZIG-vz-ZWI"/>
+                                    <segue destination="Y31-yR-s4t" kind="show" identifier="" id="ZIG-vz-ZWI"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="evaluate" rowHeight="80" id="Jbq-gZ-4aQ" userLabel="evaluate">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="EvaluateCenterCell" rowHeight="80" id="Jbq-gZ-4aQ" userLabel="evaluate">
                                 <rect key="frame" x="0.0" y="246" width="600" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Jbq-gZ-4aQ" id="Si8-Oa-Deg">
@@ -123,7 +123,7 @@
                                     <segue destination="TRu-kD-Szh" kind="show" id="big-fa-38h"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="selectCourse" rowHeight="80" id="RuU-y6-i7z">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SelectCourseCenterCell" rowHeight="80" id="RuU-y6-i7z">
                                 <rect key="frame" x="0.0" y="326" width="600" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RuU-y6-i7z" id="nCH-AG-7dS">
@@ -159,7 +159,7 @@
                                     <segue destination="AHW-2j-Gk3" kind="show" id="yge-x2-Qs2"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MoreFunction" rowHeight="80" id="kq4-ze-3Qw">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MoreFunctionCell" rowHeight="80" id="kq4-ze-3Qw">
                                 <rect key="frame" x="0.0" y="406" width="600" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kq4-ze-3Qw" id="zdA-uz-daF">

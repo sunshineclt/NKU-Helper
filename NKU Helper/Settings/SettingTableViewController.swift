@@ -55,27 +55,27 @@ class SettingTableViewController: UITableViewController {
         case 0:
             do {
                 let user = try UserDetailInfoAgent.sharedInstance.getData()
-                let cell = tableView.dequeueReusableCellWithIdentifier("Account") as! AccountTableViewCell
+                let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.AccountCell) as! AccountTableViewCell
                 let timeEnteringSchool = (user.TimeEnteringSchool as NSString).substringWithRange(NSMakeRange(2, 2))
                 cell.nameLabel.text = user.Name
                 cell.userIDLabel.text = user.UserID
                 cell.departmentLabel.text = user.DepartmentAdmitted + (timeEnteringSchool as String) + "级本科生"
                 return cell
             } catch {
-                let cell = tableView.dequeueReusableCellWithIdentifier("AddAccount")!
+                let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.AddAccountCell)!
                 cell.textLabel?.text = "请先登录！"
                 cell.detailTextLabel?.text = "欢迎使用NKU Helper！"
                 return cell
             }
         case 1:
-            let cell = tableView.dequeueReusableCellWithIdentifier("color")!
+            let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.ChoosePreferredColorCell)!
             return cell
         case 2:
-            let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("support")!
+            let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.SupportGroupCell)!
             cell.textLabel?.text = "请开发团队喝一杯咖啡"
             return cell
         case 3:
-            let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("about")!
+            let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.AboutCell)!
             cell.textLabel?.text = "关于"
             return cell
         default:

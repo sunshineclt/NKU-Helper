@@ -10,6 +10,7 @@ struct SegueIdentifier {
     static let Login = "Login"
     static let ShowCourseDetail = "ShowCourseDetail"
     static let ShowTestTime = "ShowTestTime"
+    static let ShowNotiCenter = "ShowNotiCenter"
     static let ShowNotiDetail = "ShowNotiDetail"
     static let ShowEvaluateDetail = "ShowEvaluateDetail"
     static let ShowClassSearchDetail = "ShowClassSearchDetail"

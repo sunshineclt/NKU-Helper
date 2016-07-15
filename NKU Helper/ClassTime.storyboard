@@ -90,7 +90,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="testTime" rowHeight="132" id="zy3-DQ-cbw" customClass="TestTimeTableViewCell" customModule="NKU_Helper" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TestTimeCell" rowHeight="132" id="zy3-DQ-cbw" customClass="TestTimeTableViewCell" customModule="NKU_Helper" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="113.5" width="600" height="132"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zy3-DQ-cbw" id="kEW-kk-CX8">

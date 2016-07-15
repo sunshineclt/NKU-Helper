@@ -31,7 +31,7 @@ class ColorChooseTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell:ColorChooseTableViewCell = tableView.dequeueReusableCellWithIdentifier("colorChoose") as! ColorChooseTableViewCell
+        let cell:ColorChooseTableViewCell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.PreferredColorCell) as! ColorChooseTableViewCell
         cell.colorView.backgroundColor = Colors.colors[indexPath.row]
         let userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         let preferredColors:NSMutableArray = userDefaults.objectForKey("preferredColors") as! NSMutableArray

@@ -52,7 +52,7 @@ class NotiCenterTableViewController: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.noti, forIndexPath: indexPath) as! NotiTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.NotiCell, forIndexPath: indexPath) as! NotiTableViewCell
         cell.notiData = noti[indexPath.row]
         cell.displayView.layer.cornerRadius = 10
         return cell

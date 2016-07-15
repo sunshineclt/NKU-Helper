@@ -37,7 +37,7 @@ class CourseDetailTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("courseDetail", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.CourseDetailCell, forIndexPath: indexPath)
         
         switch indexPath.row {
         case 0:

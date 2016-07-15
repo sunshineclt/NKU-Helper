@@ -84,15 +84,15 @@ extension EvaluateDetailTableViewController: EvaluateDetailStepperProtocol {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         guard indexPath.section < detailEvaluateList.count else {
             if indexPath.section == detailEvaluateList.count {
-                let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.evaluateOpinion) as! EvaluateOpinionTableViewCell
+                let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.EvaluateOpinionCell) as! EvaluateOpinionTableViewCell
                 return cell
             }
             else {
-                let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.evaluateSubmit)!
+                let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.EvaluateSubmitCell)!
                 return cell
             }
         }
-        let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.evaluateDetail) as! EvaluateDetailTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.EvaluateDetailCell) as! EvaluateDetailTableViewCell
         cell.delegate = self
         cell.evaluateContentLabel.text = detailEvaluateList[indexPath.section].question[indexPath.row].content
         cell.pointLabel.text = "\(detailEvaluateList[indexPath.section].question[indexPath.row].grade)"

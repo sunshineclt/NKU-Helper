@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="classToEvaluate" rowHeight="60" id="3ui-wR-xq6" customClass="ClassToEvaluateTableViewCell" customModule="NKU_Helper" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ClassToEvaluateCell" rowHeight="60" id="3ui-wR-xq6" customClass="ClassToEvaluateTableViewCell" customModule="NKU_Helper" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3ui-wR-xq6" id="zYF-uq-ZO3">
@@ -79,7 +79,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="evaluateDetail" rowHeight="100" id="DH7-e3-5eQ" customClass="EvaluateDetailTableViewCell" customModule="NKU_Helper" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="EvaluateDetailCell" rowHeight="100" id="DH7-e3-5eQ" customClass="EvaluateDetailTableViewCell" customModule="NKU_Helper" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="113.5" width="600" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DH7-e3-5eQ" id="bGM-c6-P82">
@@ -127,7 +127,7 @@
                                     <outlet property="stepper" destination="iUm-N5-Bs1" id="kDA-c1-NJy"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="evaluateOpinion" rowHeight="100" id="s1O-dC-2Gq" customClass="EvaluateOpinionTableViewCell" customModule="NKU_Helper" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="EvaluateOpinionCell" rowHeight="100" id="s1O-dC-2Gq" customClass="EvaluateOpinionTableViewCell" customModule="NKU_Helper" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="213.5" width="600" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="s1O-dC-2Gq" id="wNw-UR-kiK">
@@ -154,7 +154,7 @@
                                     <outlet property="opinionTextField" destination="W0l-Lm-kGc" id="3qz-KT-Kji"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="evaluateSubmit" id="4Kf-Na-WS5">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EvaluateSubmitCell" id="4Kf-Na-WS5">
                                 <rect key="frame" x="0.0" y="313.5" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4Kf-Na-WS5" id="eBT-B5-gBg">

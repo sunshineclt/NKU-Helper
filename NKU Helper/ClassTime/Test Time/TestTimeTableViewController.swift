@@ -93,7 +93,7 @@ class TestTimeTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell:TestTimeTableViewCell = tableView.dequeueReusableCellWithIdentifier("testTime") as! TestTimeTableViewCell
+        let cell:TestTimeTableViewCell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.TestTimeCell) as! TestTimeTableViewCell
         
         cell.classNameLabel.text = testTime[indexPath.row]["className"]
         cell.classroomLabel.text = testTime[indexPath.row]["classroom"]

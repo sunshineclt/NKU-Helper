@@ -92,7 +92,7 @@ extension EvaluateTableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.classToEvaluate) as! ClassToEvaluateTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.ClassToEvaluateCell) as! ClassToEvaluateTableViewCell
         cell.classToEvaluate = classesToEvaluate[indexPath.row]
         return cell
     }
