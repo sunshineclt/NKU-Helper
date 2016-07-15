@@ -4,7 +4,7 @@ PODS:
   - DZNEmptyDataSet (1.8.1)
   - MBProgressHUD (0.9.2)
   - MJRefresh (3.1.10)
-  - MOBFoundation (2.0.4)
+  - MOBFoundation (2.0.7)
   - NJKWebViewProgress (0.2.3):
     - NJKWebViewProgress/Core (= 0.2.3)
     - NJKWebViewProgress/ProgressView (= 0.2.3)
@@ -46,7 +46,7 @@ SPEC CHECKSUMS:
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   MJRefresh: bb72948c985914b0b5cecac573a2c69a8915fb02
-  MOBFoundation: e1f2d00e82a20fdc55c61baac4e15c9b9dd361e5
+  MOBFoundation: af2388967017966e003c676a6cfffe784a1dead2
   NJKWebViewProgress: f481fd424cb5ecc27eacae11b5397db92fba9a4d
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
   ShareSDK3: c76cb96eb38e079952b8157071486d945faa2df2

@@ -4,10 +4,15 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>NKU Helper.xcscheme</key>
+		<key>NKU Helper.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+		<key>NKU HelperTests.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -18,6 +23,11 @@
 			<true/>
 		</dict>
 		<key>E90AE23F1A8F813900AD0D78</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E9DA59491D3889AF0012ED9A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
