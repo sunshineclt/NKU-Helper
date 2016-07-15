@@ -104,7 +104,7 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
 // MARK: 事件监听
     
     @IBAction func refreshClassTimeTable(sender: AnyObject) {
-        let nc:NSNotificationCenter = NSNotificationCenter.defaultCenter()
+        let nc = NSNotificationCenter.defaultCenter()
         nc.removeObserver(self)
         do {
             try UserAgent.sharedInstance.getData()
@@ -211,7 +211,7 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
         let thumbImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        // 制作微信跳转过去的信息
+        // 制作跳转过去的信息
         let message = WXMediaMessage()
         let ext = WXImageObject()
         ext.imageData = UIImagePNGRepresentation(combinedImage)
@@ -257,14 +257,19 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if segue.identifier == SegueIdentifier.ShowCourseDetail {
-            let vc:CourseDetailTableViewController = segue.destinationViewController as! CourseDetailTableViewController
-            vc.whichCourse = whichSection
+        if let identifier = segue.identifier {
+            switch identifier {
+            case SegueIdentifier.ShowCourseDetail:
+                let vc = segue.destinationViewController as! CourseDetailTableViewController
+                vc.whichCourse = whichSection
+            case "showTestTime":
+                let vc = segue.destinationViewController as! TestTimeTableViewController
+                vc.html = testTimeHtml
+            default:
+                break
+            }
         }
-        else if segue.identifier == "showTestTime" {
-            let vc:TestTimeTableViewController = segue.destinationViewController as! TestTimeTableViewController
-            vc.html = testTimeHtml
-        }
+        
     }
     
 // MARK: 私有方法
