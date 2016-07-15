@@ -284,6 +284,7 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
         
     }
     
+    @objc
     private func showTestTime() {
         let nc:NSNotificationCenter = NSNotificationCenter.defaultCenter()
         nc.removeObserver(self)
