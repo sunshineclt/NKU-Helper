@@ -12,8 +12,11 @@ import MessageUI
 class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate {
 
     @IBOutlet var aboutTextView: UITextView!
+    @IBOutlet var appNameVersionLabel: UILabel!
     
     override func viewDidLoad() {
+        let version = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as! String
+        appNameVersionLabel.text = "NKU Helper (V\(version))"
     }
     
     @IBAction func mailSetup(sender: UIButton) {

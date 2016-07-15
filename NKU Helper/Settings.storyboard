@@ -281,6 +281,9 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationItem key="navigationItem" title="关于NKU Helper" id="d4E-ef-Oq1"/>
+                    <connections>
+                        <outlet property="appNameVersionLabel" destination="j1b-AU-HLM" id="KCG-vq-Do1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kqe-2P-8cC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
