@@ -322,6 +322,7 @@ extension ClassTimeViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(scrollView: UIScrollView) {
         if scrollView.tag == 1 {
             self.classTimeView.headScrollView.contentOffset.x = self.classTimeView.classScrollView.contentOffset.x
+            self.classTimeView.timeScrollView.contentOffset.y = self.classTimeView.classScrollView.contentOffset.y
         }
     }
     

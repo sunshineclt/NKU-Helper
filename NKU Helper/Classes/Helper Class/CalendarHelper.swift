@@ -86,6 +86,53 @@ class CalendarHelper {
         return time
     }
     
+    /**
+     将数字的周几信息转化为字符串的周几信息（1为周一，7为周日）
+     
+     - parameter weekday: 数字的周几信息
+     
+     - returns: 字符串的周几信息
+     */
+    static func getWeekdayStringFromWeekdayInt(weekday: Int) -> String {
+        switch weekday {
+        case 1:return "周一"
+        case 2:return "周二"
+        case 3:return "周三"
+        case 4:return "周四"
+        case 5:return "周五"
+        case 6:return "周六"
+        case 7:return "周日"
+        default:return ""
+        }
+    }
+    
+    /**
+     获取第几节课的开始时间信息
+     
+     - parameter sectionInt: 第几节课（从0开始）
+     
+     - returns: 该课的开始时间
+     */
+    static func getTimeInfoFromSectionInt(sectionInt: Int) -> String {
+        switch sectionInt {
+        case 0:return "08:00"
+        case 1:return "08:55"
+        case 2:return "10:00"
+        case 3:return "10:55"
+        case 4:return "12:00"
+        case 5:return "12:55"
+        case 6:return "14:00"
+        case 7:return "14:55"
+        case 8:return "16:00"
+        case 9:return "16:55"
+        case 10:return "18:30"
+        case 11:return "19:25"
+        case 12:return "20:20"
+        case 13:return "21:15"
+        default:return ""
+        }
+    }
+    
     static private func getNowDateComponent() -> NSDateComponents {
         let date = NSDate()
         let calender = NSCalendar(identifier: NSCalendarIdentifierGregorian)!

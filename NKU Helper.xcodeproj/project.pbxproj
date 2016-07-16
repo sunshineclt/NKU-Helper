@@ -22,11 +22,16 @@
 		E91E5F4F1A90FAED009F3B2B /* GradeShowerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91E5F4E1A90FAED009F3B2B /* GradeShowerTableViewController.swift */; };
 		E91E5F551A9103DF009F3B2B /* GradeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91E5F541A9103DF009F3B2B /* GradeCell.swift */; };
 		E926CD751AB33B1700A5076A /* NKU.plist in Resources */ = {isa = PBXBuildFile; fileRef = E926CD741AB33B1700A5076A /* NKU.plist */; };
-		E92B2D011B48DB89008825A3 /* CalendarConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92B2D001B48DB89008825A3 /* CalendarConverter.swift */; };
+		E92B2D011B48DB89008825A3 /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92B2D001B48DB89008825A3 /* CalendarHelper.swift */; };
 		E92FB3E61BF3676F004C6B7C /* VersionLog.md in Resources */ = {isa = PBXBuildFile; fileRef = E92FB3E51BF3676F004C6B7C /* VersionLog.md */; };
 		E92FB3F11BF3726F004C6B7C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E92FB3F01BF3726F004C6B7C /* SystemConfiguration.framework */; };
 		E92FB3F51BF37298004C6B7C /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E92FB3F41BF37298004C6B7C /* libsqlite3.0.tbd */; };
 		E92FB3F61BF372BB004C6B7C /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E92FB3F21BF37279004C6B7C /* libz.tbd */; };
+		E930839A1D39DA38000FC8E8 /* WeekdayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E93083991D39DA38000FC8E8 /* WeekdayView.xib */; };
+		E930839C1D39E38D000FC8E8 /* WeekdayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E930839B1D39E38D000FC8E8 /* WeekdayView.swift */; };
+		E930839E1D3A0DE1000FC8E8 /* UIViewExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = E930839D1D3A0DE1000FC8E8 /* UIViewExtention.swift */; };
+		E93083A11D3A8D4A000FC8E8 /* TimeScheduleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E93083A01D3A8D4A000FC8E8 /* TimeScheduleView.xib */; };
+		E93083A31D3A8F4D000FC8E8 /* TimeScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93083A21D3A8F4D000FC8E8 /* TimeScheduleView.swift */; };
 		E93C0F181BB54B54001303CF /* ThingToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93C0F171BB54B54001303CF /* ThingToDo.swift */; };
 		E94286501AA4CD2A00A4242C /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E942864F1AA4CD2A00A4242C /* LogInViewController.swift */; };
 		E94286581AA5500C00A4242C /* SaveAccountInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94286571AA5500C00A4242C /* SaveAccountInfoViewController.swift */; };
@@ -230,13 +235,18 @@
 		E91E5F4E1A90FAED009F3B2B /* GradeShowerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeShowerTableViewController.swift; sourceTree = "<group>"; };
 		E91E5F541A9103DF009F3B2B /* GradeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeCell.swift; sourceTree = "<group>"; };
 		E926CD741AB33B1700A5076A /* NKU.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = NKU.plist; sourceTree = "<group>"; };
-		E92B2D001B48DB89008825A3 /* CalendarConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarConverter.swift; sourceTree = "<group>"; };
+		E92B2D001B48DB89008825A3 /* CalendarHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
 		E92FB3E51BF3676F004C6B7C /* VersionLog.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = VersionLog.md; sourceTree = "<group>"; };
 		E92FB3F01BF3726F004C6B7C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		E92FB3F21BF37279004C6B7C /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		E92FB3F41BF37298004C6B7C /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		E93083991D39DA38000FC8E8 /* WeekdayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeekdayView.xib; sourceTree = "<group>"; };
+		E930839B1D39E38D000FC8E8 /* WeekdayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekdayView.swift; sourceTree = "<group>"; };
+		E930839D1D3A0DE1000FC8E8 /* UIViewExtention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtention.swift; sourceTree = "<group>"; };
+		E93083A01D3A8D4A000FC8E8 /* TimeScheduleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimeScheduleView.xib; sourceTree = "<group>"; };
+		E93083A21D3A8F4D000FC8E8 /* TimeScheduleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeScheduleView.swift; sourceTree = "<group>"; };
 		E93C0F171BB54B54001303CF /* ThingToDo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThingToDo.swift; sourceTree = "<group>"; };
-		E942864F1AA4CD2A00A4242C /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		E942864F1AA4CD2A00A4242C /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogInViewController.swift; path = ClassTime/LogInViewController.swift; sourceTree = "<group>"; };
 		E94286571AA5500C00A4242C /* SaveAccountInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveAccountInfoViewController.swift; sourceTree = "<group>"; };
 		E9462A451B24A1E00002C21A /* TestTimeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestTimeTableViewController.swift; sourceTree = "<group>"; };
 		E9462A471B24A6480002C21A /* TestTimeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestTimeTableViewCell.swift; sourceTree = "<group>"; };
@@ -492,6 +502,7 @@
 				E90AE22D1A8F813900AD0D78 /* AppDelegate.swift */,
 				E988B5361AB005DF006818FA /* Main.storyboard */,
 				E9693E3D1D32441600D6135B /* LogIn.storyboard */,
+				E942864F1AA4CD2A00A4242C /* LogInViewController.swift */,
 				E9FE26151B13800700FCBB32 /* Classes */,
 				E9D4DC471AAEF45D00A02327 /* Today */,
 				E98F94E21AA31A1A00885992 /* ClassTime */,
@@ -565,6 +576,24 @@
 				E94BC1F91C476C5000BD9726 /* NKNetworkValidateCodeGetter.swift */,
 			);
 			path = "登陆";
+			sourceTree = "<group>";
+		};
+		E930839F1D3A8CC3000FC8E8 /* WeekdayView */ = {
+			isa = PBXGroup;
+			children = (
+				E93083991D39DA38000FC8E8 /* WeekdayView.xib */,
+				E930839B1D39E38D000FC8E8 /* WeekdayView.swift */,
+			);
+			name = WeekdayView;
+			sourceTree = "<group>";
+		};
+		E93083A41D3A8FCA000FC8E8 /* TimeScheduleView */ = {
+			isa = PBXGroup;
+			children = (
+				E93083A01D3A8D4A000FC8E8 /* TimeScheduleView.xib */,
+				E93083A21D3A8F4D000FC8E8 /* TimeScheduleView.swift */,
+			);
+			name = TimeScheduleView;
 			sourceTree = "<group>";
 		};
 		E93C0F191BB54E53001303CF /* Test Time */ = {
@@ -764,11 +793,12 @@
 			isa = PBXGroup;
 			children = (
 				E9693E451D3290AE00D6135B /* ClassTime.storyboard */,
-				E93C0F191BB54E53001303CF /* Test Time */,
-				E98E2B8A1C46ABE400CF82BE /* ClassTimeView.swift */,
-				E9B5779D1D38DE310054F7E8 /* ClassView.xib */,
 				E98F94D51AA3180700885992 /* ClassTimeViewController.swift */,
-				E942864F1AA4CD2A00A4242C /* LogInViewController.swift */,
+				E98E2B8A1C46ABE400CF82BE /* ClassTimeView.swift */,
+				E93083A41D3A8FCA000FC8E8 /* TimeScheduleView */,
+				E930839F1D3A8CC3000FC8E8 /* WeekdayView */,
+				E93C0F191BB54E53001303CF /* Test Time */,
+				E9B5779D1D38DE310054F7E8 /* ClassView.xib */,
 			);
 			path = ClassTime;
 			sourceTree = "<group>";
@@ -867,7 +897,8 @@
 		E9F3D2C21BB7F69100255F4B /* Helper Class */ = {
 			isa = PBXGroup;
 			children = (
-				E92B2D001B48DB89008825A3 /* CalendarConverter.swift */,
+				E92B2D001B48DB89008825A3 /* CalendarHelper.swift */,
+				E930839D1D3A0DE1000FC8E8 /* UIViewExtention.swift */,
 			);
 			path = "Helper Class";
 			sourceTree = "<group>";
@@ -1020,6 +1051,7 @@
 				E95C8F701AAF50A400D3D8EE /* day13.png in Resources */,
 				E9693E501D32955500D6135B /* SelectCourse.storyboard in Resources */,
 				E95C8FB51AAF51A700D3D8EE /* night16.png in Resources */,
+				E930839A1D39DA38000FC8E8 /* WeekdayView.xib in Resources */,
 				E95C8F6C1AAF50A400D3D8EE /* day09.png in Resources */,
 				E95C8F6F1AAF50A400D3D8EE /* day12.png in Resources */,
 				E9693E441D32894000D6135B /* Today.storyboard in Resources */,
@@ -1069,6 +1101,7 @@
 				E95C8F751AAF50A400D3D8EE /* day18.png in Resources */,
 				E95C8FAB1AAF51A700D3D8EE /* night06.png in Resources */,
 				E95C8F691AAF50A400D3D8EE /* day06.png in Resources */,
+				E93083A11D3A8D4A000FC8E8 /* TimeScheduleView.xib in Resources */,
 				E9F674EC1BA80E7500BEF640 /* RSA.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1149,6 +1182,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E930839C1D39E38D000FC8E8 /* WeekdayView.swift in Sources */,
 				E98F94D81AA318EF00885992 /* FunctionTableViewController.swift in Sources */,
 				E95B0F2D1C83E18700448F97 /* CourseSelecting.swift in Sources */,
 				E981C12D1C84A02D005CBF4E /* ClassModificationTableViewCell.swift in Sources */,
@@ -1161,7 +1195,7 @@
 				E9C3EF5C1BB2C52400D1C91D /* WebRouter.swift in Sources */,
 				E9929C9B1C49068000D508C8 /* NKNetworkFetchGrade.swift in Sources */,
 				E95F93EB1C512B8B00CEEC12 /* DetailEvaluateInfo.swift in Sources */,
-				E92B2D011B48DB89008825A3 /* CalendarConverter.swift in Sources */,
+				E92B2D011B48DB89008825A3 /* CalendarHelper.swift in Sources */,
 				E93C0F181BB54B54001303CF /* ThingToDo.swift in Sources */,
 				E91D2E561C846778002605F8 /* SearchCourseTableViewController.swift in Sources */,
 				E94BC1FA1C476C5000BD9726 /* NKNetworkValidateCodeGetter.swift in Sources */,
@@ -1173,6 +1207,7 @@
 				E95B0F2F1C83F0B800448F97 /* NKNetworkDepartCode.swift in Sources */,
 				E95F93C61C4E6CD100CEEC12 /* Grade.swift in Sources */,
 				E96419D21AA8971B00397691 /* AccountTableViewCell.swift in Sources */,
+				E93083A31D3A8F4D000FC8E8 /* TimeScheduleView.swift in Sources */,
 				E95F93E51C50FAEB00CEEC12 /* EvaluateDetailTableViewController.swift in Sources */,
 				E9C3EF5E1BB2D03E00D1C91D /* SegueIdentifier.swift in Sources */,
 				E95F93E71C50FE8800CEEC12 /* EvaluateDetailTableViewCell.swift in Sources */,
@@ -1211,6 +1246,7 @@
 				E95F93EF1C51394800CEEC12 /* NKNetworkEvaluateSubmit.swift in Sources */,
 				E94286501AA4CD2A00A4242C /* LogInViewController.swift in Sources */,
 				E91E5F551A9103DF009F3B2B /* GradeCell.swift in Sources */,
+				E930839E1D3A0DE1000FC8E8 /* UIViewExtention.swift in Sources */,
 				E98E2B501C46492900CF82BE /* NKNetworkLoadCourse.swift in Sources */,
 				E98E2B491C4639BB00CF82BE /* UserAgent.swift in Sources */,
 				E9634EBF1D38E3B900F30FA0 /* NKNetworkFetchInfo.swift in Sources */,

@@ -19,35 +19,64 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" delaysContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2F2-PM-Sex">
-                                <rect key="frame" x="0.0" y="30" width="600" height="457"/>
+                                <rect key="frame" x="62" y="30" width="538" height="457"/>
                             </scrollView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O1g-1G-R3x" userLabel="ShadowView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="30"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O1g-1G-R3x" userLabel="Head Shadow View">
+                                <rect key="frame" x="62" y="0.0" width="538" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="du2-6G-jTz" userLabel="Head Scroll View">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="30"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w6h-Uz-FHH" userLabel="Time Shadow View">
+                                <rect key="frame" x="0.0" y="30" width="62.5" height="457"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ss7-p6-My8" userLabel="Time View">
+                                <rect key="frame" x="0.0" y="30" width="62.5" height="457"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="62.5" id="kDA-WH-vlo"/>
+                                </constraints>
                             </scrollView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="du2-6G-jTz" userLabel="Head Scroll View">
+                                <rect key="frame" x="62" y="0.0" width="538" height="30"/>
+                            </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2bL-vM-WNx" userLabel="Blank View">
+                                <rect key="frame" x="0.0" y="0.0" width="62.5" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="O1g-1G-R3x" firstAttribute="top" secondItem="du2-6G-jTz" secondAttribute="top" id="0lb-e3-JKl"/>
+                            <constraint firstItem="ss7-p6-My8" firstAttribute="leading" secondItem="FBu-bP-cPJ" secondAttribute="leading" id="FUP-Xp-6zr"/>
+                            <constraint firstItem="ss7-p6-My8" firstAttribute="top" secondItem="ALa-eM-ogP" secondAttribute="bottom" constant="30" id="GOH-c2-C5i"/>
+                            <constraint firstItem="du2-6G-jTz" firstAttribute="leading" secondItem="2F2-PM-Sex" secondAttribute="leading" id="H72-pq-S3H"/>
                             <constraint firstItem="O1g-1G-R3x" firstAttribute="trailing" secondItem="du2-6G-jTz" secondAttribute="trailing" id="MHQ-Fh-pgL"/>
-                            <constraint firstItem="du2-6G-jTz" firstAttribute="leading" secondItem="2F2-PM-Sex" secondAttribute="leading" id="SLw-tQ-HFW"/>
+                            <constraint firstItem="du2-6G-jTz" firstAttribute="leading" secondItem="2bL-vM-WNx" secondAttribute="trailing" id="Poy-DV-g9j"/>
+                            <constraint firstItem="4Qj-Xe-3HB" firstAttribute="top" secondItem="ss7-p6-My8" secondAttribute="bottom" id="R1w-6b-f7U"/>
                             <constraint firstItem="du2-6G-jTz" firstAttribute="top" secondItem="ALa-eM-ogP" secondAttribute="bottom" id="WKN-Cn-17N"/>
+                            <constraint firstItem="2F2-PM-Sex" firstAttribute="leading" secondItem="ss7-p6-My8" secondAttribute="trailing" id="Zc6-IC-Hct"/>
                             <constraint firstItem="2F2-PM-Sex" firstAttribute="bottom" secondItem="4Qj-Xe-3HB" secondAttribute="top" id="brg-Gk-cmM"/>
                             <constraint firstItem="2F2-PM-Sex" firstAttribute="trailing" secondItem="du2-6G-jTz" secondAttribute="trailing" id="dKH-Dg-cog"/>
+                            <constraint firstItem="w6h-Uz-FHH" firstAttribute="trailing" secondItem="ss7-p6-My8" secondAttribute="trailing" id="eZI-oe-G9M"/>
+                            <constraint firstItem="O1g-1G-R3x" firstAttribute="leading" secondItem="du2-6G-jTz" secondAttribute="leading" id="esc-Zd-5Mc"/>
+                            <constraint firstItem="2bL-vM-WNx" firstAttribute="top" secondItem="ALa-eM-ogP" secondAttribute="bottom" id="iLT-0P-oXP"/>
+                            <constraint firstItem="ss7-p6-My8" firstAttribute="top" secondItem="2bL-vM-WNx" secondAttribute="bottom" id="nfd-GR-f6t"/>
                             <constraint firstItem="2F2-PM-Sex" firstAttribute="top" secondItem="FBu-bP-cPJ" secondAttribute="top" constant="30" id="p2x-pM-X3U"/>
-                            <constraint firstItem="O1g-1G-R3x" firstAttribute="leading" secondItem="du2-6G-jTz" secondAttribute="leading" id="qJg-gK-k2C"/>
+                            <constraint firstItem="2bL-vM-WNx" firstAttribute="leading" secondItem="FBu-bP-cPJ" secondAttribute="leading" id="r7k-kM-gFO"/>
                             <constraint firstItem="2F2-PM-Sex" firstAttribute="top" secondItem="du2-6G-jTz" secondAttribute="bottom" id="tQV-Nt-nAr"/>
+                            <constraint firstItem="w6h-Uz-FHH" firstAttribute="bottom" secondItem="ss7-p6-My8" secondAttribute="bottom" id="twD-5N-PmR"/>
+                            <constraint firstItem="w6h-Uz-FHH" firstAttribute="leading" secondItem="ss7-p6-My8" secondAttribute="leading" id="uC9-4f-8lT"/>
+                            <constraint firstItem="w6h-Uz-FHH" firstAttribute="top" secondItem="ss7-p6-My8" secondAttribute="top" id="wpi-NL-yt2"/>
                             <constraint firstItem="O1g-1G-R3x" firstAttribute="bottom" secondItem="du2-6G-jTz" secondAttribute="bottom" id="wyl-oA-2PU"/>
                             <constraint firstAttribute="trailing" secondItem="2F2-PM-Sex" secondAttribute="trailing" id="xUi-wZ-vGG"/>
-                            <constraint firstItem="2F2-PM-Sex" firstAttribute="leading" secondItem="FBu-bP-cPJ" secondAttribute="leading" id="yhE-Ym-Arf"/>
                         </constraints>
                         <connections>
+                            <outlet property="blankView" destination="2bL-vM-WNx" id="ekI-1b-52Z"/>
                             <outlet property="classScrollView" destination="2F2-PM-Sex" id="MVm-v3-nve"/>
                             <outlet property="headScrollView" destination="du2-6G-jTz" id="uhM-0K-vec"/>
-                            <outlet property="shadowView" destination="O1g-1G-R3x" id="Is0-yH-FQB"/>
+                            <outlet property="headShadowView" destination="O1g-1G-R3x" id="fIe-lS-IQm"/>
+                            <outlet property="timeScrollView" destination="ss7-p6-My8" id="umV-XH-SJt"/>
+                            <outlet property="timeScrollViewWidthConstraint" destination="kDA-WH-vlo" id="JYj-fo-D1b"/>
+                            <outlet property="timeShadowView" destination="w6h-Uz-FHH" id="IOH-ra-4Dv"/>
                         </connections>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>

@@ -7,18 +7,25 @@
 //
 
 import UIKit
+import SnapKit
 
 class ClassTimeView: UIView {
 
-    @IBOutlet var shadowView: UIView!
+    @IBOutlet var blankView: UIView!
+    @IBOutlet var headShadowView: UIView!
+    @IBOutlet var timeShadowView: UIView!
     @IBOutlet var classScrollView: UIScrollView!
     @IBOutlet var headScrollView: UIScrollView!
-
+    @IBOutlet var timeScrollView: UIScrollView!
+    @IBOutlet var timeScrollViewWidthConstraint: NSLayoutConstraint!
+    var weekdayViews = [WeekdayView]()
+    var timeScheduleViews = [TimeScheduleView]()
     var UALoadView:UAProgressView!
     var overlayView:UIView!
     
     var orientation: UIInterfaceOrientation?
     let rowHeight: CGFloat = 50
+    let topHeight: CGFloat = 30
     var columnWidth: CGFloat {
         if (orientation == UIInterfaceOrientation.LandscapeLeft) || (orientation == UIInterfaceOrientation.LandscapeRight) {
             return self.frame.width / 8
@@ -30,113 +37,91 @@ class ClassTimeView: UIView {
     
     var week:Int!
     
-    // MARK: 绘制课表
+// MARK: 绘制课表
     
     func drawBackground() {
         
+        // 调整timeScrollView的宽度
+        timeScrollViewWidthConstraint.constant = columnWidth
+        
+        // 绘制headScrollView中的星期几信息
         for view in headScrollView.subviews {
             view.removeFromSuperview()
         }
-
-        headScrollView.contentSize = CGSizeMake(columnWidth * 8, 30)
-        
+        headScrollView.contentSize = CGSizeMake(columnWidth * 8, topHeight)
+        weekdayViews = [WeekdayView]()
         for i in 1...7 {
-            let column = UIView(frame: CGRectMake(columnWidth * CGFloat(i), 0, columnWidth, 30))
-            column.backgroundColor = UIColor.whiteColor()
-            let weekday = UILabel()
-            weekday.font = UIFont(name: "HelveticaNeue-Bold", size: 13)
-            weekday.textColor = UIColor.blackColor()
-            weekday.textAlignment = NSTextAlignment.Center
-            weekday.frame = column.bounds
-            switch i {
-            case 1:weekday.text = "周一"
-            case 2:weekday.text = "周二"
-            case 3:weekday.text = "周三"
-            case 4:weekday.text = "周四"
-            case 5:weekday.text = "周五"
-            case 6:weekday.text = "周六"
-            case 7:weekday.text = "周日"
-            default:break
-            }
-            column.addSubview(weekday)
-            headScrollView.addSubview(column)
+            let weekdayView = WeekdayView.loadFromNib()
+            headScrollView.addSubview(weekdayView)
+            weekdayView.snp_makeConstraints(closure: { (make) in
+                make.width.equalTo(columnWidth)
+                make.top.equalTo(headScrollView.snp_top)
+                make.height.equalTo(topHeight)
+                if (i != 1) {
+                    make.left.equalTo(weekdayViews.last!.snp_right)
+                }
+                else {
+                    make.left.equalTo(headScrollView.snp_left)
+                }
+            })
+            weekdayView.weekdayLabel.text = CalendarHelper.getWeekdayStringFromWeekdayInt(i)
+            let rightBorderLayer = CALayer()
+            rightBorderLayer.frame = CGRectMake(columnWidth-1, 0, 1, topHeight)
+            rightBorderLayer.backgroundColor = UIColor(red: 216/255, green: 224/255, blue: 226/255, alpha: 1).CGColor
+            weekdayView.layer.addSublayer(rightBorderLayer)
+            weekdayViews.append(weekdayView)
         }
         
-        classScrollView.contentSize = CGSizeMake(columnWidth * 8, rowHeight*14)
+        // 设置classScrollView的大小
+        classScrollView.contentSize = CGSizeMake(columnWidth * 7, rowHeight*14)
         
+        // 绘制timeScrollView中的每堂课时间信息
+        for view in timeScrollView.subviews {
+            view.removeFromSuperview()
+        }
+        timeScrollView.contentSize = CGSizeMake(columnWidth, rowHeight*14)
+        timeScheduleViews = [TimeScheduleView]()
         for i in 0...13 {
-            let row:UIView = UIView(frame: CGRectMake(0, CGFloat(i) * rowHeight, columnWidth * 8, CGFloat(rowHeight)))
-            row.backgroundColor = UIColor(red: 236/255, green: 240/255, blue: 241/255, alpha: 1)
-            row.layer.borderWidth = 0.5
-            row.layer.borderColor = UIColor(red: 216/255, green: 224/255, blue: 226/255, alpha: 1).CGColor
-            
-            let time:UILabel = UILabel(frame: CGRectMake(5, 5, 30, 20))
-            time.adjustsFontSizeToFitWidth = true
-            time.textAlignment = NSTextAlignment.Center
-            time.textColor = UIColor(red: 151/255, green: 151/255, blue: 151/255, alpha: 1)
-            
-            let section:UILabel = UILabel(frame: CGRectMake(0, 25, 40, 20))
-            section.adjustsFontSizeToFitWidth = true
-            section.textAlignment = NSTextAlignment.Center
-            section.textColor = UIColor(red: 104/255, green: 102/255, blue: 102/255, alpha: 1)
-            
-            switch i {
-            case 0:
-                time.text = "08:00"
-                section.text = "1"
-            case 1:
-                time.text = "08:55"
-                section.text = "2"
-            case 2:
-                time.text = "10:00"
-                section.text = "3"
-            case 3:
-                time.text = "10:55"
-                section.text = "4"
-            case 4:
-                time.text = "12:00"
-                section.text = "5"
-            case 5:
-                time.text = "12:55"
-                section.text = "6"
-            case 6:
-                time.text = "14:00"
-                section.text = "7"
-            case 7:
-                time.text = "14:55"
-                section.text = "8"
-            case 8:
-                time.text = "16:00"
-                section.text = "9"
-            case 9:
-                time.text = "16:55"
-                section.text = "10"
-            case 10:
-                time.text = "18:30"
-                section.text = "11"
-            case 11:
-                time.text = "19:25"
-                section.text = "12"
-            case 12:
-                time.text = "20:20"
-                section.text = "13"
-            case 13:
-                time.text = "21:15"
-                section.text = "14"
-            default:break
-            }
-            
-            row.addSubview(time)
-            row.addSubview(section)
-            row.tag = -1
-            
-            classScrollView.addSubview(row)
+            let timeScheduleView = TimeScheduleView.loadFromNib()
+            timeScrollView.addSubview(timeScheduleView)
+            timeScheduleView.snp_makeConstraints(closure: { (make) in
+                make.left.equalTo(timeScrollView.snp_left)
+                make.width.equalTo(columnWidth)
+                make.height.equalTo(rowHeight)
+                if (i != 0) {
+                    make.top.equalTo(timeScheduleViews.last!.snp_bottom)
+                }
+                else {
+                    make.top.equalTo(timeScrollView.snp_top)
+                }
+            })
+            timeScheduleView.timeLabel.text = CalendarHelper.getTimeInfoFromSectionInt(i)
+            timeScheduleView.sectionLabel.text = "\(i + 1)"
+            timeScheduleView.tag = -1
+            let bottomBorderLayer = CALayer()
+            bottomBorderLayer.frame = CGRectMake(0, rowHeight-1, columnWidth, 1)
+            bottomBorderLayer.backgroundColor = UIColor(red: 216/255, green: 224/255, blue: 226/255, alpha: 1).CGColor;
+            timeScheduleView.layer.addSublayer(bottomBorderLayer)
+            timeScheduleViews.append(timeScheduleView)
         }
         
-        shadowView.layer.shadowColor = UIColor.grayColor().CGColor
-        shadowView.layer.shadowOffset = CGSizeMake(0, 2)
-        shadowView.layer.shadowOpacity = 0.3
+        // 阴影效果
+        headShadowView.layer.shadowColor = UIColor.grayColor().CGColor
+        headShadowView.layer.shadowOffset = CGSizeMake(0, 2)
+        headShadowView.layer.shadowOpacity = 0.3
+        timeShadowView.layer.shadowColor = UIColor.grayColor().CGColor
+        timeShadowView.layer.shadowOffset = CGSizeMake(2, 0)
+        timeShadowView.layer.shadowOpacity = 0.3
         
+        // 空白View的边框效果
+        let rightBorderLayer = CALayer()
+        rightBorderLayer.frame = CGRectMake(columnWidth, 0, 1, topHeight)
+        rightBorderLayer.backgroundColor = UIColor(red: 216/255, green: 224/255, blue: 226/255, alpha: 1).CGColor
+        blankView.layer.addSublayer(rightBorderLayer)
+        let bottomBorderLayer = CALayer()
+        bottomBorderLayer.frame = CGRectMake(0, topHeight, columnWidth, 1)
+        bottomBorderLayer.backgroundColor = UIColor(red: 216/255, green: 224/255, blue: 226/255, alpha: 1).CGColor;
+        blankView.layer.addSublayer(bottomBorderLayer)
     }
     
     func drawClassTimeTableOnViewController(viewController: UIViewController) {
@@ -168,7 +153,7 @@ class ClassTimeView: UIView {
             let classID = current.ID
             let weekOddEven = current.weekOddEven
             
-            let course:UIView = UIView(frame: CGRectMake(CGFloat(day+1) * columnWidth, CGFloat(startSection - 1) * rowHeight, columnWidth, rowHeight * CGFloat(sectionNumber)))
+            let course:UIView = UIView(frame: CGRectMake(CGFloat(day) * columnWidth, CGFloat(startSection - 1) * rowHeight, columnWidth, rowHeight * CGFloat(sectionNumber)))
             
             if let _ = week {
                 if ((weekOddEven == "单 周") && (week % 2 == 0) || (weekOddEven == "双 周" && (week % 2 == 1))) {
@@ -248,7 +233,7 @@ class ClassTimeView: UIView {
         }
     }
     
-    // MARK: 课程表加载动画
+// MARK: 课程表加载动画
     
     func loadBeginAnimation() {
         
@@ -313,7 +298,5 @@ class ClassTimeView: UIView {
         UALoadView.layer.pop_addAnimation(UALoadViewUp, forKey: "UALoadViewUp")
         UALoadView.pop_addAnimation(UALoadViewFadeOut, forKey: "UALoadViewFadeOut")
     }
-    
-
     
 }

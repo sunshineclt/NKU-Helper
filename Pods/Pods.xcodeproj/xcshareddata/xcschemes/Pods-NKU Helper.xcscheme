@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E00059E843E33FE7D276944CCC828769"
+               BlueprintIdentifier = "377A7E01AC9A5E35CF36841B312D0BB5"
                BuildableName = "Pods_NKU_Helper.framework"
                BlueprintName = "Pods-NKU Helper"
                ReferencedContainer = "container:Pods.xcodeproj">
