@@ -17,6 +17,8 @@ class LogInViewController: UIViewController, UIAlertViewDelegate, UIWebViewDeleg
     
     var progressHud:MBProgressHUD!
     
+    let loginer = NKNetworkLogin()
+    
     override func viewWillAppear(animated: Bool) {
         imageLoadActivityIndicator.hidesWhenStopped = true
         refreshImage()
@@ -29,16 +31,13 @@ class LogInViewController: UIViewController, UIAlertViewDelegate, UIWebViewDeleg
         let validateCodeGetter = NKNetworkValidateCodeGetter()
         validateCodeGetter.getValidateCodeWithBlock { (data, err) -> Void in
             self.imageLoadActivityIndicator.stopAnimating()
-            if let _ = err {
+            guard err == nil else {
                 self.presentViewController(ErrorHandler.alert(ErrorHandler.NetworkError()), animated: true, completion: nil)
+                return
             }
-            else {
-                self.validateCodeImageView.image = UIImage(data: data!)
-            }
+            self.validateCodeImageView.image = UIImage(data: data!)
         }
     }
-    
-    let loginer = NKNetworkLogin()
     
     @IBAction func login(sender: AnyObject) {
         
@@ -68,9 +67,7 @@ class LogInViewController: UIViewController, UIAlertViewDelegate, UIWebViewDeleg
     }
     
     @IBAction func cancelButtonClicked(sender: UIBarButtonItem) {
-        
         self.dismissViewControllerAnimated(true, completion: nil)
-        
     }
     
     @IBAction func validateCodeTextFieldDidEnd(sender: AnyObject) {
