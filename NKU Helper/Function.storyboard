@@ -23,16 +23,16 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="通知中心" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IuD-Pf-sWq">
-                                            <rect key="frame" x="80" y="8" width="479" height="64"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                            <rect key="frame" x="60" y="8" width="499" height="64"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="notiCenter" translatesAutoresizingMaskIntoConstraints="NO" id="3bm-xZ-2oE">
-                                            <rect key="frame" x="8" y="8" width="64" height="64"/>
+                                            <rect key="frame" x="8" y="18" width="44" height="44"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="3bm-xZ-2oE" secondAttribute="height" multiplier="1:1" id="424-88-glI"/>
-                                                <constraint firstAttribute="width" constant="64" id="LIO-cL-i0j"/>
+                                                <constraint firstAttribute="width" constant="44" id="h6B-6C-M16"/>
                                             </constraints>
                                         </imageView>
                                     </subviews>
@@ -40,10 +40,10 @@
                                         <constraint firstAttribute="leadingMargin" secondItem="3bm-xZ-2oE" secondAttribute="leading" id="1Pw-LT-G3N"/>
                                         <constraint firstItem="IuD-Pf-sWq" firstAttribute="leading" secondItem="3bm-xZ-2oE" secondAttribute="trailing" constant="8" symbolic="YES" id="3a2-sq-zU7"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="IuD-Pf-sWq" secondAttribute="trailing" id="58m-z3-I7C"/>
-                                        <constraint firstAttribute="topMargin" secondItem="3bm-xZ-2oE" secondAttribute="top" id="6Kh-gf-tvh"/>
+                                        <constraint firstAttribute="topMargin" secondItem="3bm-xZ-2oE" secondAttribute="top" constant="-10" id="6Kh-gf-tvh"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="IuD-Pf-sWq" secondAttribute="bottom" id="KRO-to-Yuo"/>
                                         <constraint firstAttribute="topMargin" secondItem="IuD-Pf-sWq" secondAttribute="top" id="nDw-1Z-Y9q"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="3bm-xZ-2oE" secondAttribute="bottom" id="vph-3r-7EN"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="3bm-xZ-2oE" secondAttribute="bottom" constant="10" id="vph-3r-7EN"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.61176470589999998" green="0.34901960780000002" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -59,15 +59,15 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gradeGet" translatesAutoresizingMaskIntoConstraints="NO" id="wqa-0m-JFN">
-                                            <rect key="frame" x="8" y="8" width="64" height="64"/>
+                                            <rect key="frame" x="8" y="18" width="44" height="44"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="wqa-0m-JFN" secondAttribute="height" multiplier="1:1" id="KLJ-V6-Bfp"/>
-                                                <constraint firstAttribute="width" constant="64" id="rqz-Ix-RDy"/>
+                                                <constraint firstAttribute="width" constant="44" id="sBg-ed-9jm"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="成绩查询" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U9c-dJ-HJB">
-                                            <rect key="frame" x="80" y="8" width="479" height="64"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                            <rect key="frame" x="60" y="8" width="499" height="64"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -78,8 +78,8 @@
                                         <constraint firstAttribute="topMargin" secondItem="U9c-dJ-HJB" secondAttribute="top" id="TKP-uu-SOe"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="U9c-dJ-HJB" secondAttribute="trailing" id="e7w-w2-Lh8"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="U9c-dJ-HJB" secondAttribute="bottom" id="gH3-Gy-Tho"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="wqa-0m-JFN" secondAttribute="bottom" id="gdG-ts-ddw"/>
-                                        <constraint firstAttribute="topMargin" secondItem="wqa-0m-JFN" secondAttribute="top" id="gsX-od-Cyx"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="wqa-0m-JFN" secondAttribute="bottom" constant="10" id="gdG-ts-ddw"/>
+                                        <constraint firstAttribute="topMargin" secondItem="wqa-0m-JFN" secondAttribute="top" constant="-10" id="gsX-od-Cyx"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.50609725713729858" green="0.68362480401992798" blue="0.99904388189315796" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -95,15 +95,15 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="evaluate" translatesAutoresizingMaskIntoConstraints="NO" id="A4o-6V-6ce">
-                                            <rect key="frame" x="8" y="8" width="64" height="64"/>
+                                            <rect key="frame" x="8" y="18" width="44" height="44"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="A4o-6V-6ce" secondAttribute="height" multiplier="1:1" id="1QO-eA-tsy"/>
-                                                <constraint firstAttribute="width" constant="64" id="mge-nu-g7c"/>
+                                                <constraint firstAttribute="width" constant="44" id="LEG-Wa-njq"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="评教" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="npe-iK-iuX">
-                                            <rect key="frame" x="80" y="8" width="479" height="64"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                            <rect key="frame" x="60" y="8" width="499" height="64"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -111,14 +111,14 @@
                                     <constraints>
                                         <constraint firstAttribute="topMargin" secondItem="npe-iK-iuX" secondAttribute="top" id="0DM-em-v7j"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="npe-iK-iuX" secondAttribute="bottom" id="DaV-qg-hAQ"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="A4o-6V-6ce" secondAttribute="bottom" id="NAp-UR-vRp"/>
-                                        <constraint firstAttribute="topMargin" secondItem="A4o-6V-6ce" secondAttribute="top" id="Scf-0r-EdS"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="A4o-6V-6ce" secondAttribute="bottom" constant="10" id="NAp-UR-vRp"/>
+                                        <constraint firstAttribute="topMargin" secondItem="A4o-6V-6ce" secondAttribute="top" constant="-10" id="Scf-0r-EdS"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="npe-iK-iuX" secondAttribute="trailing" id="fGt-br-6cT"/>
                                         <constraint firstItem="npe-iK-iuX" firstAttribute="leading" secondItem="A4o-6V-6ce" secondAttribute="trailing" constant="8" symbolic="YES" id="iWD-tJ-WIr"/>
                                         <constraint firstAttribute="leadingMargin" secondItem="A4o-6V-6ce" secondAttribute="leading" id="uw1-eN-eQR"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="1" green="0.43075793981552124" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.80000000000000004" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <segue destination="TRu-kD-Szh" kind="show" id="big-fa-38h"/>
                                 </connections>
@@ -131,15 +131,15 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="book" translatesAutoresizingMaskIntoConstraints="NO" id="pEQ-gQ-45z">
-                                            <rect key="frame" x="8" y="8" width="64" height="64"/>
+                                            <rect key="frame" x="8" y="18" width="44" height="44"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="64" id="8Ck-nk-mgm"/>
                                                 <constraint firstAttribute="width" secondItem="pEQ-gQ-45z" secondAttribute="height" multiplier="1:1" id="8Zj-bF-SBe"/>
+                                                <constraint firstAttribute="width" constant="44" id="odf-xv-2mu"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="考试时间查询" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ipo-4M-Uan">
-                                            <rect key="frame" x="80" y="8" width="479" height="64"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                            <rect key="frame" x="60" y="8" width="499" height="64"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -147,14 +147,14 @@
                                     <constraints>
                                         <constraint firstAttribute="topMargin" secondItem="Ipo-4M-Uan" secondAttribute="top" id="BQe-C9-vut"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="Ipo-4M-Uan" secondAttribute="bottom" id="X7c-bz-5Vq"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="pEQ-gQ-45z" secondAttribute="bottom" id="gph-Vz-x0l"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="pEQ-gQ-45z" secondAttribute="bottom" constant="10" id="gph-Vz-x0l"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="Ipo-4M-Uan" secondAttribute="trailing" id="mlg-Fq-kED"/>
-                                        <constraint firstAttribute="topMargin" secondItem="pEQ-gQ-45z" secondAttribute="top" id="oog-Fj-FuM"/>
+                                        <constraint firstAttribute="topMargin" secondItem="pEQ-gQ-45z" secondAttribute="top" constant="-10" id="oog-Fj-FuM"/>
                                         <constraint firstAttribute="leadingMargin" secondItem="pEQ-gQ-45z" secondAttribute="leading" id="rYO-JT-2iv"/>
                                         <constraint firstItem="Ipo-4M-Uan" firstAttribute="leading" secondItem="pEQ-gQ-45z" secondAttribute="trailing" constant="8" symbolic="YES" id="y28-3W-c2Z"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.20392157137393951" green="0.59607845544815063" blue="0.85882353782653809" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <segue destination="jph-oB-h6f" kind="show" id="e8Z-dN-ZRM"/>
                                 </connections>
@@ -167,15 +167,15 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="moreFunction" translatesAutoresizingMaskIntoConstraints="NO" id="0gk-rh-wUS">
-                                            <rect key="frame" x="8" y="8" width="64" height="64"/>
+                                            <rect key="frame" x="8" y="18" width="44" height="44"/>
                                             <constraints>
+                                                <constraint firstAttribute="width" constant="44" id="41d-LK-gTE"/>
                                                 <constraint firstAttribute="width" secondItem="0gk-rh-wUS" secondAttribute="height" multiplier="1:1" id="6Ev-5r-eMV"/>
-                                                <constraint firstAttribute="width" constant="64" id="cwz-Ha-vRB"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选课" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c1g-29-Rcq">
-                                            <rect key="frame" x="80" y="8" width="512" height="64"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                            <rect key="frame" x="60" y="8" width="532" height="64"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -184,13 +184,13 @@
                                         <constraint firstItem="c1g-29-Rcq" firstAttribute="leading" secondItem="0gk-rh-wUS" secondAttribute="trailing" constant="8" symbolic="YES" id="GeF-nQ-tGI"/>
                                         <constraint firstAttribute="leadingMargin" secondItem="0gk-rh-wUS" secondAttribute="leading" id="Inr-bQ-vEs"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="c1g-29-Rcq" secondAttribute="trailing" id="Ly9-rF-E0T"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="0gk-rh-wUS" secondAttribute="bottom" id="O0d-pz-ela"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="0gk-rh-wUS" secondAttribute="bottom" constant="10" id="O0d-pz-ela"/>
                                         <constraint firstAttribute="topMargin" secondItem="c1g-29-Rcq" secondAttribute="top" id="cz5-E0-FTh"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="c1g-29-Rcq" secondAttribute="bottom" id="jVz-U2-ytg"/>
-                                        <constraint firstAttribute="topMargin" secondItem="0gk-rh-wUS" secondAttribute="top" id="kcT-HR-R6Y"/>
+                                        <constraint firstAttribute="topMargin" secondItem="0gk-rh-wUS" secondAttribute="top" constant="-10" id="kcT-HR-R6Y"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.98590224979999996" green="0.75145250559999999" blue="0.49525225160000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.59999999999999998" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <segue destination="AHW-2j-Gk3" kind="show" id="yge-x2-Qs2"/>
                                 </connections>
@@ -203,27 +203,27 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="moreFunction" translatesAutoresizingMaskIntoConstraints="NO" id="Nq4-AJ-KGl">
-                                            <rect key="frame" x="8" y="8" width="64" height="64"/>
+                                            <rect key="frame" x="8" y="18" width="44" height="44"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="Nq4-AJ-KGl" secondAttribute="height" multiplier="1:1" id="K74-RO-agX"/>
-                                                <constraint firstAttribute="width" constant="64" id="qBo-Me-K2u"/>
+                                                <constraint firstAttribute="width" constant="44" id="thv-Du-X6g"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="更多功能敬请期待" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uon-v7-9hd">
-                                            <rect key="frame" x="80" y="8" width="512" height="64"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                            <rect key="frame" x="60" y="8" width="532" height="64"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailingMargin" secondItem="Uon-v7-9hd" secondAttribute="trailing" id="1dw-oG-k2L"/>
-                                        <constraint firstAttribute="topMargin" secondItem="Nq4-AJ-KGl" secondAttribute="top" id="3bV-fR-eag"/>
+                                        <constraint firstAttribute="topMargin" secondItem="Nq4-AJ-KGl" secondAttribute="top" constant="-10" id="3bV-fR-eag"/>
                                         <constraint firstAttribute="leadingMargin" secondItem="Nq4-AJ-KGl" secondAttribute="leading" id="GUJ-nG-j4A"/>
                                         <constraint firstItem="Uon-v7-9hd" firstAttribute="leading" secondItem="Nq4-AJ-KGl" secondAttribute="trailing" constant="8" symbolic="YES" id="K5B-k4-L2L"/>
                                         <constraint firstAttribute="topMargin" secondItem="Uon-v7-9hd" secondAttribute="top" id="LfX-YV-4yS"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="Uon-v7-9hd" secondAttribute="bottom" id="f8q-l5-7Mq"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="Nq4-AJ-KGl" secondAttribute="bottom" id="tcA-ig-cun"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Nq4-AJ-KGl" secondAttribute="bottom" constant="10" id="tcA-ig-cun"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.98590224981307983" green="0.75145250558853149" blue="0.49525225162506104" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
