@@ -182,13 +182,13 @@
 		E93083A01D3A8D4A000FC8E8 /* TimeScheduleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimeScheduleView.xib; sourceTree = "<group>"; };
 		E93083A21D3A8F4D000FC8E8 /* TimeScheduleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeScheduleView.swift; sourceTree = "<group>"; };
 		E93083A51D3B6B6A000FC8E8 /* ClassView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassView.swift; sourceTree = "<group>"; };
-		E93083AB1D3BB815000FC8E8 /* TestTimeSearch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = TestTimeSearch.storyboard; path = TestTimeSearch/TestTimeSearch.storyboard; sourceTree = "<group>"; };
-		E93083B11D3BBFA7000FC8E8 /* NKNetworkFetchTestTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NKNetworkFetchTestTime.swift; path = "NKU Helper/Network/NKNetworkFetchTestTime.swift"; sourceTree = SOURCE_ROOT; };
+		E93083AB1D3BB815000FC8E8 /* TestTimeSearch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TestTimeSearch.storyboard; sourceTree = "<group>"; };
+		E93083B11D3BBFA7000FC8E8 /* NKNetworkFetchTestTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkFetchTestTime.swift; sourceTree = "<group>"; };
 		E93C0F171BB54B54001303CF /* ThingToDo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThingToDo.swift; sourceTree = "<group>"; };
-		E942864F1AA4CD2A00A4242C /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogInViewController.swift; path = ClassTime/LogInViewController.swift; sourceTree = "<group>"; };
+		E942864F1AA4CD2A00A4242C /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		E94286571AA5500C00A4242C /* SaveAccountInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveAccountInfoViewController.swift; sourceTree = "<group>"; };
-		E9462A451B24A1E00002C21A /* TestTimeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestTimeTableViewController.swift; path = "../ClassTime/Test Time/TestTimeTableViewController.swift"; sourceTree = "<group>"; };
-		E9462A471B24A6480002C21A /* TestTimeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestTimeTableViewCell.swift; path = "../ClassTime/Test Time/TestTimeTableViewCell.swift"; sourceTree = "<group>"; };
+		E9462A451B24A1E00002C21A /* TestTimeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestTimeTableViewController.swift; sourceTree = "<group>"; };
+		E9462A471B24A6480002C21A /* TestTimeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestTimeTableViewCell.swift; sourceTree = "<group>"; };
 		E94BC1F91C476C5000BD9726 /* NKNetworkValidateCodeGetter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkValidateCodeGetter.swift; sourceTree = "<group>"; };
 		E94BD9791BABE9A500B76E03 /* TodayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		E94BD97B1BAC043500B76E03 /* CourseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseCell.swift; sourceTree = "<group>"; };
@@ -215,14 +215,14 @@
 		E96419D11AA8971B00397691 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AccountTableViewCell.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E96419D31AA8BC9800397691 /* DetailAccountInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailAccountInfoTableViewController.swift; sourceTree = "<group>"; };
 		E9693E3D1D32441600D6135B /* LogIn.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LogIn.storyboard; sourceTree = "<group>"; };
-		E9693E3F1D3245FB00D6135B /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Settings.storyboard; path = "NKU Helper/Settings.storyboard"; sourceTree = SOURCE_ROOT; };
-		E9693E431D32894000D6135B /* Today.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Today.storyboard; path = "NKU Helper/Today.storyboard"; sourceTree = SOURCE_ROOT; };
-		E9693E451D3290AE00D6135B /* ClassTime.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = ClassTime.storyboard; path = "NKU Helper/ClassTime.storyboard"; sourceTree = SOURCE_ROOT; };
-		E9693E471D32926300D6135B /* Function.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Function.storyboard; path = "NKU Helper/Function.storyboard"; sourceTree = SOURCE_ROOT; };
-		E9693E491D32932500D6135B /* NotiCenter.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = NotiCenter.storyboard; path = "NKU Helper/NotiCenter.storyboard"; sourceTree = SOURCE_ROOT; };
-		E9693E4B1D32945F00D6135B /* Grade.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Grade.storyboard; path = "NKU Helper/Grade.storyboard"; sourceTree = SOURCE_ROOT; };
-		E9693E4D1D3294FA00D6135B /* Evaluate.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Evaluate.storyboard; path = "NKU Helper/Evaluate.storyboard"; sourceTree = SOURCE_ROOT; };
-		E9693E4F1D32955500D6135B /* SelectCourse.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SelectCourse.storyboard; path = "NKU Helper/SelectCourse.storyboard"; sourceTree = SOURCE_ROOT; };
+		E9693E3F1D3245FB00D6135B /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		E9693E431D32894000D6135B /* Today.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Today.storyboard; sourceTree = "<group>"; };
+		E9693E451D3290AE00D6135B /* ClassTime.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ClassTime.storyboard; sourceTree = "<group>"; };
+		E9693E471D32926300D6135B /* Function.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Function.storyboard; sourceTree = "<group>"; };
+		E9693E491D32932500D6135B /* NotiCenter.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NotiCenter.storyboard; sourceTree = "<group>"; };
+		E9693E4B1D32945F00D6135B /* Grade.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Grade.storyboard; sourceTree = "<group>"; };
+		E9693E4D1D3294FA00D6135B /* Evaluate.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Evaluate.storyboard; sourceTree = "<group>"; };
+		E9693E4F1D32955500D6135B /* SelectCourse.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SelectCourse.storyboard; sourceTree = "<group>"; };
 		E96E739F1BBBFC3400B62663 /* Launch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
 		E97176751B1488CA004DADB2 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		E97176771B149292004DADB2 /* CourseDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseDetailTableViewController.swift; sourceTree = "<group>"; };
@@ -249,8 +249,8 @@
 		E99D67091C16C9EB00E27B08 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		E99D67121C16F6E700E27B08 /* NotiTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotiTableViewCell.swift; sourceTree = "<group>"; };
 		E99D675B1C17401B00E27B08 /* NotiDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotiDetailViewController.swift; sourceTree = "<group>"; };
-		E9A4F6101D30C4740040ABBD /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = ../Crashlytics.framework; sourceTree = "<group>"; };
-		E9A4F6111D30C4740040ABBD /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = ../Fabric.framework; sourceTree = "<group>"; };
+		E9A4F6101D30C4740040ABBD /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		E9A4F6111D30C4740040ABBD /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		E9B577991D38D25E0054F7E8 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E9B5779B1D38D69F0054F7E8 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		E9B5779D1D38DE310054F7E8 /* ClassView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClassView.xib; sourceTree = "<group>"; };
@@ -346,16 +346,16 @@
 		E90AE21F1A8F813900AD0D78 = {
 			isa = PBXGroup;
 			children = (
-				E9DA59441D3888E80012ED9A /* .travis.yml */,
-				E9DA594B1D3889AF0012ED9A /* NKU HelperTests */,
 				911897253CF7E957EC7F6666 /* Frameworks */,
 				E90AE22A1A8F813900AD0D78 /* NKU Helper */,
+				E9DA594B1D3889AF0012ED9A /* NKU HelperTests */,
+				F850A484E2838018A1DDBC3B /* Pods */,
 				E90AE2291A8F813900AD0D78 /* Products */,
+				E9DA59441D3888E80012ED9A /* .travis.yml */,
+				E9B5779B1D38D69F0054F7E8 /* LICENSE.txt */,
+				E9B577991D38D25E0054F7E8 /* README.md */,
 				E92FB3E51BF3676F004C6B7C /* VersionLog.md */,
 				E961C83E1D2EAE740066C9C3 /* 编码规范.md */,
-				E9B577991D38D25E0054F7E8 /* README.md */,
-				E9B5779B1D38D69F0054F7E8 /* LICENSE.txt */,
-				F850A484E2838018A1DDBC3B /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -371,22 +371,22 @@
 		E90AE22A1A8F813900AD0D78 /* NKU Helper */ = {
 			isa = PBXGroup;
 			children = (
-				E90AE22D1A8F813900AD0D78 /* AppDelegate.swift */,
-				E988B5361AB005DF006818FA /* Main.storyboard */,
-				E9693E3D1D32441600D6135B /* LogIn.storyboard */,
-				E942864F1AA4CD2A00A4242C /* LogInViewController.swift */,
+				E9927C071D2E474200DE284C /* Errors */,
 				E9FE26151B13800700FCBB32 /* Model和帮助类 */,
-				E9D4DC471AAEF45D00A02327 /* 今天 */,
-				E98F94E21AA31A1A00885992 /* 课程表 */,
-				E98F94DF1AA319CD00885992 /* 功能 */,
-				E98F94E11AA319EE00885992 /* 设置 */,
 				E90E87221C40E54100E6BE3A /* Network */,
 				E98E2B4C1C463FCC00CF82BE /* StoreClass */,
 				E9C3EF581BB2BB8000D1C91D /* Structures */,
-				E9927C071D2E474200DE284C /* Errors */,
-				E95C37F81BA55B95004444FF /* images */,
 				E90AE22B1A8F813900AD0D78 /* Supporting Files */,
 				E99D674B1C173A7500E27B08 /* Third Party */,
+				E95C37F81BA55B95004444FF /* images */,
+				E9D4DC471AAEF45D00A02327 /* 今天 */,
+				E98F94DF1AA319CD00885992 /* 功能 */,
+				E98F94E11AA319EE00885992 /* 设置 */,
+				E98F94E21AA31A1A00885992 /* 课程表 */,
+				E90AE22D1A8F813900AD0D78 /* AppDelegate.swift */,
+				E9693E3D1D32441600D6135B /* LogIn.storyboard */,
+				E942864F1AA4CD2A00A4242C /* LogInViewController.swift */,
+				E988B5361AB005DF006818FA /* Main.storyboard */,
 			);
 			path = "NKU Helper";
 			sourceTree = "<group>";
@@ -404,12 +404,12 @@
 		E90E87221C40E54100E6BE3A /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				E93083AF1D3BBF50000FC8E8 /* 功能 */,
+				E92BDD041C62230F005A5CB8 /* 登陆 */,
 				E90E87231C40E58B00E6BE3A /* NKNetworkBase.swift */,
 				E9634EBE1D38E3B900F30FA0 /* NKNetworkFetchInfo.swift */,
 				E95F93D81C4FC04500CEEC12 /* NKNetworkFetchUserInfo.swift */,
 				E98E2B4F1C46492900CF82BE /* NKNetworkLoadCourse.swift */,
-				E92BDD041C62230F005A5CB8 /* 登陆 */,
-				E93083AF1D3BBF50000FC8E8 /* 功能 */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -417,15 +417,14 @@
 		E90E87271C40F2F400E6BE3A /* 选课 */ = {
 			isa = PBXGroup;
 			children = (
-				E9693E4F1D32955500D6135B /* SelectCourse.storyboard */,
 				E91D2E591C846CA1002605F8 /* ClassInfoTableViewCell.swift */,
 				E981C12C1C84A02D005CBF4E /* ClassModificationTableViewCell.swift */,
 				E91D2E571C8468B6002605F8 /* SearchCourseDetailTableViewController.swift */,
 				E91D2E551C846778002605F8 /* SearchCourseTableViewController.swift */,
+				E9693E4F1D32955500D6135B /* SelectCourse.storyboard */,
 				E90E872A1C40FCE700E6BE3A /* SelectCourseTableViewController.swift */,
 			);
-			name = "选课";
-			path = SelectCourse;
+			path = "选课";
 			sourceTree = "<group>";
 		};
 		E92BDD031C622304005A5CB8 /* 评教 */ = {
@@ -451,28 +450,28 @@
 		E930839F1D3A8CC3000FC8E8 /* WeekdayView */ = {
 			isa = PBXGroup;
 			children = (
-				E93083991D39DA38000FC8E8 /* WeekdayView.xib */,
 				E930839B1D39E38D000FC8E8 /* WeekdayView.swift */,
+				E93083991D39DA38000FC8E8 /* WeekdayView.xib */,
 			);
-			name = WeekdayView;
+			path = WeekdayView;
 			sourceTree = "<group>";
 		};
 		E93083A41D3A8FCA000FC8E8 /* TimeScheduleView */ = {
 			isa = PBXGroup;
 			children = (
-				E93083A01D3A8D4A000FC8E8 /* TimeScheduleView.xib */,
 				E93083A21D3A8F4D000FC8E8 /* TimeScheduleView.swift */,
+				E93083A01D3A8D4A000FC8E8 /* TimeScheduleView.xib */,
 			);
-			name = TimeScheduleView;
+			path = TimeScheduleView;
 			sourceTree = "<group>";
 		};
 		E93083A71D3B7380000FC8E8 /* ClassView */ = {
 			isa = PBXGroup;
 			children = (
-				E9B5779D1D38DE310054F7E8 /* ClassView.xib */,
 				E93083A51D3B6B6A000FC8E8 /* ClassView.swift */,
+				E9B5779D1D38DE310054F7E8 /* ClassView.xib */,
 			);
-			name = ClassView;
+			path = ClassView;
 			sourceTree = "<group>";
 		};
 		E93083AA1D3BB7F6000FC8E8 /* 考试时间查询 */ = {
@@ -482,7 +481,7 @@
 				E9462A471B24A6480002C21A /* TestTimeTableViewCell.swift */,
 				E9462A451B24A1E00002C21A /* TestTimeTableViewController.swift */,
 			);
-			name = "考试时间查询";
+			path = "考试时间查询";
 			sourceTree = "<group>";
 		};
 		E93083AD1D3BBF33000FC8E8 /* 查成绩 */ = {
@@ -490,7 +489,7 @@
 			children = (
 				E9929C9A1C49068000D508C8 /* NKNetworkFetchGrade.swift */,
 			);
-			name = "查成绩";
+			path = "查成绩";
 			sourceTree = "<group>";
 		};
 		E93083AE1D3BBF3C000FC8E8 /* 通知中心 */ = {
@@ -498,19 +497,19 @@
 			children = (
 				E9762F6F1C48DE77002CEF03 /* NKNetworkFetchNoti.swift */,
 			);
-			name = "通知中心";
+			path = "通知中心";
 			sourceTree = "<group>";
 		};
 		E93083AF1D3BBF50000FC8E8 /* 功能 */ = {
 			isa = PBXGroup;
 			children = (
-				E93083AE1D3BBF3C000FC8E8 /* 通知中心 */,
 				E93083AD1D3BBF33000FC8E8 /* 查成绩 */,
-				E92BDD031C622304005A5CB8 /* 评教 */,
 				E93083B01D3BBF63000FC8E8 /* 查考试时间 */,
+				E92BDD031C622304005A5CB8 /* 评教 */,
 				E9C3A0D71C7CB3F3009C6B21 /* 选课 */,
+				E93083AE1D3BBF3C000FC8E8 /* 通知中心 */,
 			);
-			name = "功能";
+			path = "功能";
 			sourceTree = "<group>";
 		};
 		E93083B01D3BBF63000FC8E8 /* 查考试时间 */ = {
@@ -518,8 +517,7 @@
 			children = (
 				E93083B11D3BBFA7000FC8E8 /* NKNetworkFetchTestTime.swift */,
 			);
-			name = "查考试时间";
-			path = "评教";
+			path = "查考试时间";
 			sourceTree = "<group>";
 		};
 		E93083B31D3BE301000FC8E8 /* Model */ = {
@@ -529,7 +527,7 @@
 				E95B0F2C1C83E18700448F97 /* CourseSelecting.swift */,
 				E93C0F171BB54B54001303CF /* ThingToDo.swift */,
 			);
-			name = Model;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		E94211BD1B00B99F00087846 /* Cell */ = {
@@ -554,17 +552,16 @@
 		E95F93DB1C50CE9100CEEC12 /* 评教 */ = {
 			isa = PBXGroup;
 			children = (
-				E9693E4D1D3294FA00D6135B /* Evaluate.storyboard */,
 				E95F93E01C50EF2800CEEC12 /* ClassToEvaluate.swift */,
 				E95F93E21C50F7E100CEEC12 /* ClassToEvaluateTableViewCell.swift */,
 				E95F93EA1C512B8B00CEEC12 /* DetailEvaluateInfo.swift */,
+				E9693E4D1D3294FA00D6135B /* Evaluate.storyboard */,
 				E95F93E61C50FE8800CEEC12 /* EvaluateDetailTableViewCell.swift */,
 				E95F93E41C50FAEB00CEEC12 /* EvaluateDetailTableViewController.swift */,
 				E95F93EC1C51377300CEEC12 /* EvaluateOpinionTableViewCell.swift */,
 				E95F93DC1C50CEAA00CEEC12 /* EvaluateTableViewController.swift */,
 			);
-			name = "评教";
-			path = Evaluate;
+			path = "评教";
 			sourceTree = "<group>";
 		};
 		E97A94AF1ABF19F200998A07 /* PreferredColors */ = {
@@ -599,50 +596,46 @@
 				E91E5F541A9103DF009F3B2B /* GradeCell.swift */,
 				E91E5F4E1A90FAED009F3B2B /* GradeShowerTableViewController.swift */,
 			);
-			name = "成绩查询";
-			path = GetGrade;
+			path = "成绩查询";
 			sourceTree = "<group>";
 		};
 		E98F94DF1AA319CD00885992 /* 功能 */ = {
 			isa = PBXGroup;
 			children = (
+				E98F94D21AA317B100885992 /* 成绩查询 */,
+				E93083AA1D3BB7F6000FC8E8 /* 考试时间查询 */,
+				E95F93DB1C50CE9100CEEC12 /* 评教 */,
+				E90E87271C40F2F400E6BE3A /* 选课 */,
+				E99D670B1C16CA8600E27B08 /* 通知中心 */,
 				E9693E471D32926300D6135B /* Function.storyboard */,
 				E98F94D71AA318EF00885992 /* FunctionTableViewController.swift */,
-				E99D670B1C16CA8600E27B08 /* 通知中心 */,
-				E98F94D21AA317B100885992 /* 成绩查询 */,
-				E95F93DB1C50CE9100CEEC12 /* 评教 */,
-				E93083AA1D3BB7F6000FC8E8 /* 考试时间查询 */,
-				E90E87271C40F2F400E6BE3A /* 选课 */,
 			);
-			name = "功能";
-			path = Function;
+			path = "功能";
 			sourceTree = "<group>";
 		};
 		E98F94E11AA319EE00885992 /* 设置 */ = {
 			isa = PBXGroup;
 			children = (
-				E9693E3F1D3245FB00D6135B /* Settings.storyboard */,
 				E9DB7EBC1AAB5EB0000D4182 /* AccountInfo */,
 				E97A94AF1ABF19F200998A07 /* PreferredColors */,
 				E97176751B1488CA004DADB2 /* AboutViewController.swift */,
 				E98F94D91AA3191F00885992 /* SettingTableViewController.swift */,
+				E9693E3F1D3245FB00D6135B /* Settings.storyboard */,
 			);
-			name = "设置";
-			path = Settings;
+			path = "设置";
 			sourceTree = "<group>";
 		};
 		E98F94E21AA31A1A00885992 /* 课程表 */ = {
 			isa = PBXGroup;
 			children = (
-				E9693E451D3290AE00D6135B /* ClassTime.storyboard */,
-				E98F94D51AA3180700885992 /* ClassTimeViewController.swift */,
-				E98E2B8A1C46ABE400CF82BE /* ClassTimeView.swift */,
 				E93083A71D3B7380000FC8E8 /* ClassView */,
 				E93083A41D3A8FCA000FC8E8 /* TimeScheduleView */,
 				E930839F1D3A8CC3000FC8E8 /* WeekdayView */,
+				E9693E451D3290AE00D6135B /* ClassTime.storyboard */,
+				E98E2B8A1C46ABE400CF82BE /* ClassTimeView.swift */,
+				E98F94D51AA3180700885992 /* ClassTimeViewController.swift */,
 			);
-			name = "课程表";
-			path = ClassTime;
+			path = "课程表";
 			sourceTree = "<group>";
 		};
 		E9927C071D2E474200DE284C /* Errors */ = {
@@ -662,8 +655,7 @@
 				E99D67121C16F6E700E27B08 /* NotiTableViewCell.swift */,
 				E99D67091C16C9EB00E27B08 /* Notification.swift */,
 			);
-			name = "通知中心";
-			path = NotificationCenter;
+			path = "通知中心";
 			sourceTree = "<group>";
 		};
 		E99D674B1C173A7500E27B08 /* Third Party */ = {
@@ -707,21 +699,20 @@
 		E9D4DC471AAEF45D00A02327 /* 今天 */ = {
 			isa = PBXGroup;
 			children = (
-				E9693E431D32894000D6135B /* Today.storyboard */,
 				E94211BD1B00B99F00087846 /* Cell */,
 				E97176771B149292004DADB2 /* CourseDetailTableViewController.swift */,
 				E971EB811BAAFEE8005E6E55 /* PlusCircleView.swift */,
+				E9693E431D32894000D6135B /* Today.storyboard */,
 				E94BD9791BABE9A500B76E03 /* TodayViewController.swift */,
 			);
-			name = "今天";
-			path = Today;
+			path = "今天";
 			sourceTree = "<group>";
 		};
 		E9DA594B1D3889AF0012ED9A /* NKU HelperTests */ = {
 			isa = PBXGroup;
 			children = (
-				E9DA594C1D3889AF0012ED9A /* NKU_HelperTests.swift */,
 				E9DA594E1D3889AF0012ED9A /* Info.plist */,
+				E9DA594C1D3889AF0012ED9A /* NKU_HelperTests.swift */,
 			);
 			path = "NKU HelperTests";
 			sourceTree = "<group>";
@@ -743,19 +734,17 @@
 				E92B2D001B48DB89008825A3 /* CalendarHelper.swift */,
 				E930839D1D3A0DE1000FC8E8 /* UIViewExtention.swift */,
 			);
-			name = HelperClass;
-			path = "Helper Class";
+			path = HelperClass;
 			sourceTree = "<group>";
 		};
 		E9FE26151B13800700FCBB32 /* Model和帮助类 */ = {
 			isa = PBXGroup;
 			children = (
 				E9F3D2C21BB7F69100255F4B /* HelperClass */,
-				E9ACA1221AB2D6E7001083C1 /* RefreshControl */,
 				E93083B31D3BE301000FC8E8 /* Model */,
+				E9ACA1221AB2D6E7001083C1 /* RefreshControl */,
 			);
-			name = "Model和帮助类";
-			path = Classes;
+			path = "Model和帮助类";
 			sourceTree = "<group>";
 		};
 		F850A484E2838018A1DDBC3B /* Pods */ = {
@@ -951,7 +940,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./NKU\\ Helper/Fabric.framework/run 10e953e10a73fd8f098bf72e3c4afc19cd324aa0 72d765e9ab44b5248d20ec1fc0a91552d1dc550c057be1ecec05240c895beae4";
+			shellScript = "./NKU\\ Helper/Third\\ Party/Fabric.framework/run 10e953e10a73fd8f098bf72e3c4afc19cd324aa0 72d765e9ab44b5248d20ec1fc0a91552d1dc550c057be1ecec05240c895beae4";
 		};
 /* End PBXShellScriptBuildPhase section */
 

@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "16F31C27D7691C472C7158A34C79FC10"
-               BuildableName = "DZNEmptyDataSet.framework"
-               BlueprintName = "DZNEmptyDataSet"
+               BlueprintIdentifier = "B312B8C1A05F019442D110F7815B1E9C"
+               BuildableName = "SnapKit.framework"
+               BlueprintName = "SnapKit"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "16F31C27D7691C472C7158A34C79FC10"
-            BuildableName = "DZNEmptyDataSet.framework"
-            BlueprintName = "DZNEmptyDataSet"
+            BlueprintIdentifier = "B312B8C1A05F019442D110F7815B1E9C"
+            BuildableName = "SnapKit.framework"
+            BlueprintName = "SnapKit"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

@@ -4,65 +4,65 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Alamofire.xcscheme</key>
+		<key>Alamofire.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
-			<false/>
+			<true/>
 		</dict>
-		<key>DZNEmptyDataSet.xcscheme</key>
+		<key>DZNEmptyDataSet.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
-			<false/>
+			<true/>
 		</dict>
-		<key>MBProgressHUD.xcscheme</key>
+		<key>MBProgressHUD.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
-			<false/>
+			<true/>
 		</dict>
-		<key>MJRefresh.xcscheme</key>
+		<key>MJRefresh.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
-			<false/>
+			<true/>
 		</dict>
-		<key>NJKWebViewProgress.xcscheme</key>
+		<key>NJKWebViewProgress.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
-			<false/>
+			<true/>
 		</dict>
-		<key>Pods-NKU Helper.xcscheme</key>
+		<key>Pods-NKU Helper.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
-			<false/>
+			<true/>
 		</dict>
-		<key>SVProgressHUD.xcscheme</key>
+		<key>SVProgressHUD.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
-			<false/>
+			<true/>
 		</dict>
-		<key>SnapKit.xcscheme</key>
+		<key>SnapKit.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
-			<false/>
+			<true/>
 		</dict>
-		<key>SwiftyJSON.xcscheme</key>
+		<key>SwiftyJSON.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
-			<false/>
+			<true/>
 		</dict>
-		<key>UAProgressView.xcscheme</key>
+		<key>UAProgressView.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
-			<false/>
+			<true/>
 		</dict>
-		<key>YYText.xcscheme</key>
+		<key>YYText.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
-			<false/>
+			<true/>
 		</dict>
-		<key>pop.xcscheme</key>
+		<key>pop.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
-			<false/>
+			<true/>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -73,6 +73,11 @@
 			<true/>
 		</dict>
 		<key>2799857F5478460E7F21F7EE970535DB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2F7BF64F5AE82C8C64A99B1F1764E386</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -118,11 +123,6 @@
 			<true/>
 		</dict>
 		<key>F204A26A48820447F17E4645D59F3BE8</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F6050CB9C20133936F551B08325A5466</key>
 		<dict>
 			<key>primary</key>
 			<true/>
