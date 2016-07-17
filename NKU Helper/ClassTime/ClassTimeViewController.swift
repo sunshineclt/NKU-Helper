@@ -54,17 +54,19 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
     }
     
     override func viewWillAppear(animated: Bool) {
-        NKNetworkFetchInfo.fetchNowWeek { (nowWeek😈) in
-            guard let nowWeek = nowWeek😈 else {
+        NKNetworkFetchInfo.fetchNowWeek { (nowWeek😈, isVocation😈) in
+            guard let nowWeek = nowWeek😈, isVocation = isVocation😈 else {
                 return
             }
-            dispatch_async(dispatch_get_main_queue(), {
-                self.navigationItem.title = "第\(nowWeek)周"
-                self.classTimeView.week = nowWeek
-                if self.canDrawClassTimeTable() {
-                    self.classTimeView.updateClassTimeTableWithWeek(nowWeek)
-                }
-            })
+            if isVocation {
+                self.navigationItem.title = "假期"
+                return
+            }
+            self.navigationItem.title = "第\(nowWeek)周"
+            self.classTimeView.week = nowWeek
+            if self.canDrawClassTimeTable() {
+                self.classTimeView.updateClassTimeTableWithWeek(nowWeek)
+            }
         }
     }
     

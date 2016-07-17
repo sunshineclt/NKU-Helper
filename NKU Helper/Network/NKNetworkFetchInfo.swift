@@ -13,20 +13,21 @@ import SwiftyJSON
 /// 提供获取一系列信息功能的网络库
 class NKNetworkFetchInfo: NKNetworkBase {
     
-    class func fetchNowWeek(completionHandler: (nowWeek: Int?) -> Void) {
+    class func fetchNowWeek(completionHandler: (nowWeek: Int?, isVocation: Bool?) -> Void) {
         
         Alamofire.request(.GET, NKNetworkBase.getURLStringByAppendingBaseURLWithPath("info/week")).responseJSON { (response: Response<AnyObject, NSError>) in
             switch response.result {
             case .Success(let value):
                 let json = JSON(value)
                 guard json["msg"].stringValue == "OK" else {
-                    completionHandler(nowWeek: nil)
+                    completionHandler(nowWeek: nil, isVocation: nil)
                     return
                 }
                 let nowWeek = json["data"]["nowWeek"].intValue
-                completionHandler(nowWeek: nowWeek)
+                let isVocation = json["data"]["isVocation"].boolValue
+                completionHandler(nowWeek: nowWeek, isVocation: isVocation)
             case .Failure( _):
-                completionHandler(nowWeek: nil)
+                completionHandler(nowWeek: nil, isVocation: nil)
             }
         }
         
