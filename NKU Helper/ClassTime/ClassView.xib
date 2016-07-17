@@ -18,6 +18,9 @@
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@二主楼B306" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="YZt-tL-18r">
                     <rect key="frame" x="4" y="76.5" width="54.5" height="23.5"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="18" id="pwk-QL-NHc"/>
+                    </constraints>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
@@ -27,7 +30,7 @@
             <gestureRecognizers/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="YZt-tL-18r" secondAttribute="trailing" constant="4" id="1lC-1L-jtc"/>
-                <constraint firstItem="YZt-tL-18r" firstAttribute="top" secondItem="nVy-rv-odv" secondAttribute="bottom" constant="8" symbolic="YES" id="Fu5-DL-Tkp"/>
+                <constraint firstItem="YZt-tL-18r" firstAttribute="top" secondItem="nVy-rv-odv" secondAttribute="bottom" priority="750" constant="8" symbolic="YES" id="Fu5-DL-Tkp"/>
                 <constraint firstItem="nVy-rv-odv" firstAttribute="top" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="top" id="XZI-q9-Fc9"/>
                 <constraint firstAttribute="trailing" secondItem="nVy-rv-odv" secondAttribute="trailing" constant="4" id="aQo-T2-xIq"/>
                 <constraint firstItem="nVy-rv-odv" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="4" id="bpg-ux-2hS"/>

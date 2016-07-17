@@ -35,12 +35,13 @@ class ClassTimeView: UIView {
     let topHeight: CGFloat = 30
     var columnWidth: CGFloat {
         if (orientation == UIInterfaceOrientation.LandscapeLeft) || (orientation == UIInterfaceOrientation.LandscapeRight) || (self.frame.width >= 700) {
-            return self.frame.width / 8
+            return (self.frame.width - timeViewWidth) / 7
         }
         else {
-            return self.frame.width / 6
+            return (self.frame.width - timeViewWidth) / 5
         }
     }
+    let timeViewWidth:CGFloat = 40
     let classViewInset:CGFloat = 5
     
     var week:Int!
@@ -49,14 +50,11 @@ class ClassTimeView: UIView {
     
     func drawBackground() {
         
-        // 调整timeScrollView的宽度
-        timeScrollViewWidthConstraint.constant = columnWidth
-        
         // 绘制headScrollView中的星期几信息
         for view in headScrollView.subviews {
             view.removeFromSuperview()
         }
-        headScrollView.contentSize = CGSizeMake(columnWidth * 8, topHeight)
+        headScrollView.contentSize = CGSizeMake(columnWidth * 7, topHeight)
         weekdayViews = [WeekdayView]()
         for i in 1...7 {
             let weekdayView = WeekdayView.loadFromNib()
@@ -80,14 +78,14 @@ class ClassTimeView: UIView {
         for view in timeScrollView.subviews {
             view.removeFromSuperview()
         }
-        timeScrollView.contentSize = CGSizeMake(columnWidth, rowHeight*14)
+        timeScrollView.contentSize = CGSizeMake(timeViewWidth, rowHeight*14)
         timeScheduleViews = [TimeScheduleView]()
         for i in 0...13 {
             let timeScheduleView = TimeScheduleView.loadFromNib()
             timeScrollView.addSubview(timeScheduleView)
             timeScheduleView.snp_makeConstraints(closure: { (make) in
                 make.left.equalTo(timeScrollView.snp_left)
-                make.width.equalTo(columnWidth)
+                make.width.equalTo(timeViewWidth)
                 make.height.equalTo(rowHeight)
                 if (i != 0) {
                     make.top.equalTo(timeScheduleViews.last!.snp_bottom)
@@ -99,11 +97,11 @@ class ClassTimeView: UIView {
             timeScheduleView.timeLabel.text = CalendarHelper.getTimeInfoFromSectionInt(i)
             timeScheduleView.sectionLabel.text = "\(i + 1)"
             let bottomBorderLayer = CALayer()
-            bottomBorderLayer.frame = CGRectMake(0, rowHeight, columnWidth, 0.5)
+            bottomBorderLayer.frame = CGRectMake(0, rowHeight, timeViewWidth, 0.5)
             bottomBorderLayer.backgroundColor = UIColor(red: 216/255, green: 224/255, blue: 226/255, alpha: 1).CGColor;
             timeScheduleView.layer.addSublayer(bottomBorderLayer)
             let topBorderLayer = CALayer()
-            topBorderLayer.frame = CGRectMake(0, 0, columnWidth, 0.5)
+            topBorderLayer.frame = CGRectMake(0, 0, timeViewWidth, 0.5)
             topBorderLayer.backgroundColor = UIColor(red: 216/255, green: 224/255, blue: 226/255, alpha: 1).CGColor;
             timeScheduleView.layer.addSublayer(topBorderLayer)
             timeScheduleViews.append(timeScheduleView)
@@ -134,11 +132,11 @@ class ClassTimeView: UIView {
             }
         }
         let rightBorderLayer = CALayer()
-        rightBorderLayer.frame = CGRectMake(columnWidth, 0, 1, topHeight)
+        rightBorderLayer.frame = CGRectMake(timeViewWidth, 0, 1, topHeight)
         rightBorderLayer.backgroundColor = UIColor(red: 216/255, green: 224/255, blue: 226/255, alpha: 1).CGColor
         blankView.layer.addSublayer(rightBorderLayer)
         let bottomBorderLayer = CALayer()
-        bottomBorderLayer.frame = CGRectMake(0, topHeight, columnWidth, 1)
+        bottomBorderLayer.frame = CGRectMake(0, topHeight, timeViewWidth, 1)
         bottomBorderLayer.backgroundColor = UIColor(red: 216/255, green: 224/255, blue: 226/255, alpha: 1).CGColor;
         blankView.layer.addSublayer(bottomBorderLayer)
     }
