@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "iBooks.png",
+      "filename" : "book.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "iBooks@2x.png",
+      "filename" : "book@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "iBooks@3x.png",
+      "filename" : "book@3x.png",
       "scale" : "3x"
     }
   ],
