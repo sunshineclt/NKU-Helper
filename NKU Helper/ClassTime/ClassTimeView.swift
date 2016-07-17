@@ -68,9 +68,6 @@ class ClassTimeView: UIView {
             weekdayViews.append(weekdayView)
         }
         
-        // 设置classScrollView的大小
-        classScrollView.contentSize = CGSizeMake(columnWidth * 7, rowHeight*14)
-        
         // 绘制timeScrollView中的每堂课时间信息
         for view in timeScrollView.subviews {
             view.removeFromSuperview()
@@ -95,10 +92,24 @@ class ClassTimeView: UIView {
             timeScheduleView.sectionLabel.text = "\(i + 1)"
             timeScheduleView.tag = -1
             let bottomBorderLayer = CALayer()
-            bottomBorderLayer.frame = CGRectMake(0, rowHeight-1, columnWidth, 1)
+            bottomBorderLayer.frame = CGRectMake(0, rowHeight, columnWidth, 0.5)
             bottomBorderLayer.backgroundColor = UIColor(red: 216/255, green: 224/255, blue: 226/255, alpha: 1).CGColor;
             timeScheduleView.layer.addSublayer(bottomBorderLayer)
+            let topBorderLayer = CALayer()
+            topBorderLayer.frame = CGRectMake(0, 0, columnWidth, 0.5)
+            topBorderLayer.backgroundColor = UIColor(red: 216/255, green: 224/255, blue: 226/255, alpha: 1).CGColor;
+            timeScheduleView.layer.addSublayer(topBorderLayer)
             timeScheduleViews.append(timeScheduleView)
+        }
+        
+        // 绘制课程表的背景
+        classScrollView.contentSize = CGSizeMake(columnWidth * 7, rowHeight*14)
+        for i in 0...13 {
+            let rowBackgroundView = UIView(frame: CGRectMake(0, CGFloat(i) * rowHeight, columnWidth * 7, rowHeight))
+            rowBackgroundView.backgroundColor = UIColor(red: 236/255, green: 240/255, blue: 241/255, alpha: 1)
+            rowBackgroundView.layer.borderWidth = 0.5
+            rowBackgroundView.layer.borderColor = UIColor(red: 216/255, green: 224/255, blue: 226/255, alpha: 1).CGColor
+            classScrollView.addSubview(rowBackgroundView)
         }
         
         // 阴影效果
@@ -115,7 +126,6 @@ class ClassTimeView: UIView {
                 layer.removeFromSuperlayer()
             }
         }
-
         let rightBorderLayer = CALayer()
         rightBorderLayer.frame = CGRectMake(columnWidth, 0, 1, topHeight)
         rightBorderLayer.backgroundColor = UIColor(red: 216/255, green: 224/255, blue: 226/255, alpha: 1).CGColor
