@@ -65,10 +65,6 @@ class ClassTimeView: UIView {
                 }
             })
             weekdayView.weekdayLabel.text = CalendarHelper.getWeekdayStringFromWeekdayInt(i)
-            let rightBorderLayer = CALayer()
-            rightBorderLayer.frame = CGRectMake(columnWidth-1, 0, 1, topHeight)
-            rightBorderLayer.backgroundColor = UIColor(red: 216/255, green: 224/255, blue: 226/255, alpha: 1).CGColor
-            weekdayView.layer.addSublayer(rightBorderLayer)
             weekdayViews.append(weekdayView)
         }
         
@@ -114,6 +110,12 @@ class ClassTimeView: UIView {
         timeShadowView.layer.shadowOpacity = 0.3
         
         // 空白View的边框效果
+        if let layers = blankView.layer.sublayers {
+            for layer in layers {
+                layer.removeFromSuperlayer()
+            }
+        }
+
         let rightBorderLayer = CALayer()
         rightBorderLayer.frame = CGRectMake(columnWidth, 0, 1, topHeight)
         rightBorderLayer.backgroundColor = UIColor(red: 216/255, green: 224/255, blue: 226/255, alpha: 1).CGColor
