@@ -18,6 +18,7 @@ struct CellIdentifier {
     static let MoreFunctionCell = "MoreFunctionCell"
     static let NotiCell = "NotiCell"
     static let GradeCell = "GradeCell"
+    static let TestTimeSearchCell = "TestTimeSearchCell"
     static let ClassToEvaluateCell = "ClassToEvaluateCell"
     static let EvaluateDetailCell = "EvaluateDetailCell"
     static let EvaluateOpinionCell = "EvaluateOpinionCell"

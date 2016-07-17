@@ -20,10 +20,6 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
         }
     }
     
-// MARK: Property
-    
-    var testTimeHtml:NSString!
-    
 // MARK: VC Life Cycle
     
     override func viewDidLoad() {
@@ -138,35 +134,6 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
 
     }
     
-    @IBAction func lookUpTestTime(sender: UIBarButtonItem) {
-        SVProgressHUD.show()
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) { () -> Void in
-            let loginResult = NKNetworkIsLogin.isLoggedin()
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                SVProgressHUD.dismiss()
-                switch loginResult {
-                case .Loggedin:
-                    let url:NSURL = NSURL(string: "http://222.30.32.10/xxcx/stdexamarrange/listAction.do")!
-                    let data:NSData? = NSData(contentsOfURL: url)
-                    if let _ = data {
-                        let encoding:NSStringEncoding = CFStringConvertEncodingToNSStringEncoding(0x0632)
-                        self.testTimeHtml = NSString(data: data!, encoding: encoding)!
-                        self.performSegueWithIdentifier(SegueIdentifier.ShowTestTime, sender: nil)
-                    }
-                    else {
-                        self.presentViewController(ErrorHandler.alert(ErrorHandler.NetworkError()), animated: true, completion: nil)
-                    }
-                case .NotLoggedin:
-                    let nc:NSNotificationCenter = NSNotificationCenter.defaultCenter()
-                    nc.addObserver(self, selector: #selector(ClassTimeViewController.showTestTime), name: "loginComplete", object: nil)
-                    self.performSegueWithIdentifier(SegueIdentifier.Login, sender: nil)
-                case .UnKnown:
-                    self.presentViewController(ErrorHandler.alert(ErrorHandler.NetworkError()), animated: true, completion: nil)
-                }
-            })
-        }
-    }
-    
     @IBAction func shareClassTable(sender: UIBarButtonItem) {
         
         let columnWidth:CGFloat = UIScreen.mainScreen().bounds.width / 6
@@ -264,9 +231,6 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
             case SegueIdentifier.ShowCourseDetail:
                 let vc = segue.destinationViewController as! CourseDetailTableViewController
                 vc.whichCourse = whichSection
-            case SegueIdentifier.ShowTestTime:
-                let vc = segue.destinationViewController as! TestTimeTableViewController
-                vc.html = testTimeHtml
             default:
                 break
             }
@@ -292,29 +256,7 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
         }
         
     }
-    
-    @objc
-    private func showTestTime() {
-        let nc:NSNotificationCenter = NSNotificationCenter.defaultCenter()
-        nc.removeObserver(self)
-        SVProgressHUD.show()
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) { () -> Void in
-            let url:NSURL = NSURL(string: "http://222.30.32.10/xxcx/stdexamarrange/listAction.do")!
-            let data:NSData? = NSData(contentsOfURL: url)
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                SVProgressHUD.dismiss()
-                if let _ = data {
-                    let encoding:NSStringEncoding = CFStringConvertEncodingToNSStringEncoding(0x0632)
-                    self.testTimeHtml = NSString(data: data!, encoding: encoding)!
-                    self.performSegueWithIdentifier(SegueIdentifier.ShowTestTime, sender: nil)
-                    
-                }
-                else {
-                    self.presentViewController(ErrorHandler.alert(ErrorHandler.NetworkError()), animated: true, completion: nil)
-                }
-            })
-        }
-    }
+
 }
 
 // MARK: ScrollViewDelegate
