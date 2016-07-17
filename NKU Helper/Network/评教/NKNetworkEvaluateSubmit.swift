@@ -14,10 +14,18 @@ protocol NKNetworkEvaluateSubmitProtocol {
     func didSuccessToSubmit()
 }
 
+/// 提供提交评教结果的网络类
 class NKNetworkEvaluateSubmit: NKNetworkBase {
     
     var delegate: NKNetworkEvaluateSubmitProtocol?
     
+    /**
+     提交评教结果
+     
+     - parameter grade:   各项分数
+     - parameter opinion: 意见
+     - parameter index:   当前评教的课程的index
+     */
     func submit(grade: [String], opinion: String, index: Int) {
         let url = NSURL(string: "http://222.30.32.10/evaluate/stdevatea/queryTargetAction.do")!
         let req = NSMutableURLRequest(URL: url)

@@ -21,6 +21,11 @@ class NKNetworkFetchUserInfo: NKNetworkBase {
     
     var block: FetchUserInfoResult!
     
+    /**
+     获取用户信息数据
+     
+     - parameter block: 返回闭包
+     */
     func getAllAccountInfoWithBlock(block: FetchUserInfoResult) {
         self.block = block
         Alamofire.request(.GET, "http://222.30.32.10/studymanager/stdbaseinfo/queryAction.do").responseString(encoding: CFStringConvertEncodingToNSStringEncoding(0x0632)) { (response:Response<String, NSError>) -> Void in

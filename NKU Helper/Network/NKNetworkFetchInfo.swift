@@ -13,6 +13,11 @@ import SwiftyJSON
 /// 提供获取一系列信息功能的网络库
 class NKNetworkFetchInfo: NKNetworkBase {
     
+    /**
+     获取当前周数（也有可能是假期）
+     
+     - parameter completionHandler: 返回闭包
+     */
     class func fetchNowWeek(completionHandler: (nowWeek: Int?, isVocation: Bool?) -> Void) {
         
         Alamofire.request(.GET, NKNetworkBase.getURLStringByAppendingBaseURLWithPath("info/week")).responseJSON { (response: Response<AnyObject, NSError>) in

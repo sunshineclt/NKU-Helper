@@ -9,6 +9,7 @@
 import Foundation
 import Alamofire
 
+/// 提供获取DepartCode的网络库，未完成！
 class NKNetworkDepartCode: NKNetworkBase {
     
     func searchDepartCode(departCode: String) {
