@@ -90,7 +90,6 @@ class ClassTimeView: UIView {
             })
             timeScheduleView.timeLabel.text = CalendarHelper.getTimeInfoFromSectionInt(i)
             timeScheduleView.sectionLabel.text = "\(i + 1)"
-            timeScheduleView.tag = -1
             let bottomBorderLayer = CALayer()
             bottomBorderLayer.frame = CGRectMake(0, rowHeight, columnWidth, 0.5)
             bottomBorderLayer.backgroundColor = UIColor(red: 216/255, green: 224/255, blue: 226/255, alpha: 1).CGColor;
@@ -139,9 +138,7 @@ class ClassTimeView: UIView {
     func drawClassTimeTableOnViewController(viewController: UIViewController) {
         
         for view in classScrollView.subviews {
-            if (view.tag != -1) {               // -1代表是背景中的第几节课及时间等
-                view.removeFromSuperview()
-            }
+            view.removeFromSuperview()
         }
         drawBackground()
         
