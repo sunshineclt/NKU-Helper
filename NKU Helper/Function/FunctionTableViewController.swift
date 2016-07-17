@@ -53,7 +53,7 @@ class FunctionTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 6
     }
 
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -62,13 +62,13 @@ class FunctionTableViewController: UITableViewController {
             cell.backgroundColor = UIColor(red: 173/255, green: 114/255, blue: 195/255, alpha: 1)
         case 1: //查询成绩
             cell.backgroundColor = UIColor(red: 131/255, green: 176/255, blue: 252/255, alpha: 1)
-        case 2: //评教
+        case 2: // 选课
+            cell.backgroundColor = UIColor(red: 154/255, green: 202/255, blue: 39/255, alpha: 1)
+        case 3: //评教
             cell.backgroundColor = UIColor(red: 255/255, green: 110/255, blue: 0/255, alpha: 1)
-//        case 3:
-//            cell.backgroundColor = UIColor.whiteColor()
-        case 3: //查询考试时间
+        case 4: //查询考试时间
             cell.backgroundColor = UIColor(red: 58/255, green: 153/255, blue: 216/255, alpha: 1)
-        case 4: //更多
+        case 5: //更多
             cell.backgroundColor = UIColor(red: 250/255, green: 191/255, blue: 131/255, alpha: 1)
         default:
             break
@@ -85,19 +85,19 @@ class FunctionTableViewController: UITableViewController {
             let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.GradeShowerCell)!
             cell.userInteractionEnabled = isLoggedIn
             return cell
-        case 2: //评教
+        case 2: // 选课
+            let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.SelectCourseCenterCell)!
+            cell.userInteractionEnabled = isLoggedIn
+            return cell
+        case 3: //评教
             let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.EvaluateCenterCell)!
             cell.userInteractionEnabled = isLoggedIn
             return cell
-//        case 3:
-//            let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.SelectCourseCenterCell)!
-//            cell.userInteractionEnabled = isLoggedIn
-//            return cell
-        case 3: //查询考试时间
+        case 4: //查询考试时间
             let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.TestTimeSearchCell)!
             cell.userInteractionEnabled = isLoggedIn
             return cell
-        case 4: //更多
+        case 5: //更多
             let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.MoreFunctionCell)!
             cell.userInteractionEnabled = isLoggedIn
             return cell
