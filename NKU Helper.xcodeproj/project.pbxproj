@@ -371,22 +371,22 @@
 		E90AE22A1A8F813900AD0D78 /* NKU Helper */ = {
 			isa = PBXGroup;
 			children = (
-				E9927C071D2E474200DE284C /* Errors */,
+				E90AE22D1A8F813900AD0D78 /* AppDelegate.swift */,
+				E988B5361AB005DF006818FA /* Main.storyboard */,
+				E9693E3D1D32441600D6135B /* LogIn.storyboard */,
+				E942864F1AA4CD2A00A4242C /* LogInViewController.swift */,
 				E9FE26151B13800700FCBB32 /* Model和帮助类 */,
+				E9D4DC471AAEF45D00A02327 /* 今天 */,
+				E98F94E21AA31A1A00885992 /* 课程表 */,
+				E98F94DF1AA319CD00885992 /* 功能 */,
+				E98F94E11AA319EE00885992 /* 设置 */,
 				E90E87221C40E54100E6BE3A /* Network */,
 				E98E2B4C1C463FCC00CF82BE /* StoreClass */,
 				E9C3EF581BB2BB8000D1C91D /* Structures */,
+				E9927C071D2E474200DE284C /* Errors */,
 				E90AE22B1A8F813900AD0D78 /* Supporting Files */,
-				E99D674B1C173A7500E27B08 /* Third Party */,
 				E95C37F81BA55B95004444FF /* images */,
-				E9D4DC471AAEF45D00A02327 /* 今天 */,
-				E98F94DF1AA319CD00885992 /* 功能 */,
-				E98F94E11AA319EE00885992 /* 设置 */,
-				E98F94E21AA31A1A00885992 /* 课程表 */,
-				E90AE22D1A8F813900AD0D78 /* AppDelegate.swift */,
-				E9693E3D1D32441600D6135B /* LogIn.storyboard */,
-				E942864F1AA4CD2A00A4242C /* LogInViewController.swift */,
-				E988B5361AB005DF006818FA /* Main.storyboard */,
+				E99D674B1C173A7500E27B08 /* Third Party */,
 			);
 			path = "NKU Helper";
 			sourceTree = "<group>";
@@ -404,9 +404,9 @@
 		E90E87221C40E54100E6BE3A /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				E90E87231C40E58B00E6BE3A /* NKNetworkBase.swift */,
 				E93083AF1D3BBF50000FC8E8 /* 功能 */,
 				E92BDD041C62230F005A5CB8 /* 登陆 */,
-				E90E87231C40E58B00E6BE3A /* NKNetworkBase.swift */,
 				E9634EBE1D38E3B900F30FA0 /* NKNetworkFetchInfo.swift */,
 				E95F93D81C4FC04500CEEC12 /* NKNetworkFetchUserInfo.swift */,
 				E98E2B4F1C46492900CF82BE /* NKNetworkLoadCourse.swift */,
@@ -417,12 +417,12 @@
 		E90E87271C40F2F400E6BE3A /* 选课 */ = {
 			isa = PBXGroup;
 			children = (
+				E9693E4F1D32955500D6135B /* SelectCourse.storyboard */,
+				E90E872A1C40FCE700E6BE3A /* SelectCourseTableViewController.swift */,
 				E91D2E591C846CA1002605F8 /* ClassInfoTableViewCell.swift */,
 				E981C12C1C84A02D005CBF4E /* ClassModificationTableViewCell.swift */,
 				E91D2E571C8468B6002605F8 /* SearchCourseDetailTableViewController.swift */,
 				E91D2E551C846778002605F8 /* SearchCourseTableViewController.swift */,
-				E9693E4F1D32955500D6135B /* SelectCourse.storyboard */,
-				E90E872A1C40FCE700E6BE3A /* SelectCourseTableViewController.swift */,
 			);
 			path = "选课";
 			sourceTree = "<group>";
@@ -478,8 +478,8 @@
 			isa = PBXGroup;
 			children = (
 				E93083AB1D3BB815000FC8E8 /* TestTimeSearch.storyboard */,
-				E9462A471B24A6480002C21A /* TestTimeTableViewCell.swift */,
 				E9462A451B24A1E00002C21A /* TestTimeTableViewController.swift */,
+				E9462A471B24A6480002C21A /* TestTimeTableViewCell.swift */,
 			);
 			path = "考试时间查询";
 			sourceTree = "<group>";
@@ -503,11 +503,11 @@
 		E93083AF1D3BBF50000FC8E8 /* 功能 */ = {
 			isa = PBXGroup;
 			children = (
+				E93083AE1D3BBF3C000FC8E8 /* 通知中心 */,
 				E93083AD1D3BBF33000FC8E8 /* 查成绩 */,
+				E9C3A0D71C7CB3F3009C6B21 /* 选课 */,
 				E93083B01D3BBF63000FC8E8 /* 查考试时间 */,
 				E92BDD031C622304005A5CB8 /* 评教 */,
-				E9C3A0D71C7CB3F3009C6B21 /* 选课 */,
-				E93083AE1D3BBF3C000FC8E8 /* 通知中心 */,
 			);
 			path = "功能";
 			sourceTree = "<group>";
@@ -552,14 +552,14 @@
 		E95F93DB1C50CE9100CEEC12 /* 评教 */ = {
 			isa = PBXGroup;
 			children = (
-				E95F93E01C50EF2800CEEC12 /* ClassToEvaluate.swift */,
-				E95F93E21C50F7E100CEEC12 /* ClassToEvaluateTableViewCell.swift */,
-				E95F93EA1C512B8B00CEEC12 /* DetailEvaluateInfo.swift */,
 				E9693E4D1D3294FA00D6135B /* Evaluate.storyboard */,
-				E95F93E61C50FE8800CEEC12 /* EvaluateDetailTableViewCell.swift */,
-				E95F93E41C50FAEB00CEEC12 /* EvaluateDetailTableViewController.swift */,
-				E95F93EC1C51377300CEEC12 /* EvaluateOpinionTableViewCell.swift */,
 				E95F93DC1C50CEAA00CEEC12 /* EvaluateTableViewController.swift */,
+				E95F93E21C50F7E100CEEC12 /* ClassToEvaluateTableViewCell.swift */,
+				E95F93E01C50EF2800CEEC12 /* ClassToEvaluate.swift */,
+				E95F93E41C50FAEB00CEEC12 /* EvaluateDetailTableViewController.swift */,
+				E95F93E61C50FE8800CEEC12 /* EvaluateDetailTableViewCell.swift */,
+				E95F93EC1C51377300CEEC12 /* EvaluateOpinionTableViewCell.swift */,
+				E95F93EA1C512B8B00CEEC12 /* DetailEvaluateInfo.swift */,
 			);
 			path = "评教";
 			sourceTree = "<group>";
@@ -567,8 +567,8 @@
 		E97A94AF1ABF19F200998A07 /* PreferredColors */ = {
 			isa = PBXGroup;
 			children = (
-				E9CCF4B91ABC6578002076F2 /* ColorChooseTableViewCell.swift */,
 				E9CCF4B71ABC653E002076F2 /* ColorChooseTableViewController.swift */,
+				E9CCF4B91ABC6578002076F2 /* ColorChooseTableViewCell.swift */,
 				E9B8C5C31BBA7CBE00CFDE19 /* ColorTableViewCell.swift */,
 			);
 			path = PreferredColors;
@@ -592,9 +592,9 @@
 			isa = PBXGroup;
 			children = (
 				E9693E4B1D32945F00D6135B /* Grade.storyboard */,
-				E95F93C51C4E6CD100CEEC12 /* Grade.swift */,
-				E91E5F541A9103DF009F3B2B /* GradeCell.swift */,
 				E91E5F4E1A90FAED009F3B2B /* GradeShowerTableViewController.swift */,
+				E91E5F541A9103DF009F3B2B /* GradeCell.swift */,
+				E95F93C51C4E6CD100CEEC12 /* Grade.swift */,
 			);
 			path = "成绩查询";
 			sourceTree = "<group>";
@@ -602,13 +602,13 @@
 		E98F94DF1AA319CD00885992 /* 功能 */ = {
 			isa = PBXGroup;
 			children = (
+				E9693E471D32926300D6135B /* Function.storyboard */,
+				E98F94D71AA318EF00885992 /* FunctionTableViewController.swift */,
 				E98F94D21AA317B100885992 /* 成绩查询 */,
 				E93083AA1D3BB7F6000FC8E8 /* 考试时间查询 */,
 				E95F93DB1C50CE9100CEEC12 /* 评教 */,
 				E90E87271C40F2F400E6BE3A /* 选课 */,
 				E99D670B1C16CA8600E27B08 /* 通知中心 */,
-				E9693E471D32926300D6135B /* Function.storyboard */,
-				E98F94D71AA318EF00885992 /* FunctionTableViewController.swift */,
 			);
 			path = "功能";
 			sourceTree = "<group>";
@@ -616,11 +616,11 @@
 		E98F94E11AA319EE00885992 /* 设置 */ = {
 			isa = PBXGroup;
 			children = (
+				E9693E3F1D3245FB00D6135B /* Settings.storyboard */,
+				E98F94D91AA3191F00885992 /* SettingTableViewController.swift */,
 				E9DB7EBC1AAB5EB0000D4182 /* AccountInfo */,
 				E97A94AF1ABF19F200998A07 /* PreferredColors */,
 				E97176751B1488CA004DADB2 /* AboutViewController.swift */,
-				E98F94D91AA3191F00885992 /* SettingTableViewController.swift */,
-				E9693E3F1D3245FB00D6135B /* Settings.storyboard */,
 			);
 			path = "设置";
 			sourceTree = "<group>";
@@ -628,12 +628,12 @@
 		E98F94E21AA31A1A00885992 /* 课程表 */ = {
 			isa = PBXGroup;
 			children = (
+				E9693E451D3290AE00D6135B /* ClassTime.storyboard */,
+				E98F94D51AA3180700885992 /* ClassTimeViewController.swift */,
+				E98E2B8A1C46ABE400CF82BE /* ClassTimeView.swift */,
 				E93083A71D3B7380000FC8E8 /* ClassView */,
 				E93083A41D3A8FCA000FC8E8 /* TimeScheduleView */,
 				E930839F1D3A8CC3000FC8E8 /* WeekdayView */,
-				E9693E451D3290AE00D6135B /* ClassTime.storyboard */,
-				E98E2B8A1C46ABE400CF82BE /* ClassTimeView.swift */,
-				E98F94D51AA3180700885992 /* ClassTimeViewController.swift */,
 			);
 			path = "课程表";
 			sourceTree = "<group>";
@@ -651,8 +651,8 @@
 			children = (
 				E9693E491D32932500D6135B /* NotiCenter.storyboard */,
 				E99D67031C16C8CF00E27B08 /* NotiCenterTableViewController.swift */,
-				E99D675B1C17401B00E27B08 /* NotiDetailViewController.swift */,
 				E99D67121C16F6E700E27B08 /* NotiTableViewCell.swift */,
+				E99D675B1C17401B00E27B08 /* NotiDetailViewController.swift */,
 				E99D67091C16C9EB00E27B08 /* Notification.swift */,
 			);
 			path = "通知中心";
@@ -699,11 +699,11 @@
 		E9D4DC471AAEF45D00A02327 /* 今天 */ = {
 			isa = PBXGroup;
 			children = (
-				E94211BD1B00B99F00087846 /* Cell */,
-				E97176771B149292004DADB2 /* CourseDetailTableViewController.swift */,
-				E971EB811BAAFEE8005E6E55 /* PlusCircleView.swift */,
 				E9693E431D32894000D6135B /* Today.storyboard */,
 				E94BD9791BABE9A500B76E03 /* TodayViewController.swift */,
+				E971EB811BAAFEE8005E6E55 /* PlusCircleView.swift */,
+				E94211BD1B00B99F00087846 /* Cell */,
+				E97176771B149292004DADB2 /* CourseDetailTableViewController.swift */,
 			);
 			path = "今天";
 			sourceTree = "<group>";
