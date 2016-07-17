@@ -24,10 +24,17 @@ class ClassTimeView: UIView {
     var overlayView:UIView!
     
     var orientation: UIInterfaceOrientation?
-    let rowHeight: CGFloat = 50
+    var rowHeight: CGFloat {
+        if (self.frame.height >= 700) {
+            return CGFloat(self.frame.height) / 14
+        }
+        else {
+            return 50
+        }
+    }
     let topHeight: CGFloat = 30
     var columnWidth: CGFloat {
-        if (orientation == UIInterfaceOrientation.LandscapeLeft) || (orientation == UIInterfaceOrientation.LandscapeRight) {
+        if (orientation == UIInterfaceOrientation.LandscapeLeft) || (orientation == UIInterfaceOrientation.LandscapeRight) || (self.frame.width >= 700) {
             return self.frame.width / 8
         }
         else {
@@ -147,83 +154,85 @@ class ClassTimeView: UIView {
             usedColor.append(1)
         }
         
-        var coloredCourse = Dictionary<String, Int>()
+        var coloredCourse = [String: Int]()
         
-        let userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        let courses:NSArray = userDefaults.objectForKey("courses") as! NSArray
-        for i in 0 ..< courses.count {
-            let currentData = courses.objectAtIndex(i) as! NSData
-            let current = NSKeyedUnarchiver.unarchiveObjectWithData(currentData) as! Course
-            let day = current.day
-            let startSection = current.startSection
-            let sectionNumber = current.sectionNumber
-            let name = current.name
-            let classroom = current.classroom
-            let classID = current.ID
-            let weekOddEven = current.weekOddEven
-            
-            let course:UIView = UIView(frame: CGRectMake(CGFloat(day) * columnWidth, CGFloat(startSection - 1) * rowHeight, columnWidth, rowHeight * CGFloat(sectionNumber)))
-            
-            if let _ = week {
-                if ((weekOddEven == "单 周") && (week % 2 == 0) || (weekOddEven == "双 周" && (week % 2 == 1))) {
-                    course.alpha = 0.5
-                }
-            }
-            
-            var isClassHaveHad:Bool = false
-            for (key, value) in coloredCourse {
-                if key == classID {
-                    isClassHaveHad = true
-                    course.backgroundColor = Colors.colors[value]
-                    break
-                }
-                if isClassHaveHad {
-                    break
-                }
-            }
-            
-            if !isClassHaveHad {
-                let likedColors = userDefaults.objectForKey("preferredColors") as! NSArray
-                var count = 0
-                var colorIndex = Int(arc4random_uniform(UInt32(Colors.colors.count)))
+        do {
+            let courses = try CourseAgent().getData()
+            for i in 0 ..< courses.count {
+                let currentData = courses.objectAtIndex(i) as! NSData
+                let current = NSKeyedUnarchiver.unarchiveObjectWithData(currentData) as! Course
+                let day = current.day
+                let startSection = current.startSection
+                let sectionNumber = current.sectionNumber
+                let name = current.name
+                let classroom = current.classroom
+                let classID = current.ID
+                let weekOddEven = current.weekOddEven
                 
-                while (usedColor[colorIndex] == 0) || (likedColors.objectAtIndex(colorIndex) as! Int == 0) {
-                    colorIndex = Int(arc4random_uniform(UInt32(Colors.colors.count)))
-                    count += 1
-                    if count>1000 {
+                let course = UIView(frame: CGRectMake(CGFloat(day) * columnWidth, CGFloat(startSection - 1) * rowHeight, columnWidth, rowHeight * CGFloat(sectionNumber)))
+                
+                if let _ = week {
+                    if ((weekOddEven == "单 周") && (week % 2 == 0) || (weekOddEven == "双 周" && (week % 2 == 1))) {
+                        course.alpha = 0.5
+                    }
+                }
+                
+                var isClassHaveHad:Bool = false
+                for (key, value) in coloredCourse {
+                    if key == classID {
+                        isClassHaveHad = true
+                        course.backgroundColor = Colors.colors[value]
+                        break
+                    }
+                    if isClassHaveHad {
                         break
                     }
                 }
-                coloredCourse[classID as String] = colorIndex
-                course.backgroundColor = Colors.colors[colorIndex]
-                usedColor[colorIndex] = 0
+                
+                if !isClassHaveHad {
+                    let likedColors = try PreferredColorAgent().getData()
+                    var count = 0
+                    var colorIndex = Int(arc4random_uniform(UInt32(Colors.colors.count)))
+                    
+                    while (usedColor[colorIndex] == 0) || (likedColors[colorIndex] == 0) {
+                        colorIndex = Int(arc4random_uniform(UInt32(Colors.colors.count)))
+                        count += 1
+                        if count>1000 {
+                            break
+                        }
+                    }
+                    coloredCourse[classID as String] = colorIndex
+                    course.backgroundColor = Colors.colors[colorIndex]
+                    usedColor[colorIndex] = 0
+                }
+                
+                let courseName = UILabel(frame: CGRectMake(2, 5, columnWidth - 4, rowHeight))
+                courseName.numberOfLines = 0
+                courseName.textAlignment = NSTextAlignment.Center
+                courseName.font = UIFont(name: "HelveticaNeue-Medium", size: 12)
+                courseName.textColor = UIColor.whiteColor()
+                courseName.text = name as String
+                let size = name.boundingRectWithSize(CGSizeMake(columnWidth - 4, 100), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName: courseName.font], context: nil).size
+                courseName.frame.size.height = size.height
+                course.addSubview(courseName)
+                
+                let classroomLabel:UILabel = UILabel(frame: CGRectMake(5, courseName.frame.height + 10, columnWidth - 10, rowHeight - 5))
+                classroomLabel.numberOfLines = 0
+                classroomLabel.textAlignment = NSTextAlignment.Center
+                classroomLabel.font = UIFont(name: "HelveticaNeue", size: 10)
+                classroomLabel.textColor = UIColor.whiteColor()
+                classroomLabel.text = "@" + (classroom as String)
+                course.addSubview(classroomLabel)
+                course.tag = i
+                let tapGesture = UITapGestureRecognizer()
+                tapGesture.addTarget(viewController, action: #selector(ClassTimeViewController.showCourseDetail(_:)))
+                course.addGestureRecognizer(tapGesture)
+                
+                self.classScrollView.addSubview(course)
             }
+        } catch {
             
-            let courseName = UILabel(frame: CGRectMake(2, 5, columnWidth - 4, rowHeight))
-            courseName.numberOfLines = 0
-            courseName.textAlignment = NSTextAlignment.Center
-            courseName.font = UIFont(name: "HelveticaNeue-Medium", size: 12)
-            courseName.textColor = UIColor.whiteColor()
-            courseName.text = name as String
-            let size = name.boundingRectWithSize(CGSizeMake(columnWidth - 4, 100), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName: courseName.font], context: nil).size
-            courseName.frame.size.height = size.height
-            course.addSubview(courseName)
-            
-            let classroomLabel:UILabel = UILabel(frame: CGRectMake(5, courseName.frame.height + 10, columnWidth - 10, rowHeight - 5))
-            classroomLabel.numberOfLines = 0
-            classroomLabel.textAlignment = NSTextAlignment.Center
-            classroomLabel.font = UIFont(name: "HelveticaNeue", size: 10)
-            classroomLabel.textColor = UIColor.whiteColor()
-            classroomLabel.text = "@" + (classroom as String)
-            course.addSubview(classroomLabel)
-            course.tag = i
-            let tapGesture = UITapGestureRecognizer()
-            tapGesture.addTarget(viewController, action: #selector(ClassTimeViewController.showCourseDetail(_:)))
-            course.addGestureRecognizer(tapGesture)
-            
-            self.classScrollView.addSubview(course)
         }
-        
     }
 
     func updateClassTimeTableWithWeek(week: Int) {
