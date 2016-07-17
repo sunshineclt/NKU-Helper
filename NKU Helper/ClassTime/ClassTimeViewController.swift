@@ -243,7 +243,7 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
             }
         }        
     }
-    
+
 // MARK: 页面间跳转
     
     var whichSection:Int!

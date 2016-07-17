@@ -8,7 +8,7 @@
 
 struct Colors {
     
-    static let colors:[UIColor] = [
+    static let colors = [
         
         UIColor(red: 102/255, green: 24/255, blue: 200/244, alpha: 1),
         UIColor(red: 220/255, green: 80/255, blue: 208/255, alpha: 1),

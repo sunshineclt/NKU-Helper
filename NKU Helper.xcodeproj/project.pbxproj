@@ -32,6 +32,7 @@
 		E930839E1D3A0DE1000FC8E8 /* UIViewExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = E930839D1D3A0DE1000FC8E8 /* UIViewExtention.swift */; };
 		E93083A11D3A8D4A000FC8E8 /* TimeScheduleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E93083A01D3A8D4A000FC8E8 /* TimeScheduleView.xib */; };
 		E93083A31D3A8F4D000FC8E8 /* TimeScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93083A21D3A8F4D000FC8E8 /* TimeScheduleView.swift */; };
+		E93083A61D3B6B6A000FC8E8 /* ClassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93083A51D3B6B6A000FC8E8 /* ClassView.swift */; };
 		E93C0F181BB54B54001303CF /* ThingToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93C0F171BB54B54001303CF /* ThingToDo.swift */; };
 		E94286501AA4CD2A00A4242C /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E942864F1AA4CD2A00A4242C /* LogInViewController.swift */; };
 		E94286581AA5500C00A4242C /* SaveAccountInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94286571AA5500C00A4242C /* SaveAccountInfoViewController.swift */; };
@@ -245,6 +246,7 @@
 		E930839D1D3A0DE1000FC8E8 /* UIViewExtention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtention.swift; sourceTree = "<group>"; };
 		E93083A01D3A8D4A000FC8E8 /* TimeScheduleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimeScheduleView.xib; sourceTree = "<group>"; };
 		E93083A21D3A8F4D000FC8E8 /* TimeScheduleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeScheduleView.swift; sourceTree = "<group>"; };
+		E93083A51D3B6B6A000FC8E8 /* ClassView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassView.swift; sourceTree = "<group>"; };
 		E93C0F171BB54B54001303CF /* ThingToDo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThingToDo.swift; sourceTree = "<group>"; };
 		E942864F1AA4CD2A00A4242C /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogInViewController.swift; path = ClassTime/LogInViewController.swift; sourceTree = "<group>"; };
 		E94286571AA5500C00A4242C /* SaveAccountInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveAccountInfoViewController.swift; sourceTree = "<group>"; };
@@ -596,6 +598,15 @@
 			name = TimeScheduleView;
 			sourceTree = "<group>";
 		};
+		E93083A71D3B7380000FC8E8 /* ClassView */ = {
+			isa = PBXGroup;
+			children = (
+				E9B5779D1D38DE310054F7E8 /* ClassView.xib */,
+				E93083A51D3B6B6A000FC8E8 /* ClassView.swift */,
+			);
+			name = ClassView;
+			sourceTree = "<group>";
+		};
 		E93C0F191BB54E53001303CF /* Test Time */ = {
 			isa = PBXGroup;
 			children = (
@@ -795,10 +806,10 @@
 				E9693E451D3290AE00D6135B /* ClassTime.storyboard */,
 				E98F94D51AA3180700885992 /* ClassTimeViewController.swift */,
 				E98E2B8A1C46ABE400CF82BE /* ClassTimeView.swift */,
+				E93083A71D3B7380000FC8E8 /* ClassView */,
 				E93083A41D3A8FCA000FC8E8 /* TimeScheduleView */,
 				E930839F1D3A8CC3000FC8E8 /* WeekdayView */,
 				E93C0F191BB54E53001303CF /* Test Time */,
-				E9B5779D1D38DE310054F7E8 /* ClassView.xib */,
 			);
 			path = ClassTime;
 			sourceTree = "<group>";
@@ -1225,6 +1236,7 @@
 				E9927C061D2E463900DE284C /* StoragedDataError.swift in Sources */,
 				E94BD97C1BAC043500B76E03 /* CourseCell.swift in Sources */,
 				E90E87261C40E5C700E6BE3A /* NKNetworkIsLogin.swift in Sources */,
+				E93083A61D3B6B6A000FC8E8 /* ClassView.swift in Sources */,
 				E94BD9801BAC06E300B76E03 /* Course.swift in Sources */,
 				E91D2E581C8468B6002605F8 /* SearchCourseDetailTableViewController.swift in Sources */,
 				E9CCF4BA1ABC6578002076F2 /* ColorChooseTableViewCell.swift in Sources */,

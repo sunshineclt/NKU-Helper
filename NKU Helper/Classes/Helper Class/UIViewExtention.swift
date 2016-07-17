@@ -11,7 +11,13 @@ import UIKit
 extension UIView {
     
     class func loadViewFromNibNamed(name: String) -> UIView {
-        return NSBundle.mainBundle().loadNibNamed(name, owner: nil, options: nil).last as! UIView
+        let views = NSBundle.mainBundle().loadNibNamed(name, owner: nil, options: nil)
+        for view😈 in views {
+            if let view = view😈 as? UIView {
+                return view
+            }
+        }
+        return UIView()
     }
     
 }
