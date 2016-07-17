@@ -262,7 +262,7 @@ class ClassTimeView: UIView {
         overlayView.alpha = 0.7
         self.addSubview(overlayView)
         
-        let overlayViewIn:POPBasicAnimation = POPBasicAnimation(propertyNamed: kPOPViewFrame)
+        let overlayViewIn = POPBasicAnimation(propertyNamed: kPOPViewFrame)
         overlayViewIn.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         overlayViewIn.toValue = NSValue(CGRect: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height))
         overlayViewIn.duration = 0.5
@@ -272,7 +272,7 @@ class ClassTimeView: UIView {
         UALoadView.tintColor = UIColor(red: 34/255, green: 205/255, blue: 198/255, alpha: 1)
         UALoadView.lineWidth = 5
         UALoadView.alpha = 0
-        let textLabel:UILabel = UILabel(frame: CGRectMake(20, 0, 160.0, 132.0))
+        let textLabel = UILabel(frame: CGRectMake(20, 0, 160.0, 132.0))
         textLabel.font = UIFont(name: "HelveticaNeue-UltraLight", size: 40)
         textLabel.textAlignment = NSTextAlignment.Center;
         textLabel.textColor = self.UALoadView.tintColor;
@@ -281,7 +281,7 @@ class ClassTimeView: UIView {
         self.UALoadView.centralView = textLabel
         self.addSubview(UALoadView)
         
-        let UALoadViewFadeIn:POPBasicAnimation = POPBasicAnimation(propertyNamed: kPOPViewAlpha)
+        let UALoadViewFadeIn = POPBasicAnimation(propertyNamed: kPOPViewAlpha)
         UALoadViewFadeIn.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         UALoadViewFadeIn.toValue = 1
         UALoadViewFadeIn.duration = 0.5
@@ -289,22 +289,21 @@ class ClassTimeView: UIView {
     }
     
     func loadAnimation(progress:Float) {
-        
         UALoadView.setProgress(CGFloat(progress), animated: true)
-        let label:UILabel = UALoadView.centralView as! UILabel
+        let label = UALoadView.centralView as! UILabel
         label.text = NSString(format: "%2.0f%%", progress*100) as String
     }
     
     func loadEndAnimation() {
         
-        let overlayViewFadeOut:POPBasicAnimation = POPBasicAnimation(propertyNamed: kPOPViewAlpha)
+        let overlayViewFadeOut = POPBasicAnimation(propertyNamed: kPOPViewAlpha)
         overlayViewFadeOut.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         overlayViewFadeOut.duration = 1
         overlayViewFadeOut.toValue = 0
         overlayViewFadeOut.beginTime = CACurrentMediaTime() + 0.8
         overlayView.pop_addAnimation(overlayViewFadeOut, forKey: "overlayViewFadeOut")
         
-        let UALoadViewFadeOut:POPBasicAnimation = POPBasicAnimation(propertyNamed: kPOPViewAlpha)
+        let UALoadViewFadeOut = POPBasicAnimation(propertyNamed: kPOPViewAlpha)
         UALoadViewFadeOut.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         UALoadViewFadeOut.duration = 1
         UALoadViewFadeOut.toValue = 0
