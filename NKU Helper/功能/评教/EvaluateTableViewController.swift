@@ -8,40 +8,25 @@
 
 import UIKit
 
-class EvaluateTableViewController: UITableViewController {
+class EvaluateTableViewController: FunctionBaseTableViewController, FunctionDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.emptyDataSetDelegate = self
         self.tableView.emptyDataSetSource = self
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EvaluateTableViewController.evaluateSubmitDidSuccess), name: "evaluateSubmitSuccess", object: nil)
-        SVProgressHUD.show()
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) { () -> Void in
-            let loginResult = NKNetworkIsLogin.isLoggedin()
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                SVProgressHUD.dismiss()
-                switch loginResult {
-                case .Loggedin:
-                    let evaluater = NKNetworkEvaluate()
-                    evaluater.delegate = self
-                    SVProgressHUD.show()
-                    evaluater.getEvaluateList()
-                case .NotLoggedin:
-                    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EvaluateTableViewController.loginComplete), name: "loginComplete", object: nil)
-                    self.performSegueWithIdentifier(SegueIdentifier.Login, sender: "EvaluateTableViewController")
-                case .UnKnown:
-                    self.presentViewController(ErrorHandler.alert(ErrorHandler.NetworkError()), animated: true, completion: nil)
-                }
-            })
-        }
     }
     
-    func loginComplete() {
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: "loginComplete", object: nil)
+    override func doWork() {
+        SVProgressHUD.show()
         let evaluater = NKNetworkEvaluate()
         evaluater.delegate = self
-        SVProgressHUD.show()
         evaluater.getEvaluateList()
+    }
+    
+    override func loginComplete() {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "loginComplete", object: nil)
+        doWork()
     }
 
     func evaluateSubmitDidSuccess() {

@@ -8,40 +8,25 @@
 
 import UIKit
 
-class TestTimeTableViewController: UITableViewController {
+class TestTimeTableViewController: FunctionBaseTableViewController, FunctionDelegate {
 
     var testTime = [[String:String]]()
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         self.tableView.emptyDataSetDelegate = self
         self.tableView.emptyDataSetSource = self
-        SVProgressHUD.show()
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) { () -> Void in
-            let loginResult = NKNetworkIsLogin.isLoggedin()
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                SVProgressHUD.dismiss()
-                switch loginResult {
-                case .Loggedin:
-                    SVProgressHUD.show()
-                    let testTimeGetter = NKNetworkFetchTestTime()
-                    testTimeGetter.fetchTestTime(self.fetchTestTimeHandler)
-                case .NotLoggedin:
-                        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TestTimeTableViewController.loginComplete), name: "loginComplete", object: nil)
-                    self.performSegueWithIdentifier(SegueIdentifier.Login, sender: "GradeShowerTableViewController")
-                case .UnKnown:
-                    self.presentViewController(ErrorHandler.alert(ErrorHandler.NetworkError()), animated: true, completion: nil)
-                }
-            })
-        }        
     }
     
-    func loginComplete() {
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: "loginComplete", object: nil)
+    override func doWork() {
         SVProgressHUD.show()
         let testTimeGetter = NKNetworkFetchTestTime()
         testTimeGetter.fetchTestTime(fetchTestTimeHandler)
+    }
+    
+    override func loginComplete() {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "loginComplete", object: nil)
+        doWork()
     }
     
     func fetchTestTimeHandler(result: NKNetworkFetchTestTimeResult) {

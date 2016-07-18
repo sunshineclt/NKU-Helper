@@ -35,6 +35,8 @@
 		E93083A61D3B6B6A000FC8E8 /* ClassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93083A51D3B6B6A000FC8E8 /* ClassView.swift */; };
 		E93083AC1D3BB815000FC8E8 /* TestTimeSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E93083AB1D3BB815000FC8E8 /* TestTimeSearch.storyboard */; };
 		E93083B21D3BBFA7000FC8E8 /* NKNetworkFetchTestTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93083B11D3BBFA7000FC8E8 /* NKNetworkFetchTestTime.swift */; };
+		E93083B61D3C76D2000FC8E8 /* FunctionBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93083B51D3C76D2000FC8E8 /* FunctionBaseViewController.swift */; };
+		E93083B81D3C7A5C000FC8E8 /* FunctionBaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93083B71D3C7A5C000FC8E8 /* FunctionBaseTableViewController.swift */; };
 		E93C0F181BB54B54001303CF /* ThingToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93C0F171BB54B54001303CF /* ThingToDo.swift */; };
 		E94286501AA4CD2A00A4242C /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E942864F1AA4CD2A00A4242C /* LogInViewController.swift */; };
 		E94286581AA5500C00A4242C /* SaveAccountInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94286571AA5500C00A4242C /* SaveAccountInfoViewController.swift */; };
@@ -184,6 +186,8 @@
 		E93083A51D3B6B6A000FC8E8 /* ClassView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassView.swift; sourceTree = "<group>"; };
 		E93083AB1D3BB815000FC8E8 /* TestTimeSearch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TestTimeSearch.storyboard; sourceTree = "<group>"; };
 		E93083B11D3BBFA7000FC8E8 /* NKNetworkFetchTestTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkFetchTestTime.swift; sourceTree = "<group>"; };
+		E93083B51D3C76D2000FC8E8 /* FunctionBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunctionBaseViewController.swift; sourceTree = "<group>"; };
+		E93083B71D3C7A5C000FC8E8 /* FunctionBaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunctionBaseTableViewController.swift; sourceTree = "<group>"; };
 		E93C0F171BB54B54001303CF /* ThingToDo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThingToDo.swift; sourceTree = "<group>"; };
 		E942864F1AA4CD2A00A4242C /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		E94286571AA5500C00A4242C /* SaveAccountInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveAccountInfoViewController.swift; sourceTree = "<group>"; };
@@ -604,11 +608,13 @@
 			children = (
 				E9693E471D32926300D6135B /* Function.storyboard */,
 				E98F94D71AA318EF00885992 /* FunctionTableViewController.swift */,
+				E93083B51D3C76D2000FC8E8 /* FunctionBaseViewController.swift */,
+				E93083B71D3C7A5C000FC8E8 /* FunctionBaseTableViewController.swift */,
+				E99D670B1C16CA8600E27B08 /* 通知中心 */,
 				E98F94D21AA317B100885992 /* 成绩查询 */,
 				E93083AA1D3BB7F6000FC8E8 /* 考试时间查询 */,
 				E95F93DB1C50CE9100CEEC12 /* 评教 */,
 				E90E87271C40F2F400E6BE3A /* 选课 */,
-				E99D670B1C16CA8600E27B08 /* 通知中心 */,
 			);
 			path = "功能";
 			sourceTree = "<group>";
@@ -969,6 +975,7 @@
 				E99D670A1C16C9EB00E27B08 /* Notification.swift in Sources */,
 				E9462A481B24A6480002C21A /* TestTimeTableViewCell.swift in Sources */,
 				E90E87431C4139FD00E6BE3A /* NKNetworkSearchCourse.swift in Sources */,
+				E93083B81D3C7A5C000FC8E8 /* FunctionBaseTableViewController.swift in Sources */,
 				E95F93E91C51024800CEEC12 /* NKNetworkEvaluateDetail.swift in Sources */,
 				E95B0F2F1C83F0B800448F97 /* NKNetworkDepartCode.swift in Sources */,
 				E95F93C61C4E6CD100CEEC12 /* Grade.swift in Sources */,
@@ -1021,6 +1028,7 @@
 				E94BD97E1BAC054E00B76E03 /* CellIdentifier.swift in Sources */,
 				E9CA9C901C4272BC0030AF49 /* StoreAgent.swift in Sources */,
 				E90E87241C40E58B00E6BE3A /* NKNetworkBase.swift in Sources */,
+				E93083B61D3C76D2000FC8E8 /* FunctionBaseViewController.swift in Sources */,
 				E90AE22E1A8F813900AD0D78 /* AppDelegate.swift in Sources */,
 				E95F93E11C50EF2800CEEC12 /* ClassToEvaluate.swift in Sources */,
 			);

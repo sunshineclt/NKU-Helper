@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GradeShowerTableViewController: UITableViewController, NKNetworkFetchGradeProtocol {
+class GradeShowerTableViewController: FunctionBaseTableViewController, FunctionDelegate, NKNetworkFetchGradeProtocol {
 
     var gradeResult = [Grade]()
     var GPA:Double = 0
@@ -17,32 +17,16 @@ class GradeShowerTableViewController: UITableViewController, NKNetworkFetchGrade
 
     let classType = ["A","B","C","D","E","FC","FD"]
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func doWork() {
         SVProgressHUD.show()
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) { () -> Void in
-            let loginResult = NKNetworkIsLogin.isLoggedin()
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                SVProgressHUD.dismiss()
-                switch loginResult {
-                case .Loggedin:
-                    let gradeGetter = NKNetworkFetchGrade()
-                    gradeGetter.delegate = self
-                    SVProgressHUD.show()
-                    gradeGetter.fetchGrade()
-                case .NotLoggedin:
-                    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GradeShowerTableViewController.loginComplete), name: "loginComplete", object: nil)
-                    self.performSegueWithIdentifier(SegueIdentifier.Login, sender: "GradeShowerTableViewController")
-                case .UnKnown:
-                    self.presentViewController(ErrorHandler.alert(ErrorHandler.NetworkError()), animated: true, completion: nil)
-                }
-            })
-        }
+        let gradeGetter = NKNetworkFetchGrade()
+        gradeGetter.delegate = self
+        gradeGetter.fetchGrade()
     }
     
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        SVProgressHUD.dismiss()
+    override func loginComplete() {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+        doWork()
     }
     
     func didSuccessToReceiveGradeData(grade grade: [Grade], abcgpa: Double) {
@@ -59,14 +43,6 @@ class GradeShowerTableViewController: UITableViewController, NKNetworkFetchGrade
             SVProgressHUD.dismiss()
             self.presentViewController(ErrorHandler.alert(error), animated: true, completion: nil)
         }
-    }
-    
-    func loginComplete() {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
-        let gradeGetter = NKNetworkFetchGrade()
-        gradeGetter.delegate = self
-        SVProgressHUD.show()
-        gradeGetter.fetchGrade()
     }
 
     @IBAction func majorOrMinorSegmentControlValueDidChange(sender: UISegmentedControl) {
