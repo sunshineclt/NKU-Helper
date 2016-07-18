@@ -12,17 +12,27 @@ class LogInViewController: UIViewController, UIAlertViewDelegate, UIWebViewDeleg
     
     @IBOutlet var validateCodeTextField: UITextField!
     @IBOutlet var validateCodeImageView: UIImageView!
-    
+    @IBOutlet var loginButton: UIButton!
     @IBOutlet var imageLoadActivityIndicator: UIActivityIndicatorView!
     
     var progressHud:MBProgressHUD!
     
     let loginer = NKNetworkLogin()
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        loginButton.layer.cornerRadius = 5
+    }
+    
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         imageLoadActivityIndicator.hidesWhenStopped = true
         refreshImage()
         validateCodeTextField.becomeFirstResponder()
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
     }
     
     func refreshImage() {
