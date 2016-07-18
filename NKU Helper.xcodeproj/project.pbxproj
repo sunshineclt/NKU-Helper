@@ -431,10 +431,10 @@
 			children = (
 				E9693E4F1D32955500D6135B /* SelectCourse.storyboard */,
 				E90E872A1C40FCE700E6BE3A /* SelectCourseTableViewController.swift */,
-				E91D2E591C846CA1002605F8 /* ClassInfoTableViewCell.swift */,
-				E981C12C1C84A02D005CBF4E /* ClassModificationTableViewCell.swift */,
-				E91D2E571C8468B6002605F8 /* SearchCourseDetailTableViewController.swift */,
 				E91D2E551C846778002605F8 /* SearchCourseTableViewController.swift */,
+				E91D2E591C846CA1002605F8 /* ClassInfoTableViewCell.swift */,
+				E91D2E571C8468B6002605F8 /* SearchCourseDetailTableViewController.swift */,
+				E981C12C1C84A02D005CBF4E /* ClassModificationTableViewCell.swift */,
 			);
 			path = "选课";
 			sourceTree = "<group>";

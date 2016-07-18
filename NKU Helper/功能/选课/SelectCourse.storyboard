@@ -32,6 +32,9 @@
                                                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ohW-47-SgY">
                                                     <rect key="frame" x="255" y="46" width="30" height="30"/>
                                                     <state key="normal" title="选课"/>
+                                                    <connections>
+                                                        <action selector="selectCourse:" destination="kjF-au-yvm" eventType="touchUpInside" id="CPr-ef-PV6"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qrd-mT-8h0">
                                                     <rect key="frame" x="315" y="46" width="30" height="30"/>
@@ -198,6 +201,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="chooseClassIDTextField" destination="oA4-Er-AW2" id="2hv-nu-2Pa"/>
                         <outlet property="classIDTextField" destination="SPf-iC-u6p" id="ggZ-dH-xt5"/>
                         <outlet property="classnameTextField" destination="rZa-ef-MyU" id="m6u-w5-7cg"/>
                         <outlet property="departTextField" destination="dEW-4z-NQO" id="ISI-qF-bwa"/>

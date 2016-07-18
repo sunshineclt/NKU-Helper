@@ -77,6 +77,13 @@ class SelectCourseTableViewController: UITableViewController, NKNetworkSearchCou
         }
     }
     
+    @IBAction func selectCourse(sender: UIButton) {
+        let courseHelper = NKNetworkSelectCourse()
+        courseHelper.selectCourseWithCourseIndex(chooseClassIDTextField.text!) { (result) -> Void in
+            self.presentViewController(ErrorHandler.alertWithAlertTitle("", message: result.description , cancelButtonTitle: "好"), animated: true, completion: nil)
+        }
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == SegueIdentifier.ShowClassSearchDetail {
             if let vc = segue.destinationViewController as? SearchCourseTableViewController {
@@ -101,6 +108,7 @@ class SelectCourseTableViewController: UITableViewController, NKNetworkSearchCou
     @IBOutlet var classnameTextField: UITextField!
     @IBOutlet var teachernameTextField: UITextField!
     @IBOutlet var departTextField: UITextField!
+    @IBOutlet var chooseClassIDTextField: UITextField!
 }
 
 extension ErrorHandler {

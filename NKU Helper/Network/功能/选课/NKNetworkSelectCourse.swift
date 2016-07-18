@@ -19,13 +19,24 @@ import Alamofire
  - AlreadySelected:  课号已选或不在指定的选课年级ß
  - Fail:             没有得到正确的数据
  */
-enum NKNetworkSelectCourseResult {
+enum NKNetworkSelectCourseResult: CustomStringConvertible {
     case Success
     case LackOfNumberOrNotAssignedGrade
     case InputError
     case TimeConflictOrNotAssignedGrade
     case AlreadySelectedOrNotAssignedGrade
     case Fail
+    
+    var description: String {
+        switch self {
+        case .Success:return "成功"
+        case .LackOfNumberOrNotAssignedGrade:return "选修剩余名额不足或不在指定的选课年级"
+        case .InputError:return "不在最大最小序号范围内"
+        case .TimeConflictOrNotAssignedGrade:return "所选课与已选课程上课时间冲突或不在指定的选课年级"
+        case .AlreadySelectedOrNotAssignedGrade:return "课号已选或不在指定的选课年级ß"
+        case .Fail:return "没有得到正确的数据"
+        }
+    }
 }
 
 /// 提供选课功能的网络库
@@ -46,27 +57,31 @@ class NKNetworkSelectCourse: NKNetworkBase {
                     block(NKNetworkSelectCourseResult.Fail)
                     return
                 }
-                guard result.rangeOfString("最大最小序号范围内").length > 0 else {
+                if result.length == 0 {
+                    block(NKNetworkSelectCourseResult.Fail)
+                    return
+                }
+                if result.rangeOfString("最大最小序号范围内").length > 0 {
                     block(NKNetworkSelectCourseResult.InputError)
                     return
                 }
-                guard result.rangeOfString("选课操作失败").length > 0 else {
-                    block(NKNetworkSelectCourseResult.Success)
+                if result.rangeOfString("选课操作失败").length > 0 {
+                    block(NKNetworkSelectCourseResult.Fail)
                     return
                 }
-                guard result.rangeOfString("剩余名额不足").length > 0 else {
+                if result.rangeOfString("剩余名额不足").length > 0 {
                     block(NKNetworkSelectCourseResult.LackOfNumberOrNotAssignedGrade)
                     return
                 }
-                guard result.rangeOfString("所选课与已选课程上课时间冲突").length > 0 else {
+                if result.rangeOfString("所选课与已选课程上课时间冲突").length > 0 {
                     block(NKNetworkSelectCourseResult.TimeConflictOrNotAssignedGrade)
                     return
                 }
-                guard result.rangeOfString("课号已选").length > 0 else {
+                if result.rangeOfString("课号已选").length > 0 {
                     block(NKNetworkSelectCourseResult.AlreadySelectedOrNotAssignedGrade)
                     return
                 }
-                block(NKNetworkSelectCourseResult.Fail)
+                block(NKNetworkSelectCourseResult.Success)
             }
         }
     }

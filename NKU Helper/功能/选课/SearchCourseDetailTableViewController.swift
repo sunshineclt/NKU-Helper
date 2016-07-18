@@ -21,7 +21,6 @@ class SearchCourseDetailTableViewController: UITableViewController {
         courseHelper.selectCourseWithCourseIndex(courseSelecting.ID) { (result) -> Void in
             print(result)
         }
-        
     }
     
     @IBAction func deleteCourse(sender: UIButton) {
