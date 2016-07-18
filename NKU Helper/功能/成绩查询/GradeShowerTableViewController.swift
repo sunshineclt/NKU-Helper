@@ -83,7 +83,7 @@ extension GradeShowerTableViewController {
     
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        let view:UIView = UIView(frame: CGRectMake(0, 10, UIScreen.mainScreen().bounds.width, 20))
+        let view = UIView(frame: CGRectMake(0, 10, UIScreen.mainScreen().bounds.width, 20))
         view.backgroundColor = UIColor(red: 0.9215, green: 0.9215, blue: 0.9450, alpha: 1)
         
         let classTypeLabel = UILabel(frame: CGRectMake(10, 0, UIScreen.mainScreen().bounds.width, 20))
@@ -118,7 +118,7 @@ extension GradeShowerTableViewController {
     
     override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         
-        let view:UIView = UIView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, 20))
+        let view = UIView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, 20))
         view.backgroundColor = UIColor(red: 0.9215, green: 0.9215, blue: 0.9450, alpha: 1)
         
         guard ((MajorOrMinorSegmentControl.selectedSegmentIndex == 0) && (section != 5)) || ((MajorOrMinorSegmentControl.selectedSegmentIndex == 1) && (section != 2)) else {
@@ -194,7 +194,7 @@ extension GradeShowerTableViewController {
             
         }
         
-        let cell:GradeCell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.GradeCell, forIndexPath: indexPath) as! GradeCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.GradeCell, forIndexPath: indexPath) as! GradeCell
         
         if MajorOrMinorSegmentControl.selectedSegmentIndex == 0 {
             guard indexPath.section != 5 else {
