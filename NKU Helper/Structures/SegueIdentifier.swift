@@ -14,4 +14,5 @@ struct SegueIdentifier {
     static let ShowNotiDetail = "ShowNotiDetail"
     static let ShowEvaluateDetail = "ShowEvaluateDetail"
     static let ShowClassSearchDetail = "ShowClassSearchDetail"
+    static let ShowGPACalculateMethod = "ShowGPACalculateMethod"
 }

@@ -31,4 +31,6 @@ struct CellIdentifier {
     static let AccountInfoCell = "AccountInfoCell"
     static let LogOutCell = "LogOutCell"
     static let PreferredColorCell = "PreferredColorCell"
+    static let GPACalculateMethodCell = "GPACalculateMethodCell"
+    static let GPACell = "GPACell"
 }

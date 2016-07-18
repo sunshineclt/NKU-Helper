@@ -1,33 +1,36 @@
 //
-//  GradeCell.swift
+//  GPACell.swift
 //  NKU Helper
 //
-//  Created by 陈乐天 on 15/2/16.
-//  Copyright (c) 2015年 陈乐天. All rights reserved.
+//  Created by 陈乐天 on 16/7/18.
+//  Copyright © 2016年 &#38472;&#20048;&#22825;. All rights reserved.
 //
 
 import UIKit
 
-class GradeCell: UITableViewCell {
+class GPACell: UITableViewCell {
 
     @IBOutlet var ClassNameLabel: UILabel!
     @IBOutlet var GradeLabel: UILabel!
-    @IBOutlet var CreditLabel: UILabel!
     @IBOutlet var gradeImageView: UIImageView!
     
-    var grade: Grade! {
+    var GPAName: String! {
         didSet {
-            ClassNameLabel.text = grade.className
-            GradeLabel.text = grade.gradeString
-            CreditLabel.text = grade.creditString
-            gradeImageView.image = getGradeImageWithGrade((grade.gradeString as NSString).doubleValue)
+            ClassNameLabel.text = GPAName
         }
     }
-    
+    var GPASum: Double!
+    var GPA: Double! {
+        didSet {
+            GradeLabel.text = NSString(format: "%.2lf", GPA) as String
+            gradeImageView.image = getGradeImageWithGrade(GPA)
+        }
+    }
+
     private func getGradeImageWithGrade(grade: Double) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(CGSizeMake(40, 40), false, 0)
         let context = UIGraphicsGetCurrentContext()
-        let per = (grade - 60) / 40
+        let per = (grade - 1) / (GPASum - 1)
         var red: Double = 0, green: Double = 0
         if per < 0.5 {
             red = 1
