@@ -31,10 +31,6 @@ class LogInViewController: UIViewController, UIAlertViewDelegate, UIWebViewDeleg
         validateCodeTextField.becomeFirstResponder()
     }
     
-    override func prefersStatusBarHidden() -> Bool {
-        return true
-    }
-    
     func refreshImage() {
         
         imageLoadActivityIndicator.startAnimating()
