@@ -301,7 +301,7 @@
 		E9EAF2C71D3FAE8B006DD267 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = ../../Realm.framework; sourceTree = "<group>"; };
 		E9EAF2C81D3FAE8B006DD267 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = ../../RealmSwift.framework; sourceTree = "<group>"; };
 		E9F674EB1BA80E7500BEF640 /* RSA.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = RSA.html; sourceTree = "<group>"; };
-		E9FE26131B137FEC00FCBB32 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		E9FE26131B137FEC00FCBB32 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Colors.swift; path = ../../Structures/Colors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -561,6 +561,7 @@
 				E94BD97F1BAC06E300B76E03 /* Course.swift */,
 				E95B0F2C1C83E18700448F97 /* CourseSelecting.swift */,
 				E93C0F171BB54B54001303CF /* ThingToDo.swift */,
+				E9FE26131B137FEC00FCBB32 /* Colors.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -732,7 +733,6 @@
 			isa = PBXGroup;
 			children = (
 				E94BD97D1BAC054E00B76E03 /* CellIdentifier.swift */,
-				E9FE26131B137FEC00FCBB32 /* Colors.swift */,
 				E9C3EF591BB2BCB600D1C91D /* ErrorHandler.swift */,
 				E9C3EF5D1BB2D03E00D1C91D /* SegueIdentifier.swift */,
 			);

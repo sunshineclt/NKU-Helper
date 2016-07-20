@@ -6,6 +6,8 @@
 //  Copyright (c) 2015年 &#38472;&#20048;&#22825;. All rights reserved.
 //
 
+import RealmSwift
+
 struct Colors {
     
     static let colors = [
