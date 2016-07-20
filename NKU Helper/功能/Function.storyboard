@@ -84,7 +84,7 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.50609725713729858" green="0.68362480401992798" blue="0.99904388189315796" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
-                                    <segue destination="Y31-yR-s4t" kind="show" identifier="" id="ZIG-vz-ZWI"/>
+                                    <segue destination="Y31-yR-s4t" kind="show" identifier="ShowGrade" id="ZIG-vz-ZWI"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SelectCourseCenterCell" rowHeight="80" id="RuU-y6-i7z">
@@ -101,8 +101,8 @@
                                                 <constraint firstAttribute="width" secondItem="0gk-rh-wUS" secondAttribute="height" multiplier="1:1" id="6Ev-5r-eMV"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="选课" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c1g-29-Rcq">
-                                            <rect key="frame" x="60" y="8" width="532" height="64"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选课" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c1g-29-Rcq">
+                                            <rect key="frame" x="60" y="8" width="499" height="64"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
@@ -120,7 +120,7 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.59999999999999998" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
-                                    <segue destination="AHW-2j-Gk3" kind="show" id="yge-x2-Qs2"/>
+                                    <segue destination="AHW-2j-Gk3" kind="show" identifier="ShowSelectCourse" id="yge-x2-Qs2"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="EvaluateCenterCell" rowHeight="80" id="Jbq-gZ-4aQ">
@@ -156,7 +156,7 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.80000000000000004" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
-                                    <segue destination="TRu-kD-Szh" kind="show" id="big-fa-38h"/>
+                                    <segue destination="TRu-kD-Szh" kind="show" identifier="ShowEvaluate" id="big-fa-38h"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="TestTimeSearchCell" rowHeight="80" id="af4-xY-M1n" userLabel="TestTimeSearchCell">
@@ -192,7 +192,7 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
-                                    <segue destination="jph-oB-h6f" kind="show" id="e8Z-dN-ZRM"/>
+                                    <segue destination="jph-oB-h6f" kind="show" identifier="ShowTestTime" id="e8Z-dN-ZRM"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MoreFunctionCell" rowHeight="80" id="kq4-ze-3Qw">
