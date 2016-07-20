@@ -121,6 +121,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, WXAp
             }
         }
         
+        R.assertValid()
+        
         return true
     }
 
