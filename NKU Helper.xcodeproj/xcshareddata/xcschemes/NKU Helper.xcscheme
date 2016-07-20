@@ -98,7 +98,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "73B639A96D058C92513E61375653EBEB"
+               BlueprintIdentifier = "8D1FCA97395521DF6031258E067FBA35"
                BuildableName = "SVProgressHUD.framework"
                BlueprintName = "SVProgressHUD"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">
@@ -112,7 +112,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F204A26A48820447F17E4645D59F3BE8"
+               BlueprintIdentifier = "B73AB27012FB6445FB2E32B86D81E4A2"
                BuildableName = "SwiftyJSON.framework"
                BlueprintName = "SwiftyJSON"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">
@@ -126,7 +126,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D10EED23DC742E1BCC2E82FC284E65AC"
+               BlueprintIdentifier = "BE3C760BCF08B1079E8E15A7229A9D3B"
                BuildableName = "UAProgressView.framework"
                BlueprintName = "UAProgressView"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">
@@ -140,7 +140,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6E7F6BA67A65EE81EF7B8C5CA05BA0EA"
+               BlueprintIdentifier = "4CCD1F0C67A39FD6574A66D28948E745"
                BuildableName = "YYText.framework"
                BlueprintName = "YYText"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">
@@ -154,7 +154,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D6D7666D54CB425FA97D4AD3A86E0AA7"
+               BlueprintIdentifier = "A005F43E6705CAD64CDAA189D01B489F"
                BuildableName = "pop.framework"
                BlueprintName = "pop"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">
@@ -168,7 +168,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "377A7E01AC9A5E35CF36841B312D0BB5"
+               BlueprintIdentifier = "485C38F03FDB06571EE356DA16403C64"
                BuildableName = "Pods_NKU_Helper.framework"
                BlueprintName = "Pods-NKU Helper"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">
