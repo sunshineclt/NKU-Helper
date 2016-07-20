@@ -16,10 +16,16 @@ class SaveAccountInfoViewController: UIViewController, UIAlertViewDelegate, UITe
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var validateCodeTextField: UITextField!
     @IBOutlet var validateCodeImageView: UIImageView!
+    @IBOutlet var loginButton: UIButton!
     
     @IBOutlet var imageLoadActivityIndicator: UIActivityIndicatorView! {didSet{imageLoadActivityIndicator.hidesWhenStopped = true}}
     
     var progressHud:MBProgressHUD!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        loginButton.layer.cornerRadius = 5
+    }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)

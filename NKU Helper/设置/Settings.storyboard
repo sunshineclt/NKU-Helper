@@ -513,6 +513,7 @@
                     <navigationItem key="navigationItem" id="mny-BK-c1I"/>
                     <connections>
                         <outlet property="imageLoadActivityIndicator" destination="ia3-gX-Qv3" id="SvP-jA-QuV"/>
+                        <outlet property="loginButton" destination="FQw-fb-tpY" id="3rK-E0-8mG"/>
                         <outlet property="passwordTextField" destination="KOm-em-JXB" id="xWM-iL-Q8b"/>
                         <outlet property="userIDTextField" destination="O8S-g4-xzH" id="Hkw-uK-BHe"/>
                         <outlet property="validateCodeImageView" destination="gva-Xe-wMb" id="C3i-Kn-zjP"/>
