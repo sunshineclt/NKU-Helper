@@ -171,5 +171,3 @@ NKU Helper/ShareSDK/Support/PlatformSDK/QQSDK/TencentOpenAPI.framework/Resources
 NKU Helper/ShareSDK/Support/PlatformSDK/RenRenSDK/
 Pods/Local Podspecs/
 
-# My Own
-*.generated.swift

@@ -963,7 +963,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"$PODS_ROOT/R.swift/rswift\" \"$SRCROOT/NKU Helper\"";
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" \"$SRCROOT\"";
 		};
 		E9D0A6DA1C43573100FF1A38 /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
