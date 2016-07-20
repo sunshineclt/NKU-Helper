@@ -8,7 +8,7 @@
 
 import RealmSwift
 
-struct Colors {
+class Colors: Object {
     
     static let colors = [
         
@@ -43,4 +43,19 @@ struct Colors {
         UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 1),
         UIColor(red: 145/255, green: 145/255, blue: 145/255, alpha: 1)
     ]
+    
+    dynamic var name = "unknown"
+    dynamic var red = 0
+    dynamic var green = 0
+    dynamic var blue = 0
+    dynamic var liked = true
+    
+    convenience init(name: String, red: Int, green: Int, blue: Int, liked: Bool) {
+        self.init()
+        self.name = name
+        self.red = red
+        self.green = green
+        self.blue = blue
+        self.liked = liked
+    }
 }
