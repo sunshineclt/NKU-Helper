@@ -99,6 +99,7 @@
 		E98F94DA1AA3191F00885992 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98F94D91AA3191F00885992 /* SettingTableViewController.swift */; };
 		E9927C061D2E463900DE284C /* StoragedDataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9927C051D2E463900DE284C /* StoragedDataError.swift */; };
 		E9929C9B1C49068000D508C8 /* NKNetworkFetchGrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9929C9A1C49068000D508C8 /* NKNetworkFetchGrade.swift */; };
+		E995E08B1D3F6369003FDF56 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = E995E08A1D3F6369003FDF56 /* R.generated.swift */; };
 		E99D67041C16C8CF00E27B08 /* NotiCenterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99D67031C16C8CF00E27B08 /* NotiCenterTableViewController.swift */; };
 		E99D670A1C16C9EB00E27B08 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99D67091C16C9EB00E27B08 /* Notification.swift */; };
 		E99D67131C16F6E800E27B08 /* NotiTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99D67121C16F6E700E27B08 /* NotiTableViewCell.swift */; };
@@ -257,6 +258,7 @@
 		E98F94D91AA3191F00885992 /* SettingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 		E9927C051D2E463900DE284C /* StoragedDataError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoragedDataError.swift; sourceTree = "<group>"; };
 		E9929C9A1C49068000D508C8 /* NKNetworkFetchGrade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkFetchGrade.swift; sourceTree = "<group>"; };
+		E995E08A1D3F6369003FDF56 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		E99D67031C16C8CF00E27B08 /* NotiCenterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotiCenterTableViewController.swift; sourceTree = "<group>"; };
 		E99D67091C16C9EB00E27B08 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		E99D67121C16F6E700E27B08 /* NotiTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotiTableViewCell.swift; sourceTree = "<group>"; };
@@ -361,6 +363,7 @@
 				E9B577991D38D25E0054F7E8 /* README.md */,
 				E92FB3E51BF3676F004C6B7C /* VersionLog.md */,
 				E961C83E1D2EAE740066C9C3 /* 编码规范.md */,
+				E995E08A1D3F6369003FDF56 /* R.generated.swift */,
 				911897253CF7E957EC7F6666 /* Frameworks */,
 				E90AE22A1A8F813900AD0D78 /* NKU Helper */,
 				E9DA594B1D3889AF0012ED9A /* NKU HelperTests */,
@@ -783,6 +786,7 @@
 			buildConfigurationList = E90AE24A1A8F813900AD0D78 /* Build configuration list for PBXNativeTarget "NKU Helper" */;
 			buildPhases = (
 				E840DD38A3B6909188C8E734 /* [CP] Check Pods Manifest.lock */,
+				E995E0891D3F6132003FDF56 /* ShellScript */,
 				E90AE2241A8F813900AD0D78 /* Sources */,
 				E90AE2251A8F813900AD0D78 /* Frameworks */,
 				E90AE2261A8F813900AD0D78 /* Resources */,
@@ -948,6 +952,19 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		E995E0891D3F6132003FDF56 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" \"$SRCROOT/NKU Helper\"";
+		};
 		E9D0A6DA1C43573100FF1A38 /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -975,6 +992,7 @@
 				E981C12D1C84A02D005CBF4E /* ClassModificationTableViewCell.swift in Sources */,
 				E91D2E5A1C846CA1002605F8 /* ClassInfoTableViewCell.swift in Sources */,
 				E98E2B4E1C46469700CF82BE /* CourseAgent.swift in Sources */,
+				E995E08B1D3F6369003FDF56 /* R.generated.swift in Sources */,
 				E95F93DD1C50CEAA00CEEC12 /* EvaluateTableViewController.swift in Sources */,
 				E9762F701C48DE77002CEF03 /* NKNetworkFetchNoti.swift in Sources */,
 				E98E2B4B1C4639EC00CF82BE /* PreferredColorAgent.swift in Sources */,
