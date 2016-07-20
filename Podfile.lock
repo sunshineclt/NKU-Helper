@@ -14,11 +14,6 @@ PODS:
   - R.swift (2.4.0):
     - R.swift.Library (~> 2.2.0)
   - R.swift.Library (2.2.0)
-  - Realm (1.0.2):
-    - Realm/Headers (= 1.0.2)
-  - Realm/Headers (1.0.2)
-  - RealmSwift (1.0.2):
-    - Realm (= 1.0.2)
   - ShareSDK3 (3.3.2):
     - ShareSDK3/ShareSDK (= 3.3.2)
   - ShareSDK3/ShareSDK (3.3.2)
@@ -41,7 +36,6 @@ DEPENDENCIES:
   - NJKWebViewProgress
   - pop
   - R.swift
-  - RealmSwift
   - ShareSDK3
   - ShareSDK3/ShareSDKPlatforms/QQ
   - ShareSDK3/ShareSDKPlatforms/WeChat
@@ -63,8 +57,6 @@ SPEC CHECKSUMS:
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
   R.swift: 0ef9c42dc6c94ac44a3c78a7639c73f855a8e159
   R.swift.Library: 31a487b65381f37a7d203a6f1f935b43c9be35b0
-  Realm: 9d5c46a4d7d27958530a8dfc58f63a99e5c2cba3
-  RealmSwift: 82f3ac5e24530143dddfde2033acc0d308f27d96
   ShareSDK3: c76cb96eb38e079952b8157071486d945faa2df2
   SnapKit: 4962eed2ee18e48cbd2b2292fffc57efe7235f87
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
@@ -72,6 +64,6 @@ SPEC CHECKSUMS:
   UAProgressView: ce49aee47c14df6dc372f6fd57852f570ca97e6b
   YYText: ac09660c9ccd9b817f409a20caa6f5587444d2ae
 
-PODFILE CHECKSUM: be8d35fa3f4b106f6ef001a01430439714a2f00a
+PODFILE CHECKSUM: 2860982779573f52a6a3397dc0bb21d0782efcba
 
 COCOAPODS: 1.0.1

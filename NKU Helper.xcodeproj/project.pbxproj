@@ -1153,8 +1153,6 @@
 					"$(inherited)",
 					"\"$(PROJECT_DIR)\"/**",
 					"\"${PODS_ROOT}\"/**",
-					"\"$PODS_CONFIGURATION_BUILD_DIR/Realm\"",
-					"\"$PODS_CONFIGURATION_BUILD_DIR/RealmSwift\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1272,8 +1270,6 @@
 					"$(inherited)",
 					"\"$(PROJECT_DIR)\"/**",
 					"\"${PODS_ROOT}\"/**",
-					"\"$PODS_CONFIGURATION_BUILD_DIR/Realm\"",
-					"\"$PODS_CONFIGURATION_BUILD_DIR/RealmSwift\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1312,8 +1308,6 @@
 					"$(inherited)",
 					"\"$(PROJECT_DIR)\"/**",
 					"\"${PODS_ROOT}\"/**",
-					"\"$PODS_CONFIGURATION_BUILD_DIR/Realm\"",
-					"\"$PODS_CONFIGURATION_BUILD_DIR/RealmSwift\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
