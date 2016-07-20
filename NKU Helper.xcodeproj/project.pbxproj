@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9D751C2DE5245E8BD12CFA95 /* Pods_NKU_Helper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3D770C49EDC3D2371513DA0 /* Pods_NKU_Helper.framework */; };
+		12E9B37A086FABEDFEA4D109 /* Pods_NKU_Helper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9945BD65AD3E7D087016CF58 /* Pods_NKU_Helper.framework */; };
 		E9084D831BB94EB800423566 /* ToDoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9084D821BB94EB800423566 /* ToDoCell.swift */; };
 		E90AE22E1A8F813900AD0D78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90AE22D1A8F813900AD0D78 /* AppDelegate.swift */; };
 		E90AE2381A8F813900AD0D78 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E90AE2371A8F813900AD0D78 /* Images.xcassets */; };
@@ -157,10 +157,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		A956B44EB87EC3E1C688431D /* Pods-NKU Helper.ad hoc distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NKU Helper.ad hoc distribution.xcconfig"; path = "Pods/Target Support Files/Pods-NKU Helper/Pods-NKU Helper.ad hoc distribution.xcconfig"; sourceTree = "<group>"; };
-		BCAC9CC81FE39D759978D217 /* Pods-NKU Helper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NKU Helper.release.xcconfig"; path = "Pods/Target Support Files/Pods-NKU Helper/Pods-NKU Helper.release.xcconfig"; sourceTree = "<group>"; };
-		C3D770C49EDC3D2371513DA0 /* Pods_NKU_Helper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NKU_Helper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E8990E2084C5BFCBBAB3A56E /* Pods-NKU Helper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NKU Helper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NKU Helper/Pods-NKU Helper.debug.xcconfig"; sourceTree = "<group>"; };
+		3CE36F262CA4F2D8F01054B4 /* Pods-NKU Helper.ad hoc distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NKU Helper.ad hoc distribution.xcconfig"; path = "Pods/Target Support Files/Pods-NKU Helper/Pods-NKU Helper.ad hoc distribution.xcconfig"; sourceTree = "<group>"; };
+		4049955BC5E2C9CBE0D70558 /* Pods-NKU Helper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NKU Helper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NKU Helper/Pods-NKU Helper.debug.xcconfig"; sourceTree = "<group>"; };
+		64CC4A72658875289900881A /* Pods-NKU Helper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NKU Helper.release.xcconfig"; path = "Pods/Target Support Files/Pods-NKU Helper/Pods-NKU Helper.release.xcconfig"; sourceTree = "<group>"; };
+		9945BD65AD3E7D087016CF58 /* Pods_NKU_Helper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NKU_Helper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9084D821BB94EB800423566 /* ToDoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoCell.swift; sourceTree = "<group>"; };
 		E90AE2281A8F813900AD0D78 /* NKU Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NKU Helper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E90AE22C1A8F813900AD0D78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -318,7 +318,7 @@
 				E9A4F6131D30C4740040ABBD /* Fabric.framework in Frameworks */,
 				E9A4F6121D30C4740040ABBD /* Crashlytics.framework in Frameworks */,
 				E9C2ECC01B183E8B005C1F5F /* MessageUI.framework in Frameworks */,
-				9D751C2DE5245E8BD12CFA95 /* Pods_NKU_Helper.framework in Frameworks */,
+				12E9B37A086FABEDFEA4D109 /* Pods_NKU_Helper.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,9 +352,19 @@
 				E98DC72B1B8B13D600273510 /* UIKit.framework */,
 				E98DC7291B8B13D100273510 /* Foundation.framework */,
 				E9C2ECBF1B183E8B005C1F5F /* MessageUI.framework */,
-				C3D770C49EDC3D2371513DA0 /* Pods_NKU_Helper.framework */,
+				9945BD65AD3E7D087016CF58 /* Pods_NKU_Helper.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A9DA1C86FD669D792C25EF68 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4049955BC5E2C9CBE0D70558 /* Pods-NKU Helper.debug.xcconfig */,
+				64CC4A72658875289900881A /* Pods-NKU Helper.release.xcconfig */,
+				3CE36F262CA4F2D8F01054B4 /* Pods-NKU Helper.ad hoc distribution.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		E90AE21F1A8F813900AD0D78 = {
@@ -367,10 +377,10 @@
 				911897253CF7E957EC7F6666 /* Frameworks */,
 				E90AE22A1A8F813900AD0D78 /* NKU Helper */,
 				E9DA594B1D3889AF0012ED9A /* NKU HelperTests */,
-				F850A484E2838018A1DDBC3B /* Pods */,
 				E90AE2291A8F813900AD0D78 /* Products */,
 				E9DA59441D3888E80012ED9A /* .travis.yml */,
 				E9B5779B1D38D69F0054F7E8 /* LICENSE.txt */,
+				A9DA1C86FD669D792C25EF68 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -768,16 +778,6 @@
 			path = "Model和帮助类";
 			sourceTree = "<group>";
 		};
-		F850A484E2838018A1DDBC3B /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				E8990E2084C5BFCBBAB3A56E /* Pods-NKU Helper.debug.xcconfig */,
-				BCAC9CC81FE39D759978D217 /* Pods-NKU Helper.release.xcconfig */,
-				A956B44EB87EC3E1C688431D /* Pods-NKU Helper.ad hoc distribution.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1139,7 +1139,7 @@
 		};
 		E90A3B321BB829830015EA0D /* ad hoc Distribution */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A956B44EB87EC3E1C688431D /* Pods-NKU Helper.ad hoc distribution.xcconfig */;
+			baseConfigurationReference = 3CE36F262CA4F2D8F01054B4 /* Pods-NKU Helper.ad hoc distribution.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = NO;
@@ -1251,7 +1251,7 @@
 		};
 		E90AE24B1A8F813900AD0D78 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E8990E2084C5BFCBBAB3A56E /* Pods-NKU Helper.debug.xcconfig */;
+			baseConfigurationReference = 4049955BC5E2C9CBE0D70558 /* Pods-NKU Helper.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = NO;
@@ -1284,7 +1284,7 @@
 		};
 		E90AE24C1A8F813900AD0D78 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BCAC9CC81FE39D759978D217 /* Pods-NKU Helper.release.xcconfig */;
+			baseConfigurationReference = 64CC4A72658875289900881A /* Pods-NKU Helper.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = NO;

@@ -39,6 +39,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Realm.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>RealmSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SVProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -72,7 +82,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>05DB2CEF4A31D2A51B369FEF8CB2B574</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>16F31C27D7691C472C7158A34C79FC10</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>23163EF5B0AADB8D66FA560718D4D9E7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -82,27 +102,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2C170393B83E41DD9C27215AFE37B6BA</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>2F7BF64F5AE82C8C64A99B1F1764E386</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>35C69A819187B8C8BAC0914A57EEEB0A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>390917BEE80D8AA02A8A4CB35EAF6154</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>47954C468764105CAC585A04E463E89D</key>
+		<key>45ACDA75BB3AA8BB94D305EFEBABC28B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -112,27 +117,42 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>544649159F43CCF71C7196B5B4E88F56</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>56CCDC0E9A1D0F17F9B2D65A2D0032E2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6FEB0A82EDC83BB07315887CDC294F23</key>
+		<key>5B268E1F1A13BD5CCEC7F4A75CF79AEA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>850715A25F7FFA0F496B477B28AFD70D</key>
+		<key>9C142F726BA589793A35C8BA7A5C9622</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>937F14B022CF556D28CE0D622E6FD6A8</key>
+		<key>BB57922CBBE17FCC4ED008035A9A0B94</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A83772D88C377047B3E67B765A30DFDE</key>
+		<key>CDE353C565F6906048D02CC937A3B7C2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F1041E4FF659184B56BA2BA8D857F752</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FCCA286E385AA028E98B4A081F358273</key>
 		<dict>
 			<key>primary</key>
 			<true/>
