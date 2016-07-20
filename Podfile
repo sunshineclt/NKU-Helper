@@ -15,9 +15,8 @@ pod 'Alamofire'
 pod 'SVProgressHUD'
 pod 'YYText'
 pod 'SwiftyJSON'
-pod 'SnapKit'
+pod 'SnapKit', '~> 0.15.0'
 pod 'RealmSwift'
-pod 'PromiseKit'
 
 # 主模块(必须)
 pod 'ShareSDK3'

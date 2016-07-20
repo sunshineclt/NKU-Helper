@@ -10,26 +10,7 @@ PODS:
     - NJKWebViewProgress/ProgressView (= 0.2.3)
   - NJKWebViewProgress/Core (0.2.3)
   - NJKWebViewProgress/ProgressView (0.2.3)
-  - OMGHTTPURLRQ (3.1.2):
-    - OMGHTTPURLRQ/RQ (= 3.1.2)
-  - OMGHTTPURLRQ/FormURLEncode (3.1.2)
-  - OMGHTTPURLRQ/RQ (3.1.2):
-    - OMGHTTPURLRQ/FormURLEncode
-    - OMGHTTPURLRQ/UserAgent
-  - OMGHTTPURLRQ/UserAgent (3.1.2)
   - pop (1.0.9)
-  - PromiseKit (3.2.1):
-    - PromiseKit/Foundation (= 3.2.1)
-    - PromiseKit/QuartzCore (= 3.2.1)
-    - PromiseKit/UIKit (= 3.2.1)
-  - PromiseKit/CorePromise (3.2.1)
-  - PromiseKit/Foundation (3.2.1):
-    - OMGHTTPURLRQ (~> 3.1.0)
-    - PromiseKit/CorePromise
-  - PromiseKit/QuartzCore (3.2.1):
-    - PromiseKit/CorePromise
-  - PromiseKit/UIKit (3.2.1):
-    - PromiseKit/CorePromise
   - Realm (1.0.2):
     - Realm/Headers (= 1.0.2)
   - Realm/Headers (1.0.2)
@@ -56,13 +37,12 @@ DEPENDENCIES:
   - MOBFoundation
   - NJKWebViewProgress
   - pop
-  - PromiseKit
   - RealmSwift
   - ShareSDK3
   - ShareSDK3/ShareSDKPlatforms/QQ
   - ShareSDK3/ShareSDKPlatforms/WeChat
   - ShareSDK3/ShareSDKUI
-  - SnapKit
+  - SnapKit (~> 0.15.0)
   - SVProgressHUD
   - SwiftyJSON
   - UAProgressView
@@ -76,9 +56,7 @@ SPEC CHECKSUMS:
   MJRefresh: bb72948c985914b0b5cecac573a2c69a8915fb02
   MOBFoundation: af2388967017966e003c676a6cfffe784a1dead2
   NJKWebViewProgress: f481fd424cb5ecc27eacae11b5397db92fba9a4d
-  OMGHTTPURLRQ: 38316b56d88125c600bcdb16df8329147da2b0ee
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
-  PromiseKit: ef54f61501541bf18a87b25115c372184d180cea
   Realm: 9d5c46a4d7d27958530a8dfc58f63a99e5c2cba3
   RealmSwift: 82f3ac5e24530143dddfde2033acc0d308f27d96
   ShareSDK3: c76cb96eb38e079952b8157071486d945faa2df2
@@ -88,6 +66,6 @@ SPEC CHECKSUMS:
   UAProgressView: ce49aee47c14df6dc372f6fd57852f570ca97e6b
   YYText: ac09660c9ccd9b817f409a20caa6f5587444d2ae
 
-PODFILE CHECKSUM: d9cabe6381c35fdf13369b7232e196dfbd45e7cd
+PODFILE CHECKSUM: a18b5c07c381fbb2fc828d7af308b4889599a336
 
 COCOAPODS: 1.0.1
