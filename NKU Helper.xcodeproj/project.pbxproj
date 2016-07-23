@@ -99,6 +99,7 @@
 		E98F94DA1AA3191F00885992 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98F94D91AA3191F00885992 /* SettingTableViewController.swift */; };
 		E9927C061D2E463900DE284C /* StoragedDataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9927C051D2E463900DE284C /* StoragedDataError.swift */; };
 		E9929C9B1C49068000D508C8 /* NKNetworkFetchGrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9929C9A1C49068000D508C8 /* NKNetworkFetchGrade.swift */; };
+		E995D2601D43284000C0A558 /* Colors.realm in Resources */ = {isa = PBXBuildFile; fileRef = E995D25F1D43282100C0A558 /* Colors.realm */; };
 		E995E08B1D3F6369003FDF56 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = E995E08A1D3F6369003FDF56 /* R.generated.swift */; };
 		E99D67041C16C8CF00E27B08 /* NotiCenterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99D67031C16C8CF00E27B08 /* NotiCenterTableViewController.swift */; };
 		E99D670A1C16C9EB00E27B08 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99D67091C16C9EB00E27B08 /* Notification.swift */; };
@@ -130,7 +131,7 @@
 		E9DA59451D3888E80012ED9A /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = E9DA59441D3888E80012ED9A /* .travis.yml */; };
 		E9DA594D1D3889AF0012ED9A /* NKU_HelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DA594C1D3889AF0012ED9A /* NKU_HelperTests.swift */; };
 		E9F674EC1BA80E7500BEF640 /* RSA.html in Resources */ = {isa = PBXBuildFile; fileRef = E9F674EB1BA80E7500BEF640 /* RSA.html */; };
-		E9FE26141B137FEC00FCBB32 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FE26131B137FEC00FCBB32 /* Colors.swift */; };
+		E9FE26141B137FEC00FCBB32 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FE26131B137FEC00FCBB32 /* Color.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -258,6 +259,7 @@
 		E98F94D91AA3191F00885992 /* SettingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 		E9927C051D2E463900DE284C /* StoragedDataError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoragedDataError.swift; sourceTree = "<group>"; };
 		E9929C9A1C49068000D508C8 /* NKNetworkFetchGrade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkFetchGrade.swift; sourceTree = "<group>"; };
+		E995D25F1D43282100C0A558 /* Colors.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = Colors.realm; sourceTree = "<group>"; };
 		E995E08A1D3F6369003FDF56 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		E99D67031C16C8CF00E27B08 /* NotiCenterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotiCenterTableViewController.swift; sourceTree = "<group>"; };
 		E99D67091C16C9EB00E27B08 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
@@ -293,7 +295,7 @@
 		E9DA594C1D3889AF0012ED9A /* NKU_HelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NKU_HelperTests.swift; sourceTree = "<group>"; };
 		E9DA594E1D3889AF0012ED9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9F674EB1BA80E7500BEF640 /* RSA.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = RSA.html; sourceTree = "<group>"; };
-		E9FE26131B137FEC00FCBB32 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		E9FE26131B137FEC00FCBB32 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -548,7 +550,8 @@
 		E93083B31D3BE301000FC8E8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E9FE26131B137FEC00FCBB32 /* Colors.swift */,
+				E9FE26131B137FEC00FCBB32 /* Color.swift */,
+				E995D25F1D43282100C0A558 /* Colors.realm */,
 				E94BD97F1BAC06E300B76E03 /* Course.swift */,
 				E95B0F2C1C83E18700448F97 /* CourseSelecting.swift */,
 				E93C0F171BB54B54001303CF /* ThingToDo.swift */,
@@ -868,6 +871,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E995D2601D43284000C0A558 /* Colors.realm in Resources */,
 				E9693E3E1D32441600D6135B /* LogIn.storyboard in Resources */,
 				E9693E461D3290AE00D6135B /* ClassTime.storyboard in Resources */,
 				E9D754FB1C6ADB8500619BAC /* Localizable.strings in Resources */,
@@ -1047,7 +1051,7 @@
 				E94BD97A1BABE9A500B76E03 /* TodayViewController.swift in Sources */,
 				E98F94D61AA3180700885992 /* ClassTimeViewController.swift in Sources */,
 				E99D675C1C17401B00E27B08 /* NotiDetailViewController.swift in Sources */,
-				E9FE26141B137FEC00FCBB32 /* Colors.swift in Sources */,
+				E9FE26141B137FEC00FCBB32 /* Color.swift in Sources */,
 				E94286581AA5500C00A4242C /* SaveAccountInfoViewController.swift in Sources */,
 				E9CA9C961C4274F60030AF49 /* NKNetworkLogin.swift in Sources */,
 				E93083BA1D3CA734000FC8E8 /* GPACalculateMethodTableViewController.swift in Sources */,

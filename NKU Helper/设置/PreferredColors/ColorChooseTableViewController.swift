@@ -7,8 +7,19 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ColorChooseTableViewController: UITableViewController {
+    
+    var colors: Results<Color>!
+    
+    override func viewDidLoad() {
+        do {
+            colors = try Color.getColors()
+        } catch {
+            presentViewController(ErrorHandler.alert(ErrorHandler.StorageNotEnough()), animated: true, completion: nil)
+        }
+    }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 60
@@ -27,23 +38,15 @@ class ColorChooseTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Colors.colors.count
+        return Color.getColorCount()
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell:ColorChooseTableViewCell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.PreferredColorCell) as! ColorChooseTableViewCell
-        cell.colorView.backgroundColor = Colors.colors[indexPath.row]
-        let userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        let preferredColors:NSMutableArray = userDefaults.objectForKey("preferredColors") as! NSMutableArray
-        let isLiked:Int = preferredColors.objectAtIndex(indexPath.row) as! Int
-        if  isLiked == 0 {
-            cell.accessoryType = UITableViewCellAccessoryType.None
-        }
-        else {
-            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
-        }
+        let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.PreferredColorCell) as! ColorChooseTableViewCell
+        let color = colors[indexPath.row]
+        cell.colorView.backgroundColor = color.convertToUIColor()
+        cell.accessoryType = color.liked ? .Checkmark : .None
         return cell
-        
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -51,31 +54,14 @@ class ColorChooseTableViewController: UITableViewController {
         let cell = self.tableView(self.tableView, cellForRowAtIndexPath: indexPath)
         if cell.accessoryType == UITableViewCellAccessoryType.None {
             cell.accessoryType = UITableViewCellAccessoryType.Checkmark
-            let userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-            let preferredColors:NSMutableArray = userDefaults.objectForKey("preferredColors") as! NSMutableArray
-            print(indexPath.row, terminator: "")
-            let preferredColors1:NSMutableArray = NSMutableArray()
-            preferredColors1.addObjectsFromArray(preferredColors as [AnyObject])
-            preferredColors1.replaceObjectAtIndex(indexPath.row, withObject: 1)
-            userDefaults.removeObjectForKey("preferredColors")
-            userDefaults.setObject(preferredColors1, forKey: "preferredColors")
-            userDefaults.synchronize()
+            colors[indexPath.row].toggleLike()
         }
         else {
             cell.accessoryType = UITableViewCellAccessoryType.None
-            let userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-            let preferredColors:NSMutableArray = userDefaults.objectForKey("preferredColors") as! NSMutableArray
-            print(indexPath.row, terminator: "")
-            let preferredColors1:NSMutableArray = NSMutableArray()
-            preferredColors1.addObjectsFromArray(preferredColors as [AnyObject])
-            preferredColors1.replaceObjectAtIndex(indexPath.row, withObject: 0)
-            userDefaults.removeObjectForKey("preferredColors")
-            userDefaults.setObject(preferredColors1, forKey: "preferredColors")
-            userDefaults.synchronize()
+            colors[indexPath.row].toggleLike()
         }
-        
         self.tableView.deselectRowAtIndexPath(indexPath, animated: false)
-        self.tableView.reloadData()
+        self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
     }
     
 }

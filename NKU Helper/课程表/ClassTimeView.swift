@@ -152,31 +152,31 @@ class ClassTimeView: UIView {
         
         // 初始化颜色的使用
         var isColorUsed = [Bool]()
-        for _ in 0 ..< Colors.colors.count {
+        for _ in 0 ..< Color.getColorCount() {
             isColorUsed.append(false)
         }
         var coloredCourse = [String: Int]()
-
-        /**
-         为课程获取合适的颜色（若已有过，则使用那个颜色，否则随机出一个没用过的颜色）
-         
-         - parameter classID: 课程ID
-         
-         - returns: 合适的颜色
-         */
-        func findProperColorForCourse(classID: String) -> UIColor {
-            for (key, value) in coloredCourse {
-                if key == classID {
-                    return Colors.colors[value]
+        
+        do {
+            let colors = try Color.getColors()
+            /**
+             为课程获取合适的颜色（若已有过，则使用那个颜色，否则随机出一个没用过的颜色）
+             
+             - parameter classID: 课程ID
+             
+             - returns: 合适的颜色
+             */
+            func findProperColorForCourse(classID: String) -> UIColor {
+                for (key, value) in coloredCourse {
+                    if key == classID {
+                        return colors[value].convertToUIColor()
+                    }
                 }
-            }
-            do {
-                let likedColors = try PreferredColorAgent().getData()
                 var count = 0
-                var colorIndex = Int(arc4random_uniform(UInt32(Colors.colors.count)))
+                var colorIndex = Int(arc4random_uniform(UInt32(colors.count)))
                 
-                while (isColorUsed[colorIndex]) || (likedColors[colorIndex] == 0) {
-                    colorIndex = Int(arc4random_uniform(UInt32(Colors.colors.count)))
+                while (isColorUsed[colorIndex]) || (!colors[colorIndex].liked) {
+                    colorIndex = Int(arc4random_uniform(UInt32(colors.count)))
                     count += 1
                     if count > 1000 {
                         break
@@ -184,14 +184,10 @@ class ClassTimeView: UIView {
                 }
                 coloredCourse[classID] = colorIndex
                 isColorUsed[colorIndex] = true
-                return Colors.colors[colorIndex]
-            } catch {
-                return Colors.colors[Int(arc4random_uniform(UInt32(Colors.colors.count)))]
+                return colors[colorIndex].convertToUIColor()
             }
-        }
-        
-        // 绘制课表
-        do {
+            
+            // 绘制课表
             let courses = try CourseAgent().getData()
             for i in 0 ..< courses.count {
                 // 获取课程信息
@@ -232,6 +228,7 @@ class ClassTimeView: UIView {
         } catch {
             
         }
+        
     }
 
     func updateClassTimeTableWithWeek(week: Int) {

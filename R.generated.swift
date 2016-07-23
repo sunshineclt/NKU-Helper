@@ -16,10 +16,12 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.file` struct is generated, and contains static references to 9 files.
+  /// This `R.file` struct is generated, and contains static references to 10 files.
   struct file {
     /// Resource file `AccountInfo`.
     static let accountInfo = FileResource(bundle: _R.hostingBundle, name: "AccountInfo", pathExtension: "")
+    /// Resource file `Colors.realm`.
+    static let colorsRealm = FileResource(bundle: _R.hostingBundle, name: "Colors", pathExtension: "realm")
     /// Resource file `1.jpg`.
     static let jpg = FileResource(bundle: _R.hostingBundle, name: "1", pathExtension: "jpg")
     /// Resource file `LICENSE.txt`.
@@ -40,6 +42,12 @@ struct R: Rswift.Validatable {
     /// `bundle.URLForResource("AccountInfo", withExtension: "")`
     static func accountInfo(_: Void) -> NSURL? {
       let fileResource = R.file.accountInfo
+      return fileResource.bundle.URLForResource(fileResource)
+    }
+    
+    /// `bundle.URLForResource("Colors", withExtension: "realm")`
+    static func colorsRealm(_: Void) -> NSURL? {
+      let fileResource = R.file.colorsRealm
       return fileResource.bundle.URLForResource(fileResource)
     }
     

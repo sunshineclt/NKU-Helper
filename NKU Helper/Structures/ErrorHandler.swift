@@ -77,6 +77,11 @@ struct ErrorHandler {
         static let message = "请检查网络"
         static let cancelButtonTitle = "好"
     }
+    struct StorageNotEnough:ErrorHandlerProtocol {
+        static let title = "存储空间不足"
+        static let message = "请腾出一小点空间给NKU Helper正常运行吧"
+        static let cancelButtonTitle = "好"
+    }
     
     static func alert(error:ErrorHandlerProtocol) -> UIAlertController {
         let alert = UIAlertController(title: error.dynamicType.title, message: error.dynamicType.message, preferredStyle: .Alert)

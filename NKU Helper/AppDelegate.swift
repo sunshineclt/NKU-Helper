@@ -71,22 +71,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, WXAp
         
         // load Preferred Colors
         func loadPreferredColors() {
-            
+            let rootvc = self.window?.rootViewController as! UITabBarController
+            let firstViewController = rootvc.childViewControllers[0]
             do {
-                let preferredColors = try PreferredColorAgent.sharedInstance.getData()
-                var newPreferredColors = preferredColors
-                if Colors.colors.count > preferredColors.count {
-                    for _ in 1...Colors.colors.count - preferredColors.count {
-                        newPreferredColors.append(1)
-                    }
-                    PreferredColorAgent.sharedInstance.saveData(newPreferredColors)
+                try Color.getColors()
+            } catch StoragedDataError.NoColorInStorage {
+                do {
+                    try Color.copyColorsToDocument()
+                } catch {
+                    firstViewController.presentViewController(ErrorHandler.alert(ErrorHandler.StorageNotEnough()), animated: true, completion: nil)
                 }
             } catch {
-                var preferredColors = [Int]()
-                for _ in 0 ..< Colors.colors.count {
-                    preferredColors.append(1)
-                }
-                PreferredColorAgent.sharedInstance.saveData(preferredColors)
+                firstViewController.presentViewController(ErrorHandler.alert(ErrorHandler.StorageNotEnough()), animated: true, completion: nil)
             }
 
         }
@@ -98,11 +94,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, WXAp
             application.registerForRemoteNotifications()
         }
         
+        // 从1.x版本迁移到2.x版本
+        func transferFromVersion1ToVersion2() {
+            let userDefaults = NSUserDefaults.standardUserDefaults()
+            if let _ = userDefaults.objectForKey("preferredColors") {
+                userDefaults.removeObjectForKey("preferredColors")
+            }
+        }
         
         setUpAllTools()
         setUpApperance()
         loadPreferredColors()
         setUpNotification()
+        transferFromVersion1ToVersion2()
 
         // 推送来的消息需要打开哪个页面
         if let launchOption = launchOptions {
