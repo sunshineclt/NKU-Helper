@@ -794,7 +794,6 @@
 				E9D0A6DA1C43573100FF1A38 /* Run Script */,
 				8CAB24C9F0BEC70EEA1037EA /* [CP] Embed Pods Frameworks */,
 				25865A08D4DEDDF4ED3F37AC /* [CP] Copy Pods Resources */,
-				E9EAF2CD1D3FAFE9006DD267 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -979,19 +978,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "./NKU\\ Helper/Third\\ Party/Fabric.framework/run 10e953e10a73fd8f098bf72e3c4afc19cd324aa0 72d765e9ab44b5248d20ec1fc0a91552d1dc550c057be1ecec05240c895beae4";
-		};
-		E9EAF2CD1D3FAFE9006DD267 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework/strip-frameworks.sh\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1185,7 +1171,7 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "NKU Helper/Supporting Files/NKU Helper-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "$(PODS_ROOT)/**";
+				USER_HEADER_SEARCH_PATHS = "$(PODS_ROOT)/YYText/** $(PODS_ROOT)/SVProgressHUD/** $(PODS_ROOT)/NJKWebViewProgress/** $(PODS_ROOT)/MJRefresh/** $(PODS_ROOT)/DZNEmptyDataSet/** $(PODS_ROOT)/MBProgressHUD/** $(PODS_ROOT)/UAProgressView/** $(PODS_ROOT)/pop/**";
 			};
 			name = "ad hoc Distribution";
 		};
@@ -1304,7 +1290,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "NKU Helper/Supporting Files/NKU Helper-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "$(PODS_ROOT)/**";
+				USER_HEADER_SEARCH_PATHS = "$(PODS_ROOT)/YYText/** $(PODS_ROOT)/SVProgressHUD/** $(PODS_ROOT)/NJKWebViewProgress/** $(PODS_ROOT)/MJRefresh/** $(PODS_ROOT)/DZNEmptyDataSet/** $(PODS_ROOT)/MBProgressHUD/** $(PODS_ROOT)/UAProgressView/** $(PODS_ROOT)/pop/**";
 			};
 			name = Debug;
 		};
@@ -1342,7 +1328,7 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "NKU Helper/Supporting Files/NKU Helper-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "$(PODS_ROOT)/**";
+				USER_HEADER_SEARCH_PATHS = "$(PODS_ROOT)/YYText/** $(PODS_ROOT)/SVProgressHUD/** $(PODS_ROOT)/NJKWebViewProgress/** $(PODS_ROOT)/MJRefresh/** $(PODS_ROOT)/DZNEmptyDataSet/** $(PODS_ROOT)/MBProgressHUD/** $(PODS_ROOT)/UAProgressView/** $(PODS_ROOT)/pop/**";
 			};
 			name = Release;
 		};

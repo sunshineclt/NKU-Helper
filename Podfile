@@ -17,6 +17,7 @@ target 'NKU Helper' do
 	pod 'SwiftyJSON'
 	pod 'SnapKit', '~> 0.15.0'
 	pod 'R.swift'
+    pod 'RealmSwift'
 
 	# 主模块(必须)
 	pod 'ShareSDK3'
