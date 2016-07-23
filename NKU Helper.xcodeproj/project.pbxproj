@@ -129,10 +129,6 @@
 		E9D754FB1C6ADB8500619BAC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E9D754FD1C6ADB8500619BAC /* Localizable.strings */; };
 		E9DA59451D3888E80012ED9A /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = E9DA59441D3888E80012ED9A /* .travis.yml */; };
 		E9DA594D1D3889AF0012ED9A /* NKU_HelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DA594C1D3889AF0012ED9A /* NKU_HelperTests.swift */; };
-		E9EAF2C91D3FAE8B006DD267 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9EAF2C71D3FAE8B006DD267 /* Realm.framework */; };
-		E9EAF2CA1D3FAE8B006DD267 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E9EAF2C71D3FAE8B006DD267 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E9EAF2CB1D3FAE8B006DD267 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9EAF2C81D3FAE8B006DD267 /* RealmSwift.framework */; };
-		E9EAF2CC1D3FAE8B006DD267 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E9EAF2C81D3FAE8B006DD267 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E9F674EC1BA80E7500BEF640 /* RSA.html in Resources */ = {isa = PBXBuildFile; fileRef = E9F674EB1BA80E7500BEF640 /* RSA.html */; };
 		E9FE26141B137FEC00FCBB32 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FE26131B137FEC00FCBB32 /* Colors.swift */; };
 /* End PBXBuildFile section */
@@ -154,8 +150,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				E9EAF2CC1D3FAE8B006DD267 /* RealmSwift.framework in Embed Frameworks */,
-				E9EAF2CA1D3FAE8B006DD267 /* Realm.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -298,8 +292,6 @@
 		E9DA594A1D3889AF0012ED9A /* NKU HelperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NKU HelperTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9DA594C1D3889AF0012ED9A /* NKU_HelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NKU_HelperTests.swift; sourceTree = "<group>"; };
 		E9DA594E1D3889AF0012ED9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E9EAF2C71D3FAE8B006DD267 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
-		E9EAF2C81D3FAE8B006DD267 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
 		E9F674EB1BA80E7500BEF640 /* RSA.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = RSA.html; sourceTree = "<group>"; };
 		E9FE26131B137FEC00FCBB32 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -315,7 +307,6 @@
 				E9D754EE1C6AD19100619BAC /* ImageIO.framework in Frameworks */,
 				E9D754B51C6A468300619BAC /* libicucore.tbd in Frameworks */,
 				E9D754B31C69C2A300619BAC /* libstdc++.tbd in Frameworks */,
-				E9EAF2CB1D3FAE8B006DD267 /* RealmSwift.framework in Frameworks */,
 				E9D754B11C69C29A00619BAC /* CoreTelephony.framework in Frameworks */,
 				E9D754AF1C69C28B00619BAC /* CoreGraphics.framework in Frameworks */,
 				E9D754AE1C69C27C00619BAC /* libiconv.tbd in Frameworks */,
@@ -328,7 +319,6 @@
 				E9A4F6121D30C4740040ABBD /* Crashlytics.framework in Frameworks */,
 				E9C2ECC01B183E8B005C1F5F /* MessageUI.framework in Frameworks */,
 				12E9B37A086FABEDFEA4D109 /* Pods_NKU_Helper.framework in Frameworks */,
-				E9EAF2C91D3FAE8B006DD267 /* Realm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -705,8 +695,6 @@
 			children = (
 				E9A4F6101D30C4740040ABBD /* Crashlytics.framework */,
 				E9A4F6111D30C4740040ABBD /* Fabric.framework */,
-				E9EAF2C71D3FAE8B006DD267 /* Realm.framework */,
-				E9EAF2C81D3FAE8B006DD267 /* RealmSwift.framework */,
 			);
 			path = "Third Party";
 			sourceTree = "<group>";
