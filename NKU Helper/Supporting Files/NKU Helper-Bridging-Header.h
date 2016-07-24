@@ -12,6 +12,7 @@
 #import "NJKWebViewProgress.h"
 #import "NJKWebViewProgressView.h"
 #import "SVProgressHUD.h"
+#import <JSPatch/JSPatch.h>
 
 #import <ShareSDK/ShareSDK.h>
 #import <ShareSDKUI/ShareSDK+SSUI.h>

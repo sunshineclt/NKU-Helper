@@ -19,6 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, WXAp
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        JSPatch.startWithAppKey("bdeda28b488dda55")
+        JSPatch.sync()
+        
         // To set up Flurry(App Analyse), Fabric.Crashlytics(Crash Analyse), AVOS(Push Service), ShareSDK
         func setUpAllTools() {
             
