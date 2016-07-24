@@ -2,6 +2,7 @@ PODS:
   - Alamofire (3.4.1)
   - AVOSCloud (3.3.5)
   - DZNEmptyDataSet (1.8.1)
+  - Locksmith (2.0.8)
   - MBProgressHUD (1.0.0)
   - MJRefresh (3.1.10)
   - MOBFoundation (2.0.7)
@@ -35,6 +36,7 @@ DEPENDENCIES:
   - Alamofire
   - AVOSCloud
   - DZNEmptyDataSet
+  - Locksmith
   - MBProgressHUD
   - MJRefresh
   - MOBFoundation
@@ -56,6 +58,7 @@ SPEC CHECKSUMS:
   Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
   AVOSCloud: 1fe170768bee7e05bc3ea86e38d5bddb105cb957
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  Locksmith: a8ed41ac4c06506ea8cb199d8ec8a8d3d108eb2a
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MJRefresh: bb72948c985914b0b5cecac573a2c69a8915fb02
   MOBFoundation: af2388967017966e003c676a6cfffe784a1dead2
@@ -72,6 +75,6 @@ SPEC CHECKSUMS:
   UAProgressView: ce49aee47c14df6dc372f6fd57852f570ca97e6b
   YYText: ac09660c9ccd9b817f409a20caa6f5587444d2ae
 
-PODFILE CHECKSUM: f3c678596984ebd3dfd962c71019b1e4de34a42b
+PODFILE CHECKSUM: 22a05a4cc4c465aae19262b9c59d447112c05e28
 
 COCOAPODS: 1.0.1
