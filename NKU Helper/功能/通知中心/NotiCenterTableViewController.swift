@@ -50,7 +50,7 @@ class NotiCenterTableViewController: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.NotiCell, forIndexPath: indexPath) as! NotiTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.notiCell.identifier, forIndexPath: indexPath) as! NotiTableViewCell
         cell.notiData = noti[indexPath.row]
         cell.displayView.layer.cornerRadius = 10
         return cell
@@ -84,7 +84,7 @@ class NotiCenterTableViewController: UITableViewController {
         
         let cell = tableView.cellForRowAtIndexPath(indexPath) as! NotiTableViewCell
         let url = NSURL(string: cell.notiData.url)!
-        self.performSegueWithIdentifier(SegueIdentifier.ShowNotiDetail, sender: url)
+        self.performSegueWithIdentifier(R.segue.notiCenterTableViewController.showNotiDetail, sender: url)
         
     }
 

@@ -25,7 +25,7 @@ class GPACalculateMethodTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.GPACalculateMethodCell)!
+        let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.gPACalculateMethodCell.identifier)!
         cell.textLabel?.text = method.description[indexPath.row].interval
         cell.detailTextLabel?.text = method.description[indexPath.row].gpa
         return cell

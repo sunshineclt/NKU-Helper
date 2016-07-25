@@ -40,7 +40,7 @@ class FunctionTableViewController: UITableViewController {
         super.viewDidAppear(animated)
         if let actionType = tableViewActionType {
             if actionType == 0 {
-                self.performSegueWithIdentifier(SegueIdentifier.ShowNotiCenter, sender: nil)
+                self.performSegueWithIdentifier(R.segue.functionTableViewController.showNotiCenter.identifier, sender: nil)
             }
             tableViewActionType = nil
         }
@@ -78,27 +78,27 @@ class FunctionTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0: //通知中心
-            let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.NotiCenterCell)!
+            let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.notiCenterCell.identifier)!
             cell.userInteractionEnabled = isLoggedIn
             return cell
         case 1: //查询成绩
-            let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.GradeShowerCell)!
+            let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.gradeShowerCell.identifier)!
             cell.userInteractionEnabled = isLoggedIn
             return cell
         case 2: // 选课
-            let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.SelectCourseCenterCell)!
+            let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.selectCourseCenterCell.identifier)!
             cell.userInteractionEnabled = isLoggedIn
             return cell
         case 3: //评教
-            let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.EvaluateCenterCell)!
+            let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.evaluateCenterCell.identifier)!
             cell.userInteractionEnabled = isLoggedIn
             return cell
         case 4: //查询考试时间
-            let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.TestTimeSearchCell)!
+            let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.testTimeSearchCell.identifier)!
             cell.userInteractionEnabled = isLoggedIn
             return cell
         case 5: //更多
-            let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.MoreFunctionCell)!
+            let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.moreFunctionCell.identifier)!
             cell.userInteractionEnabled = isLoggedIn
             return cell
         default:return UITableViewCell()

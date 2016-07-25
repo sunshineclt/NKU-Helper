@@ -55,27 +55,27 @@ class SettingTableViewController: UITableViewController {
         case 0:
             do {
                 let user = try UserDetailInfoAgent.sharedInstance.getData()
-                let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.AccountCell) as! AccountTableViewCell
+                let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.accountCell.identifier) as! AccountTableViewCell
                 let timeEnteringSchool = (user.timeEnteringSchool as NSString).substringWithRange(NSMakeRange(2, 2))
                 cell.nameLabel.text = user.name
                 cell.userIDLabel.text = user.userID
                 cell.departmentLabel.text = user.departmentAdmitted + (timeEnteringSchool as String) + "级本科生"
                 return cell
             } catch {
-                let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.AddAccountCell)!
+                let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.addAccountCell.identifier)!
                 cell.textLabel?.text = "请先登录！"
                 cell.detailTextLabel?.text = "欢迎使用NKU Helper！"
                 return cell
             }
         case 1:
-            let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.ChoosePreferredColorCell)!
+            let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.choosePreferredColorCell.identifier)!
             return cell
         case 2:
-            let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.SupportGroupCell)!
+            let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.supportGroupCell)!
             cell.textLabel?.text = "请开发团队喝一杯咖啡"
             return cell
         case 3:
-            let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.AboutCell)!
+            let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.aboutCell)!
             cell.textLabel?.text = "关于"
             return cell
         default:

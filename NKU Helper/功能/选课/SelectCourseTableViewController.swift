@@ -24,7 +24,7 @@ class SelectCourseTableViewController: UITableViewController, NKNetworkSearchCou
                     break
                 case .NotLoggedin:
                     NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SelectCourseTableViewController.loginComplete), name: "loginComplete", object: nil)
-                    self.performSegueWithIdentifier(SegueIdentifier.Login, sender: "GradeShowerTableViewController")
+                    self.performSegueWithIdentifier(R.segue.selectCourseTableViewController.login, sender: "GradeShowerTableViewController")
                 case .UnKnown:
                     self.presentViewController(ErrorHandler.alert(ErrorHandler.NetworkError()), animated: true, completion: nil)
                 }
@@ -45,7 +45,7 @@ class SelectCourseTableViewController: UITableViewController, NKNetworkSearchCou
     
     func didReceiveSearchResult(result: [CourseSelecting]) {
         searchResult = result
-        self.performSegueWithIdentifier(SegueIdentifier.ShowClassSearchDetail, sender: nil)
+        self.performSegueWithIdentifier(R.segue.selectCourseTableViewController.showClassSearchDetail, sender: nil)
     }
     
     @IBAction func search(sender: UIButton) {
@@ -85,22 +85,21 @@ class SelectCourseTableViewController: UITableViewController, NKNetworkSearchCou
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == SegueIdentifier.ShowClassSearchDetail {
-            if let vc = segue.destinationViewController as? SearchCourseTableViewController {
-                vc.courseSearchResult = searchResult ?? []
-                switch whichButtonIsClicked! {
-                case 1:
-                    vc.navigationController?.title = "ID" + classIDTextField.text! + "的搜索结果"
-                case 2:
-                    vc.navigationController?.title = classnameTextField.text! + "的搜索结果"
-                case 3:
-                    vc.navigationController?.title = teachernameTextField.text! + "的搜索结果"
-                default:
-                    break
-                }
-                searchResult = nil
-                whichButtonIsClicked = nil
+        if let typeInfo = R.segue.selectCourseTableViewController.showClassSearchDetail(segue: segue) {
+            let vc = typeInfo.destinationViewController
+            vc.courseSearchResult = searchResult ?? []
+            switch whichButtonIsClicked! {
+            case 1:
+                vc.navigationController?.title = "ID" + classIDTextField.text! + "的搜索结果"
+            case 2:
+                vc.navigationController?.title = classnameTextField.text! + "的搜索结果"
+            case 3:
+                vc.navigationController?.title = teachernameTextField.text! + "的搜索结果"
+            default:
+                break
             }
+            searchResult = nil
+            whichButtonIsClicked = nil
         }
     }
     

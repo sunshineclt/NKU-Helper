@@ -69,7 +69,7 @@ class TodayViewController: UIViewController {
             todayCourse = courses
             self.courseTableView.reloadData()
         } catch StoragedDataError.NoUserInStorage {
-            self.performSegueWithIdentifier(SegueIdentifier.Login, sender: "TodayViewController")
+            self.performSegueWithIdentifier(R.segue.todayViewController.login, sender: "TodayViewController")
         } catch StoragedDataError.NoClassesInStorage {
             self.presentViewController(ErrorHandler.alert(ErrorHandler.ClassNotExist()), animated: true, completion: nil)
         } catch {
@@ -93,15 +93,9 @@ class TodayViewController: UIViewController {
 // MARK: 页面间跳转
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let identifier = segue.identifier {
-            switch identifier {
-            case SegueIdentifier.ShowCourseDetail:
-                if let destinationVC = segue.destinationViewController as? CourseDetailTableViewController {
-                    let senderCell = sender as! CourseCell
-                    destinationVC.course = senderCell.course
-                }
-            default:break
-            }
+        if let typeInfo = R.segue.todayViewController.showCourseDetail(segue: segue) {
+            let senderCell = sender as! CourseCell
+            typeInfo.destinationViewController.course = senderCell.course
         }
     }
 }
@@ -135,14 +129,14 @@ extension TodayViewController:UITableViewDataSource, CheckBoxClickedDelegate {
     }
     
     func getCourseCell(tableView:UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> CourseCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.CourseCell) as! CourseCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.courseCell.identifier) as! CourseCell
         cell.course = todayCourse[indexPath.row]
         return cell
     }
     
     func getToDoCell(tableView:UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> ToDoCell {
         let thing = thingsToDo[(isAddThingMode ? indexPath.row-1 : indexPath.row)]
-        let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.ToDoCell) as! ToDoCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.toDoCell.identifier) as! ToDoCell
         cell.thing = thing
         cell.nameTextField?.enabled = false
         cell.delegate = self
@@ -150,7 +144,7 @@ extension TodayViewController:UITableViewDataSource, CheckBoxClickedDelegate {
     }
 
     func getNewToDoCell(tableView:UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> ToDoCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.ToDoCell) as! ToDoCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.toDoCell.identifier) as! ToDoCell
         cell.nameTextField.text = ""
         cell.nameTextField.becomeFirstResponder()
         cell.nameTextField.enabled = true

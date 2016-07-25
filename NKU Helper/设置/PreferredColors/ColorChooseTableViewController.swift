@@ -42,7 +42,7 @@ class ColorChooseTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.PreferredColorCell) as! ColorChooseTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.preferredColorCell.identifier) as! ColorChooseTableViewCell
         let color = colors[indexPath.row]
         cell.colorView.backgroundColor = color.convertToUIColor()
         cell.accessoryType = color.liked ? .Checkmark : .None

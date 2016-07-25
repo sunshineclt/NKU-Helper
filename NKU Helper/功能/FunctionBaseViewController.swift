@@ -27,7 +27,7 @@ class FunctionBaseViewController: UIViewController, FunctionDelegate {
                     self.doWork()
                 case .NotLoggedin:
                     NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.loginComplete), name: "loginComplete", object: nil)
-                    self.performSegueWithIdentifier(SegueIdentifier.Login, sender: "GradeShowerTableViewController")
+                    self.performSegueWithIdentifier(R.segue.gradeShowerTableViewController.login.identifier, sender: "GradeShowerTableViewController")
                 case .UnKnown:
                     self.presentViewController(ErrorHandler.alert(ErrorHandler.NetworkError()), animated: true, completion: nil)
                 }

@@ -28,7 +28,7 @@ class DetailAccountInfoTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.AccountInfoCell)!
+            let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.accountInfoCell.identifier)!
             do {
                 let userInfo = try UserDetailInfoAgent.sharedInstance.getData()
                 switch indexPath.row {
@@ -56,7 +56,7 @@ class DetailAccountInfoTableViewController: UITableViewController {
             return cell
         }
         else {
-            let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.LogOutCell)!
+            let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.logOutCell.identifier)!
             return cell
         }
 

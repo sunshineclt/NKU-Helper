@@ -17,12 +17,12 @@ class CourseDetailTableViewController: UITableViewController {
         
         super.viewDidLoad()
         if whichCourse != nil {
+            //FIXME:
             let userDefaults = NSUserDefaults.standardUserDefaults()
             let courses = userDefaults.objectForKey("courses") as! [NSData]
             let courseData = courses[whichCourse]
             course = NSKeyedUnarchiver.unarchiveObjectWithData(courseData) as! Course
         }
-
     }
 
 // MARK: UITableViewDataSource
@@ -37,7 +37,7 @@ class CourseDetailTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.CourseDetailCell, forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.courseDetailCell.identifier, forIndexPath: indexPath)
         
         switch indexPath.row {
         case 0:

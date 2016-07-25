@@ -162,7 +162,7 @@ extension GradeShowerTableViewController {
         
         if MajorOrMinorSegmentControl.selectedSegmentIndex == 0 {
             guard indexPath.section != 5 else {
-                let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.GradeCell, forIndexPath: indexPath) as! GradeCell
+                let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.gradeCell.identifier, forIndexPath: indexPath) as! GradeCell
                 switch indexPath.row {
                 case 0:
                     let grade = Grade.computeGradeCreditSum(gradeResult, WithCourseType: ["A", "B", "C"], isAverage: false)
@@ -192,7 +192,7 @@ extension GradeShowerTableViewController {
             guard indexPath.section != 6 else {
                 let method = GPACalculateMethod.methods[indexPath.row]
                 let grade = Grade.computeGRA(gradeResult, WithGPACalculateMethod: method, AndCourseType: ["A", "B", "C", "D", "E"])
-                let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.GPACell, forIndexPath: indexPath) as! GPACell
+                let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.gPACell.identifier, forIndexPath: indexPath) as! GPACell
                 cell.GPASum = GPACalculateMethod.methodsSum[indexPath.row]
                 cell.GPAName = method.methodName
                 cell.GPA = grade
@@ -201,7 +201,7 @@ extension GradeShowerTableViewController {
         }
         else {
             guard indexPath.section != 2 else {
-                let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.GradeCell, forIndexPath: indexPath) as! GradeCell
+                let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.gradeCell.identifier, forIndexPath: indexPath) as! GradeCell
                 let grade = Grade.computeGradeCreditSum(gradeResult, WithCourseType: ["FC", "FD"], isAverage: false)
                 let credit = Grade.computeCredit(gradeResult, WithCourseType: ["FC","FD"])
                 cell.grade = Grade(className: "FC、FD类课", classType: "FCFD", grade: GradeValue.OK(grade: grade, credit: credit))
@@ -210,7 +210,7 @@ extension GradeShowerTableViewController {
             guard indexPath.section != 3 else {
                 let method = GPACalculateMethod.methods[indexPath.row]
                 let grade = Grade.computeGRA(gradeResult, WithGPACalculateMethod: method, AndCourseType: ["FC", "FD"])
-                let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.GPACell, forIndexPath: indexPath) as! GPACell
+                let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.gPACell.identifier, forIndexPath: indexPath) as! GPACell
                 cell.GPASum = GPACalculateMethod.methodsSum[indexPath.row]
                 cell.GPAName = method.methodName
                 cell.GPA = grade
@@ -218,7 +218,7 @@ extension GradeShowerTableViewController {
             }
         }
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.GradeCell, forIndexPath: indexPath) as! GradeCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.gradeCell.identifier, forIndexPath: indexPath) as! GradeCell
         let nowClassType = classType[(MajorOrMinorSegmentControl.selectedSegmentIndex == 0) ? indexPath.section : indexPath.section + 5]
         let nowGradeSection = gradeResult.filter{ $0.classType == nowClassType}
         let now = nowGradeSection[indexPath.row]
@@ -231,16 +231,13 @@ extension GradeShowerTableViewController {
         if (MajorOrMinorSegmentControl.selectedSegmentIndex == 0) && (indexPath.section == 6) ||
             (MajorOrMinorSegmentControl.selectedSegmentIndex == 1) && (indexPath.section == 3) {
             whichMethod = indexPath.row
-            self.performSegueWithIdentifier(SegueIdentifier.ShowGPACalculateMethod, sender: nil)
+            self.performSegueWithIdentifier(R.segue.gradeShowerTableViewController.showGPACalculateMethod, sender: nil)
         }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let identifier = segue.identifier {
-            if identifier == SegueIdentifier.ShowGPACalculateMethod {
-                let vc = segue.destinationViewController as! GPACalculateMethodTableViewController
-                vc.method = GPACalculateMethod.methods[whichMethod]
-            }
+        if let typeInfo = R.segue.gradeShowerTableViewController.showGPACalculateMethod(segue: segue) {
+            typeInfo.destinationViewController.method = GPACalculateMethod.methods[whichMethod]
         }
     }
     

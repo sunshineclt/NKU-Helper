@@ -77,7 +77,7 @@ extension EvaluateTableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.ClassToEvaluateCell) as! ClassToEvaluateTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.classToEvaluateCell.identifier) as! ClassToEvaluateTableViewCell
         cell.classToEvaluate = classesToEvaluate[indexPath.row]
         return cell
     }
@@ -86,7 +86,7 @@ extension EvaluateTableViewController {
         let cell = tableView.cellForRowAtIndexPath(indexPath) as! ClassToEvaluateTableViewCell
         selectedIndex = cell.classToEvaluate.index
         if !cell.classToEvaluate.hasEvaluated {
-            self.performSegueWithIdentifier(SegueIdentifier.ShowEvaluateDetail, sender: nil)
+            self.performSegueWithIdentifier(R.segue.evaluateTableViewController.showEvaluateDetail.identifier, sender: nil)
         }
         else {
             self.presentViewController(ErrorHandler.alert(ErrorHandler.EvaluateHasDone()), animated: true, completion: nil)
@@ -94,9 +94,8 @@ extension EvaluateTableViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier! == SegueIdentifier.ShowEvaluateDetail {
-            let destinationVC = segue.destinationViewController as! EvaluateDetailTableViewController
-            destinationVC.classIndexToEvaluate = selectedIndex
+        if let typeInfo = R.segue.evaluateTableViewController.showEvaluateDetail(segue: segue) {
+            typeInfo.destinationViewController.classIndexToEvaluate = selectedIndex
         }
     }
     

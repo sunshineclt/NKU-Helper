@@ -41,7 +41,7 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
             case .NotLoggedin:
                 let nc = NSNotificationCenter.defaultCenter()
                 nc.addObserver(self, selector: #selector(ClassTimeViewController.refreshClassTimeTable(_:)), name: "loginComplete", object: nil)
-                self.performSegueWithIdentifier(SegueIdentifier.Login, sender: nil)
+                self.performSegueWithIdentifier(R.segue.classTimeViewController.login, sender: nil)
             case .UnKnown:
                 self.presentViewController(ErrorHandler.alert(ErrorHandler.NetworkError()), animated: true, completion: nil)
             }
@@ -122,7 +122,7 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
                     case .NotLoggedin:
                         let nc = NSNotificationCenter.defaultCenter()
                         nc.addObserver(self, selector: #selector(ClassTimeViewController.refreshClassTimeTable(_:)), name: "loginComplete", object: nil)
-                        self.performSegueWithIdentifier(SegueIdentifier.Login, sender: nil)
+                        self.performSegueWithIdentifier(R.segue.classTimeViewController.login, sender: nil)
                     case .UnKnown:
                         self.presentViewController(ErrorHandler.alert(ErrorHandler.NetworkError()), animated: true, completion: nil)
                     }
@@ -220,20 +220,14 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
     func showCourseDetail(tapGesture:UITapGestureRecognizer) {
         
         whichSection = tapGesture.view?.tag
-        self.performSegueWithIdentifier(SegueIdentifier.ShowCourseDetail, sender: nil)
+        self.performSegueWithIdentifier(R.segue.classTimeViewController.showCourseDetail, sender: nil)
         
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if let identifier = segue.identifier {
-            switch identifier {
-            case SegueIdentifier.ShowCourseDetail:
-                let vc = segue.destinationViewController as! CourseDetailTableViewController
-                vc.whichCourse = whichSection
-            default:
-                break
-            }
+        if let typeInfo = R.segue.classTimeViewController.showCourseDetail(segue: segue) {
+            typeInfo.destinationViewController.whichCourse = whichSection
         }
         
     }
