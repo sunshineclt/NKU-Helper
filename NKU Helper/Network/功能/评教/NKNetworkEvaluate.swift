@@ -19,6 +19,7 @@ protocol NKNetworkEvaluateProtocol {
 }
 
 /// 提供评教功能的网络库
+@objc(NKNetworkEvaluate)
 class NKNetworkEvaluate: NKNetworkBase {
 
     var delegate: NKNetworkEvaluateProtocol?
@@ -38,7 +39,8 @@ class NKNetworkEvaluate: NKNetworkBase {
         }
     }
     
-    private func loadEvaluateList(html: String) {
+    dynamic private func loadEvaluateList(html: String) {
+        //FIXME:
         let loc1 = (html as NSString).rangeOfString("<table bgcolor=\"#CCCCCC\" cellspacing")
         guard loc1.length > 0 else {
             self.delegate?.evaluateSystemNotOpen()

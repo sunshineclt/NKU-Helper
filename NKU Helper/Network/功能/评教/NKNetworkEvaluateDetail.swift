@@ -15,6 +15,7 @@ protocol NKNetworkEvaluateDetailProtocol {
 }
 
 /// 提供获取每门课详细评教信息的网络库
+@objc(NKNetworkEvaluateDetail)
 class NKNetworkEvaluateDetail: NKNetworkBase {
     
     var delegate: NKNetworkEvaluateDetailProtocol?
@@ -33,7 +34,8 @@ class NKNetworkEvaluateDetail: NKNetworkBase {
         }
     }
     
-    private func loadDetailEvaluateItem(html: String) {
+    dynamic private func loadDetailEvaluateItem(html: String) {
+        //FIXME:
         let regularExpression1 = try! NSRegularExpression(pattern: "(<table bgcolor=.#CCCCCC.*?>)(.*?)(</table>)", options: .DotMatchesLineSeparators)
         let matches = regularExpression1.matchesInString(html, options: .ReportProgress, range: NSMakeRange(0, (html as NSString).length))
         
