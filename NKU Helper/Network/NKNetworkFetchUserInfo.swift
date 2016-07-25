@@ -35,7 +35,6 @@ class NKNetworkFetchUserInfo: NKNetworkBase {
                 block(.NetworkError)
                 return
             }
-            print(html)
             guard let (name, timeEnteringSchool, departmentAdmitted, majorAdmitted) = self.analyzeHtml(html) else {
                 block(.AnalyzeError)
                 return
