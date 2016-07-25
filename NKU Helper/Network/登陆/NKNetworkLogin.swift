@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import JavaScriptCore
 import UIKit
 
 /**
@@ -28,13 +29,13 @@ enum LoginResult {
 /// 提供登录功能的网络库，使用时注意其生命周期
 class NKNetworkLogin: NKNetworkBase, UIWebViewDelegate {
     
-    typealias LoginResultBlock = (result: LoginResult)->Void
+    typealias LoginResultBlock = (result: LoginResult) -> Void
     
-    var block:LoginResultBlock?
-    var validateCode:String!
+    var block: LoginResultBlock?
+    var validateCode: String!
     
-    private var userID:String!
-    private var password:String!
+    private var userID: String!
+    private var password: String!
     
     /**
      使用验证码登陆
@@ -53,7 +54,8 @@ class NKNetworkLogin: NKNetworkBase, UIWebViewDelegate {
             userID = accountInfo.userID
             password = accountInfo.password
         } catch {
-            
+            block(result: .UserNameOrPasswordWrong)
+            return
         }
         
         let webView = UIWebView()
@@ -61,6 +63,7 @@ class NKNetworkLogin: NKNetworkBase, UIWebViewDelegate {
         view.addSubview(webView)
         let filePath = NSBundle.mainBundle().pathForResource("RSA", ofType: "html")
         webView.loadRequest(NSURLRequest(URL: NSURL(fileURLWithPath: filePath!)))
+        
     }
     
     /**
@@ -84,19 +87,18 @@ class NKNetworkLogin: NKNetworkBase, UIWebViewDelegate {
      - parameter webView: login时生成的webView
      */
     @objc internal func webViewDidFinishLoad(webView: UIWebView) {
-
         
         webView.stringByEvaluatingJavaScriptFromString("document.title = \"" + password + "\"")
         webView.stringByEvaluatingJavaScriptFromString("encryption()")
         let encryptedPassword = webView.stringByEvaluatingJavaScriptFromString("document.body.innerHTML")!
         
-        let url:NSURL = NSURL(string: "http://222.30.32.10/stdloginAction.do")!
-        let req:NSMutableURLRequest = NSMutableURLRequest(URL: url)
-        let data:NSString = NSString(format: "operation=&usercode_text=%@&userpwd_text=%@&checkcode_text=%@&submittype=%%C8%%B7+%%C8%%CF", userID, encryptedPassword, validateCode)
+        let url = NSURL(string: "http://222.30.32.10/stdloginAction.do")!
+        let req = NSMutableURLRequest(URL: url)
+        let data = NSString(format: "operation=&usercode_text=%@&userpwd_text=%@&checkcode_text=%@&submittype=%%C8%%B7+%%C8%%CF", userID, encryptedPassword, validateCode)
         req.HTTPBody = data.dataUsingEncoding(NSUTF8StringEncoding)
         req.HTTPMethod = "POST"
         
-        Alamofire.request(req).responseString { (response: Response<String, NSError>) -> Void in
+        Alamofire.request(req).responseString { (response) -> Void in
             guard let html = response.result.value as NSString? else {
                 self.block?(result: LoginResult.NetWorkError)
                 return
