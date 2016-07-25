@@ -54,7 +54,7 @@ class Grade {
             self.grade = .needRetake(grade: grade.doubleValue)
             return
         }
-        if (grade.doubleValue > 0) && (credit.doubleValue > 0) {
+        if (grade.doubleValue > 0) && (credit.doubleValue >= 0) {
             self.grade = .OK(grade: grade.doubleValue, credit: credit.doubleValue)
             return
         }
