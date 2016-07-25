@@ -22,6 +22,7 @@ class FunctionBaseTableViewController: UITableViewController {
                     self.doWork()
                 case .NotLoggedin:
                     NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.loginComplete), name: "loginComplete", object: nil)
+                    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.loginCancel), name: "loginCancel", object: nil)
                     self.performSegueWithIdentifier(R.segue.gradeShowerTableViewController.login.identifier, sender: "GradeShowerTableViewController")
                 case .UnKnown:
                     self.presentViewController(ErrorHandler.alert(ErrorHandler.NetworkError()), animated: true, completion: nil)
@@ -43,4 +44,8 @@ class FunctionBaseTableViewController: UITableViewController {
         
     }
     
+    func loginCancel() {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "loginCancel", object: nil)
+        self.navigationController?.popViewControllerAnimated(true)
+    }
 }

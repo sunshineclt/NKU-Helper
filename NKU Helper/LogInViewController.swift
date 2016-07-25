@@ -74,6 +74,7 @@ class LogInViewController: UIViewController, UIAlertViewDelegate, UIWebViewDeleg
     
     @IBAction func cancelButtonClicked(sender: UIBarButtonItem) {
         self.dismissViewControllerAnimated(true, completion: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName("loginCancel", object: self)
     }
     
     @IBAction func validateCodeTextFieldDidEnd(sender: AnyObject) {
