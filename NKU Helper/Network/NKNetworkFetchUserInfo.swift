@@ -44,7 +44,7 @@ class NKNetworkFetchUserInfo: NKNetworkBase {
         }
     }
 
-    func analyzeHtml(html: String) -> (name: String, timeEnteringSchool: String, departmentAdmitted: String, majorAdmitted: String)? {
+    private func analyzeHtml(html: String) -> (name: String, timeEnteringSchool: String, departmentAdmitted: String, majorAdmitted: String)? {
         if let name = findPropertyInHtml(html, para: "姓[^<>]*?名"),
             timeEnteringSchool = findPropertyInHtml(html, para: "入学时间"),
             departmentAdmitted = findPropertyInHtml(html, para: "录取院系"),
@@ -56,7 +56,7 @@ class NKNetworkFetchUserInfo: NKNetworkBase {
         }
     }
     
-    dynamic func findPropertyInHtml(html: String, para: String) -> String? {
+    dynamic private func findPropertyInHtml(html: String, para: String) -> String? {
         do {
             let reg = try NSRegularExpression(pattern: "<td[^>]*?DetailMsg[^>]*?>" + para + "</td>\\s*?<td[^>]*?NavText[^>]*?>([^<>]*?)</td>", options: .CaseInsensitive)
             let matches = reg.matchesInString(html, options: .ReportCompletion, range: NSMakeRange(0, (html as NSString).length))
