@@ -23,7 +23,7 @@ class NKNetworkValidateCodeGetter: NKNetworkBase {
      */
     func getValidateCodeWithBlock(block: ValidateCodeResult) {
         self.block = block
-        Alamofire.request(.GET, "http://222.30.32.10/ValidateCode").responseData { (response: Response<NSData, NSError>) -> Void in
+        Alamofire.request(.GET, "http://222.30.32.10/ValidateCode").responseData { (response) -> Void in
             if let data = response.result.value {
                 self.block?(data: data, err: nil)
             } else {
