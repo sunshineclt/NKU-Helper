@@ -150,7 +150,7 @@ extension TodayViewController:UITableViewDataSource, CheckBoxClickedDelegate {
         cell.nameTextField.enabled = true
         cell.nameTextField.delegate = self
         cell.checkBoxState = false
-        cell.checkBox.image = UIImage(named: "CheckBox.png")
+        cell.checkBox.image = R.image.checkBox()
         newToDo = cell.nameTextField
         return cell
     }

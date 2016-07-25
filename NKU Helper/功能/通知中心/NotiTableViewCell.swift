@@ -25,7 +25,7 @@ class NotiTableViewCell: UITableViewCell {
     
     var notiData:Notification! {
         didSet {
-            providerIcon.image = UIImage(named: "NanKai")!
+            providerIcon.image = R.image.nanKai()
             title.text = notiData.title
             content.text = notiData.text
             time.text = notiData.time

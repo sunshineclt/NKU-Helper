@@ -78,7 +78,7 @@
                         </connections>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <navigationItem key="navigationItem" title="课程表" id="hav-Ha-jI6" customClass="ClassTimeNavigationBar" customModule="NKU_Helper" customModuleProvider="target">
+                    <navigationItem key="navigationItem" title="课程表" id="hav-Ha-jI6">
                         <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="wyL-6p-yaK">
                             <connections>
                                 <action selector="refreshClassTimeTable:" destination="s3Y-Tb-7w6" id="8Ay-0P-fJD"/>

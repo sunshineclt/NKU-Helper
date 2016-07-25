@@ -21,7 +21,7 @@ class ToDoCell: UITableViewCell {
             tapGesture.numberOfTouchesRequired = 1
             tapGesture.delegate = self
             checkBox.addGestureRecognizer(tapGesture)
-            checkBox.image = UIImage(named: "checkBox")
+            checkBox.image = R.image.checkBox()
         }
     }
     @IBOutlet var nameTextField: UITextField!
@@ -30,7 +30,7 @@ class ToDoCell: UITableViewCell {
         didSet {
             self.nameTextField.text = thing.name
             self.checkBoxState = thing.done
-            self.checkBox.image = checkBoxState! ? UIImage(named: "CheckedBox") : UIImage(named: "CheckBox")
+            self.checkBox.image = checkBoxState! ? R.image.checkedBox() : R.image.checkBox()
         }
     }
     
@@ -38,7 +38,7 @@ class ToDoCell: UITableViewCell {
     var delegate: CheckBoxClickedDelegate!
     
     func CheckBoxClicked() {
-        checkBox.image = checkBoxState! ? UIImage(named: "CheckBox") : UIImage(named: "CheckedBox")
+        checkBox.image = checkBoxState! ? R.image.checkBox() : R.image.checkedBox()
         checkBoxState = !checkBoxState
         delegate?.saveCheckState(self)
     }

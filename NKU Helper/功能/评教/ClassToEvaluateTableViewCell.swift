@@ -13,7 +13,7 @@ class ClassToEvaluateTableViewCell: UITableViewCell {
     var classToEvaluate: ClassToEvaluate! {
         didSet {
             self.classNameAndTeacherNameLabel.text = classToEvaluate.className + " - " + classToEvaluate.teacherName
-            self.hasEvaluatedImageView.image = classToEvaluate.hasEvaluated ? UIImage(named: "classEvaluated") : UIImage(named: "classNotEvaluated")
+            self.hasEvaluatedImageView.image = classToEvaluate.hasEvaluated ? R.image.classEvaluated() : R.image.classNotEvaluated()
         }
     }
     
