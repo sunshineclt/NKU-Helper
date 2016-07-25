@@ -12,7 +12,6 @@ class GradeShowerTableViewController: FunctionBaseTableViewController, FunctionD
 
     var gradeResult = [Grade]()
     var GPA:Double = 0
-    var ABCGPA:Double = 0
     var whichMethod = 0
     
     @IBOutlet var MajorOrMinorSegmentControl: UISegmentedControl!
@@ -31,11 +30,10 @@ class GradeShowerTableViewController: FunctionBaseTableViewController, FunctionD
         doWork()
     }
     
-    func didSuccessToReceiveGradeData(grade grade: [Grade], abcgpa: Double) {
+    func didSuccessToReceiveGradeData(grade grade: [Grade]) {
         dispatch_async(dispatch_get_main_queue()) { () -> Void in
             SVProgressHUD.dismiss()
             self.gradeResult = grade
-            self.ABCGPA = abcgpa
             self.tableView.reloadData()
         }
     }
