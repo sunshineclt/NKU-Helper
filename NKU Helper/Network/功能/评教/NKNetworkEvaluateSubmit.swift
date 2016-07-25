@@ -39,7 +39,7 @@ class NKNetworkEvaluateSubmit: NKNetworkBase {
         req.HTTPBody = data.dataUsingEncoding(CFStringConvertEncodingToNSStringEncoding(0x0632))
         req.addValue("http://222.30.32.10/evaluate/stdevatea/queryTargetAction.do?operation=target&index=\(index)", forHTTPHeaderField: "Referer")
         req.HTTPMethod = "POST"
-        Alamofire.request(req).responseString { (response: Response<String, NSError>) -> Void in
+        Alamofire.request(req).responseString { (response) -> Void in
             if let html = response.result.value {
                 if (html as NSString).rangeOfString("成功保存").length > 0 {
                     self.delegate?.didSuccessToSubmit()

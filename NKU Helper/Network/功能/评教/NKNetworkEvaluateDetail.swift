@@ -24,7 +24,7 @@ class NKNetworkEvaluateDetail: NKNetworkBase {
      获取具体评教内容
      */
     func getDetailEvaluateItem(index: Int) {
-        Alamofire.request(.GET, "http://222.30.32.10/evaluate/stdevatea/queryTargetAction.do?operation=target&index=\(index)").responseString { (response: Response<String, NSError>) -> Void in
+        Alamofire.request(.GET, "http://222.30.32.10/evaluate/stdevatea/queryTargetAction.do?operation=target&index=\(index)").responseString { (response) -> Void in
             if let html = response.result.value {
                 self.loadDetailEvaluateItem(html)
             }

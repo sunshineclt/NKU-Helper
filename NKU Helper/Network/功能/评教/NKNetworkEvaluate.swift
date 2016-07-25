@@ -28,7 +28,7 @@ class NKNetworkEvaluate: NKNetworkBase {
      获取评教列表
      */
     func getEvaluateList() {
-        Alamofire.request(.GET, "http://222.30.32.10/evaluate/stdevatea/queryCourseAction.do").responseString { (response: Response<String, NSError>) -> Void in
+        Alamofire.request(.GET, "http://222.30.32.10/evaluate/stdevatea/queryCourseAction.do").responseString { (response) -> Void in
             if let html = response.result.value {
                 self.loadEvaluateList(html)
             }
