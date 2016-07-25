@@ -56,10 +56,10 @@ class SettingTableViewController: UITableViewController {
             do {
                 let user = try UserDetailInfoAgent.sharedInstance.getData()
                 let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.AccountCell) as! AccountTableViewCell
-                let timeEnteringSchool = (user.TimeEnteringSchool as NSString).substringWithRange(NSMakeRange(2, 2))
-                cell.nameLabel.text = user.Name
-                cell.userIDLabel.text = user.UserID
-                cell.departmentLabel.text = user.DepartmentAdmitted + (timeEnteringSchool as String) + "级本科生"
+                let timeEnteringSchool = (user.timeEnteringSchool as NSString).substringWithRange(NSMakeRange(2, 2))
+                cell.nameLabel.text = user.name
+                cell.userIDLabel.text = user.userID
+                cell.departmentLabel.text = user.departmentAdmitted + (timeEnteringSchool as String) + "级本科生"
                 return cell
             } catch {
                 let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.AddAccountCell)!

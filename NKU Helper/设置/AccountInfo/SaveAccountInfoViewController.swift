@@ -49,9 +49,14 @@ class SaveAccountInfoViewController: UIViewController, UIAlertViewDelegate, UITe
                 self.userInfoGetter.getAllAccountInfoWithBlock({ (result) -> Void in
                     switch result {
                     case .Success(let name, let timeEnteringSchool, let departmentAdmitted, let majorAdmitted):
-                        self.saveAccountInfo(name: name, timeEnteringSchool: timeEnteringSchool, departmentAdmitted: departmentAdmitted, majorAdmitted: majorAdmitted)
-                        self.navigationController?.popViewControllerAnimated(true)
-                        self.dismissViewControllerAnimated(true, completion: nil)
+                        let saveSuccess = self.saveAccountInfo(name: name, timeEnteringSchool: timeEnteringSchool, departmentAdmitted: departmentAdmitted, majorAdmitted: majorAdmitted)
+                        if saveSuccess {
+                            self.navigationController?.popViewControllerAnimated(true)
+                            self.dismissViewControllerAnimated(true, completion: nil)
+                        }
+                        else {
+                            self.presentViewController(ErrorHandler.alertWithAlertTitle("在钥匙串中存储密码失败", message: "请重试或通知开发者", cancelButtonTitle: "好"), animated: true, completion: nil)
+                        }
                     case .NetworkError:
                         self.presentViewController(ErrorHandler.alert(ErrorHandler.NetworkError()), animated: true, completion: nil)
                     }
@@ -68,20 +73,17 @@ class SaveAccountInfoViewController: UIViewController, UIAlertViewDelegate, UITe
         }
     }
     
-    func saveAccountInfo(name name:String, timeEnteringSchool:String, departmentAdmitted:String, majorAdmitted:String) {
-        let userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        let accountInfo:NSMutableDictionary = NSMutableDictionary()
-        accountInfo.setObject(userIDTextField.text!, forKey: "userID")
-        accountInfo.setObject(passwordTextField.text!, forKey: "password")
-        accountInfo.setObject(name, forKey: "name")
-        accountInfo.setObject(timeEnteringSchool, forKey: "timeEnteringSchool")
-        accountInfo.setObject(departmentAdmitted, forKey: "departmentAdmitted")
-        accountInfo.setObject(majorAdmitted, forKey: "majorAdmitted")
-        userDefaults.removeObjectForKey("accountInfo")
-        userDefaults.removeObjectForKey("courses")
-        userDefaults.removeObjectForKey("courseStatus")
-        userDefaults.setObject(accountInfo, forKey: "accountInfo")
-        userDefaults.synchronize()
+    func saveAccountInfo(name name:String, timeEnteringSchool:String, departmentAdmitted:String, majorAdmitted:String) -> Bool {
+        let userAgent = UserAgent.sharedInstance
+        let userDetailInfoAgent = UserDetailInfoAgent.sharedInstance
+        let user = User(userID: userIDTextField.text!, password: passwordTextField.text!, name: name, timeEnteringSchool: timeEnteringSchool, departmentAdmitted: departmentAdmitted, majorAdmitted: majorAdmitted)
+        userDetailInfoAgent.saveData(user)
+        do {
+            try userAgent.saveData(user)
+        } catch {
+            return false
+        }
+        return true
     }
     
     func refreshImage() {

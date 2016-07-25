@@ -50,8 +50,8 @@ class NKNetworkLogin: NKNetworkBase, UIWebViewDelegate {
         
         do {
             let accountInfo = try UserAgent().getData()
-            userID = accountInfo.UserID
-            password = accountInfo.Password
+            userID = accountInfo.userID
+            password = accountInfo.password
         } catch {
             
         }

@@ -18,5 +18,5 @@ protocol StoreProtocol {
     var key:String {get}
     
     func getData() throws -> dataForm
-    func saveData(data: dataForm)
+    func saveData(data: dataForm) throws
 }

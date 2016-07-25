@@ -99,9 +99,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, WXAp
         
         // 从1.x版本迁移到2.x版本
         func transferFromVersion1ToVersion2() {
+            // 迁移preferredColors数据
             let userDefaults = NSUserDefaults.standardUserDefaults()
             if let _ = userDefaults.objectForKey("preferredColors") {
                 userDefaults.removeObjectForKey("preferredColors")
+            }
+            // 迁移密码数据
+            if let userInfo = userDefaults.objectForKey(UserAgent.sharedInstance.key) as? NSDictionary {
+                if let password = userInfo.objectForKey("password") as? String {
+                    var user = try! UserDetailInfoAgent.sharedInstance.getData()
+                    user.password = password
+                    try! UserAgent.sharedInstance.deleteData()
+                    try! UserAgent.sharedInstance.saveData(user)
+                    UserDetailInfoAgent.sharedInstance.deleteData()
+                    UserDetailInfoAgent.sharedInstance.saveData(user)
+                }
             }
         }
         

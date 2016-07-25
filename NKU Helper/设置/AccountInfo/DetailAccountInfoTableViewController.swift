@@ -34,19 +34,19 @@ class DetailAccountInfoTableViewController: UITableViewController {
                 switch indexPath.row {
                 case 0:
                     cell.textLabel?.text = "姓名"
-                    cell.detailTextLabel?.text = userInfo.Name
+                    cell.detailTextLabel?.text = userInfo.name
                 case 1:
                     cell.textLabel?.text = "学号"
-                    cell.detailTextLabel?.text = userInfo.UserID
+                    cell.detailTextLabel?.text = userInfo.userID
                 case 2:
                     cell.textLabel?.text = "入学时间"
-                    cell.detailTextLabel?.text = userInfo.TimeEnteringSchool
+                    cell.detailTextLabel?.text = userInfo.timeEnteringSchool
                 case 3:
                     cell.textLabel?.text = "所在院系"
-                    cell.detailTextLabel?.text = userInfo.DepartmentAdmitted
+                    cell.detailTextLabel?.text = userInfo.departmentAdmitted
                 case 4:
                     cell.textLabel?.text = "所在专业"
-                    cell.detailTextLabel?.text = userInfo.MajorAdmitted
+                    cell.detailTextLabel?.text = userInfo.majorAdmitted
                 default:
                     break
                 }
@@ -65,12 +65,19 @@ class DetailAccountInfoTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.section == 1 {
             
-            let userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-            userDefaults.removeObjectForKey("accountInfo")
+            let userDefaults = NSUserDefaults.standardUserDefaults()
             userDefaults.removeObjectForKey("courses")
             userDefaults.removeObjectForKey("courseStatus")
             userDefaults.synchronize()
-            navigationController?.popToRootViewControllerAnimated(true)
+            let userAgent = UserAgent.sharedInstance
+            let userDetailInfoAgent = UserDetailInfoAgent.sharedInstance
+            do {
+                try userAgent.deleteData()
+                userDetailInfoAgent.deleteData()
+                navigationController?.popToRootViewControllerAnimated(true)
+            } catch {
+                self.presentViewController(ErrorHandler.alertWithAlertTitle("登出失败", message: "钥匙串密码删除失败，请重试", cancelButtonTitle: "好"), animated: true, completion: nil)
+            }
         }
     }
 
