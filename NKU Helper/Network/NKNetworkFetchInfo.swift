@@ -20,7 +20,7 @@ class NKNetworkFetchInfo: NKNetworkBase {
      */
     class func fetchNowWeek(completionHandler: (nowWeek: Int?, isVocation: Bool?) -> Void) {
         
-        Alamofire.request(.GET, NKNetworkBase.getURLStringByAppendingBaseURLWithPath("info/week")).responseJSON { (response: Response<AnyObject, NSError>) in
+        Alamofire.request(.GET, NKNetworkBase.getURLStringByAppendingBaseURLWithPath("info/week")).responseJSON { (response) in
             switch response.result {
             case .Success(let value):
                 let json = JSON(value)

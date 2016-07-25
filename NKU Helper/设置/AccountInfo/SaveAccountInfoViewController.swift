@@ -59,6 +59,8 @@ class SaveAccountInfoViewController: UIViewController, UIAlertViewDelegate, UITe
                         }
                     case .NetworkError:
                         self.presentViewController(ErrorHandler.alert(ErrorHandler.NetworkError()), animated: true, completion: nil)
+                    case .AnalyzeError:
+                        self.presentViewController(ErrorHandler.alert(ErrorHandler.HtmlAnalyseFail()), animated: true, completion: nil)
                     }
                 })
             case .UserNameOrPasswordWrong:
