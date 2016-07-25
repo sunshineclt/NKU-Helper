@@ -137,8 +137,6 @@ struct R: Rswift.Validatable {
     static let leftArrow = ImageResource(bundle: _R.hostingBundle, name: "leftArrow")
     /// Image `moreFunction`.
     static let moreFunction = ImageResource(bundle: _R.hostingBundle, name: "moreFunction")
-    /// Image `NanKai`.
-    static let nanKai = ImageResource(bundle: _R.hostingBundle, name: "NanKai")
     /// Image `notiCenter`.
     static let notiCenter = ImageResource(bundle: _R.hostingBundle, name: "notiCenter")
     /// Image `plus`.
@@ -155,6 +153,8 @@ struct R: Rswift.Validatable {
     static let 今天 = ImageResource(bundle: _R.hostingBundle, name: "今天")
     /// Image `功能`.
     static let 功能 = ImageResource(bundle: _R.hostingBundle, name: "功能")
+    /// Image `南开`.
+    static let 南开 = ImageResource(bundle: _R.hostingBundle, name: "南开")
     /// Image `米色白色渐变背景`.
     static let 米色白色渐变背景 = ImageResource(bundle: _R.hostingBundle, name: "米色白色渐变背景")
     /// Image `设置`.
@@ -232,11 +232,6 @@ struct R: Rswift.Validatable {
       return UIImage(resource: R.image.moreFunction, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "NanKai", bundle: ..., traitCollection: ...)`
-    static func nanKai(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.nanKai, compatibleWithTraitCollection: traitCollection)
-    }
-    
     /// `UIImage(named: "notiCenter", bundle: ..., traitCollection: ...)`
     static func notiCenter(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.notiCenter, compatibleWithTraitCollection: traitCollection)
@@ -275,6 +270,11 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "功能", bundle: ..., traitCollection: ...)`
     static func 功能(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.功能, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "南开", bundle: ..., traitCollection: ...)`
+    static func 南开(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.南开, compatibleWithTraitCollection: traitCollection)
     }
     
     /// `UIImage(named: "米色白色渐变背景", bundle: ..., traitCollection: ...)`
@@ -970,7 +970,7 @@ struct _R: Rswift.Validatable {
       }
       
       static func validate() throws {
-        if UIImage(named: "NanKai") == nil { throw ValidationError(description: "[R.swift] Image named 'NanKai' is used in storyboard 'NotiCenter', but couldn't be loaded.") }
+        if UIImage(named: "南开") == nil { throw ValidationError(description: "[R.swift] Image named '南开' is used in storyboard 'NotiCenter', but couldn't be loaded.") }
         if _R.storyboard.notiCenter().notiCenterTVC() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'notiCenterTVC' could not be loaded from storyboard 'NotiCenter' as 'NotiCenterTableViewController'.") }
         if _R.storyboard.notiCenter().notiDetailVC() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'notiDetailVC' could not be loaded from storyboard 'NotiCenter' as 'NotiDetailViewController'.") }
       }
@@ -1045,10 +1045,10 @@ struct _R: Rswift.Validatable {
       }
       
       static func validate() throws {
-        if UIImage(named: "米色白色渐变背景.png") == nil { throw ValidationError(description: "[R.swift] Image named '米色白色渐变背景.png' is used in storyboard 'Settings', but couldn't be loaded.") }
-        if UIImage(named: "NanKai") == nil { throw ValidationError(description: "[R.swift] Image named 'NanKai' is used in storyboard 'Settings', but couldn't be loaded.") }
-        if UIImage(named: "设置") == nil { throw ValidationError(description: "[R.swift] Image named '设置' is used in storyboard 'Settings', but couldn't be loaded.") }
         if UIImage(named: "slogan.png") == nil { throw ValidationError(description: "[R.swift] Image named 'slogan.png' is used in storyboard 'Settings', but couldn't be loaded.") }
+        if UIImage(named: "南开") == nil { throw ValidationError(description: "[R.swift] Image named '南开' is used in storyboard 'Settings', but couldn't be loaded.") }
+        if UIImage(named: "设置") == nil { throw ValidationError(description: "[R.swift] Image named '设置' is used in storyboard 'Settings', but couldn't be loaded.") }
+        if UIImage(named: "米色白色渐变背景.png") == nil { throw ValidationError(description: "[R.swift] Image named '米色白色渐变背景.png' is used in storyboard 'Settings', but couldn't be loaded.") }
         if _R.storyboard.settings().settingsVC() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'settingsVC' could not be loaded from storyboard 'Settings' as 'SettingTableViewController'.") }
         if _R.storyboard.settings().aboutVC() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'aboutVC' could not be loaded from storyboard 'Settings' as 'AboutViewController'.") }
         if _R.storyboard.settings().colorChooseTVC() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'colorChooseTVC' could not be loaded from storyboard 'Settings' as 'ColorChooseTableViewController'.") }

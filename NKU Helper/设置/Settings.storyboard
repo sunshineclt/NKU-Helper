@@ -207,7 +207,7 @@
                                 <color key="textColor" red="0.49803921580314636" green="0.54901963472366333" blue="0.55294120311737061" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NanKai" translatesAutoresizingMaskIntoConstraints="NO" id="Zad-EF-XST">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="南开" translatesAutoresizingMaskIntoConstraints="NO" id="Zad-EF-XST">
                                 <rect key="frame" x="200" y="50" width="200" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="4yK-Tr-5q2"/>
@@ -546,8 +546,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="NanKai" width="200" height="200"/>
         <image name="slogan.png" width="500" height="212"/>
+        <image name="南开" width="200" height="200"/>
         <image name="米色白色渐变背景.png" width="1000" height="1000"/>
         <image name="设置" width="25" height="25"/>
     </resources>
