@@ -31,18 +31,16 @@ class NKNetworkIsLogin: NKNetworkBase {
      */
     class func isLoggedin() -> NKNetworkLoginStatus {
         let receivedData = NSData(contentsOfURL: NSURL(string: "http://222.30.32.10/xsxk/selectedAction.do?operation=kebiao")!)
-        if let _ = receivedData {
-            let encoding:NSStringEncoding = CFStringConvertEncodingToNSStringEncoding(0x0632)
-            let html:NSString = NSString(data: receivedData!, encoding: encoding)!
-            if html.rangeOfString("星期一").length > 0 {
-                return .Loggedin
-            }
-            else{
-                return .NotLoggedin
-            }
-        }
-        else {
+        guard let _ = receivedData else {
             return .UnKnown
+        }
+        let encoding = CFStringConvertEncodingToNSStringEncoding(0x0632)
+        let html = NSString(data: receivedData!, encoding: encoding)!
+        if html.rangeOfString("星期一").length > 0 {
+            return .Loggedin
+        }
+        else{
+            return .NotLoggedin
         }
         
     }
