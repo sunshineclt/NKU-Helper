@@ -16,34 +16,20 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.file` struct is generated, and contains static references to 10 files.
+  /// This `R.file` struct is generated, and contains static references to 6 files.
   struct file {
-    /// Resource file `AccountInfo`.
-    static let accountInfo = FileResource(bundle: _R.hostingBundle, name: "AccountInfo", pathExtension: "")
     /// Resource file `Colors.realm`.
     static let colorsRealm = FileResource(bundle: _R.hostingBundle, name: "Colors", pathExtension: "realm")
     /// Resource file `1.jpg`.
     static let jpg = FileResource(bundle: _R.hostingBundle, name: "1", pathExtension: "jpg")
-    /// Resource file `LICENSE.txt`.
-    static let lICENSETxt = FileResource(bundle: _R.hostingBundle, name: "LICENSE", pathExtension: "txt")
     /// Resource file `NKU.plist`.
     static let nKUPlist = FileResource(bundle: _R.hostingBundle, name: "NKU", pathExtension: "plist")
     /// Resource file `RSA.html`.
     static let rSAHtml = FileResource(bundle: _R.hostingBundle, name: "RSA", pathExtension: "html")
     /// Resource file `slogan.png`.
     static let sloganPng = FileResource(bundle: _R.hostingBundle, name: "slogan", pathExtension: "png")
-    /// Resource file `.travis.yml`.
-    static let travisYml = FileResource(bundle: _R.hostingBundle, name: ".travis", pathExtension: "yml")
-    /// Resource file `VersionLog.md`.
-    static let versionLogMd = FileResource(bundle: _R.hostingBundle, name: "VersionLog", pathExtension: "md")
     /// Resource file `米色白色渐变背景.png`.
     static let 米色白色渐变背景Png = FileResource(bundle: _R.hostingBundle, name: "米色白色渐变背景", pathExtension: "png")
-    
-    /// `bundle.URLForResource("AccountInfo", withExtension: "")`
-    static func accountInfo(_: Void) -> NSURL? {
-      let fileResource = R.file.accountInfo
-      return fileResource.bundle.URLForResource(fileResource)
-    }
     
     /// `bundle.URLForResource("Colors", withExtension: "realm")`
     static func colorsRealm(_: Void) -> NSURL? {
@@ -54,12 +40,6 @@ struct R: Rswift.Validatable {
     /// `bundle.URLForResource("1", withExtension: "jpg")`
     static func jpg(_: Void) -> NSURL? {
       let fileResource = R.file.jpg
-      return fileResource.bundle.URLForResource(fileResource)
-    }
-    
-    /// `bundle.URLForResource("LICENSE", withExtension: "txt")`
-    static func lICENSETxt(_: Void) -> NSURL? {
-      let fileResource = R.file.lICENSETxt
       return fileResource.bundle.URLForResource(fileResource)
     }
     
@@ -78,18 +58,6 @@ struct R: Rswift.Validatable {
     /// `bundle.URLForResource("slogan", withExtension: "png")`
     static func sloganPng(_: Void) -> NSURL? {
       let fileResource = R.file.sloganPng
-      return fileResource.bundle.URLForResource(fileResource)
-    }
-    
-    /// `bundle.URLForResource(".travis", withExtension: "yml")`
-    static func travisYml(_: Void) -> NSURL? {
-      let fileResource = R.file.travisYml
-      return fileResource.bundle.URLForResource(fileResource)
-    }
-    
-    /// `bundle.URLForResource("VersionLog", withExtension: "md")`
-    static func versionLogMd(_: Void) -> NSURL? {
-      let fileResource = R.file.versionLogMd
       return fileResource.bundle.URLForResource(fileResource)
     }
     
