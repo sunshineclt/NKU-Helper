@@ -19,7 +19,6 @@ class EvaluateDetailTableViewController: UITableViewController {
                     detailEvaluateGrade.append("\(question.grade)")
                 }
             }
-            
         }
     }
     var detailEvaluateGrade = [String]()
@@ -44,10 +43,8 @@ class EvaluateDetailTableViewController: UITableViewController {
 extension EvaluateDetailTableViewController: NKNetworkEvaluateDetailProtocol {
     
     func didNetworkFail() {
-        dispatch_async(dispatch_get_main_queue()) { () -> Void in
-            SVProgressHUD.dismiss()
-            self.presentViewController(ErrorHandler.alert(ErrorHandler.NetworkError()), animated: true, completion: nil)
-        }
+        SVProgressHUD.dismiss()
+        self.presentViewController(ErrorHandler.alert(ErrorHandler.NetworkError()), animated: true, completion: nil)
     }
     
     func didSuccess(detailEvaluateList: [DetailEvaluateSection]) {
@@ -137,17 +134,13 @@ extension EvaluateDetailTableViewController: EvaluateDetailStepperProtocol {
 extension EvaluateDetailTableViewController: NKNetworkEvaluateSubmitProtocol {
     
     func didFailToSubmit() {
-        dispatch_async(dispatch_get_main_queue()) { () -> Void in
-            SVProgressHUD.dismiss()
-            self.presentViewController(ErrorHandler.alert(ErrorHandler.EvaluateSubmitFail()), animated: true, completion: nil)
-        }
+        SVProgressHUD.dismiss()
+        self.presentViewController(ErrorHandler.alert(ErrorHandler.EvaluateSubmitFail()), animated: true, completion: nil)
     }
     
     func didSuccessToSubmit() {
-        dispatch_async(dispatch_get_main_queue()) { () -> Void in
-            SVProgressHUD.dismiss()
-            NSNotificationCenter.defaultCenter().postNotificationName("evaluateSubmitSuccess", object: nil)
-            self.navigationController?.popViewControllerAnimated(true)
-        }
+        SVProgressHUD.dismiss()
+        NSNotificationCenter.defaultCenter().postNotificationName("evaluateSubmitSuccess", object: nil)
+        self.navigationController?.popViewControllerAnimated(true)
     }
 }

@@ -588,14 +588,14 @@
 		E95F93DB1C50CE9100CEEC12 /* 评教 */ = {
 			isa = PBXGroup;
 			children = (
-				E95F93E01C50EF2800CEEC12 /* ClassToEvaluate.swift */,
-				E95F93E21C50F7E100CEEC12 /* ClassToEvaluateTableViewCell.swift */,
-				E95F93EA1C512B8B00CEEC12 /* DetailEvaluateInfo.swift */,
 				E9693E4D1D3294FA00D6135B /* Evaluate.storyboard */,
-				E95F93E61C50FE8800CEEC12 /* EvaluateDetailTableViewCell.swift */,
-				E95F93E41C50FAEB00CEEC12 /* EvaluateDetailTableViewController.swift */,
-				E95F93EC1C51377300CEEC12 /* EvaluateOpinionTableViewCell.swift */,
 				E95F93DC1C50CEAA00CEEC12 /* EvaluateTableViewController.swift */,
+				E95F93E21C50F7E100CEEC12 /* ClassToEvaluateTableViewCell.swift */,
+				E95F93E01C50EF2800CEEC12 /* ClassToEvaluate.swift */,
+				E95F93E41C50FAEB00CEEC12 /* EvaluateDetailTableViewController.swift */,
+				E95F93E61C50FE8800CEEC12 /* EvaluateDetailTableViewCell.swift */,
+				E95F93EC1C51377300CEEC12 /* EvaluateOpinionTableViewCell.swift */,
+				E95F93EA1C512B8B00CEEC12 /* DetailEvaluateInfo.swift */,
 			);
 			path = "评教";
 			sourceTree = "<group>";

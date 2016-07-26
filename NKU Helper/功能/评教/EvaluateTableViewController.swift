@@ -14,7 +14,7 @@ class EvaluateTableViewController: FunctionBaseTableViewController, FunctionDele
         super.viewDidLoad()
         self.tableView.emptyDataSetDelegate = self
         self.tableView.emptyDataSetSource = self
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EvaluateTableViewController.evaluateSubmitDidSuccess), name: "evaluateSubmitSuccess", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EvaluateTableViewController.doWork), name: "evaluateSubmitSuccess", object: nil)
     }
     
     override func doWork() {
@@ -28,13 +28,6 @@ class EvaluateTableViewController: FunctionBaseTableViewController, FunctionDele
         NSNotificationCenter.defaultCenter().removeObserver(self, name: "loginComplete", object: nil)
         doWork()
     }
-
-    func evaluateSubmitDidSuccess() {
-        let evaluater = NKNetworkEvaluate()
-        evaluater.delegate = self
-        SVProgressHUD.show()
-        evaluater.getEvaluateList()
-    }
     
     var classesToEvaluate = [ClassToEvaluate]()
     
@@ -45,17 +38,13 @@ class EvaluateTableViewController: FunctionBaseTableViewController, FunctionDele
 extension EvaluateTableViewController: NKNetworkEvaluateProtocol {
     
     func didNetworkFail() {
-        dispatch_async(dispatch_get_main_queue()) { () -> Void in
-            SVProgressHUD.dismiss()
-            self.presentViewController(ErrorHandler.alert(ErrorHandler.NetworkError()), animated: true, completion: nil)
-        }
+        SVProgressHUD.dismiss()
+        self.presentViewController(ErrorHandler.alert(ErrorHandler.NetworkError()), animated: true, completion: nil)
     }
     
     func evaluateSystemNotOpen() {
-        dispatch_async(dispatch_get_main_queue()) { () -> Void in
-            SVProgressHUD.dismiss()
-            self.presentViewController(ErrorHandler.alert(ErrorHandler.EvaluateSystemNotOpen()), animated: true, completion: nil)
-        }
+        SVProgressHUD.dismiss()
+        self.presentViewController(ErrorHandler.alert(ErrorHandler.EvaluateSystemNotOpen()), animated: true, completion: nil)
     }
     
     func didGetEvaluateList(lessonsToEvaluate: [ClassToEvaluate]) {
@@ -104,6 +93,5 @@ extension EvaluateTableViewController {
 extension EvaluateTableViewController: DZNEmptyDataSetDelegate, DZNEmptyDataSetSource {
     func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
         return NSAttributedString(string: "没有评教信息", attributes: [NSForegroundColorAttributeName : UIColor(red: 160/255, green: 160/255, blue: 160/255, alpha: 1), NSFontAttributeName : UIFont(name: "HelveticaNeue", size: 15)!])
-
     }
 }
