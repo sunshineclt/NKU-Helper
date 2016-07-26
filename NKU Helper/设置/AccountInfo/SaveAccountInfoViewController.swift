@@ -17,7 +17,6 @@ class SaveAccountInfoViewController: UIViewController, UIAlertViewDelegate, UITe
     @IBOutlet var validateCodeTextField: UITextField!
     @IBOutlet var validateCodeImageView: UIImageView!
     @IBOutlet var loginButton: UIButton!
-    
     @IBOutlet var imageLoadActivityIndicator: UIActivityIndicatorView! {didSet{imageLoadActivityIndicator.hidesWhenStopped = true}}
     
     var progressHud:MBProgressHUD!
@@ -93,12 +92,11 @@ class SaveAccountInfoViewController: UIViewController, UIAlertViewDelegate, UITe
         let validateCodeGetter = NKNetworkValidateCodeGetter()
         validateCodeGetter.getValidateCodeWithBlock { (data, err) -> Void in
             self.imageLoadActivityIndicator.stopAnimating()
-            if let _ = err {
+            guard err == nil else {
                 self.presentViewController(ErrorHandler.alert(ErrorHandler.NetworkError()), animated: true, completion: nil)
+                return
             }
-            else {
-                self.validateCodeImageView.image = UIImage(data: data!)
-            }
+            self.validateCodeImageView.image = UIImage(data: data!)
         }
     }
         

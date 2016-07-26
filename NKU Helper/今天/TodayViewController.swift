@@ -45,19 +45,16 @@ class TodayViewController: UIViewController {
     
 // MARK: VC Life Cycle
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        
         courseTableView.estimatedRowHeight = 200
         courseTableView.rowHeight = UITableViewAutomaticDimension
         ThingToDo.updateStoredThings()
         thingsToDo = ThingToDo.getThings()
         self.thingsTableView.tableFooterView = UIView()
-        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.hasLogout), name: "logout", object: nil)
     }
     
     override func viewDidAppear(animated: Bool) {
-        
         super.viewDidAppear(animated)
         
         newToDo?.becomeFirstResponder()
@@ -75,7 +72,6 @@ class TodayViewController: UIViewController {
         } catch {
             
         }
-        
     }
 
 // MARK: 事件监听
@@ -88,6 +84,10 @@ class TodayViewController: UIViewController {
         }
         thingsTableView.reloadData()
         CATransaction.commit()
+    }
+    
+    func hasLogout() {
+        self.courseTableView.reloadData()
     }
     
 // MARK: 页面间跳转

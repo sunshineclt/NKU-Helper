@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AccountCell" id="iCw-B2-atE" customClass="AccountTableViewCell" customModule="NKU_Helper" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AccountCell" id="iCw-B2-atE" customClass="AccountTableViewCell" customModule="NKU_Helper" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="113.5" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iCw-B2-atE" id="JL1-iB-kV5">
@@ -69,7 +69,7 @@
                                     <segue destination="MfM-hN-8u3" kind="show" identifier="ShowDetailAccountInfo" id="7jr-DI-DQz"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AddAccountCell" textLabel="gD8-m4-Lys" detailTextLabel="5f6-2n-OjW" rowHeight="44" style="IBUITableViewCellStyleSubtitle" id="lRm-kS-FaN">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AddAccountCell" textLabel="gD8-m4-Lys" detailTextLabel="5f6-2n-OjW" rowHeight="44" style="IBUITableViewCellStyleSubtitle" id="lRm-kS-FaN">
                                 <rect key="frame" x="0.0" y="157.5" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lRm-kS-FaN" id="UXO-FN-jFW">
@@ -96,7 +96,7 @@
                                     <segue destination="37A-HT-9kh" kind="show" id="dVo-xk-gLV"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ChoosePreferredColorCell" textLabel="NSl-Gp-cJE" detailTextLabel="zxw-zs-lj8" rowHeight="44" style="IBUITableViewCellStyleValue1" id="d6C-cd-5pC">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ChoosePreferredColorCell" textLabel="NSl-Gp-cJE" detailTextLabel="zxw-zs-lj8" rowHeight="44" style="IBUITableViewCellStyleValue1" id="d6C-cd-5pC">
                                 <rect key="frame" x="0.0" y="201.5" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="d6C-cd-5pC" id="K8R-7u-J21">
@@ -123,7 +123,7 @@
                                     <segue destination="m9f-EW-dBc" kind="show" identifier="ShowChoosePreferredColor" id="KOZ-Gn-49b"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SupportGroupCell" textLabel="4Kf-6N-RP6" rowHeight="44" style="IBUITableViewCellStyleDefault" id="zBX-T7-u2E" customClass="ColorTableViewCell" customModule="NKU_Helper" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SupportGroupCell" textLabel="4Kf-6N-RP6" rowHeight="44" style="IBUITableViewCellStyleDefault" id="zBX-T7-u2E">
                                 <rect key="frame" x="0.0" y="245.5" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zBX-T7-u2E" id="eh4-zF-7Og">
@@ -139,11 +139,8 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="colorLabel" destination="4Kf-6N-RP6" id="W6X-f2-5yb"/>
-                                </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AboutCell" textLabel="MFB-Uu-GqY" rowHeight="44" style="IBUITableViewCellStyleDefault" id="tn3-MI-PzO" customClass="ColorTableViewCell" customModule="NKU_Helper" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AboutCell" textLabel="MFB-Uu-GqY" rowHeight="44" style="IBUITableViewCellStyleDefault" id="tn3-MI-PzO">
                                 <rect key="frame" x="0.0" y="289.5" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tn3-MI-PzO" id="bNf-5A-RPI">
@@ -160,7 +157,6 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="colorLabel" destination="MFB-Uu-GqY" id="dof-pO-mVN"/>
                                     <segue destination="IVh-3I-IHZ" kind="presentation" identifier="ShowAbout" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="JLH-iu-Tf3"/>
                                 </connections>
                             </tableViewCell>

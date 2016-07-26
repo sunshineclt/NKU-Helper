@@ -112,7 +112,6 @@
 		E9B5779C1D38D69F0054F7E8 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = E9B5779B1D38D69F0054F7E8 /* LICENSE.txt */; };
 		E9B5779E1D38DE310054F7E8 /* ClassView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9B5779D1D38DE310054F7E8 /* ClassView.xib */; };
 		E9B8C4AF1AA82D6E00E0DD50 /* AccountInfo in Resources */ = {isa = PBXBuildFile; fileRef = E9B8C4AE1AA82D6E00E0DD50 /* AccountInfo */; };
-		E9B8C5C41BBA7CBE00CFDE19 /* ColorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B8C5C31BBA7CBE00CFDE19 /* ColorTableViewCell.swift */; };
 		E9C2ECC01B183E8B005C1F5F /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9C2ECBF1B183E8B005C1F5F /* MessageUI.framework */; };
 		E9C3EF5A1BB2BCB600D1C91D /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C3EF591BB2BCB600D1C91D /* ErrorHandler.swift */; };
 		E9CA9C901C4272BC0030AF49 /* StoreAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CA9C8F1C4272BC0030AF49 /* StoreAgent.swift */; };
@@ -274,7 +273,6 @@
 		E9B5779B1D38D69F0054F7E8 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		E9B5779D1D38DE310054F7E8 /* ClassView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClassView.xib; sourceTree = "<group>"; };
 		E9B8C4AE1AA82D6E00E0DD50 /* AccountInfo */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AccountInfo; sourceTree = "<group>"; };
-		E9B8C5C31BBA7CBE00CFDE19 /* ColorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTableViewCell.swift; sourceTree = "<group>"; };
 		E9C2ECBF1B183E8B005C1F5F /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		E9C3EF591BB2BCB600D1C91D /* ErrorHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		E9CA9C8F1C4272BC0030AF49 /* StoreAgent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreAgent.swift; sourceTree = "<group>"; };
@@ -605,7 +603,6 @@
 			children = (
 				E9CCF4B91ABC6578002076F2 /* ColorChooseTableViewCell.swift */,
 				E9CCF4B71ABC653E002076F2 /* ColorChooseTableViewController.swift */,
-				E9B8C5C31BBA7CBE00CFDE19 /* ColorTableViewCell.swift */,
 			);
 			path = PreferredColors;
 			sourceTree = "<group>";
@@ -1051,7 +1048,6 @@
 				E95F93D91C4FC04500CEEC12 /* NKNetworkFetchUserInfo.swift in Sources */,
 				E93083BC1D3CA8AE000FC8E8 /* GPACell.swift in Sources */,
 				E99D67131C16F6E800E27B08 /* NotiTableViewCell.swift in Sources */,
-				E9B8C5C41BBA7CBE00CFDE19 /* ColorTableViewCell.swift in Sources */,
 				E94BD97A1BABE9A500B76E03 /* TodayViewController.swift in Sources */,
 				E98F94D61AA3180700885992 /* ClassTimeViewController.swift in Sources */,
 				E99D675C1C17401B00E27B08 /* NotiDetailViewController.swift in Sources */,

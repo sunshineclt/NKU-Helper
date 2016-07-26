@@ -45,25 +45,15 @@ class NKNetworkLogin: NKNetworkBase, UIWebViewDelegate {
      - parameter block:        返回闭包
      */
     func loginWithValidateCode(validateCode: String, onView view:UIView, andBlock block:LoginResultBlock) {
-     
-        self.block = block
-        self.validateCode = validateCode
-        
         do {
             let accountInfo = try UserAgent().getData()
-            userID = accountInfo.userID
-            password = accountInfo.password
+            let userID = accountInfo.userID
+            let password = accountInfo.password
+            loginWithID(userID, password: password, validateCode: validateCode, onView: view, andBlock: block)
         } catch {
             block(result: .UserNameOrPasswordWrong)
             return
         }
-        
-        let webView = UIWebView()
-        webView.delegate = self
-        view.addSubview(webView)
-        let filePath = NSBundle.mainBundle().pathForResource("RSA", ofType: "html")
-        webView.loadRequest(NSURLRequest(URL: NSURL(fileURLWithPath: filePath!)))
-        
     }
     
     /**
@@ -78,7 +68,14 @@ class NKNetworkLogin: NKNetworkBase, UIWebViewDelegate {
     func loginWithID(ID: String, password: String, validateCode: String, onView view: UIView, andBlock block:LoginResultBlock) {
         self.userID = ID
         self.password = password
-        loginWithValidateCode(validateCode, onView: view, andBlock: block)
+        self.validateCode = validateCode
+        self.block = block
+        
+        let webView = UIWebView()
+        webView.delegate = self
+        view.addSubview(webView)
+        let filePath = NSBundle.mainBundle().pathForResource("RSA", ofType: "html")
+        webView.loadRequest(NSURLRequest(URL: NSURL(fileURLWithPath: filePath!)))
     }
     
     /**

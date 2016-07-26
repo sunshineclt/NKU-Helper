@@ -333,7 +333,7 @@ struct R: Rswift.Validatable {
   /// This `R.reuseIdentifier` struct is generated, and contains static references to 29 reuse identifiers.
   struct reuseIdentifier {
     /// Reuse identifier `AboutCell`.
-    static let aboutCell: ReuseIdentifier<ColorTableViewCell> = ReuseIdentifier(identifier: "AboutCell")
+    static let aboutCell: ReuseIdentifier<UITableViewCell> = ReuseIdentifier(identifier: "AboutCell")
     /// Reuse identifier `AccountCell`.
     static let accountCell: ReuseIdentifier<AccountTableViewCell> = ReuseIdentifier(identifier: "AccountCell")
     /// Reuse identifier `AccountInfoCell`.
@@ -383,7 +383,7 @@ struct R: Rswift.Validatable {
     /// Reuse identifier `SelectCourseCenterCell`.
     static let selectCourseCenterCell: ReuseIdentifier<UITableViewCell> = ReuseIdentifier(identifier: "SelectCourseCenterCell")
     /// Reuse identifier `SupportGroupCell`.
-    static let supportGroupCell: ReuseIdentifier<ColorTableViewCell> = ReuseIdentifier(identifier: "SupportGroupCell")
+    static let supportGroupCell: ReuseIdentifier<UITableViewCell> = ReuseIdentifier(identifier: "SupportGroupCell")
     /// Reuse identifier `TestTimeCell`.
     static let testTimeCell: ReuseIdentifier<TestTimeTableViewCell> = ReuseIdentifier(identifier: "TestTimeCell")
     /// Reuse identifier `TestTimeSearchCell`.

@@ -64,7 +64,6 @@ class DetailAccountInfoTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.section == 1 {
-            
             let userDefaults = NSUserDefaults.standardUserDefaults()
             userDefaults.removeObjectForKey("courses")
             userDefaults.removeObjectForKey("courseStatus")
@@ -74,6 +73,7 @@ class DetailAccountInfoTableViewController: UITableViewController {
             do {
                 try userAgent.deleteData()
                 userDetailInfoAgent.deleteData()
+                NSNotificationCenter.defaultCenter().postNotificationName("logout", object: self)
                 navigationController?.popToRootViewControllerAnimated(true)
             } catch {
                 self.presentViewController(ErrorHandler.alertWithAlertTitle("登出失败", message: "钥匙串密码删除失败，请重试", cancelButtonTitle: "好"), animated: true, completion: nil)

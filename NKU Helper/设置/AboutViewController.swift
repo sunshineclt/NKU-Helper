@@ -20,7 +20,6 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     }
     
     @IBAction func mailSetup(sender: UIButton) {
-        
         if (!MFMailComposeViewController.canSendMail()) {
             let alertVC = ErrorHandler.alertWithAlertTitle("无法发送邮件", message: "请检查邮件设置", cancelButtonTitle: "好")
             presentViewController(alertVC, animated: true, completion: nil)
@@ -41,7 +40,6 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     
     @IBAction func backwardAction(sender: UIButton) {
         self.dismissViewControllerAnimated(true, completion: nil)
-        
     }
 
 }

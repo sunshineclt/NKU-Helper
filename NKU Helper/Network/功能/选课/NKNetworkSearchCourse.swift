@@ -58,8 +58,7 @@ class NKNetworkSearchCourse: NKNetworkBase{
                     searchResult.append(courseSelecting)
                 }
                 self.delegate?.didReceiveSearchResult(searchResult)
-            case .Failure(let error):
-                print(error)
+            case .Failure( _):
                 self.delegate?.didFailToReceiveSearchResult("网络错误")
             }
             

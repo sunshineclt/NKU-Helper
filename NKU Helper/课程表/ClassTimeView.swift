@@ -108,6 +108,9 @@ class ClassTimeView: UIView {
         }
         
         // 绘制课程表的背景
+        for view in classScrollView.subviews {
+            view.removeFromSuperview()
+        }
         classScrollView.contentSize = CGSizeMake(columnWidth * 7, rowHeight*14)
         for i in 0...13 {
             let rowBackgroundView = UIView(frame: CGRectMake(0, CGFloat(i) * rowHeight, columnWidth * 7, rowHeight))

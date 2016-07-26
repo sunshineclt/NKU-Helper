@@ -24,6 +24,8 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
     
     override func viewDidLoad() {
 
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.hasLogout), name: "logout", object: nil)
+        
         self.classTimeView.classScrollView.delegate = self
         self.classTimeView.headScrollView.delegate = self
         self.classTimeView.drawBackground()
@@ -75,6 +77,10 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
         self.classTimeView.drawBackground()
         self.classTimeView.drawClassTimeTableOnViewController(self)
+    }
+    
+    func hasLogout() {
+        self.classTimeView.drawBackground()
     }
     
 // MARK: NKNetworkLoadCourseDelegate

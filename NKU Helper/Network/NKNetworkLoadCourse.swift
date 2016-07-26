@@ -33,7 +33,6 @@ class NKNetworkLoadCourse: NKNetworkBase {
                 self.delegate?.didFailToReceiveCourseData()
                 return
             }
-            print(html)
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { 
                 self.loadAllCourseInfoWithHtml(html)
                 self.delegate?.didSuccessToReceiveCourseData()
