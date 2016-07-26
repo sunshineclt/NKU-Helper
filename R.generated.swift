@@ -1072,8 +1072,6 @@ struct _R: Rswift.Validatable {
       }
       
       static func validate() throws {
-        if UIImage(named: "watch") == nil { throw ValidationError(description: "[R.swift] Image named 'watch' is used in storyboard 'TestTimeSearch', but couldn't be loaded.") }
-        if UIImage(named: "downArrow") == nil { throw ValidationError(description: "[R.swift] Image named 'downArrow' is used in storyboard 'TestTimeSearch', but couldn't be loaded.") }
         if UIImage(named: "building") == nil { throw ValidationError(description: "[R.swift] Image named 'building' is used in storyboard 'TestTimeSearch', but couldn't be loaded.") }
         if _R.storyboard.testTimeSearch().testTimeTVC() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'testTimeTVC' could not be loaded from storyboard 'TestTimeSearch' as 'TestTimeTableViewController'.") }
       }

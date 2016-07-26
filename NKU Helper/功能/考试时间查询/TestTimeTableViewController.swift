@@ -10,12 +10,14 @@ import UIKit
 
 class TestTimeTableViewController: FunctionBaseTableViewController, FunctionDelegate {
 
-    var testTime = [[String:String]]()
+    var testTime = [ClassTestTime]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.emptyDataSetDelegate = self
         self.tableView.emptyDataSetSource = self
+        self.tableView.estimatedRowHeight = 80
+        self.tableView.rowHeight = UITableViewAutomaticDimension
     }
     
     override func doWork() {
@@ -41,23 +43,33 @@ class TestTimeTableViewController: FunctionBaseTableViewController, FunctionDele
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return ClassTestTime.getWeekArray(testTime).count
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return testTime.count
+        let week = ClassTestTime.getWeekArray(testTime)[section]
+        return testTime.filter({ (one) -> Bool in
+            return one.week == week
+        }).count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.testTimeCell.identifier) as! TestTimeTableViewCell
         
-        let cell:TestTimeTableViewCell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.testTimeCell.identifier) as! TestTimeTableViewCell
-        
-        cell.classNameLabel.text = testTime[indexPath.row]["className"]
-        cell.classroomLabel.text = testTime[indexPath.row]["classroom"]
-        cell.startTimeLabel.text = testTime[indexPath.row]["startTime"]
-        cell.endTimeLabel.text = testTime[indexPath.row]["endTime"]
-        cell.weekdayLabel.text = testTime[indexPath.row]["weekday"]
+        let week = ClassTestTime.getWeekArray(testTime)[indexPath.section]
+        let now = testTime.filter({ (one) -> Bool in
+            return one.week == week
+        })[indexPath.row]
+        cell.classNameLabel.text = now.className
+        cell.classroomLabel.text = now.classroom
+        cell.dayLabel.text = now.getDayString() + " " + CalendarHelper.getWeekdayStringFromWeekdayInt(now.weekday)
+        cell.timeLabel.text = now.getTimeString()
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let week = ClassTestTime.getWeekArray(testTime)[section]
+        return "第\(week)周"
     }
     
 }

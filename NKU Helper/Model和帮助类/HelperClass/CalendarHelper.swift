@@ -102,7 +102,7 @@ class CalendarHelper {
         case 5:return "周五"
         case 6:return "周六"
         case 7:return "周日"
-        default:return ""
+        default:return "未知"
         }
     }
     

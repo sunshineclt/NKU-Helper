@@ -11,14 +11,8 @@ import UIKit
 class TestTimeTableViewCell: UITableViewCell {
 
     @IBOutlet var classNameLabel: UILabel!
-    @IBOutlet var startTimeLabel: UILabel!
-    @IBOutlet var endTimeLabel: UILabel!
-    @IBOutlet var weekdayLabel: UILabel!
+    @IBOutlet var timeLabel: UILabel!
+    @IBOutlet var dayLabel: UILabel!
     @IBOutlet var classroomLabel: UILabel!
-    
-    override func awakeFromNib() {
-        startTimeLabel.adjustsFontSizeToFitWidth = true
-        endTimeLabel.adjustsFontSizeToFitWidth = true
-    }
     
 }
