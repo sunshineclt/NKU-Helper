@@ -38,7 +38,7 @@ class NKNetworkFetchNoti: NKNetworkBase {
         
         self.block = block
         
-        Alamofire.request(.GET, "http://115.28.141.95/api/v1/notis", parameters: ["page": page, "page_size": 10]).responseJSON { (response) -> Void in
+        Alamofire.request(.GET, NKNetworkBase.getURLStringByAppendingBaseURLWithPath("notis"), parameters: ["page": page, "page_size": 10]).responseJSON { (response) -> Void in
             switch response.result {
             case .Success(let value):
                 let json = JSON(value)
