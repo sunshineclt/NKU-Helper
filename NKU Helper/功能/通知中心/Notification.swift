@@ -20,8 +20,12 @@ class Notification: NSObject {
         self.title = title
         let regualarExpression = try! NSRegularExpression(pattern: "(\\d{4}-\\d{2}-\\d{2})T\\d{2}:\\d{2}:\\d{2}.\\d{3}Z", options: .CaseInsensitive)
         let matches = regualarExpression.matchesInString(time, options: .ReportCompletion, range: NSMakeRange(0, (time as NSString).length))
-        let match = matches.first!
-        self.time = (time as NSString).substringWithRange(match.rangeAtIndex(1))
+        if let match = matches.first {
+            self.time = (time as NSString).substringWithRange(match.rangeAtIndex(1))
+        }
+        else {
+            self.time = time
+        }
         self.url = url
         self.text = text
         self.readCount = readCount
