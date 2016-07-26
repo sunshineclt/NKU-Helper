@@ -3,7 +3,7 @@
 //  NKU Helper
 //
 //  Created by 陈乐天 on 1/13/16.
-//  Copyright © 2016 &#38472;&#20048;&#22825;. All rights reserved.
+//  Copyright © 2016 陈乐天. All rights reserved.
 //
 
 /**
@@ -18,5 +18,5 @@ protocol StoreProtocol {
     var key:String {get}
     
     func getData() throws -> dataForm
-    func saveData(data: dataForm)
+    func saveData(data: dataForm) throws
 }

@@ -19,6 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, WXAp
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        JSPatch.startWithAppKey("bdeda28b488dda55")
+        JSPatch.sync()
+        
         // To set up Flurry(App Analyse), Fabric.Crashlytics(Crash Analyse), AVOS(Push Service), ShareSDK
         func setUpAllTools() {
             
@@ -71,22 +74,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, WXAp
         
         // load Preferred Colors
         func loadPreferredColors() {
-            
+            let rootvc = self.window?.rootViewController as! UITabBarController
+            let firstViewController = rootvc.childViewControllers[0]
             do {
-                let preferredColors = try PreferredColorAgent.sharedInstance.getData()
-                var newPreferredColors = preferredColors
-                if Colors.colors.count > preferredColors.count {
-                    for _ in 1...Colors.colors.count - preferredColors.count {
-                        newPreferredColors.append(1)
-                    }
-                    PreferredColorAgent.sharedInstance.saveData(newPreferredColors)
+                try Color.getColors()
+            } catch StoragedDataError.NoColorInStorage {
+                do {
+                    try Color.copyColorsToDocument()
+                } catch {
+                    firstViewController.presentViewController(ErrorHandler.alert(ErrorHandler.StorageNotEnough()), animated: true, completion: nil)
                 }
             } catch {
-                var preferredColors = [Int]()
-                for _ in 0 ..< Colors.colors.count {
-                    preferredColors.append(1)
-                }
-                PreferredColorAgent.sharedInstance.saveData(preferredColors)
+                firstViewController.presentViewController(ErrorHandler.alert(ErrorHandler.StorageNotEnough()), animated: true, completion: nil)
             }
 
         }
@@ -98,11 +97,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, WXAp
             application.registerForRemoteNotifications()
         }
         
+        // 从1.x版本迁移到2.x版本
+        func transferFromVersion1ToVersion2() {
+            // 迁移preferredColors数据
+            let userDefaults = NSUserDefaults.standardUserDefaults()
+            if let _ = userDefaults.objectForKey("preferredColors") {
+                userDefaults.removeObjectForKey("preferredColors")
+            }
+            // 迁移密码数据
+            if let userInfo = userDefaults.objectForKey(UserAgent.sharedInstance.key) as? NSDictionary {
+                if let password = userInfo.objectForKey("password") as? String {
+                    var user = try! UserDetailInfoAgent.sharedInstance.getData()
+                    user.password = password
+                    try! UserAgent.sharedInstance.deleteData()
+                    try! UserAgent.sharedInstance.saveData(user)
+                    UserDetailInfoAgent.sharedInstance.deleteData()
+                    UserDetailInfoAgent.sharedInstance.saveData(user)
+                }
+            }
+        }
         
         setUpAllTools()
         setUpApperance()
         loadPreferredColors()
         setUpNotification()
+        transferFromVersion1ToVersion2()
 
         // 推送来的消息需要打开哪个页面
         if let launchOption = launchOptions {
@@ -120,6 +139,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, WXAp
                 }
             }
         }
+        
+        R.assertValid()
         
         return true
     }

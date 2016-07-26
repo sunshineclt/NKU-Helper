@@ -2,7 +2,8 @@ PODS:
   - Alamofire (3.4.1)
   - AVOSCloud (3.3.5)
   - DZNEmptyDataSet (1.8.1)
-  - MBProgressHUD (0.9.2)
+  - Locksmith (2.0.8)
+  - MBProgressHUD (1.0.0)
   - MJRefresh (3.1.10)
   - MOBFoundation (2.0.7)
   - NJKWebViewProgress (0.2.3):
@@ -11,12 +12,21 @@ PODS:
   - NJKWebViewProgress/Core (0.2.3)
   - NJKWebViewProgress/ProgressView (0.2.3)
   - pop (1.0.9)
+  - R.swift (2.4.0):
+    - R.swift.Library (~> 2.2.0)
+  - R.swift.Library (2.2.0)
+  - Realm (1.0.2):
+    - Realm/Headers (= 1.0.2)
+  - Realm/Headers (1.0.2)
+  - RealmSwift (1.0.2):
+    - Realm (= 1.0.2)
   - ShareSDK3 (3.3.2):
     - ShareSDK3/ShareSDK (= 3.3.2)
   - ShareSDK3/ShareSDK (3.3.2)
   - ShareSDK3/ShareSDKPlatforms/QQ (3.3.2)
   - ShareSDK3/ShareSDKPlatforms/WeChat (3.3.2)
   - ShareSDK3/ShareSDKUI (3.3.2)
+  - SnapKit (0.15.0)
   - SVProgressHUD (2.0.3)
   - SwiftyJSON (2.3.2)
   - UAProgressView (0.1.3)
@@ -26,15 +36,19 @@ DEPENDENCIES:
   - Alamofire
   - AVOSCloud
   - DZNEmptyDataSet
+  - Locksmith
   - MBProgressHUD
   - MJRefresh
   - MOBFoundation
   - NJKWebViewProgress
   - pop
+  - R.swift
+  - RealmSwift
   - ShareSDK3
   - ShareSDK3/ShareSDKPlatforms/QQ
   - ShareSDK3/ShareSDKPlatforms/WeChat
   - ShareSDK3/ShareSDKUI
+  - SnapKit (~> 0.15.0)
   - SVProgressHUD
   - SwiftyJSON
   - UAProgressView
@@ -44,17 +58,23 @@ SPEC CHECKSUMS:
   Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
   AVOSCloud: 1fe170768bee7e05bc3ea86e38d5bddb105cb957
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
-  MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
+  Locksmith: a8ed41ac4c06506ea8cb199d8ec8a8d3d108eb2a
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MJRefresh: bb72948c985914b0b5cecac573a2c69a8915fb02
   MOBFoundation: af2388967017966e003c676a6cfffe784a1dead2
   NJKWebViewProgress: f481fd424cb5ecc27eacae11b5397db92fba9a4d
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
+  R.swift: 0ef9c42dc6c94ac44a3c78a7639c73f855a8e159
+  R.swift.Library: 31a487b65381f37a7d203a6f1f935b43c9be35b0
+  Realm: 9d5c46a4d7d27958530a8dfc58f63a99e5c2cba3
+  RealmSwift: 82f3ac5e24530143dddfde2033acc0d308f27d96
   ShareSDK3: c76cb96eb38e079952b8157071486d945faa2df2
+  SnapKit: 4962eed2ee18e48cbd2b2292fffc57efe7235f87
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   UAProgressView: ce49aee47c14df6dc372f6fd57852f570ca97e6b
   YYText: ac09660c9ccd9b817f409a20caa6f5587444d2ae
 
-PODFILE CHECKSUM: 545c98b5fdb826b53ac988d1ed028b044af61aa1
+PODFILE CHECKSUM: 22a05a4cc4c465aae19262b9c59d447112c05e28
 
 COCOAPODS: 1.0.1

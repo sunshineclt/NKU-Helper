@@ -3,11 +3,12 @@
 //  NKU Helper
 //
 //  Created by 陈乐天 on 1/10/16.
-//  Copyright © 2016 &#38472;&#20048;&#22825;. All rights reserved.
+//  Copyright © 2016 陈乐天. All rights reserved.
 //
 
 import Foundation
 import Alamofire
+import JavaScriptCore
 import UIKit
 
 /**
@@ -28,13 +29,13 @@ enum LoginResult {
 /// 提供登录功能的网络库，使用时注意其生命周期
 class NKNetworkLogin: NKNetworkBase, UIWebViewDelegate {
     
-    typealias LoginResultBlock = (result: LoginResult)->Void
+    typealias LoginResultBlock = (result: LoginResult) -> Void
     
-    var block:LoginResultBlock?
-    var validateCode:String!
+    var block: LoginResultBlock?
+    var validateCode: String!
     
-    private var userID:String!
-    private var password:String!
+    private var userID: String!
+    private var password: String!
     
     /**
      使用验证码登陆
@@ -44,23 +45,15 @@ class NKNetworkLogin: NKNetworkBase, UIWebViewDelegate {
      - parameter block:        返回闭包
      */
     func loginWithValidateCode(validateCode: String, onView view:UIView, andBlock block:LoginResultBlock) {
-     
-        self.block = block
-        self.validateCode = validateCode
-        
         do {
             let accountInfo = try UserAgent().getData()
-            userID = accountInfo.UserID
-            password = accountInfo.Password
+            let userID = accountInfo.userID
+            let password = accountInfo.password
+            loginWithID(userID, password: password, validateCode: validateCode, onView: view, andBlock: block)
         } catch {
-            
+            block(result: .UserNameOrPasswordWrong)
+            return
         }
-        
-        let webView = UIWebView()
-        webView.delegate = self
-        view.addSubview(webView)
-        let filePath = NSBundle.mainBundle().pathForResource("RSA", ofType: "html")
-        webView.loadRequest(NSURLRequest(URL: NSURL(fileURLWithPath: filePath!)))
     }
     
     /**
@@ -75,7 +68,14 @@ class NKNetworkLogin: NKNetworkBase, UIWebViewDelegate {
     func loginWithID(ID: String, password: String, validateCode: String, onView view: UIView, andBlock block:LoginResultBlock) {
         self.userID = ID
         self.password = password
-        loginWithValidateCode(validateCode, onView: view, andBlock: block)
+        self.validateCode = validateCode
+        self.block = block
+        
+        let webView = UIWebView()
+        webView.delegate = self
+        view.addSubview(webView)
+        let filePath = NSBundle.mainBundle().pathForResource("RSA", ofType: "html")
+        webView.loadRequest(NSURLRequest(URL: NSURL(fileURLWithPath: filePath!)))
     }
     
     /**
@@ -84,19 +84,18 @@ class NKNetworkLogin: NKNetworkBase, UIWebViewDelegate {
      - parameter webView: login时生成的webView
      */
     @objc internal func webViewDidFinishLoad(webView: UIWebView) {
-
         
         webView.stringByEvaluatingJavaScriptFromString("document.title = \"" + password + "\"")
         webView.stringByEvaluatingJavaScriptFromString("encryption()")
         let encryptedPassword = webView.stringByEvaluatingJavaScriptFromString("document.body.innerHTML")!
         
-        let url:NSURL = NSURL(string: "http://222.30.32.10/stdloginAction.do")!
-        let req:NSMutableURLRequest = NSMutableURLRequest(URL: url)
-        let data:NSString = NSString(format: "operation=&usercode_text=%@&userpwd_text=%@&checkcode_text=%@&submittype=%%C8%%B7+%%C8%%CF", userID, encryptedPassword, validateCode)
+        let url = NSURL(string: "http://222.30.32.10/stdloginAction.do")!
+        let req = NSMutableURLRequest(URL: url)
+        let data = NSString(format: "operation=&usercode_text=%@&userpwd_text=%@&checkcode_text=%@&submittype=%%C8%%B7+%%C8%%CF", userID, encryptedPassword, validateCode)
         req.HTTPBody = data.dataUsingEncoding(NSUTF8StringEncoding)
         req.HTTPMethod = "POST"
         
-        Alamofire.request(req).responseString { (response: Response<String, NSError>) -> Void in
+        Alamofire.request(req).responseString { (response) -> Void in
             guard let html = response.result.value as NSString? else {
                 self.block?(result: LoginResult.NetWorkError)
                 return

@@ -4,64 +4,94 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Alamofire.xcscheme</key>
+		<key>Alamofire.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
-			<false/>
+			<true/>
 		</dict>
-		<key>DZNEmptyDataSet.xcscheme</key>
+		<key>DZNEmptyDataSet.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
-			<false/>
+			<true/>
 		</dict>
-		<key>MBProgressHUD.xcscheme</key>
+		<key>Locksmith.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
-			<false/>
+			<true/>
 		</dict>
-		<key>MJRefresh.xcscheme</key>
+		<key>MBProgressHUD.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
-			<false/>
+			<true/>
 		</dict>
-		<key>NJKWebViewProgress.xcscheme</key>
+		<key>MJRefresh.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
-			<false/>
+			<true/>
 		</dict>
-		<key>Pods-NKU Helper.xcscheme</key>
+		<key>NJKWebViewProgress.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
-			<false/>
+			<true/>
 		</dict>
-		<key>SVProgressHUD.xcscheme</key>
+		<key>Pods-NKU Helper.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
-			<false/>
+			<true/>
 		</dict>
-		<key>SwiftyJSON.xcscheme</key>
+		<key>R.swift.Library.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
-			<false/>
+			<true/>
 		</dict>
-		<key>UAProgressView.xcscheme</key>
+		<key>Realm.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
-			<false/>
+			<true/>
 		</dict>
-		<key>YYText.xcscheme</key>
+		<key>RealmSwift.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
-			<false/>
+			<true/>
 		</dict>
-		<key>pop.xcscheme</key>
+		<key>SVProgressHUD.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
-			<false/>
+			<true/>
+		</dict>
+		<key>SnapKit.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>isShown</key>
+			<true/>
+		</dict>
+		<key>SwiftyJSON.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>isShown</key>
+			<true/>
+		</dict>
+		<key>UAProgressView.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>isShown</key>
+			<true/>
+		</dict>
+		<key>YYText.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>isShown</key>
+			<true/>
+		</dict>
+		<key>pop.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>isShown</key>
+			<true/>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>0B0D5D90D17FCC003ABA5FD41C45EA0A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>16F31C27D7691C472C7158A34C79FC10</key>
 		<dict>
 			<key>primary</key>
@@ -72,17 +102,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2BD69C31585AB71071B8313DFEBD128D</key>
+		<key>2F7BF64F5AE82C8C64A99B1F1764E386</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2EAC2AC33AA114969AD35BBF60A24767</key>
+		<key>3F6BFD7A8B33E83E6857DC13D5A5037D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>39AFD03214BB17DDC88BA1AA439E7EDF</key>
+		<key>40C9263A26AE6ABBE6F853EFB5C13817</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -92,27 +122,47 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>4D2890B3056379B39CC16EE99E478239</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>56CCDC0E9A1D0F17F9B2D65A2D0032E2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>689C0C1BE6B4EFC0C2C95A8E2C556485</key>
+		<key>6EEC5F6F8B15055C0DD382615650B02B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C912EC9A21A05C029C0F32B1CA96F0A2</key>
+		<key>722D1193BE53A6DBAD34728832D178F1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E00059E843E33FE7D276944CCC828769</key>
+		<key>78351B4119D25849039016D8E656ADB5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F6050CB9C20133936F551B08325A5466</key>
+		<key>8B7B055C302E2F49D03FBDC9FABC6A1B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8E8FC07FC92B8E1859B0454E8BC7F598</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D0A7FC4B229D9EE1EF9AB2F5B4705690</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FBFB936224A9F24207A4BAD3ACC74176</key>
 		<dict>
 			<key>primary</key>
 			<true/>

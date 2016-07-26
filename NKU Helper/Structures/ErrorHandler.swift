@@ -3,7 +3,7 @@
 //  NKU Helper
 //
 //  Created by 陈乐天 on 15/9/23.
-//  Copyright © 2015年 &#38472;&#20048;&#22825;. All rights reserved.
+//  Copyright © 2015年 陈乐天. All rights reserved.
 //
 
 import UIKit
@@ -75,6 +75,11 @@ struct ErrorHandler {
     struct shareFail:ErrorHandlerProtocol {
         static let title = "分享失败"
         static let message = "请检查网络"
+        static let cancelButtonTitle = "好"
+    }
+    struct StorageNotEnough:ErrorHandlerProtocol {
+        static let title = "存储空间不足"
+        static let message = "请腾出一小点空间给NKU Helper正常运行吧"
         static let cancelButtonTitle = "好"
     }
     

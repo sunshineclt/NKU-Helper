@@ -3,7 +3,7 @@
 //  NKU Helper
 //
 //  Created by 陈乐天 on 1/13/16.
-//  Copyright © 2016 &#38472;&#20048;&#22825;. All rights reserved.
+//  Copyright © 2016 陈乐天. All rights reserved.
 //
 
 import Foundation
@@ -19,6 +19,7 @@ protocol NKNetworkLoadCourseDelegate {
 }
 
 /// 提供获取课程功能的网络库
+@objc(NKNetworkLoadCourse)
 class NKNetworkLoadCourse: NKNetworkBase {
     
     var delegate:NKNetworkLoadCourseDelegate?
@@ -27,16 +28,16 @@ class NKNetworkLoadCourse: NKNetworkBase {
      获取所有课程信息
      */
     func getAllCourse() {
-        Alamofire.request(.GET, "http://222.30.32.10/xsxk/selectedAction.do?operation=kebiao").responseString(encoding: CFStringConvertEncodingToNSStringEncoding(0x0632), completionHandler: { (response:Response<String, NSError>) -> Void in
-            if let html = response.result.value {
-                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), { () -> Void in
-                    self.loadAllCourseInfoWithHtml(html)
-                    self.delegate?.didSuccessToReceiveCourseData()
-                })
-            } else {
+        Alamofire.request(.GET, "http://222.30.32.10/xsxk/selectedAction.do?operation=kebiao").responseString { (response) in
+            guard let html = response.result.value else {
                 self.delegate?.didFailToReceiveCourseData()
+                return
             }
-        })
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { 
+                self.loadAllCourseInfoWithHtml(html)
+                self.delegate?.didSuccessToReceiveCourseData()
+            })
+        }
     }
     
     private func handleHtml(html:NSString) -> (String, String, String, String, String, String) {
@@ -74,8 +75,8 @@ class NKNetworkLoadCourse: NKNetworkBase {
         return (classID as String, classNumber as String, className as String, weekOddEven as String, classroom as String, teacherName as String)
     }
     
-    private func loadAllCourseInfoWithHtml(html:NSString) {
-        let regularExpression1:NSRegularExpression = try! NSRegularExpression(pattern: "(coursearrangeseq=.*)(&&classroomincode=.*)(&&week=.*)(&&begphase=.*)(&&ifkebiao=yes)", options: NSRegularExpressionOptions.CaseInsensitive)
+    dynamic private func loadAllCourseInfoWithHtml(html: NSString) {
+        let regularExpression1 = try! NSRegularExpression(pattern: "(coursearrangeseq=.*?)&&(classroomincode=.*)&&(week=.*)&&(begphase=.*)&&(ifkebiao=yes)", options: NSRegularExpressionOptions.CaseInsensitive)
         let matches:NSArray = regularExpression1.matchesInString(html as String, options: NSMatchingOptions.ReportProgress, range: NSMakeRange(0, html.length))
         var day:Int = 0
         var startSection:Int = 1

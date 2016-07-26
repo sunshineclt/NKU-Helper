@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="nug-7w-6cM">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--考试时间-->
+        <scene sceneID="ha9-ZV-TUJ">
+            <objects>
+                <tableViewController storyboardIdentifier="TestTimeTVC" id="nug-7w-6cM" customClass="TestTimeTableViewController" customModule="NKU_Helper" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="128" sectionHeaderHeight="10" sectionFooterHeight="10" id="kec-X0-FNV">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TestTimeCell" rowHeight="80" id="73y-OP-BYr" customClass="TestTimeTableViewCell" customModule="NKU_Helper" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="49.5" width="600" height="80"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="73y-OP-BYr" id="MIG-z9-fGh">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="79.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="高等代数与解析几何2-2" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="FIS-Hz-JxU">
+                                            <rect key="frame" x="381" y="18" width="210.5" height="21.5"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="2ZLB203" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xu5-2u-0Fr">
+                                            <rect key="frame" x="535" y="47.5" width="56.5" height="16"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="6-17 星期三" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="GsF-iG-wKe" userLabel="Day Label">
+                                            <rect key="frame" x="8" y="18" width="106.5" height="24"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                            <color key="textColor" red="0.17254902422428131" green="0.24313725531101227" blue="0.31372550129890442" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" text="18:30 - 20:30" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Se-bb-sLw" userLabel="Time Label">
+                                            <rect key="frame" x="8" y="50" width="83.5" height="13"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="building" translatesAutoresizingMaskIntoConstraints="NO" id="cDF-tS-2oa">
+                                            <rect key="frame" x="511" y="47.5" width="16" height="16"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="cDF-tS-2oa" secondAttribute="height" multiplier="1:1" id="3Rb-nB-bdn"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="GsF-iG-wKe" firstAttribute="top" secondItem="MIG-z9-fGh" secondAttribute="topMargin" constant="10" id="EYg-Yo-a8q"/>
+                                        <constraint firstItem="FIS-Hz-JxU" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="GsF-iG-wKe" secondAttribute="trailing" constant="8" symbolic="YES" id="Hoe-sI-QWR"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="xu5-2u-0Fr" secondAttribute="bottom" constant="8" id="K0p-Va-WyH"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="8Se-bb-sLw" secondAttribute="leading" id="LlV-he-UfO"/>
+                                        <constraint firstItem="cDF-tS-2oa" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="GsF-iG-wKe" secondAttribute="trailing" constant="8" symbolic="YES" id="P7P-g0-oDa"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="xu5-2u-0Fr" secondAttribute="trailing" id="ZdH-3w-k8s"/>
+                                        <constraint firstItem="FIS-Hz-JxU" firstAttribute="top" secondItem="MIG-z9-fGh" secondAttribute="topMargin" constant="10" id="adp-cJ-sxf"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="8Se-bb-sLw" secondAttribute="bottom" constant="8" id="dXU-VB-MPg"/>
+                                        <constraint firstItem="cDF-tS-2oa" firstAttribute="top" secondItem="xu5-2u-0Fr" secondAttribute="top" id="pTD-L8-Y8y"/>
+                                        <constraint firstItem="xu5-2u-0Fr" firstAttribute="top" secondItem="FIS-Hz-JxU" secondAttribute="bottom" constant="8" symbolic="YES" id="qzy-Wv-WFL"/>
+                                        <constraint firstItem="cDF-tS-2oa" firstAttribute="bottom" secondItem="xu5-2u-0Fr" secondAttribute="bottom" id="rcP-4d-g9u"/>
+                                        <constraint firstItem="8Se-bb-sLw" firstAttribute="top" secondItem="GsF-iG-wKe" secondAttribute="bottom" constant="8" symbolic="YES" id="sil-wb-dyN"/>
+                                        <constraint firstItem="xu5-2u-0Fr" firstAttribute="leading" secondItem="cDF-tS-2oa" secondAttribute="trailing" constant="8" symbolic="YES" id="tvF-jr-0Aj"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="FIS-Hz-JxU" secondAttribute="trailing" id="vhp-5U-i2T"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="GsF-iG-wKe" secondAttribute="leading" id="zJb-pj-DOj"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="classNameLabel" destination="FIS-Hz-JxU" id="LE7-30-Cxx"/>
+                                    <outlet property="classroomLabel" destination="xu5-2u-0Fr" id="pB5-gZ-Fhk"/>
+                                    <outlet property="dayLabel" destination="GsF-iG-wKe" id="oev-TG-YvC"/>
+                                    <outlet property="timeLabel" destination="8Se-bb-sLw" id="AMP-a6-m73"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="nug-7w-6cM" id="DWl-vW-iv8"/>
+                            <outlet property="delegate" destination="nug-7w-6cM" id="rkk-hT-gJX"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="考试时间" id="v2g-7M-h2W"/>
+                    <connections>
+                        <segue destination="N2L-XK-Pl4" kind="presentation" identifier="Login" id="9Xw-vp-jr7"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6tm-TG-HPK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3114" y="-593"/>
+        </scene>
+        <!--LogIn-->
+        <scene sceneID="9wL-Et-mdo">
+            <objects>
+                <viewControllerPlaceholder storyboardName="LogIn" id="N2L-XK-Pl4" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Gd-vQ-8pd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3653.5" y="-593"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="building" width="60" height="60"/>
+    </resources>
+</document>

@@ -3,7 +3,7 @@
 //  NKU Helper
 //
 //  Created by 陈乐天 on 1/9/16.
-//  Copyright © 2016 &#38472;&#20048;&#22825;. All rights reserved.
+//  Copyright © 2016 陈乐天. All rights reserved.
 //
 
 import Foundation
@@ -14,10 +14,18 @@ class NKNetworkBase: NSObject {
 
     static var baseURL: String {
         #if DEBUG
-            return "http://pikkacho.cn/"
+            return "http://pikkacho.cn/api/v1/"
         #else
-            return "http://115.28.141.95/"
+            return "http://115.28.141.95/api/v1/"
         #endif
+    }
+    
+    class func getURLByAppendingBaseURLWithPath(path: String) -> NSURL {
+        return NSURL(string: getURLStringByAppendingBaseURLWithPath(path))!
+    }
+    
+    class func getURLStringByAppendingBaseURLWithPath(path: String) -> String {
+        return baseURL + path
     }
     
 }
