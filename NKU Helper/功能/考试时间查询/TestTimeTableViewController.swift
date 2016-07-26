@@ -72,6 +72,10 @@ class TestTimeTableViewController: FunctionBaseTableViewController, FunctionDele
         return "第\(week)周"
     }
     
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 25
+    }
+    
 }
 
 extension TestTimeTableViewController: DZNEmptyDataSetDelegate, DZNEmptyDataSetSource {
