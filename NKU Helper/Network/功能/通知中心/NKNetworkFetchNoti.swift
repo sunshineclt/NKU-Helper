@@ -8,18 +8,17 @@
 
 import Foundation
 import Alamofire
+import SwiftyJSON
 
 /**
  获取通知的结果
  
- - Success: 成功，附获取到的通知数据
- - End:     到达最底端，无法再获取
+ - Success: 成功，附获取到的通知数据及总页数
  - Fail:    获取失败
  */
 enum NKNetworkFetchNotiResult {
-    case Success(notis:[Notification])
-    case End
-    case Fail
+    case Success(notis:[Notification], totalPages: Int)
+    case Fail(msg: String)
 }
 
 /// 提供获取通知的功能
@@ -39,32 +38,30 @@ class NKNetworkFetchNoti: NKNetworkBase {
         
         self.block = block
         
-        Alamofire.request(.GET, "http://115.28.141.95/CodeIgniter/index.php/Notification/getNoti/\(page+1)").responseJSON { (response:Response<AnyObject, NSError>) -> Void in
-            guard let value = response.result.value as? NSDictionary else {
-                block(.Fail)
-                return
-            }
-            let code = value.objectForKey("code") as! Int
-            switch code {
-            case 0:   //正常获取数据
-                let data = value.objectForKey("data") as! NSArray
-                var notis:[Notification] = []
+        Alamofire.request(.GET, "http://115.28.141.95/api/v1/notis", parameters: ["page": page, "page_size": 10]).responseJSON { (response) -> Void in
+            switch response.result {
+            case .Success(let value):
+                let json = JSON(value)
+                let msg = json["msg"].stringValue
+                guard msg == "OK" else {
+                    block(.Fail(msg: msg))
+                    return
+                }
+                var notis = [Notification]()
+                let data = json["data"].arrayValue
                 for singleData in data {
-                    let nowData = singleData as! NSDictionary
-                    let title = nowData.objectForKey("title") as! String
-                    let time = nowData.objectForKey("time") as! String
-                    let url = nowData.objectForKey("url") as! String
-                    let text = nowData.objectForKey("text") as! String
-                    let readCount = nowData.objectForKey("readcount") as! Int
+                    let title = singleData["title"].stringValue
+                    let time = singleData["time"].stringValue
+                    let url = singleData["url"].stringValue
+                    let text = singleData["text"].stringValue
+                    let readCount = singleData["readcount"].intValue
                     let noti = Notification(title: title, time: time, url: url, text: text, readCount: readCount)
                     notis.append(noti)
                 }
-                block(.Success(notis: notis))
-                
-            case 1:  //已经到达数据底端
-                block(.End)
-            default:
-                block(.Fail)
+                let totalPages = json["total_pages"].intValue
+                block(.Success(notis: notis, totalPages: totalPages))
+            case .Failure:
+                block(.Fail(msg: "网络请求失败"))
             }
         }
         

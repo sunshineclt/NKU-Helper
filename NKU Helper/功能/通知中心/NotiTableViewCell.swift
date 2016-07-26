@@ -21,7 +21,11 @@ class NotiTableViewCell: UITableViewCell {
     @IBOutlet var content: UILabel!
     @IBOutlet var time: UILabel!
     @IBOutlet var provider: UILabel!
-    @IBOutlet var displayView: UIView!
+    @IBOutlet var displayView: UIView! {
+        didSet {
+            displayView.layer.cornerRadius = 10
+        }
+    }
     
     var notiData:Notification! {
         didSet {

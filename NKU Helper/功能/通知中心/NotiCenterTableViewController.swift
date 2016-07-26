@@ -11,21 +11,21 @@ import Alamofire
 
 class NotiCenterTableViewController: UITableViewController {
     
-    var noti:[Notification] = []
+    var noti = [Notification]()
     
-    var isUpdatingData:Bool! = false
-    var currentPage:Int = 0
-    var isEndOfData:Bool! = false
+    var isUpdatingData = false
+    var currentPage = 0
+    var isEndOfData = false
 
     var progressHud:MBProgressHUD!
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
         let footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(NotiCenterTableViewController.fetchMoreData))
-        footer.setTitle("正在加载更多通知", forState: MJRefreshState.Refreshing)
-        footer.setTitle("没有更多通知啦", forState: MJRefreshState.NoMoreData)
+        footer.setTitle("点击或上拉刷新", forState: .Idle)
+        footer.setTitle("正在加载更多通知", forState: .Refreshing)
+        footer.setTitle("没有更多通知啦", forState: .NoMoreData)
         footer.stateLabel?.font = UIFont(name: "HelveticaNeue", size: 15)
         footer.stateLabel?.textColor = UIColor.whiteColor()
         footer.activityIndicatorViewStyle = .White
@@ -34,8 +34,7 @@ class NotiCenterTableViewController: UITableViewController {
         self.tableView.mj_footer = footer
         
         fetchMoreData()
-        
-        progressHud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        SVProgressHUD.show()
     }
     
     // MARK: - Table view data source
@@ -48,11 +47,9 @@ class NotiCenterTableViewController: UITableViewController {
         return noti.count
     }
 
-    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.notiCell.identifier, forIndexPath: indexPath) as! NotiTableViewCell
         cell.notiData = noti[indexPath.row]
-        cell.displayView.layer.cornerRadius = 10
         return cell
     }
 
@@ -61,18 +58,19 @@ class NotiCenterTableViewController: UITableViewController {
         if !self.isUpdatingData && !self.isEndOfData {
             self.isUpdatingData = true
             let notiFetcher = NKNetworkFetchNoti()
-            notiFetcher.fetchNotiOnPage(currentPage, WithBlock: { (result:NKNetworkFetchNotiResult) -> Void in
-                MBProgressHUD.hideHUDForView(self.view, animated: true)
+            notiFetcher.fetchNotiOnPage(currentPage + 1, WithBlock: { (result:NKNetworkFetchNotiResult) -> Void in
+                SVProgressHUD.dismiss()
                 self.isUpdatingData = false
                 self.tableView.mj_footer.endRefreshing()
                 self.currentPage += 1
                 switch (result) {
-                case .Success(notis: let notis):
-                    self.noti = notis
+                case .Success(notis: let notis, totalPages: let totalPages):
+                    self.noti.appendContentsOf(notis)
                     self.tableView.reloadData()
-                case .End:
-                    self.isEndOfData = true
-                    self.tableView.mj_footer.endRefreshingWithNoMoreData()
+                    if totalPages == self.currentPage {
+                        self.isEndOfData = true
+                        self.tableView.mj_footer.endRefreshingWithNoMoreData()
+                    }
                 case .Fail:
                     self.presentViewController(ErrorHandler.alert(ErrorHandler.GetNotiFailed()), animated: true, completion: nil)
                 }
@@ -81,16 +79,14 @@ class NotiCenterTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
         let cell = tableView.cellForRowAtIndexPath(indexPath) as! NotiTableViewCell
         let url = NSURL(string: cell.notiData.url)!
         self.performSegueWithIdentifier(R.segue.notiCenterTableViewController.showNotiDetail, sender: url)
-        
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let vc = segue.destinationViewController as? NotiDetailViewController {
-            vc.url = sender as! NSURL
+        if let typeInfo = R.segue.notiCenterTableViewController.showNotiDetail(segue: segue) {
+            typeInfo.destinationViewController.url = sender as! NSURL
         }
     }
 

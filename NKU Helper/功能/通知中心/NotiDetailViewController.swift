@@ -13,13 +13,12 @@ class NotiDetailViewController: UIViewController, NJKWebViewProgressDelegate, UI
     
     var url:NSURL!
     var webView = UIWebView()
-    var progressProxy:NJKWebViewProgress!
-    var progressView:NJKWebViewProgressView!
+    var progressProxy: NJKWebViewProgress!
+    var progressView: NJKWebViewProgressView!
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
         progressProxy = NJKWebViewProgress()
         progressProxy.progressDelegate = self
         progressProxy.webViewProxyDelegate = self
