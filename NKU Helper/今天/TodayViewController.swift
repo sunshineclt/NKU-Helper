@@ -63,9 +63,20 @@ class TodayViewController: UIViewController {
         
         do {
             try UserAgent.sharedInstance.getData()
-            let courses = try Course.coursesOnWeekday(CalendarHelper.getWeekdayInt())
+            let courses = try Course.coursesOnWeekday(5)
             todayCourse = courses
             self.courseTableView.reloadData()
+            NKNetworkFetchInfo.fetchNowWeek({ (nowWeek😈, isVocation😈) in
+                guard let nowWeek = nowWeek😈, isVocation = isVocation😈 else {
+                    return
+                }
+                if isVocation {
+                    return
+                }
+                self.todayCourse = nowWeek % 2 == 0 ? self.todayCourse?.filter("weekOddEven != '单 周'") : self.todayCourse?.filter("weekOddEven != '双 周'")
+                self.todayCourse = self.todayCourse?.filter("startWeek <= \(nowWeek) AND endWeek <= \(nowWeek)")
+                self.courseTableView.reloadData()
+            })
         } catch StoragedDataError.NoUserInStorage {
             self.performSegueWithIdentifier(R.segue.todayViewController.login, sender: "TodayViewController")
         } catch StoragedDataError.NoClassesInStorage {

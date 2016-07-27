@@ -181,7 +181,7 @@ class ClassTimeView: UIView {
                 })
                 courseView.layer.cornerRadius = 5
                 courseView.layer.masksToBounds = true
-                courseView.tag = i
+                courseView.tag = current.key
                 let tapGesture = UITapGestureRecognizer()
                 tapGesture.addTarget(viewController, action: #selector(ClassTimeViewController.showCourseDetail(_:)))
                 courseView.addGestureRecognizer(tapGesture)
@@ -194,16 +194,16 @@ class ClassTimeView: UIView {
 
     func updateClassTimeTableWithWeek(week: Int) {
         do {
-            //FIXME: 根据week筛选起止周次
             let courses = try CourseAgent.sharedInstance.getData()
-            for i in 0 ..< courses.count {
-                let current = courses[i]
+            courses.forEach({ (current) in
                 let weekOddEven = current.weekOddEven
-                let course = self.classScrollView.viewWithTag(i)!
-                if ((weekOddEven == "单 周") && (week % 2 == 0) || (weekOddEven == "双 周" && (week % 2 == 1))) {
-                    course.alpha = 0.15
+                let startWeek = current.startWeek
+                let endWeek = current.endWeek
+                let courseView = self.classScrollView.viewWithTag(current.key)!
+                if ((weekOddEven == "单 周") && (week % 2 == 0) || (weekOddEven == "双 周" && (week % 2 == 1))) || (week < startWeek) || (week > endWeek) {
+                    courseView.alpha = 0.15
                 }
-            }
+            })
         } catch {
             
         }

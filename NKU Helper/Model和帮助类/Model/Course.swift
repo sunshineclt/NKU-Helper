@@ -68,7 +68,6 @@ class Course: Object {
                 throw StoragedDataError.NoClassesInStorage
             }
             return courses.filter("weekday == \(convertedWeekday)").sorted("startSection")
-            //FIXME: courses需要根据week筛选单双周和起止周次
         } catch StoragedDataError.NoClassesInStorage {
             throw StoragedDataError.NoClassesInStorage
         } catch {
