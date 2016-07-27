@@ -90,7 +90,6 @@
 		E988B5371AB005DF006818FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E988B5361AB005DF006818FA /* Main.storyboard */; };
 		E98E2B471C4638C800CF82BE /* StoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98E2B461C4638C800CF82BE /* StoreProtocol.swift */; };
 		E98E2B491C4639BB00CF82BE /* UserAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98E2B481C4639BB00CF82BE /* UserAgent.swift */; };
-		E98E2B4B1C4639EC00CF82BE /* PreferredColorAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98E2B4A1C4639EC00CF82BE /* PreferredColorAgent.swift */; };
 		E98E2B4E1C46469700CF82BE /* CourseAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98E2B4D1C46469700CF82BE /* CourseAgent.swift */; };
 		E98E2B501C46492900CF82BE /* NKNetworkLoadCourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98E2B4F1C46492900CF82BE /* NKNetworkLoadCourse.swift */; };
 		E98E2B8B1C46ABE400CF82BE /* ClassTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98E2B8A1C46ABE400CF82BE /* ClassTimeView.swift */; };
@@ -247,7 +246,6 @@
 		E98DC72D1B8B13DE00273510 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		E98E2B461C4638C800CF82BE /* StoreProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreProtocol.swift; sourceTree = "<group>"; };
 		E98E2B481C4639BB00CF82BE /* UserAgent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAgent.swift; sourceTree = "<group>"; };
-		E98E2B4A1C4639EC00CF82BE /* PreferredColorAgent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferredColorAgent.swift; sourceTree = "<group>"; };
 		E98E2B4D1C46469700CF82BE /* CourseAgent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseAgent.swift; sourceTree = "<group>"; };
 		E98E2B4F1C46492900CF82BE /* NKNetworkLoadCourse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkLoadCourse.swift; sourceTree = "<group>"; };
 		E98E2B8A1C46ABE400CF82BE /* ClassTimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassTimeView.swift; sourceTree = "<group>"; };
@@ -608,7 +606,6 @@
 			children = (
 				E9B8C4AE1AA82D6E00E0DD50 /* AccountInfo */,
 				E98E2B4D1C46469700CF82BE /* CourseAgent.swift */,
-				E98E2B4A1C4639EC00CF82BE /* PreferredColorAgent.swift */,
 				E9CA9C8F1C4272BC0030AF49 /* StoreAgent.swift */,
 				E98E2B461C4638C800CF82BE /* StoreProtocol.swift */,
 				E98E2B481C4639BB00CF82BE /* UserAgent.swift */,
@@ -992,7 +989,6 @@
 				E995E08B1D3F6369003FDF56 /* R.generated.swift in Sources */,
 				E95F93DD1C50CEAA00CEEC12 /* EvaluateTableViewController.swift in Sources */,
 				E9762F701C48DE77002CEF03 /* NKNetworkFetchNoti.swift in Sources */,
-				E98E2B4B1C4639EC00CF82BE /* PreferredColorAgent.swift in Sources */,
 				E95F93ED1C51377300CEEC12 /* EvaluateOpinionTableViewCell.swift in Sources */,
 				E9929C9B1C49068000D508C8 /* NKNetworkFetchGrade.swift in Sources */,
 				E95F93EB1C512B8B00CEEC12 /* DetailEvaluateInfo.swift in Sources */,
