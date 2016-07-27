@@ -40,4 +40,12 @@ class ClassTimePreferenceTableViewController: UITableViewController {
         }
     }
     
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "选课课程表加载方式"
+    }
+    
+    override func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        return "从课程表中获取可以在开启新学期选课系统打开之后依然看到这学期的课表，但若同一时间单双周课程不同会无法加载出双周课程。从选课列表获取可以保证获取的数据均准确，但在新学期选课系统打开之后就只能加载下学期的课表"
+    }
+    
 }
