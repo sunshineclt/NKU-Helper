@@ -14,7 +14,7 @@ class Color: Object {
     /**
      将App预设的颜色拷贝入Document目录中，在使用Color类之前必须进行
      
-     - throws: 不存在预设颜色文件，无法拷贝入Document目录（容量不足等）
+     - throws: RealmError
      */
     class func copyColorsToDocument() throws {
         let oldPath = NSBundle.mainBundle().pathForResource("Colors", ofType: "realm")!
@@ -25,15 +25,15 @@ class Color: Object {
                 try NSFileManager.defaultManager().removeItemAtPath(targetPath)
             }
             try NSFileManager.defaultManager().copyItemAtPath(oldPath, toPath: targetPath)
-        } catch let err as NSError {
-            throw err
+        } catch {
+            throw StoragedDataError.RealmError
         }
     }
     
     /**
      获取所有颜色的对象
      
-     - throws: Document文件夹中没有数据库，访问失败
+     - throws: NoColorInStorage和RealmError
      
      - returns: 所有颜色对象组成的Results
      */
@@ -54,8 +54,11 @@ class Color: Object {
             else {
                 throw StoragedDataError.NoColorInStorage
             }
-        } catch let err {
-            throw err
+        } catch StoragedDataError.NoColorInStorage {
+            throw StoragedDataError.NoColorInStorage
+        }
+        catch {
+            throw StoragedDataError.RealmError
         }
     }
     

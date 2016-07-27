@@ -13,6 +13,13 @@ class ClassView: UIView {
     @IBOutlet var classNameLabel: UILabel!
     @IBOutlet var classroomLabel: UILabel!
     
+    var course: Course! {
+        didSet {
+            classNameLabel.text = course.name
+            classroomLabel.text = course.classroom
+        }
+    }
+    
     class func loadFromNib() -> ClassView {
         return super.loadViewFromNibNamed("ClassView") as! ClassView
     }

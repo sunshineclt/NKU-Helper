@@ -17,10 +17,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" delaysContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2F2-PM-Sex">
-                                <rect key="frame" x="39.5" y="30" width="560.5" height="457"/>
+                                <rect key="frame" x="40" y="30" width="560" height="457"/>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O1g-1G-R3x" userLabel="Head Shadow View">
-                                <rect key="frame" x="39.5" y="0.0" width="560.5" height="30"/>
+                                <rect key="frame" x="40" y="0.0" width="560" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w6h-Uz-FHH" userLabel="Time Shadow View">
@@ -34,7 +34,7 @@
                                 </constraints>
                             </scrollView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="du2-6G-jTz" userLabel="Head Scroll View">
-                                <rect key="frame" x="39.5" y="0.0" width="560.5" height="30"/>
+                                <rect key="frame" x="40" y="0.0" width="560" height="30"/>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2bL-vM-WNx" userLabel="Blank View">
                                 <rect key="frame" x="0.0" y="0.0" width="40" height="30"/>

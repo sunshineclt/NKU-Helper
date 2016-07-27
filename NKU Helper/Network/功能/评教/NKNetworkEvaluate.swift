@@ -40,7 +40,7 @@ class NKNetworkEvaluate: NKNetworkBase {
     }
     
     dynamic private func loadEvaluateList(html: String) {
-        //FIXME:
+        //TODO: 在开放时整理
         let loc1 = (html as NSString).rangeOfString("<table bgcolor=\"#CCCCCC\" cellspacing")
         guard loc1.length > 0 else {
             self.delegate?.evaluateSystemNotOpen()

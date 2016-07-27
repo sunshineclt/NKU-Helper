@@ -13,6 +13,10 @@ private let sharedStoreAgent = UserDetailInfoAgent()
 /// 提供访问用户详细数据的类
 class UserDetailInfoAgent:StoreAgent, StoreProtocol {
     
+    private override init() {
+        super.init()
+    }
+    
     class var sharedInstance:UserDetailInfoAgent {
         return sharedStoreAgent
     }

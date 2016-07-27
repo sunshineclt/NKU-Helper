@@ -10,23 +10,10 @@ import UIKit
 
 class CourseDetailTableViewController: UITableViewController {
 
-    var whichCourse:Int!
     var course:Course!
+
+//TODO: 增加显示的内容
     
-    override func viewDidLoad() {
-        
-        super.viewDidLoad()
-        if whichCourse != nil {
-            //FIXME:
-            let userDefaults = NSUserDefaults.standardUserDefaults()
-            let courses = userDefaults.objectForKey("courses") as! [NSData]
-            let courseData = courses[whichCourse]
-            course = NSKeyedUnarchiver.unarchiveObjectWithData(courseData) as! Course
-        }
-    }
-
-// MARK: UITableViewDataSource
-
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }

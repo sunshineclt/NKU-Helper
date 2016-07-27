@@ -82,12 +82,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, WXAp
                 do {
                     try Color.copyColorsToDocument()
                 } catch {
-                    firstViewController.presentViewController(ErrorHandler.alert(ErrorHandler.StorageNotEnough()), animated: true, completion: nil)
+                    firstViewController.presentViewController(ErrorHandler.alert(ErrorHandler.DataBaseError()), animated: true, completion: nil)
                 }
             } catch {
-                firstViewController.presentViewController(ErrorHandler.alert(ErrorHandler.StorageNotEnough()), animated: true, completion: nil)
+                firstViewController.presentViewController(ErrorHandler.alert(ErrorHandler.DataBaseError()), animated: true, completion: nil)
             }
-
         }
         
         // set up notification
@@ -114,6 +113,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, WXAp
                     UserDetailInfoAgent.sharedInstance.deleteData()
                     UserDetailInfoAgent.sharedInstance.saveData(user)
                 }
+            }
+            // 删除原有的课程数据
+            if let _ = userDefaults.objectForKey("courses") as? NSDictionary {
+                userDefaults.removeObjectForKey("courses")
+                userDefaults.removeObjectForKey("courseStatus")
             }
         }
         

@@ -48,7 +48,7 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
                 self.presentViewController(ErrorHandler.alert(ErrorHandler.NetworkError()), animated: true, completion: nil)
             }
         }
-      
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -102,6 +102,13 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
     func loadProgressUpdate(progress: Float) {
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             self.classTimeView.loadAnimation(progress)
+        })
+    }
+    
+    func didFailToSaveCourseData() {
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.classTimeView.loadEndAnimation()
+            self.presentViewController(ErrorHandler.alert(ErrorHandler.DataBaseError()), animated: true, completion: nil)
         })
     }
     
@@ -221,11 +228,11 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
 
 // MARK: 页面间跳转
     
-    var whichSection:Int!
+    var whichCourse: Course!
     
     func showCourseDetail(tapGesture:UITapGestureRecognizer) {
         
-        whichSection = tapGesture.view?.tag
+        whichCourse = (tapGesture.view as! ClassView).course
         self.performSegueWithIdentifier(R.segue.classTimeViewController.showCourseDetail, sender: nil)
         
     }
@@ -233,7 +240,7 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if let typeInfo = R.segue.classTimeViewController.showCourseDetail(segue: segue) {
-            typeInfo.destinationViewController.whichCourse = whichSection
+            typeInfo.destinationViewController.course = whichCourse
         }
         
     }

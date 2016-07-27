@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class TodayViewController: UIViewController {
 
@@ -40,7 +41,7 @@ class TodayViewController: UIViewController {
     var newToDo:UITextField?
     
 // MARK: Model
-    var todayCourse = [Course]()
+    var todayCourse: Results<Course>?
     var thingsToDo = [ThingToDo]()
     
 // MARK: VC Life Cycle
@@ -69,6 +70,8 @@ class TodayViewController: UIViewController {
             self.performSegueWithIdentifier(R.segue.todayViewController.login, sender: "TodayViewController")
         } catch StoragedDataError.NoClassesInStorage {
             self.presentViewController(ErrorHandler.alert(ErrorHandler.ClassNotExist()), animated: true, completion: nil)
+        } catch StoragedDataError.RealmError {
+            self.presentViewController(ErrorHandler.alert(ErrorHandler.DataBaseError()), animated: true, completion: nil)
         } catch {
             
         }
@@ -123,14 +126,17 @@ extension TodayViewController:UITableViewDataSource, CheckBoxClickedDelegate {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        courseCountLabel.text = "今天有\(todayCourse.count)节课"
+        guard todayCourse != nil else {
+            return tableView.tag == 0 ? 0 : (isAddThingMode ? thingsToDo.count+1 : thingsToDo.count)
+        }
+        courseCountLabel.text = "今天有\(todayCourse!.count)节课"
         thingCountLabel.text = "还剩\(ThingToDo.getLeftThingsCount())件事"
-        return tableView.tag == 0 ? todayCourse.count : (isAddThingMode ? thingsToDo.count+1 : thingsToDo.count)
+        return tableView.tag == 0 ? todayCourse!.count : (isAddThingMode ? thingsToDo.count+1 : thingsToDo.count)
     }
     
     func getCourseCell(tableView:UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> CourseCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.courseCell.identifier) as! CourseCell
-        cell.course = todayCourse[indexPath.row]
+        cell.course = todayCourse![indexPath.row]
         return cell
     }
     

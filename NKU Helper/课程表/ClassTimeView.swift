@@ -148,10 +148,10 @@ class ClassTimeView: UIView {
         
         // 删去原先有的
         for view in classScrollView.subviews {
-            view.removeFromSuperview()
+            if view is ClassView {
+                view.removeFromSuperview()
+            }
         }
-        // 重绘背景（不然课表页面的灰色背景也没有了）
-        drawBackground()
         
         // 初始化颜色的使用
         var isColorUsed = [Bool]()
@@ -191,42 +191,38 @@ class ClassTimeView: UIView {
             }
             
             // 绘制课表
-            let courses = try CourseAgent().getData()
+            let courses = try CourseAgent.sharedInstance.getData()
             for i in 0 ..< courses.count {
                 // 获取课程信息
-                let currentData = courses.objectAtIndex(i) as! NSData
-                let current = NSKeyedUnarchiver.unarchiveObjectWithData(currentData) as! Course
-                let day = current.day
+                let current = courses[i]
+                let weekday = current.weekday
                 let startSection = current.startSection
                 let sectionNumber = current.sectionNumber
-                let name = current.name
-                let classroom = current.classroom
                 let classID = current.ID
                 let weekOddEven = current.weekOddEven
                 
                 // 创建一堂课的View
-                let course = ClassView.loadFromNib()
+                let courseView = ClassView.loadFromNib()
                 if let _ = week {
                     if ((weekOddEven == "单 周") && (week % 2 == 0) || (weekOddEven == "双 周" && (week % 2 == 1))) {
-                        course.alpha = 0.15
+                        courseView.alpha = 0.15
                     }
                 }
-                course.backgroundColor = findProperColorForCourse(classID)
-                course.classNameLabel.text = name
-                course.classroomLabel.text = classroom
-                self.classScrollView.addSubview(course)
-                course.snp_makeConstraints(closure: { (make) in
-                    make.left.equalTo(classScrollView.snp_left).offset(CGFloat(day) * columnWidth + classViewInset)
+                courseView.backgroundColor = findProperColorForCourse(classID)
+                courseView.course = current
+                self.classScrollView.addSubview(courseView)
+                courseView.snp_makeConstraints(closure: { (make) in
+                    make.left.equalTo(classScrollView.snp_left).offset(CGFloat(weekday - 1) * columnWidth + classViewInset)
                     make.top.equalTo(classScrollView.snp_top).offset(CGFloat(startSection - 1) * rowHeight + classViewInset)
                     make.width.equalTo(columnWidth - classViewInset * 2)
                     make.height.equalTo(rowHeight * CGFloat(sectionNumber) - classViewInset * 2)
                 })
-                course.layer.cornerRadius = 5
-                course.layer.masksToBounds = true
-                course.tag = i
+                courseView.layer.cornerRadius = 5
+                courseView.layer.masksToBounds = true
+                courseView.tag = i
                 let tapGesture = UITapGestureRecognizer()
                 tapGesture.addTarget(viewController, action: #selector(ClassTimeViewController.showCourseDetail(_:)))
-                course.addGestureRecognizer(tapGesture)
+                courseView.addGestureRecognizer(tapGesture)
             }
         } catch {
             
@@ -236,10 +232,10 @@ class ClassTimeView: UIView {
 
     func updateClassTimeTableWithWeek(week: Int) {
         do {
-            let courses = try CourseAgent().getData()
+            //FIXME: 根据week筛选起止周次
+            let courses = try CourseAgent.sharedInstance.getData()
             for i in 0 ..< courses.count {
-                let currentData = courses.objectAtIndex(i) as! NSData
-                let current = NSKeyedUnarchiver.unarchiveObjectWithData(currentData) as! Course
+                let current = courses[i]
                 let weekOddEven = current.weekOddEven
                 let course = self.classScrollView.viewWithTag(i)!
                 if ((weekOddEven == "单 周") && (week % 2 == 0) || (weekOddEven == "双 周" && (week % 2 == 1))) {

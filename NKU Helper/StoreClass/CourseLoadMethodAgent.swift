@@ -12,6 +12,10 @@ private let sharedStoreAgent = CourseLoadMethodAgent()
 
 class CourseLoadMethodAgent: StoreAgent, StoreProtocol {
     
+    private override init() {
+        super.init()
+    }
+    
     class var sharedInstance:CourseLoadMethodAgent {
         return sharedStoreAgent
     }
