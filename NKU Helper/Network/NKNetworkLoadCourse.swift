@@ -99,7 +99,42 @@ class NKNetworkLoadCourse: NKNetworkBase {
     
     // 从课程列表加载课程
     dynamic private func loadCourseFromClassTable() {
-        //TODO: 从课程列表加载课程
+        Alamofire.request(.GET, "http://222.30.32.10/xsxk/selectedAction.do").responseString { (response) in
+            guard let html = response.result.value else {
+                self.delegate?.didFailToReceiveCourseData()
+                return
+            }
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+                let saveOK = self.analyzeClassListHtml(html)
+                saveOK ? self.delegate?.didSuccessToReceiveCourseData() : self.delegate?.didFailToSaveCourseData()
+            })
+        }
+    }
+    
+    dynamic private func analyzeClassListHtml(html: String) -> Bool {
+        let htmlNSString = html as NSString
+        let regularExpression1 = try! NSRegularExpression(pattern: "<td[^<>]*?NavText\"[^<>]*?>(\\S*?)\\s*?</td>\\s*?<td[^<>]*?NavText\"[^<>]*?>(\\S*?)\\s*?</td>\\s*?<td[^<>]*?NavText\"[^<>]*?>(\\S*?)\\s*?</td>\\s*?<td[^<>]*?NavText\"[^<>]*?>(\\S*?)\\s*?</td>\\s*?<td[^<>]*?NavText\"[^<>]*?>(\\S*?)\\s*?</td>\\s*?<td[^<>]*?NavText\"[^<>]*?>(\\S*?)\\s*?</td>\\s*?<td[^<>]*?NavText\"[^<>]*?>(\\S*?)\\s*?</td>\\s*?<td[^<>]*?NavText\"[^<>]*?>(\\S*?)\\s*?</td>\\s*?<td[^<>]*?NavText\"[^<>]*?>(\\S*?)\\s*?</td>\\s*?<td[^<>]*?NavText\"[^<>]*?>(\\S*?)\\s*?</td>\\s*?<td[^<>]*?NavText\"[^<>]*?>(\\S*?)\\s*?</td>\\s*?<td[^<>]*?NavText\"[^<>]*?>(\\S*?)\\s*?</td>\\s*?<td[^<>]*?NavText\"[^<>]*?>\\s*?<a[^<>]*?href=\".*?&amp;(.*?)\".*?</a>\\s*?</td>", options: .CaseInsensitive)
+        let matches = regularExpression1.matchesInString(html, options: .ReportProgress, range: NSMakeRange(0, htmlNSString.length))
+        var courses = [Course]()
+        for i in 0..<matches.count {
+            let match = matches[i]
+            let index = (htmlNSString.substringWithRange(match.rangeAtIndex(1)) as NSString).integerValue
+            let startSection = (htmlNSString.substringWithRange(match.rangeAtIndex(6)) as NSString).integerValue
+            let endSection = (htmlNSString.substringWithRange(match.rangeAtIndex(7)) as NSString).integerValue
+            let url = NSURL(string: "http://222.30.32.10/xsxk/selectedAllAction.do?ifkebiao=no&" + htmlNSString.substringWithRange(match.rangeAtIndex(13)))!
+            let course = loadDetailClassInfo(url, startSection: startSection, sectionNumber: endSection - startSection + 1, index: index)
+            courses.append(course)
+            
+            let progress = (Float(i + 1)) / Float(matches.count)
+            delegate?.loadProgressUpdate(progress)
+        }
+        do {
+            try CourseAgent.sharedInstance.deleteData()
+            try CourseAgent.sharedInstance.saveData(courses)
+            return true
+        } catch {
+            return false
+        }
     }
     
     // 加载并分析课程详细信息
@@ -107,7 +142,7 @@ class NKNetworkLoadCourse: NKNetworkBase {
         let receivedData = NSData(contentsOfURL: url)!
         let encoding = CFStringConvertEncodingToNSStringEncoding(0x0632)
         let courseDetailInfoHtml = NSString(data: receivedData, encoding: encoding) as! String
-        
+
         let classID = getProperty(courseDetailInfoHtml, para: "选课序号")
         let classNumber = getProperty(courseDetailInfoHtml, para: "课程编号")
         let className = getProperty(courseDetailInfoHtml, para: "课程名称")
