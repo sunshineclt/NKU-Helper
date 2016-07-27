@@ -24,8 +24,8 @@ class Course: Object {
     dynamic var sectionNumber = 2
     dynamic var startWeek = 1
     dynamic var endWeek = 16
-    //TODO: 把颜色和thing与Course连起来
     dynamic var color: Color?
+    //TODO: 把thing与Course连起来
 //    let thingToDos = List<ThingToDo>()
     
     var endSection:Int {

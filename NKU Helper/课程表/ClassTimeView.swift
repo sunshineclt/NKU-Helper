@@ -153,8 +153,6 @@ class ClassTimeView: UIView {
             }
         }
         
-        
-        
         do {
             // 绘制课表
             let courses = try CourseAgent.sharedInstance.getData()

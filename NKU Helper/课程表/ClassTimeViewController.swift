@@ -52,6 +52,7 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
     }
     
     override func viewWillAppear(animated: Bool) {
+        classTimeView.drawClassTimeTableOnViewController(self)
         NKNetworkFetchInfo.fetchNowWeek { (nowWeek😈, isVocation😈) in
             guard let nowWeek = nowWeek😈, isVocation = isVocation😈 else {
                 return
