@@ -68,6 +68,7 @@ class CourseAgent: StoreAgent {
             })
             userDefaults.removeObjectForKey(key)
             userDefaults.setBool(true, forKey: key)
+            userDefaults.synchronize()
         } catch {
             throw StoragedDataError.RealmError
         }
@@ -89,9 +90,11 @@ class CourseAgent: StoreAgent {
             })
             userDefaults.removeObjectForKey(key)
             userDefaults.setBool(false, forKey: key)
+            userDefaults.synchronize()
         } catch StoragedDataError.NoClassesInStorage {
             userDefaults.removeObjectForKey(key)
             userDefaults.setBool(false, forKey: key)
+            userDefaults.synchronize()
         } catch {
             throw StoragedDataError.RealmError
         }
