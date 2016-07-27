@@ -86,6 +86,8 @@
 		E97176781B149292004DADB2 /* CourseDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97176771B149292004DADB2 /* CourseDetailTableViewController.swift */; };
 		E971EB821BAAFEE8005E6E55 /* PlusCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E971EB811BAAFEE8005E6E55 /* PlusCircleView.swift */; };
 		E9762F701C48DE77002CEF03 /* NKNetworkFetchNoti.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9762F6F1C48DE77002CEF03 /* NKNetworkFetchNoti.swift */; };
+		E97648D01D48429F005326EE /* ClassTimePreferenceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97648CF1D48429F005326EE /* ClassTimePreferenceTableViewController.swift */; };
+		E97648D21D484405005326EE /* CourseLoadMethodAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97648D11D484405005326EE /* CourseLoadMethodAgent.swift */; };
 		E981C12D1C84A02D005CBF4E /* ClassModificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E981C12C1C84A02D005CBF4E /* ClassModificationTableViewCell.swift */; };
 		E988B5371AB005DF006818FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E988B5361AB005DF006818FA /* Main.storyboard */; };
 		E98E2B471C4638C800CF82BE /* StoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98E2B461C4638C800CF82BE /* StoreProtocol.swift */; };
@@ -239,6 +241,8 @@
 		E971EB811BAAFEE8005E6E55 /* PlusCircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlusCircleView.swift; sourceTree = "<group>"; };
 		E975B7D21C154F3100240D4C /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		E9762F6F1C48DE77002CEF03 /* NKNetworkFetchNoti.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkFetchNoti.swift; sourceTree = "<group>"; };
+		E97648CF1D48429F005326EE /* ClassTimePreferenceTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassTimePreferenceTableViewController.swift; sourceTree = "<group>"; };
+		E97648D11D484405005326EE /* CourseLoadMethodAgent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseLoadMethodAgent.swift; sourceTree = "<group>"; };
 		E981C12C1C84A02D005CBF4E /* ClassModificationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassModificationTableViewCell.swift; sourceTree = "<group>"; };
 		E988B5361AB005DF006818FA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E98DC7291B8B13D100273510 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -606,6 +610,7 @@
 			children = (
 				E9B8C4AE1AA82D6E00E0DD50 /* AccountInfo */,
 				E98E2B4D1C46469700CF82BE /* CourseAgent.swift */,
+				E97648D11D484405005326EE /* CourseLoadMethodAgent.swift */,
 				E9CA9C8F1C4272BC0030AF49 /* StoreAgent.swift */,
 				E98E2B461C4638C800CF82BE /* StoreProtocol.swift */,
 				E98E2B481C4639BB00CF82BE /* UserAgent.swift */,
@@ -648,6 +653,7 @@
 			children = (
 				E9DB7EBC1AAB5EB0000D4182 /* AccountInfo */,
 				E97A94AF1ABF19F200998A07 /* PreferredColors */,
+				E97648CF1D48429F005326EE /* ClassTimePreferenceTableViewController.swift */,
 				E97176751B1488CA004DADB2 /* AboutViewController.swift */,
 				E98F94D91AA3191F00885992 /* SettingTableViewController.swift */,
 				E9693E3F1D3245FB00D6135B /* Settings.storyboard */,
@@ -1014,6 +1020,7 @@
 				E98F94DA1AA3191F00885992 /* SettingTableViewController.swift in Sources */,
 				E95F93E31C50F7E100CEEC12 /* ClassToEvaluateTableViewCell.swift in Sources */,
 				E96419D41AA8BC9800397691 /* DetailAccountInfoTableViewController.swift in Sources */,
+				E97648D21D484405005326EE /* CourseLoadMethodAgent.swift in Sources */,
 				E90E872B1C40FCE700E6BE3A /* SelectCourseTableViewController.swift in Sources */,
 				E98E2B8B1C46ABE400CF82BE /* ClassTimeView.swift in Sources */,
 				E99D67041C16C8CF00E27B08 /* NotiCenterTableViewController.swift in Sources */,
@@ -1050,6 +1057,7 @@
 				E91E5F551A9103DF009F3B2B /* GradeCell.swift in Sources */,
 				E930839E1D3A0DE1000FC8E8 /* UIViewExtention.swift in Sources */,
 				E98E2B501C46492900CF82BE /* NKNetworkLoadCourse.swift in Sources */,
+				E97648D01D48429F005326EE /* ClassTimePreferenceTableViewController.swift in Sources */,
 				E98E2B491C4639BB00CF82BE /* UserAgent.swift in Sources */,
 				E9634EBF1D38E3B900F30FA0 /* NKNetworkFetchInfo.swift in Sources */,
 				E9CA9C901C4272BC0030AF49 /* StoreAgent.swift in Sources */,

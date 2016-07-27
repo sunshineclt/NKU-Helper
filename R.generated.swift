@@ -298,7 +298,7 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 29 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 31 reuse identifiers.
   struct reuseIdentifier {
     /// Reuse identifier `AboutCell`.
     static let aboutCell: ReuseIdentifier<UITableViewCell> = ReuseIdentifier(identifier: "AboutCell")
@@ -308,6 +308,8 @@ struct R: Rswift.Validatable {
     static let accountInfoCell: ReuseIdentifier<UITableViewCell> = ReuseIdentifier(identifier: "AccountInfoCell")
     /// Reuse identifier `AddAccountCell`.
     static let addAccountCell: ReuseIdentifier<UITableViewCell> = ReuseIdentifier(identifier: "AddAccountCell")
+    /// Reuse identifier `ChooseClassTimeTablePreferenceCell`.
+    static let chooseClassTimeTablePreferenceCell: ReuseIdentifier<UITableViewCell> = ReuseIdentifier(identifier: "ChooseClassTimeTablePreferenceCell")
     /// Reuse identifier `ChoosePreferredColorCell`.
     static let choosePreferredColorCell: ReuseIdentifier<UITableViewCell> = ReuseIdentifier(identifier: "ChoosePreferredColorCell")
     /// Reuse identifier `classDetailInfo`.
@@ -316,6 +318,8 @@ struct R: Rswift.Validatable {
     static let classInfo: ReuseIdentifier<ClassInfoTableViewCell> = ReuseIdentifier(identifier: "classInfo")
     /// Reuse identifier `classModification`.
     static let classModification: ReuseIdentifier<ClassModificationTableViewCell> = ReuseIdentifier(identifier: "classModification")
+    /// Reuse identifier `ClassTimeTablePreferenceCell`.
+    static let classTimeTablePreferenceCell: ReuseIdentifier<UITableViewCell> = ReuseIdentifier(identifier: "ClassTimeTablePreferenceCell")
     /// Reuse identifier `ClassToEvaluateCell`.
     static let classToEvaluateCell: ReuseIdentifier<ClassToEvaluateTableViewCell> = ReuseIdentifier(identifier: "ClassToEvaluateCell")
     /// Reuse identifier `CourseCell`.
@@ -541,12 +545,14 @@ struct R: Rswift.Validatable {
       private init() {}
     }
     
-    /// This struct is generated for `SettingTableViewController`, and contains static references to 3 segues.
+    /// This struct is generated for `SettingTableViewController`, and contains static references to 4 segues.
     struct settingTableViewController {
       /// Segue identifier `ShowAbout`.
       static let showAbout: StoryboardSegueIdentifier<UIStoryboardSegue, SettingTableViewController, AboutViewController> = StoryboardSegueIdentifier(identifier: "ShowAbout")
       /// Segue identifier `ShowChoosePreferredColor`.
       static let showChoosePreferredColor: StoryboardSegueIdentifier<UIStoryboardSegue, SettingTableViewController, ColorChooseTableViewController> = StoryboardSegueIdentifier(identifier: "ShowChoosePreferredColor")
+      /// Segue identifier `ShowClassTimePreference`.
+      static let showClassTimePreference: StoryboardSegueIdentifier<UIStoryboardSegue, SettingTableViewController, ClassTimePreferenceTableViewController> = StoryboardSegueIdentifier(identifier: "ShowClassTimePreference")
       /// Segue identifier `ShowDetailAccountInfo`.
       static let showDetailAccountInfo: StoryboardSegueIdentifier<UIStoryboardSegue, SettingTableViewController, DetailAccountInfoTableViewController> = StoryboardSegueIdentifier(identifier: "ShowDetailAccountInfo")
       
@@ -562,6 +568,13 @@ struct R: Rswift.Validatable {
       /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
       static func showChoosePreferredColor(segue segue: UIStoryboardSegue) -> TypedStoryboardSegueInfo<UIStoryboardSegue, SettingTableViewController, ColorChooseTableViewController>? {
         return TypedStoryboardSegueInfo(segueIdentifier: R.segue.settingTableViewController.showChoosePreferredColor, segue: segue)
+      }
+      
+      /// Optionally returns a typed version of segue `ShowClassTimePreference`.
+      /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
+      /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
+      static func showClassTimePreference(segue segue: UIStoryboardSegue) -> TypedStoryboardSegueInfo<UIStoryboardSegue, SettingTableViewController, ClassTimePreferenceTableViewController>? {
+        return TypedStoryboardSegueInfo(segueIdentifier: R.segue.settingTableViewController.showClassTimePreference, segue: segue)
       }
       
       /// Optionally returns a typed version of segue `ShowDetailAccountInfo`.

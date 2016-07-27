@@ -41,8 +41,10 @@ class SettingTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case 0,1,2,3:
+        case 0,2,3:
             return 1
+        case 1:
+            return 2
         case 4:
             return 0
         default:
@@ -68,8 +70,14 @@ class SettingTableViewController: UITableViewController {
                 return cell
             }
         case 1:
-            let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.choosePreferredColorCell.identifier)!
-            return cell
+            if indexPath.row == 0{
+                let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.choosePreferredColorCell.identifier)!
+                return cell
+            }
+            else {
+                let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.chooseClassTimeTablePreferenceCell.identifier)!
+                return cell
+            }
         case 2:
             let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.supportGroupCell.identifier)!
             cell.textLabel?.text = "请开发团队喝一杯咖啡"
