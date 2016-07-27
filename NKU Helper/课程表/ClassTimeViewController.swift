@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Alamofire
+import RealmSwift
 
 class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCourseDelegate {
     
@@ -88,6 +88,54 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
     func didSuccessToReceiveCourseData() {
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             self.classTimeView.loadEndAnimation()
+            
+            // 给每个课程分配一个颜色
+            // 初始化颜色的使用
+            var isColorUsed = [Bool]()
+            for _ in 0 ..< Color.getColorCount() {
+                isColorUsed.append(false)
+            }
+            var coloredCourse = [String: Int]()
+            do {
+                let colors = try Color.getColors()
+                /**
+                 为课程获取合适的颜色（若已有过，则使用那个颜色，否则随机出一个没用过的颜色）
+                 
+                 - parameter classID: 课程ID
+                 
+                 - returns: 合适的颜色
+                 */
+                func findProperColorForCourse(classID: String) -> Color {
+                    for (key, value) in coloredCourse {
+                        if key == classID {
+                            return colors[value]
+                        }
+                    }
+                    var count = 0
+                    var colorIndex = Int(arc4random_uniform(UInt32(colors.count)))
+                    
+                    while (isColorUsed[colorIndex]) || (!colors[colorIndex].liked) {
+                        colorIndex = Int(arc4random_uniform(UInt32(colors.count)))
+                        count += 1
+                        if count > 100 {
+                            break
+                        }
+                    }
+                    coloredCourse[classID] = colorIndex
+                    isColorUsed[colorIndex] = true
+                    return colors[colorIndex]
+                }
+                let courses = try CourseAgent.sharedInstance.getData()
+                for i in 0 ..< courses.count {
+                    let current = courses[i]
+                    let classID = current.ID
+                    try Realm().write({ 
+                        current.color = findProperColorForCourse(classID)
+                    })
+                }
+            } catch {
+            }
+            
             self.classTimeView.drawClassTimeTableOnViewController(self)
         })
     }

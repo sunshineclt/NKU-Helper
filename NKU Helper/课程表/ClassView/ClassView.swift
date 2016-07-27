@@ -17,6 +17,7 @@ class ClassView: UIView {
         didSet {
             classNameLabel.text = course.name
             classroomLabel.text = course.classroom
+            self.backgroundColor = course.color?.convertToUIColor() ?? UIColor.grayColor()
         }
     }
     

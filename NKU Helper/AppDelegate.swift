@@ -22,6 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, WXAp
         JSPatch.startWithAppKey("bdeda28b488dda55")
         JSPatch.sync()
         
+        let rootvc = self.window?.rootViewController as! UITabBarController
+        let firstViewController = rootvc.childViewControllers[0]
+        
         // To set up Flurry(App Analyse), Fabric.Crashlytics(Crash Analyse), AVOS(Push Service), ShareSDK
         func setUpAllTools() {
             
@@ -74,8 +77,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, WXAp
         
         // load Preferred Colors
         func loadPreferredColors() {
-            let rootvc = self.window?.rootViewController as! UITabBarController
-            let firstViewController = rootvc.childViewControllers[0]
             do {
                 try Color.getColors()
             } catch StoragedDataError.NoColorInStorage {

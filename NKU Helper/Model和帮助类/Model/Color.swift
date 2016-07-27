@@ -12,7 +12,7 @@ import RealmSwift
 class Color: Object {
     
     /**
-     将App预设的颜色拷贝入Document目录中，在使用Color类之前必须进行
+     将App预设的颜色拷贝入Document目录中，并加载到default.realm，在使用Color类之前必须进行
      
      - throws: RealmError
      */
@@ -20,11 +20,22 @@ class Color: Object {
         let oldPath = NSBundle.mainBundle().pathForResource("Colors", ofType: "realm")!
         let documentPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
         let targetPath = (documentPath as NSString).stringByAppendingPathComponent("Colors.realm")
+        var config = Realm.Configuration()
         do {
             if NSFileManager.defaultManager().fileExistsAtPath(targetPath) {
                 try NSFileManager.defaultManager().removeItemAtPath(targetPath)
             }
             try NSFileManager.defaultManager().copyItemAtPath(oldPath, toPath: targetPath)
+            config.fileURL = NSURL(string: targetPath)!
+            let realm = try Realm(configuration: config)
+            let defaultRealm = try Realm()
+            let colors = realm.objects(Color.self)
+            try defaultRealm.write({
+                for color in colors {
+                    //let oneColor = Color(name: color.name, red: color.red, green: color.green, blue: color.blue, alpha: color.alpha, liked: color.liked)
+                    defaultRealm.add(defaultRealm.create(Color.self, value: color, update: false))
+                }
+            })
         } catch {
             throw StoragedDataError.RealmError
         }
@@ -38,15 +49,8 @@ class Color: Object {
      - returns: 所有颜色对象组成的Results
      */
     class func getColors() throws -> Results<Color> {
-        var config = Realm.Configuration()
-        let documentPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
-        let path = (documentPath as NSString).stringByAppendingPathComponent("Colors.realm")
-        guard let url = NSURL(string: path) else {
-            throw StoragedDataError.NoColorInStorage
-        }
-        config.fileURL = url
         do {
-            let realm = try Realm(configuration: config)
+            let realm = try Realm()
             let colors = realm.objects(Color.self)
             if colors.count > 0 {
                 return colors
@@ -68,15 +72,8 @@ class Color: Object {
      - returns: 颜色数量
      */
     class func getColorCount() -> Int {
-        var config = Realm.Configuration()
-        let documentPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
-        let path = (documentPath as NSString).stringByAppendingPathComponent("Colors.realm")
-        guard let url = NSURL(string: path) else {
-            return 0
-        }
-        config.fileURL = url
         do {
-            let realm = try Realm(configuration: config)
+            let realm = try Realm()
             return realm.objects(Color.self).count
         } catch {
             return 0
@@ -96,15 +93,8 @@ class Color: Object {
      改变喜欢/不喜欢
      */
     func toggleLike() {
-        var config = Realm.Configuration()
-        let documentPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
-        let path = (documentPath as NSString).stringByAppendingPathComponent("Colors.realm")
-        guard let url = NSURL(string: path) else {
-            return
-        }
-        config.fileURL = url
         do {
-            let realm = try Realm(configuration: config)
+            let realm = try Realm()
             try realm.write({
                 self.liked = !self.liked
             })

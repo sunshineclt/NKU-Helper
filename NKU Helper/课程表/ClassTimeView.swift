@@ -153,43 +153,9 @@ class ClassTimeView: UIView {
             }
         }
         
-        // 初始化颜色的使用
-        var isColorUsed = [Bool]()
-        for _ in 0 ..< Color.getColorCount() {
-            isColorUsed.append(false)
-        }
-        var coloredCourse = [String: Int]()
+        
         
         do {
-            let colors = try Color.getColors()
-            /**
-             为课程获取合适的颜色（若已有过，则使用那个颜色，否则随机出一个没用过的颜色）
-             
-             - parameter classID: 课程ID
-             
-             - returns: 合适的颜色
-             */
-            func findProperColorForCourse(classID: String) -> UIColor {
-                for (key, value) in coloredCourse {
-                    if key == classID {
-                        return colors[value].convertToUIColor()
-                    }
-                }
-                var count = 0
-                var colorIndex = Int(arc4random_uniform(UInt32(colors.count)))
-                
-                while (isColorUsed[colorIndex]) || (!colors[colorIndex].liked) {
-                    colorIndex = Int(arc4random_uniform(UInt32(colors.count)))
-                    count += 1
-                    if count > 1000 {
-                        break
-                    }
-                }
-                coloredCourse[classID] = colorIndex
-                isColorUsed[colorIndex] = true
-                return colors[colorIndex].convertToUIColor()
-            }
-            
             // 绘制课表
             let courses = try CourseAgent.sharedInstance.getData()
             for i in 0 ..< courses.count {
@@ -198,7 +164,6 @@ class ClassTimeView: UIView {
                 let weekday = current.weekday
                 let startSection = current.startSection
                 let sectionNumber = current.sectionNumber
-                let classID = current.ID
                 let weekOddEven = current.weekOddEven
                 
                 // 创建一堂课的View
@@ -208,7 +173,6 @@ class ClassTimeView: UIView {
                         courseView.alpha = 0.15
                     }
                 }
-                courseView.backgroundColor = findProperColorForCourse(classID)
                 courseView.course = current
                 self.classScrollView.addSubview(courseView)
                 courseView.snp_makeConstraints(closure: { (make) in
