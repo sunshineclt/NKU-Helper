@@ -30,7 +30,6 @@ class CourseAgent: StoreAgent {
         return (NSUserDefaults.standardUserDefaults().objectForKey("courseLoaded") as? Bool) ?? false
     }
     
-    
     /**
      获取所有课程
      
@@ -44,7 +43,7 @@ class CourseAgent: StoreAgent {
         }
         do {
             let realm = try Realm()
-            let result = realm.objects(Course.self)
+            let result = realm.objects(Course.self).sorted("key")
             return result
         } catch {
             throw StoragedDataError.RealmError
