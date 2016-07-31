@@ -20,8 +20,8 @@ class ClassTimeView: UIView {
     @IBOutlet var timeScrollViewWidthConstraint: NSLayoutConstraint!
     var weekdayViews = [WeekdayView]()
     var timeScheduleViews = [TimeScheduleView]()
-    var UALoadView:UAProgressView!
-    var overlayView:UIView!
+    var UALoadView: UAProgressView!
+    var overlayView: UIView!
     
     var orientation: UIInterfaceOrientation?
     var rowHeight: CGFloat {
@@ -157,34 +157,36 @@ class ClassTimeView: UIView {
             // 绘制课表
             let courses = try CourseAgent.sharedInstance.getData()
             for i in 0 ..< courses.count {
-                // 获取课程信息
+                // 对于每一个课时
                 let current = courses[i]
-                let weekday = current.weekday
-                let startSection = current.startSection
-                let sectionNumber = current.sectionNumber
-                let weekOddEven = current.weekOddEven
-                
-                // 创建一堂课的View
-                let courseView = ClassView.loadFromNib()
-                if let _ = week {
-                    if ((weekOddEven == "单 周") && (week % 2 == 0) || (weekOddEven == "双 周" && (week % 2 == 1))) {
-                        courseView.alpha = 0.15
+                for courseTime in current.courseTimes {
+                    let weekday = courseTime.weekday
+                    let startSection = courseTime.startSection
+                    let sectionNumber = courseTime.sectionNumber
+                    let weekOddEven = courseTime.weekOddEven
+                    
+                    // 创建一堂课的View
+                    let courseView = ClassView.loadFromNib()
+                    if let _ = week {
+                        if ((weekOddEven == "单周") && (week % 2 == 0) || (weekOddEven == "双周" && (week % 2 == 1))) {
+                            courseView.alpha = 0.15
+                        }
                     }
+                    courseView.courseTime = courseTime
+                    self.classScrollView.addSubview(courseView)
+                    courseView.snp_makeConstraints(closure: { (make) in
+                        make.left.equalTo(classScrollView.snp_left).offset(CGFloat(weekday - 1) * columnWidth + classViewInset)
+                        make.top.equalTo(classScrollView.snp_top).offset(CGFloat(startSection - 1) * rowHeight + classViewInset)
+                        make.width.equalTo(columnWidth - classViewInset * 2)
+                        make.height.equalTo(rowHeight * CGFloat(sectionNumber) - classViewInset * 2)
+                    })
+                    courseView.layer.cornerRadius = 5
+                    courseView.layer.masksToBounds = true
+                    courseView.tag = courseTime.key
+                    let tapGesture = UITapGestureRecognizer()
+                    tapGesture.addTarget(viewController, action: #selector(ClassTimeViewController.showCourseDetail(_:)))
+                    courseView.addGestureRecognizer(tapGesture)
                 }
-                courseView.course = current
-                self.classScrollView.addSubview(courseView)
-                courseView.snp_makeConstraints(closure: { (make) in
-                    make.left.equalTo(classScrollView.snp_left).offset(CGFloat(weekday - 1) * columnWidth + classViewInset)
-                    make.top.equalTo(classScrollView.snp_top).offset(CGFloat(startSection - 1) * rowHeight + classViewInset)
-                    make.width.equalTo(columnWidth - classViewInset * 2)
-                    make.height.equalTo(rowHeight * CGFloat(sectionNumber) - classViewInset * 2)
-                })
-                courseView.layer.cornerRadius = 5
-                courseView.layer.masksToBounds = true
-                courseView.tag = current.key
-                let tapGesture = UITapGestureRecognizer()
-                tapGesture.addTarget(viewController, action: #selector(ClassTimeViewController.showCourseDetail(_:)))
-                courseView.addGestureRecognizer(tapGesture)
             }
         } catch {
             
@@ -196,13 +198,15 @@ class ClassTimeView: UIView {
         do {
             let courses = try CourseAgent.sharedInstance.getData()
             courses.forEach({ (current) in
-                let weekOddEven = current.weekOddEven
-                let startWeek = current.startWeek
-                let endWeek = current.endWeek
-                let courseView = self.classScrollView.viewWithTag(current.key)!
-                if ((weekOddEven == "单 周") && (week % 2 == 0) || (weekOddEven == "双 周" && (week % 2 == 1))) || (week < startWeek) || (week > endWeek) {
-                    courseView.alpha = 0.15
-                }
+                current.courseTimes.forEach({ (courseTime) in
+                    let weekOddEven = courseTime.weekOddEven
+                    let startWeek = courseTime.startWeek
+                    let endWeek = courseTime.endWeek
+                    let courseView = self.classScrollView.viewWithTag(courseTime.key)!
+                    if ((weekOddEven == "单周") && (week % 2 == 0) || (weekOddEven == "双周" && (week % 2 == 1))) || (week < startWeek) || (week > endWeek) {
+                        courseView.alpha = 0.15
+                    }
+                })
             })
         } catch {
             

@@ -42,7 +42,7 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
                 courseHandler.getAllCourse()
             case .NotLoggedin:
                 let nc = NSNotificationCenter.defaultCenter()
-                nc.addObserver(self, selector: #selector(ClassTimeViewController.refreshClassTimeTable(_:)), name: "loginComplete", object: nil)
+                nc.addObserver(self, selector: #selector(ClassTimeViewController.doRefresh), name: "loginComplete", object: nil)
                 self.performSegueWithIdentifier(R.segue.classTimeViewController.login, sender: nil)
             case .UnKnown:
                 self.presentViewController(ErrorHandler.alert(ErrorHandler.NetworkError()), animated: true, completion: nil)
@@ -96,7 +96,6 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
             for _ in 0 ..< Color.getColorCount() {
                 isColorUsed.append(false)
             }
-            var coloredCourse = [String: Int]()
             do {
                 let colors = try Color.getColors()
                 /**
@@ -107,11 +106,6 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
                  - returns: 合适的颜色
                  */
                 func findProperColorForCourse(classID: String) -> Color {
-                    for (key, value) in coloredCourse {
-                        if key == classID {
-                            return colors[value]
-                        }
-                    }
                     var count = 0
                     var colorIndex = Int(arc4random_uniform(UInt32(colors.count)))
                     
@@ -122,7 +116,6 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
                             break
                         }
                     }
-                    coloredCourse[classID] = colorIndex
                     isColorUsed[colorIndex] = true
                     return colors[colorIndex]
                 }
@@ -136,7 +129,6 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
                 }
             } catch {
             }
-            
             self.classTimeView.drawClassTimeTableOnViewController(self)
         })
     }
@@ -164,6 +156,17 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
 // MARK: 事件监听
     
     @IBAction func refreshClassTimeTable(sender: AnyObject) {
+        let alert = UIAlertController(title: "刷新课表确认", message: "若刷新课表，则原来记录的课程作业都会被删除，确定要继续吗？", preferredStyle: .Alert)
+        let yesAction = UIAlertAction(title: "是", style: .Destructive) { (action) in
+            self.doRefresh()
+        }
+        let noAction = UIAlertAction(title: "否", style: .Cancel, handler: nil)
+        alert.addAction(yesAction)
+        alert.addAction(noAction)
+        presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    func doRefresh() {
         let nc = NSNotificationCenter.defaultCenter()
         nc.removeObserver(self)
         do {
@@ -183,7 +186,7 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
                         self.refreshBarButton.enabled = true
                     case .NotLoggedin:
                         let nc = NSNotificationCenter.defaultCenter()
-                        nc.addObserver(self, selector: #selector(ClassTimeViewController.refreshClassTimeTable(_:)), name: "loginComplete", object: nil)
+                        nc.addObserver(self, selector: #selector(ClassTimeViewController.doRefresh), name: "loginComplete", object: nil)
                         self.performSegueWithIdentifier(R.segue.classTimeViewController.login, sender: nil)
                     case .UnKnown:
                         self.presentViewController(ErrorHandler.alert(ErrorHandler.NetworkError()), animated: true, completion: nil)
@@ -277,21 +280,18 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
 
 // MARK: 页面间跳转
     
-    var whichCourse: Course!
-    
     func showCourseDetail(tapGesture:UITapGestureRecognizer) {
         
-        whichCourse = (tapGesture.view as! ClassView).course
-        self.performSegueWithIdentifier(R.segue.classTimeViewController.showCourseDetail, sender: nil)
+        self.performSegueWithIdentifier(R.segue.classTimeViewController.showCourseDetail, sender: (tapGesture.view as! ClassView).courseTime)
         
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
         if let typeInfo = R.segue.classTimeViewController.showCourseDetail(segue: segue) {
-            typeInfo.destinationViewController.course = whichCourse
+            if let whichCourse = sender as? CourseTime {
+                typeInfo.destinationViewController.courseTime = whichCourse
+            }
         }
-        
     }
     
 // MARK: 私有方法
@@ -305,7 +305,7 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
         } catch StoragedDataError.NoUserInStorage {
             self.presentViewController(ErrorHandler.alert(ErrorHandler.NotLoggedIn()), animated: true, completion: nil)
             return false
-        } catch StoragedDataError.NoClassesInStorage {
+        } catch StoragedDataError.NoCoursesInStorage {
             return false
         } catch {
             return false

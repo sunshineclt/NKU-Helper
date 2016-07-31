@@ -57,40 +57,40 @@ class NKNetworkLoadCourse: NKNetworkBase {
         let htmlNSString = html as NSString
         let regularExpression1 = try! NSRegularExpression(pattern: "<td[^<>]*?height=\"(\\d*?)\"[^<>]*?>\\s*?.*?(coursearrangeseq=.*?&&classroomincode=.*?&&week=.*?&&begphase=.*?&&ifkebiao=yes)", options: .CaseInsensitive)
         let matches = regularExpression1.matchesInString(html, options: .ReportProgress, range: NSMakeRange(0, htmlNSString.length))
-        var day = 0
-        var startSection = 1
-        var courses = [Course]()
-        for i in 0 ..< matches.count {
-            let match = matches[i]
-            if match.range.length > 190 {
-                let urlString = "http://222.30.32.10/xsxk/selectedAllAction.do?" + htmlNSString.substringWithRange(match.rangeAtIndex(2))
-                let url = NSURL(string: urlString)!
-                
-                let subString = htmlNSString.substringWithRange(match.rangeAtIndex(1)) as NSString
-                let sectionNumber = subString.integerValue / 15
-                
-                let course = loadDetailClassInfo(url, startSection: startSection, sectionNumber: sectionNumber, index: courses.count)
-                
-                courses.append(course)
-                startSection = startSection + sectionNumber
-                if startSection > 14 {
-                    day += 1
-                    startSection = 1
-                }
-            }
-            else {
-                startSection += 1
-                if startSection > 14 {
-                    day += 1
-                    startSection = 1
-                }
-            }
-            let progress = (Float(i + 1)) / Float(matches.count)
-            delegate?.loadProgressUpdate(progress)            
-        }
         do {
+            try Task.deleteCourseTasks()
+            try CourseTime.deleteAll()
             try CourseAgent.sharedInstance.deleteData()
-            try CourseAgent.sharedInstance.saveData(courses)
+            var day = 0
+            var startSection = 1
+            for i in 0 ..< matches.count {
+                let match = matches[i]
+                if match.range.length > 190 {
+                    let urlString = "http://222.30.32.10/xsxk/selectedAllAction.do?" + htmlNSString.substringWithRange(match.rangeAtIndex(2))
+                    let url = NSURL(string: urlString)!
+                    
+                    let subString = htmlNSString.substringWithRange(match.rangeAtIndex(1)) as NSString
+                    let sectionNumber = subString.integerValue / 15
+                    
+                    if let course = loadDetailClassInfo(url, startSection: startSection, sectionNumber: sectionNumber, index: i) {
+                        try CourseAgent.sharedInstance.saveData([course])
+                    }
+                    startSection = startSection + sectionNumber
+                    if startSection > 14 {
+                        day += 1
+                        startSection = 1
+                    }
+                }
+                else {
+                    startSection += 1
+                    if startSection > 14 {
+                        day += 1
+                        startSection = 1
+                    }
+                }
+                let progress = (Float(i + 1)) / Float(matches.count)
+                delegate?.loadProgressUpdate(progress)            
+            }
             return true
         } catch {
             return false
@@ -115,22 +115,22 @@ class NKNetworkLoadCourse: NKNetworkBase {
         let htmlNSString = html as NSString
         let regularExpression1 = try! NSRegularExpression(pattern: "<td[^<>]*?NavText\"[^<>]*?>(\\S*?)\\s*?</td>\\s*?<td[^<>]*?NavText\"[^<>]*?>(\\S*?)\\s*?</td>\\s*?<td[^<>]*?NavText\"[^<>]*?>(\\S*?)\\s*?</td>\\s*?<td[^<>]*?NavText\"[^<>]*?>(\\S*?)\\s*?</td>\\s*?<td[^<>]*?NavText\"[^<>]*?>(\\S*?)\\s*?</td>\\s*?<td[^<>]*?NavText\"[^<>]*?>(\\S*?)\\s*?</td>\\s*?<td[^<>]*?NavText\"[^<>]*?>(\\S*?)\\s*?</td>\\s*?<td[^<>]*?NavText\"[^<>]*?>(\\S*?)\\s*?</td>\\s*?<td[^<>]*?NavText\"[^<>]*?>(\\S*?)\\s*?</td>\\s*?<td[^<>]*?NavText\"[^<>]*?>(\\S*?)\\s*?</td>\\s*?<td[^<>]*?NavText\"[^<>]*?>(\\S*?)\\s*?</td>\\s*?<td[^<>]*?NavText\"[^<>]*?>(\\S*?)\\s*?</td>\\s*?<td[^<>]*?NavText\"[^<>]*?>\\s*?<a[^<>]*?href=\".*?&amp;(.*?)\".*?</a>\\s*?</td>", options: .CaseInsensitive)
         let matches = regularExpression1.matchesInString(html, options: .ReportProgress, range: NSMakeRange(0, htmlNSString.length))
-        var courses = [Course]()
-        for i in 0..<matches.count {
-            let match = matches[i]
-            let index = (htmlNSString.substringWithRange(match.rangeAtIndex(1)) as NSString).integerValue
-            let startSection = (htmlNSString.substringWithRange(match.rangeAtIndex(6)) as NSString).integerValue
-            let endSection = (htmlNSString.substringWithRange(match.rangeAtIndex(7)) as NSString).integerValue
-            let url = NSURL(string: "http://222.30.32.10/xsxk/selectedAllAction.do?ifkebiao=no&" + htmlNSString.substringWithRange(match.rangeAtIndex(13)))!
-            let course = loadDetailClassInfo(url, startSection: startSection, sectionNumber: endSection - startSection + 1, index: index)
-            courses.append(course)
-            
-            let progress = (Float(i + 1)) / Float(matches.count)
-            delegate?.loadProgressUpdate(progress)
-        }
         do {
+            try Task.deleteCourseTasks()
+            try CourseTime.deleteAll()
             try CourseAgent.sharedInstance.deleteData()
-            try CourseAgent.sharedInstance.saveData(courses)
+            for i in 0..<matches.count {
+                let match = matches[i]
+                let index = (htmlNSString.substringWithRange(match.rangeAtIndex(1)) as NSString).integerValue
+                let startSection = (htmlNSString.substringWithRange(match.rangeAtIndex(6)) as NSString).integerValue
+                let endSection = (htmlNSString.substringWithRange(match.rangeAtIndex(7)) as NSString).integerValue
+                let url = NSURL(string: "http://222.30.32.10/xsxk/selectedAllAction.do?ifkebiao=no&" + htmlNSString.substringWithRange(match.rangeAtIndex(13)))!
+                if let course = loadDetailClassInfo(url, startSection: startSection, sectionNumber: endSection - startSection + 1, index: index) {
+                    try CourseAgent.sharedInstance.saveData([course])
+                }
+                let progress = (Float(i + 1)) / Float(matches.count)
+                delegate?.loadProgressUpdate(progress)
+            }
             return true
         } catch {
             return false
@@ -138,7 +138,7 @@ class NKNetworkLoadCourse: NKNetworkBase {
     }
     
     // 加载并分析课程详细信息
-    dynamic private func loadDetailClassInfo(url: NSURL, startSection: Int, sectionNumber: Int, index: Int) -> Course {
+    dynamic private func loadDetailClassInfo(url: NSURL, startSection: Int, sectionNumber: Int, index: Int) -> Course? {
         let receivedData = NSData(contentsOfURL: url)!
         let encoding = CFStringConvertEncodingToNSStringEncoding(0x0632)
         let courseDetailInfoHtml = NSString(data: receivedData, encoding: encoding) as! String
@@ -152,7 +152,7 @@ class NKNetworkLoadCourse: NKNetworkBase {
         let teacherName = getProperty(courseDetailInfoHtml, para: "教师姓名")
         let startWeek = (getProperty(courseDetailInfoHtml, para: "开始周次") as NSString).integerValue
         let endWeek = (getProperty(courseDetailInfoHtml, para: "结束周次") as NSString).integerValue
-        let course = Course(key: index, ID: classID, number: classNumber, name: className, classroom: classroom, weekOddEven: weekOddEven, teacherName: teacherName, weekday: weekday, startSection: startSection, sectionNumber: sectionNumber, startWeek: startWeek, endWeek: endWeek)
+        let course = Course.addCourseTime(key: index, ID: classID, number: classNumber, name: className, classroom: classroom, weekOddEven: weekOddEven, teacherName: teacherName, weekday: weekday, startSection: startSection, sectionNumber: sectionNumber, startWeek: startWeek, endWeek: endWeek)
         return course
     }
     

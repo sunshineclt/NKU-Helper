@@ -1,11 +1,13 @@
 PODS:
   - Alamofire (3.4.1)
   - AVOSCloud (3.3.5)
+  - BTNavigationDropdownMenu (0.4)
   - DZNEmptyDataSet (1.8.1)
   - Locksmith (2.0.8)
   - MBProgressHUD (1.0.0)
-  - MJRefresh (3.1.10)
-  - MOBFoundation (2.0.7)
+  - MCSwipeTableViewCell (2.1.4)
+  - MJRefresh (3.1.12)
+  - MOBFoundation (2.0.8)
   - NJKWebViewProgress (0.2.3):
     - NJKWebViewProgress/Core (= 0.2.3)
     - NJKWebViewProgress/ProgressView (= 0.2.3)
@@ -35,9 +37,11 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - AVOSCloud
+  - BTNavigationDropdownMenu
   - DZNEmptyDataSet
   - Locksmith
   - MBProgressHUD
+  - MCSwipeTableViewCell (~> 2.1.4)
   - MJRefresh
   - MOBFoundation
   - NJKWebViewProgress
@@ -57,11 +61,13 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
   AVOSCloud: 1fe170768bee7e05bc3ea86e38d5bddb105cb957
+  BTNavigationDropdownMenu: 6876704a7a127aea257a65316c6b942ede51d163
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   Locksmith: a8ed41ac4c06506ea8cb199d8ec8a8d3d108eb2a
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
-  MJRefresh: bb72948c985914b0b5cecac573a2c69a8915fb02
-  MOBFoundation: af2388967017966e003c676a6cfffe784a1dead2
+  MCSwipeTableViewCell: 1b303e16c3a26b1982f3a68386e9b8c5fc8344c3
+  MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
+  MOBFoundation: 6f2006b941bd4002e2689a638d04c6b535c4cc64
   NJKWebViewProgress: f481fd424cb5ecc27eacae11b5397db92fba9a4d
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
   R.swift: 0ef9c42dc6c94ac44a3c78a7639c73f855a8e159
@@ -75,6 +81,6 @@ SPEC CHECKSUMS:
   UAProgressView: ce49aee47c14df6dc372f6fd57852f570ca97e6b
   YYText: ac09660c9ccd9b817f409a20caa6f5587444d2ae
 
-PODFILE CHECKSUM: 22a05a4cc4c465aae19262b9c59d447112c05e28
+PODFILE CHECKSUM: 68212115d5777c8ab2cbafa6b1588ea50fee628c
 
 COCOAPODS: 1.0.1

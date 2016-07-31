@@ -11,7 +11,7 @@ import Foundation
 /**
  存储错误
  
- - NoClassesInStorage: 存储中没有课程信息
+ - NoCoursesInStorage: 存储中没有课程信息
  - NoUserInStorage:    存储中没有用户信息
  - NoPasswordInKeychain: 钥匙串中没有用户密码信息
  - NoColorInStorage:   存储中没有颜色信息
@@ -19,7 +19,7 @@ import Foundation
  */
 enum StoragedDataError: ErrorType {
 
-    case NoClassesInStorage
+    case NoCoursesInStorage
     case NoUserInStorage
     case NoPasswordInKeychain
     case NoColorInStorage

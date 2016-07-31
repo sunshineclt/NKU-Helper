@@ -39,7 +39,7 @@ class CourseAgent: StoreAgent {
      */
     func getData() throws -> Results<Course> {
         guard CourseAgent.isCourseLoaded else {
-            throw StoragedDataError.NoClassesInStorage
+            throw StoragedDataError.NoCoursesInStorage
         }
         do {
             let realm = try Realm()
@@ -60,7 +60,7 @@ class CourseAgent: StoreAgent {
     func saveData(data: dataForm) throws {
         do {
             let realm = try Realm()
-            try realm.write({ 
+            try realm.write({
                 for course in data {
                     realm.add(course)
                 }
@@ -82,15 +82,14 @@ class CourseAgent: StoreAgent {
         do {
             let realm = try Realm()
             let data = try getData()
-            try realm.write({ 
-                for course in data {
-                    realm.delete(course)
-                }
+            try realm.write({
+                realm.delete(data)
+                
             })
             userDefaults.removeObjectForKey(key)
             userDefaults.setBool(false, forKey: key)
             userDefaults.synchronize()
-        } catch StoragedDataError.NoClassesInStorage {
+        } catch StoragedDataError.NoCoursesInStorage {
             userDefaults.removeObjectForKey(key)
             userDefaults.setBool(false, forKey: key)
             userDefaults.synchronize()

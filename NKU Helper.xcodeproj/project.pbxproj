@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		12E9B37A086FABEDFEA4D109 /* Pods_NKU_Helper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9945BD65AD3E7D087016CF58 /* Pods_NKU_Helper.framework */; };
-		E9084D831BB94EB800423566 /* ToDoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9084D821BB94EB800423566 /* ToDoCell.swift */; };
 		E90AE22E1A8F813900AD0D78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90AE22D1A8F813900AD0D78 /* AppDelegate.swift */; };
 		E90AE2381A8F813900AD0D78 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E90AE2371A8F813900AD0D78 /* Images.xcassets */; };
 		E90E87241C40E58B00E6BE3A /* NKNetworkBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90E87231C40E58B00E6BE3A /* NKNetworkBase.swift */; };
@@ -41,15 +40,15 @@
 		E93083BC1D3CA8AE000FC8E8 /* GPACell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93083BB1D3CA8AE000FC8E8 /* GPACell.swift */; };
 		E93083C61D3CC258000FC8E8 /* 米色白色渐变背景.png in Resources */ = {isa = PBXBuildFile; fileRef = E93083C51D3CC258000FC8E8 /* 米色白色渐变背景.png */; };
 		E93083CC1D3CCEA2000FC8E8 /* slogan.png in Resources */ = {isa = PBXBuildFile; fileRef = E93083CB1D3CCEA2000FC8E8 /* slogan.png */; };
-		E93C0F181BB54B54001303CF /* ThingToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93C0F171BB54B54001303CF /* ThingToDo.swift */; };
+		E93C0F181BB54B54001303CF /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93C0F171BB54B54001303CF /* Task.swift */; };
+		E93D05F31D4B5C0000ACC043 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93D05F21D4B5C0000ACC043 /* TextFieldCell.swift */; };
 		E94286501AA4CD2A00A4242C /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E942864F1AA4CD2A00A4242C /* LogInViewController.swift */; };
 		E94286581AA5500C00A4242C /* SaveAccountInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94286571AA5500C00A4242C /* SaveAccountInfoViewController.swift */; };
 		E9462A461B24A1E00002C21A /* TestTimeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9462A451B24A1E00002C21A /* TestTimeTableViewController.swift */; };
 		E9462A481B24A6480002C21A /* TestTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9462A471B24A6480002C21A /* TestTimeTableViewCell.swift */; };
 		E94BC1FA1C476C5000BD9726 /* NKNetworkValidateCodeGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94BC1F91C476C5000BD9726 /* NKNetworkValidateCodeGetter.swift */; };
-		E94BD97A1BABE9A500B76E03 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94BD9791BABE9A500B76E03 /* TodayViewController.swift */; };
-		E94BD97C1BAC043500B76E03 /* CourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94BD97B1BAC043500B76E03 /* CourseCell.swift */; };
 		E94BD9801BAC06E300B76E03 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94BD97F1BAC06E300B76E03 /* Course.swift */; };
+		E95861601D4CED3F001E8026 /* CourseTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = E958615F1D4CED3F001E8026 /* CourseTime.swift */; };
 		E95B0F2D1C83E18700448F97 /* CourseSelecting.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95B0F2C1C83E18700448F97 /* CourseSelecting.swift */; };
 		E95B0F2F1C83F0B800448F97 /* NKNetworkDepartCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95B0F2E1C83F0B800448F97 /* NKNetworkDepartCode.swift */; };
 		E95F93C61C4E6CD100CEEC12 /* Grade.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F93C51C4E6CD100CEEC12 /* Grade.swift */; };
@@ -65,7 +64,6 @@
 		E95F93EB1C512B8B00CEEC12 /* DetailEvaluateInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F93EA1C512B8B00CEEC12 /* DetailEvaluateInfo.swift */; };
 		E95F93ED1C51377300CEEC12 /* EvaluateOpinionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F93EC1C51377300CEEC12 /* EvaluateOpinionTableViewCell.swift */; };
 		E95F93EF1C51394800CEEC12 /* NKNetworkEvaluateSubmit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F93EE1C51394800CEEC12 /* NKNetworkEvaluateSubmit.swift */; };
-		E95F93F31C52074900CEEC12 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E95F93F21C52074900CEEC12 /* 1.jpg */; };
 		E9634EBF1D38E3B900F30FA0 /* NKNetworkFetchInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9634EBE1D38E3B900F30FA0 /* NKNetworkFetchInfo.swift */; };
 		E96419D21AA8971B00397691 /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96419D11AA8971B00397691 /* AccountTableViewCell.swift */; };
 		E96419D41AA8BC9800397691 /* DetailAccountInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96419D31AA8BC9800397691 /* DetailAccountInfoTableViewController.swift */; };
@@ -81,13 +79,18 @@
 		E9693E4C1D32945F00D6135B /* Grade.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9693E4B1D32945F00D6135B /* Grade.storyboard */; };
 		E9693E4E1D3294FA00D6135B /* Evaluate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9693E4D1D3294FA00D6135B /* Evaluate.storyboard */; };
 		E9693E501D32955500D6135B /* SelectCourse.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9693E4F1D32955500D6135B /* SelectCourse.storyboard */; };
+		E96B10E01D49A45A0081EDFD /* NewTodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96B10DF1D49A45A0081EDFD /* NewTodayViewController.swift */; };
+		E96B10E21D4A02F40081EDFD /* GeneralTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96B10E11D4A02F40081EDFD /* GeneralTaskCell.swift */; };
+		E96B10E41D4A04670081EDFD /* CourseTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96B10E31D4A04670081EDFD /* CourseTaskCell.swift */; };
+		E96B10E81D4A4A900081EDFD /* TodayCourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96B10E71D4A4A900081EDFD /* TodayCourseCell.swift */; };
 		E96E73A01BBBFC3400B62663 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E96E739F1BBBFC3400B62663 /* Launch.storyboard */; };
 		E97176761B1488CA004DADB2 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97176751B1488CA004DADB2 /* AboutViewController.swift */; };
 		E97176781B149292004DADB2 /* CourseDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97176771B149292004DADB2 /* CourseDetailTableViewController.swift */; };
-		E971EB821BAAFEE8005E6E55 /* PlusCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E971EB811BAAFEE8005E6E55 /* PlusCircleView.swift */; };
 		E9762F701C48DE77002CEF03 /* NKNetworkFetchNoti.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9762F6F1C48DE77002CEF03 /* NKNetworkFetchNoti.swift */; };
 		E97648D01D48429F005326EE /* ClassTimePreferenceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97648CF1D48429F005326EE /* ClassTimePreferenceTableViewController.swift */; };
 		E97648D21D484405005326EE /* CourseLoadMethodAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97648D11D484405005326EE /* CourseLoadMethodAgent.swift */; };
+		E977742A1D4B59B3008D768E /* NewTaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97774291D4B59B3008D768E /* NewTaskTableViewController.swift */; };
+		E977742C1D4B59D0008D768E /* DatePickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E977742B1D4B59D0008D768E /* DatePickerTableViewController.swift */; };
 		E981C12D1C84A02D005CBF4E /* ClassModificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E981C12C1C84A02D005CBF4E /* ClassModificationTableViewCell.swift */; };
 		E988B5371AB005DF006818FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E988B5361AB005DF006818FA /* Main.storyboard */; };
 		E98E2B471C4638C800CF82BE /* StoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98E2B461C4638C800CF82BE /* StoreProtocol.swift */; };
@@ -159,7 +162,6 @@
 		4049955BC5E2C9CBE0D70558 /* Pods-NKU Helper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NKU Helper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NKU Helper/Pods-NKU Helper.debug.xcconfig"; sourceTree = "<group>"; };
 		64CC4A72658875289900881A /* Pods-NKU Helper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NKU Helper.release.xcconfig"; path = "Pods/Target Support Files/Pods-NKU Helper/Pods-NKU Helper.release.xcconfig"; sourceTree = "<group>"; };
 		9945BD65AD3E7D087016CF58 /* Pods_NKU_Helper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NKU_Helper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E9084D821BB94EB800423566 /* ToDoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoCell.swift; sourceTree = "<group>"; };
 		E90AE2281A8F813900AD0D78 /* NKU Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NKU Helper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E90AE22C1A8F813900AD0D78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E90AE22D1A8F813900AD0D78 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AppDelegate.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -196,15 +198,15 @@
 		E93083BB1D3CA8AE000FC8E8 /* GPACell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPACell.swift; sourceTree = "<group>"; };
 		E93083C51D3CC258000FC8E8 /* 米色白色渐变背景.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "米色白色渐变背景.png"; sourceTree = "<group>"; };
 		E93083CB1D3CCEA2000FC8E8 /* slogan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slogan.png; sourceTree = "<group>"; };
-		E93C0F171BB54B54001303CF /* ThingToDo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThingToDo.swift; sourceTree = "<group>"; };
+		E93C0F171BB54B54001303CF /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		E93D05F21D4B5C0000ACC043 /* TextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
 		E942864F1AA4CD2A00A4242C /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		E94286571AA5500C00A4242C /* SaveAccountInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveAccountInfoViewController.swift; sourceTree = "<group>"; };
 		E9462A451B24A1E00002C21A /* TestTimeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestTimeTableViewController.swift; sourceTree = "<group>"; };
 		E9462A471B24A6480002C21A /* TestTimeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestTimeTableViewCell.swift; sourceTree = "<group>"; };
 		E94BC1F91C476C5000BD9726 /* NKNetworkValidateCodeGetter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkValidateCodeGetter.swift; sourceTree = "<group>"; };
-		E94BD9791BABE9A500B76E03 /* TodayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
-		E94BD97B1BAC043500B76E03 /* CourseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseCell.swift; sourceTree = "<group>"; };
 		E94BD97F1BAC06E300B76E03 /* Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
+		E958615F1D4CED3F001E8026 /* CourseTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseTime.swift; sourceTree = "<group>"; };
 		E95B0F2C1C83E18700448F97 /* CourseSelecting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseSelecting.swift; sourceTree = "<group>"; };
 		E95B0F2E1C83F0B800448F97 /* NKNetworkDepartCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkDepartCode.swift; sourceTree = "<group>"; };
 		E95F93C51C4E6CD100CEEC12 /* Grade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grade.swift; sourceTree = "<group>"; };
@@ -220,7 +222,6 @@
 		E95F93EA1C512B8B00CEEC12 /* DetailEvaluateInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailEvaluateInfo.swift; sourceTree = "<group>"; };
 		E95F93EC1C51377300CEEC12 /* EvaluateOpinionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EvaluateOpinionTableViewCell.swift; sourceTree = "<group>"; };
 		E95F93EE1C51394800CEEC12 /* NKNetworkEvaluateSubmit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkEvaluateSubmit.swift; sourceTree = "<group>"; };
-		E95F93F21C52074900CEEC12 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
 		E961C83E1D2EAE740066C9C3 /* 编码规范.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "编码规范.md"; sourceTree = "<group>"; };
 		E9634EBE1D38E3B900F30FA0 /* NKNetworkFetchInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkFetchInfo.swift; sourceTree = "<group>"; };
 		E96419D11AA8971B00397691 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AccountTableViewCell.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -235,14 +236,19 @@
 		E9693E4B1D32945F00D6135B /* Grade.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Grade.storyboard; sourceTree = "<group>"; };
 		E9693E4D1D3294FA00D6135B /* Evaluate.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Evaluate.storyboard; sourceTree = "<group>"; };
 		E9693E4F1D32955500D6135B /* SelectCourse.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SelectCourse.storyboard; sourceTree = "<group>"; };
+		E96B10DF1D49A45A0081EDFD /* NewTodayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTodayViewController.swift; sourceTree = "<group>"; };
+		E96B10E11D4A02F40081EDFD /* GeneralTaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralTaskCell.swift; sourceTree = "<group>"; };
+		E96B10E31D4A04670081EDFD /* CourseTaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseTaskCell.swift; sourceTree = "<group>"; };
+		E96B10E71D4A4A900081EDFD /* TodayCourseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayCourseCell.swift; sourceTree = "<group>"; };
 		E96E739F1BBBFC3400B62663 /* Launch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
 		E97176751B1488CA004DADB2 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		E97176771B149292004DADB2 /* CourseDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseDetailTableViewController.swift; sourceTree = "<group>"; };
-		E971EB811BAAFEE8005E6E55 /* PlusCircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlusCircleView.swift; sourceTree = "<group>"; };
 		E975B7D21C154F3100240D4C /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		E9762F6F1C48DE77002CEF03 /* NKNetworkFetchNoti.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkFetchNoti.swift; sourceTree = "<group>"; };
 		E97648CF1D48429F005326EE /* ClassTimePreferenceTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassTimePreferenceTableViewController.swift; sourceTree = "<group>"; };
 		E97648D11D484405005326EE /* CourseLoadMethodAgent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseLoadMethodAgent.swift; sourceTree = "<group>"; };
+		E97774291D4B59B3008D768E /* NewTaskTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTaskTableViewController.swift; sourceTree = "<group>"; };
+		E977742B1D4B59D0008D768E /* DatePickerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerTableViewController.swift; sourceTree = "<group>"; };
 		E981C12C1C84A02D005CBF4E /* ClassModificationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassModificationTableViewCell.swift; sourceTree = "<group>"; };
 		E988B5361AB005DF006818FA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E98DC7291B8B13D100273510 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -553,26 +559,27 @@
 				E9FE26131B137FEC00FCBB32 /* Color.swift */,
 				E995D25F1D43282100C0A558 /* Colors.realm */,
 				E94BD97F1BAC06E300B76E03 /* Course.swift */,
+				E958615F1D4CED3F001E8026 /* CourseTime.swift */,
 				E95B0F2C1C83E18700448F97 /* CourseSelecting.swift */,
-				E93C0F171BB54B54001303CF /* ThingToDo.swift */,
+				E93C0F171BB54B54001303CF /* Task.swift */,
 				E964B9501D45141C00F10B3D /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
-		E94211BD1B00B99F00087846 /* Cell */ = {
+		E93D05F11D4B5BA800ACC043 /* 新建Task */ = {
 			isa = PBXGroup;
 			children = (
-				E94BD97B1BAC043500B76E03 /* CourseCell.swift */,
-				E9084D821BB94EB800423566 /* ToDoCell.swift */,
+				E97774291D4B59B3008D768E /* NewTaskTableViewController.swift */,
+				E977742B1D4B59D0008D768E /* DatePickerTableViewController.swift */,
+				E93D05F21D4B5C0000ACC043 /* TextFieldCell.swift */,
 			);
-			path = Cell;
+			name = "新建Task";
 			sourceTree = "<group>";
 		};
 		E95C37F81BA55B95004444FF /* images */ = {
 			isa = PBXGroup;
 			children = (
-				E95F93F21C52074900CEEC12 /* 1.jpg */,
 				E90AE2371A8F813900AD0D78 /* Images.xcassets */,
 				E96E739F1BBBFC3400B62663 /* Launch.storyboard */,
 				E93083CB1D3CCEA2000FC8E8 /* slogan.png */,
@@ -594,6 +601,16 @@
 				E95F93EA1C512B8B00CEEC12 /* DetailEvaluateInfo.swift */,
 			);
 			path = "评教";
+			sourceTree = "<group>";
+		};
+		E97774281D4B5994008D768E /* TodayCell */ = {
+			isa = PBXGroup;
+			children = (
+				E96B10E11D4A02F40081EDFD /* GeneralTaskCell.swift */,
+				E96B10E31D4A04670081EDFD /* CourseTaskCell.swift */,
+				E96B10E71D4A4A900081EDFD /* TodayCourseCell.swift */,
+			);
+			name = TodayCell;
 			sourceTree = "<group>";
 		};
 		E97A94AF1ABF19F200998A07 /* PreferredColors */ = {
@@ -641,9 +658,9 @@
 				E90E87271C40F2F400E6BE3A /* 选课 */,
 				E99D670B1C16CA8600E27B08 /* 通知中心 */,
 				E9693E471D32926300D6135B /* Function.storyboard */,
+				E98F94D71AA318EF00885992 /* FunctionTableViewController.swift */,
 				E93083B71D3C7A5C000FC8E8 /* FunctionBaseTableViewController.swift */,
 				E93083B51D3C76D2000FC8E8 /* FunctionBaseViewController.swift */,
-				E98F94D71AA318EF00885992 /* FunctionTableViewController.swift */,
 			);
 			path = "功能";
 			sourceTree = "<group>";
@@ -733,11 +750,11 @@
 		E9D4DC471AAEF45D00A02327 /* 今天 */ = {
 			isa = PBXGroup;
 			children = (
-				E94211BD1B00B99F00087846 /* Cell */,
-				E97176771B149292004DADB2 /* CourseDetailTableViewController.swift */,
-				E971EB811BAAFEE8005E6E55 /* PlusCircleView.swift */,
 				E9693E431D32894000D6135B /* Today.storyboard */,
-				E94BD9791BABE9A500B76E03 /* TodayViewController.swift */,
+				E96B10DF1D49A45A0081EDFD /* NewTodayViewController.swift */,
+				E93D05F11D4B5BA800ACC043 /* 新建Task */,
+				E97774281D4B5994008D768E /* TodayCell */,
+				E97176771B149292004DADB2 /* CourseDetailTableViewController.swift */,
 			);
 			path = "今天";
 			sourceTree = "<group>";
@@ -884,7 +901,6 @@
 				E93083C61D3CC258000FC8E8 /* 米色白色渐变背景.png in Resources */,
 				E930839A1D39DA38000FC8E8 /* WeekdayView.xib in Resources */,
 				E9693E441D32894000D6135B /* Today.storyboard in Resources */,
-				E95F93F31C52074900CEEC12 /* 1.jpg in Resources */,
 				E9693E4C1D32945F00D6135B /* Grade.storyboard in Resources */,
 				E9B5779E1D38DE310054F7E8 /* ClassView.xib in Resources */,
 				E988B5371AB005DF006818FA /* Main.storyboard in Resources */,
@@ -987,20 +1003,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				E930839C1D39E38D000FC8E8 /* WeekdayView.swift in Sources */,
+				E96B10E41D4A04670081EDFD /* CourseTaskCell.swift in Sources */,
+				E96B10E01D49A45A0081EDFD /* NewTodayViewController.swift in Sources */,
+				E95861601D4CED3F001E8026 /* CourseTime.swift in Sources */,
 				E98F94D81AA318EF00885992 /* FunctionTableViewController.swift in Sources */,
 				E95B0F2D1C83E18700448F97 /* CourseSelecting.swift in Sources */,
 				E981C12D1C84A02D005CBF4E /* ClassModificationTableViewCell.swift in Sources */,
 				E91D2E5A1C846CA1002605F8 /* ClassInfoTableViewCell.swift in Sources */,
 				E98E2B4E1C46469700CF82BE /* CourseAgent.swift in Sources */,
 				E995E08B1D3F6369003FDF56 /* R.generated.swift in Sources */,
+				E96B10E81D4A4A900081EDFD /* TodayCourseCell.swift in Sources */,
 				E95F93DD1C50CEAA00CEEC12 /* EvaluateTableViewController.swift in Sources */,
 				E9762F701C48DE77002CEF03 /* NKNetworkFetchNoti.swift in Sources */,
 				E95F93ED1C51377300CEEC12 /* EvaluateOpinionTableViewCell.swift in Sources */,
 				E9929C9B1C49068000D508C8 /* NKNetworkFetchGrade.swift in Sources */,
 				E95F93EB1C512B8B00CEEC12 /* DetailEvaluateInfo.swift in Sources */,
 				E92B2D011B48DB89008825A3 /* CalendarHelper.swift in Sources */,
-				E93C0F181BB54B54001303CF /* ThingToDo.swift in Sources */,
+				E93C0F181BB54B54001303CF /* Task.swift in Sources */,
 				E91D2E561C846778002605F8 /* SearchCourseTableViewController.swift in Sources */,
+				E96B10E21D4A02F40081EDFD /* GeneralTaskCell.swift in Sources */,
+				E977742C1D4B59D0008D768E /* DatePickerTableViewController.swift in Sources */,
 				E94BC1FA1C476C5000BD9726 /* NKNetworkValidateCodeGetter.swift in Sources */,
 				E9C3EF5A1BB2BCB600D1C91D /* ErrorHandler.swift in Sources */,
 				E99D670A1C16C9EB00E27B08 /* Notification.swift in Sources */,
@@ -1012,6 +1034,7 @@
 				E95F93C61C4E6CD100CEEC12 /* Grade.swift in Sources */,
 				E96419D21AA8971B00397691 /* AccountTableViewCell.swift in Sources */,
 				E93083A31D3A8F4D000FC8E8 /* TimeScheduleView.swift in Sources */,
+				E93D05F31D4B5C0000ACC043 /* TextFieldCell.swift in Sources */,
 				E95F93E51C50FAEB00CEEC12 /* EvaluateDetailTableViewController.swift in Sources */,
 				E95F93E71C50FE8800CEEC12 /* EvaluateDetailTableViewCell.swift in Sources */,
 				E98E2B471C4638C800CF82BE /* StoreProtocol.swift in Sources */,
@@ -1024,16 +1047,14 @@
 				E90E872B1C40FCE700E6BE3A /* SelectCourseTableViewController.swift in Sources */,
 				E98E2B8B1C46ABE400CF82BE /* ClassTimeView.swift in Sources */,
 				E99D67041C16C8CF00E27B08 /* NotiCenterTableViewController.swift in Sources */,
-				E9084D831BB94EB800423566 /* ToDoCell.swift in Sources */,
 				E95F93D71C4FB23900CEEC12 /* UserDetailInfoAgent.swift in Sources */,
 				E9927C061D2E463900DE284C /* StoragedDataError.swift in Sources */,
-				E94BD97C1BAC043500B76E03 /* CourseCell.swift in Sources */,
 				E90E87261C40E5C700E6BE3A /* NKNetworkIsLogin.swift in Sources */,
 				E93083A61D3B6B6A000FC8E8 /* ClassView.swift in Sources */,
+				E977742A1D4B59B3008D768E /* NewTaskTableViewController.swift in Sources */,
 				E94BD9801BAC06E300B76E03 /* Course.swift in Sources */,
 				E91D2E581C8468B6002605F8 /* SearchCourseDetailTableViewController.swift in Sources */,
 				E9CCF4BA1ABC6578002076F2 /* ColorChooseTableViewCell.swift in Sources */,
-				E971EB821BAAFEE8005E6E55 /* PlusCircleView.swift in Sources */,
 				E92E0CAF1D4760BF004D9AB5 /* ClassTestTime.swift in Sources */,
 				E91E5F4F1A90FAED009F3B2B /* GradeShowerTableViewController.swift in Sources */,
 				E90E872D1C41002E00E6BE3A /* NKNetworkSelectCourse.swift in Sources */,
@@ -1043,7 +1064,6 @@
 				E95F93D91C4FC04500CEEC12 /* NKNetworkFetchUserInfo.swift in Sources */,
 				E93083BC1D3CA8AE000FC8E8 /* GPACell.swift in Sources */,
 				E99D67131C16F6E800E27B08 /* NotiTableViewCell.swift in Sources */,
-				E94BD97A1BABE9A500B76E03 /* TodayViewController.swift in Sources */,
 				E98F94D61AA3180700885992 /* ClassTimeViewController.swift in Sources */,
 				E99D675C1C17401B00E27B08 /* NotiDetailViewController.swift in Sources */,
 				E9FE26141B137FEC00FCBB32 /* Color.swift in Sources */,
@@ -1171,7 +1191,7 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "NKU Helper/Supporting Files/NKU Helper-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "$(PODS_ROOT)/YYText/** $(PODS_ROOT)/SVProgressHUD/** $(PODS_ROOT)/NJKWebViewProgress/** $(PODS_ROOT)/MJRefresh/** $(PODS_ROOT)/DZNEmptyDataSet/** $(PODS_ROOT)/MBProgressHUD/** $(PODS_ROOT)/UAProgressView/** $(PODS_ROOT)/pop/**";
+				USER_HEADER_SEARCH_PATHS = "$(PODS_ROOT)/YYText/** $(PODS_ROOT)/SVProgressHUD/** $(PODS_ROOT)/NJKWebViewProgress/** $(PODS_ROOT)/MJRefresh/** $(PODS_ROOT)/DZNEmptyDataSet/** $(PODS_ROOT)/MBProgressHUD/** $(PODS_ROOT)/UAProgressView/** $(PODS_ROOT)/pop/** $(PODS_ROOT)/MCSwipeTableViewCell/**";
 			};
 			name = "ad hoc Distribution";
 		};
@@ -1290,7 +1310,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "NKU Helper/Supporting Files/NKU Helper-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "$(PODS_ROOT)/YYText/** $(PODS_ROOT)/SVProgressHUD/** $(PODS_ROOT)/NJKWebViewProgress/** $(PODS_ROOT)/MJRefresh/** $(PODS_ROOT)/DZNEmptyDataSet/** $(PODS_ROOT)/MBProgressHUD/** $(PODS_ROOT)/UAProgressView/** $(PODS_ROOT)/pop/**";
+				USER_HEADER_SEARCH_PATHS = "$(PODS_ROOT)/YYText/** $(PODS_ROOT)/SVProgressHUD/** $(PODS_ROOT)/NJKWebViewProgress/** $(PODS_ROOT)/MJRefresh/** $(PODS_ROOT)/DZNEmptyDataSet/** $(PODS_ROOT)/MBProgressHUD/** $(PODS_ROOT)/UAProgressView/** $(PODS_ROOT)/pop/** $(PODS_ROOT)/MCSwipeTableViewCell/**";
 			};
 			name = Debug;
 		};
@@ -1328,7 +1348,7 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "NKU Helper/Supporting Files/NKU Helper-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "$(PODS_ROOT)/YYText/** $(PODS_ROOT)/SVProgressHUD/** $(PODS_ROOT)/NJKWebViewProgress/** $(PODS_ROOT)/MJRefresh/** $(PODS_ROOT)/DZNEmptyDataSet/** $(PODS_ROOT)/MBProgressHUD/** $(PODS_ROOT)/UAProgressView/** $(PODS_ROOT)/pop/**";
+				USER_HEADER_SEARCH_PATHS = "$(PODS_ROOT)/YYText/** $(PODS_ROOT)/SVProgressHUD/** $(PODS_ROOT)/NJKWebViewProgress/** $(PODS_ROOT)/MJRefresh/** $(PODS_ROOT)/DZNEmptyDataSet/** $(PODS_ROOT)/MBProgressHUD/** $(PODS_ROOT)/UAProgressView/** $(PODS_ROOT)/pop/** $(PODS_ROOT)/MCSwipeTableViewCell/**";
 			};
 			name = Release;
 		};

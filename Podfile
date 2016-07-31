@@ -19,6 +19,8 @@ target 'NKU Helper' do
 	pod 'R.swift'
     pod 'RealmSwift'
     pod 'Locksmith'
+    pod 'BTNavigationDropdownMenu'
+    pod 'MCSwipeTableViewCell', '~> 2.1.4'
 
 	# 主模块(必须)
 	pod 'ShareSDK3'

@@ -13,11 +13,11 @@ class ClassView: UIView {
     @IBOutlet var classNameLabel: UILabel!
     @IBOutlet var classroomLabel: UILabel!
     
-    var course: Course! {
+    var courseTime: CourseTime! {
         didSet {
-            classNameLabel.text = course.name
-            classroomLabel.text = course.classroom
-            self.backgroundColor = course.color?.convertToUIColor() ?? UIColor.grayColor()
+            classNameLabel.text = courseTime.ownerCourse.name
+            classroomLabel.text = courseTime.classroom
+            self.backgroundColor = courseTime.ownerCourse.color?.convertToUIColor() ?? UIColor.grayColor()
         }
     }
     

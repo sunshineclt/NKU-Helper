@@ -69,10 +69,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, WXAp
         
         // set up App Appearance
         func setUpApperance() {
-            UINavigationBar.appearance().barTintColor = UIColor.whiteColor()
-            UINavigationBar.appearance().tintColor = UIColor.blackColor()
-            UIBarButtonItem.appearance().tintColor = UIColor(red: 16/255, green: 128/255, blue: 207/255, alpha: 1)
-            UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.blackColor()]
+            UINavigationBar.appearance().barTintColor = UIColor(red: 156/255, green: 89/255, blue: 182/255, alpha: 1)
+            UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+            UINavigationBar.appearance().translucent = false
+            UIBarButtonItem.appearance().tintColor = UIColor.whiteColor()
+            UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName: UIFont(name: "HelveticaNeue", size: 17)!]
+            UITabBar.appearance().translucent = false
         }
         
         // load Preferred Colors
@@ -146,7 +148,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, WXAp
         }
         
         R.assertValid()
-        
+        // 清理已完成的任务
+        do {
+            try Task.updateStoredTasks()
+        } catch {
+            
+        }
         return true
     }
 
