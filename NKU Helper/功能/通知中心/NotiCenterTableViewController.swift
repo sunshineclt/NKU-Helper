@@ -32,7 +32,8 @@ class NotiCenterTableViewController: UITableViewController {
         footer.backgroundColor = UIColor(red: 155/255, green: 92/255, blue: 180/255, alpha: 1)
         
         self.tableView.mj_footer = footer
-        
+        tableView.estimatedRowHeight = 100
+        tableView.rowHeight = UITableViewAutomaticDimension
         fetchMoreData()
         SVProgressHUD.show()
     }
