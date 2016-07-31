@@ -34,7 +34,7 @@ class SettingTableViewController: UITableViewController {
         case 0:return "NKU Helper将会把您的密码存储在系统钥匙串中，请放心填写"
         case 2:return "NKU Helper本身是完全免费的，但开发和运营都需要投入。如果您觉得好用并想鼓励我们做得更好，不妨通过捐赠来支持我们的团队。无论多少，我们都非常感谢！"
         case 3:return "如果大家对NKU Helper的使用有吐槽，或是希望有什么功能，欢迎大家到“关于”页面中戳我的邮箱，您的意见将是我们前进的动力！我将尽快给您回复！"
-        case 4:return "NKU Helper目前已有Android版本，在Google Play，百度，91助手和豌豆荚中均可下载"
+        case 4:return "NKU Helper目前已有其他平台版本，在Google Play，百度，91助手和豌豆荚中均可下载"
         default:return ""
         }
     }
