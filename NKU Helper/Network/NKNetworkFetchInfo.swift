@@ -13,13 +13,20 @@ import SwiftyJSON
 /// 提供获取一系列信息功能的网络库
 class NKNetworkFetchInfo: NKNetworkBase {
     
+    static var nowWeek: Int!
+    static var isVocation: Bool!
+    
     /**
-     获取当前周数（也有可能是假期）
+     获取当前周数（也有可能是假期）（带缓存）
      
      - parameter completionHandler: 返回闭包
      */
     class func fetchNowWeek(completionHandler: (nowWeek: Int?, isVocation: Bool?) -> Void) {
         
+        if (nowWeek != nil) && (isVocation != nil) {
+            completionHandler(nowWeek: nowWeek, isVocation: isVocation)
+            return
+        }
         Alamofire.request(.GET, NKNetworkBase.getURLStringByAppendingBaseURLWithPath("info/week")).responseJSON { (response) in
             switch response.result {
             case .Success(let value):
@@ -28,8 +35,9 @@ class NKNetworkFetchInfo: NKNetworkBase {
                     completionHandler(nowWeek: nil, isVocation: nil)
                     return
                 }
-                let nowWeek = json["data"]["nowWeek"].intValue
-                let isVocation = json["data"]["isVocation"].boolValue
+                nowWeek = json["data"]["nowWeek"].intValue
+                isVocation = json["data"]["isVocation"].boolValue
+                
                 completionHandler(nowWeek: nowWeek, isVocation: isVocation)
             case .Failure( _):
                 completionHandler(nowWeek: nil, isVocation: nil)

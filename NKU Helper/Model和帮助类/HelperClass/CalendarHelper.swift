@@ -21,19 +21,19 @@ class CalendarHelper {
         let components = getNowDateComponent()
         switch (components.weekday) {
         case 1:
-            return 6
-        case 2:
             return 0
-        case 3:
+        case 2:
             return 1
-        case 4:
+        case 3:
             return 2
-        case 5:
+        case 4:
             return 3
-        case 6:
+        case 5:
             return 4
-        case 7:
+        case 6:
             return 5
+        case 7:
+            return 6
         default:
             return -1
         }
@@ -71,6 +71,23 @@ class CalendarHelper {
         }
         return (month, day, weekday)
             
+    }
+    
+    /**
+     建立一个在今天之后若干天的NSDate对象
+     
+     - parameter day: 几天后
+     
+     - returns: 所需的NSDate对象
+     */
+    static func buildDateAfterDays(day: Int) -> NSDate {
+        let components = getNowDateComponent()
+        let calendar = NSCalendar.currentCalendar()
+        let originalDay = NSDateComponents()
+        originalDay.year = components.year
+        originalDay.month = components.month
+        originalDay.day = components.day
+        return NSDate(timeInterval: Double(day) * 24 * 60 * 60, sinceDate: calendar.dateFromComponents(originalDay)!)
     }
     
     /**
@@ -133,11 +150,38 @@ class CalendarHelper {
         }
     }
     
-    static private func getNowDateComponent() -> NSDateComponents {
+    /**
+     获取从当前时间到目标时间的时间差的人性化显示
+     
+     - parameter toDate: 目标时间
+     
+     - returns: 时间差的人性化显示
+     */
+    static func getCustomTimeIntervalDisplay(toDate: NSDate) -> String {
+        let nowComponents = getNowDateComponent()
+        let calendar = NSCalendar.currentCalendar()
+        let toDateComponents = calendar.components([.Weekday, .Month, .Day, .Hour, .Minute, .Year], fromDate: toDate)
+        let component = NSDateComponents()
+        component.day = toDateComponents.day - nowComponents.day
+        component.month = toDateComponents.month - nowComponents.month
+        component.year = toDateComponents.year - nowComponents.year
+        
+        let formatter = NSDateComponentsFormatter()
+        formatter.allowedUnits = [.Year, .Month, .WeekOfMonth, .Day]
+        formatter.unitsStyle = .Abbreviated
+        formatter.includesTimeRemainingPhrase = true
+        return formatter.stringFromDateComponents(component)!
+    }
+    
+    /**
+     获取现在时间的各个components
+     
+     - returns: NSDateComponents
+     */
+    static func getNowDateComponent() -> NSDateComponents {
         let date = NSDate()
-        let calender = NSCalendar(identifier: NSCalendarIdentifierGregorian)!
-        let unitFlags:NSCalendarUnit = [.Weekday, .Month, .Day, .Hour, .Minute]
-        let components = calender.components(unitFlags, fromDate: date)
+        let calendar = NSCalendar.currentCalendar()
+        let components = calendar.components([.Weekday, .Month, .Day, .Hour, .Minute, .Year], fromDate: date)
         return components
     }
     

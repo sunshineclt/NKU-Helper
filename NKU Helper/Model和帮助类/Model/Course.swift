@@ -7,118 +7,79 @@
 //
 
 import UIKit
+import RealmSwift
 
 /// 课程类
-class Course: NSObject, NSCoding {
+class Course: Object {
     
-    var ID:String
-    var number:String
-    var name:String
-    var classroom:String
-    var weekOddEven:String
-    var teacherName:String
-    var day:Int
-    var startSection:Int
-    var sectionNumber:Int
-    var startWeek:Int?
-    var endWeek:Int?
+    dynamic var key = 0
+    dynamic var ID = "未知" // 选课序号
+    dynamic var number = "未知" // 课程编号
+    dynamic var name = "未知"
+    dynamic var teacherName = "未知"
+    dynamic var color: Color?
+    let courseTimes = List<CourseTime>()
+    let tasks = LinkingObjects(fromType: Task.self, property: "forCourse")
     
-    var endSection:Int {
-        return startSection + sectionNumber - 1
-    }
-    
-    init(ID:String, number:String, name:String, classroom:String, weekOddEven:String, teacherName:String, day:Int, startSection:Int, sectionNumber:Int, startWeek:Int? = nil, endWeek:Int? = nil) {
-        
-        self.ID = ID
-        self.number = number
-        self.name = name
-        self.classroom = classroom
-        self.weekOddEven = weekOddEven
-        self.teacherName = teacherName
-        self.day = day
-        self.startSection = startSection
-        self.sectionNumber = sectionNumber
-        super.init()
-
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        self.ID = aDecoder.decodeObjectForKey("ID") as! String
-        self.number = aDecoder.decodeObjectForKey("number") as! String
-        self.name = aDecoder.decodeObjectForKey("name") as! String
-        self.classroom = aDecoder.decodeObjectForKey("classroom") as! String
-        self.weekOddEven = aDecoder.decodeObjectForKey("weekOddEven") as! String
-        self.teacherName = aDecoder.decodeObjectForKey("teacherName") as! String
-        self.day = aDecoder.decodeObjectForKey("day") as! Int
-        self.startSection = aDecoder.decodeObjectForKey("startSection") as! Int
-        self.sectionNumber = aDecoder.decodeObjectForKey("sectionNumber") as! Int
-        super.init()
-    }
-    
-    func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(ID, forKey: "ID")
-        aCoder.encodeObject(number, forKey: "number")
-        aCoder.encodeObject(name, forKey: "name")
-        aCoder.encodeObject(classroom, forKey: "classroom")
-        aCoder.encodeObject(weekOddEven, forKey: "weekOddEven")
-        aCoder.encodeObject(teacherName, forKey: "teacherName")
-        aCoder.encodeObject(day, forKey: "day")
-        aCoder.encodeObject(startSection, forKey: "startSection")
-        aCoder.encodeObject(sectionNumber, forKey: "sectionNumber")
+    override static func primaryKey() -> String? {
+        return "key"
     }
     
     /**
-     返回一周中某一天的所有课程
+     增加一个课时，如果这门课不存在则创建，如果存在则加入到其课时中
+     
+     - returns: 若创建了则返回Course实例，若在已存在的课程中增加了课时则返回nil
+     */
+    static func addCourseTime(key key:Int, ID:String, number:String, name:String, classroom:String, weekOddEven:String, teacherName:String, weekday:Int, startSection:Int, sectionNumber:Int, startWeek:Int, endWeek:Int) -> Course? {
+        let realm = try! Realm()
+        let existedCourses = realm.objects(Course.self).filter("ID == '\(ID)'")
+        if let existedCourse = existedCourses.first {
+            let courseTime = CourseTime(key: key, classroom: classroom, weekOddEven: weekOddEven, weekday: weekday, startSection: startSection, sectionNumber: sectionNumber, startWeek: startWeek, endWeek: endWeek)
+            try! courseTime.save()
+            try! realm.write({ 
+                existedCourse.courseTimes.append(courseTime)
+            })
+            return nil
+        } else {
+            return Course(key: key, ID: ID, number: number, name: name, classroom: classroom, weekOddEven: weekOddEven, teacherName: teacherName, weekday: weekday, startSection: startSection, sectionNumber: sectionNumber, startWeek: startWeek, endWeek: endWeek)
+        }
+    }
+    
+    private convenience init(key:Int, ID:String, number:String, name:String, classroom:String, weekOddEven:String, teacherName:String, weekday:Int, startSection:Int, sectionNumber:Int, startWeek:Int, endWeek:Int) {
+        self.init()
+        self.key = key
+        self.ID = ID
+        self.number = number
+        self.name = name
+        self.teacherName = teacherName
+        let courseTime = CourseTime(key: key, classroom: classroom, weekOddEven: weekOddEven, weekday: weekday, startSection: startSection, sectionNumber: sectionNumber, startWeek: startWeek, endWeek: endWeek)
+        try! courseTime.save()
+        self.courseTimes.append(courseTime)
+    }
+    
+    /**
+     返回一周中某一天的所有课时
      
      - parameter weekday: 星期几（周日为0，周一为1）
      
-     - throws: StoragedDataError.NoClassesInStorage
+     - throws: NoClassesInStorage和RealmError
      
-     - returns: 那一天的所有课程
+     - returns: 那一天的所有课时
      */
-    class func coursesOnWeekday(weekday:Int) throws -> [Course] {
-        
-        var todayCourses = [Course]()
-        let userDefaults = NSUserDefaults.standardUserDefaults()
-        if let courseDatas = userDefaults.objectForKey("courses") as? [NSData] {
-            guard (courseDatas.count != 0) else {
-                return todayCourses
+    class func coursesOnWeekday(weekday: Int) throws -> Results<CourseTime> {
+        let convertedWeekday = weekday == 0 ? 7 : weekday
+        do {
+            let realm = try Realm()
+            let courseTimes = realm.objects(CourseTime.self).sorted("key")
+            guard courseTimes.count != 0 else {
+                throw StoragedDataError.NoCoursesInStorage
             }
-            
-            // 从前往后找到这一天的起始课程
-            var index = 0
-            var courseData = courseDatas[index]
-            var course = NSKeyedUnarchiver.unarchiveObjectWithData(courseData) as! Course
-            var courseDay = course.day
-            while (courseDay != weekday) {
-                index += 1
-                if index >= courseDatas.count {
-                    break;
-                }
-                courseData = courseDatas[index]
-                course = NSKeyedUnarchiver.unarchiveObjectWithData(courseData) as! Course
-                courseDay = course.day
-            }
-            
-            // 把到下一天为止的所有课程加入结果
-            while courseDay == weekday {
-                todayCourses.append(course)
-                index += 1
-                if (index >= courseDatas.count) {
-                    break
-                }
-                courseData = courseDatas[index]
-                course = NSKeyedUnarchiver.unarchiveObjectWithData(courseData) as! Course
-                courseDay = course.day
-            }
-            
-            return todayCourses
+            return courseTimes.filter("weekday == \(convertedWeekday)").sorted("key")
+        } catch StoragedDataError.NoCoursesInStorage {
+            throw StoragedDataError.NoCoursesInStorage
+        } catch {
+            throw StoragedDataError.RealmError
         }
-        else {
-            // 存储中没有课程
-            throw StoragedDataError.NoClassesInStorage
-        }
-
     }
     
 }

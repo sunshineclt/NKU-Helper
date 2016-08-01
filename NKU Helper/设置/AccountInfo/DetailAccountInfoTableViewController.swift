@@ -26,7 +26,6 @@ class DetailAccountInfoTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.accountInfoCell.identifier)!
             do {
@@ -59,24 +58,20 @@ class DetailAccountInfoTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.logOutCell.identifier)!
             return cell
         }
-
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.section == 1 {
-            let userDefaults = NSUserDefaults.standardUserDefaults()
-            userDefaults.removeObjectForKey("courses")
-            userDefaults.removeObjectForKey("courseStatus")
-            userDefaults.synchronize()
             let userAgent = UserAgent.sharedInstance
             let userDetailInfoAgent = UserDetailInfoAgent.sharedInstance
             do {
                 try userAgent.deleteData()
+                try CourseAgent.sharedInstance.deleteData()
                 userDetailInfoAgent.deleteData()
                 NSNotificationCenter.defaultCenter().postNotificationName("logout", object: self)
                 navigationController?.popToRootViewControllerAnimated(true)
             } catch {
-                self.presentViewController(ErrorHandler.alertWithAlertTitle("登出失败", message: "钥匙串密码删除失败，请重试", cancelButtonTitle: "好"), animated: true, completion: nil)
+                self.presentViewController(ErrorHandler.alertWithAlertTitle("登出失败", message: "删除数据失败，请重试", cancelButtonTitle: "好"), animated: true, completion: nil)
             }
         }
     }

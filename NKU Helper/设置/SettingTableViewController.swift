@@ -34,15 +34,17 @@ class SettingTableViewController: UITableViewController {
         case 0:return "NKU Helper将会把您的密码存储在系统钥匙串中，请放心填写"
         case 2:return "NKU Helper本身是完全免费的，但开发和运营都需要投入。如果您觉得好用并想鼓励我们做得更好，不妨通过捐赠来支持我们的团队。无论多少，我们都非常感谢！"
         case 3:return "如果大家对NKU Helper的使用有吐槽，或是希望有什么功能，欢迎大家到“关于”页面中戳我的邮箱，您的意见将是我们前进的动力！我将尽快给您回复！"
-        case 4:return "NKU Helper目前已有Android版本，在Google Play，百度，91助手和豌豆荚中均可下载"
+        case 4:return "NKU Helper目前已有其他平台版本，在Google Play，百度，91助手和豌豆荚中均可下载"
         default:return ""
         }
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case 0,1,2,3:
+        case 0,2,3:
             return 1
+        case 1:
+            return 2
         case 4:
             return 0
         default:
@@ -68,8 +70,14 @@ class SettingTableViewController: UITableViewController {
                 return cell
             }
         case 1:
-            let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.choosePreferredColorCell.identifier)!
-            return cell
+            if indexPath.row == 0{
+                let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.choosePreferredColorCell.identifier)!
+                return cell
+            }
+            else {
+                let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.chooseClassTimeTablePreferenceCell.identifier)!
+                return cell
+            }
         case 2:
             let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.supportGroupCell.identifier)!
             cell.textLabel?.text = "请开发团队喝一杯咖啡"

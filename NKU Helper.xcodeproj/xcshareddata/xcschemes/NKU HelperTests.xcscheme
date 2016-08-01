@@ -39,6 +39,15 @@
             </BuildableReference>
          </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "E9DA59491D3889AF0012ED9A"
+            BuildableName = "NKU HelperTests.xctest"
+            BlueprintName = "NKU HelperTests"
+            ReferencedContainer = "container:NKU Helper.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>

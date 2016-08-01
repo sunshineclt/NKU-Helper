@@ -20,8 +20,8 @@ class ClassTimeView: UIView {
     @IBOutlet var timeScrollViewWidthConstraint: NSLayoutConstraint!
     var weekdayViews = [WeekdayView]()
     var timeScheduleViews = [TimeScheduleView]()
-    var UALoadView:UAProgressView!
-    var overlayView:UIView!
+    var UALoadView: UAProgressView!
+    var overlayView: UIView!
     
     var orientation: UIInterfaceOrientation?
     var rowHeight: CGFloat {
@@ -148,85 +148,45 @@ class ClassTimeView: UIView {
         
         // 删去原先有的
         for view in classScrollView.subviews {
-            view.removeFromSuperview()
+            if view is ClassView {
+                view.removeFromSuperview()
+            }
         }
-        // 重绘背景（不然课表页面的灰色背景也没有了）
-        drawBackground()
-        
-        // 初始化颜色的使用
-        var isColorUsed = [Bool]()
-        for _ in 0 ..< Color.getColorCount() {
-            isColorUsed.append(false)
-        }
-        var coloredCourse = [String: Int]()
         
         do {
-            let colors = try Color.getColors()
-            /**
-             为课程获取合适的颜色（若已有过，则使用那个颜色，否则随机出一个没用过的颜色）
-             
-             - parameter classID: 课程ID
-             
-             - returns: 合适的颜色
-             */
-            func findProperColorForCourse(classID: String) -> UIColor {
-                for (key, value) in coloredCourse {
-                    if key == classID {
-                        return colors[value].convertToUIColor()
-                    }
-                }
-                var count = 0
-                var colorIndex = Int(arc4random_uniform(UInt32(colors.count)))
-                
-                while (isColorUsed[colorIndex]) || (!colors[colorIndex].liked) {
-                    colorIndex = Int(arc4random_uniform(UInt32(colors.count)))
-                    count += 1
-                    if count > 1000 {
-                        break
-                    }
-                }
-                coloredCourse[classID] = colorIndex
-                isColorUsed[colorIndex] = true
-                return colors[colorIndex].convertToUIColor()
-            }
-            
             // 绘制课表
-            let courses = try CourseAgent().getData()
+            let courses = try CourseAgent.sharedInstance.getData()
             for i in 0 ..< courses.count {
-                // 获取课程信息
-                let currentData = courses.objectAtIndex(i) as! NSData
-                let current = NSKeyedUnarchiver.unarchiveObjectWithData(currentData) as! Course
-                let day = current.day
-                let startSection = current.startSection
-                let sectionNumber = current.sectionNumber
-                let name = current.name
-                let classroom = current.classroom
-                let classID = current.ID
-                let weekOddEven = current.weekOddEven
-                
-                // 创建一堂课的View
-                let course = ClassView.loadFromNib()
-                if let _ = week {
-                    if ((weekOddEven == "单 周") && (week % 2 == 0) || (weekOddEven == "双 周" && (week % 2 == 1))) {
-                        course.alpha = 0.15
+                // 对于每一个课时
+                let current = courses[i]
+                for courseTime in current.courseTimes {
+                    let weekday = courseTime.weekday
+                    let startSection = courseTime.startSection
+                    let sectionNumber = courseTime.sectionNumber
+                    let weekOddEven = courseTime.weekOddEven
+                    
+                    // 创建一堂课的View
+                    let courseView = ClassView.loadFromNib()
+                    if let _ = week {
+                        if ((weekOddEven == "单周") && (week % 2 == 0) || (weekOddEven == "双周" && (week % 2 == 1))) {
+                            courseView.alpha = 0.15
+                        }
                     }
+                    courseView.courseTime = courseTime
+                    self.classScrollView.addSubview(courseView)
+                    courseView.snp_makeConstraints(closure: { (make) in
+                        make.left.equalTo(classScrollView.snp_left).offset(CGFloat(weekday - 1) * columnWidth + classViewInset)
+                        make.top.equalTo(classScrollView.snp_top).offset(CGFloat(startSection - 1) * rowHeight + classViewInset)
+                        make.width.equalTo(columnWidth - classViewInset * 2)
+                        make.height.equalTo(rowHeight * CGFloat(sectionNumber) - classViewInset * 2)
+                    })
+                    courseView.layer.cornerRadius = 5
+                    courseView.layer.masksToBounds = true
+                    courseView.tag = courseTime.key
+                    let tapGesture = UITapGestureRecognizer()
+                    tapGesture.addTarget(viewController, action: #selector(ClassTimeViewController.showCourseDetail(_:)))
+                    courseView.addGestureRecognizer(tapGesture)
                 }
-                course.backgroundColor = findProperColorForCourse(classID)
-                course.classNameLabel.text = name
-                course.classroomLabel.text = classroom
-                self.classScrollView.addSubview(course)
-                course.snp_makeConstraints(closure: { (make) in
-                    make.left.equalTo(classScrollView.snp_left).offset(CGFloat(day) * columnWidth + classViewInset)
-                    make.top.equalTo(classScrollView.snp_top).offset(CGFloat(startSection - 1) * rowHeight + classViewInset)
-                    make.width.equalTo(columnWidth - classViewInset * 2)
-                    make.height.equalTo(rowHeight * CGFloat(sectionNumber) - classViewInset * 2)
-                })
-                course.layer.cornerRadius = 5
-                course.layer.masksToBounds = true
-                course.tag = i
-                let tapGesture = UITapGestureRecognizer()
-                tapGesture.addTarget(viewController, action: #selector(ClassTimeViewController.showCourseDetail(_:)))
-                course.addGestureRecognizer(tapGesture)
             }
         } catch {
             
@@ -236,16 +196,18 @@ class ClassTimeView: UIView {
 
     func updateClassTimeTableWithWeek(week: Int) {
         do {
-            let courses = try CourseAgent().getData()
-            for i in 0 ..< courses.count {
-                let currentData = courses.objectAtIndex(i) as! NSData
-                let current = NSKeyedUnarchiver.unarchiveObjectWithData(currentData) as! Course
-                let weekOddEven = current.weekOddEven
-                let course = self.classScrollView.viewWithTag(i)!
-                if ((weekOddEven == "单 周") && (week % 2 == 0) || (weekOddEven == "双 周" && (week % 2 == 1))) {
-                    course.alpha = 0.15
-                }
-            }
+            let courses = try CourseAgent.sharedInstance.getData()
+            courses.forEach({ (current) in
+                current.courseTimes.forEach({ (courseTime) in
+                    let weekOddEven = courseTime.weekOddEven
+                    let startWeek = courseTime.startWeek
+                    let endWeek = courseTime.endWeek
+                    let courseView = self.classScrollView.viewWithTag(courseTime.key)!
+                    if ((weekOddEven == "单周") && (week % 2 == 0) || (weekOddEven == "双周" && (week % 2 == 1))) || (week < startWeek) || (week > endWeek) {
+                        courseView.alpha = 0.15
+                    }
+                })
+            })
         } catch {
             
         }

@@ -22,6 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, WXAp
         JSPatch.startWithAppKey("bdeda28b488dda55")
         JSPatch.sync()
         
+        let rootvc = self.window?.rootViewController as! UITabBarController
+        let firstViewController = rootvc.childViewControllers[0]
+        
         // To set up Flurry(App Analyse), Fabric.Crashlytics(Crash Analyse), AVOS(Push Service), ShareSDK
         func setUpAllTools() {
             
@@ -66,28 +69,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, WXAp
         
         // set up App Appearance
         func setUpApperance() {
-            UINavigationBar.appearance().barTintColor = UIColor.whiteColor()
-            UINavigationBar.appearance().tintColor = UIColor.blackColor()
-            UIBarButtonItem.appearance().tintColor = UIColor(red: 16/255, green: 128/255, blue: 207/255, alpha: 1)
-            UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.blackColor()]
+            UINavigationBar.appearance().barTintColor = UIColor(red: 156/255, green: 89/255, blue: 182/255, alpha: 1)
+            UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+            UINavigationBar.appearance().translucent = false
+            UIBarButtonItem.appearance().tintColor = UIColor.whiteColor()
+            UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName: UIFont(name: "HelveticaNeue", size: 17)!]
+            UITabBar.appearance().translucent = false
         }
         
         // load Preferred Colors
         func loadPreferredColors() {
-            let rootvc = self.window?.rootViewController as! UITabBarController
-            let firstViewController = rootvc.childViewControllers[0]
             do {
                 try Color.getColors()
             } catch StoragedDataError.NoColorInStorage {
                 do {
                     try Color.copyColorsToDocument()
                 } catch {
-                    firstViewController.presentViewController(ErrorHandler.alert(ErrorHandler.StorageNotEnough()), animated: true, completion: nil)
+                    firstViewController.presentViewController(ErrorHandler.alert(ErrorHandler.DataBaseError()), animated: true, completion: nil)
                 }
             } catch {
-                firstViewController.presentViewController(ErrorHandler.alert(ErrorHandler.StorageNotEnough()), animated: true, completion: nil)
+                firstViewController.presentViewController(ErrorHandler.alert(ErrorHandler.DataBaseError()), animated: true, completion: nil)
             }
-
         }
         
         // set up notification
@@ -115,6 +117,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, WXAp
                     UserDetailInfoAgent.sharedInstance.saveData(user)
                 }
             }
+            // 删除原有的课程数据
+            if let _ = userDefaults.objectForKey("courses") as? NSDictionary {
+                userDefaults.removeObjectForKey("courses")
+                userDefaults.removeObjectForKey("courseStatus")
+            }
         }
         
         setUpAllTools()
@@ -141,7 +148,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, WXAp
         }
         
         R.assertValid()
-        
+        // 清理已完成的任务
+        do {
+            try Task.updateStoredTasks()
+        } catch {
+            
+        }
         return true
     }
 

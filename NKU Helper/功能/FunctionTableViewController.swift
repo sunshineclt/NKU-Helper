@@ -58,10 +58,10 @@ class FunctionTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         switch indexPath.row {
-        case 0: //通知中心
-            cell.backgroundColor = UIColor(red: 173/255, green: 114/255, blue: 195/255, alpha: 1)
-        case 1: //查询成绩
+        case 0: //查询成绩
             cell.backgroundColor = UIColor(red: 131/255, green: 176/255, blue: 252/255, alpha: 1)
+        case 1: //通知中心
+            cell.backgroundColor = UIColor(red: 173/255, green: 114/255, blue: 195/255, alpha: 1)
         case 2: // 选课
             cell.backgroundColor = UIColor(red: 154/255, green: 202/255, blue: 39/255, alpha: 1)
         case 3: //评教
@@ -77,12 +77,12 @@ class FunctionTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         switch indexPath.row {
-        case 0: //通知中心
-            let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.notiCenterCell.identifier)!
+        case 0: //查询成绩
+            let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.gradeShowerCell.identifier)!
             cell.userInteractionEnabled = isLoggedIn
             return cell
-        case 1: //查询成绩
-            let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.gradeShowerCell.identifier)!
+        case 1: //通知中心
+            let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.notiCenterCell.identifier)!
             cell.userInteractionEnabled = isLoggedIn
             return cell
         case 2: // 选课

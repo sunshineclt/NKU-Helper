@@ -16,12 +16,10 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.file` struct is generated, and contains static references to 6 files.
+  /// This `R.file` struct is generated, and contains static references to 5 files.
   struct file {
     /// Resource file `Colors.realm`.
     static let colorsRealm = FileResource(bundle: _R.hostingBundle, name: "Colors", pathExtension: "realm")
-    /// Resource file `1.jpg`.
-    static let jpg = FileResource(bundle: _R.hostingBundle, name: "1", pathExtension: "jpg")
     /// Resource file `NKU.plist`.
     static let nKUPlist = FileResource(bundle: _R.hostingBundle, name: "NKU", pathExtension: "plist")
     /// Resource file `RSA.html`.
@@ -34,12 +32,6 @@ struct R: Rswift.Validatable {
     /// `bundle.URLForResource("Colors", withExtension: "realm")`
     static func colorsRealm(_: Void) -> NSURL? {
       let fileResource = R.file.colorsRealm
-      return fileResource.bundle.URLForResource(fileResource)
-    }
-    
-    /// `bundle.URLForResource("1", withExtension: "jpg")`
-    static func jpg(_: Void) -> NSURL? {
-      let fileResource = R.file.jpg
       return fileResource.bundle.URLForResource(fileResource)
     }
     
@@ -75,7 +67,7 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 26 images.
+  /// This `R.image` struct is generated, and contains static references to 29 images.
   struct image {
     /// Image `book`.
     static let book = ImageResource(bundle: _R.hostingBundle, name: "book")
@@ -83,6 +75,8 @@ struct R: Rswift.Validatable {
     static let building = ImageResource(bundle: _R.hostingBundle, name: "building")
     /// Image `buttonNormal`.
     static let buttonNormal = ImageResource(bundle: _R.hostingBundle, name: "buttonNormal")
+    /// Image `check`.
+    static let check = ImageResource(bundle: _R.hostingBundle, name: "check")
     /// Image `CheckBox`.
     static let checkBox = ImageResource(bundle: _R.hostingBundle, name: "CheckBox")
     /// Image `CheckedBox`.
@@ -93,14 +87,18 @@ struct R: Rswift.Validatable {
     static let classNotEvaluated = ImageResource(bundle: _R.hostingBundle, name: "classNotEvaluated")
     /// Image `Clock`.
     static let clock = ImageResource(bundle: _R.hostingBundle, name: "Clock")
+    /// Image `Course`.
+    static let course = ImageResource(bundle: _R.hostingBundle, name: "Course")
     /// Image `downArrow`.
     static let downArrow = ImageResource(bundle: _R.hostingBundle, name: "downArrow")
     /// Image `evaluate`.
     static let evaluate = ImageResource(bundle: _R.hostingBundle, name: "evaluate")
+    /// Image `GeneralTask`.
+    static let generalTask = ImageResource(bundle: _R.hostingBundle, name: "GeneralTask")
     /// Image `gradeGet`.
     static let gradeGet = ImageResource(bundle: _R.hostingBundle, name: "gradeGet")
-    /// Image `1.jpg`.
-    static let jpg = ImageResource(bundle: _R.hostingBundle, name: "1.jpg")
+    /// Image `Homework`.
+    static let homework = ImageResource(bundle: _R.hostingBundle, name: "Homework")
     /// Image `leftArrow`.
     static let leftArrow = ImageResource(bundle: _R.hostingBundle, name: "leftArrow")
     /// Image `moreFunction`.
@@ -145,6 +143,11 @@ struct R: Rswift.Validatable {
       return UIImage(resource: R.image.buttonNormal, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "check", bundle: ..., traitCollection: ...)`
+    static func check(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.check, compatibleWithTraitCollection: traitCollection)
+    }
+    
     /// `UIImage(named: "CheckBox", bundle: ..., traitCollection: ...)`
     static func checkBox(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.checkBox, compatibleWithTraitCollection: traitCollection)
@@ -170,6 +173,11 @@ struct R: Rswift.Validatable {
       return UIImage(resource: R.image.clock, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "Course", bundle: ..., traitCollection: ...)`
+    static func course(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.course, compatibleWithTraitCollection: traitCollection)
+    }
+    
     /// `UIImage(named: "downArrow", bundle: ..., traitCollection: ...)`
     static func downArrow(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.downArrow, compatibleWithTraitCollection: traitCollection)
@@ -180,14 +188,19 @@ struct R: Rswift.Validatable {
       return UIImage(resource: R.image.evaluate, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "GeneralTask", bundle: ..., traitCollection: ...)`
+    static func generalTask(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.generalTask, compatibleWithTraitCollection: traitCollection)
+    }
+    
     /// `UIImage(named: "gradeGet", bundle: ..., traitCollection: ...)`
     static func gradeGet(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.gradeGet, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "1.jpg", bundle: ..., traitCollection: ...)`
-    static func jpg(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.jpg, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "Homework", bundle: ..., traitCollection: ...)`
+    static func homework(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.homework, compatibleWithTraitCollection: traitCollection)
     }
     
     /// `UIImage(named: "leftArrow", bundle: ..., traitCollection: ...)`
@@ -298,7 +311,7 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 29 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 35 reuse identifiers.
   struct reuseIdentifier {
     /// Reuse identifier `AboutCell`.
     static let aboutCell: ReuseIdentifier<UITableViewCell> = ReuseIdentifier(identifier: "AboutCell")
@@ -308,6 +321,10 @@ struct R: Rswift.Validatable {
     static let accountInfoCell: ReuseIdentifier<UITableViewCell> = ReuseIdentifier(identifier: "AccountInfoCell")
     /// Reuse identifier `AddAccountCell`.
     static let addAccountCell: ReuseIdentifier<UITableViewCell> = ReuseIdentifier(identifier: "AddAccountCell")
+    /// Reuse identifier `ChooseClassTimeTablePreferenceCell`.
+    static let chooseClassTimeTablePreferenceCell: ReuseIdentifier<UITableViewCell> = ReuseIdentifier(identifier: "ChooseClassTimeTablePreferenceCell")
+    /// Reuse identifier `ChooseDueDateCell`.
+    static let chooseDueDateCell: ReuseIdentifier<UITableViewCell> = ReuseIdentifier(identifier: "ChooseDueDateCell")
     /// Reuse identifier `ChoosePreferredColorCell`.
     static let choosePreferredColorCell: ReuseIdentifier<UITableViewCell> = ReuseIdentifier(identifier: "ChoosePreferredColorCell")
     /// Reuse identifier `classDetailInfo`.
@@ -316,12 +333,16 @@ struct R: Rswift.Validatable {
     static let classInfo: ReuseIdentifier<ClassInfoTableViewCell> = ReuseIdentifier(identifier: "classInfo")
     /// Reuse identifier `classModification`.
     static let classModification: ReuseIdentifier<ClassModificationTableViewCell> = ReuseIdentifier(identifier: "classModification")
+    /// Reuse identifier `ClassTimeTablePreferenceCell`.
+    static let classTimeTablePreferenceCell: ReuseIdentifier<UITableViewCell> = ReuseIdentifier(identifier: "ClassTimeTablePreferenceCell")
     /// Reuse identifier `ClassToEvaluateCell`.
     static let classToEvaluateCell: ReuseIdentifier<ClassToEvaluateTableViewCell> = ReuseIdentifier(identifier: "ClassToEvaluateCell")
-    /// Reuse identifier `CourseCell`.
-    static let courseCell: ReuseIdentifier<CourseCell> = ReuseIdentifier(identifier: "CourseCell")
+    /// Reuse identifier `CourseColorCell`.
+    static let courseColorCell: ReuseIdentifier<ColorChooseTableViewCell> = ReuseIdentifier(identifier: "CourseColorCell")
     /// Reuse identifier `CourseDetailCell`.
     static let courseDetailCell: ReuseIdentifier<UITableViewCell> = ReuseIdentifier(identifier: "CourseDetailCell")
+    /// Reuse identifier `CourseTaskCell`.
+    static let courseTaskCell: ReuseIdentifier<CourseTaskCell> = ReuseIdentifier(identifier: "CourseTaskCell")
     /// Reuse identifier `EvaluateCenterCell`.
     static let evaluateCenterCell: ReuseIdentifier<UITableViewCell> = ReuseIdentifier(identifier: "EvaluateCenterCell")
     /// Reuse identifier `EvaluateDetailCell`.
@@ -334,6 +355,8 @@ struct R: Rswift.Validatable {
     static let gPACalculateMethodCell: ReuseIdentifier<UITableViewCell> = ReuseIdentifier(identifier: "GPACalculateMethodCell")
     /// Reuse identifier `GPACell`.
     static let gPACell: ReuseIdentifier<GPACell> = ReuseIdentifier(identifier: "GPACell")
+    /// Reuse identifier `GeneralTaskCell`.
+    static let generalTaskCell: ReuseIdentifier<GeneralTaskCell> = ReuseIdentifier(identifier: "GeneralTaskCell")
     /// Reuse identifier `GradeCell`.
     static let gradeCell: ReuseIdentifier<GradeCell> = ReuseIdentifier(identifier: "GradeCell")
     /// Reuse identifier `GradeShowerCell`.
@@ -352,17 +375,19 @@ struct R: Rswift.Validatable {
     static let selectCourseCenterCell: ReuseIdentifier<UITableViewCell> = ReuseIdentifier(identifier: "SelectCourseCenterCell")
     /// Reuse identifier `SupportGroupCell`.
     static let supportGroupCell: ReuseIdentifier<UITableViewCell> = ReuseIdentifier(identifier: "SupportGroupCell")
+    /// Reuse identifier `TaskColorCell`.
+    static let taskColorCell: ReuseIdentifier<ColorChooseTableViewCell> = ReuseIdentifier(identifier: "TaskColorCell")
     /// Reuse identifier `TestTimeCell`.
     static let testTimeCell: ReuseIdentifier<TestTimeTableViewCell> = ReuseIdentifier(identifier: "TestTimeCell")
     /// Reuse identifier `TestTimeSearchCell`.
     static let testTimeSearchCell: ReuseIdentifier<UITableViewCell> = ReuseIdentifier(identifier: "TestTimeSearchCell")
-    /// Reuse identifier `ToDoCell`.
-    static let toDoCell: ReuseIdentifier<ToDoCell> = ReuseIdentifier(identifier: "ToDoCell")
+    /// Reuse identifier `TodayCourseCell`.
+    static let todayCourseCell: ReuseIdentifier<TodayCourseCell> = ReuseIdentifier(identifier: "TodayCourseCell")
     
     private init() {}
   }
   
-  /// This `R.segue` struct is generated, and contains static references to 10 view controllers.
+  /// This `R.segue` struct is generated, and contains static references to 12 view controllers.
   struct segue {
     /// This struct is generated for `ClassTimeViewController`, and contains static references to 2 segues.
     struct classTimeViewController {
@@ -383,6 +408,21 @@ struct R: Rswift.Validatable {
       /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
       static func showCourseDetail(segue segue: UIStoryboardSegue) -> TypedStoryboardSegueInfo<UIStoryboardSegue, ClassTimeViewController, CourseDetailTableViewController>? {
         return TypedStoryboardSegueInfo(segueIdentifier: R.segue.classTimeViewController.showCourseDetail, segue: segue)
+      }
+      
+      private init() {}
+    }
+    
+    /// This struct is generated for `CourseDetailTableViewController`, and contains static references to 1 segues.
+    struct courseDetailTableViewController {
+      /// Segue identifier `AddTask`.
+      static let addTask: StoryboardSegueIdentifier<UIStoryboardSegue, CourseDetailTableViewController, UINavigationController> = StoryboardSegueIdentifier(identifier: "AddTask")
+      
+      /// Optionally returns a typed version of segue `AddTask`.
+      /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
+      /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
+      static func addTask(segue segue: UIStoryboardSegue) -> TypedStoryboardSegueInfo<UIStoryboardSegue, CourseDetailTableViewController, UINavigationController>? {
+        return TypedStoryboardSegueInfo(segueIdentifier: R.segue.courseDetailTableViewController.addTask, segue: segue)
       }
       
       private init() {}
@@ -487,6 +527,54 @@ struct R: Rswift.Validatable {
       private init() {}
     }
     
+    /// This struct is generated for `NewTaskTableViewController`, and contains static references to 1 segues.
+    struct newTaskTableViewController {
+      /// Segue identifier `ChooseDueDate`.
+      static let chooseDueDate: StoryboardSegueIdentifier<UIStoryboardSegue, NewTaskTableViewController, DatePickerTableViewController> = StoryboardSegueIdentifier(identifier: "ChooseDueDate")
+      
+      /// Optionally returns a typed version of segue `ChooseDueDate`.
+      /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
+      /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
+      static func chooseDueDate(segue segue: UIStoryboardSegue) -> TypedStoryboardSegueInfo<UIStoryboardSegue, NewTaskTableViewController, DatePickerTableViewController>? {
+        return TypedStoryboardSegueInfo(segueIdentifier: R.segue.newTaskTableViewController.chooseDueDate, segue: segue)
+      }
+      
+      private init() {}
+    }
+    
+    /// This struct is generated for `NewTodayViewController`, and contains static references to 3 segues.
+    struct newTodayViewController {
+      /// Segue identifier `AddTask`.
+      static let addTask: StoryboardSegueIdentifier<UIStoryboardSegue, NewTodayViewController, UINavigationController> = StoryboardSegueIdentifier(identifier: "AddTask")
+      /// Segue identifier `Login`.
+      static let login: StoryboardSegueIdentifier<UIStoryboardSegue, NewTodayViewController, SaveAccountInfoViewController> = StoryboardSegueIdentifier(identifier: "Login")
+      /// Segue identifier `ShowCourseDetail`.
+      static let showCourseDetail: StoryboardSegueIdentifier<UIStoryboardSegue, NewTodayViewController, CourseDetailTableViewController> = StoryboardSegueIdentifier(identifier: "ShowCourseDetail")
+      
+      /// Optionally returns a typed version of segue `AddTask`.
+      /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
+      /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
+      static func addTask(segue segue: UIStoryboardSegue) -> TypedStoryboardSegueInfo<UIStoryboardSegue, NewTodayViewController, UINavigationController>? {
+        return TypedStoryboardSegueInfo(segueIdentifier: R.segue.newTodayViewController.addTask, segue: segue)
+      }
+      
+      /// Optionally returns a typed version of segue `Login`.
+      /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
+      /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
+      static func login(segue segue: UIStoryboardSegue) -> TypedStoryboardSegueInfo<UIStoryboardSegue, NewTodayViewController, SaveAccountInfoViewController>? {
+        return TypedStoryboardSegueInfo(segueIdentifier: R.segue.newTodayViewController.login, segue: segue)
+      }
+      
+      /// Optionally returns a typed version of segue `ShowCourseDetail`.
+      /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
+      /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
+      static func showCourseDetail(segue segue: UIStoryboardSegue) -> TypedStoryboardSegueInfo<UIStoryboardSegue, NewTodayViewController, CourseDetailTableViewController>? {
+        return TypedStoryboardSegueInfo(segueIdentifier: R.segue.newTodayViewController.showCourseDetail, segue: segue)
+      }
+      
+      private init() {}
+    }
+    
     /// This struct is generated for `NotiCenterTableViewController`, and contains static references to 1 segues.
     struct notiCenterTableViewController {
       /// Segue identifier `ShowNotiDetail`.
@@ -541,12 +629,14 @@ struct R: Rswift.Validatable {
       private init() {}
     }
     
-    /// This struct is generated for `SettingTableViewController`, and contains static references to 3 segues.
+    /// This struct is generated for `SettingTableViewController`, and contains static references to 4 segues.
     struct settingTableViewController {
       /// Segue identifier `ShowAbout`.
       static let showAbout: StoryboardSegueIdentifier<UIStoryboardSegue, SettingTableViewController, AboutViewController> = StoryboardSegueIdentifier(identifier: "ShowAbout")
       /// Segue identifier `ShowChoosePreferredColor`.
       static let showChoosePreferredColor: StoryboardSegueIdentifier<UIStoryboardSegue, SettingTableViewController, ColorChooseTableViewController> = StoryboardSegueIdentifier(identifier: "ShowChoosePreferredColor")
+      /// Segue identifier `ShowClassTimePreference`.
+      static let showClassTimePreference: StoryboardSegueIdentifier<UIStoryboardSegue, SettingTableViewController, ClassTimePreferenceTableViewController> = StoryboardSegueIdentifier(identifier: "ShowClassTimePreference")
       /// Segue identifier `ShowDetailAccountInfo`.
       static let showDetailAccountInfo: StoryboardSegueIdentifier<UIStoryboardSegue, SettingTableViewController, DetailAccountInfoTableViewController> = StoryboardSegueIdentifier(identifier: "ShowDetailAccountInfo")
       
@@ -562,6 +652,13 @@ struct R: Rswift.Validatable {
       /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
       static func showChoosePreferredColor(segue segue: UIStoryboardSegue) -> TypedStoryboardSegueInfo<UIStoryboardSegue, SettingTableViewController, ColorChooseTableViewController>? {
         return TypedStoryboardSegueInfo(segueIdentifier: R.segue.settingTableViewController.showChoosePreferredColor, segue: segue)
+      }
+      
+      /// Optionally returns a typed version of segue `ShowClassTimePreference`.
+      /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
+      /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
+      static func showClassTimePreference(segue segue: UIStoryboardSegue) -> TypedStoryboardSegueInfo<UIStoryboardSegue, SettingTableViewController, ClassTimePreferenceTableViewController>? {
+        return TypedStoryboardSegueInfo(segueIdentifier: R.segue.settingTableViewController.showClassTimePreference, segue: segue)
       }
       
       /// Optionally returns a typed version of segue `ShowDetailAccountInfo`.
@@ -584,30 +681,6 @@ struct R: Rswift.Validatable {
       /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
       static func login(segue segue: UIStoryboardSegue) -> TypedStoryboardSegueInfo<UIStoryboardSegue, TestTimeTableViewController, UINavigationController>? {
         return TypedStoryboardSegueInfo(segueIdentifier: R.segue.testTimeTableViewController.login, segue: segue)
-      }
-      
-      private init() {}
-    }
-    
-    /// This struct is generated for `TodayViewController`, and contains static references to 2 segues.
-    struct todayViewController {
-      /// Segue identifier `Login`.
-      static let login: StoryboardSegueIdentifier<UIStoryboardSegue, TodayViewController, SaveAccountInfoViewController> = StoryboardSegueIdentifier(identifier: "Login")
-      /// Segue identifier `ShowCourseDetail`.
-      static let showCourseDetail: StoryboardSegueIdentifier<UIStoryboardSegue, TodayViewController, CourseDetailTableViewController> = StoryboardSegueIdentifier(identifier: "ShowCourseDetail")
-      
-      /// Optionally returns a typed version of segue `Login`.
-      /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
-      /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
-      static func login(segue segue: UIStoryboardSegue) -> TypedStoryboardSegueInfo<UIStoryboardSegue, TodayViewController, SaveAccountInfoViewController>? {
-        return TypedStoryboardSegueInfo(segueIdentifier: R.segue.todayViewController.login, segue: segue)
-      }
-      
-      /// Optionally returns a typed version of segue `ShowCourseDetail`.
-      /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
-      /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
-      static func showCourseDetail(segue segue: UIStoryboardSegue) -> TypedStoryboardSegueInfo<UIStoryboardSegue, TodayViewController, CourseDetailTableViewController>? {
-        return TypedStoryboardSegueInfo(segueIdentifier: R.segue.todayViewController.showCourseDetail, segue: segue)
       }
       
       private init() {}
@@ -773,7 +846,6 @@ struct _R: Rswift.Validatable {
       try testTimeSearch.validate()
       try grade.validate()
       try logIn.validate()
-      try launch.validate()
       try notiCenter.validate()
       try settings.validate()
       try evaluate.validate()
@@ -878,16 +950,11 @@ struct _R: Rswift.Validatable {
       private init() {}
     }
     
-    struct launch: StoryboardResourceWithInitialControllerType, Rswift.Validatable {
+    struct launch: StoryboardResourceWithInitialControllerType {
       typealias InitialController = UIViewController
       
       let bundle = _R.hostingBundle
       let name = "Launch"
-      
-      static func validate() throws {
-        if UIImage(named: "plus") == nil { throw ValidationError(description: "[R.swift] Image named 'plus' is used in storyboard 'Launch', but couldn't be loaded.") }
-        if UIImage(named: "1.jpg") == nil { throw ValidationError(description: "[R.swift] Image named '1.jpg' is used in storyboard 'Launch', but couldn't be loaded.") }
-      }
       
       private init() {}
     }
@@ -1054,7 +1121,6 @@ struct _R: Rswift.Validatable {
       let courseDetailTVC = StoryboardViewControllerResource<CourseDetailTableViewController>(identifier: "CourseDetailTVC")
       let name = "Today"
       let todayNC = StoryboardViewControllerResource<UINavigationController>(identifier: "TodayNC")
-      let todayVC = StoryboardViewControllerResource<TodayViewController>(identifier: "TodayVC")
       
       func courseDetailTVC(_: Void) -> CourseDetailTableViewController? {
         return UIStoryboard(resource: self).instantiateViewController(courseDetailTVC)
@@ -1064,19 +1130,12 @@ struct _R: Rswift.Validatable {
         return UIStoryboard(resource: self).instantiateViewController(todayNC)
       }
       
-      func todayVC(_: Void) -> TodayViewController? {
-        return UIStoryboard(resource: self).instantiateViewController(todayVC)
-      }
-      
       static func validate() throws {
+        if UIImage(named: "Course") == nil { throw ValidationError(description: "[R.swift] Image named 'Course' is used in storyboard 'Today', but couldn't be loaded.") }
+        if UIImage(named: "GeneralTask") == nil { throw ValidationError(description: "[R.swift] Image named 'GeneralTask' is used in storyboard 'Today', but couldn't be loaded.") }
         if UIImage(named: "plus") == nil { throw ValidationError(description: "[R.swift] Image named 'plus' is used in storyboard 'Today', but couldn't be loaded.") }
         if UIImage(named: "今天") == nil { throw ValidationError(description: "[R.swift] Image named '今天' is used in storyboard 'Today', but couldn't be loaded.") }
-        if UIImage(named: "building") == nil { throw ValidationError(description: "[R.swift] Image named 'building' is used in storyboard 'Today', but couldn't be loaded.") }
-        if UIImage(named: "watch") == nil { throw ValidationError(description: "[R.swift] Image named 'watch' is used in storyboard 'Today', but couldn't be loaded.") }
-        if UIImage(named: "leftArrow") == nil { throw ValidationError(description: "[R.swift] Image named 'leftArrow' is used in storyboard 'Today', but couldn't be loaded.") }
-        if UIImage(named: "1.jpg") == nil { throw ValidationError(description: "[R.swift] Image named '1.jpg' is used in storyboard 'Today', but couldn't be loaded.") }
-        if UIImage(named: "CheckBox") == nil { throw ValidationError(description: "[R.swift] Image named 'CheckBox' is used in storyboard 'Today', but couldn't be loaded.") }
-        if _R.storyboard.today().todayVC() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'todayVC' could not be loaded from storyboard 'Today' as 'TodayViewController'.") }
+        if UIImage(named: "Homework") == nil { throw ValidationError(description: "[R.swift] Image named 'Homework' is used in storyboard 'Today', but couldn't be loaded.") }
         if _R.storyboard.today().courseDetailTVC() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'courseDetailTVC' could not be loaded from storyboard 'Today' as 'CourseDetailTableViewController'.") }
         if _R.storyboard.today().todayNC() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'todayNC' could not be loaded from storyboard 'Today' as 'UINavigationController'.") }
       }

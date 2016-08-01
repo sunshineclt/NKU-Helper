@@ -21,8 +21,8 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="米色白色渐变背景.png" translatesAutoresizingMaskIntoConstraints="NO" id="2yz-go-LSh">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="slogan.png" translatesAutoresizingMaskIntoConstraints="NO" id="cQm-WC-1aa">
-                                <rect key="frame" x="146" y="64" width="308" height="163.5"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="slogan.png" translatesAutoresizingMaskIntoConstraints="NO" id="cQm-WC-1aa">
+                                <rect key="frame" x="146" y="64" width="308" height="164"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="cQm-WC-1aa" secondAttribute="height" multiplier="100:53" id="hFo-tC-u1B"/>
                                 </constraints>

@@ -13,6 +13,7 @@
 #import "NJKWebViewProgressView.h"
 #import "SVProgressHUD.h"
 #import <JSPatch/JSPatch.h>
+#import "MCSwipeTableViewCell.h"
 
 #import <ShareSDK/ShareSDK.h>
 #import <ShareSDKUI/ShareSDK+SSUI.h>

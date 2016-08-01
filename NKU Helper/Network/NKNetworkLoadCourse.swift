@@ -16,6 +16,7 @@ protocol NKNetworkLoadCourseDelegate {
     func didSuccessToReceiveCourseData()
     func didFailToReceiveCourseData()
     func loadProgressUpdate(progress: Float)
+    func didFailToSaveCourseData()
 }
 
 /// 提供获取课程功能的网络库
@@ -28,115 +29,141 @@ class NKNetworkLoadCourse: NKNetworkBase {
      获取所有课程信息
      */
     func getAllCourse() {
+        let classLoadMethod = CourseLoadMethodAgent.sharedInstance.getData()
+        if classLoadMethod == 0 {
+            loadCourseFromClassTimeTable()
+        }
+        else {
+            loadCourseFromClassTable()
+        }
+    }
+    
+    // 从课程表获取课程
+    dynamic func loadCourseFromClassTimeTable() {
         Alamofire.request(.GET, "http://222.30.32.10/xsxk/selectedAction.do?operation=kebiao").responseString { (response) in
             guard let html = response.result.value else {
                 self.delegate?.didFailToReceiveCourseData()
                 return
             }
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { 
-                self.loadAllCourseInfoWithHtml(html)
-                self.delegate?.didSuccessToReceiveCourseData()
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+                let saveOK = self.analyzeClassTimeTableHtml(html)
+                saveOK ? self.delegate?.didSuccessToReceiveCourseData() : self.delegate?.didFailToSaveCourseData()
             })
         }
     }
     
-    private func handleHtml(html:NSString) -> (String, String, String, String, String, String) {
-        
-        var range = html.rangeOfString("&nbsp;&nbsp;&nbsp;&nbsp;选课序号：")
-        let classID = html.substringWithRange(NSMakeRange(range.location + 135, 4))
-        
-        range = html.rangeOfString(">课程编号：</td>")
-        let classNumber = html.substringWithRange(NSMakeRange(range.location + 114, 10))
-        
-        range = html.rangeOfString("&nbsp;&nbsp;&nbsp;&nbsp;课程名称：")
-        var className:NSString = html.substringWithRange(NSMakeRange(range.location + 119, 20))
-        while ((className.hasSuffix("\r")) || (className.hasSuffix("\n")) || (className.hasSuffix(" "))) {
-            className = className.substringToIndex(className.length - 1)
+    // 分析课程表html
+    dynamic private func analyzeClassTimeTableHtml(html: String) -> Bool {
+        let htmlNSString = html as NSString
+        let regularExpression1 = try! NSRegularExpression(pattern: "<td[^<>]*?height=\"(\\d*?)\"[^<>]*?>\\s*?.*?(coursearrangeseq=.*?&&classroomincode=.*?&&week=.*?&&begphase=.*?&&ifkebiao=yes)", options: .CaseInsensitive)
+        let matches = regularExpression1.matchesInString(html, options: .ReportProgress, range: NSMakeRange(0, htmlNSString.length))
+        do {
+            try Task.deleteCourseTasks()
+            try CourseTime.deleteAll()
+            try CourseAgent.sharedInstance.deleteData()
+            var day = 0
+            var startSection = 1
+            for i in 0 ..< matches.count {
+                let match = matches[i]
+                if match.range.length > 190 {
+                    let urlString = "http://222.30.32.10/xsxk/selectedAllAction.do?" + htmlNSString.substringWithRange(match.rangeAtIndex(2))
+                    let url = NSURL(string: urlString)!
+                    
+                    let subString = htmlNSString.substringWithRange(match.rangeAtIndex(1)) as NSString
+                    let sectionNumber = subString.integerValue / 15
+                    
+                    if let course = loadDetailClassInfo(url, startSection: startSection, sectionNumber: sectionNumber, index: i) {
+                        try CourseAgent.sharedInstance.saveData([course])
+                    }
+                    startSection = startSection + sectionNumber
+                    if startSection > 14 {
+                        day += 1
+                        startSection = 1
+                    }
+                }
+                else {
+                    startSection += 1
+                    if startSection > 14 {
+                        day += 1
+                        startSection = 1
+                    }
+                }
+                let progress = (Float(i + 1)) / Float(matches.count)
+                delegate?.loadProgressUpdate(progress)            
+            }
+            return true
+        } catch {
+            return false
         }
-        
-        range = html.rangeOfString("&nbsp;&nbsp;&nbsp;&nbsp;单&nbsp;双&nbsp;周：</td>")
-        var weekOddEven:NSString = html.substringWithRange(NSMakeRange(range.location + 130, 20))
-        while ((weekOddEven.hasSuffix("\r")) || (weekOddEven.hasSuffix("\n")) || (weekOddEven.hasSuffix(" "))) {
-            weekOddEven = weekOddEven.substringToIndex(weekOddEven.length - 1)
-        }
-        
-        range = html.rangeOfString("教&nbsp;&nbsp;&nbsp;&nbsp;室：</td>")
-        var classroom:NSString = html.substringWithRange(NSMakeRange(range.location + 120, 15))
-        while ((classroom.hasSuffix("\r")) || (classroom.hasSuffix("\n")) || (classroom.hasSuffix(" "))) {
-            classroom = classroom.substringToIndex(classroom.length - 1)
-        }
-        
-        range = html.rangeOfString(">教师姓名：</td>")
-        var teacherName:NSString = html.substringWithRange(NSMakeRange(range.location + 98, 10))
-        while ((teacherName.hasSuffix("\r")) || (teacherName.hasSuffix("\n")) || (teacherName.hasSuffix(" "))) {
-            teacherName = teacherName.substringToIndex(teacherName.length - 1)
-        }
-        
-        return (classID as String, classNumber as String, className as String, weekOddEven as String, classroom as String, teacherName as String)
     }
     
-    dynamic private func loadAllCourseInfoWithHtml(html: NSString) {
-        let regularExpression1 = try! NSRegularExpression(pattern: "(coursearrangeseq=.*?)&&(classroomincode=.*)&&(week=.*)&&(begphase=.*)&&(ifkebiao=yes)", options: NSRegularExpressionOptions.CaseInsensitive)
-        let matches:NSArray = regularExpression1.matchesInString(html as String, options: NSMatchingOptions.ReportProgress, range: NSMakeRange(0, html.length))
-        var day:Int = 0
-        var startSection:Int = 1
-        let courses:NSMutableArray = NSMutableArray()
-        var courseCount:Int = -1
-        let courseStatus:NSMutableArray = NSMutableArray()
-        var eachDaySectionCourseStatus:NSMutableArray = NSMutableArray()
-        for i in 0 ..< matches.count {
-            let presentRange = matches.objectAtIndex(i) as! NSTextCheckingResult
-            if presentRange.range.length > 67 {
-                let urlString = "http://222.30.32.10/xsxk/selectedAllAction.do?" + html.substringWithRange(presentRange.range)
-                let url:NSURL = NSURL(string: urlString)!
-                let receivedData = NSData(contentsOfURL: url)!
-                let encoding = CFStringConvertEncodingToNSStringEncoding(0x0632)
-                let courseDetailInfoHtml = NSString(data: receivedData, encoding: encoding)!
-                
-                let subString:NSString = html.substringWithRange(NSMakeRange(presentRange.range.location - 98, 2))
-                let sectionNumber:Int = subString.integerValue / 15
-                
-                var classID,classNumber,className,weekOddEven,classroom,teacherName:String
-                (classID,classNumber,className,weekOddEven,classroom,teacherName) = self.handleHtml(courseDetailInfoHtml)
-                let courseDetailInfo = Course(ID: classID, number: classNumber, name: className, classroom: classroom, weekOddEven: weekOddEven, teacherName: teacherName, day: day, startSection: startSection, sectionNumber: sectionNumber)
-                
-                let data = NSKeyedArchiver.archivedDataWithRootObject(courseDetailInfo)
-                courses.addObject(data)
-                courseCount += 1
-                for _ in 0 ..< sectionNumber {
-                    eachDaySectionCourseStatus.addObject(courseCount)
-                }
-                startSection = startSection + sectionNumber
-                if startSection > 14 {
-                    day += 1
-                    startSection = 1
-                    courseStatus.addObject(eachDaySectionCourseStatus)
-                    eachDaySectionCourseStatus = NSMutableArray()
-                }
-                
-                
+    // 从课程列表加载课程
+    dynamic private func loadCourseFromClassTable() {
+        Alamofire.request(.GET, "http://222.30.32.10/xsxk/selectedAction.do").responseString { (response) in
+            guard let html = response.result.value else {
+                self.delegate?.didFailToReceiveCourseData()
+                return
             }
-            else {
-                startSection += 1
-                eachDaySectionCourseStatus.addObject(-1)
-                if startSection > 14 {
-                    day += 1
-                    startSection = 1
-                    courseStatus.addObject(eachDaySectionCourseStatus)
-                    eachDaySectionCourseStatus = NSMutableArray()
-                }
-            }
-            let progress:Float = (Float(i + 1)) / Float(matches.count)
-            delegate?.loadProgressUpdate(progress)            
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+                let saveOK = self.analyzeClassListHtml(html)
+                saveOK ? self.delegate?.didSuccessToReceiveCourseData() : self.delegate?.didFailToSaveCourseData()
+            })
         }
-        
-        let userDefaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        userDefaults.removeObjectForKey("courses")
-        userDefaults.removeObjectForKey("courseStatus")
-        userDefaults.setObject(courses, forKey: "courses")
-        userDefaults.setObject(courseStatus, forKey: "courseStatus")
-        userDefaults.synchronize()
-        //   drawClassTimeTable()
+    }
+    
+    dynamic private func analyzeClassListHtml(html: String) -> Bool {
+        let htmlNSString = html as NSString
+        let regularExpression1 = try! NSRegularExpression(pattern: "<td[^<>]*?NavText\"[^<>]*?>(\\S*?)\\s*?</td>\\s*?<td[^<>]*?NavText\"[^<>]*?>(\\S*?)\\s*?</td>\\s*?<td[^<>]*?NavText\"[^<>]*?>(\\S*?)\\s*?</td>\\s*?<td[^<>]*?NavText\"[^<>]*?>(\\S*?)\\s*?</td>\\s*?<td[^<>]*?NavText\"[^<>]*?>(\\S*?)\\s*?</td>\\s*?<td[^<>]*?NavText\"[^<>]*?>(\\S*?)\\s*?</td>\\s*?<td[^<>]*?NavText\"[^<>]*?>(\\S*?)\\s*?</td>\\s*?<td[^<>]*?NavText\"[^<>]*?>(\\S*?)\\s*?</td>\\s*?<td[^<>]*?NavText\"[^<>]*?>(\\S*?)\\s*?</td>\\s*?<td[^<>]*?NavText\"[^<>]*?>(\\S*?)\\s*?</td>\\s*?<td[^<>]*?NavText\"[^<>]*?>(\\S*?)\\s*?</td>\\s*?<td[^<>]*?NavText\"[^<>]*?>(\\S*?)\\s*?</td>\\s*?<td[^<>]*?NavText\"[^<>]*?>\\s*?<a[^<>]*?href=\".*?&amp;(.*?)\".*?</a>\\s*?</td>", options: .CaseInsensitive)
+        let matches = regularExpression1.matchesInString(html, options: .ReportProgress, range: NSMakeRange(0, htmlNSString.length))
+        do {
+            try Task.deleteCourseTasks()
+            try CourseTime.deleteAll()
+            try CourseAgent.sharedInstance.deleteData()
+            for i in 0..<matches.count {
+                let match = matches[i]
+                let index = (htmlNSString.substringWithRange(match.rangeAtIndex(1)) as NSString).integerValue
+                let startSection = (htmlNSString.substringWithRange(match.rangeAtIndex(6)) as NSString).integerValue
+                let endSection = (htmlNSString.substringWithRange(match.rangeAtIndex(7)) as NSString).integerValue
+                let url = NSURL(string: "http://222.30.32.10/xsxk/selectedAllAction.do?ifkebiao=no&" + htmlNSString.substringWithRange(match.rangeAtIndex(13)))!
+                if let course = loadDetailClassInfo(url, startSection: startSection, sectionNumber: endSection - startSection + 1, index: index) {
+                    try CourseAgent.sharedInstance.saveData([course])
+                }
+                let progress = (Float(i + 1)) / Float(matches.count)
+                delegate?.loadProgressUpdate(progress)
+            }
+            return true
+        } catch {
+            return false
+        }
+    }
+    
+    // 加载并分析课程详细信息
+    dynamic private func loadDetailClassInfo(url: NSURL, startSection: Int, sectionNumber: Int, index: Int) -> Course? {
+        let receivedData = NSData(contentsOfURL: url)!
+        let encoding = CFStringConvertEncodingToNSStringEncoding(0x0632)
+        let courseDetailInfoHtml = NSString(data: receivedData, encoding: encoding) as! String
+
+        let classID = getProperty(courseDetailInfoHtml, para: "选课序号")
+        let classNumber = getProperty(courseDetailInfoHtml, para: "课程编号")
+        let className = getProperty(courseDetailInfoHtml, para: "课程名称")
+        let weekday = (getProperty(courseDetailInfoHtml, para: "期") as NSString).integerValue
+        let weekOddEven = getProperty(courseDetailInfoHtml, para: "单.*?双.*?周")
+        let classroom = getProperty(courseDetailInfoHtml, para: "室")
+        let teacherName = getProperty(courseDetailInfoHtml, para: "教师姓名")
+        let startWeek = (getProperty(courseDetailInfoHtml, para: "开始周次") as NSString).integerValue
+        let endWeek = (getProperty(courseDetailInfoHtml, para: "结束周次") as NSString).integerValue
+        let course = Course.addCourseTime(key: index, ID: classID, number: classNumber, name: className, classroom: classroom, weekOddEven: weekOddEven, teacherName: teacherName, weekday: weekday, startSection: startSection, sectionNumber: sectionNumber, startWeek: startWeek, endWeek: endWeek)
+        return course
+    }
+    
+    // 用于提取课程详细信息中的内容
+    dynamic private func getProperty(html: String, para: String) -> String {
+        let regularExpression = try! NSRegularExpression(pattern: para + ".*?</td>\\s*?<td[^<>]*?NavText[^<>]*?>\\s*(.*?)\\s*</td>", options: .CaseInsensitive)
+        let matches = regularExpression.matchesInString(html, options: .ReportCompletion, range: NSMakeRange(0, (html as NSString).length))
+        guard let match = matches.first else {
+            return "未知"
+        }
+        return (html as NSString).substringWithRange(match.rangeAtIndex(1))
     }
     
 }

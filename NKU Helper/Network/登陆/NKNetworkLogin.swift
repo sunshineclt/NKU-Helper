@@ -46,7 +46,7 @@ class NKNetworkLogin: NKNetworkBase, UIWebViewDelegate {
      */
     func loginWithValidateCode(validateCode: String, onView view:UIView, andBlock block:LoginResultBlock) {
         do {
-            let accountInfo = try UserAgent().getData()
+            let accountInfo = try UserAgent.sharedInstance.getData()
             let userID = accountInfo.userID
             let password = accountInfo.password
             loginWithID(userID, password: password, validateCode: validateCode, onView: view, andBlock: block)

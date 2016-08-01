@@ -17,7 +17,7 @@ class ColorChooseTableViewController: UITableViewController {
         do {
             colors = try Color.getColors()
         } catch {
-            presentViewController(ErrorHandler.alert(ErrorHandler.StorageNotEnough()), animated: true, completion: nil)
+            presentViewController(ErrorHandler.alert(ErrorHandler.DataBaseError()), animated: true, completion: nil)
         }
     }
     

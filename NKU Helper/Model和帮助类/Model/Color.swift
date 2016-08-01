@@ -12,41 +12,45 @@ import RealmSwift
 class Color: Object {
     
     /**
-     将App预设的颜色拷贝入Document目录中，在使用Color类之前必须进行
+     将App预设的颜色拷贝入Document目录中，并加载到default.realm，在使用Color类之前必须进行
      
-     - throws: 不存在预设颜色文件，无法拷贝入Document目录（容量不足等）
+     - throws: RealmError
      */
     class func copyColorsToDocument() throws {
         let oldPath = NSBundle.mainBundle().pathForResource("Colors", ofType: "realm")!
         let documentPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
         let targetPath = (documentPath as NSString).stringByAppendingPathComponent("Colors.realm")
+        var config = Realm.Configuration()
         do {
             if NSFileManager.defaultManager().fileExistsAtPath(targetPath) {
                 try NSFileManager.defaultManager().removeItemAtPath(targetPath)
             }
             try NSFileManager.defaultManager().copyItemAtPath(oldPath, toPath: targetPath)
-        } catch let err as NSError {
-            throw err
+            config.fileURL = NSURL(string: targetPath)!
+            let realm = try Realm(configuration: config)
+            let defaultRealm = try Realm()
+            let colors = realm.objects(Color.self)
+            try defaultRealm.write({
+                for color in colors {
+                    //let oneColor = Color(name: color.name, red: color.red, green: color.green, blue: color.blue, alpha: color.alpha, liked: color.liked)
+                    defaultRealm.add(defaultRealm.create(Color.self, value: color, update: false))
+                }
+            })
+        } catch {
+            throw StoragedDataError.RealmError
         }
     }
     
     /**
      获取所有颜色的对象
      
-     - throws: Document文件夹中没有数据库，访问失败
+     - throws: NoColorInStorage和RealmError
      
      - returns: 所有颜色对象组成的Results
      */
     class func getColors() throws -> Results<Color> {
-        var config = Realm.Configuration()
-        let documentPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
-        let path = (documentPath as NSString).stringByAppendingPathComponent("Colors.realm")
-        guard let url = NSURL(string: path) else {
-            throw StoragedDataError.NoColorInStorage
-        }
-        config.fileURL = url
         do {
-            let realm = try Realm(configuration: config)
+            let realm = try Realm()
             let colors = realm.objects(Color.self)
             if colors.count > 0 {
                 return colors
@@ -54,8 +58,11 @@ class Color: Object {
             else {
                 throw StoragedDataError.NoColorInStorage
             }
-        } catch let err {
-            throw err
+        } catch StoragedDataError.NoColorInStorage {
+            throw StoragedDataError.NoColorInStorage
+        }
+        catch {
+            throw StoragedDataError.RealmError
         }
     }
     
@@ -65,15 +72,8 @@ class Color: Object {
      - returns: 颜色数量
      */
     class func getColorCount() -> Int {
-        var config = Realm.Configuration()
-        let documentPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
-        let path = (documentPath as NSString).stringByAppendingPathComponent("Colors.realm")
-        guard let url = NSURL(string: path) else {
-            return 0
-        }
-        config.fileURL = url
         do {
-            let realm = try Realm(configuration: config)
+            let realm = try Realm()
             return realm.objects(Color.self).count
         } catch {
             return 0
@@ -93,15 +93,8 @@ class Color: Object {
      改变喜欢/不喜欢
      */
     func toggleLike() {
-        var config = Realm.Configuration()
-        let documentPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
-        let path = (documentPath as NSString).stringByAppendingPathComponent("Colors.realm")
-        guard let url = NSURL(string: path) else {
-            return
-        }
-        config.fileURL = url
         do {
-            let realm = try Realm(configuration: config)
+            let realm = try Realm()
             try realm.write({
                 self.liked = !self.liked
             })

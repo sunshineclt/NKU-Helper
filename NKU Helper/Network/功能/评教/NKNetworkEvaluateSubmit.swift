@@ -27,7 +27,7 @@ class NKNetworkEvaluateSubmit: NKNetworkBase {
      - parameter index:   当前评教的课程的index
      */
     func submit(grade: [String], opinion: String, index: Int) {
-        //FIXME:
+        //TODO: 在开放时整理
         let url = NSURL(string: "http://222.30.32.10/evaluate/stdevatea/queryTargetAction.do")!
         let req = NSMutableURLRequest(URL: url)
         var data = String(format: "operation=Store")

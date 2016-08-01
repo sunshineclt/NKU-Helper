@@ -14,6 +14,10 @@ private let sharedStoreAgent = UserAgent()
 /// 提供访问用户数据的类
 class UserAgent:StoreAgent, StoreProtocol {
     
+    private override init() {
+        super.init()
+    }
+    
     class var sharedInstance:UserAgent {
         return sharedStoreAgent
     }

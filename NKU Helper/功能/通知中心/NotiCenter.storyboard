@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4qX-Rc-Fxd">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--通知中心-->
@@ -21,7 +22,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HIB-UW-S2t">
-                                            <rect key="frame" x="8" y="14" width="584" height="178"/>
+                                            <rect key="frame" x="8" y="8" width="584" height="184"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="南开" translatesAutoresizingMaskIntoConstraints="NO" id="fMM-BM-GBQ">
                                                     <rect key="frame" x="20" y="20" width="30" height="30"/>
@@ -45,20 +46,20 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="53h-a9-HuW" userLabel="text">
-                                                    <rect key="frame" x="20" y="67" width="544" height="71"/>
+                                                    <rect key="frame" x="20" y="67" width="544" height="72"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="发布者" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ir-jn-h55">
-                                                    <rect key="frame" x="534" y="146" width="30" height="12"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="10"/>
+                                                    <rect key="frame" x="522" y="147" width="42" height="17"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="14"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DL1-Fu-Zzs">
-                                                    <rect key="frame" x="20" y="146" width="17.5" height="12"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="10"/>
+                                                    <rect key="frame" x="20" y="147" width="25" height="17"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="14"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -87,13 +88,13 @@
                                         </view>
                                     </subviews>
                                     <color key="backgroundColor" red="0.61176470588235299" green="0.34901960784313724" blue="0.71372549019607845" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="leadingMargin" secondItem="HIB-UW-S2t" secondAttribute="leading" id="3pS-3B-d12"/>
+                                        <constraint firstItem="HIB-UW-S2t" firstAttribute="top" secondItem="GcW-2N-Ewg" secondAttribute="topMargin" id="IGa-68-Ivc"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="HIB-UW-S2t" secondAttribute="trailing" id="TVB-2O-8FF"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="HIB-UW-S2t" secondAttribute="bottom" id="gRT-B7-wng"/>
+                                    </constraints>
                                 </tableViewCellContentView>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="HIB-UW-S2t" secondAttribute="bottom" constant="8" id="90v-bg-FCD"/>
-                                    <constraint firstItem="HIB-UW-S2t" firstAttribute="leading" secondItem="buG-PZ-5af" secondAttribute="leading" constant="8" id="Gqh-Ps-mL7"/>
-                                    <constraint firstItem="HIB-UW-S2t" firstAttribute="top" secondItem="buG-PZ-5af" secondAttribute="top" constant="14" id="ffb-Za-D6j"/>
-                                    <constraint firstAttribute="trailing" secondItem="HIB-UW-S2t" secondAttribute="trailing" constant="8" id="syk-u5-Xh3"/>
-                                </constraints>
                                 <connections>
                                     <outlet property="content" destination="53h-a9-HuW" id="FeE-hp-ns7"/>
                                     <outlet property="displayView" destination="HIB-UW-S2t" id="9aX-Ge-3oF"/>

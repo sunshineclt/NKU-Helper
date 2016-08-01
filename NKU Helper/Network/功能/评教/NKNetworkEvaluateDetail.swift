@@ -35,7 +35,7 @@ class NKNetworkEvaluateDetail: NKNetworkBase {
     }
     
     dynamic private func loadDetailEvaluateItem(html: String) {
-        //FIXME:
+        //TODO: 在开放时整理
         let regularExpression1 = try! NSRegularExpression(pattern: "(<table bgcolor=.#CCCCCC.*?>)(.*?)(</table>)", options: .DotMatchesLineSeparators)
         let matches = regularExpression1.matchesInString(html, options: .ReportProgress, range: NSMakeRange(0, (html as NSString).length))
         
