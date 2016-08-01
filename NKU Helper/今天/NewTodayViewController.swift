@@ -19,10 +19,9 @@ class NewTodayViewController: UIViewController {
     @IBOutlet var thingToDoCountLabel: UILabel!
     
     var navigationMenuView: BTNavigationDropdownMenu!
-    let todayTags = ["今天", "今天的课程", "剩下的任务"]
-    let TODAY_SEGMENT = 0
-    let TODAY_COURSE_SEGMENT = 1
-    let LEFT_TASK_SEGMENT = 2
+    let todayTags = ["今天的课程", "剩下的任务"]
+    let TODAY_COURSE_SEGMENT = 0
+    let LEFT_TASK_SEGMENT = 1
     
 // MARK: VC状态 property
     
@@ -80,6 +79,16 @@ class NewTodayViewController: UIViewController {
         // 数据初始化
         do {
             try UserAgent.sharedInstance.getData()
+            // 监听Realm事件（主要处理Course相关的事件，Task相关的事件如上单独监听（不知道为何单独监听Course无效））
+            if realmNotificationToken == nil {
+                realm = try Realm()
+                realmNotificationToken = realm?.addNotificationBlock({ (notification, realm) in
+                    if self.selectedTodayTagIndex == self.TODAY_COURSE_SEGMENT {
+                        self.mainTableView.reloadData()
+                        self.todayCourseCountLabel.text = "今天有\(self.todayCourses?.count ?? 0)节课"
+                    }
+                })
+            }
             if todayCourses == nil {
                 todayCourses = try Course.coursesOnWeekday(CalendarHelper.getWeekdayInt())
                 NKNetworkFetchInfo.fetchNowWeek { (nowWeek😈, isVocation😈) in
@@ -92,6 +101,7 @@ class NewTodayViewController: UIViewController {
                     self.todayCourses = nowWeek % 2 == 0 ? self.todayCourses?.filter("!((weekOddEven == '单周') || (\(nowWeek) < startWeek) || (\(nowWeek) > endWeek))") : self.todayCourses?.filter("!((weekOddEven == '双周') || (\(nowWeek) < startWeek) || (\(nowWeek) > endWeek))")
                     self.todayCourseCountLabel.text = "今天有\(self.todayCourses?.count ?? 0)节课"
                 }
+                self.mainTableView.reloadData()
                 self.todayCourseCountLabel.text = "今天有\(self.todayCourses?.count ?? 0)节课"
             }
             if thingsToDo == nil {
@@ -126,14 +136,6 @@ class NewTodayViewController: UIViewController {
                     self.thingToDoCountLabel.text = "还剩\(self.thingsToDo?.count ?? 0)个任务"
                 }
             }
-            // 监听Realm事件（主要处理Course相关的事件，Task相关的事件如上单独监听（不知道为何Course监听无效））
-            realm = try Realm()
-            realmNotificationToken = realm?.addNotificationBlock({ (notification, realm) in
-                if self.selectedTodayTagIndex == self.TODAY_COURSE_SEGMENT {
-                    self.mainTableView.reloadData()
-                    self.todayCourseCountLabel.text = "今天有\(self.todayCourses?.count ?? 0)节课"
-                }
-            })
         } catch StoragedDataError.NoUserInStorage {
             self.performSegueWithIdentifier(R.segue.newTodayViewController.login, sender: "TodayViewController")
         } catch StoragedDataError.NoCoursesInStorage {
@@ -187,8 +189,6 @@ extension NewTodayViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch selectedTodayTagIndex {
-        case TODAY_SEGMENT:
-            return 0
         case TODAY_COURSE_SEGMENT:
             guard let count = todayCourses?.count else {
                 return 0
@@ -206,9 +206,6 @@ extension NewTodayViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         switch selectedTodayTagIndex {
-        case TODAY_SEGMENT:
-            let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.courseTaskCell.identifier) as! CourseTaskCell
-            return cell
         case TODAY_COURSE_SEGMENT:
             let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.todayCourseCell.identifier) as! TodayCourseCell
             cell.courseTime = todayCourses![indexPath.row]
@@ -252,12 +249,10 @@ extension NewTodayViewController: UITableViewDelegate, UITableViewDataSource {
 extension NewTodayViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
         switch selectedTodayTagIndex {
-        case 0:
-            return NSAttributedString(string: "今天什么事情都没有呢(╯▽╰)", attributes: [NSForegroundColorAttributeName : UIColor(red: 160/255, green: 160/255, blue: 160/255, alpha: 1), NSFontAttributeName : UIFont(name: "HelveticaNeue", size: 15)!])
-        case 1:
+        case TODAY_COURSE_SEGMENT:
             return NSAttributedString(string: "今天没有课呢╭(′▽`)╯", attributes: [NSForegroundColorAttributeName : UIColor(red: 160/255, green: 160/255, blue: 160/255, alpha: 1), NSFontAttributeName : UIFont(name: "HelveticaNeue", size: 15)!])
-        case 2:
-            return NSAttributedString(string: "今天事情都做完了呢╰(￣▽￣)╮", attributes: [NSForegroundColorAttributeName : UIColor(red: 160/255, green: 160/255, blue: 160/255, alpha: 1), NSFontAttributeName : UIFont(name: "HelveticaNeue", size: 15)!])
+        case LEFT_TASK_SEGMENT:
+            return NSAttributedString(string: "事情都做完了呢╰(￣▽￣)╮", attributes: [NSForegroundColorAttributeName : UIColor(red: 160/255, green: 160/255, blue: 160/255, alpha: 1), NSFontAttributeName : UIFont(name: "HelveticaNeue", size: 15)!])
         default:
             return NSAttributedString(string: "今天什么事情都没有呢(╯▽╰)", attributes: [NSForegroundColorAttributeName : UIColor(red: 160/255, green: 160/255, blue: 160/255, alpha: 1), NSFontAttributeName : UIFont(name: "HelveticaNeue", size: 15)!])
         }
