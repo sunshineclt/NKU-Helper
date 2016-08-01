@@ -33,13 +33,21 @@ class NewTaskTableViewController: UITableViewController {
             }
         }
     }
+    var color: Color! {
+        didSet {
+            colorPresentView.backgroundColor = color.convertToUIColor()
+        }
+    }
     @IBOutlet var titleCell: TextFieldCell!
     @IBOutlet var descriptionCell: TextFieldCell!
     @IBOutlet var forCourseCell: UITableViewCell!
     @IBOutlet var dueDateCell: UITableViewCell!
+    @IBOutlet var chooseColorCell: UITableViewCell!
+    @IBOutlet var colorPresentView: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        color = (try! Color.getColors())[0]
         if let courseTime = forCourseTime {
             forCourseCell.detailTextLabel?.text = courseTime.ownerCourse.name
         } else {
@@ -56,13 +64,13 @@ class NewTaskTableViewController: UITableViewController {
             else {
                 task = Task(title: titleCell.textField.text ?? "", descrip: descriptionCell.textField.text ?? "", type: taskType, dueDate: dueDate)
             }
+            task.color = color
             try task.save()
             self.dismissViewControllerAnimated(true, completion: nil)
         } catch {
             presentViewController(ErrorHandler.alert(ErrorHandler.DataBaseError()), animated: true, completion: nil)
         }
     }
-    
     
     @IBAction func cancelButtonClicked(sender: UIBarButtonItem) {
         self.dismissViewControllerAnimated(true, completion: nil)
