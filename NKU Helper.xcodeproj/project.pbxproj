@@ -79,7 +79,7 @@
 		E9693E4C1D32945F00D6135B /* Grade.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9693E4B1D32945F00D6135B /* Grade.storyboard */; };
 		E9693E4E1D3294FA00D6135B /* Evaluate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9693E4D1D3294FA00D6135B /* Evaluate.storyboard */; };
 		E9693E501D32955500D6135B /* SelectCourse.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9693E4F1D32955500D6135B /* SelectCourse.storyboard */; };
-		E96B10E01D49A45A0081EDFD /* NewTodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96B10DF1D49A45A0081EDFD /* NewTodayViewController.swift */; };
+		E96B10E01D49A45A0081EDFD /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96B10DF1D49A45A0081EDFD /* TodayViewController.swift */; };
 		E96B10E21D4A02F40081EDFD /* GeneralTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96B10E11D4A02F40081EDFD /* GeneralTaskCell.swift */; };
 		E96B10E41D4A04670081EDFD /* CourseTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96B10E31D4A04670081EDFD /* CourseTaskCell.swift */; };
 		E96B10E81D4A4A900081EDFD /* TodayCourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96B10E71D4A4A900081EDFD /* TodayCourseCell.swift */; };
@@ -237,7 +237,7 @@
 		E9693E4B1D32945F00D6135B /* Grade.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Grade.storyboard; sourceTree = "<group>"; };
 		E9693E4D1D3294FA00D6135B /* Evaluate.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Evaluate.storyboard; sourceTree = "<group>"; };
 		E9693E4F1D32955500D6135B /* SelectCourse.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SelectCourse.storyboard; sourceTree = "<group>"; };
-		E96B10DF1D49A45A0081EDFD /* NewTodayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTodayViewController.swift; sourceTree = "<group>"; };
+		E96B10DF1D49A45A0081EDFD /* TodayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		E96B10E11D4A02F40081EDFD /* GeneralTaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralTaskCell.swift; sourceTree = "<group>"; };
 		E96B10E31D4A04670081EDFD /* CourseTaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseTaskCell.swift; sourceTree = "<group>"; };
 		E96B10E71D4A4A900081EDFD /* TodayCourseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayCourseCell.swift; sourceTree = "<group>"; };
@@ -754,7 +754,7 @@
 			isa = PBXGroup;
 			children = (
 				E9693E431D32894000D6135B /* Today.storyboard */,
-				E96B10DF1D49A45A0081EDFD /* NewTodayViewController.swift */,
+				E96B10DF1D49A45A0081EDFD /* TodayViewController.swift */,
 				E93D05F11D4B5BA800ACC043 /* 新建Task */,
 				E97774281D4B5994008D768E /* TodayCell */,
 				E97176771B149292004DADB2 /* CourseDetailTableViewController.swift */,
@@ -1007,7 +1007,7 @@
 			files = (
 				E930839C1D39E38D000FC8E8 /* WeekdayView.swift in Sources */,
 				E96B10E41D4A04670081EDFD /* CourseTaskCell.swift in Sources */,
-				E96B10E01D49A45A0081EDFD /* NewTodayViewController.swift in Sources */,
+				E96B10E01D49A45A0081EDFD /* TodayViewController.swift in Sources */,
 				E95861601D4CED3F001E8026 /* CourseTime.swift in Sources */,
 				E98F94D81AA318EF00885992 /* FunctionTableViewController.swift in Sources */,
 				E95B0F2D1C83E18700448F97 /* CourseSelecting.swift in Sources */,

@@ -542,7 +542,7 @@
         <!--Today-->
         <scene sceneID="7nR-Gm-Ibs">
             <objects>
-                <viewController id="D80-Rg-b1r" userLabel="Today" customClass="NewTodayViewController" customModule="NKU_Helper" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="D80-Rg-b1r" userLabel="Today" customClass="TodayViewController" customModule="NKU_Helper" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eZC-nf-Ni0"/>
                         <viewControllerLayoutGuide type="bottom" id="kL1-Jw-uwa"/>
@@ -1007,6 +1007,6 @@
         <image name="今天" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="qZr-KK-qvh"/>
+        <segue reference="rrN-Xq-bHi"/>
     </inferredMetricsTieBreakers>
 </document>

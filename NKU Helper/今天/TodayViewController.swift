@@ -1,5 +1,5 @@
 //
-//  NewTodayViewController.swift
+//  TodayViewController.swift
 //  NKU Helper
 //
 //  Created by 陈乐天 on 16/7/28.
@@ -10,7 +10,7 @@ import UIKit
 import RealmSwift
 import BTNavigationDropdownMenu
 
-class NewTodayViewController: UIViewController {
+class TodayViewController: UIViewController {
 
 // MARK: View Property
     @IBOutlet var headerView: UIView!
@@ -137,7 +137,7 @@ class NewTodayViewController: UIViewController {
                 }
             }
         } catch StoragedDataError.NoUserInStorage {
-            self.performSegueWithIdentifier(R.segue.newTodayViewController.login, sender: "TodayViewController")
+            self.performSegueWithIdentifier(R.segue.todayViewController.login, sender: "TodayViewController")
         } catch StoragedDataError.NoCoursesInStorage {
             self.presentViewController(ErrorHandler.alert(ErrorHandler.CoursesNotExist()), animated: true, completion: nil)
         } catch StoragedDataError.RealmError {
@@ -156,17 +156,17 @@ class NewTodayViewController: UIViewController {
     
     @IBAction func addTaskOfCourse(sender: UIButton) {
         let courseTime = (sender.superview!.superview!.superview as! TodayCourseCell).courseTime
-        performSegueWithIdentifier(R.segue.newTodayViewController.addTask, sender: courseTime)
+        performSegueWithIdentifier(R.segue.todayViewController.addTask, sender: courseTime)
     }
     
 // MARK: 页面间跳转
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let typeInfo = R.segue.newTodayViewController.showCourseDetail(segue: segue) {
+        if let typeInfo = R.segue.todayViewController.showCourseDetail(segue: segue) {
             let senderCell = sender as! TodayCourseCell
             typeInfo.destinationViewController.courseTime = senderCell.courseTime
         }
-        if let typeInfo = R.segue.newTodayViewController.addTask(segue: segue) {
+        if let typeInfo = R.segue.todayViewController.addTask(segue: segue) {
             let controller = typeInfo.destinationViewController.childViewControllers[0] as! NewTaskTableViewController
             if let courseTime = sender as? CourseTime {
                 controller.taskType = TaskType.Course
@@ -181,7 +181,7 @@ class NewTodayViewController: UIViewController {
 
 // MARK: UITableViewDelegate, UITableViewDataSource
 
-extension NewTodayViewController: UITableViewDelegate, UITableViewDataSource {
+extension TodayViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -246,7 +246,7 @@ extension NewTodayViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 // MARK: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate
-extension NewTodayViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+extension TodayViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
         switch selectedTodayTagIndex {
         case TODAY_COURSE_SEGMENT:

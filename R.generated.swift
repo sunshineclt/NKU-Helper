@@ -542,39 +542,6 @@ struct R: Rswift.Validatable {
       private init() {}
     }
     
-    /// This struct is generated for `NewTodayViewController`, and contains static references to 3 segues.
-    struct newTodayViewController {
-      /// Segue identifier `AddTask`.
-      static let addTask: StoryboardSegueIdentifier<UIStoryboardSegue, NewTodayViewController, UINavigationController> = StoryboardSegueIdentifier(identifier: "AddTask")
-      /// Segue identifier `Login`.
-      static let login: StoryboardSegueIdentifier<UIStoryboardSegue, NewTodayViewController, SaveAccountInfoViewController> = StoryboardSegueIdentifier(identifier: "Login")
-      /// Segue identifier `ShowCourseDetail`.
-      static let showCourseDetail: StoryboardSegueIdentifier<UIStoryboardSegue, NewTodayViewController, CourseDetailTableViewController> = StoryboardSegueIdentifier(identifier: "ShowCourseDetail")
-      
-      /// Optionally returns a typed version of segue `AddTask`.
-      /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
-      /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
-      static func addTask(segue segue: UIStoryboardSegue) -> TypedStoryboardSegueInfo<UIStoryboardSegue, NewTodayViewController, UINavigationController>? {
-        return TypedStoryboardSegueInfo(segueIdentifier: R.segue.newTodayViewController.addTask, segue: segue)
-      }
-      
-      /// Optionally returns a typed version of segue `Login`.
-      /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
-      /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
-      static func login(segue segue: UIStoryboardSegue) -> TypedStoryboardSegueInfo<UIStoryboardSegue, NewTodayViewController, SaveAccountInfoViewController>? {
-        return TypedStoryboardSegueInfo(segueIdentifier: R.segue.newTodayViewController.login, segue: segue)
-      }
-      
-      /// Optionally returns a typed version of segue `ShowCourseDetail`.
-      /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
-      /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
-      static func showCourseDetail(segue segue: UIStoryboardSegue) -> TypedStoryboardSegueInfo<UIStoryboardSegue, NewTodayViewController, CourseDetailTableViewController>? {
-        return TypedStoryboardSegueInfo(segueIdentifier: R.segue.newTodayViewController.showCourseDetail, segue: segue)
-      }
-      
-      private init() {}
-    }
-    
     /// This struct is generated for `NotiCenterTableViewController`, and contains static references to 1 segues.
     struct notiCenterTableViewController {
       /// Segue identifier `ShowNotiDetail`.
@@ -681,6 +648,39 @@ struct R: Rswift.Validatable {
       /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
       static func login(segue segue: UIStoryboardSegue) -> TypedStoryboardSegueInfo<UIStoryboardSegue, TestTimeTableViewController, UINavigationController>? {
         return TypedStoryboardSegueInfo(segueIdentifier: R.segue.testTimeTableViewController.login, segue: segue)
+      }
+      
+      private init() {}
+    }
+    
+    /// This struct is generated for `TodayViewController`, and contains static references to 3 segues.
+    struct todayViewController {
+      /// Segue identifier `AddTask`.
+      static let addTask: StoryboardSegueIdentifier<UIStoryboardSegue, TodayViewController, UINavigationController> = StoryboardSegueIdentifier(identifier: "AddTask")
+      /// Segue identifier `Login`.
+      static let login: StoryboardSegueIdentifier<UIStoryboardSegue, TodayViewController, SaveAccountInfoViewController> = StoryboardSegueIdentifier(identifier: "Login")
+      /// Segue identifier `ShowCourseDetail`.
+      static let showCourseDetail: StoryboardSegueIdentifier<UIStoryboardSegue, TodayViewController, CourseDetailTableViewController> = StoryboardSegueIdentifier(identifier: "ShowCourseDetail")
+      
+      /// Optionally returns a typed version of segue `AddTask`.
+      /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
+      /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
+      static func addTask(segue segue: UIStoryboardSegue) -> TypedStoryboardSegueInfo<UIStoryboardSegue, TodayViewController, UINavigationController>? {
+        return TypedStoryboardSegueInfo(segueIdentifier: R.segue.todayViewController.addTask, segue: segue)
+      }
+      
+      /// Optionally returns a typed version of segue `Login`.
+      /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
+      /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
+      static func login(segue segue: UIStoryboardSegue) -> TypedStoryboardSegueInfo<UIStoryboardSegue, TodayViewController, SaveAccountInfoViewController>? {
+        return TypedStoryboardSegueInfo(segueIdentifier: R.segue.todayViewController.login, segue: segue)
+      }
+      
+      /// Optionally returns a typed version of segue `ShowCourseDetail`.
+      /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
+      /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
+      static func showCourseDetail(segue segue: UIStoryboardSegue) -> TypedStoryboardSegueInfo<UIStoryboardSegue, TodayViewController, CourseDetailTableViewController>? {
+        return TypedStoryboardSegueInfo(segueIdentifier: R.segue.todayViewController.showCourseDetail, segue: segue)
       }
       
       private init() {}
