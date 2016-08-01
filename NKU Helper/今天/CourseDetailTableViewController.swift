@@ -214,7 +214,7 @@ extension CourseDetailTableViewController {
         if indexPath.section == COURSE_COLOR_SECTION {
             let preChoosedColorIndexRow = nowChoosedColorIndexRow
             nowChoosedColorIndexRow = indexPath.row
-            self.tableView.reloadRowsAtIndexPaths([indexPath, NSIndexPath(forRow: preChoosedColorIndexRow, inSection: COURSE_COLOR_SECTION)], withRowAnimation: .Fade)
+            self.tableView.reloadRowsAtIndexPaths([indexPath, NSIndexPath(forRow: preChoosedColorIndexRow, inSection: COURSE_COLOR_SECTION)], withRowAnimation: .None)
         }
     }
 
