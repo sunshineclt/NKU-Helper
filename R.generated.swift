@@ -16,7 +16,7 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.file` struct is generated, and contains static references to 5 files.
+  /// This `R.file` struct is generated, and contains static references to 6 files.
   struct file {
     /// Resource file `Colors.realm`.
     static let colorsRealm = FileResource(bundle: _R.hostingBundle, name: "Colors", pathExtension: "realm")
@@ -26,6 +26,8 @@ struct R: Rswift.Validatable {
     static let rSAHtml = FileResource(bundle: _R.hostingBundle, name: "RSA", pathExtension: "html")
     /// Resource file `slogan.png`.
     static let sloganPng = FileResource(bundle: _R.hostingBundle, name: "slogan", pathExtension: "png")
+    /// Resource file `南开表情包.png`.
+    static let 南开表情包Png = FileResource(bundle: _R.hostingBundle, name: "南开表情包", pathExtension: "png")
     /// Resource file `米色白色渐变背景.png`.
     static let 米色白色渐变背景Png = FileResource(bundle: _R.hostingBundle, name: "米色白色渐变背景", pathExtension: "png")
     
@@ -53,6 +55,12 @@ struct R: Rswift.Validatable {
       return fileResource.bundle.URLForResource(fileResource)
     }
     
+    /// `bundle.URLForResource("南开表情包", withExtension: "png")`
+    static func 南开表情包Png(_: Void) -> NSURL? {
+      let fileResource = R.file.南开表情包Png
+      return fileResource.bundle.URLForResource(fileResource)
+    }
+    
     /// `bundle.URLForResource("米色白色渐变背景", withExtension: "png")`
     static func 米色白色渐变背景Png(_: Void) -> NSURL? {
       let fileResource = R.file.米色白色渐变背景Png
@@ -67,7 +75,7 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 29 images.
+  /// This `R.image` struct is generated, and contains static references to 30 images.
   struct image {
     /// Image `book`.
     static let book = ImageResource(bundle: _R.hostingBundle, name: "book")
@@ -121,6 +129,8 @@ struct R: Rswift.Validatable {
     static let 功能 = ImageResource(bundle: _R.hostingBundle, name: "功能")
     /// Image `南开`.
     static let 南开 = ImageResource(bundle: _R.hostingBundle, name: "南开")
+    /// Image `南开表情包`.
+    static let 南开表情包 = ImageResource(bundle: _R.hostingBundle, name: "南开表情包")
     /// Image `米色白色渐变背景`.
     static let 米色白色渐变背景 = ImageResource(bundle: _R.hostingBundle, name: "米色白色渐变背景")
     /// Image `设置`.
@@ -256,6 +266,11 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "南开", bundle: ..., traitCollection: ...)`
     static func 南开(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.南开, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "南开表情包", bundle: ..., traitCollection: ...)`
+    static func 南开表情包(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.南开表情包, compatibleWithTraitCollection: traitCollection)
     }
     
     /// `UIImage(named: "米色白色渐变背景", bundle: ..., traitCollection: ...)`
@@ -699,8 +714,8 @@ struct R: Rswift.Validatable {
     static let function = _R.storyboard.function()
     /// Storyboard `Grade`.
     static let grade = _R.storyboard.grade()
-    /// Storyboard `Launch`.
-    static let launch = _R.storyboard.launch()
+    /// Storyboard `Launch Screen`.
+    static let launchScreen = _R.storyboard.launchScreen()
     /// Storyboard `LogIn`.
     static let logIn = _R.storyboard.logIn()
     /// Storyboard `Main`.
@@ -736,9 +751,9 @@ struct R: Rswift.Validatable {
       return UIStoryboard(resource: R.storyboard.grade)
     }
     
-    /// `UIStoryboard(name: "Launch", bundle: ...)`
-    static func launch(_: Void) -> UIStoryboard {
-      return UIStoryboard(resource: R.storyboard.launch)
+    /// `UIStoryboard(name: "Launch Screen", bundle: ...)`
+    static func launchScreen(_: Void) -> UIStoryboard {
+      return UIStoryboard(resource: R.storyboard.launchScreen)
     }
     
     /// `UIStoryboard(name: "LogIn", bundle: ...)`
@@ -846,6 +861,7 @@ struct _R: Rswift.Validatable {
       try testTimeSearch.validate()
       try grade.validate()
       try logIn.validate()
+      try launchScreen.validate()
       try notiCenter.validate()
       try settings.validate()
       try evaluate.validate()
@@ -950,11 +966,17 @@ struct _R: Rswift.Validatable {
       private init() {}
     }
     
-    struct launch: StoryboardResourceWithInitialControllerType {
+    struct launchScreen: StoryboardResourceWithInitialControllerType, Rswift.Validatable {
       typealias InitialController = UIViewController
       
       let bundle = _R.hostingBundle
-      let name = "Launch"
+      let name = "Launch Screen"
+      
+      static func validate() throws {
+        if UIImage(named: "米色白色渐变背景.png") == nil { throw ValidationError(description: "[R.swift] Image named '米色白色渐变背景.png' is used in storyboard 'Launch Screen', but couldn't be loaded.") }
+        if UIImage(named: "南开表情包.png") == nil { throw ValidationError(description: "[R.swift] Image named '南开表情包.png' is used in storyboard 'Launch Screen', but couldn't be loaded.") }
+        if UIImage(named: "slogan.png") == nil { throw ValidationError(description: "[R.swift] Image named 'slogan.png' is used in storyboard 'Launch Screen', but couldn't be loaded.") }
+      }
       
       private init() {}
     }

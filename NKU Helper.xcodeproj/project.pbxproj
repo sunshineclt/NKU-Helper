@@ -42,6 +42,8 @@
 		E93083CC1D3CCEA2000FC8E8 /* slogan.png in Resources */ = {isa = PBXBuildFile; fileRef = E93083CB1D3CCEA2000FC8E8 /* slogan.png */; };
 		E93C0F181BB54B54001303CF /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93C0F171BB54B54001303CF /* Task.swift */; };
 		E93D05F31D4B5C0000ACC043 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93D05F21D4B5C0000ACC043 /* TextFieldCell.swift */; };
+		E940C2D01D4F13BB0075A040 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E940C2CF1D4F13BB0075A040 /* Launch Screen.storyboard */; };
+		E940C2D41D4F18860075A040 /* 南开表情包.png in Resources */ = {isa = PBXBuildFile; fileRef = E940C2D31D4F18860075A040 /* 南开表情包.png */; };
 		E94286501AA4CD2A00A4242C /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E942864F1AA4CD2A00A4242C /* LogInViewController.swift */; };
 		E94286581AA5500C00A4242C /* SaveAccountInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94286571AA5500C00A4242C /* SaveAccountInfoViewController.swift */; };
 		E9462A461B24A1E00002C21A /* TestTimeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9462A451B24A1E00002C21A /* TestTimeTableViewController.swift */; };
@@ -83,7 +85,6 @@
 		E96B10E21D4A02F40081EDFD /* GeneralTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96B10E11D4A02F40081EDFD /* GeneralTaskCell.swift */; };
 		E96B10E41D4A04670081EDFD /* CourseTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96B10E31D4A04670081EDFD /* CourseTaskCell.swift */; };
 		E96B10E81D4A4A900081EDFD /* TodayCourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96B10E71D4A4A900081EDFD /* TodayCourseCell.swift */; };
-		E96E73A01BBBFC3400B62663 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E96E739F1BBBFC3400B62663 /* Launch.storyboard */; };
 		E97176761B1488CA004DADB2 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97176751B1488CA004DADB2 /* AboutViewController.swift */; };
 		E97176781B149292004DADB2 /* CourseDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97176771B149292004DADB2 /* CourseDetailTableViewController.swift */; };
 		E9762F701C48DE77002CEF03 /* NKNetworkFetchNoti.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9762F6F1C48DE77002CEF03 /* NKNetworkFetchNoti.swift */; };
@@ -201,6 +202,8 @@
 		E93083CB1D3CCEA2000FC8E8 /* slogan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slogan.png; sourceTree = "<group>"; };
 		E93C0F171BB54B54001303CF /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		E93D05F21D4B5C0000ACC043 /* TextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
+		E940C2CF1D4F13BB0075A040 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		E940C2D31D4F18860075A040 /* 南开表情包.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "南开表情包.png"; sourceTree = "<group>"; };
 		E942864F1AA4CD2A00A4242C /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		E94286571AA5500C00A4242C /* SaveAccountInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveAccountInfoViewController.swift; sourceTree = "<group>"; };
 		E9462A451B24A1E00002C21A /* TestTimeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestTimeTableViewController.swift; sourceTree = "<group>"; };
@@ -241,7 +244,6 @@
 		E96B10E11D4A02F40081EDFD /* GeneralTaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralTaskCell.swift; sourceTree = "<group>"; };
 		E96B10E31D4A04670081EDFD /* CourseTaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseTaskCell.swift; sourceTree = "<group>"; };
 		E96B10E71D4A4A900081EDFD /* TodayCourseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayCourseCell.swift; sourceTree = "<group>"; };
-		E96E739F1BBBFC3400B62663 /* Launch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
 		E97176751B1488CA004DADB2 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		E97176771B149292004DADB2 /* CourseDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseDetailTableViewController.swift; sourceTree = "<group>"; };
 		E975B7D21C154F3100240D4C /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
@@ -584,7 +586,8 @@
 			isa = PBXGroup;
 			children = (
 				E90AE2371A8F813900AD0D78 /* Images.xcassets */,
-				E96E739F1BBBFC3400B62663 /* Launch.storyboard */,
+				E940C2CF1D4F13BB0075A040 /* Launch Screen.storyboard */,
+				E940C2D31D4F18860075A040 /* 南开表情包.png */,
 				E93083CB1D3CCEA2000FC8E8 /* slogan.png */,
 				E93083C51D3CC258000FC8E8 /* 米色白色渐变背景.png */,
 			);
@@ -895,6 +898,7 @@
 				E9693E3E1D32441600D6135B /* LogIn.storyboard in Resources */,
 				E9693E461D3290AE00D6135B /* ClassTime.storyboard in Resources */,
 				E9D754FB1C6ADB8500619BAC /* Localizable.strings in Resources */,
+				E940C2D41D4F18860075A040 /* 南开表情包.png in Resources */,
 				E9693E401D3245FB00D6135B /* Settings.storyboard in Resources */,
 				E93083AC1D3BB815000FC8E8 /* TestTimeSearch.storyboard in Resources */,
 				E93083CC1D3CCEA2000FC8E8 /* slogan.png in Resources */,
@@ -909,9 +913,9 @@
 				E988B5371AB005DF006818FA /* Main.storyboard in Resources */,
 				E9693E4A1D32932500D6135B /* NotiCenter.storyboard in Resources */,
 				E9693E4E1D3294FA00D6135B /* Evaluate.storyboard in Resources */,
-				E96E73A01BBBFC3400B62663 /* Launch.storyboard in Resources */,
 				E90AE2381A8F813900AD0D78 /* Images.xcassets in Resources */,
 				E93083A11D3A8D4A000FC8E8 /* TimeScheduleView.xib in Resources */,
+				E940C2D01D4F13BB0075A040 /* Launch Screen.storyboard in Resources */,
 				E9F674EC1BA80E7500BEF640 /* RSA.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
