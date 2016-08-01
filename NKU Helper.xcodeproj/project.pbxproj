@@ -44,6 +44,7 @@
 		E93D05F31D4B5C0000ACC043 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93D05F21D4B5C0000ACC043 /* TextFieldCell.swift */; };
 		E940C2D01D4F13BB0075A040 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E940C2CF1D4F13BB0075A040 /* Launch Screen.storyboard */; };
 		E940C2D41D4F18860075A040 /* 南开表情包.png in Resources */ = {isa = PBXBuildFile; fileRef = E940C2D31D4F18860075A040 /* 南开表情包.png */; };
+		E940C2D61D4F9D210075A040 /* Colors.realm in Resources */ = {isa = PBXBuildFile; fileRef = E940C2D51D4F9BE50075A040 /* Colors.realm */; };
 		E94286501AA4CD2A00A4242C /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E942864F1AA4CD2A00A4242C /* LogInViewController.swift */; };
 		E94286581AA5500C00A4242C /* SaveAccountInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94286571AA5500C00A4242C /* SaveAccountInfoViewController.swift */; };
 		E9462A461B24A1E00002C21A /* TestTimeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9462A451B24A1E00002C21A /* TestTimeTableViewController.swift */; };
@@ -104,7 +105,6 @@
 		E98F94DA1AA3191F00885992 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98F94D91AA3191F00885992 /* SettingTableViewController.swift */; };
 		E9927C061D2E463900DE284C /* StoragedDataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9927C051D2E463900DE284C /* StoragedDataError.swift */; };
 		E9929C9B1C49068000D508C8 /* NKNetworkFetchGrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9929C9A1C49068000D508C8 /* NKNetworkFetchGrade.swift */; };
-		E995D2601D43284000C0A558 /* Colors.realm in Resources */ = {isa = PBXBuildFile; fileRef = E995D25F1D43282100C0A558 /* Colors.realm */; };
 		E995E08B1D3F6369003FDF56 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = E995E08A1D3F6369003FDF56 /* R.generated.swift */; };
 		E997E82A1D44945200014517 /* JSPatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E997E8291D44945200014517 /* JSPatch.framework */; };
 		E99D67041C16C8CF00E27B08 /* NotiCenterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99D67031C16C8CF00E27B08 /* NotiCenterTableViewController.swift */; };
@@ -204,6 +204,7 @@
 		E93D05F21D4B5C0000ACC043 /* TextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
 		E940C2CF1D4F13BB0075A040 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		E940C2D31D4F18860075A040 /* 南开表情包.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "南开表情包.png"; sourceTree = "<group>"; };
+		E940C2D51D4F9BE50075A040 /* Colors.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = Colors.realm; sourceTree = "<group>"; };
 		E942864F1AA4CD2A00A4242C /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		E94286571AA5500C00A4242C /* SaveAccountInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveAccountInfoViewController.swift; sourceTree = "<group>"; };
 		E9462A451B24A1E00002C21A /* TestTimeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestTimeTableViewController.swift; sourceTree = "<group>"; };
@@ -267,7 +268,6 @@
 		E98F94D91AA3191F00885992 /* SettingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 		E9927C051D2E463900DE284C /* StoragedDataError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoragedDataError.swift; sourceTree = "<group>"; };
 		E9929C9A1C49068000D508C8 /* NKNetworkFetchGrade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkFetchGrade.swift; sourceTree = "<group>"; };
-		E995D25F1D43282100C0A558 /* Colors.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = Colors.realm; sourceTree = "<group>"; };
 		E995E08A1D3F6369003FDF56 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		E997E8291D44945200014517 /* JSPatch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JSPatch.framework; sourceTree = "<group>"; };
 		E99D67031C16C8CF00E27B08 /* NotiCenterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotiCenterTableViewController.swift; sourceTree = "<group>"; };
@@ -561,7 +561,7 @@
 			isa = PBXGroup;
 			children = (
 				E9FE26131B137FEC00FCBB32 /* Color.swift */,
-				E995D25F1D43282100C0A558 /* Colors.realm */,
+				E940C2D51D4F9BE50075A040 /* Colors.realm */,
 				E94BD97F1BAC06E300B76E03 /* Course.swift */,
 				E958615F1D4CED3F001E8026 /* CourseTime.swift */,
 				E95B0F2C1C83E18700448F97 /* CourseSelecting.swift */,
@@ -894,7 +894,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E995D2601D43284000C0A558 /* Colors.realm in Resources */,
+				E940C2D61D4F9D210075A040 /* Colors.realm in Resources */,
 				E9693E3E1D32441600D6135B /* LogIn.storyboard in Resources */,
 				E9693E461D3290AE00D6135B /* ClassTime.storyboard in Resources */,
 				E9D754FB1C6ADB8500619BAC /* Localizable.strings in Resources */,
