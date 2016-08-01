@@ -16,7 +16,7 @@ class NewTodayViewController: UIViewController {
     @IBOutlet var headerView: UIView!
     @IBOutlet var mainTableView: UITableView!
     @IBOutlet var todayCourseCountLabel: UILabel!
-    @IBOutlet var thingToDoCountLabel: UILabel!
+    @IBOutlet var taskCountLabel: UILabel!
     
     var navigationMenuView: BTNavigationDropdownMenu!
     let todayTags = ["今天的课程", "剩下的任务"]
@@ -29,7 +29,7 @@ class NewTodayViewController: UIViewController {
     
 // MARK: Model
     var todayCourses: Results<CourseTime>?
-    var thingsToDo: Results<Task>?
+    var tasks: Results<Task>?
     var realm: Realm?
     var tasksNotificationToken: NotificationToken?
     var realmNotificationToken: NotificationToken?
@@ -104,11 +104,11 @@ class NewTodayViewController: UIViewController {
                 self.mainTableView.reloadData()
                 self.todayCourseCountLabel.text = "今天有\(self.todayCourses?.count ?? 0)节课"
             }
-            if thingsToDo == nil {
-                thingsToDo = try Task.getLeftTasks()
-                self.thingToDoCountLabel.text = "还剩\(self.thingsToDo?.count ?? 0)个任务"
+            if tasks == nil {
+                tasks = try Task.getLeftTasks()
+                self.taskCountLabel.text = "还剩\(self.tasks?.count ?? 0)个任务"
                 // 监听Realm事件
-                tasksNotificationToken = thingsToDo!.addNotificationBlock { [unowned self] (changes: RealmCollectionChange) in
+                tasksNotificationToken = tasks!.addNotificationBlock { [unowned self] (changes: RealmCollectionChange) in
                     guard let tableView = self.mainTableView else { return }
                     if self.selectedTodayTagIndex == self.LEFT_TASK_SEGMENT {
                         switch changes {
@@ -133,7 +133,7 @@ class NewTodayViewController: UIViewController {
                             break
                         }
                     }
-                    self.thingToDoCountLabel.text = "还剩\(self.thingsToDo?.count ?? 0)个任务"
+                    self.taskCountLabel.text = "还剩\(self.tasks?.count ?? 0)个任务"
                 }
             }
         } catch StoragedDataError.NoUserInStorage {
@@ -169,10 +169,10 @@ class NewTodayViewController: UIViewController {
         if let typeInfo = R.segue.newTodayViewController.addTask(segue: segue) {
             let controller = typeInfo.destinationViewController.childViewControllers[0] as! NewTaskTableViewController
             if let courseTime = sender as? CourseTime {
-                controller.thingType = TaskType.Course
+                controller.taskType = TaskType.Course
                 controller.forCourseTime = courseTime
             } else {
-                controller.thingType = TaskType.General
+                controller.taskType = TaskType.General
             }
         }
     }
@@ -195,7 +195,7 @@ extension NewTodayViewController: UITableViewDelegate, UITableViewDataSource {
             }
             return count
         case LEFT_TASK_SEGMENT:
-            guard let count = thingsToDo?.count else {
+            guard let count = tasks?.count else {
                 return 0
             }
             return count
@@ -211,17 +211,17 @@ extension NewTodayViewController: UITableViewDelegate, UITableViewDataSource {
             cell.courseTime = todayCourses![indexPath.row]
             return cell
         case LEFT_TASK_SEGMENT:
-            let thing = thingsToDo![indexPath.row]
-            switch thing.type {
+            let task = tasks![indexPath.row]
+            switch task.type {
             case .Course:
                 let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.courseTaskCell.identifier) as! CourseTaskCell
-                cell.task = thing
-                configureCell(cell, atIndexPath: indexPath, forTask: thing)
+                cell.task = task
+                configureCell(cell, atIndexPath: indexPath, forTask: task)
                 return cell
             case .General:
                 let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.generalTaskCell.identifier) as! GeneralTaskCell
-                cell.task = thing
-                configureCell(cell, atIndexPath: indexPath, forTask: thing)
+                cell.task = task
+                configureCell(cell, atIndexPath: indexPath, forTask: task)
                 return cell
             }
         default:
@@ -252,7 +252,7 @@ extension NewTodayViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate
         case TODAY_COURSE_SEGMENT:
             return NSAttributedString(string: "今天没有课呢╭(′▽`)╯", attributes: [NSForegroundColorAttributeName : UIColor(red: 160/255, green: 160/255, blue: 160/255, alpha: 1), NSFontAttributeName : UIFont(name: "HelveticaNeue", size: 15)!])
         case LEFT_TASK_SEGMENT:
-            return NSAttributedString(string: "事情都做完了呢╰(￣▽￣)╮", attributes: [NSForegroundColorAttributeName : UIColor(red: 160/255, green: 160/255, blue: 160/255, alpha: 1), NSFontAttributeName : UIFont(name: "HelveticaNeue", size: 15)!])
+            return NSAttributedString(string: "任务都完成了呢╰(￣▽￣)╮", attributes: [NSForegroundColorAttributeName : UIColor(red: 160/255, green: 160/255, blue: 160/255, alpha: 1), NSFontAttributeName : UIFont(name: "HelveticaNeue", size: 15)!])
         default:
             return NSAttributedString(string: "今天什么事情都没有呢(╯▽╰)", attributes: [NSForegroundColorAttributeName : UIColor(red: 160/255, green: 160/255, blue: 160/255, alpha: 1), NSFontAttributeName : UIFont(name: "HelveticaNeue", size: 15)!])
         }

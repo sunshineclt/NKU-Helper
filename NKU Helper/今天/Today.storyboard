@@ -882,7 +882,7 @@
                     <connections>
                         <outlet property="headerView" destination="Txs-IY-gNo" id="dtN-F0-sge"/>
                         <outlet property="mainTableView" destination="i7D-Pj-Ug6" id="Mlf-Js-67t"/>
-                        <outlet property="thingToDoCountLabel" destination="J58-0I-3d9" id="no9-5I-cvD"/>
+                        <outlet property="taskCountLabel" destination="J58-0I-3d9" id="OiE-Dk-Fhy"/>
                         <outlet property="todayCourseCountLabel" destination="Ns6-aR-El0" id="4cR-a2-eca"/>
                         <segue destination="Ihe-aY-uas" kind="presentation" identifier="Login" id="AZS-2a-ZFI"/>
                     </connections>

@@ -102,7 +102,7 @@ class CourseDetailTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let typeInfo = R.segue.courseDetailTableViewController.addTask(segue: segue) {
             let controller = typeInfo.destinationViewController.childViewControllers[0] as! NewTaskTableViewController
-            controller.thingType = TaskType.Course
+            controller.taskType = TaskType.Course
             controller.forCourseTime = courseTime
         }
     }

@@ -10,7 +10,7 @@ import UIKit
 
 class NewTaskTableViewController: UITableViewController {
 
-    var thingType: TaskType!
+    var taskType: TaskType!
     var forCourseTime: CourseTime? {
         didSet {
             if forCourseCell != nil {
@@ -49,14 +49,14 @@ class NewTaskTableViewController: UITableViewController {
     
     @IBAction func saveButtonClicked(sender: UIBarButtonItem) {
         do {
-            let thing: Task
+            let task: Task
             if let courseTime = forCourseTime {
-                thing = Task(title: titleCell.textField.text ?? "", descrip: descriptionCell.textField.text ?? "", type: thingType, dueDate: dueDate, forCourse: courseTime.ownerCourse)
+                task = Task(title: titleCell.textField.text ?? "", descrip: descriptionCell.textField.text ?? "", type: taskType, dueDate: dueDate, forCourse: courseTime.ownerCourse)
             }
             else {
-                thing = Task(title: titleCell.textField.text ?? "", descrip: descriptionCell.textField.text ?? "", type: thingType, dueDate: dueDate)
+                task = Task(title: titleCell.textField.text ?? "", descrip: descriptionCell.textField.text ?? "", type: taskType, dueDate: dueDate)
             }
-            try thing.save()
+            try task.save()
             self.dismissViewControllerAnimated(true, completion: nil)
         } catch {
             presentViewController(ErrorHandler.alert(ErrorHandler.DataBaseError()), animated: true, completion: nil)
