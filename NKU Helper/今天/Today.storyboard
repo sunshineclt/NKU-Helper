@@ -307,7 +307,7 @@
                                         <rect key="frame" x="0.0" y="275" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qw7-ba-QLB" id="NMT-AK-LtW">
-                                            <rect key="frame" x="0.0" y="0.0" width="567" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Nc-ii-A1h">
@@ -318,15 +318,18 @@
                                                         <constraint firstAttribute="height" constant="28" id="aeA-bX-Cp8"/>
                                                     </constraints>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="选择颜色" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P9b-Tv-oha">
-                                                    <rect key="frame" x="16" y="7" width="68" height="29"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选择颜色" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P9b-Tv-oha">
+                                                    <rect key="frame" x="16" y="8" width="68" height="28"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="P9b-Tv-oha" firstAttribute="top" secondItem="NMT-AK-LtW" secondAttribute="topMargin" id="QHW-pU-qq7"/>
                                                 <constraint firstItem="5Nc-ii-A1h" firstAttribute="top" secondItem="NMT-AK-LtW" secondAttribute="topMargin" id="XKH-NS-i1L"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="P9b-Tv-oha" secondAttribute="bottom" id="dKM-DN-36i"/>
+                                                <constraint firstItem="P9b-Tv-oha" firstAttribute="leading" secondItem="NMT-AK-LtW" secondAttribute="leadingMargin" constant="8" id="kCl-5p-DCy"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <constraints>
