@@ -33,19 +33,17 @@ class UserDetailInfoAgent: UserDefaultsBaseStoreAgent, UserDefaultsStoreProtocol
      - returns: 用户ID、姓名、入学时间、录取院系、录取专业组成的元组
      */
     func getData() throws -> dataForm {
-        
-        if let userInfo = userDefaults.objectForKey(key) as? NSDictionary {
-            let userID = userInfo.objectForKey("userID") as! String
-            let name = userInfo.objectForKey("name") as! String
-            let timeEnteringSchool = userInfo.objectForKey("timeEnteringSchool") as! String
-            let departmentAdmitted = userInfo.objectForKey("departmentAdmitted") as! String
-            let majorAdmitted = userInfo.objectForKey("majorAdmitted") as! String
+        if let userInfo = userDefaults.objectForKey(key) as? [String: String] {
+            let userID = userInfo["userID"]!
+            let name = userInfo["name"]!
+            let timeEnteringSchool = userInfo["timeEnteringSchool"]!
+            let departmentAdmitted = userInfo["departmentAdmitted"]!
+            let majorAdmitted = userInfo["majorAdmitted"]!
             return User(userID: userID, name: name, timeEnteringSchool: timeEnteringSchool, departmentAdmitted: departmentAdmitted, majorAdmitted: majorAdmitted)
         }
         else {
             throw StoragedDataError.NoUserInStorage
         }
-        
     }
     
     /**
@@ -62,6 +60,7 @@ class UserDetailInfoAgent: UserDefaultsBaseStoreAgent, UserDefaultsStoreProtocol
     
     /**
      删除用户信息数据（除了密码）
+     必须先调用UserAgent.deleteData()来删除密码
      */
     func deleteData() {
         userDefaults.removeObjectForKey(key)
