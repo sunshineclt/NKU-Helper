@@ -381,10 +381,6 @@
 		E90AE21F1A8F813900AD0D78 = {
 			isa = PBXGroup;
 			children = (
-				E995E08A1D3F6369003FDF56 /* R.generated.swift */,
-				E9B577991D38D25E0054F7E8 /* README.md */,
-				E92FB3E51BF3676F004C6B7C /* VersionLog.md */,
-				E961C83E1D2EAE740066C9C3 /* 编码规范.md */,
 				911897253CF7E957EC7F6666 /* Frameworks */,
 				E90AE22A1A8F813900AD0D78 /* NKU Helper */,
 				E9DA594B1D3889AF0012ED9A /* NKU HelperTests */,
@@ -392,6 +388,10 @@
 				E90AE2291A8F813900AD0D78 /* Products */,
 				E9DA59441D3888E80012ED9A /* .travis.yml */,
 				E9B5779B1D38D69F0054F7E8 /* LICENSE.txt */,
+				E995E08A1D3F6369003FDF56 /* R.generated.swift */,
+				E9B577991D38D25E0054F7E8 /* README.md */,
+				E92FB3E51BF3676F004C6B7C /* VersionLog.md */,
+				E961C83E1D2EAE740066C9C3 /* 编码规范.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -407,23 +407,23 @@
 		E90AE22A1A8F813900AD0D78 /* NKU Helper */ = {
 			isa = PBXGroup;
 			children = (
-				E940C2D91D4FA5C00075A040 /* NKU Helper.entitlements */,
-				E90AE22D1A8F813900AD0D78 /* AppDelegate.swift */,
-				E988B5361AB005DF006818FA /* Main.storyboard */,
-				E9693E3D1D32441600D6135B /* LogIn.storyboard */,
-				E942864F1AA4CD2A00A4242C /* LogInViewController.swift */,
+				E9927C071D2E474200DE284C /* Errors */,
 				E9FE26151B13800700FCBB32 /* Model和帮助类 */,
-				E9D4DC471AAEF45D00A02327 /* 今天 */,
-				E98F94E21AA31A1A00885992 /* 课程表 */,
-				E98F94DF1AA319CD00885992 /* 功能 */,
-				E98F94E11AA319EE00885992 /* 设置 */,
-				E9C3EF581BB2BB8000D1C91D /* Structures */,
 				E90E87221C40E54100E6BE3A /* Network */,
 				E98E2B4C1C463FCC00CF82BE /* StoreClass */,
-				E9927C071D2E474200DE284C /* Errors */,
+				E9C3EF581BB2BB8000D1C91D /* Structures */,
 				E90AE22B1A8F813900AD0D78 /* Supporting Files */,
 				E99D674B1C173A7500E27B08 /* Third Party */,
 				E95C37F81BA55B95004444FF /* images */,
+				E9D4DC471AAEF45D00A02327 /* 今天 */,
+				E98F94DF1AA319CD00885992 /* 功能 */,
+				E98F94E11AA319EE00885992 /* 设置 */,
+				E98F94E21AA31A1A00885992 /* 课程表 */,
+				E90AE22D1A8F813900AD0D78 /* AppDelegate.swift */,
+				E9693E3D1D32441600D6135B /* LogIn.storyboard */,
+				E942864F1AA4CD2A00A4242C /* LogInViewController.swift */,
+				E988B5361AB005DF006818FA /* Main.storyboard */,
+				E940C2D91D4FA5C00075A040 /* NKU Helper.entitlements */,
 			);
 			path = "NKU Helper";
 			sourceTree = "<group>";
@@ -514,10 +514,10 @@
 		E93083AA1D3BB7F6000FC8E8 /* 考试时间查询 */ = {
 			isa = PBXGroup;
 			children = (
+				E92E0CAE1D4760BF004D9AB5 /* ClassTestTime.swift */,
 				E93083AB1D3BB815000FC8E8 /* TestTimeSearch.storyboard */,
 				E9462A471B24A6480002C21A /* TestTimeTableViewCell.swift */,
 				E9462A451B24A1E00002C21A /* TestTimeTableViewController.swift */,
-				E92E0CAE1D4760BF004D9AB5 /* ClassTestTime.swift */,
 			);
 			path = "考试时间查询";
 			sourceTree = "<group>";
@@ -564,8 +564,8 @@
 				E9FE26131B137FEC00FCBB32 /* Color.swift */,
 				E940C2D51D4F9BE50075A040 /* Colors.realm */,
 				E94BD97F1BAC06E300B76E03 /* Course.swift */,
-				E958615F1D4CED3F001E8026 /* CourseTime.swift */,
 				E95B0F2C1C83E18700448F97 /* CourseSelecting.swift */,
+				E958615F1D4CED3F001E8026 /* CourseTime.swift */,
 				E93C0F171BB54B54001303CF /* Task.swift */,
 				E964B9501D45141C00F10B3D /* User.swift */,
 			);
@@ -575,12 +575,12 @@
 		E93D05F11D4B5BA800ACC043 /* 新建Task */ = {
 			isa = PBXGroup;
 			children = (
-				E97774291D4B59B3008D768E /* NewTaskTableViewController.swift */,
-				E977742B1D4B59D0008D768E /* DatePickerTableViewController.swift */,
 				E9CDFD241D4EFA5500EADB4C /* ColorPickerTableViewController.swift */,
+				E977742B1D4B59D0008D768E /* DatePickerTableViewController.swift */,
+				E97774291D4B59B3008D768E /* NewTaskTableViewController.swift */,
 				E93D05F21D4B5C0000ACC043 /* TextFieldCell.swift */,
 			);
-			name = "新建Task";
+			path = "新建Task";
 			sourceTree = "<group>";
 		};
 		E95C37F81BA55B95004444FF /* images */ = {
@@ -588,8 +588,8 @@
 			children = (
 				E90AE2371A8F813900AD0D78 /* Images.xcassets */,
 				E940C2CF1D4F13BB0075A040 /* Launch Screen.storyboard */,
-				E940C2D31D4F18860075A040 /* 南开表情包.png */,
 				E93083CB1D3CCEA2000FC8E8 /* slogan.png */,
+				E940C2D31D4F18860075A040 /* 南开表情包.png */,
 				E93083C51D3CC258000FC8E8 /* 米色白色渐变背景.png */,
 			);
 			path = images;
@@ -598,14 +598,14 @@
 		E95F93DB1C50CE9100CEEC12 /* 评教 */ = {
 			isa = PBXGroup;
 			children = (
-				E9693E4D1D3294FA00D6135B /* Evaluate.storyboard */,
-				E95F93DC1C50CEAA00CEEC12 /* EvaluateTableViewController.swift */,
-				E95F93E21C50F7E100CEEC12 /* ClassToEvaluateTableViewCell.swift */,
 				E95F93E01C50EF2800CEEC12 /* ClassToEvaluate.swift */,
-				E95F93E41C50FAEB00CEEC12 /* EvaluateDetailTableViewController.swift */,
-				E95F93E61C50FE8800CEEC12 /* EvaluateDetailTableViewCell.swift */,
-				E95F93EC1C51377300CEEC12 /* EvaluateOpinionTableViewCell.swift */,
+				E95F93E21C50F7E100CEEC12 /* ClassToEvaluateTableViewCell.swift */,
 				E95F93EA1C512B8B00CEEC12 /* DetailEvaluateInfo.swift */,
+				E9693E4D1D3294FA00D6135B /* Evaluate.storyboard */,
+				E95F93E61C50FE8800CEEC12 /* EvaluateDetailTableViewCell.swift */,
+				E95F93E41C50FAEB00CEEC12 /* EvaluateDetailTableViewController.swift */,
+				E95F93EC1C51377300CEEC12 /* EvaluateOpinionTableViewCell.swift */,
+				E95F93DC1C50CEAA00CEEC12 /* EvaluateTableViewController.swift */,
 			);
 			path = "评教";
 			sourceTree = "<group>";
@@ -613,11 +613,11 @@
 		E97774281D4B5994008D768E /* TodayCell */ = {
 			isa = PBXGroup;
 			children = (
-				E96B10E11D4A02F40081EDFD /* GeneralTaskCell.swift */,
 				E96B10E31D4A04670081EDFD /* CourseTaskCell.swift */,
+				E96B10E11D4A02F40081EDFD /* GeneralTaskCell.swift */,
 				E96B10E71D4A4A900081EDFD /* TodayCourseCell.swift */,
 			);
-			name = TodayCell;
+			path = TodayCell;
 			sourceTree = "<group>";
 		};
 		E97A94AF1ABF19F200998A07 /* PreferredColors */ = {
@@ -635,7 +635,7 @@
 				E9CA9C8F1C4272BC0030AF49 /* UserDefaultsBaseStoreAgent.swift */,
 				E98E2B461C4638C800CF82BE /* UserDefaultsStoreProtocol.swift */,
 			);
-			name = base;
+			path = base;
 			sourceTree = "<group>";
 		};
 		E98E2B4C1C463FCC00CF82BE /* StoreClass */ = {
@@ -672,9 +672,9 @@
 				E90E87271C40F2F400E6BE3A /* 选课 */,
 				E99D670B1C16CA8600E27B08 /* 通知中心 */,
 				E9693E471D32926300D6135B /* Function.storyboard */,
-				E98F94D71AA318EF00885992 /* FunctionTableViewController.swift */,
 				E93083B71D3C7A5C000FC8E8 /* FunctionBaseTableViewController.swift */,
 				E93083B51D3C76D2000FC8E8 /* FunctionBaseViewController.swift */,
+				E98F94D71AA318EF00885992 /* FunctionTableViewController.swift */,
 			);
 			path = "功能";
 			sourceTree = "<group>";
@@ -684,8 +684,8 @@
 			children = (
 				E9DB7EBC1AAB5EB0000D4182 /* AccountInfo */,
 				E97A94AF1ABF19F200998A07 /* PreferredColors */,
-				E97648CF1D48429F005326EE /* ClassTimePreferenceTableViewController.swift */,
 				E97176751B1488CA004DADB2 /* AboutViewController.swift */,
+				E97648CF1D48429F005326EE /* ClassTimePreferenceTableViewController.swift */,
 				E98F94D91AA3191F00885992 /* SettingTableViewController.swift */,
 				E9693E3F1D3245FB00D6135B /* Settings.storyboard */,
 			);
@@ -728,9 +728,9 @@
 		E99D674B1C173A7500E27B08 /* Third Party */ = {
 			isa = PBXGroup;
 			children = (
-				E997E8291D44945200014517 /* JSPatch.framework */,
 				E9A4F6101D30C4740040ABBD /* Crashlytics.framework */,
 				E9A4F6111D30C4740040ABBD /* Fabric.framework */,
+				E997E8291D44945200014517 /* JSPatch.framework */,
 			);
 			path = "Third Party";
 			sourceTree = "<group>";
@@ -764,11 +764,11 @@
 		E9D4DC471AAEF45D00A02327 /* 今天 */ = {
 			isa = PBXGroup;
 			children = (
+				E97774281D4B5994008D768E /* TodayCell */,
+				E93D05F11D4B5BA800ACC043 /* 新建Task */,
+				E97176771B149292004DADB2 /* CourseDetailTableViewController.swift */,
 				E9693E431D32894000D6135B /* Today.storyboard */,
 				E96B10DF1D49A45A0081EDFD /* TodayViewController.swift */,
-				E93D05F11D4B5BA800ACC043 /* 新建Task */,
-				E97774281D4B5994008D768E /* TodayCell */,
-				E97176771B149292004DADB2 /* CourseDetailTableViewController.swift */,
 			);
 			path = "今天";
 			sourceTree = "<group>";
