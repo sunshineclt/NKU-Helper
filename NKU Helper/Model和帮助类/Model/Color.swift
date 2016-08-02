@@ -81,6 +81,23 @@ class Color: Object {
     }
     
     /**
+     删除所有default.realm中的颜色
+     
+     - throws: RealmError
+     */
+    class func deleteAllColor() throws {
+        do {
+            let colors = try getColors()
+            let realm = try Realm()
+            try realm.write({
+                realm.delete(colors)
+            })
+        } catch {
+            throw StoragedDataError.RealmError
+        }
+    }
+    
+    /**
      生成UIColor
      
      - returns: UIColor

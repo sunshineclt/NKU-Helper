@@ -99,7 +99,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, WXAp
             application.registerForRemoteNotifications()
         }
         
-        // 从1.x版本迁移到2.x版本
+        // 从1.x版本迁移到2.0版本
         func transferFromVersion1ToVersion2() {
             // 迁移preferredColors数据
             let userDefaults = NSUserDefaults.standardUserDefaults()
@@ -126,13 +126,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, WXAp
                 userDefaults.removeObjectForKey("courseStatus")
                 CourseAgent.sharedInstance.signCourseToUnloaded()
             }
+            if VersionInfoAgent.sharedInstance.getData() == nil {
+                do {
+                    try Task.deleteCourseTasks()
+                    try CourseTime.deleteAll()
+                    try Course.deleteAllCourses()
+                    try Color.deleteAllColor()
+                    try Color.copyColorsToDocument()
+                    VersionInfoAgent.sharedInstance.saveData()
+                } catch {
+                    
+                }
+            }
         }
         
+        transferFromVersion1ToVersion2()
         setUpAllTools()
         setUpApperance()
         loadPreferredColors()
         setUpNotification()
-        transferFromVersion1ToVersion2()
 
         // 推送来的消息需要打开哪个页面
         if let launchOption = launchOptions {

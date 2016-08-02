@@ -44,7 +44,6 @@
 		E93D05F31D4B5C0000ACC043 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93D05F21D4B5C0000ACC043 /* TextFieldCell.swift */; };
 		E940C2D01D4F13BB0075A040 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E940C2CF1D4F13BB0075A040 /* Launch Screen.storyboard */; };
 		E940C2D41D4F18860075A040 /* 南开表情包.png in Resources */ = {isa = PBXBuildFile; fileRef = E940C2D31D4F18860075A040 /* 南开表情包.png */; };
-		E940C2D61D4F9D210075A040 /* Colors.realm in Resources */ = {isa = PBXBuildFile; fileRef = E940C2D51D4F9BE50075A040 /* Colors.realm */; };
 		E94286501AA4CD2A00A4242C /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E942864F1AA4CD2A00A4242C /* LogInViewController.swift */; };
 		E94286581AA5500C00A4242C /* SaveAccountInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94286571AA5500C00A4242C /* SaveAccountInfoViewController.swift */; };
 		E9462A461B24A1E00002C21A /* TestTimeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9462A451B24A1E00002C21A /* TestTimeTableViewController.swift */; };
@@ -94,6 +93,8 @@
 		E977742A1D4B59B3008D768E /* NewTaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97774291D4B59B3008D768E /* NewTaskTableViewController.swift */; };
 		E977742C1D4B59D0008D768E /* DatePickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E977742B1D4B59D0008D768E /* DatePickerTableViewController.swift */; };
 		E981C12D1C84A02D005CBF4E /* ClassModificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E981C12C1C84A02D005CBF4E /* ClassModificationTableViewCell.swift */; };
+		E984C7701D50D1E400C0BBC8 /* VersionInfoAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E984C76F1D50D1E400C0BBC8 /* VersionInfoAgent.swift */; };
+		E984C7711D50D58B00C0BBC8 /* Colors.realm in Resources */ = {isa = PBXBuildFile; fileRef = E984C76C1D50D19A00C0BBC8 /* Colors.realm */; };
 		E988B5371AB005DF006818FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E988B5361AB005DF006818FA /* Main.storyboard */; };
 		E98E2B471C4638C800CF82BE /* UserDefaultsStoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98E2B461C4638C800CF82BE /* UserDefaultsStoreProtocol.swift */; };
 		E98E2B491C4639BB00CF82BE /* UserAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98E2B481C4639BB00CF82BE /* UserAgent.swift */; };
@@ -204,7 +205,6 @@
 		E93D05F21D4B5C0000ACC043 /* TextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
 		E940C2CF1D4F13BB0075A040 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		E940C2D31D4F18860075A040 /* 南开表情包.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "南开表情包.png"; sourceTree = "<group>"; };
-		E940C2D51D4F9BE50075A040 /* Colors.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = Colors.realm; sourceTree = "<group>"; };
 		E940C2D91D4FA5C00075A040 /* NKU Helper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "NKU Helper.entitlements"; sourceTree = "<group>"; };
 		E942864F1AA4CD2A00A4242C /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		E94286571AA5500C00A4242C /* SaveAccountInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveAccountInfoViewController.swift; sourceTree = "<group>"; };
@@ -255,6 +255,8 @@
 		E97774291D4B59B3008D768E /* NewTaskTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTaskTableViewController.swift; sourceTree = "<group>"; };
 		E977742B1D4B59D0008D768E /* DatePickerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerTableViewController.swift; sourceTree = "<group>"; };
 		E981C12C1C84A02D005CBF4E /* ClassModificationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassModificationTableViewCell.swift; sourceTree = "<group>"; };
+		E984C76C1D50D19A00C0BBC8 /* Colors.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = Colors.realm; sourceTree = "<group>"; };
+		E984C76F1D50D1E400C0BBC8 /* VersionInfoAgent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VersionInfoAgent.swift; sourceTree = "<group>"; };
 		E988B5361AB005DF006818FA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E98DC7291B8B13D100273510 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E98DC72B1B8B13D600273510 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -562,7 +564,7 @@
 			isa = PBXGroup;
 			children = (
 				E9FE26131B137FEC00FCBB32 /* Color.swift */,
-				E940C2D51D4F9BE50075A040 /* Colors.realm */,
+				E984C76C1D50D19A00C0BBC8 /* Colors.realm */,
 				E94BD97F1BAC06E300B76E03 /* Course.swift */,
 				E95B0F2C1C83E18700448F97 /* CourseSelecting.swift */,
 				E958615F1D4CED3F001E8026 /* CourseTime.swift */,
@@ -646,6 +648,7 @@
 				E97648D11D484405005326EE /* CourseLoadMethodAgent.swift */,
 				E98E2B481C4639BB00CF82BE /* UserAgent.swift */,
 				E95F93D61C4FB23900CEEC12 /* UserDetailInfoAgent.swift */,
+				E984C76F1D50D1E400C0BBC8 /* VersionInfoAgent.swift */,
 			);
 			path = StoreClass;
 			sourceTree = "<group>";
@@ -910,7 +913,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E940C2D61D4F9D210075A040 /* Colors.realm in Resources */,
+				E984C7711D50D58B00C0BBC8 /* Colors.realm in Resources */,
 				E9693E3E1D32441600D6135B /* LogIn.storyboard in Resources */,
 				E9693E461D3290AE00D6135B /* ClassTime.storyboard in Resources */,
 				E9D754FB1C6ADB8500619BAC /* Localizable.strings in Resources */,
@@ -1081,6 +1084,7 @@
 				E9CCF4BA1ABC6578002076F2 /* ColorChooseTableViewCell.swift in Sources */,
 				E92E0CAF1D4760BF004D9AB5 /* ClassTestTime.swift in Sources */,
 				E91E5F4F1A90FAED009F3B2B /* GradeShowerTableViewController.swift in Sources */,
+				E984C7701D50D1E400C0BBC8 /* VersionInfoAgent.swift in Sources */,
 				E90E872D1C41002E00E6BE3A /* NKNetworkSelectCourse.swift in Sources */,
 				E93083B21D3BBFA7000FC8E8 /* NKNetworkFetchTestTime.swift in Sources */,
 				E97176761B1488CA004DADB2 /* AboutViewController.swift in Sources */,
