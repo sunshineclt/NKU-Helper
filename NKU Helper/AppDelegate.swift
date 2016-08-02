@@ -109,12 +109,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, WXAp
             // 迁移密码数据
             if let userInfo = userDefaults.objectForKey(UserAgent.sharedInstance.key) as? NSDictionary {
                 if let password = userInfo.objectForKey("password") as? String {
-                    var user = try! UserDetailInfoAgent.sharedInstance.getData()
-                    user.password = password
-                    try! UserAgent.sharedInstance.deleteData()
-                    try! UserAgent.sharedInstance.saveData(user)
-                    UserDetailInfoAgent.sharedInstance.deleteData()
-                    UserDetailInfoAgent.sharedInstance.saveData(user)
+                    do {
+                        var user = try UserDetailInfoAgent.sharedInstance.getData()
+                        user.password = password
+                        try UserAgent.sharedInstance.deleteData()
+                        try UserAgent.sharedInstance.saveData(user)
+                        UserDetailInfoAgent.sharedInstance.deleteData()
+                        UserDetailInfoAgent.sharedInstance.saveData(user)
+                    } catch {
+                        
+                    }
                 }
             }
             // 删除原有的课程数据
