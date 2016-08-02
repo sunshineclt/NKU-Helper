@@ -12,7 +12,7 @@ import Locksmith
 private let sharedStoreAgent = UserAgent()
 
 /// 提供访问用户数据的类
-class UserAgent:StoreAgent, StoreProtocol {
+class UserAgent: UserDefaultsBaseStoreAgent, UserDefaultsStoreProtocol {
     
     private override init() {
         super.init()

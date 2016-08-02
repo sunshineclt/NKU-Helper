@@ -1,5 +1,5 @@
 //
-//  StoreProtocol.swift
+//  UserDefaultsStoreProtocol.swift
 //  NKU Helper
 //
 //  Created by 陈乐天 on 1/13/16.
@@ -7,9 +7,9 @@
 //
 
 /**
-*  存储访问类的协议
+*  NSUserDefaults存储访问类的协议
 */
-protocol StoreProtocol {
+protocol UserDefaultsStoreProtocol {
     
     /// 数据读取和存储的格式
     associatedtype dataForm

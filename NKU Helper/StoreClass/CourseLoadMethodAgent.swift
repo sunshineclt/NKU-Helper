@@ -10,7 +10,7 @@ import Foundation
 
 private let sharedStoreAgent = CourseLoadMethodAgent()
 
-class CourseLoadMethodAgent: StoreAgent, StoreProtocol {
+class CourseLoadMethodAgent: UserDefaultsBaseStoreAgent, UserDefaultsStoreProtocol {
     
     private override init() {
         super.init()
@@ -30,14 +30,12 @@ class CourseLoadMethodAgent: StoreAgent, StoreProtocol {
      - returns: 课表加载方法（0代表从课程表加载，1代表从课程列表加载）
      */
     func getData() -> dataForm {
-        
         if let courseLoadMethod = userDefaults.objectForKey(key) as? Int {
             return courseLoadMethod
         }
         else {
             return 0
         }
-        
     }
     
     /**
@@ -50,6 +48,5 @@ class CourseLoadMethodAgent: StoreAgent, StoreProtocol {
         userDefaults.setObject(data, forKey: key)
         userDefaults.synchronize()
     }
-
     
 }

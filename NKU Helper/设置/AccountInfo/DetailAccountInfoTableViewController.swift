@@ -66,8 +66,9 @@ class DetailAccountInfoTableViewController: UITableViewController {
             let userDetailInfoAgent = UserDetailInfoAgent.sharedInstance
             do {
                 try userAgent.deleteData()
-                try CourseAgent.sharedInstance.deleteData()
                 userDetailInfoAgent.deleteData()
+                try Course.deleteAllCourses()
+                try CourseTime.deleteAll()
                 NSNotificationCenter.defaultCenter().postNotificationName("logout", object: self)
                 navigationController?.popToRootViewControllerAnimated(true)
             } catch {

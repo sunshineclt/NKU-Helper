@@ -155,7 +155,7 @@ class ClassTimeView: UIView {
         
         do {
             // 绘制课表
-            let courses = try CourseAgent.sharedInstance.getData()
+            let courses = try Course.getAllCourses()
             for i in 0 ..< courses.count {
                 // 对于每一个课时
                 let current = courses[i]
@@ -196,7 +196,7 @@ class ClassTimeView: UIView {
 
     func updateClassTimeTableWithWeek(week: Int) {
         do {
-            let courses = try CourseAgent.sharedInstance.getData()
+            let courses = try Course.getAllCourses()
             courses.forEach({ (current) in
                 current.courseTimes.forEach({ (courseTime) in
                     let weekOddEven = courseTime.weekOddEven

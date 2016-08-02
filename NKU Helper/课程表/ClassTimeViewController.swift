@@ -119,7 +119,7 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
                     isColorUsed[colorIndex] = true
                     return colors[colorIndex]
                 }
-                let courses = try CourseAgent.sharedInstance.getData()
+                let courses = try Course.getAllCourses()
                 for i in 0 ..< courses.count {
                     let current = courses[i]
                     let classID = current.ID
@@ -300,7 +300,7 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
         
         do {
             try UserAgent.sharedInstance.getData()
-            try CourseAgent.sharedInstance.getData()
+            try Course.getAllCourses()
             return true
         } catch StoragedDataError.NoUserInStorage {
             self.presentViewController(ErrorHandler.alert(ErrorHandler.NotLoggedIn()), animated: true, completion: nil)

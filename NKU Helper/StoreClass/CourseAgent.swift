@@ -12,7 +12,7 @@ import RealmSwift
 private let sharedStoreAgent = CourseAgent()
 
 /// 提供访问课程数据的类
-class CourseAgent: StoreAgent {
+class CourseAgent: UserDefaultsBaseStoreAgent {
     
     private override init() {
         super.init()
@@ -23,79 +23,28 @@ class CourseAgent: StoreAgent {
     }
     
     let key = "courseLoaded"
-    
-    typealias dataForm = [Course]
-    
-    static var isCourseLoaded: Bool {
+
+    /// 获取课程是否加载的标记
+    var isCourseLoaded: Bool {
         return (NSUserDefaults.standardUserDefaults().objectForKey("courseLoaded") as? Bool) ?? false
     }
     
     /**
-     获取所有课程
-     
-     - throws: StoragedDataError.NoClassesInStorage和RealmError
-     
-     - returns: 课程组成的Array
+     标记课程为未加载
      */
-    func getData() throws -> Results<Course> {
-        guard CourseAgent.isCourseLoaded else {
-            throw StoragedDataError.NoCoursesInStorage
-        }
-        do {
-            let realm = try Realm()
-            let result = realm.objects(Course.self).sorted("key")
-            return result
-        } catch {
-            throw StoragedDataError.RealmError
-        }
+    func signCourseToUnloaded() {
+        userDefaults.removeObjectForKey(key)
+        userDefaults.setBool(false, forKey: key)
+        userDefaults.synchronize()
     }
     
     /**
-     存储课程信息
-     
-     - parameter data: 要存储的课程
-     
-     - throws: RealmError
+     标记课程为已加载
      */
-    func saveData(data: dataForm) throws {
-        do {
-            let realm = try Realm()
-            try realm.write({
-                for course in data {
-                    realm.add(course)
-                }
-            })
-            userDefaults.removeObjectForKey(key)
-            userDefaults.setBool(true, forKey: key)
-            userDefaults.synchronize()
-        } catch {
-            throw StoragedDataError.RealmError
-        }
-    }
-    
-    /**
-     删除课程信息
-     
-     - throws: RealmError
-     */
-    func deleteData() throws {
-        do {
-            let realm = try Realm()
-            let data = try getData()
-            try realm.write({
-                realm.delete(data)
-                
-            })
-            userDefaults.removeObjectForKey(key)
-            userDefaults.setBool(false, forKey: key)
-            userDefaults.synchronize()
-        } catch StoragedDataError.NoCoursesInStorage {
-            userDefaults.removeObjectForKey(key)
-            userDefaults.setBool(false, forKey: key)
-            userDefaults.synchronize()
-        } catch {
-            throw StoragedDataError.RealmError
-        }
+    func signCourseToLoaded() {
+        userDefaults.removeObjectForKey(key)
+        userDefaults.setBool(true, forKey: key)
+        userDefaults.synchronize()
     }
     
 }

@@ -11,7 +11,7 @@ import Foundation
 private let sharedStoreAgent = UserDetailInfoAgent()
 
 /// 提供访问用户详细数据的类
-class UserDetailInfoAgent:StoreAgent, StoreProtocol {
+class UserDetailInfoAgent: UserDefaultsBaseStoreAgent, UserDefaultsStoreProtocol {
     
     private override init() {
         super.init()

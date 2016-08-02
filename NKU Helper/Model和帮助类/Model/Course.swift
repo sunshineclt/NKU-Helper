@@ -81,5 +81,65 @@ class Course: Object {
             throw StoragedDataError.RealmError
         }
     }
-    
+
+    /**
+     获取所有课程
+
+     - throws: StoragedDataError.NoClassesInStorage和RealmError
+
+     - returns: 课程组成的Array
+     */
+    class func getAllCourses() throws -> Results<Course> {
+        guard CourseAgent.sharedInstance.isCourseLoaded else {
+            throw StoragedDataError.NoCoursesInStorage
+        }
+        do {
+            let realm = try Realm()
+            let result = realm.objects(Course.self).sorted("key")
+            return result
+        } catch {
+            throw StoragedDataError.RealmError
+        }
+    }
+
+    /**
+     存储课程信息
+
+     - parameter data: 要存储的课程
+
+     - throws: RealmError
+     */
+    class func saveCourses(courses: [Course]) throws {
+        do {
+            let realm = try Realm()
+            try realm.write({
+                for course in courses {
+                    realm.add(course)
+                }
+            })
+        } catch {
+            throw StoragedDataError.RealmError
+        }
+    }
+
+    /**
+     删除课程信息
+
+     - throws: RealmError
+     */
+    class func deleteAllCourses() throws {
+        do {
+            let realm = try Realm()
+            let data = try getAllCourses()
+            try realm.write({
+                realm.delete(data)
+            })
+            CourseAgent.sharedInstance.signCourseToUnloaded()
+        } catch StoragedDataError.NoCoursesInStorage {
+            CourseAgent.sharedInstance.signCourseToUnloaded()
+        } catch {
+            throw StoragedDataError.RealmError
+        }
+    }
+
 }

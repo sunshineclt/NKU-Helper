@@ -60,7 +60,7 @@ class NKNetworkLoadCourse: NKNetworkBase {
         do {
             try Task.deleteCourseTasks()
             try CourseTime.deleteAll()
-            try CourseAgent.sharedInstance.deleteData()
+            try Course.deleteAllCourses()
             var day = 0
             var startSection = 1
             for i in 0 ..< matches.count {
@@ -73,7 +73,7 @@ class NKNetworkLoadCourse: NKNetworkBase {
                     let sectionNumber = subString.integerValue / 15
                     
                     if let course = loadDetailClassInfo(url, startSection: startSection, sectionNumber: sectionNumber, index: i) {
-                        try CourseAgent.sharedInstance.saveData([course])
+                        try Course.saveCourses([course])
                     }
                     startSection = startSection + sectionNumber
                     if startSection > 14 {
@@ -91,8 +91,10 @@ class NKNetworkLoadCourse: NKNetworkBase {
                 let progress = (Float(i + 1)) / Float(matches.count)
                 delegate?.loadProgressUpdate(progress)            
             }
+            CourseAgent.sharedInstance.signCourseToLoaded()
             return true
         } catch {
+            CourseAgent.sharedInstance.signCourseToUnloaded()
             return false
         }
     }
@@ -118,7 +120,7 @@ class NKNetworkLoadCourse: NKNetworkBase {
         do {
             try Task.deleteCourseTasks()
             try CourseTime.deleteAll()
-            try CourseAgent.sharedInstance.deleteData()
+            try Course.deleteAllCourses()
             for i in 0..<matches.count {
                 let match = matches[i]
                 let index = (htmlNSString.substringWithRange(match.rangeAtIndex(1)) as NSString).integerValue
@@ -126,13 +128,15 @@ class NKNetworkLoadCourse: NKNetworkBase {
                 let endSection = (htmlNSString.substringWithRange(match.rangeAtIndex(7)) as NSString).integerValue
                 let url = NSURL(string: "http://222.30.32.10/xsxk/selectedAllAction.do?ifkebiao=no&" + htmlNSString.substringWithRange(match.rangeAtIndex(13)))!
                 if let course = loadDetailClassInfo(url, startSection: startSection, sectionNumber: endSection - startSection + 1, index: index) {
-                    try CourseAgent.sharedInstance.saveData([course])
+                    try Course.saveCourses([course])
                 }
                 let progress = (Float(i + 1)) / Float(matches.count)
                 delegate?.loadProgressUpdate(progress)
             }
+            CourseAgent.sharedInstance.signCourseToLoaded()
             return true
         } catch {
+            CourseAgent.sharedInstance.signCourseToUnloaded()
             return false
         }
     }

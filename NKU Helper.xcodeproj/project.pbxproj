@@ -95,7 +95,7 @@
 		E977742C1D4B59D0008D768E /* DatePickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E977742B1D4B59D0008D768E /* DatePickerTableViewController.swift */; };
 		E981C12D1C84A02D005CBF4E /* ClassModificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E981C12C1C84A02D005CBF4E /* ClassModificationTableViewCell.swift */; };
 		E988B5371AB005DF006818FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E988B5361AB005DF006818FA /* Main.storyboard */; };
-		E98E2B471C4638C800CF82BE /* StoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98E2B461C4638C800CF82BE /* StoreProtocol.swift */; };
+		E98E2B471C4638C800CF82BE /* UserDefaultsStoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98E2B461C4638C800CF82BE /* UserDefaultsStoreProtocol.swift */; };
 		E98E2B491C4639BB00CF82BE /* UserAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98E2B481C4639BB00CF82BE /* UserAgent.swift */; };
 		E98E2B4E1C46469700CF82BE /* CourseAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98E2B4D1C46469700CF82BE /* CourseAgent.swift */; };
 		E98E2B501C46492900CF82BE /* NKNetworkLoadCourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98E2B4F1C46492900CF82BE /* NKNetworkLoadCourse.swift */; };
@@ -116,7 +116,7 @@
 		E9B5779E1D38DE310054F7E8 /* ClassView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9B5779D1D38DE310054F7E8 /* ClassView.xib */; };
 		E9C2ECC01B183E8B005C1F5F /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9C2ECBF1B183E8B005C1F5F /* MessageUI.framework */; };
 		E9C3EF5A1BB2BCB600D1C91D /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C3EF591BB2BCB600D1C91D /* ErrorHandler.swift */; };
-		E9CA9C901C4272BC0030AF49 /* StoreAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CA9C8F1C4272BC0030AF49 /* StoreAgent.swift */; };
+		E9CA9C901C4272BC0030AF49 /* UserDefaultsBaseStoreAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CA9C8F1C4272BC0030AF49 /* UserDefaultsBaseStoreAgent.swift */; };
 		E9CA9C961C4274F60030AF49 /* NKNetworkLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CA9C951C4274F60030AF49 /* NKNetworkLogin.swift */; };
 		E9CCF4B81ABC653E002076F2 /* ColorChooseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CCF4B71ABC653E002076F2 /* ColorChooseTableViewController.swift */; };
 		E9CCF4BA1ABC6578002076F2 /* ColorChooseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CCF4B91ABC6578002076F2 /* ColorChooseTableViewCell.swift */; };
@@ -259,7 +259,7 @@
 		E98DC7291B8B13D100273510 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E98DC72B1B8B13D600273510 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E98DC72D1B8B13DE00273510 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		E98E2B461C4638C800CF82BE /* StoreProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreProtocol.swift; sourceTree = "<group>"; };
+		E98E2B461C4638C800CF82BE /* UserDefaultsStoreProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsStoreProtocol.swift; sourceTree = "<group>"; };
 		E98E2B481C4639BB00CF82BE /* UserAgent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAgent.swift; sourceTree = "<group>"; };
 		E98E2B4D1C46469700CF82BE /* CourseAgent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseAgent.swift; sourceTree = "<group>"; };
 		E98E2B4F1C46492900CF82BE /* NKNetworkLoadCourse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkLoadCourse.swift; sourceTree = "<group>"; };
@@ -280,10 +280,9 @@
 		E9B577991D38D25E0054F7E8 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E9B5779B1D38D69F0054F7E8 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		E9B5779D1D38DE310054F7E8 /* ClassView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClassView.xib; sourceTree = "<group>"; };
-		E9B8C4AE1AA82D6E00E0DD50 /* AccountInfo */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AccountInfo; sourceTree = "<group>"; };
 		E9C2ECBF1B183E8B005C1F5F /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		E9C3EF591BB2BCB600D1C91D /* ErrorHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
-		E9CA9C8F1C4272BC0030AF49 /* StoreAgent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreAgent.swift; sourceTree = "<group>"; };
+		E9CA9C8F1C4272BC0030AF49 /* UserDefaultsBaseStoreAgent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsBaseStoreAgent.swift; sourceTree = "<group>"; };
 		E9CA9C951C4274F60030AF49 /* NKNetworkLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkLogin.swift; sourceTree = "<group>"; };
 		E9CCF4B71ABC653E002076F2 /* ColorChooseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorChooseTableViewController.swift; sourceTree = "<group>"; };
 		E9CCF4B91ABC6578002076F2 /* ColorChooseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorChooseTableViewCell.swift; sourceTree = "<group>"; };
@@ -630,14 +629,21 @@
 			path = PreferredColors;
 			sourceTree = "<group>";
 		};
+		E984C7691D507F9400C0BBC8 /* base */ = {
+			isa = PBXGroup;
+			children = (
+				E9CA9C8F1C4272BC0030AF49 /* UserDefaultsBaseStoreAgent.swift */,
+				E98E2B461C4638C800CF82BE /* UserDefaultsStoreProtocol.swift */,
+			);
+			name = base;
+			sourceTree = "<group>";
+		};
 		E98E2B4C1C463FCC00CF82BE /* StoreClass */ = {
 			isa = PBXGroup;
 			children = (
-				E9B8C4AE1AA82D6E00E0DD50 /* AccountInfo */,
+				E984C7691D507F9400C0BBC8 /* base */,
 				E98E2B4D1C46469700CF82BE /* CourseAgent.swift */,
 				E97648D11D484405005326EE /* CourseLoadMethodAgent.swift */,
-				E9CA9C8F1C4272BC0030AF49 /* StoreAgent.swift */,
-				E98E2B461C4638C800CF82BE /* StoreProtocol.swift */,
 				E98E2B481C4639BB00CF82BE /* UserAgent.swift */,
 				E95F93D61C4FB23900CEEC12 /* UserDetailInfoAgent.swift */,
 			);
@@ -1055,7 +1061,7 @@
 				E95F93E51C50FAEB00CEEC12 /* EvaluateDetailTableViewController.swift in Sources */,
 				E95F93E71C50FE8800CEEC12 /* EvaluateDetailTableViewCell.swift in Sources */,
 				E9CDFD251D4EFA5500EADB4C /* ColorPickerTableViewController.swift in Sources */,
-				E98E2B471C4638C800CF82BE /* StoreProtocol.swift in Sources */,
+				E98E2B471C4638C800CF82BE /* UserDefaultsStoreProtocol.swift in Sources */,
 				E97176781B149292004DADB2 /* CourseDetailTableViewController.swift in Sources */,
 				E9462A461B24A1E00002C21A /* TestTimeTableViewController.swift in Sources */,
 				E98F94DA1AA3191F00885992 /* SettingTableViewController.swift in Sources */,
@@ -1098,7 +1104,7 @@
 				E97648D01D48429F005326EE /* ClassTimePreferenceTableViewController.swift in Sources */,
 				E98E2B491C4639BB00CF82BE /* UserAgent.swift in Sources */,
 				E9634EBF1D38E3B900F30FA0 /* NKNetworkFetchInfo.swift in Sources */,
-				E9CA9C901C4272BC0030AF49 /* StoreAgent.swift in Sources */,
+				E9CA9C901C4272BC0030AF49 /* UserDefaultsBaseStoreAgent.swift in Sources */,
 				E90E87241C40E58B00E6BE3A /* NKNetworkBase.swift in Sources */,
 				E93083B61D3C76D2000FC8E8 /* FunctionBaseViewController.swift in Sources */,
 				E90AE22E1A8F813900AD0D78 /* AppDelegate.swift in Sources */,
