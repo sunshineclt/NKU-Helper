@@ -61,7 +61,7 @@ class TodayViewController: UIViewController {
         navigationMenuView.cellTextLabelFont = UIFont(name: "HelveticaNeue", size: 17)
         navigationMenuView.cellTextLabelAlignment = .Center
         navigationMenuView.arrowPadding = 15
-        navigationMenuView.animationDuration = 0.5
+        navigationMenuView.animationDuration = 0.4
         navigationMenuView.maskBackgroundColor = UIColor.blackColor()
         navigationMenuView.maskBackgroundOpacity = 0.3
         navigationMenuView.didSelectItemAtIndexHandler = {(indexPath: Int) -> () in
