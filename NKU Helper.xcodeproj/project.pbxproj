@@ -205,6 +205,7 @@
 		E940C2CF1D4F13BB0075A040 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		E940C2D31D4F18860075A040 /* 南开表情包.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "南开表情包.png"; sourceTree = "<group>"; };
 		E940C2D51D4F9BE50075A040 /* Colors.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = Colors.realm; sourceTree = "<group>"; };
+		E940C2D91D4FA5C00075A040 /* NKU Helper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "NKU Helper.entitlements"; sourceTree = "<group>"; };
 		E942864F1AA4CD2A00A4242C /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		E94286571AA5500C00A4242C /* SaveAccountInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveAccountInfoViewController.swift; sourceTree = "<group>"; };
 		E9462A451B24A1E00002C21A /* TestTimeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestTimeTableViewController.swift; sourceTree = "<group>"; };
@@ -407,6 +408,7 @@
 		E90AE22A1A8F813900AD0D78 /* NKU Helper */ = {
 			isa = PBXGroup;
 			children = (
+				E940C2D91D4FA5C00075A040 /* NKU Helper.entitlements */,
 				E90AE22D1A8F813900AD0D78 /* AppDelegate.swift */,
 				E988B5361AB005DF006818FA /* Main.storyboard */,
 				E9693E3D1D32441600D6135B /* LogIn.storyboard */,
@@ -862,6 +864,14 @@
 					E90AE2271A8F813900AD0D78 = {
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = E9FBJ6HPDB;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 0;
+							};
+						};
 					};
 					E9DA59491D3889AF0012ED9A = {
 						CreatedOnToolsVersion = 7.3.1;
