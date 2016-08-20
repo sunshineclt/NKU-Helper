@@ -94,7 +94,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, WXAp
         
         // set up notification
         func setUpNotification() {
-            let settings = UIUserNotificationSettings(forTypes: [UIUserNotificationType.Badge, UIUserNotificationType.Alert, UIUserNotificationType.Sound], categories: nil)
+            let settings = UIUserNotificationSettings(forTypes: [.Badge, .Alert, .Sound], categories: nil)
             application.registerUserNotificationSettings(settings)
             application.registerForRemoteNotifications()
         }
