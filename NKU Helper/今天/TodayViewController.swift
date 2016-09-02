@@ -91,7 +91,7 @@ class TodayViewController: UIViewController {
             }
             if todayCourses == nil {
                 todayCourses = try Course.coursesOnWeekday(CalendarHelper.getWeekdayInt())
-                NKNetworkFetchInfo.fetchNowWeek { (nowWeek😈, isVocation😈) in
+                NKNetworkInfoHandler.fetchNowWeek { (nowWeek😈, isVocation😈) in
                     guard let nowWeek = nowWeek😈, isVocation = isVocation😈 else {
                         return
                     }

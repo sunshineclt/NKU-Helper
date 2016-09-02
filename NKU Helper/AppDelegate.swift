@@ -167,13 +167,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, WXAp
         } catch {
             
         }
+        NKNetworkInfoHandler.registerUser()
         return true
     }
 
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         print("Register For Remote Notification With Device Token Successfully")
         let token = deviceToken.description.stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString: "<>")).stringByReplacingOccurrencesOfString(" ", withString: "")
-        print("Token: ", token)
+        print("Device Token: ", token)
+        NKNetworkInfoHandler.uploadDeviceToken(token)
     }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
