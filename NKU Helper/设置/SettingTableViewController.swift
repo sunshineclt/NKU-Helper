@@ -99,4 +99,8 @@ class SettingTableViewController: UITableViewController {
         }
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        segue.destinationViewController.hidesBottomBarWhenPushed = true
+    }
+    
 }
