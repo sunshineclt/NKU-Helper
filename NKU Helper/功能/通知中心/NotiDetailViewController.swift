@@ -8,6 +8,7 @@
 
 import UIKit
 import WebKit
+import SnapKit
 
 class NotiDetailViewController: UIViewController, NJKWebViewProgressDelegate, UIWebViewDelegate {
     
@@ -22,17 +23,25 @@ class NotiDetailViewController: UIViewController, NJKWebViewProgressDelegate, UI
         progressProxy = NJKWebViewProgress()
         progressProxy.progressDelegate = self
         progressProxy.webViewProxyDelegate = self
-        let navBounds = self.navigationController!.navigationBar.bounds
-        let barFrame = CGRectMake(0, navBounds.size.height - 2, navBounds.size.width, 2)
-        progressView = NJKWebViewProgressView(frame: barFrame)
-        progressView.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleTopMargin]
-        progressView.setProgress(0, animated: true)
-        self.navigationController?.navigationBar.addSubview(progressView)
         
-        webView = UIWebView(frame: self.view.frame)
-        webView.delegate = progressProxy
-        webView.loadRequest(NSURLRequest(URL: url))
+        webView = UIWebView()
         self.view.addSubview(webView)
+        webView.snp_makeConstraints { (make) in
+            make.edges.equalTo(self.view).inset(UIEdgeInsetsMake(0, 0, 0, 0))
+        }
+        webView.delegate = progressProxy
+        
+        progressView = NJKWebViewProgressView()
+        self.view.addSubview(progressView)
+        progressView.snp_makeConstraints { (make) in
+            make.left.equalTo(self.view.snp_left).offset(0)
+            make.right.equalTo(self.view.snp_right).offset(0)
+            make.top.equalTo(self.view.snp_top).offset(0)
+            make.height.equalTo(2)
+        }
+        progressView.setProgress(0, animated: true)
+        
+        webView.loadRequest(NSURLRequest(URL: url))
         
     }
     
