@@ -30,9 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, WXAp
             
             Fabric.with([Crashlytics.self])
             
-            AVOSCloud.setApplicationId("2Ot4Qst88l7L50oHgGHpRUij", clientKey: "gN4rJ9GizYYRS6tqLPioUBoS")
-            AVAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
-            
             WXApi.registerApp("wx311e5377578127f1")
             
             ShareSDK.registerApp("f61adcd245a4", activePlatforms: [SSDKPlatformType.TypeWechat.rawValue,
@@ -170,24 +167,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, WXAp
         } catch {
             
         }
+        NKNetworkInfoHandler.registerUser()
         return true
     }
 
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-        
         print("Register For Remote Notification With Device Token Successfully")
-        let currentInstallation = AVInstallation.currentInstallation()
-        currentInstallation.setDeviceTokenFromData(deviceToken)
-        print(deviceToken)
-        currentInstallation.saveInBackgroundWithBlock { (succeeded, error) -> Void in
-            if succeeded {
-                print("Save Device Token Successfully")
-            }
-            else {
-                print("Save Device Token Unsuccessfully")
-            }
-        }
-        
+        let token = deviceToken.description.stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString: "<>")).stringByReplacingOccurrencesOfString(" ", withString: "")
+        print("Device Token: ", token)
+        NKNetworkInfoHandler.uploadDeviceToken(token)
     }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
@@ -202,9 +190,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, WXAp
             if let _ = actionType1 {
                 let rootvc = self.window?.rootViewController as! UITabBarController
                 rootvc.selectedIndex = actionType1!
-                if application.applicationState != UIApplicationState.Active {
-                    AVAnalytics.trackAppOpenedWithRemoteNotificationPayload(userInfo)
-                }
                 if let _ = actionType2 {
                     tableViewActionType = actionType2!
                 }
@@ -235,12 +220,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate, WXAp
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         if application.applicationIconBadgeNumber != 0 {
-            
-            let currentInstallation = AVInstallation.currentInstallation()
-            currentInstallation.badge = 0
-            currentInstallation.saveEventually()
             UIApplication.sharedApplication().applicationIconBadgeNumber = 0
-            
         }
         
     }

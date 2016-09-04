@@ -7,7 +7,6 @@ target 'NKU Helper' do
 	pod 'pop'
 	pod 'UAProgressView'
 	pod 'MBProgressHUD'
-	pod 'AVOSCloud'
 	pod 'DZNEmptyDataSet'
 	pod 'MJRefresh'
 	pod 'NJKWebViewProgress'

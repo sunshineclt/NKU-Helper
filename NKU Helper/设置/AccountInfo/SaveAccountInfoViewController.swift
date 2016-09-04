@@ -49,6 +49,7 @@ class SaveAccountInfoViewController: UIViewController, UIAlertViewDelegate, UITe
                     switch result {
                     case .Success(let name, let timeEnteringSchool, let departmentAdmitted, let majorAdmitted):
                         let saveSuccess = self.saveAccountInfo(name: name, timeEnteringSchool: timeEnteringSchool, departmentAdmitted: departmentAdmitted, majorAdmitted: majorAdmitted)
+                        NKNetworkInfoHandler.registerUser()
                         if saveSuccess {
                             self.navigationController?.popViewControllerAnimated(true)
                             self.dismissViewControllerAnimated(true, completion: nil)

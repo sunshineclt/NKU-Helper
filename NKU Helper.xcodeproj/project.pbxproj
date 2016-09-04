@@ -66,7 +66,7 @@
 		E95F93EB1C512B8B00CEEC12 /* DetailEvaluateInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F93EA1C512B8B00CEEC12 /* DetailEvaluateInfo.swift */; };
 		E95F93ED1C51377300CEEC12 /* EvaluateOpinionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F93EC1C51377300CEEC12 /* EvaluateOpinionTableViewCell.swift */; };
 		E95F93EF1C51394800CEEC12 /* NKNetworkEvaluateSubmit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F93EE1C51394800CEEC12 /* NKNetworkEvaluateSubmit.swift */; };
-		E9634EBF1D38E3B900F30FA0 /* NKNetworkFetchInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9634EBE1D38E3B900F30FA0 /* NKNetworkFetchInfo.swift */; };
+		E9634EBF1D38E3B900F30FA0 /* NKNetworkInfoHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9634EBE1D38E3B900F30FA0 /* NKNetworkInfoHandler.swift */; };
 		E96419D21AA8971B00397691 /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96419D11AA8971B00397691 /* AccountTableViewCell.swift */; };
 		E96419D41AA8BC9800397691 /* DetailAccountInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96419D31AA8BC9800397691 /* DetailAccountInfoTableViewController.swift */; };
 		E964B9511D45141C00F10B3D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E964B9501D45141C00F10B3D /* User.swift */; };
@@ -229,7 +229,7 @@
 		E95F93EC1C51377300CEEC12 /* EvaluateOpinionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EvaluateOpinionTableViewCell.swift; sourceTree = "<group>"; };
 		E95F93EE1C51394800CEEC12 /* NKNetworkEvaluateSubmit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkEvaluateSubmit.swift; sourceTree = "<group>"; };
 		E961C83E1D2EAE740066C9C3 /* 编码规范.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "编码规范.md"; sourceTree = "<group>"; };
-		E9634EBE1D38E3B900F30FA0 /* NKNetworkFetchInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkFetchInfo.swift; sourceTree = "<group>"; };
+		E9634EBE1D38E3B900F30FA0 /* NKNetworkInfoHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkInfoHandler.swift; sourceTree = "<group>"; };
 		E96419D11AA8971B00397691 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AccountTableViewCell.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E96419D31AA8BC9800397691 /* DetailAccountInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailAccountInfoTableViewController.swift; sourceTree = "<group>"; };
 		E964B9501D45141C00F10B3D /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -446,7 +446,7 @@
 				E93083AF1D3BBF50000FC8E8 /* 功能 */,
 				E92BDD041C62230F005A5CB8 /* 登陆 */,
 				E90E87231C40E58B00E6BE3A /* NKNetworkBase.swift */,
-				E9634EBE1D38E3B900F30FA0 /* NKNetworkFetchInfo.swift */,
+				E9634EBE1D38E3B900F30FA0 /* NKNetworkInfoHandler.swift */,
 				E95F93D81C4FC04500CEEC12 /* NKNetworkFetchUserInfo.swift */,
 				E98E2B4F1C46492900CF82BE /* NKNetworkLoadCourse.swift */,
 			);
@@ -1107,7 +1107,7 @@
 				E98E2B501C46492900CF82BE /* NKNetworkLoadCourse.swift in Sources */,
 				E97648D01D48429F005326EE /* ClassTimePreferenceTableViewController.swift in Sources */,
 				E98E2B491C4639BB00CF82BE /* UserAgent.swift in Sources */,
-				E9634EBF1D38E3B900F30FA0 /* NKNetworkFetchInfo.swift in Sources */,
+				E9634EBF1D38E3B900F30FA0 /* NKNetworkInfoHandler.swift in Sources */,
 				E9CA9C901C4272BC0030AF49 /* UserDefaultsBaseStoreAgent.swift in Sources */,
 				E90E87241C40E58B00E6BE3A /* NKNetworkBase.swift in Sources */,
 				E93083B61D3C76D2000FC8E8 /* FunctionBaseViewController.swift in Sources */,

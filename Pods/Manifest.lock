@@ -1,6 +1,5 @@
 PODS:
   - Alamofire (3.4.1)
-  - AVOSCloud (3.3.5)
   - BTNavigationDropdownMenu (0.4)
   - DZNEmptyDataSet (1.8.1)
   - Locksmith (2.0.8)
@@ -36,7 +35,6 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
-  - AVOSCloud
   - BTNavigationDropdownMenu
   - DZNEmptyDataSet
   - Locksmith
@@ -60,7 +58,6 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
-  AVOSCloud: 1fe170768bee7e05bc3ea86e38d5bddb105cb957
   BTNavigationDropdownMenu: 6876704a7a127aea257a65316c6b942ede51d163
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   Locksmith: a8ed41ac4c06506ea8cb199d8ec8a8d3d108eb2a
@@ -81,6 +78,6 @@ SPEC CHECKSUMS:
   UAProgressView: ce49aee47c14df6dc372f6fd57852f570ca97e6b
   YYText: ac09660c9ccd9b817f409a20caa6f5587444d2ae
 
-PODFILE CHECKSUM: 68212115d5777c8ab2cbafa6b1588ea50fee628c
+PODFILE CHECKSUM: 2938a8942f6005bec92dd984805458b2d2bb30d3
 
 COCOAPODS: 1.0.1

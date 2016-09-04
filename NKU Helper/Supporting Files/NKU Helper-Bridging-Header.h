@@ -6,7 +6,6 @@
 #import "pop/POP.h"
 #import "UAProgressView.h"
 #import "MBProgressHUD.h"
-#import <AVOSCloud/AVOSCloud.h>
 #import "UIScrollView+EmptyDataSet.h"
 #import "MJRefresh.h"
 #import "NJKWebViewProgress.h"
