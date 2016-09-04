@@ -162,6 +162,7 @@ class TodayViewController: UIViewController {
 // MARK: 页面间跳转
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        segue.destinationViewController.hidesBottomBarWhenPushed = true
         if let typeInfo = R.segue.todayViewController.showCourseDetail(segue: segue) {
             let senderCell = sender as! TodayCourseCell
             typeInfo.destinationViewController.courseTime = senderCell.courseTime
