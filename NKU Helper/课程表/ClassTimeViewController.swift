@@ -287,6 +287,7 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        segue.destinationViewController.hidesBottomBarWhenPushed = true
         if let typeInfo = R.segue.classTimeViewController.showCourseDetail(segue: segue) {
             if let whichCourse = sender as? CourseTime {
                 typeInfo.destinationViewController.courseTime = whichCourse
