@@ -146,7 +146,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate{
 
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         print("Register For Remote Notification With Device Token Successfully")
-        let token = deviceToken.description.trimmingCharacters(in: CharacterSet(charactersIn: "<>")).replacingOccurrences(of: " ", with: "")
+        var token = ""
+        for i in 0..<deviceToken.count {
+            token = token + String(format: "%02.2hhx", arguments: [deviceToken[i]])
+        }
         print("Device Token: ", token)
         NKNetworkInfoHandler.uploadDeviceToken(token)
     }
