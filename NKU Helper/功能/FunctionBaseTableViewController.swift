@@ -13,25 +13,25 @@ class FunctionBaseTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         SVProgressHUD.show()
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) { () -> Void in
+        DispatchQueue.global().async { () -> Void in
             let loginResult = NKNetworkIsLogin.isLoggedin()
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            DispatchQueue.main.async(execute: { () -> Void in
                 SVProgressHUD.dismiss()
                 switch loginResult {
-                case .Loggedin:
+                case .loggedin:
                     self.doWork()
-                case .NotLoggedin:
-                    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.loginComplete), name: "loginComplete", object: nil)
-                    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.loginCancel), name: "loginCancel", object: nil)
-                    self.performSegueWithIdentifier(R.segue.gradeShowerTableViewController.login.identifier, sender: "GradeShowerTableViewController")
-                case .UnKnown:
-                    self.presentViewController(ErrorHandler.alert(ErrorHandler.NetworkError()), animated: true, completion: nil)
+                case .notLoggedin:
+                    NotificationCenter.default.addObserver(self, selector: #selector(self.loginComplete), name: NSNotification.Name(rawValue: "loginComplete"), object: nil)
+                    NotificationCenter.default.addObserver(self, selector: #selector(self.loginCancel), name: NSNotification.Name(rawValue: "loginCancel"), object: nil)
+                    self.performSegue(withIdentifier: R.segue.gradeShowerTableViewController.login.identifier, sender: "GradeShowerTableViewController")
+                case .unKnown:
+                    self.present(ErrorHandler.alert(withError: ErrorHandler.NetworkError()), animated: true, completion: nil)
                 }
             })
         }
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(animated)
         SVProgressHUD.dismiss()
     }
@@ -45,7 +45,7 @@ class FunctionBaseTableViewController: UITableViewController {
     }
     
     func loginCancel() {
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: "loginCancel", object: nil)
-        self.navigationController?.popViewControllerAnimated(true)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "loginCancel"), object: nil)
+        let _ = self.navigationController?.popViewController(animated: true)
     }
 }

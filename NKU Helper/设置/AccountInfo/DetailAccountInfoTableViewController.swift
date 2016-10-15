@@ -12,11 +12,11 @@ class DetailAccountInfoTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return 5
         }
@@ -25,11 +25,11 @@ class DetailAccountInfoTableViewController: UITableViewController {
         }
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.accountInfoCell.identifier)!
+            let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.accountInfoCell.identifier)!
             do {
-                let userInfo = try UserDetailInfoAgent.sharedInstance.getData()
+                let userInfo = try UserAgent.sharedInstance.getUserInfo()
                 switch indexPath.row {
                 case 0:
                     cell.textLabel?.text = "姓名"
@@ -55,24 +55,23 @@ class DetailAccountInfoTableViewController: UITableViewController {
             return cell
         }
         else {
-            let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.logOutCell.identifier)!
+            let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.logOutCell.identifier)!
             return cell
         }
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 {
             let userAgent = UserAgent.sharedInstance
-            let userDetailInfoAgent = UserDetailInfoAgent.sharedInstance
             do {
-                try userAgent.deleteData()
-                userDetailInfoAgent.deleteData()
+                try userAgent.delete()
+                try CourseTime.deleteAllCourseTimes()
+                try Task.deleteCourseTasks()
                 try Course.deleteAllCourses()
-                try CourseTime.deleteAll()
-                NSNotificationCenter.defaultCenter().postNotificationName("logout", object: self)
-                navigationController?.popToRootViewControllerAnimated(true)
+                NotificationCenter.default.post(name: Foundation.Notification.Name(rawValue: "logout"), object: self)
+                let _ = self.navigationController?.popToRootViewController(animated: true)
             } catch {
-                self.presentViewController(ErrorHandler.alertWithAlertTitle("登出失败", message: "删除数据失败，请重试", cancelButtonTitle: "好"), animated: true, completion: nil)
+                self.present(ErrorHandler.alertWith(title: "登出失败", message: "删除数据失败，请重试", cancelButtonTitle: "好"), animated: true, completion: nil)
             }
         }
     }

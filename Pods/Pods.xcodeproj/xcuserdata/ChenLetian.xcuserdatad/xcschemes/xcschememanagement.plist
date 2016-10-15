@@ -7,221 +7,195 @@
 		<key>Alamofire.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
-			<true />
-			<key>orderHint</key>
-			<integer>2</integer>
+			<true/>
 		</dict>
 		<key>BTNavigationDropdownMenu.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
-			<true />
-			<key>orderHint</key>
-			<integer>3</integer>
+			<true/>
 		</dict>
 		<key>DZNEmptyDataSet.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
-			<true />
-			<key>orderHint</key>
-			<integer>4</integer>
+			<true/>
 		</dict>
 		<key>Locksmith.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
-			<true />
-			<key>orderHint</key>
-			<integer>5</integer>
+			<true/>
 		</dict>
 		<key>MBProgressHUD.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
-			<true />
-			<key>orderHint</key>
-			<integer>6</integer>
+			<true/>
 		</dict>
 		<key>MCSwipeTableViewCell.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
-			<true />
-			<key>orderHint</key>
-			<integer>7</integer>
+			<true/>
 		</dict>
 		<key>MJRefresh.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
-			<true />
-			<key>orderHint</key>
-			<integer>8</integer>
+			<true/>
 		</dict>
 		<key>NJKWebViewProgress.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
-			<true />
-			<key>orderHint</key>
-			<integer>9</integer>
+			<true/>
 		</dict>
 		<key>Pods-NKU Helper.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
-			<true />
-			<key>orderHint</key>
-			<integer>10</integer>
+			<true/>
 		</dict>
 		<key>R.swift.Library.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
-			<true />
-			<key>orderHint</key>
-			<integer>11</integer>
+			<true/>
 		</dict>
 		<key>Realm.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
-			<true />
-			<key>orderHint</key>
-			<integer>12</integer>
+			<true/>
 		</dict>
 		<key>RealmSwift.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
-			<true />
-			<key>orderHint</key>
-			<integer>13</integer>
+			<true/>
 		</dict>
 		<key>SVProgressHUD.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
-			<true />
-			<key>orderHint</key>
-			<integer>14</integer>
+			<true/>
 		</dict>
 		<key>SnapKit.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
-			<true />
-			<key>orderHint</key>
-			<integer>15</integer>
+			<true/>
 		</dict>
 		<key>SwiftyJSON.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
-			<true />
-			<key>orderHint</key>
-			<integer>16</integer>
+			<true/>
+		</dict>
+		<key>Then.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>isShown</key>
+			<true/>
 		</dict>
 		<key>UAProgressView.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
-			<true />
-			<key>orderHint</key>
-			<integer>17</integer>
+			<true/>
 		</dict>
 		<key>YYText.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
-			<true />
-			<key>orderHint</key>
-			<integer>18</integer>
+			<true/>
 		</dict>
 		<key>pop.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
-			<true />
-			<key>orderHint</key>
-			<integer>19</integer>
+			<true/>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>1106D14AED1011CD992D1E0A9EDDB3C6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>16F31C27D7691C472C7158A34C79FC10</key>
 		<dict>
 			<key>primary</key>
-			<true />
+			<true/>
 		</dict>
-		<key>18045CD1A52B588177A1C569D373D01D</key>
+		<key>1DA15ED24A205BC14EBC626FEEA90A53</key>
 		<dict>
 			<key>primary</key>
-			<true />
+			<true/>
 		</dict>
 		<key>2799857F5478460E7F21F7EE970535DB</key>
 		<dict>
 			<key>primary</key>
-			<true />
+			<true/>
 		</dict>
 		<key>2F7BF64F5AE82C8C64A99B1F1764E386</key>
 		<dict>
 			<key>primary</key>
-			<true />
-		</dict>
-		<key>3D9514D4688D444A8E747D1C15FB9B4A</key>
-		<dict>
-			<key>primary</key>
-			<true />
+			<true/>
 		</dict>
 		<key>4BE42DB6DF6A3DE525D05F5B914C4918</key>
 		<dict>
 			<key>primary</key>
-			<true />
+			<true/>
 		</dict>
 		<key>4D2890B3056379B39CC16EE99E478239</key>
 		<dict>
 			<key>primary</key>
-			<true />
+			<true/>
 		</dict>
-		<key>5102AAE5B70BD025B15C80D5589CFB24</key>
+		<key>504B1F6A6821FAB3BA00B302278DC94F</key>
 		<dict>
 			<key>primary</key>
-			<true />
+			<true/>
 		</dict>
 		<key>56CCDC0E9A1D0F17F9B2D65A2D0032E2</key>
 		<dict>
 			<key>primary</key>
-			<true />
+			<true/>
 		</dict>
-		<key>57A70B45CDAFC659111059E5C461179E</key>
+		<key>6FFAAC71154F96D189C05C554886418C</key>
 		<dict>
 			<key>primary</key>
-			<true />
+			<true/>
 		</dict>
 		<key>7228C1781736C96EA18FF987E28C0B9E</key>
 		<dict>
 			<key>primary</key>
-			<true />
+			<true/>
 		</dict>
-		<key>B3216F7CCE50691578F74F3B38B50CFD</key>
+		<key>83A06D4D5BBDB5ABF8D74BAE2AE003AD</key>
 		<dict>
 			<key>primary</key>
-			<true />
+			<true/>
+		</dict>
+		<key>9107B385DAECE8C83BDEF85A573FF518</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A531F73228E0D7AE9BEE06327073EF67</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AED23478F25E6B86BC34D0C6CEA483C3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 		<key>BB1E812A2787FE5EC1486C226FDE1E5F</key>
 		<dict>
 			<key>primary</key>
-			<true />
+			<true/>
 		</dict>
-		<key>CDCC75FDA677D03CBC80516262FFE8C3</key>
+		<key>C830DE6FBE19BA5E7EBB092D25D93211</key>
 		<dict>
 			<key>primary</key>
-			<true />
+			<true/>
 		</dict>
-		<key>CF80C053DCF41E6ECD97F433478510E6</key>
+		<key>CC98DE3E0A4B915CCDB8B1C3EB66CE1C</key>
 		<dict>
 			<key>primary</key>
-			<true />
+			<true/>
 		</dict>
-		<key>D08899F0A97CB2007A4430D27DEC0FD0</key>
+		<key>F46D954710C8E9246A34685803443139</key>
 		<dict>
 			<key>primary</key>
-			<true />
-		</dict>
-		<key>D3469505CBAE677077BBFDEB7D02476B</key>
-		<dict>
-			<key>primary</key>
-			<true />
-		</dict>
-		<key>FC80C76A76C2B11DEDAC4248601F7365</key>
-		<dict>
-			<key>primary</key>
-			<true />
+			<true/>
 		</dict>
 	</dict>
 </dict>

@@ -27,38 +27,38 @@ class ColorPickerTableViewController: UITableViewController, UINavigationControl
         tableView.rowHeight = UITableViewAutomaticDimension
         // 数据初始化
         do {
-            colors = try Color.getColors().filter("liked == true")
+            colors = try Color.getAllColors().filter("liked == true")
         } catch {
-            presentViewController(ErrorHandler.alert(ErrorHandler.DataBaseError()), animated: true, completion: nil)
+            present(ErrorHandler.alert(withError: ErrorHandler.DataBaseError()), animated: true, completion: nil)
         }
     }
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard colors != nil else {
             return 0
         }
         return colors.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.taskColorCell.identifier) as! ColorChooseTableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.taskColorCell.identifier) as! ColorChooseTableViewCell
         let color = colors[indexPath.row]
         cell.colorView.backgroundColor = color.convertToUIColor()
-        cell.accessoryType = indexPath.row == nowChoosedColorIndexRow ? .Checkmark : .None
+        cell.accessoryType = indexPath.row == nowChoosedColorIndexRow ? .checkmark : .none
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let preChoosedColorIndexRow = nowChoosedColorIndexRow
         nowChoosedColorIndexRow = indexPath.row
-        self.tableView.reloadRowsAtIndexPaths([indexPath, NSIndexPath(forRow: preChoosedColorIndexRow, inSection: 0)], withRowAnimation: .None)
+        self.tableView.reloadRows(at: [indexPath, IndexPath(row: preChoosedColorIndexRow, section: 0)], with: .none)
     }
     
-    func navigationController(navigationController: UINavigationController, willShowViewController viewController: UIViewController, animated: Bool) {
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         if let controller = viewController as? NewTaskTableViewController {
             controller.color = colors[nowChoosedColorIndexRow]
         }

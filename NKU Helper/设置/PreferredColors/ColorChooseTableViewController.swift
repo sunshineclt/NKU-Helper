@@ -15,52 +15,52 @@ class ColorChooseTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         do {
-            colors = try Color.getColors()
+            colors = try Color.getAllColors()
         } catch {
-            presentViewController(ErrorHandler.alert(ErrorHandler.DataBaseError()), animated: true, completion: nil)
+            present(ErrorHandler.alert(withError: ErrorHandler.DataBaseError()), animated: true, completion: nil)
         }
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
     }
     
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "勾选你喜欢的颜色，勾掉你不喜欢的颜色喽~\n这些颜色将会用于课程表页面哦~"
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "勾选你喜欢的颜色，勾掉你不喜欢的颜色喽~\n这些颜色将会用于课程和任务颜色的选择哦~"
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Color.getColorCount()
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.preferredColorCell.identifier) as! ColorChooseTableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.preferredColorCell.identifier) as! ColorChooseTableViewCell
         let color = colors[indexPath.row]
         cell.colorView.backgroundColor = color.convertToUIColor()
-        cell.accessoryType = color.liked ? .Checkmark : .None
+        cell.accessoryType = color.liked ? .checkmark : .none
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = self.tableView(self.tableView, cellForRowAtIndexPath: indexPath)
-        if cell.accessoryType == UITableViewCellAccessoryType.None {
-            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = self.tableView(self.tableView, cellForRowAt: indexPath)
+        if cell.accessoryType == UITableViewCellAccessoryType.none {
+            cell.accessoryType = UITableViewCellAccessoryType.checkmark
             colors[indexPath.row].toggleLike()
         }
         else {
-            cell.accessoryType = UITableViewCellAccessoryType.None
+            cell.accessoryType = UITableViewCellAccessoryType.none
             colors[indexPath.row].toggleLike()
         }
-        self.tableView.deselectRowAtIndexPath(indexPath, animated: false)
-        self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        self.tableView.deselectRow(at: indexPath, animated: false)
+        self.tableView.reloadRows(at: [indexPath], with: .automatic)
     }
     
 }

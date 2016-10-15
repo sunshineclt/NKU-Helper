@@ -15,14 +15,14 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     @IBOutlet var appNameVersionLabel: UILabel!
     
     override func viewDidLoad() {
-        let version = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as! String
+        let version = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
         appNameVersionLabel.text = "NKU Helper (V\(version))"
     }
     
-    @IBAction func mailSetup(sender: UIButton) {
+    @IBAction func mailSetup(_ sender: UIButton) {
         if (!MFMailComposeViewController.canSendMail()) {
-            let alertVC = ErrorHandler.alertWithAlertTitle("无法发送邮件", message: "请检查邮件设置", cancelButtonTitle: "好")
-            presentViewController(alertVC, animated: true, completion: nil)
+            let alertVC = ErrorHandler.alertWith(title: "无法发送邮件", message: "请检查邮件设置", cancelButtonTitle: "好")
+            present(alertVC, animated: true, completion: nil)
         }
         else {
             let mailView = MFMailComposeViewController()
@@ -30,16 +30,16 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
             mailView.setSubject("NKU Helper的反馈信息")
             mailView.setToRecipients(["sunshinecltzac@gmail.com"])
             mailView.mailComposeDelegate = self
-            self.presentViewController(mailView, animated: true, completion: nil)
+            self.present(mailView, animated: true, completion: nil)
         }
     }
     
-    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func backwardAction(sender: UIButton) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func backwardAction(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
     }
 
 }

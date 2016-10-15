@@ -16,16 +16,16 @@ class GPACalculateMethodTableViewController: UITableViewController {
         self.navigationItem.title = method.methodName
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return method.description.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.gPACalculateMethodCell.identifier)!
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.gPACalculateMethodCell.identifier)!
         cell.textLabel?.text = method.description[indexPath.row].interval
         cell.detailTextLabel?.text = method.description[indexPath.row].gpa
         return cell

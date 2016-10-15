@@ -15,14 +15,14 @@ class ClassView: UIView {
     
     var courseTime: CourseTime! {
         didSet {
-            classNameLabel.text = courseTime.ownerCourse.name
+            classNameLabel.text = courseTime.forCourse?.name
             classroomLabel.text = courseTime.classroom
-            self.backgroundColor = courseTime.ownerCourse.color?.convertToUIColor() ?? UIColor.grayColor()
+            self.backgroundColor = courseTime.forCourse?.color?.convertToUIColor() ?? UIColor.gray
         }
     }
     
     class func loadFromNib() -> ClassView {
-        return super.loadViewFromNibNamed("ClassView") as! ClassView
+        return super.loadViewFromNib(named: "ClassView") as! ClassView
     }
 
 }

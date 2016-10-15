@@ -10,7 +10,7 @@ import UIKit
 
 class EvaluateDetailTableViewController: UITableViewController {
 
-    var classIndexToEvaluate: Int!
+    var courseIndexToEvaluate: Int!
     
     var detailEvaluateList = [DetailEvaluateSection]() {
         didSet {
@@ -30,33 +30,27 @@ class EvaluateDetailTableViewController: UITableViewController {
         self.tableView.rowHeight = UITableViewAutomaticDimension
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let evaluateDetailGetter = NKNetworkEvaluateDetail()
-        evaluateDetailGetter.delegate = self
         SVProgressHUD.show()
-        evaluateDetailGetter.getDetailEvaluateItem(classIndexToEvaluate)
+        NKNetworkEvaluateDetailHandler.getDetailEvaluateInfo(forIndex: courseIndexToEvaluate) { (result) in
+            switch result {
+            case .success(let detailEvaluateList):
+                SVProgressHUD.dismiss()
+                self.detailEvaluateList = detailEvaluateList
+                self.tableView.reloadData()
+            case .fail:
+                SVProgressHUD.dismiss()
+                self.present(ErrorHandler.alert(withError: ErrorHandler.NetworkError()), animated: true, completion: nil)
+            }
+        }
     }
 
-}
-
-extension EvaluateDetailTableViewController: NKNetworkEvaluateDetailProtocol {
-    
-    func didNetworkFail() {
-        SVProgressHUD.dismiss()
-        self.presentViewController(ErrorHandler.alert(ErrorHandler.NetworkError()), animated: true, completion: nil)
-    }
-    
-    func didSuccess(detailEvaluateList: [DetailEvaluateSection]) {
-        SVProgressHUD.dismiss()
-        self.detailEvaluateList = detailEvaluateList
-        self.tableView.reloadData()
-    }
 }
 
 extension EvaluateDetailTableViewController: EvaluateDetailStepperProtocol {
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section < detailEvaluateList.count {
             return detailEvaluateList[section].title
         }
@@ -65,11 +59,11 @@ extension EvaluateDetailTableViewController: EvaluateDetailStepperProtocol {
         }
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return detailEvaluateList.count + 2
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section < detailEvaluateList.count {
             return detailEvaluateList[section].question.count
         }
@@ -78,18 +72,18 @@ extension EvaluateDetailTableViewController: EvaluateDetailStepperProtocol {
         }
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard indexPath.section < detailEvaluateList.count else {
             if indexPath.section == detailEvaluateList.count {
-                let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.evaluateOpinionCell.identifier) as! EvaluateOpinionTableViewCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.evaluateOpinionCell.identifier) as! EvaluateOpinionTableViewCell
                 return cell
             }
             else {
-                let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.evaluateSubmitCell.identifier)!
+                let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.evaluateSubmitCell.identifier)!
                 return cell
             }
         }
-        let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.evaluateDetailCell.identifier) as! EvaluateDetailTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.evaluateDetailCell.identifier) as! EvaluateDetailTableViewCell
         cell.delegate = self
         cell.evaluateContentLabel.text = detailEvaluateList[indexPath.section].question[indexPath.row].content
         cell.pointLabel.text = "\(detailEvaluateList[indexPath.section].question[indexPath.row].grade)"
@@ -98,7 +92,7 @@ extension EvaluateDetailTableViewController: EvaluateDetailStepperProtocol {
         return cell
     }
     
-    func getQuestionIndexFromIndexPath(indexPath: NSIndexPath) -> Int {
+    func getQuestionIndexFromIndexPath(_ indexPath: IndexPath) -> Int {
         var index = 0
         for i in 0 ..< indexPath.section {
             index += detailEvaluateList[i].question.count
@@ -107,40 +101,34 @@ extension EvaluateDetailTableViewController: EvaluateDetailStepperProtocol {
         return index
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section > detailEvaluateList.count {
-            let opinionIndexPath = NSIndexPath(forRow: 0, inSection: indexPath.section - 1)
-            let opinionCell = tableView.cellForRowAtIndexPath(opinionIndexPath) as! EvaluateOpinionTableViewCell
+            let opinionIndexPath = IndexPath(row: 0, section: indexPath.section - 1)
+            let opinionCell = tableView.cellForRow(at: opinionIndexPath) as! EvaluateOpinionTableViewCell
             var opinion = (opinionCell.opinionTextField.text ?? "")
             if (opinion as NSString).length > 150 {
-                opinion = (opinion as NSString).substringToIndex(150)
+                opinion = (opinion as NSString).substring(to: 150)
             }
-            let index = classIndexToEvaluate
-            let evaluateSubmitter = NKNetworkEvaluateSubmit()
-            evaluateSubmitter.delegate = self
+            let index = courseIndexToEvaluate
             SVProgressHUD.show()
-            evaluateSubmitter.submit(detailEvaluateGrade, opinion: opinion, index: index)
+            NKNetworkEvaluateSubmitHandler.submit(grades: detailEvaluateGrade, opinion: opinion, index: index!, withBlock: { (result) in
+                switch result {
+                case .success:
+                    SVProgressHUD.dismiss()
+                    NotificationCenter.default.post(name: Foundation.Notification.Name(rawValue: "evaluateSubmitSuccess"), object: nil)
+                    let _ = self.navigationController?.popViewController(animated: true)
+                case .fail:
+                    SVProgressHUD.dismiss()
+                    self.present(ErrorHandler.alert(withError: ErrorHandler.EvaluateSubmitFail()), animated: true, completion: nil)
+                }
+            })
         }
     }
     
-    func stepperDidChangeOnCell(cell: EvaluateDetailTableViewCell, toValue value: String) {
-        let indexPath = self.tableView.indexPathForCell(cell)!
+    func stepperDidChangeOnCell(_ cell: EvaluateDetailTableViewCell, toValue value: String) {
+        let indexPath = self.tableView.indexPath(for: cell)!
         let index = getQuestionIndexFromIndexPath(indexPath)
         detailEvaluateGrade[index] = value
     }
     
-}
-
-extension EvaluateDetailTableViewController: NKNetworkEvaluateSubmitProtocol {
-    
-    func didFailToSubmit() {
-        SVProgressHUD.dismiss()
-        self.presentViewController(ErrorHandler.alert(ErrorHandler.EvaluateSubmitFail()), animated: true, completion: nil)
-    }
-    
-    func didSuccessToSubmit() {
-        SVProgressHUD.dismiss()
-        NSNotificationCenter.defaultCenter().postNotificationName("evaluateSubmitSuccess", object: nil)
-        self.navigationController?.popViewControllerAnimated(true)
-    }
 }

@@ -18,8 +18,8 @@ class TodayCourseCell: UITableViewCell {
 
     var courseTime: CourseTime! {
         didSet {
-            colorView.backgroundColor = courseTime.ownerCourse.color?.convertToUIColor() ?? UIColor.grayColor()
-            classnameLabel.text = courseTime.ownerCourse.name
+            colorView.backgroundColor = courseTime.forCourse?.color?.convertToUIColor() ?? UIColor.gray
+            classnameLabel.text = courseTime.forCourse?.name
             classroomLabel.text = courseTime.classroom
             timeLabel.text = "第\(courseTime.startSection)节到第\(courseTime.endSection)节"
         }
@@ -27,8 +27,8 @@ class TodayCourseCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        containerView.layer.shadowOffset = CGSizeMake(2, 2)
-        containerView.layer.shadowColor = UIColor.grayColor().CGColor
+        containerView.layer.shadowOffset = CGSize(width: 2, height: 2)
+        containerView.layer.shadowColor = UIColor.gray.cgColor
         containerView.layer.shadowRadius = 2
         containerView.layer.shadowOpacity = 0.5
     }

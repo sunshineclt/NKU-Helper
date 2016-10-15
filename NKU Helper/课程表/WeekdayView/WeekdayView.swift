@@ -13,7 +13,7 @@ class WeekdayView: UIView {
     @IBOutlet var weekdayLabel: UILabel!
     
     class func loadFromNib() -> WeekdayView {
-        return super.loadViewFromNibNamed("WeekdayView") as! WeekdayView
+        return super.loadViewFromNib(named: "WeekdayView") as! WeekdayView
     }
 
 }

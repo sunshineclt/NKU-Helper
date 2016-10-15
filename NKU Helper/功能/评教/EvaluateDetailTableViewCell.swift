@@ -9,7 +9,7 @@
 import UIKit
 
 protocol EvaluateDetailStepperProtocol {
-    func stepperDidChangeOnCell(cell: EvaluateDetailTableViewCell,toValue value: String)
+    func stepperDidChangeOnCell(_ cell: EvaluateDetailTableViewCell,toValue value: String)
 }
 
 class EvaluateDetailTableViewCell: UITableViewCell {
@@ -21,8 +21,8 @@ class EvaluateDetailTableViewCell: UITableViewCell {
     @IBOutlet var stepper: UIStepper!
     var maxValue: Double! {
         didSet {
-            stepper.stepValue = maxValue % 2 == 0 ? 2 : 1
-            stepper.minimumValue = maxValue % 2 == 0 ? 2 : 1
+            stepper.stepValue = maxValue.truncatingRemainder(dividingBy: 2) == 0 ? 2 : 1
+            stepper.minimumValue = maxValue.truncatingRemainder(dividingBy: 2) == 0 ? 2 : 1
             stepper.maximumValue = maxValue
             stepper.value = maxValue
         }
@@ -32,7 +32,7 @@ class EvaluateDetailTableViewCell: UITableViewCell {
         return NSString(format: "%.0lf", stepper.value) as String
     }
     
-    @IBAction func stepperDidChangeValue(sender: UIStepper) {
+    @IBAction func stepperDidChangeValue(_ sender: UIStepper) {
         pointLabel.text = "\(stepperValueString)"
         self.delegate?.stepperDidChangeOnCell(self, toValue: stepperValueString)
     }

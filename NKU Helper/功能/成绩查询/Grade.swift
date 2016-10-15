@@ -9,7 +9,7 @@
 import Foundation
 
 enum GradeValue {
-    case OK(grade: Double, credit:Double)
+    case ok(grade: Double, credit:Double)
     case notEvaluate
     case pass
     case notPass
@@ -30,14 +30,14 @@ class Grade {
         self.grade = grade
     }
     
-    init(className:NSString, classType:NSString, grade:NSString, credit:NSString, retakeGrade:NSString) {
-        self.className = className as String
-        self.classType = classType as String
+    init(className: String, classType: String, grade: String, credit: String, retakeGrade: String) {
+        self.className = className
+        self.classType = classType
         if grade == "未评价" {
             self.grade = .notEvaluate
             return
         }
-        if grade.containsString("通过") {
+        if grade.contains("通过") {
             if grade == "通过" {
                 self.grade = .pass
             }
@@ -47,15 +47,15 @@ class Grade {
             return
         }
         if retakeGrade != "" {
-            self.grade = .retakeDone(grade: retakeGrade.doubleValue, credit: credit.doubleValue)
+            self.grade = .retakeDone(grade: (retakeGrade as NSString).doubleValue, credit: (credit as NSString).doubleValue)
             return
         }
-        if (grade.doubleValue > 0) && (grade.doubleValue < 60) && (credit.doubleValue == 0) {
-            self.grade = .needRetake(grade: grade.doubleValue)
+        if ((grade as NSString).doubleValue > 0) && ((grade as NSString).doubleValue < 60) && ((credit as NSString).doubleValue == 0) {
+            self.grade = .needRetake(grade: (grade as NSString).doubleValue)
             return
         }
-        if (grade.doubleValue > 0) && (credit.doubleValue >= 0) {
-            self.grade = .OK(grade: grade.doubleValue, credit: credit.doubleValue)
+        if ((grade as NSString).doubleValue > 0) && ((credit as NSString).doubleValue >= 0) {
+            self.grade = .ok(grade: (grade as NSString).doubleValue, credit: (credit as NSString).doubleValue)
             return
         }
         self.grade = .unKnown
@@ -63,7 +63,7 @@ class Grade {
     
     var gradeString: String {
         switch grade {
-        case .OK(let grade, _):
+        case .ok(let grade, _):
             return NSString(format: "%.1lf", grade) as String
         case .notEvaluate:
             return "未评教"
@@ -82,7 +82,7 @@ class Grade {
     
     var creditString: String {
         switch grade {
-        case .OK(_, let credit):
+        case .ok(_, let credit):
             return NSString(format: "%.1lf", credit) as String
         case .notEvaluate:
             return "未评教"
@@ -108,13 +108,13 @@ class Grade {
      
      - returns: 学分绩
      */
-    class func computeGradeCreditSum(grades: [Grade], WithCourseType courseType: [String], isAverage: Bool) -> Double {
+    class func computeGradeCreditSum(_ grades: [Grade], WithCourseType courseType: [String], isAverage: Bool) -> Double {
         var gradeCreditSum:Double = 0
         var credit:Double = 0
         for grade in grades {
             if courseType.contains(grade.classType) {
                 switch grade.grade {
-                case .OK(let thisGrade, let thisCredit):
+                case .ok(let thisGrade, let thisCredit):
                     if isAverage {
                         gradeCreditSum += thisGrade
                         credit += 1
@@ -158,13 +158,13 @@ class Grade {
      
      - returns: GPA
      */
-    class func computeGRA(grades: [Grade], WithGPACalculateMethod gpaCalculateMethod: GPACalculateMethod, AndCourseType courseType: [String]) -> Double {
+    class func computeGRA(_ grades: [Grade], WithGPACalculateMethod gpaCalculateMethod: GPACalculateMethod, AndCourseType courseType: [String]) -> Double {
         var gpa:Double = 0
         var credit:Double = 0
         for grade in grades {
             if courseType.contains(grade.classType) {
                 switch grade.grade {
-                case .OK(let thisGrade, let thisCredit):
+                case .ok(let thisGrade, let thisCredit):
                     gpa += gpaCalculateMethod.transformGradeToGPAMethod(thisGrade) * thisCredit
                     credit += thisCredit
                 case .notEvaluate:
@@ -195,12 +195,12 @@ class Grade {
      
      - returns: 总学分
      */
-    class func computeCredit(grades: [Grade], WithCourseType courseType: [String]) -> Double {
+    class func computeCredit(_ grades: [Grade], WithCourseType courseType: [String]) -> Double {
         var credit:Double = 0
         for grade in grades {
             if courseType.contains(grade.classType) {
                 switch grade.grade {
-                case .OK(_, let thisCredit):
+                case .ok(_, let thisCredit):
                     credit += thisCredit
                 case .notEvaluate:
                     break
@@ -249,8 +249,10 @@ class GPACalculateMethod {
         (left: 68, right: 71, gpa: 2.0),
         (left: 64, right: 67, gpa: 1.5),
         (left: 60, right: 63, gpa: 1.0)])
-    static private let PKUNewFunction = { (grade) -> Double in
-        return 4-3*(100-grade)*(100-grade)/1600
+    static private let PKUNewFunction = { (grade: Double) -> Double in
+        let temp = 100 - grade
+        let GPA = 4 - 3 * temp * temp / 1600;
+        return GPA
     }
     static let PKUNew = GPACalculateMethod(methodName: "北京大学新4.0", description: [(interval: "X(60<=x<=100)", gpa: "GPA=4-3*(100-X)^2/1600")], transformGradeToGPAMethod: PKUNewFunction)
     static let canada = GPACalculateMethodBuilder.buildGPACalculateMethod("加拿大4.3", rules: [
@@ -267,7 +269,7 @@ class GPACalculateMethod {
     var description: [GPACalculateMethodDescription]
     var transformGradeToGPAMethod: (Double) -> Double
 
-    init(methodName: String, description:[GPACalculateMethodDescription], transformGradeToGPAMethod: (Double) -> Double) {
+    init(methodName: String, description:[GPACalculateMethodDescription], transformGradeToGPAMethod: @escaping (Double) -> Double) {
         self.methodName = methodName
         self.description = description
         self.transformGradeToGPAMethod = transformGradeToGPAMethod
@@ -278,7 +280,7 @@ typealias GPACalculateMethodDescription = (interval: String, gpa: String)
 
 class GPACalculateMethodBuilder {
     
-    class func buildGPACalculateMethod(methodName: String, rules: [(left: Double, right: Double, gpa: Double)]) -> GPACalculateMethod {
+    class func buildGPACalculateMethod(_ methodName: String, rules: [(left: Double, right: Double, gpa: Double)]) -> GPACalculateMethod {
         var description = [GPACalculateMethodDescription]()
         var judgments = [{ (grade: Double) -> Double in
             return 0

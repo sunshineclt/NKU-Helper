@@ -83,15 +83,15 @@ struct ErrorHandler {
         static let cancelButtonTitle = "好"
     }
     
-    static func alert(error:ErrorHandlerProtocol) -> UIAlertController {
-        let alert = UIAlertController(title: error.dynamicType.title, message: error.dynamicType.message, preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: error.dynamicType.cancelButtonTitle, style: .Cancel, handler: nil))
+    static func alert(withError error:ErrorHandlerProtocol, andHandler handler: ((UIAlertAction) -> Void)? = nil) -> UIAlertController {
+        let alert = UIAlertController(title: type(of: error).title, message: type(of: error).message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: type(of: error).cancelButtonTitle, style: .cancel, handler: handler))
         return alert
     }
     
-    static func alertWithAlertTitle(title: String?, message: String?, cancelButtonTitle: String?) -> UIAlertController {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: cancelButtonTitle, style: .Cancel, handler: nil))
+    static func alertWith(title: String?, message: String?, cancelButtonTitle: String?) -> UIAlertController {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: cancelButtonTitle, style: .cancel, handler: nil))
         return alert
     }
 }

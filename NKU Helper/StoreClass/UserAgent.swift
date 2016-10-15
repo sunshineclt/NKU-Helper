@@ -11,12 +11,18 @@ import Locksmith
 
 private let sharedStoreAgent = UserAgent()
 
-/// 提供访问用户ID和密码功能的类
-class UserAgent: UserDefaultsBaseStoreAgent, UserDefaultsStoreProtocol {
-    
-    private override init() {
-        super.init()
-    }
+/**
+ 访问用户ID和密码功能的类
+ * * * * *
+ 
+ last modified:
+ - date: 2016.10.15
+ 
+ - author: 陈乐天
+ - since: Swift3.0
+ - version: 1.0
+ */
+class UserAgent: UserDefaultsBaseStoreAgent {
     
     class var sharedInstance:UserAgent {
         return sharedStoreAgent
@@ -26,55 +32,53 @@ class UserAgent: UserDefaultsBaseStoreAgent, UserDefaultsStoreProtocol {
     
     let key = "accountInfo"
 
-    /**
-     访问用户ID和密码
-     
-     - throws: StoragedDataError.NoUserInStorage, StoragedDataError.NoPasswordInKeychain
-     
-     - returns: 用户ID和密码组成的元组
-     */
-    func getData() throws -> dataForm {
-        guard let userInfo = userDefaults.objectForKey(key) as? [String: String] else {
-            throw StoragedDataError.NoUserInStorage
+    /// 访问用户信息
+    ///
+    /// - throws: StoragedDataError.noUserInStorage, StoragedDataError.noPasswordInKeychain
+    ///
+    /// - returns: User对象
+    func getUserInfo() throws -> dataForm {
+        guard let userInfo = userDefaults.dictionary(forKey: key) as? [String: String] else {
+            throw StoragedDataError.noUserInStorage
         }
         guard let userID = userInfo["userID"] else {
-            throw StoragedDataError.NoUserInStorage
+            throw StoragedDataError.noUserInStorage
         }
-        guard let dictionary = Locksmith.loadDataForUserAccount(userID), password = dictionary["password"] as? String else {
-            throw StoragedDataError.NoPasswordInKeychain
+        guard let dictionary = Locksmith.loadDataForUserAccount(userAccount: userID),
+            let password = dictionary["password"] as? String else {
+                throw StoragedDataError.noPasswordInKeychain
         }
-        return User(userID: userID, password: password)
+        let name = userInfo["name"]!
+        let timeEnteringSchool = userInfo["timeEnteringSchool"]!
+        let departmentAdmitted = userInfo["departmentAdmitted"]!
+        let majorAdmitted = userInfo["majorAdmitted"]!
+        return User(userID: userID, password: password, name: name, timeEnteringSchool: timeEnteringSchool, departmentAdmitted: departmentAdmitted, majorAdmitted: majorAdmitted)
     }
     
-    /**
-     存储密码
-     
-     - parameter data: 需要存储的用户的用户名和密码
-     
-     - throws: 存储时出现的错误
-     */
-    func saveData(data: dataForm) throws {
-        do {
-            try Locksmith.updateData(["password": data.password], forUserAccount: data.userID)
-        } catch let err {
-            throw err
-        }
+    /// 存储用户信息
+    ///
+    /// - parameter data: 需要存储的用户
+    ///
+    /// - throws: 存储时出现的错误
+    func save(data: dataForm) throws {
+  //      try Locksmith.deleteDataForUserAccount(userAccount: data.userID)
+        //try Locksmith.saveData(data: ["password": data.password], forUserAccount: data.userID)
+        try Locksmith.updateData(data: ["password": data.password], forUserAccount: data.userID)
+        let dictionary = ["userID": data.userID, "name": data.name, "timeEnteringSchool": data.timeEnteringSchool, "departmentAdmitted": data.departmentAdmitted, "majorAdmitted": data.majorAdmitted]
+        userDefaults.removeObject(forKey: key)
+        userDefaults.set(dictionary, forKey: key)
+        userDefaults.synchronize()
     }
     
-    /**
-     删除密码信息
-     
-     - throws: 删除时出现的错误
-     */
-    func deleteData() throws {
-        if let userInfo = userDefaults.objectForKey(key) as? NSDictionary {
-            let userID = userInfo.objectForKey("userID") as! String
-            do {
-                try Locksmith.deleteDataForUserAccount(userID)
-            } catch let err {
-                throw err
-            }
+    /// 删除用户信息
+    ///
+    /// - throws: 删除时出现的错误
+    func delete() throws {
+        if let userInfo = userDefaults.dictionary(forKey: key) as? [String: String] {
+            let userID = userInfo["userID"]!
+            try Locksmith.deleteDataForUserAccount(userAccount: userID)
         }
+        userDefaults.removeObject(forKey: key)
     }
     
 }

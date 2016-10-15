@@ -10,10 +10,10 @@ import UIKit
 
 class ClassToEvaluateTableViewCell: UITableViewCell {
 
-    var classToEvaluate: ClassToEvaluate! {
+    var courseToEvaluate: CourseToEvaluate! {
         didSet {
-            self.classNameAndTeacherNameLabel.text = classToEvaluate.className + " - " + classToEvaluate.teacherName
-            self.hasEvaluatedImageView.image = classToEvaluate.hasEvaluated ? R.image.classEvaluated() : R.image.classNotEvaluated()
+            self.classNameAndTeacherNameLabel.text = courseToEvaluate.className + " - " + courseToEvaluate.teacherName
+            self.hasEvaluatedImageView.image = courseToEvaluate.hasEvaluated ? R.image.classEvaluated() : R.image.classNotEvaluated()
         }
     }
     

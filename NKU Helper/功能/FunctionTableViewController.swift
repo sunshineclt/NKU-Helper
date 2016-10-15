@@ -13,7 +13,7 @@ class FunctionTableViewController: UITableViewController {
     /// 是否已经输入用户名和密码
     var isLoggedIn:Bool {
         do {
-            try UserAgent.sharedInstance.getData()
+            let _ =  try UserAgent.sharedInstance.getUserInfo()
             return true
         } catch {
             return false
@@ -26,37 +26,36 @@ class FunctionTableViewController: UITableViewController {
         self.tableView.rowHeight = UITableViewAutomaticDimension
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         do {
-            try UserAgent.sharedInstance.getData()
+            let _ = try UserAgent.sharedInstance.getUserInfo()
             self.tableView.reloadData()
             super.viewWillAppear(animated)
         } catch {
-            self.presentViewController(ErrorHandler.alert(ErrorHandler.NotLoggedIn()), animated: true, completion: nil)
+            self.present(ErrorHandler.alert(withError: ErrorHandler.NotLoggedIn()), animated: true, completion: nil)
         }
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if let actionType = tableViewActionType {
-            if actionType == 0 {
-                self.performSegueWithIdentifier(R.segue.functionTableViewController.showNotiCenter.identifier, sender: nil)
+        if let action = NKRouter.sharedInstance.action {
+            if action["type2"]! as Int == 0 {
+                self.performSegue(withIdentifier: R.segue.functionTableViewController.showNotiCenter.identifier, sender: nil)
             }
-            tableViewActionType = nil
+            NKRouter.sharedInstance.action = nil
         }
     }
     
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
-        
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
     }
 
-    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0: //查询成绩
             cell.backgroundColor = UIColor(red: 131/255, green: 176/255, blue: 252/255, alpha: 1)
@@ -75,38 +74,38 @@ class FunctionTableViewController: UITableViewController {
         }
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0: //查询成绩
-            let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.gradeShowerCell.identifier)!
-            cell.userInteractionEnabled = isLoggedIn
+            let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.gradeShowerCell.identifier)!
+            cell.isUserInteractionEnabled = isLoggedIn
             return cell
         case 1: //通知中心
-            let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.notiCenterCell.identifier)!
-            cell.userInteractionEnabled = isLoggedIn
+            let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.notiCenterCell.identifier)!
+            cell.isUserInteractionEnabled = isLoggedIn
             return cell
 //        case 2: // 选课
 //            let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.selectCourseCenterCell.identifier)!
 //            cell.userInteractionEnabled = isLoggedIn
 //            return cell
         case 2: //评教
-            let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.evaluateCenterCell.identifier)!
-            cell.userInteractionEnabled = isLoggedIn
+            let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.evaluateCenterCell.identifier)!
+            cell.isUserInteractionEnabled = isLoggedIn
             return cell
         case 3: //查询考试时间
-            let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.testTimeSearchCell.identifier)!
-            cell.userInteractionEnabled = isLoggedIn
+            let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.testTimeSearchCell.identifier)!
+            cell.isUserInteractionEnabled = isLoggedIn
             return cell
         case 4: //更多
-            let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.moreFunctionCell.identifier)!
-            cell.userInteractionEnabled = isLoggedIn
+            let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.moreFunctionCell.identifier)!
+            cell.isUserInteractionEnabled = isLoggedIn
             return cell
         default:return UITableViewCell()
         }
     }
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        segue.destinationViewController.hidesBottomBarWhenPushed = true
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        segue.destination.hidesBottomBarWhenPushed = true
     }
     
 }

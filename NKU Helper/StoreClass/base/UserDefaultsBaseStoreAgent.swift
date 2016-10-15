@@ -8,9 +8,19 @@
 
 import Foundation
 
-/// NSUserDefaults存储访问类基类
+/**
+ UserDefaults存储访问类基类
+ * * * * *
+ 
+ last modified:
+ - date: 2016.9.30
+ 
+ - author: 陈乐天
+ - since: Swift3.0
+ - version: 1.0
+ */
 class UserDefaultsBaseStoreAgent {
     
-    let userDefaults = NSUserDefaults.standardUserDefaults()
+    let userDefaults = UserDefaults.standard
     
 }

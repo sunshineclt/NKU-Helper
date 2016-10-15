@@ -14,7 +14,7 @@ class NotiTableViewCell: UITableViewCell {
         didSet {
             providerIcon.layer.cornerRadius = 5
             providerIcon.layer.borderWidth = 1
-            providerIcon.layer.borderColor = UIColor(red: 135.7/255, green: 67.2/255, blue: 164.8/255, alpha: 1.0).CGColor
+            providerIcon.layer.borderColor = UIColor(red: 135.7/255, green: 67.2/255, blue: 164.8/255, alpha: 1.0).cgColor
         }
     }
     @IBOutlet var title: UILabel!

@@ -8,41 +8,47 @@
 
 import Foundation
 
-/**
- 代表当前登录状态
- 
- - Loggedin:    已登陆
- - NotLoggedin: 未登录
- - UnKnown:     网络错误等原因未知
- */
+/// 代表当前登录状态
+///
+/// - loggedin:    已登录
+/// - notLoggedin: 未登录
+/// - unKnown:     网络错误等原因未知登录状态
 enum NKNetworkLoginStatus {
-    case Loggedin
-    case NotLoggedin
-    case UnKnown
+    case loggedin
+    case notLoggedin
+    case unKnown
 }
 
-/// 提供判断当前登录状态的网络库，注意：此网络库为同步执行，不能在主线程中执行，需加加载动画
+/**
+ 判断当前登录状态的网络库
+ - important: 此网络库为同步执行，不能在主线程中执行，需加加载动画
+ * * * * *
+ 
+ last modified:
+ - date: 2016.10.14
+ 
+ - author: 陈乐天
+ - since: Swift3.0
+ - version: 1.0
+ */
 class NKNetworkIsLogin: NKNetworkBase {
     
-    /**
-     判断是否登陆
-     
-     - returns: 登录状态
-     */
+    /// 判断是否登陆
+    ///
+    /// - returns: 登录状态
     class func isLoggedin() -> NKNetworkLoginStatus {
-        let receivedData = NSData(contentsOfURL: NSURL(string: "http://222.30.32.10/xsxk/selectedAction.do?operation=kebiao")!)
-        guard let _ = receivedData else {
-            return .UnKnown
+        do {
+            let html = try NSString(contentsOf: URL(string: "http://222.30.32.10/xsxk/selectedAction.do?operation=kebiao")!, encoding: CFStringConvertEncodingToNSStringEncoding(0x0632))
+            if html.range(of: "星期一").length > 0 {
+                return .loggedin
+            }
+            else{
+                return .notLoggedin
+            }
         }
-        let encoding = CFStringConvertEncodingToNSStringEncoding(0x0632)
-        let html = NSString(data: receivedData!, encoding: encoding)!
-        if html.rangeOfString("星期一").length > 0 {
-            return .Loggedin
+        catch {
+            return .unKnown
         }
-        else{
-            return .NotLoggedin
-        }
-        
     }
     
 }

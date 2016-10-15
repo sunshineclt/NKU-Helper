@@ -19,7 +19,7 @@ class CourseTaskCell: MCSwipeTableViewCell {
     
     var task: Task! {
         didSet {
-            colorView.backgroundColor = task.color?.convertToUIColor() ?? UIColor.grayColor()
+            colorView.backgroundColor = task.color?.convertToUIColor() ?? UIColor.gray
             classNameLabel.text = task.forCourse!.name
             titleLabel.text = task.title
             descriptionLabel.text = task.descrip
@@ -27,14 +27,14 @@ class CourseTaskCell: MCSwipeTableViewCell {
                 timeLabel.text = ""
                 return
             }
-            timeLabel.text = CalendarHelper.getCustomTimeIntervalDisplay(dueDate)
+            timeLabel.text = CalendarHelper.getCustomTimeIntervalDisplay(toDate: dueDate)
         }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        containerView.layer.shadowOffset = CGSizeMake(2, 2)
-        containerView.layer.shadowColor = UIColor.grayColor().CGColor
+        containerView.layer.shadowOffset = CGSize(width: 2, height: 2)
+        containerView.layer.shadowColor = UIColor.gray.cgColor
         containerView.layer.shadowRadius = 2
         containerView.layer.shadowOpacity = 0.5
     }

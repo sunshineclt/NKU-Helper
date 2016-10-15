@@ -16,8 +16,8 @@ class ClassTestTime: NSObject {
     var startSection: Int
     var endSection: Int
     var classroom: String
-    var startTime: NSDate
-    var endTime: NSDate
+    var startTime: Date
+    var endTime: Date
     
     init(classname: String, week: Int, weekday: Int, startSection: Int, endSection: Int, classroom: String, startTime: String, endTime: String) {
         self.className = classname
@@ -26,12 +26,12 @@ class ClassTestTime: NSObject {
         self.startSection = startSection
         self.endSection = endSection
         self.classroom = classroom
-        let dateFormatter = NSDateFormatter()
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        let formattedStartTime = (startTime as NSString).substringToIndex((startTime as NSString).length - 2)
-        self.startTime = dateFormatter.dateFromString(formattedStartTime)!
-        let formattedEndTime = (endTime as NSString).substringToIndex((endTime as NSString).length - 2)
-        self.endTime = dateFormatter.dateFromString(formattedEndTime)!
+        let formattedStartTime = (startTime as NSString).substring(to: (startTime as NSString).length - 2)
+        self.startTime = dateFormatter.date(from: formattedStartTime)!
+        let formattedEndTime = (endTime as NSString).substring(to: (endTime as NSString).length - 2)
+        self.endTime = dateFormatter.date(from: formattedEndTime)!
     }
     
     /**
@@ -40,9 +40,9 @@ class ClassTestTime: NSObject {
      - returns: 日期的String表示
      */
     func getDayString() -> String {
-        let dateFormatter = NSDateFormatter()
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM-dd"
-        return dateFormatter.stringFromDate(startTime)
+        return dateFormatter.string(from: startTime)
     }
     
     /**
@@ -51,9 +51,9 @@ class ClassTestTime: NSObject {
      - returns: 考试时间的String表示
      */
     func getTimeString() -> String {
-        let dateFormatter = NSDateFormatter()
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
-        return dateFormatter.stringFromDate(startTime) + " - " + dateFormatter.stringFromDate(endTime)
+        return dateFormatter.string(from: startTime) + " - " + dateFormatter.string(from: endTime)
     }
     
     /**
@@ -63,12 +63,12 @@ class ClassTestTime: NSObject {
      
      - returns: 所有考试在哪几周
      */
-    class func getWeekArray(classTestTime: [ClassTestTime]) -> [Int] {
+    class func getWeekArray(_ classTestTime: [ClassTestTime]) -> [Int] {
         let arr = classTestTime.map { (testTime) -> Int in
             return testTime.week
         }
         let set = Set(arr)
-        return Array(set).sort()
+        return Array(set).sorted()
     }
     
 }

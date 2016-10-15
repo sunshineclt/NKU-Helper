@@ -8,28 +8,42 @@
 
 import Foundation
 
+/**
+ 用户信息类
+ * * * * *
+ 
+ last modified:
+ - date: 2016.10.12
+ 
+ - author: 陈乐天
+ - since: Swift3.0
+ - version: 1.0
+ */
 struct User {
 
-    var userID: String!
-    var password: String!
-    var name: String!
-    var timeEnteringSchool: String!
-    var departmentAdmitted: String!
-    var majorAdmitted: String!
+    /// 学号
+    var userID: String
+    /// 密码
+    var password: String
+    /// 姓名
+    var name: String
+    /// 入学时间
+    var timeEnteringSchool: String
+    /// 录取院系
+    var departmentAdmitted: String
+    /// 录取专业
+    var majorAdmitted: String
     
-    init(userID: String, password: String) {
-        self.userID = userID
-        self.password = password
-    }
-    
-    init(userID: String, name: String, timeEnteringSchool: String, departmentAdmitted: String, majorAdmitted: String) {
-        self.userID = userID
-        self.name = name
-        self.timeEnteringSchool = timeEnteringSchool
-        self.departmentAdmitted = departmentAdmitted
-        self.majorAdmitted = majorAdmitted
-    }
-    
+    /// 创建一个User对象
+    ///
+    /// - parameter userID:             学号
+    /// - parameter password:           密码
+    /// - parameter name:               姓名
+    /// - parameter timeEnteringSchool: 入学时间
+    /// - parameter departmentAdmitted: 录取院系
+    /// - parameter majorAdmitted:      录取专业
+    ///
+    /// - returns: User对象
     init(userID: String, password: String, name: String, timeEnteringSchool: String, departmentAdmitted: String, majorAdmitted: String) {
         self.userID = userID
         self.password = password

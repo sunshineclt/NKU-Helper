@@ -14,7 +14,7 @@ class TimeScheduleView: UIView {
     @IBOutlet var sectionLabel: UILabel!
     
     class func loadFromNib() -> TimeScheduleView {
-        return super.loadViewFromNibNamed("TimeScheduleView") as! TimeScheduleView
+        return super.loadViewFromNib(named: "TimeScheduleView") as! TimeScheduleView
     }
 
 }

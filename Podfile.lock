@@ -1,45 +1,46 @@
 PODS:
-  - Alamofire (3.4.1)
-  - BTNavigationDropdownMenu (0.4)
+  - Alamofire (4.0.1)
+  - BTNavigationDropdownMenu (0.4.1)
   - DZNEmptyDataSet (1.8.1)
-  - Locksmith (2.0.8)
+  - Locksmith (3.0.0)
   - MBProgressHUD (1.0.0)
   - MCSwipeTableViewCell (2.1.4)
   - MJRefresh (3.1.12)
-  - MOBFoundation (2.0.8)
+  - MOBFoundation (2.0.11)
   - NJKWebViewProgress (0.2.3):
     - NJKWebViewProgress/Core (= 0.2.3)
     - NJKWebViewProgress/ProgressView (= 0.2.3)
   - NJKWebViewProgress/Core (0.2.3)
   - NJKWebViewProgress/ProgressView (0.2.3)
   - pop (1.0.9)
-  - R.swift (2.4.0):
-    - R.swift.Library (~> 2.2.0)
-  - R.swift.Library (2.2.0)
-  - Realm (1.0.2):
-    - Realm/Headers (= 1.0.2)
-  - Realm/Headers (1.0.2)
-  - RealmSwift (1.0.2):
-    - Realm (= 1.0.2)
-  - ShareSDK3 (3.3.2):
-    - ShareSDK3/ShareSDK (= 3.3.2)
-  - ShareSDK3/ShareSDK (3.3.2)
-  - ShareSDK3/ShareSDKPlatforms/QQ (3.3.2)
-  - ShareSDK3/ShareSDKPlatforms/WeChat (3.3.2)
-  - ShareSDK3/ShareSDKUI (3.3.2)
-  - SnapKit (0.15.0)
+  - R.swift (3.1.0):
+    - R.swift.Library (~> 3.0.2)
+  - R.swift.Library (3.0.2)
+  - Realm (2.0.2):
+    - Realm/Headers (= 2.0.2)
+  - Realm/Headers (2.0.2)
+  - RealmSwift (2.0.2):
+    - Realm (= 2.0.2)
+  - ShareSDK3 (3.4.2):
+    - ShareSDK3/ShareSDK (= 3.4.2)
+  - ShareSDK3/ShareSDK (3.4.2)
+  - ShareSDK3/ShareSDKPlatforms/QQ (3.4.2)
+  - ShareSDK3/ShareSDKPlatforms/WeChat (3.4.2)
+  - ShareSDK3/ShareSDKUI (3.4.2)
+  - SnapKit (3.0.2)
   - SVProgressHUD (2.0.3)
-  - SwiftyJSON (2.3.2)
+  - SwiftyJSON (3.1.1)
+  - Then (2.0.0)
   - UAProgressView (0.1.3)
-  - YYText (1.0.5)
+  - YYText (1.0.7)
 
 DEPENDENCIES:
   - Alamofire
-  - BTNavigationDropdownMenu
+  - BTNavigationDropdownMenu (from `https://github.com/PhamBaTho/BTNavigationDropdownMenu.git`, branch `swift-3.0`)
   - DZNEmptyDataSet
   - Locksmith
   - MBProgressHUD
-  - MCSwipeTableViewCell (~> 2.1.4)
+  - MCSwipeTableViewCell
   - MJRefresh
   - MOBFoundation
   - NJKWebViewProgress
@@ -50,34 +51,46 @@ DEPENDENCIES:
   - ShareSDK3/ShareSDKPlatforms/QQ
   - ShareSDK3/ShareSDKPlatforms/WeChat
   - ShareSDK3/ShareSDKUI
-  - SnapKit (~> 0.15.0)
+  - SnapKit
   - SVProgressHUD
   - SwiftyJSON
+  - Then
   - UAProgressView
   - YYText
 
+EXTERNAL SOURCES:
+  BTNavigationDropdownMenu:
+    :branch: swift-3.0
+    :git: https://github.com/PhamBaTho/BTNavigationDropdownMenu.git
+
+CHECKOUT OPTIONS:
+  BTNavigationDropdownMenu:
+    :commit: 2c08c8579cf7a53ecb3dbf578e6e1034080a9859
+    :git: https://github.com/PhamBaTho/BTNavigationDropdownMenu.git
+
 SPEC CHECKSUMS:
-  Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
-  BTNavigationDropdownMenu: 6876704a7a127aea257a65316c6b942ede51d163
+  Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
+  BTNavigationDropdownMenu: 093f3cbfad1572f2c222bdf8d17584d1e13380d4
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
-  Locksmith: a8ed41ac4c06506ea8cb199d8ec8a8d3d108eb2a
+  Locksmith: 310b4cc5031af5728bf4db5d4de547a5100c6a3b
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MCSwipeTableViewCell: 1b303e16c3a26b1982f3a68386e9b8c5fc8344c3
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
-  MOBFoundation: 6f2006b941bd4002e2689a638d04c6b535c4cc64
+  MOBFoundation: e213065e65eebd8146ab29d10a8445dc8f385091
   NJKWebViewProgress: f481fd424cb5ecc27eacae11b5397db92fba9a4d
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
-  R.swift: 0ef9c42dc6c94ac44a3c78a7639c73f855a8e159
-  R.swift.Library: 31a487b65381f37a7d203a6f1f935b43c9be35b0
-  Realm: 9d5c46a4d7d27958530a8dfc58f63a99e5c2cba3
-  RealmSwift: 82f3ac5e24530143dddfde2033acc0d308f27d96
-  ShareSDK3: c76cb96eb38e079952b8157071486d945faa2df2
-  SnapKit: 4962eed2ee18e48cbd2b2292fffc57efe7235f87
+  R.swift: 14400e5784224d1e4e59a8fc5549198c7e8fe360
+  R.swift.Library: fbdec16c9802ad104fc1ba53415dc190e6ec5c73
+  Realm: 0f5a194af0b7e6158b83db41b4ee1a00be7ddf1a
+  RealmSwift: 0eb5070d851cba7c66e841ca756d83609dc78bc8
+  ShareSDK3: 2fa975dd22937fc7de3f6b5d0c41a18ba0dd1661
+  SnapKit: 2e456761aa92d4d4067a7a5594c18769d451a8ad
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
-  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+  SwiftyJSON: f0be2e604f83e8405a624e9f891898bf6ed4e019
+  Then: 460074ffe907de3536d5e88f189dac5ef7cf0869
   UAProgressView: ce49aee47c14df6dc372f6fd57852f570ca97e6b
-  YYText: ac09660c9ccd9b817f409a20caa6f5587444d2ae
+  YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
-PODFILE CHECKSUM: 2938a8942f6005bec92dd984805458b2d2bb30d3
+PODFILE CHECKSUM: ed019a51cdb420a499811580237b384580b5bdb6
 
 COCOAPODS: 1.0.1

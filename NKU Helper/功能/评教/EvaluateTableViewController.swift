@@ -14,84 +14,75 @@ class EvaluateTableViewController: FunctionBaseTableViewController, FunctionDele
         super.viewDidLoad()
         self.tableView.emptyDataSetDelegate = self
         self.tableView.emptyDataSetSource = self
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EvaluateTableViewController.doWork), name: "evaluateSubmitSuccess", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(EvaluateTableViewController.doWork), name: NSNotification.Name(rawValue: "evaluateSubmitSuccess"), object: nil)
     }
     
     override func doWork() {
         SVProgressHUD.show()
-        let evaluater = NKNetworkEvaluate()
-        evaluater.delegate = self
-        evaluater.getEvaluateList()
+        NKNetworkCourseEvaluateHandler.getEvaluateList { (result) in
+            switch result {
+            case .success(let coursesToEvaluate):
+                SVProgressHUD.dismiss()
+                self.coursesToEvaluate = coursesToEvaluate
+                self.tableView.reloadData()
+            case .evaluateSystemNotOpen:
+                SVProgressHUD.dismiss()
+                self.present(ErrorHandler.alert(withError: ErrorHandler.EvaluateSystemNotOpen()), animated: true, completion: nil)
+            case .fail:
+                SVProgressHUD.dismiss()
+                self.present(ErrorHandler.alert(withError: ErrorHandler.NetworkError()), animated: true, completion: nil)
+            }
+        }
     }
     
     override func loginComplete() {
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: "loginComplete", object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "loginComplete"), object: nil)
         doWork()
     }
     
-    var classesToEvaluate = [ClassToEvaluate]()
+    var coursesToEvaluate = [CourseToEvaluate]()
     
     var selectedIndex: Int?
 
 }
 
-extension EvaluateTableViewController: NKNetworkEvaluateProtocol {
-    
-    func didNetworkFail() {
-        SVProgressHUD.dismiss()
-        self.presentViewController(ErrorHandler.alert(ErrorHandler.NetworkError()), animated: true, completion: nil)
-    }
-    
-    func evaluateSystemNotOpen() {
-        SVProgressHUD.dismiss()
-        self.presentViewController(ErrorHandler.alert(ErrorHandler.EvaluateSystemNotOpen()), animated: true, completion: nil)
-    }
-    
-    func didGetEvaluateList(lessonsToEvaluate: [ClassToEvaluate]) {
-        SVProgressHUD.dismiss()
-        self.classesToEvaluate = lessonsToEvaluate
-        self.tableView.reloadData()
-    }
-
-}
-
 extension EvaluateTableViewController {
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return classesToEvaluate.count
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return coursesToEvaluate.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.classToEvaluateCell.identifier) as! ClassToEvaluateTableViewCell
-        cell.classToEvaluate = classesToEvaluate[indexPath.row]
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.classToEvaluateCell.identifier) as! ClassToEvaluateTableViewCell
+        cell.courseToEvaluate = coursesToEvaluate[indexPath.row]
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as! ClassToEvaluateTableViewCell
-        selectedIndex = cell.classToEvaluate.index
-        if !cell.classToEvaluate.hasEvaluated {
-            self.performSegueWithIdentifier(R.segue.evaluateTableViewController.showEvaluateDetail.identifier, sender: nil)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! ClassToEvaluateTableViewCell
+        selectedIndex = cell.courseToEvaluate.index
+        if !cell.courseToEvaluate.hasEvaluated {
+            self.performSegue(withIdentifier: R.segue.evaluateTableViewController.showEvaluateDetail.identifier, sender: nil)
         }
         else {
-            self.presentViewController(ErrorHandler.alert(ErrorHandler.EvaluateHasDone()), animated: true, completion: nil)
+            self.present(ErrorHandler.alert(withError: ErrorHandler.EvaluateHasDone()), animated: true, completion: nil)
         }
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let typeInfo = R.segue.evaluateTableViewController.showEvaluateDetail(segue: segue) {
-            typeInfo.destinationViewController.classIndexToEvaluate = selectedIndex
+            typeInfo.destination.courseIndexToEvaluate = selectedIndex
         }
     }
     
 }
 
 extension EvaluateTableViewController: DZNEmptyDataSetDelegate, DZNEmptyDataSetSource {
-    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         return NSAttributedString(string: "没有评教信息", attributes: [NSForegroundColorAttributeName : UIColor(red: 160/255, green: 160/255, blue: 160/255, alpha: 1), NSFontAttributeName : UIFont(name: "HelveticaNeue", size: 15)!])
     }
 }

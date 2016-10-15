@@ -14,12 +14,13 @@ target 'NKU Helper' do
 	pod 'SVProgressHUD'
 	pod 'YYText'
 	pod 'SwiftyJSON'
-	pod 'SnapKit', '~> 0.15.0'
+	pod 'SnapKit'
 	pod 'R.swift'
     pod 'RealmSwift'
     pod 'Locksmith'
-    pod 'BTNavigationDropdownMenu'
-    pod 'MCSwipeTableViewCell', '~> 2.1.4'
+    pod 'BTNavigationDropdownMenu', :git => 'https://github.com/PhamBaTho/BTNavigationDropdownMenu.git', :branch => 'swift-3.0'
+    pod 'MCSwipeTableViewCell'
+    pod 'Then'
 
 	# 主模块(必须)
 	pod 'ShareSDK3'
@@ -37,5 +38,13 @@ target 'NKU Helper' do
 
 	post_install do |installer|
 	`find Pods -regex 'Pods/pop.*\\.h' -print0 | xargs -0 sed -i '' 's/\\(<\\)pop\\/\\(.*\\)\\(>\\)/\\"\\2\\"/'`
+    
 end
 
+post_install do |installer|
+    installer.pods_project.targets.each do |target|
+        target.build_configurations.each do |config|
+            config.build_settings['SWIFT_VERSION'] = '3.0'
+        end
+    end
+end

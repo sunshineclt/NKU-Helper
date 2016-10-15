@@ -10,16 +10,16 @@ import UIKit
 
 class SettingTableViewController: UITableViewController {
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 5
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch (section) {
         case 0:return "账户信息"
         case 1:return "偏好设置"
@@ -29,7 +29,7 @@ class SettingTableViewController: UITableViewController {
         }
     }
 
-    override func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         switch (section) {
         case 0:return "NKU Helper将会把您的密码存储在系统钥匙串中，请放心填写"
         case 2:return "NKU Helper本身是完全免费的，但开发和运营都需要投入。如果您觉得好用并想鼓励我们做得更好，不妨通过捐赠来支持我们的团队。无论多少，我们都非常感谢！"
@@ -39,7 +39,7 @@ class SettingTableViewController: UITableViewController {
         }
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0,2,3:
             return 1
@@ -52,55 +52,55 @@ class SettingTableViewController: UITableViewController {
         }
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
             do {
-                let user = try UserDetailInfoAgent.sharedInstance.getData()
-                let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.accountCell.identifier) as! AccountTableViewCell
-                let timeEnteringSchool = (user.timeEnteringSchool as NSString).substringWithRange(NSMakeRange(2, 2))
+                let user = try UserAgent.sharedInstance.getUserInfo()
+                let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.accountCell.identifier) as! AccountTableViewCell
+                let timeEnteringSchool = (user.timeEnteringSchool as NSString).substring(with: NSMakeRange(2, 2))
                 cell.nameLabel.text = user.name
                 cell.userIDLabel.text = user.userID
                 cell.departmentLabel.text = user.departmentAdmitted + (timeEnteringSchool as String) + "级本科生"
                 return cell
             } catch {
-                let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.addAccountCell.identifier)!
+                let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.addAccountCell.identifier)!
                 cell.textLabel?.text = "请先登录！"
                 cell.detailTextLabel?.text = "欢迎使用NKU Helper！"
                 return cell
             }
         case 1:
-            if indexPath.row == 0{
-                let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.choosePreferredColorCell.identifier)!
+            if indexPath.row == 0 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.choosePreferredColorCell.identifier)!
                 return cell
             }
             else {
-                let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.chooseClassTimeTablePreferenceCell.identifier)!
+                let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.chooseClassTimeTablePreferenceCell.identifier)!
                 return cell
             }
         case 2:
-            let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.supportGroupCell.identifier)!
+            let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.supportGroupCell.identifier)!
             cell.textLabel?.text = "请开发团队喝一杯咖啡"
             return cell
         case 3:
-            let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.aboutCell.identifier)!
+            let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.aboutCell.identifier)!
             cell.textLabel?.text = "关于"
             return cell
         default:
-            let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.aboutCell.identifier)!
+            let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.aboutCell.identifier)!
             return cell
         }
     }
 
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 2 {
-            let url = NSURL(string: "https://qr.alipay.com/ae5g3m2kfloxr5tte5")!
-            UIApplication.sharedApplication().openURL(url)
+            let url = URL(string: "https://qr.alipay.com/ae5g3m2kfloxr5tte5")!
+            UIApplication.shared.openURL(url)
         }
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        segue.destinationViewController.hidesBottomBarWhenPushed = true
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        segue.destination.hidesBottomBarWhenPushed = true
     }
     
 }

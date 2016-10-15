@@ -14,7 +14,7 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
 // MARK: View Property
     
     @IBOutlet var refreshBarButton: UIBarButtonItem!
-    var classTimeView:ClassTimeView {
+    var classTimeView: ClassTimeView {
         get {
             return ((self.view) as! ClassTimeView)
         }
@@ -23,8 +23,8 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
 // MARK: VC Life Cycle
     
     override func viewDidLoad() {
-
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.hasLogout), name: "logout", object: nil)
+        super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(self.hasLogout), name: NSNotification.Name(rawValue: "logout"), object: nil)
         
         self.classTimeView.classScrollView.delegate = self
         self.classTimeView.headScrollView.delegate = self
@@ -35,26 +35,25 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
         }
         else {
             switch NKNetworkIsLogin.isLoggedin() {
-            case .Loggedin:
+            case .loggedin:
                 self.classTimeView.loadBeginAnimation()
-                let courseHandler = NKNetworkLoadCourse()
+                let courseHandler = NKNetworkCourseHandler()
                 courseHandler.delegate = self
-                courseHandler.getAllCourse()
-            case .NotLoggedin:
-                let nc = NSNotificationCenter.defaultCenter()
-                nc.addObserver(self, selector: #selector(ClassTimeViewController.doRefresh), name: "loginComplete", object: nil)
-                self.performSegueWithIdentifier(R.segue.classTimeViewController.login, sender: nil)
-            case .UnKnown:
-                self.presentViewController(ErrorHandler.alert(ErrorHandler.NetworkError()), animated: true, completion: nil)
+                courseHandler.getAllCourses()
+            case .notLoggedin:
+                let nc = NotificationCenter.default
+                nc.addObserver(self, selector: #selector(ClassTimeViewController.doRefresh), name: NSNotification.Name(rawValue: "loginComplete"), object: nil)
+                self.performSegue(withIdentifier: R.segue.classTimeViewController.login, sender: nil)
+            case .unKnown:
+                self.present(ErrorHandler.alert(withError: ErrorHandler.NetworkError()), animated: true, completion: nil)
             }
         }
-        
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         classTimeView.drawClassTimeTableOnViewController(self)
-        NKNetworkInfoHandler.fetchNowWeek { (nowWeek😈, isVocation😈) in
-            guard let nowWeek = nowWeek😈, isVocation = isVocation😈 else {
+        NKNetworkInfoHandler.fetchNowWeek { (nowWeek, isVocation) in
+            guard let nowWeek = nowWeek, let isVocation = isVocation else {
                 return
             }
             if isVocation {
@@ -71,11 +70,11 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
     
 // MARK: 事件监听
     
-    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+    override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
         self.classTimeView.orientation = toInterfaceOrientation
     }
     
-    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
         self.classTimeView.drawBackground()
         self.classTimeView.drawClassTimeTableOnViewController(self)
     }
@@ -87,7 +86,7 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
 // MARK: NKNetworkLoadCourseDelegate
     
     func didSuccessToReceiveCourseData() {
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+        DispatchQueue.main.async(execute: { () -> Void in
             self.classTimeView.loadEndAnimation()
             
             // 给每个课程分配一个颜色
@@ -97,7 +96,7 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
                 isColorUsed.append(false)
             }
             do {
-                let colors = try Color.getColors()
+                let colors = try Color.getAllColors()
                 /**
                  为课程获取合适的颜色（若已有过，则使用那个颜色，否则随机出一个没用过的颜色）
                  
@@ -105,7 +104,7 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
                  
                  - returns: 合适的颜色
                  */
-                func findProperColorForCourse(classID: String) -> Color {
+                func findProperColorForCourse(_ classID: String) -> Color {
                     var count = 0
                     var colorIndex = Int(arc4random_uniform(UInt32(colors.count)))
                     
@@ -120,6 +119,7 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
                     return colors[colorIndex]
                 }
                 let courses = try Course.getAllCourses()
+                // TODO: 不是每次都要重新分配颜色吧？
                 for i in 0 ..< courses.count {
                     let current = courses[i]
                     let classID = current.ID
@@ -134,115 +134,128 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
     }
     
     func didFailToReceiveCourseData() {
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+        DispatchQueue.main.async(execute: { () -> Void in
             self.classTimeView.loadEndAnimation()
-            self.presentViewController(ErrorHandler.alert(ErrorHandler.NetworkError()), animated: true, completion: nil)
+            self.present(ErrorHandler.alert(withError: ErrorHandler.NetworkError()), animated: true, completion: nil)
         })
     }
     
-    func loadProgressUpdate(progress: Float) {
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+    func updateLoadProgress(_ progress: Float) {
+        DispatchQueue.main.async(execute: { () -> Void in
             self.classTimeView.loadAnimation(progress)
         })
     }
     
     func didFailToSaveCourseData() {
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+        DispatchQueue.main.async(execute: { () -> Void in
             self.classTimeView.loadEndAnimation()
-            self.presentViewController(ErrorHandler.alert(ErrorHandler.DataBaseError()), animated: true, completion: nil)
+            self.present(ErrorHandler.alert(withError: ErrorHandler.DataBaseError()), animated: true, completion: nil)
         })
     }
     
 // MARK: 事件监听
     
-    @IBAction func refreshClassTimeTable(sender: AnyObject) {
-        let alert = UIAlertController(title: "刷新课表确认", message: "若刷新课表，则原来记录的课程作业都会被删除，确定要继续吗？", preferredStyle: .Alert)
-        let yesAction = UIAlertAction(title: "是", style: .Destructive) { (action) in
+    @IBAction func refreshClassTimeTable(_ sender: AnyObject) {
+        let alert = UIAlertController(title: "刷新课表确认", message: "若刷新课表，则原来记录的课程作业都会被删除，确定要继续吗？", preferredStyle: .alert)
+        let yesAction = UIAlertAction(title: "是", style: .destructive) { (action) in
             self.doRefresh()
         }
-        let noAction = UIAlertAction(title: "否", style: .Cancel, handler: nil)
+        let noAction = UIAlertAction(title: "否", style: .cancel, handler: nil)
         alert.addAction(yesAction)
         alert.addAction(noAction)
-        presentViewController(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
     
     func doRefresh() {
-        let nc = NSNotificationCenter.defaultCenter()
+        let nc = NotificationCenter.default
         nc.removeObserver(self)
         do {
-            try UserAgent.sharedInstance.getData()
+            let _ = try UserAgent.sharedInstance.getUserInfo()
             SVProgressHUD.show()
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) { () -> Void in
+            DispatchQueue.global().async { () -> Void in
                 let loginResult = NKNetworkIsLogin.isLoggedin()
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                DispatchQueue.main.async(execute: { () -> Void in
                     SVProgressHUD.dismiss()
                     switch loginResult {
-                    case .Loggedin:
-                        self.refreshBarButton.enabled = false
+                    case .loggedin:
+                        self.refreshBarButton.isEnabled = false
                         self.classTimeView.loadBeginAnimation()
-                        let courseHandler = NKNetworkLoadCourse()
+                        let courseHandler = NKNetworkCourseHandler()
                         courseHandler.delegate = self
-                        courseHandler.getAllCourse()
-                        self.refreshBarButton.enabled = true
-                    case .NotLoggedin:
-                        let nc = NSNotificationCenter.defaultCenter()
-                        nc.addObserver(self, selector: #selector(ClassTimeViewController.doRefresh), name: "loginComplete", object: nil)
-                        self.performSegueWithIdentifier(R.segue.classTimeViewController.login, sender: nil)
-                    case .UnKnown:
-                        self.presentViewController(ErrorHandler.alert(ErrorHandler.NetworkError()), animated: true, completion: nil)
+                        courseHandler.getAllCourses()
+                        self.refreshBarButton.isEnabled = true
+                    case .notLoggedin:
+                        let nc = NotificationCenter.default
+                        nc.addObserver(self, selector: #selector(ClassTimeViewController.doRefresh), name: NSNotification.Name(rawValue: "loginComplete"), object: nil)
+                        self.performSegue(withIdentifier: R.segue.classTimeViewController.login, sender: nil)
+                    case .unKnown:
+                        self.present(ErrorHandler.alert(withError: ErrorHandler.NetworkError()), animated: true, completion: nil)
                     }
                 })
             }
         } catch {
-            self.presentViewController(ErrorHandler.alert(ErrorHandler.NotLoggedIn()), animated: true, completion: nil)
+            self.present(ErrorHandler.alert(withError: ErrorHandler.NotLoggedIn()), animated: true, completion: nil)
         }
 
     }
     
-    @IBAction func shareClassTable(sender: UIBarButtonItem) {
+    @IBAction func shareClassTable(_ sender: UIBarButtonItem) {
         
-        let columnWidth:CGFloat = UIScreen.mainScreen().bounds.width / 6
+        let columnWidth:CGFloat = UIScreen.main.bounds.width / 6
         
         // 获取星期的headView
         UIGraphicsBeginImageContextWithOptions(self.classTimeView.headScrollView.contentSize, false, 0)
         let savedHeadContentOffset = self.classTimeView.headScrollView.contentOffset
         let savedHeadFrame = self.classTimeView.headScrollView.frame
-        self.classTimeView.headScrollView.contentOffset = CGPointZero
-        self.classTimeView.headScrollView.frame = CGRectMake(0, 0, self.classTimeView.headScrollView.contentSize.width, self.classTimeView.headScrollView.contentSize.height)
-        self.classTimeView.headScrollView.layer.renderInContext(UIGraphicsGetCurrentContext()!)
-        let headImage = UIGraphicsGetImageFromCurrentImageContext()
+        self.classTimeView.headScrollView.contentOffset = CGPoint.zero
+        self.classTimeView.headScrollView.frame = CGRect(x: 0, y: 0, width: self.classTimeView.headScrollView.contentSize.width, height: self.classTimeView.headScrollView.contentSize.height)
+        self.classTimeView.headScrollView.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let headImage = UIGraphicsGetImageFromCurrentImageContext()!
         self.classTimeView.headScrollView.contentOffset = savedHeadContentOffset
         self.classTimeView.headScrollView.frame = savedHeadFrame
+        UIGraphicsEndImageContext()
+        
+        // 获取时间的view
+        UIGraphicsBeginImageContextWithOptions(self.classTimeView.timeScrollView.contentSize, false, 0)
+        let savedTimeContentOffset = self.classTimeView.timeScrollView.contentOffset
+        let savedTimeFrame = self.classTimeView.timeScrollView.frame
+        self.classTimeView.timeScrollView.contentOffset = CGPoint.zero
+        self.classTimeView.timeScrollView.frame = CGRect(x: 0, y: 0, width: self.classTimeView.timeScrollView.contentSize.width, height: self.classTimeView.timeScrollView.contentSize.height)
+        self.classTimeView.timeScrollView.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let timeImage = UIGraphicsGetImageFromCurrentImageContext()!
+        self.classTimeView.timeScrollView.contentOffset = savedTimeContentOffset
+        self.classTimeView.timeScrollView.frame = savedTimeFrame
         UIGraphicsEndImageContext()
         
         // 获取课程表
         UIGraphicsBeginImageContextWithOptions(self.classTimeView.classScrollView.contentSize, false, 0)
         let savedContentOffset = self.classTimeView.classScrollView.contentOffset
         let savedFrame = self.classTimeView.classScrollView.frame
-        self.classTimeView.classScrollView.contentOffset = CGPointZero
-        self.classTimeView.classScrollView.frame = CGRectMake(0, 0, self.classTimeView.classScrollView.contentSize.width, self.classTimeView.classScrollView.contentSize.height)
-        self.classTimeView.classScrollView.layer.renderInContext(UIGraphicsGetCurrentContext()!)
-        let classTimeTableImage = UIGraphicsGetImageFromCurrentImageContext()
+        self.classTimeView.classScrollView.contentOffset = CGPoint.zero
+        self.classTimeView.classScrollView.frame = CGRect(x: 0, y: 0, width: self.classTimeView.classScrollView.contentSize.width, height: self.classTimeView.classScrollView.contentSize.height)
+        self.classTimeView.classScrollView.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let classTimeTableImage = UIGraphicsGetImageFromCurrentImageContext()!
         self.classTimeView.classScrollView.contentOffset = savedContentOffset
         self.classTimeView.classScrollView.frame = savedFrame
         UIGraphicsEndImageContext()
         
         // 合并星期的HeadView和课程表
-        UIGraphicsBeginImageContextWithOptions(CGSizeMake(self.classTimeView.classScrollView.contentSize.width, self.classTimeView.classScrollView.contentSize.height+self.classTimeView.headScrollView.contentSize.height), false, 0)
-        headImage.drawAtPoint(CGPointZero)
-        classTimeTableImage.drawAtPoint(CGPointMake(0, self.classTimeView.headScrollView.contentSize.height))
-        CGContextSetFillColorWithColor(UIGraphicsGetCurrentContext(), UIColor.whiteColor().CGColor)
-        CGContextFillRect(UIGraphicsGetCurrentContext(), CGRectMake(0, 0, columnWidth, 30))
-        let combinedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: self.classTimeView.classScrollView.contentSize.width + self.classTimeView.timeScrollView.contentSize.width, height: self.classTimeView.classScrollView.contentSize.height + self.classTimeView.headScrollView.contentSize.height), false, 0)
+        headImage.draw(at: CGPoint(x: self.classTimeView.timeScrollView.contentSize.width, y: 0))
+        classTimeTableImage.draw(at: CGPoint(x: self.classTimeView.timeScrollView.contentSize.width, y: self.classTimeView.headScrollView.contentSize.height))
+        timeImage.draw(at: CGPoint(x: 0, y: self.classTimeView.headScrollView.contentSize.height))
+        UIGraphicsGetCurrentContext()?.setFillColor(UIColor.white.cgColor)
+        UIGraphicsGetCurrentContext()?.fill(CGRect(x: 0, y: 0, width: columnWidth, height: 30))
+        let combinedImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
         // 绘制缩略图
-        UIGraphicsBeginImageContextWithOptions(CGSizeMake(self.classTimeView.classScrollView.contentSize.width, self.classTimeView.classScrollView.contentSize.height+self.classTimeView.headScrollView.contentSize.height), false, 1)
-        headImage.drawAtPoint(CGPointZero)
-        classTimeTableImage.drawAtPoint(CGPointMake(0, self.classTimeView.headScrollView.contentSize.height))
-        CGContextSetFillColorWithColor(UIGraphicsGetCurrentContext(), UIColor.whiteColor().CGColor)
-        CGContextFillRect(UIGraphicsGetCurrentContext(), CGRectMake(0, 0, columnWidth, 30))
-        let thumbImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: self.classTimeView.classScrollView.contentSize.width, height: self.classTimeView.classScrollView.contentSize.height+self.classTimeView.headScrollView.contentSize.height), false, 1)
+        headImage.draw(at: CGPoint.zero)
+        classTimeTableImage.draw(at: CGPoint(x: 0, y: self.classTimeView.headScrollView.contentSize.height))
+        UIGraphicsGetCurrentContext()?.setFillColor(UIColor.white.cgColor)
+        UIGraphicsGetCurrentContext()?.fill(CGRect(x: 0, y: 0, width: columnWidth, height: 30))
+        let thumbImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
         // 制作跳转过去的信息
@@ -258,19 +271,19 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
         req.message = message
 
         let shareParams = NSMutableDictionary()
-        shareParams.SSDKSetupShareParamsByText("我的课程表", images: combinedImage, url: nil, title: "课程表", type: SSDKContentType.Image)
+        shareParams.ssdkSetupShareParams(byText: "我的课程表", images: combinedImage, url: nil, title: "课程表", type: SSDKContentType.image)
         ShareSDK.showShareActionSheet(nil, items: nil, shareParams: shareParams) { (state, platformType, userData, contentEntity, ErrorType, end) -> Void in
             switch (state) {
-            case .Success:
-                self.presentViewController(ErrorHandler.alertWithAlertTitle("分享成功", message: nil, cancelButtonTitle: "好"), animated: true, completion: nil)
-            case .Fail:
-                if platformType == .SubTypeQZone {
-                    self.presentViewController(ErrorHandler.alertWithAlertTitle("分享失败", message: "QQ空间暂不支持图片分享", cancelButtonTitle: "好"), animated: true, completion: nil)
+            case .success:
+                self.present(ErrorHandler.alertWith(title: "分享成功", message: nil, cancelButtonTitle: "好"), animated: true, completion: nil)
+            case .fail:
+                if platformType == .subTypeQZone {
+                    self.present(ErrorHandler.alertWith(title: "分享失败", message: "QQ空间暂时不支持图片分享", cancelButtonTitle: "好"), animated: true, completion: nil)
                 }
                 else {
-                    self.presentViewController(ErrorHandler.alert(ErrorHandler.shareFail()), animated: true, completion: nil)
+                    self.present(ErrorHandler.alert(withError: ErrorHandler.shareFail()), animated: true, completion: nil)
                 }
-            case .Cancel:
+            case .cancel:
                 break;
             default:
                 break;
@@ -280,17 +293,15 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
 
 // MARK: 页面间跳转
     
-    func showCourseDetail(tapGesture:UITapGestureRecognizer) {
-        
-        self.performSegueWithIdentifier(R.segue.classTimeViewController.showCourseDetail, sender: (tapGesture.view as! ClassView).courseTime)
-        
+    func showCourseDetail(_ tapGesture:UITapGestureRecognizer) {
+        self.performSegue(withIdentifier: R.segue.classTimeViewController.showCourseDetail, sender: (tapGesture.view as! ClassView).courseTime)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        segue.destinationViewController.hidesBottomBarWhenPushed = true
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        segue.destination.hidesBottomBarWhenPushed = true
         if let typeInfo = R.segue.classTimeViewController.showCourseDetail(segue: segue) {
             if let whichCourse = sender as? CourseTime {
-                typeInfo.destinationViewController.courseTime = whichCourse
+                typeInfo.destination.courseTime = whichCourse
             }
         }
     }
@@ -298,20 +309,16 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
 // MARK: 私有方法
     
     private func canDrawClassTimeTable() -> Bool {
-        
         do {
-            try UserAgent.sharedInstance.getData()
-            try Course.getAllCourses()
+            let _ = try UserAgent.sharedInstance.getUserInfo()
+            let _ = try Course.getAllCourses()
             return true
-        } catch StoragedDataError.NoUserInStorage {
-            self.presentViewController(ErrorHandler.alert(ErrorHandler.NotLoggedIn()), animated: true, completion: nil)
-            return false
-        } catch StoragedDataError.NoCoursesInStorage {
+        } catch StoragedDataError.noUserInStorage {
+            self.present(ErrorHandler.alert(withError: ErrorHandler.NotLoggedIn()), animated: true, completion: nil)
             return false
         } catch {
             return false
         }
-        
     }
 
 }
@@ -320,18 +327,18 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
 
 extension ClassTimeViewController: UIScrollViewDelegate {
     
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.tag == 1 {
             self.classTimeView.headScrollView.contentOffset.x = self.classTimeView.classScrollView.contentOffset.x
             self.classTimeView.timeScrollView.contentOffset.y = self.classTimeView.classScrollView.contentOffset.y
         }
     }
     
-    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         
     }
     
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         
     }
 }

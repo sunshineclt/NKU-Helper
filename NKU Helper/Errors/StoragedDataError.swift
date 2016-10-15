@@ -8,21 +8,17 @@
 
 import Foundation
 
-/**
- 存储错误
- 
- - NoCoursesInStorage: 存储中没有课程信息
- - NoUserInStorage:    存储中没有用户信息
- - NoPasswordInKeychain: 钥匙串中没有用户密码信息
- - NoColorInStorage:   存储中没有颜色信息
- - RealmError:           Realm错误
- */
-enum StoragedDataError: ErrorType {
-
-    case NoCoursesInStorage
-    case NoUserInStorage
-    case NoPasswordInKeychain
-    case NoColorInStorage
-    case RealmError
-    
+/// 存储错误
+///
+/// - noCoursesInStorage:   存储中没有课程信息
+/// - noUserInStorage:      存储中没有用户信息
+/// - noPasswordInKeychain: 钥匙串中没有用户密码信息
+/// - noColorInStorage:     存储中没有颜色信息
+/// - realmError:           Realm错误
+enum StoragedDataError: Error {
+    case noCoursesInStorage
+    case noUserInStorage
+    case noPasswordInKeychain
+    case noColorInStorage
+    case realmError
 }

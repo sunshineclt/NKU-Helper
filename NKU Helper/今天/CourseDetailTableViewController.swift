@@ -23,7 +23,7 @@ class CourseDetailTableViewController: UITableViewController {
 // MARK: Model
     var courseTime: CourseTime!
     var course: Course {
-        return courseTime.ownerCourse
+        return courseTime.forCourse!
     }
     var colors: Results<Color>!
     var tasks: Results<Task>!
@@ -37,8 +37,9 @@ class CourseDetailTableViewController: UITableViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         // 数据初始化
         do {
-            colors = try Color.getColors().filter("liked == true")
-            tasks = try Task.getTasksForCourse(course)
+            colors = try Color.getAllColors().filter("liked == true")
+            tasks = try Task.getTasks(forCourse: course)
+            // 找到目前选择的颜色并保存在nowChoosedColorIndexRow中
             for i in 0..<colors.count {
                 if let courseColor = course.color {
                     if courseColor.name == colors[i].name {
@@ -50,33 +51,27 @@ class CourseDetailTableViewController: UITableViewController {
             tasksNotificationToken = tasks.addNotificationBlock { [unowned self] (changes: RealmCollectionChange) in
                 guard let tableView = self.tableView else { return }
                 switch changes {
-                case .Initial:
-                    // Results are now populated and can be accessed without blocking the UI
+                case .initial:
                     tableView.reloadData()
                     break
-                case .Update(_, let deletions, let insertions, let modifications):
-                    // Query results have changed, so apply them to the UITableView
+                case .update(_, let deletions, let insertions, let modifications):
                     tableView.beginUpdates()
-                    tableView.insertRowsAtIndexPaths(insertions.map { NSIndexPath(forRow: $0, inSection: 1) },
-                        withRowAnimation: .Automatic)
-                    tableView.deleteRowsAtIndexPaths(deletions.map { NSIndexPath(forRow: $0, inSection: 1) },
-                        withRowAnimation: .Automatic)
-                    tableView.reloadRowsAtIndexPaths(modifications.map { NSIndexPath(forRow: $0, inSection: 1) },
-                        withRowAnimation: .Automatic)
+                    tableView.insertRows(at: insertions.map{ IndexPath(row: $0, section: 1) }, with: .automatic)
+                    tableView.deleteRows(at: deletions.map{ IndexPath(row: $0, section: 1) }, with: .automatic)
+                    tableView.reloadRows(at: modifications.map{ IndexPath(row: $0, section: 1) }, with: .automatic)
                     tableView.endUpdates()
                     break
-                case .Error(let error):
-                    // An error occurred while opening the Realm file on the background worker thread
+                case .error(let error):
                     fatalError("\(error)")
                     break
                 }
             }
         } catch {
-            presentViewController(ErrorHandler.alert(ErrorHandler.DataBaseError()), animated: true, completion: nil)
+            present(ErrorHandler.alert(withError: ErrorHandler.DataBaseError()), animated: true, completion: nil)
         }
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(animated)
         do {
             let realm = try Realm()
@@ -93,16 +88,16 @@ class CourseDetailTableViewController: UITableViewController {
     
 // MARK: 事件监听
     
-    @IBAction func addTaskOfCourse(sender: UIBarButtonItem) {
-        performSegueWithIdentifier(R.segue.courseDetailTableViewController.addTask, sender: course)
+    @IBAction func addTaskOfCourse(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: R.segue.courseDetailTableViewController.addTask, sender: course)
     }
     
 // MARK: 页面间跳转
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let typeInfo = R.segue.courseDetailTableViewController.addTask(segue: segue) {
-            let controller = typeInfo.destinationViewController.childViewControllers[0] as! NewTaskTableViewController
-            controller.taskType = TaskType.Course
+            let controller = typeInfo.destination.childViewControllers[0] as! NewTaskTableViewController
+            controller.taskType = TaskType.course
             controller.forCourseTime = courseTime
         }
     }
@@ -113,11 +108,11 @@ class CourseDetailTableViewController: UITableViewController {
 
 extension CourseDetailTableViewController {
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case COURSE_INFO_SECTION:return "课程信息"
         case COURSE_TASK_SECTION:return "课程任务"
@@ -126,7 +121,7 @@ extension CourseDetailTableViewController {
         }
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case COURSE_INFO_SECTION:
             return 4 + 3 * course.courseTimes.count
@@ -145,10 +140,9 @@ extension CourseDetailTableViewController {
         }
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == COURSE_INFO_SECTION {
-            let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.courseDetailCell.identifier, forIndexPath: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.courseDetailCell.identifier, for: indexPath)
             switch indexPath.row {
             case 0:
                 cell.textLabel?.text = "选课序号"
@@ -171,7 +165,7 @@ extension CourseDetailTableViewController {
                     cell.detailTextLabel?.text = courseTime.classroom
                 case 1:
                     cell.textLabel?.text = "课时\(index / 3 + 1)上课时间"
-                    cell.detailTextLabel?.text = CalendarHelper.getWeekdayStringFromWeekdayInt(courseTime.weekday) + " " + courseTime.weekOddEven + " " + "\(courseTime.startSection)-\(courseTime.endSection)节"
+                    cell.detailTextLabel?.text = CalendarHelper.getWeekdayString(fromWeekday: courseTime.weekday) + " " + courseTime.weekOddEven + " " + "\(courseTime.startSection)-\(courseTime.endSection)节"
                 case 2:
                     cell.textLabel?.text = "课时\(index / 3 + 1)周数"
                     cell.detailTextLabel?.text = "\(courseTime.startWeek)-\(courseTime.endWeek)周"
@@ -182,39 +176,39 @@ extension CourseDetailTableViewController {
             return cell
         }
         if indexPath.section == COURSE_TASK_SECTION {
-            let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.courseTaskCell.identifier) as! CourseTaskCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.courseTaskCell.identifier) as! CourseTaskCell
             cell.task = tasks[indexPath.row]
             configureCell(cell, atIndexPath: indexPath, forTask: tasks[indexPath.row])
             return cell
         }
         if indexPath.section == COURSE_COLOR_SECTION {
-            let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.courseColorCell.identifier) as! ColorChooseTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.courseColorCell.identifier) as! ColorChooseTableViewCell
             let color = colors[indexPath.row]
             cell.colorView.backgroundColor = color.convertToUIColor()
-            cell.accessoryType = indexPath.row == nowChoosedColorIndexRow ? .Checkmark : .None
+            cell.accessoryType = indexPath.row == nowChoosedColorIndexRow ? .checkmark : .none
             return cell
         }
         return UITableViewCell()
     }
     
-    private func configureCell(cell: MCSwipeTableViewCell, atIndexPath indexPath: NSIndexPath, forTask task: Task) {
+    private func configureCell(_ cell: MCSwipeTableViewCell, atIndexPath indexPath: IndexPath, forTask task: Task) {
         let checkView = UIImageView(image: R.image.check())
-        checkView.contentMode = .Center
-        cell.setSwipeGestureWithView(checkView, color: UIColor(red: 85/255, green: 213/255, blue: 80/255, alpha: 1), mode: .Exit, state: .State3) { (cell, state, mode) in
+        checkView.contentMode = .center
+        cell.setSwipeGestureWith(checkView, color: UIColor(red: 85/255, green: 213/255, blue: 80/255, alpha: 1), mode: .exit, state: .state3) { (cell, state, mode) in
             do {
                 try task.toggleDone()
             } catch {
-                self.presentViewController(ErrorHandler.alert(ErrorHandler.DataBaseError()), animated: true, completion: nil)
+                self.present(ErrorHandler.alert(withError: ErrorHandler.DataBaseError()), animated: true, completion: nil)
             }
         }
         cell.defaultColor = tableView.backgroundView?.backgroundColor
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == COURSE_COLOR_SECTION {
             let preChoosedColorIndexRow = nowChoosedColorIndexRow
             nowChoosedColorIndexRow = indexPath.row
-            self.tableView.reloadRowsAtIndexPaths([indexPath, NSIndexPath(forRow: preChoosedColorIndexRow, inSection: COURSE_COLOR_SECTION)], withRowAnimation: .None)
+            self.tableView.reloadRows(at: [indexPath, IndexPath(row: preChoosedColorIndexRow!, section: COURSE_COLOR_SECTION)], with: .none)
         }
     }
 

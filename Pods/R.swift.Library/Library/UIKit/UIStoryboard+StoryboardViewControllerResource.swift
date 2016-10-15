@@ -3,7 +3,8 @@
 //  R.swift.Library
 //
 //  Created by Mathijs Kadijk on 13-03-16.
-//  Copyright © 2016 Mathijs Kadijk. All rights reserved.
+//  From: https://github.com/mac-cain13/R.swift.Library
+//  License: MIT License
 //
 
 import Foundation
@@ -17,7 +18,7 @@ public extension UIStoryboard {
 
    - returns: The view controller corresponding to the specified resource (R.storyboard.*.*). If no view controller is associated, this method throws an exception.
    */
-  public func instantiateViewController<ViewControllerResource: StoryboardViewControllerResourceType>(resource: ViewControllerResource) -> ViewControllerResource.ViewControllerType?  {
-    return instantiateViewControllerWithIdentifier(resource.identifier) as? ViewControllerResource.ViewControllerType
+  public func instantiateViewController<ViewControllerResource: StoryboardViewControllerResourceType>(withResource resource: ViewControllerResource) -> ViewControllerResource.ViewControllerType?  {
+    return self.instantiateViewController(withIdentifier: resource.identifier) as? ViewControllerResource.ViewControllerType
   }
 }

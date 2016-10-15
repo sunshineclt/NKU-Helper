@@ -12,12 +12,6 @@
 		E90AE2381A8F813900AD0D78 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E90AE2371A8F813900AD0D78 /* Images.xcassets */; };
 		E90E87241C40E58B00E6BE3A /* NKNetworkBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90E87231C40E58B00E6BE3A /* NKNetworkBase.swift */; };
 		E90E87261C40E5C700E6BE3A /* NKNetworkIsLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90E87251C40E5C700E6BE3A /* NKNetworkIsLogin.swift */; };
-		E90E872B1C40FCE700E6BE3A /* SelectCourseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90E872A1C40FCE700E6BE3A /* SelectCourseTableViewController.swift */; };
-		E90E872D1C41002E00E6BE3A /* NKNetworkSelectCourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90E872C1C41002E00E6BE3A /* NKNetworkSelectCourse.swift */; };
-		E90E87431C4139FD00E6BE3A /* NKNetworkSearchCourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90E87421C4139FD00E6BE3A /* NKNetworkSearchCourse.swift */; };
-		E91D2E561C846778002605F8 /* SearchCourseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91D2E551C846778002605F8 /* SearchCourseTableViewController.swift */; };
-		E91D2E581C8468B6002605F8 /* SearchCourseDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91D2E571C8468B6002605F8 /* SearchCourseDetailTableViewController.swift */; };
-		E91D2E5A1C846CA1002605F8 /* ClassInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91D2E591C846CA1002605F8 /* ClassInfoTableViewCell.swift */; };
 		E91E5F4F1A90FAED009F3B2B /* GradeShowerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91E5F4E1A90FAED009F3B2B /* GradeShowerTableViewController.swift */; };
 		E91E5F551A9103DF009F3B2B /* GradeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91E5F541A9103DF009F3B2B /* GradeCell.swift */; };
 		E926CD751AB33B1700A5076A /* NKU.plist in Resources */ = {isa = PBXBuildFile; fileRef = E926CD741AB33B1700A5076A /* NKU.plist */; };
@@ -33,7 +27,7 @@
 		E93083A31D3A8F4D000FC8E8 /* TimeScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93083A21D3A8F4D000FC8E8 /* TimeScheduleView.swift */; };
 		E93083A61D3B6B6A000FC8E8 /* ClassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93083A51D3B6B6A000FC8E8 /* ClassView.swift */; };
 		E93083AC1D3BB815000FC8E8 /* TestTimeSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E93083AB1D3BB815000FC8E8 /* TestTimeSearch.storyboard */; };
-		E93083B21D3BBFA7000FC8E8 /* NKNetworkFetchTestTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93083B11D3BBFA7000FC8E8 /* NKNetworkFetchTestTime.swift */; };
+		E93083B21D3BBFA7000FC8E8 /* NKNetworkTestTimeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93083B11D3BBFA7000FC8E8 /* NKNetworkTestTimeHandler.swift */; };
 		E93083B61D3C76D2000FC8E8 /* FunctionBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93083B51D3C76D2000FC8E8 /* FunctionBaseViewController.swift */; };
 		E93083B81D3C7A5C000FC8E8 /* FunctionBaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93083B71D3C7A5C000FC8E8 /* FunctionBaseTableViewController.swift */; };
 		E93083BA1D3CA734000FC8E8 /* GPACalculateMethodTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93083B91D3CA734000FC8E8 /* GPACalculateMethodTableViewController.swift */; };
@@ -45,27 +39,26 @@
 		E940C2D01D4F13BB0075A040 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E940C2CF1D4F13BB0075A040 /* Launch Screen.storyboard */; };
 		E940C2D41D4F18860075A040 /* 南开表情包.png in Resources */ = {isa = PBXBuildFile; fileRef = E940C2D31D4F18860075A040 /* 南开表情包.png */; };
 		E94286501AA4CD2A00A4242C /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E942864F1AA4CD2A00A4242C /* LogInViewController.swift */; };
-		E94286581AA5500C00A4242C /* SaveAccountInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94286571AA5500C00A4242C /* SaveAccountInfoViewController.swift */; };
+		E94286581AA5500C00A4242C /* AccountLogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94286571AA5500C00A4242C /* AccountLogInViewController.swift */; };
 		E9462A461B24A1E00002C21A /* TestTimeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9462A451B24A1E00002C21A /* TestTimeTableViewController.swift */; };
 		E9462A481B24A6480002C21A /* TestTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9462A471B24A6480002C21A /* TestTimeTableViewCell.swift */; };
 		E94BC1FA1C476C5000BD9726 /* NKNetworkValidateCodeGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94BC1F91C476C5000BD9726 /* NKNetworkValidateCodeGetter.swift */; };
 		E94BD9801BAC06E300B76E03 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94BD97F1BAC06E300B76E03 /* Course.swift */; };
+		E9536B531DB081190018D10E /* NKRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9536B521DB081190018D10E /* NKRouter.swift */; };
 		E95861601D4CED3F001E8026 /* CourseTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = E958615F1D4CED3F001E8026 /* CourseTime.swift */; };
 		E95B0F2D1C83E18700448F97 /* CourseSelecting.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95B0F2C1C83E18700448F97 /* CourseSelecting.swift */; };
-		E95B0F2F1C83F0B800448F97 /* NKNetworkDepartCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95B0F2E1C83F0B800448F97 /* NKNetworkDepartCode.swift */; };
 		E95F93C61C4E6CD100CEEC12 /* Grade.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F93C51C4E6CD100CEEC12 /* Grade.swift */; };
-		E95F93D71C4FB23900CEEC12 /* UserDetailInfoAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F93D61C4FB23900CEEC12 /* UserDetailInfoAgent.swift */; };
-		E95F93D91C4FC04500CEEC12 /* NKNetworkFetchUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F93D81C4FC04500CEEC12 /* NKNetworkFetchUserInfo.swift */; };
+		E95F93D91C4FC04500CEEC12 /* NKNetworkUserInfoHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F93D81C4FC04500CEEC12 /* NKNetworkUserInfoHandler.swift */; };
 		E95F93DD1C50CEAA00CEEC12 /* EvaluateTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F93DC1C50CEAA00CEEC12 /* EvaluateTableViewController.swift */; };
-		E95F93DF1C50CF2900CEEC12 /* NKNetworkEvaluate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F93DE1C50CF2900CEEC12 /* NKNetworkEvaluate.swift */; };
-		E95F93E11C50EF2800CEEC12 /* ClassToEvaluate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F93E01C50EF2800CEEC12 /* ClassToEvaluate.swift */; };
+		E95F93DF1C50CF2900CEEC12 /* NKNetworkCourseEvaluateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F93DE1C50CF2900CEEC12 /* NKNetworkCourseEvaluateHandler.swift */; };
+		E95F93E11C50EF2800CEEC12 /* CourseToEvaluate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F93E01C50EF2800CEEC12 /* CourseToEvaluate.swift */; };
 		E95F93E31C50F7E100CEEC12 /* ClassToEvaluateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F93E21C50F7E100CEEC12 /* ClassToEvaluateTableViewCell.swift */; };
 		E95F93E51C50FAEB00CEEC12 /* EvaluateDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F93E41C50FAEB00CEEC12 /* EvaluateDetailTableViewController.swift */; };
 		E95F93E71C50FE8800CEEC12 /* EvaluateDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F93E61C50FE8800CEEC12 /* EvaluateDetailTableViewCell.swift */; };
-		E95F93E91C51024800CEEC12 /* NKNetworkEvaluateDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F93E81C51024800CEEC12 /* NKNetworkEvaluateDetail.swift */; };
+		E95F93E91C51024800CEEC12 /* NKNetworkEvaluateDetailHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F93E81C51024800CEEC12 /* NKNetworkEvaluateDetailHandler.swift */; };
 		E95F93EB1C512B8B00CEEC12 /* DetailEvaluateInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F93EA1C512B8B00CEEC12 /* DetailEvaluateInfo.swift */; };
 		E95F93ED1C51377300CEEC12 /* EvaluateOpinionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F93EC1C51377300CEEC12 /* EvaluateOpinionTableViewCell.swift */; };
-		E95F93EF1C51394800CEEC12 /* NKNetworkEvaluateSubmit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F93EE1C51394800CEEC12 /* NKNetworkEvaluateSubmit.swift */; };
+		E95F93EF1C51394800CEEC12 /* NKNetworkEvaluateSubmitHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F93EE1C51394800CEEC12 /* NKNetworkEvaluateSubmitHandler.swift */; };
 		E9634EBF1D38E3B900F30FA0 /* NKNetworkInfoHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9634EBE1D38E3B900F30FA0 /* NKNetworkInfoHandler.swift */; };
 		E96419D21AA8971B00397691 /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96419D11AA8971B00397691 /* AccountTableViewCell.swift */; };
 		E96419D41AA8BC9800397691 /* DetailAccountInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96419D31AA8BC9800397691 /* DetailAccountInfoTableViewController.swift */; };
@@ -80,32 +73,30 @@
 		E9693E4A1D32932500D6135B /* NotiCenter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9693E491D32932500D6135B /* NotiCenter.storyboard */; };
 		E9693E4C1D32945F00D6135B /* Grade.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9693E4B1D32945F00D6135B /* Grade.storyboard */; };
 		E9693E4E1D3294FA00D6135B /* Evaluate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9693E4D1D3294FA00D6135B /* Evaluate.storyboard */; };
-		E9693E501D32955500D6135B /* SelectCourse.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9693E4F1D32955500D6135B /* SelectCourse.storyboard */; };
 		E96B10E01D49A45A0081EDFD /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96B10DF1D49A45A0081EDFD /* TodayViewController.swift */; };
 		E96B10E21D4A02F40081EDFD /* GeneralTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96B10E11D4A02F40081EDFD /* GeneralTaskCell.swift */; };
 		E96B10E41D4A04670081EDFD /* CourseTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96B10E31D4A04670081EDFD /* CourseTaskCell.swift */; };
 		E96B10E81D4A4A900081EDFD /* TodayCourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96B10E71D4A4A900081EDFD /* TodayCourseCell.swift */; };
 		E97176761B1488CA004DADB2 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97176751B1488CA004DADB2 /* AboutViewController.swift */; };
 		E97176781B149292004DADB2 /* CourseDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97176771B149292004DADB2 /* CourseDetailTableViewController.swift */; };
-		E9762F701C48DE77002CEF03 /* NKNetworkFetchNoti.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9762F6F1C48DE77002CEF03 /* NKNetworkFetchNoti.swift */; };
+		E9762F701C48DE77002CEF03 /* NKNetworkNotiHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9762F6F1C48DE77002CEF03 /* NKNetworkNotiHandler.swift */; };
 		E97648D01D48429F005326EE /* ClassTimePreferenceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97648CF1D48429F005326EE /* ClassTimePreferenceTableViewController.swift */; };
 		E97648D21D484405005326EE /* CourseLoadMethodAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97648D11D484405005326EE /* CourseLoadMethodAgent.swift */; };
 		E977742A1D4B59B3008D768E /* NewTaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97774291D4B59B3008D768E /* NewTaskTableViewController.swift */; };
 		E977742C1D4B59D0008D768E /* DatePickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E977742B1D4B59D0008D768E /* DatePickerTableViewController.swift */; };
-		E981C12D1C84A02D005CBF4E /* ClassModificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E981C12C1C84A02D005CBF4E /* ClassModificationTableViewCell.swift */; };
 		E984C7701D50D1E400C0BBC8 /* VersionInfoAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E984C76F1D50D1E400C0BBC8 /* VersionInfoAgent.swift */; };
 		E984C7711D50D58B00C0BBC8 /* Colors.realm in Resources */ = {isa = PBXBuildFile; fileRef = E984C76C1D50D19A00C0BBC8 /* Colors.realm */; };
 		E988B5371AB005DF006818FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E988B5361AB005DF006818FA /* Main.storyboard */; };
 		E98E2B471C4638C800CF82BE /* UserDefaultsStoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98E2B461C4638C800CF82BE /* UserDefaultsStoreProtocol.swift */; };
 		E98E2B491C4639BB00CF82BE /* UserAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98E2B481C4639BB00CF82BE /* UserAgent.swift */; };
-		E98E2B4E1C46469700CF82BE /* CourseAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98E2B4D1C46469700CF82BE /* CourseAgent.swift */; };
-		E98E2B501C46492900CF82BE /* NKNetworkLoadCourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98E2B4F1C46492900CF82BE /* NKNetworkLoadCourse.swift */; };
+		E98E2B4E1C46469700CF82BE /* CourseReloadedAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98E2B4D1C46469700CF82BE /* CourseReloadedAgent.swift */; };
+		E98E2B501C46492900CF82BE /* NKNetworkCourseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98E2B4F1C46492900CF82BE /* NKNetworkCourseHandler.swift */; };
 		E98E2B8B1C46ABE400CF82BE /* ClassTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98E2B8A1C46ABE400CF82BE /* ClassTimeView.swift */; };
 		E98F94D61AA3180700885992 /* ClassTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98F94D51AA3180700885992 /* ClassTimeViewController.swift */; };
 		E98F94D81AA318EF00885992 /* FunctionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98F94D71AA318EF00885992 /* FunctionTableViewController.swift */; };
 		E98F94DA1AA3191F00885992 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98F94D91AA3191F00885992 /* SettingTableViewController.swift */; };
 		E9927C061D2E463900DE284C /* StoragedDataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9927C051D2E463900DE284C /* StoragedDataError.swift */; };
-		E9929C9B1C49068000D508C8 /* NKNetworkFetchGrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9929C9A1C49068000D508C8 /* NKNetworkFetchGrade.swift */; };
+		E9929C9B1C49068000D508C8 /* NKNetworkGradeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9929C9A1C49068000D508C8 /* NKNetworkGradeHandler.swift */; };
 		E995E08B1D3F6369003FDF56 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = E995E08A1D3F6369003FDF56 /* R.generated.swift */; };
 		E997E82A1D44945200014517 /* JSPatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E997E8291D44945200014517 /* JSPatch.framework */; };
 		E99D67041C16C8CF00E27B08 /* NotiCenterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99D67031C16C8CF00E27B08 /* NotiCenterTableViewController.swift */; };
@@ -118,7 +109,7 @@
 		E9C2ECC01B183E8B005C1F5F /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9C2ECBF1B183E8B005C1F5F /* MessageUI.framework */; };
 		E9C3EF5A1BB2BCB600D1C91D /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C3EF591BB2BCB600D1C91D /* ErrorHandler.swift */; };
 		E9CA9C901C4272BC0030AF49 /* UserDefaultsBaseStoreAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CA9C8F1C4272BC0030AF49 /* UserDefaultsBaseStoreAgent.swift */; };
-		E9CA9C961C4274F60030AF49 /* NKNetworkLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CA9C951C4274F60030AF49 /* NKNetworkLogin.swift */; };
+		E9CA9C961C4274F60030AF49 /* NKNetworkLoginHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CA9C951C4274F60030AF49 /* NKNetworkLoginHandler.swift */; };
 		E9CCF4B81ABC653E002076F2 /* ColorChooseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CCF4B71ABC653E002076F2 /* ColorChooseTableViewController.swift */; };
 		E9CCF4BA1ABC6578002076F2 /* ColorChooseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CCF4B91ABC6578002076F2 /* ColorChooseTableViewCell.swift */; };
 		E9CDFD251D4EFA5500EADB4C /* ColorPickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CDFD241D4EFA5500EADB4C /* ColorPickerTableViewController.swift */; };
@@ -171,14 +162,8 @@
 		E90AE2371A8F813900AD0D78 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E90E87231C40E58B00E6BE3A /* NKNetworkBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkBase.swift; sourceTree = "<group>"; };
 		E90E87251C40E5C700E6BE3A /* NKNetworkIsLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkIsLogin.swift; sourceTree = "<group>"; };
-		E90E872A1C40FCE700E6BE3A /* SelectCourseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectCourseTableViewController.swift; sourceTree = "<group>"; };
-		E90E872C1C41002E00E6BE3A /* NKNetworkSelectCourse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkSelectCourse.swift; sourceTree = "<group>"; };
-		E90E87421C4139FD00E6BE3A /* NKNetworkSearchCourse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkSearchCourse.swift; sourceTree = "<group>"; };
-		E91D2E551C846778002605F8 /* SearchCourseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCourseTableViewController.swift; sourceTree = "<group>"; };
-		E91D2E571C8468B6002605F8 /* SearchCourseDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCourseDetailTableViewController.swift; sourceTree = "<group>"; };
-		E91D2E591C846CA1002605F8 /* ClassInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassInfoTableViewCell.swift; sourceTree = "<group>"; };
 		E91E5F4A1A90FA9E009F3B2B /* NKU Helper-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NKU Helper-Bridging-Header.h"; sourceTree = "<group>"; };
-		E91E5F4E1A90FAED009F3B2B /* GradeShowerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeShowerTableViewController.swift; sourceTree = "<group>"; };
+		E91E5F4E1A90FAED009F3B2B /* GradeShowerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = GradeShowerTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E91E5F541A9103DF009F3B2B /* GradeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeCell.swift; sourceTree = "<group>"; };
 		E926CD741AB33B1700A5076A /* NKU.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = NKU.plist; sourceTree = "<group>"; };
 		E92B2D001B48DB89008825A3 /* CalendarHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
@@ -194,7 +179,7 @@
 		E93083A21D3A8F4D000FC8E8 /* TimeScheduleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeScheduleView.swift; sourceTree = "<group>"; };
 		E93083A51D3B6B6A000FC8E8 /* ClassView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassView.swift; sourceTree = "<group>"; };
 		E93083AB1D3BB815000FC8E8 /* TestTimeSearch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TestTimeSearch.storyboard; sourceTree = "<group>"; };
-		E93083B11D3BBFA7000FC8E8 /* NKNetworkFetchTestTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkFetchTestTime.swift; sourceTree = "<group>"; };
+		E93083B11D3BBFA7000FC8E8 /* NKNetworkTestTimeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkTestTimeHandler.swift; sourceTree = "<group>"; };
 		E93083B51D3C76D2000FC8E8 /* FunctionBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunctionBaseViewController.swift; sourceTree = "<group>"; };
 		E93083B71D3C7A5C000FC8E8 /* FunctionBaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunctionBaseTableViewController.swift; sourceTree = "<group>"; };
 		E93083B91D3CA734000FC8E8 /* GPACalculateMethodTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPACalculateMethodTableViewController.swift; sourceTree = "<group>"; };
@@ -207,31 +192,30 @@
 		E940C2D31D4F18860075A040 /* 南开表情包.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "南开表情包.png"; sourceTree = "<group>"; };
 		E940C2D91D4FA5C00075A040 /* NKU Helper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "NKU Helper.entitlements"; sourceTree = "<group>"; };
 		E942864F1AA4CD2A00A4242C /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
-		E94286571AA5500C00A4242C /* SaveAccountInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveAccountInfoViewController.swift; sourceTree = "<group>"; };
-		E9462A451B24A1E00002C21A /* TestTimeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestTimeTableViewController.swift; sourceTree = "<group>"; };
+		E94286571AA5500C00A4242C /* AccountLogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountLogInViewController.swift; sourceTree = "<group>"; };
+		E9462A451B24A1E00002C21A /* TestTimeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = TestTimeTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E9462A471B24A6480002C21A /* TestTimeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestTimeTableViewCell.swift; sourceTree = "<group>"; };
 		E94BC1F91C476C5000BD9726 /* NKNetworkValidateCodeGetter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkValidateCodeGetter.swift; sourceTree = "<group>"; };
 		E94BD97F1BAC06E300B76E03 /* Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
+		E9536B521DB081190018D10E /* NKRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKRouter.swift; sourceTree = "<group>"; };
 		E958615F1D4CED3F001E8026 /* CourseTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseTime.swift; sourceTree = "<group>"; };
 		E95B0F2C1C83E18700448F97 /* CourseSelecting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseSelecting.swift; sourceTree = "<group>"; };
-		E95B0F2E1C83F0B800448F97 /* NKNetworkDepartCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkDepartCode.swift; sourceTree = "<group>"; };
 		E95F93C51C4E6CD100CEEC12 /* Grade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grade.swift; sourceTree = "<group>"; };
-		E95F93D61C4FB23900CEEC12 /* UserDetailInfoAgent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailInfoAgent.swift; sourceTree = "<group>"; };
-		E95F93D81C4FC04500CEEC12 /* NKNetworkFetchUserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkFetchUserInfo.swift; sourceTree = "<group>"; };
+		E95F93D81C4FC04500CEEC12 /* NKNetworkUserInfoHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkUserInfoHandler.swift; sourceTree = "<group>"; };
 		E95F93DC1C50CEAA00CEEC12 /* EvaluateTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EvaluateTableViewController.swift; sourceTree = "<group>"; };
-		E95F93DE1C50CF2900CEEC12 /* NKNetworkEvaluate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkEvaluate.swift; sourceTree = "<group>"; };
-		E95F93E01C50EF2800CEEC12 /* ClassToEvaluate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassToEvaluate.swift; sourceTree = "<group>"; };
+		E95F93DE1C50CF2900CEEC12 /* NKNetworkCourseEvaluateHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkCourseEvaluateHandler.swift; sourceTree = "<group>"; };
+		E95F93E01C50EF2800CEEC12 /* CourseToEvaluate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseToEvaluate.swift; sourceTree = "<group>"; };
 		E95F93E21C50F7E100CEEC12 /* ClassToEvaluateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassToEvaluateTableViewCell.swift; sourceTree = "<group>"; };
-		E95F93E41C50FAEB00CEEC12 /* EvaluateDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EvaluateDetailTableViewController.swift; sourceTree = "<group>"; };
+		E95F93E41C50FAEB00CEEC12 /* EvaluateDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = EvaluateDetailTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E95F93E61C50FE8800CEEC12 /* EvaluateDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EvaluateDetailTableViewCell.swift; sourceTree = "<group>"; };
-		E95F93E81C51024800CEEC12 /* NKNetworkEvaluateDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkEvaluateDetail.swift; sourceTree = "<group>"; };
+		E95F93E81C51024800CEEC12 /* NKNetworkEvaluateDetailHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkEvaluateDetailHandler.swift; sourceTree = "<group>"; };
 		E95F93EA1C512B8B00CEEC12 /* DetailEvaluateInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailEvaluateInfo.swift; sourceTree = "<group>"; };
 		E95F93EC1C51377300CEEC12 /* EvaluateOpinionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EvaluateOpinionTableViewCell.swift; sourceTree = "<group>"; };
-		E95F93EE1C51394800CEEC12 /* NKNetworkEvaluateSubmit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkEvaluateSubmit.swift; sourceTree = "<group>"; };
+		E95F93EE1C51394800CEEC12 /* NKNetworkEvaluateSubmitHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkEvaluateSubmitHandler.swift; sourceTree = "<group>"; };
 		E961C83E1D2EAE740066C9C3 /* 编码规范.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "编码规范.md"; sourceTree = "<group>"; };
 		E9634EBE1D38E3B900F30FA0 /* NKNetworkInfoHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkInfoHandler.swift; sourceTree = "<group>"; };
 		E96419D11AA8971B00397691 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AccountTableViewCell.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		E96419D31AA8BC9800397691 /* DetailAccountInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailAccountInfoTableViewController.swift; sourceTree = "<group>"; };
+		E96419D31AA8BC9800397691 /* DetailAccountInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = DetailAccountInfoTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E964B9501D45141C00F10B3D /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E9693E3D1D32441600D6135B /* LogIn.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LogIn.storyboard; sourceTree = "<group>"; };
 		E9693E3F1D3245FB00D6135B /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
@@ -241,7 +225,6 @@
 		E9693E491D32932500D6135B /* NotiCenter.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NotiCenter.storyboard; sourceTree = "<group>"; };
 		E9693E4B1D32945F00D6135B /* Grade.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Grade.storyboard; sourceTree = "<group>"; };
 		E9693E4D1D3294FA00D6135B /* Evaluate.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Evaluate.storyboard; sourceTree = "<group>"; };
-		E9693E4F1D32955500D6135B /* SelectCourse.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SelectCourse.storyboard; sourceTree = "<group>"; };
 		E96B10DF1D49A45A0081EDFD /* TodayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		E96B10E11D4A02F40081EDFD /* GeneralTaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralTaskCell.swift; sourceTree = "<group>"; };
 		E96B10E31D4A04670081EDFD /* CourseTaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseTaskCell.swift; sourceTree = "<group>"; };
@@ -249,12 +232,11 @@
 		E97176751B1488CA004DADB2 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		E97176771B149292004DADB2 /* CourseDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseDetailTableViewController.swift; sourceTree = "<group>"; };
 		E975B7D21C154F3100240D4C /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
-		E9762F6F1C48DE77002CEF03 /* NKNetworkFetchNoti.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkFetchNoti.swift; sourceTree = "<group>"; };
+		E9762F6F1C48DE77002CEF03 /* NKNetworkNotiHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkNotiHandler.swift; sourceTree = "<group>"; };
 		E97648CF1D48429F005326EE /* ClassTimePreferenceTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassTimePreferenceTableViewController.swift; sourceTree = "<group>"; };
 		E97648D11D484405005326EE /* CourseLoadMethodAgent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseLoadMethodAgent.swift; sourceTree = "<group>"; };
 		E97774291D4B59B3008D768E /* NewTaskTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTaskTableViewController.swift; sourceTree = "<group>"; };
-		E977742B1D4B59D0008D768E /* DatePickerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerTableViewController.swift; sourceTree = "<group>"; };
-		E981C12C1C84A02D005CBF4E /* ClassModificationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassModificationTableViewCell.swift; sourceTree = "<group>"; };
+		E977742B1D4B59D0008D768E /* DatePickerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = DatePickerTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E984C76C1D50D19A00C0BBC8 /* Colors.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = Colors.realm; sourceTree = "<group>"; };
 		E984C76F1D50D1E400C0BBC8 /* VersionInfoAgent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VersionInfoAgent.swift; sourceTree = "<group>"; };
 		E988B5361AB005DF006818FA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -263,14 +245,14 @@
 		E98DC72D1B8B13DE00273510 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		E98E2B461C4638C800CF82BE /* UserDefaultsStoreProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsStoreProtocol.swift; sourceTree = "<group>"; };
 		E98E2B481C4639BB00CF82BE /* UserAgent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAgent.swift; sourceTree = "<group>"; };
-		E98E2B4D1C46469700CF82BE /* CourseAgent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseAgent.swift; sourceTree = "<group>"; };
-		E98E2B4F1C46492900CF82BE /* NKNetworkLoadCourse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkLoadCourse.swift; sourceTree = "<group>"; };
+		E98E2B4D1C46469700CF82BE /* CourseReloadedAgent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseReloadedAgent.swift; sourceTree = "<group>"; };
+		E98E2B4F1C46492900CF82BE /* NKNetworkCourseHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkCourseHandler.swift; sourceTree = "<group>"; };
 		E98E2B8A1C46ABE400CF82BE /* ClassTimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassTimeView.swift; sourceTree = "<group>"; };
 		E98F94D51AA3180700885992 /* ClassTimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassTimeViewController.swift; sourceTree = "<group>"; };
-		E98F94D71AA318EF00885992 /* FunctionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunctionTableViewController.swift; sourceTree = "<group>"; };
-		E98F94D91AA3191F00885992 /* SettingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
+		E98F94D71AA318EF00885992 /* FunctionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = FunctionTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		E98F94D91AA3191F00885992 /* SettingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SettingTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E9927C051D2E463900DE284C /* StoragedDataError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoragedDataError.swift; sourceTree = "<group>"; };
-		E9929C9A1C49068000D508C8 /* NKNetworkFetchGrade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkFetchGrade.swift; sourceTree = "<group>"; };
+		E9929C9A1C49068000D508C8 /* NKNetworkGradeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkGradeHandler.swift; sourceTree = "<group>"; };
 		E995E08A1D3F6369003FDF56 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		E997E8291D44945200014517 /* JSPatch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JSPatch.framework; sourceTree = "<group>"; };
 		E99D67031C16C8CF00E27B08 /* NotiCenterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotiCenterTableViewController.swift; sourceTree = "<group>"; };
@@ -285,7 +267,7 @@
 		E9C2ECBF1B183E8B005C1F5F /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		E9C3EF591BB2BCB600D1C91D /* ErrorHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		E9CA9C8F1C4272BC0030AF49 /* UserDefaultsBaseStoreAgent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsBaseStoreAgent.swift; sourceTree = "<group>"; };
-		E9CA9C951C4274F60030AF49 /* NKNetworkLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkLogin.swift; sourceTree = "<group>"; };
+		E9CA9C951C4274F60030AF49 /* NKNetworkLoginHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkLoginHandler.swift; sourceTree = "<group>"; };
 		E9CCF4B71ABC653E002076F2 /* ColorChooseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorChooseTableViewController.swift; sourceTree = "<group>"; };
 		E9CCF4B91ABC6578002076F2 /* ColorChooseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorChooseTableViewCell.swift; sourceTree = "<group>"; };
 		E9CDFD241D4EFA5500EADB4C /* ColorPickerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPickerTableViewController.swift; sourceTree = "<group>"; };
@@ -434,6 +416,7 @@
 			isa = PBXGroup;
 			children = (
 				E90AE22C1A8F813900AD0D78 /* Info.plist */,
+				E940C2CF1D4F13BB0075A040 /* Launch Screen.storyboard */,
 				E9D754FD1C6ADB8500619BAC /* Localizable.strings */,
 				E91E5F4A1A90FA9E009F3B2B /* NKU Helper-Bridging-Header.h */,
 			);
@@ -446,32 +429,19 @@
 				E93083AF1D3BBF50000FC8E8 /* 功能 */,
 				E92BDD041C62230F005A5CB8 /* 登陆 */,
 				E90E87231C40E58B00E6BE3A /* NKNetworkBase.swift */,
+				E98E2B4F1C46492900CF82BE /* NKNetworkCourseHandler.swift */,
 				E9634EBE1D38E3B900F30FA0 /* NKNetworkInfoHandler.swift */,
-				E95F93D81C4FC04500CEEC12 /* NKNetworkFetchUserInfo.swift */,
-				E98E2B4F1C46492900CF82BE /* NKNetworkLoadCourse.swift */,
+				E95F93D81C4FC04500CEEC12 /* NKNetworkUserInfoHandler.swift */,
 			);
 			path = Network;
-			sourceTree = "<group>";
-		};
-		E90E87271C40F2F400E6BE3A /* 选课 */ = {
-			isa = PBXGroup;
-			children = (
-				E91D2E591C846CA1002605F8 /* ClassInfoTableViewCell.swift */,
-				E981C12C1C84A02D005CBF4E /* ClassModificationTableViewCell.swift */,
-				E91D2E571C8468B6002605F8 /* SearchCourseDetailTableViewController.swift */,
-				E91D2E551C846778002605F8 /* SearchCourseTableViewController.swift */,
-				E9693E4F1D32955500D6135B /* SelectCourse.storyboard */,
-				E90E872A1C40FCE700E6BE3A /* SelectCourseTableViewController.swift */,
-			);
-			path = "选课";
 			sourceTree = "<group>";
 		};
 		E92BDD031C622304005A5CB8 /* 评教 */ = {
 			isa = PBXGroup;
 			children = (
-				E95F93DE1C50CF2900CEEC12 /* NKNetworkEvaluate.swift */,
-				E95F93E81C51024800CEEC12 /* NKNetworkEvaluateDetail.swift */,
-				E95F93EE1C51394800CEEC12 /* NKNetworkEvaluateSubmit.swift */,
+				E95F93DE1C50CF2900CEEC12 /* NKNetworkCourseEvaluateHandler.swift */,
+				E95F93E81C51024800CEEC12 /* NKNetworkEvaluateDetailHandler.swift */,
+				E95F93EE1C51394800CEEC12 /* NKNetworkEvaluateSubmitHandler.swift */,
 			);
 			path = "评教";
 			sourceTree = "<group>";
@@ -480,7 +450,7 @@
 			isa = PBXGroup;
 			children = (
 				E90E87251C40E5C700E6BE3A /* NKNetworkIsLogin.swift */,
-				E9CA9C951C4274F60030AF49 /* NKNetworkLogin.swift */,
+				E9CA9C951C4274F60030AF49 /* NKNetworkLoginHandler.swift */,
 				E94BC1F91C476C5000BD9726 /* NKNetworkValidateCodeGetter.swift */,
 			);
 			path = "登陆";
@@ -527,7 +497,7 @@
 		E93083AD1D3BBF33000FC8E8 /* 查成绩 */ = {
 			isa = PBXGroup;
 			children = (
-				E9929C9A1C49068000D508C8 /* NKNetworkFetchGrade.swift */,
+				E9929C9A1C49068000D508C8 /* NKNetworkGradeHandler.swift */,
 			);
 			path = "查成绩";
 			sourceTree = "<group>";
@@ -535,7 +505,7 @@
 		E93083AE1D3BBF3C000FC8E8 /* 通知中心 */ = {
 			isa = PBXGroup;
 			children = (
-				E9762F6F1C48DE77002CEF03 /* NKNetworkFetchNoti.swift */,
+				E9762F6F1C48DE77002CEF03 /* NKNetworkNotiHandler.swift */,
 			);
 			path = "通知中心";
 			sourceTree = "<group>";
@@ -546,7 +516,6 @@
 				E93083AD1D3BBF33000FC8E8 /* 查成绩 */,
 				E93083B01D3BBF63000FC8E8 /* 查考试时间 */,
 				E92BDD031C622304005A5CB8 /* 评教 */,
-				E9C3A0D71C7CB3F3009C6B21 /* 选课 */,
 				E93083AE1D3BBF3C000FC8E8 /* 通知中心 */,
 			);
 			path = "功能";
@@ -555,7 +524,7 @@
 		E93083B01D3BBF63000FC8E8 /* 查考试时间 */ = {
 			isa = PBXGroup;
 			children = (
-				E93083B11D3BBFA7000FC8E8 /* NKNetworkFetchTestTime.swift */,
+				E93083B11D3BBFA7000FC8E8 /* NKNetworkTestTimeHandler.swift */,
 			);
 			path = "查考试时间";
 			sourceTree = "<group>";
@@ -589,7 +558,6 @@
 			isa = PBXGroup;
 			children = (
 				E90AE2371A8F813900AD0D78 /* Images.xcassets */,
-				E940C2CF1D4F13BB0075A040 /* Launch Screen.storyboard */,
 				E93083CB1D3CCEA2000FC8E8 /* slogan.png */,
 				E940C2D31D4F18860075A040 /* 南开表情包.png */,
 				E93083C51D3CC258000FC8E8 /* 米色白色渐变背景.png */,
@@ -600,7 +568,7 @@
 		E95F93DB1C50CE9100CEEC12 /* 评教 */ = {
 			isa = PBXGroup;
 			children = (
-				E95F93E01C50EF2800CEEC12 /* ClassToEvaluate.swift */,
+				E95F93E01C50EF2800CEEC12 /* CourseToEvaluate.swift */,
 				E95F93E21C50F7E100CEEC12 /* ClassToEvaluateTableViewCell.swift */,
 				E95F93EA1C512B8B00CEEC12 /* DetailEvaluateInfo.swift */,
 				E9693E4D1D3294FA00D6135B /* Evaluate.storyboard */,
@@ -644,10 +612,9 @@
 			isa = PBXGroup;
 			children = (
 				E984C7691D507F9400C0BBC8 /* base */,
-				E98E2B4D1C46469700CF82BE /* CourseAgent.swift */,
 				E97648D11D484405005326EE /* CourseLoadMethodAgent.swift */,
+				E98E2B4D1C46469700CF82BE /* CourseReloadedAgent.swift */,
 				E98E2B481C4639BB00CF82BE /* UserAgent.swift */,
-				E95F93D61C4FB23900CEEC12 /* UserDetailInfoAgent.swift */,
 				E984C76F1D50D1E400C0BBC8 /* VersionInfoAgent.swift */,
 			);
 			path = StoreClass;
@@ -672,7 +639,6 @@
 				E98F94D21AA317B100885992 /* 成绩查询 */,
 				E93083AA1D3BB7F6000FC8E8 /* 考试时间查询 */,
 				E95F93DB1C50CE9100CEEC12 /* 评教 */,
-				E90E87271C40F2F400E6BE3A /* 选课 */,
 				E99D670B1C16CA8600E27B08 /* 通知中心 */,
 				E9693E471D32926300D6135B /* Function.storyboard */,
 				E93083B71D3C7A5C000FC8E8 /* FunctionBaseTableViewController.swift */,
@@ -746,16 +712,6 @@
 			path = RefreshControl;
 			sourceTree = "<group>";
 		};
-		E9C3A0D71C7CB3F3009C6B21 /* 选课 */ = {
-			isa = PBXGroup;
-			children = (
-				E95B0F2E1C83F0B800448F97 /* NKNetworkDepartCode.swift */,
-				E90E87421C4139FD00E6BE3A /* NKNetworkSearchCourse.swift */,
-				E90E872C1C41002E00E6BE3A /* NKNetworkSelectCourse.swift */,
-			);
-			path = "选课";
-			sourceTree = "<group>";
-		};
 		E9C3EF581BB2BB8000D1C91D /* Structures */ = {
 			isa = PBXGroup;
 			children = (
@@ -791,7 +747,7 @@
 				E96419D11AA8971B00397691 /* AccountTableViewCell.swift */,
 				E96419D31AA8BC9800397691 /* DetailAccountInfoTableViewController.swift */,
 				E9F674EB1BA80E7500BEF640 /* RSA.html */,
-				E94286571AA5500C00A4242C /* SaveAccountInfoViewController.swift */,
+				E94286571AA5500C00A4242C /* AccountLogInViewController.swift */,
 			);
 			path = AccountInfo;
 			sourceTree = "<group>";
@@ -800,6 +756,7 @@
 			isa = PBXGroup;
 			children = (
 				E92B2D001B48DB89008825A3 /* CalendarHelper.swift */,
+				E9536B521DB081190018D10E /* NKRouter.swift */,
 				E930839D1D3A0DE1000FC8E8 /* UIViewExtention.swift */,
 			);
 			path = HelperClass;
@@ -867,13 +824,17 @@
 			attributes = {
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "陈乐天";
 				TargetAttributes = {
 					E90AE2271A8F813900AD0D78 = {
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = E9FBJ6HPDB;
+						LastSwiftMigration = 0800;
 						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
@@ -884,6 +845,7 @@
 					};
 					E9DA59491D3889AF0012ED9A = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = E90AE2271A8F813900AD0D78;
 					};
 				};
@@ -923,7 +885,6 @@
 				E93083CC1D3CCEA2000FC8E8 /* slogan.png in Resources */,
 				E9693E481D32926300D6135B /* Function.storyboard in Resources */,
 				E926CD751AB33B1700A5076A /* NKU.plist in Resources */,
-				E9693E501D32955500D6135B /* SelectCourse.storyboard in Resources */,
 				E93083C61D3CC258000FC8E8 /* 米色白色渐变背景.png in Resources */,
 				E930839A1D39DA38000FC8E8 /* WeekdayView.xib in Resources */,
 				E9693E441D32894000D6135B /* Today.storyboard in Resources */,
@@ -1034,29 +995,25 @@
 				E95861601D4CED3F001E8026 /* CourseTime.swift in Sources */,
 				E98F94D81AA318EF00885992 /* FunctionTableViewController.swift in Sources */,
 				E95B0F2D1C83E18700448F97 /* CourseSelecting.swift in Sources */,
-				E981C12D1C84A02D005CBF4E /* ClassModificationTableViewCell.swift in Sources */,
-				E91D2E5A1C846CA1002605F8 /* ClassInfoTableViewCell.swift in Sources */,
-				E98E2B4E1C46469700CF82BE /* CourseAgent.swift in Sources */,
+				E98E2B4E1C46469700CF82BE /* CourseReloadedAgent.swift in Sources */,
 				E995E08B1D3F6369003FDF56 /* R.generated.swift in Sources */,
 				E96B10E81D4A4A900081EDFD /* TodayCourseCell.swift in Sources */,
 				E95F93DD1C50CEAA00CEEC12 /* EvaluateTableViewController.swift in Sources */,
-				E9762F701C48DE77002CEF03 /* NKNetworkFetchNoti.swift in Sources */,
+				E9762F701C48DE77002CEF03 /* NKNetworkNotiHandler.swift in Sources */,
 				E95F93ED1C51377300CEEC12 /* EvaluateOpinionTableViewCell.swift in Sources */,
-				E9929C9B1C49068000D508C8 /* NKNetworkFetchGrade.swift in Sources */,
+				E9929C9B1C49068000D508C8 /* NKNetworkGradeHandler.swift in Sources */,
 				E95F93EB1C512B8B00CEEC12 /* DetailEvaluateInfo.swift in Sources */,
 				E92B2D011B48DB89008825A3 /* CalendarHelper.swift in Sources */,
 				E93C0F181BB54B54001303CF /* Task.swift in Sources */,
-				E91D2E561C846778002605F8 /* SearchCourseTableViewController.swift in Sources */,
+				E9536B531DB081190018D10E /* NKRouter.swift in Sources */,
 				E96B10E21D4A02F40081EDFD /* GeneralTaskCell.swift in Sources */,
 				E977742C1D4B59D0008D768E /* DatePickerTableViewController.swift in Sources */,
 				E94BC1FA1C476C5000BD9726 /* NKNetworkValidateCodeGetter.swift in Sources */,
 				E9C3EF5A1BB2BCB600D1C91D /* ErrorHandler.swift in Sources */,
 				E99D670A1C16C9EB00E27B08 /* Notification.swift in Sources */,
 				E9462A481B24A6480002C21A /* TestTimeTableViewCell.swift in Sources */,
-				E90E87431C4139FD00E6BE3A /* NKNetworkSearchCourse.swift in Sources */,
 				E93083B81D3C7A5C000FC8E8 /* FunctionBaseTableViewController.swift in Sources */,
-				E95F93E91C51024800CEEC12 /* NKNetworkEvaluateDetail.swift in Sources */,
-				E95B0F2F1C83F0B800448F97 /* NKNetworkDepartCode.swift in Sources */,
+				E95F93E91C51024800CEEC12 /* NKNetworkEvaluateDetailHandler.swift in Sources */,
 				E95F93C61C4E6CD100CEEC12 /* Grade.swift in Sources */,
 				E96419D21AA8971B00397691 /* AccountTableViewCell.swift in Sources */,
 				E93083A31D3A8F4D000FC8E8 /* TimeScheduleView.swift in Sources */,
@@ -1071,40 +1028,36 @@
 				E95F93E31C50F7E100CEEC12 /* ClassToEvaluateTableViewCell.swift in Sources */,
 				E96419D41AA8BC9800397691 /* DetailAccountInfoTableViewController.swift in Sources */,
 				E97648D21D484405005326EE /* CourseLoadMethodAgent.swift in Sources */,
-				E90E872B1C40FCE700E6BE3A /* SelectCourseTableViewController.swift in Sources */,
 				E98E2B8B1C46ABE400CF82BE /* ClassTimeView.swift in Sources */,
 				E99D67041C16C8CF00E27B08 /* NotiCenterTableViewController.swift in Sources */,
-				E95F93D71C4FB23900CEEC12 /* UserDetailInfoAgent.swift in Sources */,
 				E9927C061D2E463900DE284C /* StoragedDataError.swift in Sources */,
 				E90E87261C40E5C700E6BE3A /* NKNetworkIsLogin.swift in Sources */,
 				E93083A61D3B6B6A000FC8E8 /* ClassView.swift in Sources */,
 				E977742A1D4B59B3008D768E /* NewTaskTableViewController.swift in Sources */,
 				E94BD9801BAC06E300B76E03 /* Course.swift in Sources */,
-				E91D2E581C8468B6002605F8 /* SearchCourseDetailTableViewController.swift in Sources */,
 				E9CCF4BA1ABC6578002076F2 /* ColorChooseTableViewCell.swift in Sources */,
 				E92E0CAF1D4760BF004D9AB5 /* ClassTestTime.swift in Sources */,
 				E91E5F4F1A90FAED009F3B2B /* GradeShowerTableViewController.swift in Sources */,
 				E984C7701D50D1E400C0BBC8 /* VersionInfoAgent.swift in Sources */,
-				E90E872D1C41002E00E6BE3A /* NKNetworkSelectCourse.swift in Sources */,
-				E93083B21D3BBFA7000FC8E8 /* NKNetworkFetchTestTime.swift in Sources */,
+				E93083B21D3BBFA7000FC8E8 /* NKNetworkTestTimeHandler.swift in Sources */,
 				E97176761B1488CA004DADB2 /* AboutViewController.swift in Sources */,
-				E95F93DF1C50CF2900CEEC12 /* NKNetworkEvaluate.swift in Sources */,
-				E95F93D91C4FC04500CEEC12 /* NKNetworkFetchUserInfo.swift in Sources */,
+				E95F93DF1C50CF2900CEEC12 /* NKNetworkCourseEvaluateHandler.swift in Sources */,
+				E95F93D91C4FC04500CEEC12 /* NKNetworkUserInfoHandler.swift in Sources */,
 				E93083BC1D3CA8AE000FC8E8 /* GPACell.swift in Sources */,
 				E99D67131C16F6E800E27B08 /* NotiTableViewCell.swift in Sources */,
 				E98F94D61AA3180700885992 /* ClassTimeViewController.swift in Sources */,
 				E99D675C1C17401B00E27B08 /* NotiDetailViewController.swift in Sources */,
 				E9FE26141B137FEC00FCBB32 /* Color.swift in Sources */,
-				E94286581AA5500C00A4242C /* SaveAccountInfoViewController.swift in Sources */,
-				E9CA9C961C4274F60030AF49 /* NKNetworkLogin.swift in Sources */,
+				E94286581AA5500C00A4242C /* AccountLogInViewController.swift in Sources */,
+				E9CA9C961C4274F60030AF49 /* NKNetworkLoginHandler.swift in Sources */,
 				E93083BA1D3CA734000FC8E8 /* GPACalculateMethodTableViewController.swift in Sources */,
 				E9CCF4B81ABC653E002076F2 /* ColorChooseTableViewController.swift in Sources */,
-				E95F93EF1C51394800CEEC12 /* NKNetworkEvaluateSubmit.swift in Sources */,
+				E95F93EF1C51394800CEEC12 /* NKNetworkEvaluateSubmitHandler.swift in Sources */,
 				E94286501AA4CD2A00A4242C /* LogInViewController.swift in Sources */,
 				E964B9511D45141C00F10B3D /* User.swift in Sources */,
 				E91E5F551A9103DF009F3B2B /* GradeCell.swift in Sources */,
 				E930839E1D3A0DE1000FC8E8 /* UIViewExtention.swift in Sources */,
-				E98E2B501C46492900CF82BE /* NKNetworkLoadCourse.swift in Sources */,
+				E98E2B501C46492900CF82BE /* NKNetworkCourseHandler.swift in Sources */,
 				E97648D01D48429F005326EE /* ClassTimePreferenceTableViewController.swift in Sources */,
 				E98E2B491C4639BB00CF82BE /* UserAgent.swift in Sources */,
 				E9634EBF1D38E3B900F30FA0 /* NKNetworkInfoHandler.swift in Sources */,
@@ -1112,7 +1065,7 @@
 				E90E87241C40E58B00E6BE3A /* NKNetworkBase.swift in Sources */,
 				E93083B61D3C76D2000FC8E8 /* FunctionBaseViewController.swift in Sources */,
 				E90AE22E1A8F813900AD0D78 /* AppDelegate.swift in Sources */,
-				E95F93E11C50EF2800CEEC12 /* ClassToEvaluate.swift in Sources */,
+				E95F93E11C50EF2800CEEC12 /* CourseToEvaluate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1152,6 +1105,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1161,8 +1115,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -1172,6 +1128,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -1189,13 +1146,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3CE36F262CA4F2D8F01054B4 /* Pods-NKU Helper.ad hoc distribution.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = NO;
+				CODE_SIGN_ENTITLEMENTS = "NKU Helper/NKU Helper.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = NO;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = "$(inherited)";
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1218,6 +1176,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "NKU Helper/Supporting Files/NKU Helper-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(PODS_ROOT)/YYText/** $(PODS_ROOT)/SVProgressHUD/** $(PODS_ROOT)/NJKWebViewProgress/** $(PODS_ROOT)/MJRefresh/** $(PODS_ROOT)/DZNEmptyDataSet/** $(PODS_ROOT)/MBProgressHUD/** $(PODS_ROOT)/UAProgressView/** $(PODS_ROOT)/pop/** $(PODS_ROOT)/MCSwipeTableViewCell/**";
 			};
@@ -1227,6 +1186,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1236,8 +1196,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1247,6 +1209,7 @@
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1271,6 +1234,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1280,8 +1244,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1290,6 +1256,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -1299,6 +1266,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1307,13 +1275,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4049955BC5E2C9CBE0D70558 /* Pods-NKU Helper.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = NO;
+				CODE_SIGN_ENTITLEMENTS = "NKU Helper/NKU Helper.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = NO;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = "$(inherited)";
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1337,6 +1306,7 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "NKU Helper/Supporting Files/NKU Helper-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(PODS_ROOT)/YYText/** $(PODS_ROOT)/SVProgressHUD/** $(PODS_ROOT)/NJKWebViewProgress/** $(PODS_ROOT)/MJRefresh/** $(PODS_ROOT)/DZNEmptyDataSet/** $(PODS_ROOT)/MBProgressHUD/** $(PODS_ROOT)/UAProgressView/** $(PODS_ROOT)/pop/** $(PODS_ROOT)/MCSwipeTableViewCell/**";
 			};
@@ -1346,13 +1316,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 64CC4A72658875289900881A /* Pods-NKU Helper.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = NO;
+				CODE_SIGN_ENTITLEMENTS = "NKU Helper/NKU Helper.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = NO;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = "$(inherited)";
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1375,6 +1346,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "NKU Helper/Supporting Files/NKU Helper-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(PODS_ROOT)/YYText/** $(PODS_ROOT)/SVProgressHUD/** $(PODS_ROOT)/NJKWebViewProgress/** $(PODS_ROOT)/MJRefresh/** $(PODS_ROOT)/DZNEmptyDataSet/** $(PODS_ROOT)/MBProgressHUD/** $(PODS_ROOT)/UAProgressView/** $(PODS_ROOT)/pop/** $(PODS_ROOT)/MCSwipeTableViewCell/**";
 			};
@@ -1393,6 +1365,7 @@
 				OTHER_SWIFT_FLAGS = "-DDEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = "cn.pikkacho.www.NKU-HelperTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NKU Helper.app/NKU Helper";
 			};
 			name = Debug;
@@ -1411,6 +1384,7 @@
 				OTHER_SWIFT_FLAGS = "-DRELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = "cn.pikkacho.www.NKU-HelperTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NKU Helper.app/NKU Helper";
 			};
 			name = Release;
@@ -1429,6 +1403,7 @@
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "cn.pikkacho.www.NKU-HelperTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NKU Helper.app/NKU Helper";
 			};
 			name = "ad hoc Distribution";

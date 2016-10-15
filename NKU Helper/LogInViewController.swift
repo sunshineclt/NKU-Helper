@@ -8,77 +8,77 @@
 
 import UIKit
 
-class LogInViewController: UIViewController, UIAlertViewDelegate, UIWebViewDelegate {
+class LogInViewController: UIViewController, UIAlertViewDelegate {
     
     @IBOutlet var validateCodeTextField: UITextField!
     @IBOutlet var validateCodeImageView: UIImageView!
     @IBOutlet var loginButton: UIButton!
-    @IBOutlet var imageLoadActivityIndicator: UIActivityIndicatorView!
+    @IBOutlet var imageLoadActivityIndicator: UIActivityIndicatorView! {
+        didSet {
+            imageLoadActivityIndicator.hidesWhenStopped = true
+        }
+    }
     
-    var progressHud:MBProgressHUD!
+    var progressHud: MBProgressHUD!
     
-    let loginer = NKNetworkLogin()
+    var loginer: NKNetworkLoginHandler?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
         loginButton.layer.cornerRadius = 5
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        imageLoadActivityIndicator.hidesWhenStopped = true
         refreshImage()
         validateCodeTextField.becomeFirstResponder()
     }
     
     func refreshImage() {
-        
         imageLoadActivityIndicator.startAnimating()
-        let validateCodeGetter = NKNetworkValidateCodeGetter()
-        validateCodeGetter.getValidateCodeWithBlock { (data, err) -> Void in
+        NKNetworkValidateCodeGetter.getValidateCode { (data, err) in
             self.imageLoadActivityIndicator.stopAnimating()
             guard err == nil else {
-                self.presentViewController(ErrorHandler.alert(ErrorHandler.NetworkError()), animated: true, completion: nil)
+                self.present(ErrorHandler.alert(withError: ErrorHandler.NetworkError()), animated: true, completion: nil)
                 return
             }
             self.validateCodeImageView.image = UIImage(data: data!)
         }
     }
     
-    @IBAction func login(sender: AnyObject) {
-        
-        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        
-        loginer.loginWithValidateCode(validateCodeTextField.text ?? "", onView: self.view) { (result) -> Void in
-            MBProgressHUD.hideHUDForView(self.view, animated: true)
+    @IBAction func login(_ sender: AnyObject) {
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        loginer = NKNetworkLoginHandler(validateCode: validateCodeTextField.text ?? "")
+        loginer?.login(onView: self.view, andBlock: { (result) in
+            MBProgressHUD.hide(for: self.view, animated: true)
             switch result {
-            case .Success:
-                self.dismissViewControllerAnimated(true, completion: { () -> Void in
-                    NSNotificationCenter.defaultCenter().postNotificationName("loginComplete", object: self)
+            case .success:
+                self.dismiss(animated: true, completion: { () -> Void in
+                    NotificationCenter.default.post(name: Foundation.Notification.Name(rawValue: "loginComplete"), object: self)
                 })
-            case .NetWorkError:
-                self.presentViewController(ErrorHandler.alert(ErrorHandler.NetworkError()), animated: true, completion: nil)
-            case .UserNameOrPasswordWrong:
-                self.presentViewController(ErrorHandler.alert(ErrorHandler.UserNameOrPasswordWrong()), animated: true, completion: nil)
+            case .netWorkError:
+                self.present(ErrorHandler.alert(withError: ErrorHandler.NetworkError()), animated: true, completion: nil)
+            case .userNameOrPasswordWrong:
+                self.present(ErrorHandler.alert(withError: ErrorHandler.UserNameOrPasswordWrong()), animated: true, completion: nil)
                 self.refreshImage()
                 self.validateCodeTextField.text = ""
-                self.validateCodeTextField.becomeFirstResponder()
-            case .ValidateCodeWrong:
-                self.presentViewController(ErrorHandler.alert(ErrorHandler.ValidateCodeWrong()), animated: true, completion: nil)
+            case .validateCodeWrong:
+                self.present(ErrorHandler.alert(withError: ErrorHandler.ValidateCodeWrong(), andHandler: { (action) in
+                    self.validateCodeTextField.becomeFirstResponder()
+                }), animated: true, completion: nil)
                 self.refreshImage()
                 self.validateCodeTextField.text = ""
-                self.validateCodeTextField.becomeFirstResponder()
             }
-        }
+        })
     }
     
-    @IBAction func cancelButtonClicked(sender: UIBarButtonItem) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-        NSNotificationCenter.defaultCenter().postNotificationName("loginCancel", object: self)
+    @IBAction func cancelButtonClicked(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+        NotificationCenter.default.post(name: Foundation.Notification.Name(rawValue: "loginCancel"), object: self)
     }
     
-    @IBAction func validateCodeTextFieldDidEnd(sender: AnyObject) {
-        login("FromReturnKey")
+    @IBAction func validateCodeTextFieldDidEnd(_ sender: AnyObject) {
+        login("FromReturnKey" as AnyObject)
     }
     
 }

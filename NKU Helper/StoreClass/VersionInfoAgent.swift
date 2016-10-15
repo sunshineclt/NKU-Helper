@@ -7,15 +7,22 @@
 //
 
 import Foundation
+
 private let sharedStoreAgent = VersionInfoAgent()
 
-/// 提供访问用户详细数据的类
+/**
+ 访问用户详细数据的类
+ * * * * *
+ 
+ last modified:
+ - date: 2016.9.30
+ 
+ - author: 陈乐天
+ - since: Swift3.0
+ - version: 1.0
+ */
 class VersionInfoAgent: UserDefaultsBaseStoreAgent {
-    
-    private override init() {
-        super.init()
-    }
-    
+
     class var sharedInstance: VersionInfoAgent {
         return sharedStoreAgent
     }
@@ -24,27 +31,23 @@ class VersionInfoAgent: UserDefaultsBaseStoreAgent {
     
     let key = "buildCode"
     
-    /**
-     访问存储中的Version号和Build号
-     
-     - returns: Version号和Build号组成的元组
-     */
+    /// 访问存储中的Version号和Build号
+    ///
+    /// - returns: Version号和Build号组成的元组
     func getData() -> dataForm {
-        guard let data = userDefaults.objectForKey(key) as? [String: String] else {
+        guard let data = userDefaults.dictionary(forKey: key) as? [String: String] else {
             return nil
         }
         return (Version: data["version"]!, Build: data["build"]!)
     }
     
-    /**
-     存储当前Version号和Build号
-     */
+    /// 存储当前Version号和Build号
     func saveData() {
-        let version = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as! String
-        let build = NSBundle.mainBundle().infoDictionary!["CFBundleVersion"] as! String
+        let version = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
+        let build = Bundle.main.infoDictionary!["CFBundleVersion"] as! String
         let data = ["version": version, "build": build]
-        userDefaults.removeObjectForKey(key)
-        userDefaults.setObject(data, forKey: key)
+        userDefaults.removeObject(forKey: key)
+        userDefaults.set(data, forKey: key)
         userDefaults.synchronize()
     }
     

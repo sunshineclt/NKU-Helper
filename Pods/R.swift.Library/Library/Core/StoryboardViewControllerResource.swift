@@ -3,7 +3,8 @@
 //  R.swift.Library
 //
 //  Created by Mathijs Kadijk on 13-03-16.
-//  Copyright © 2016 Mathijs Kadijk. All rights reserved.
+//  From: https://github.com/mac-cain13/R.swift.Library
+//  License: MIT License
 //
 
 import Foundation
@@ -22,4 +23,3 @@ public struct StoryboardViewControllerResource<ViewController>: StoryboardViewCo
     self.identifier = identifier
   }
 }
-

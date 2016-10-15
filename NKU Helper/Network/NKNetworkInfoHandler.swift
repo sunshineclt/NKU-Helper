@@ -10,59 +10,65 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-/// 提供一系列信息功能的网络库
+/**
+ 获取服务端提供的信息的网络库
+ * * * * *
+ 
+ last modified:
+ - date: 2016.10.12
+ 
+ - author: 陈乐天
+ - since: Swift3.0
+ - version: 1.0
+ */
 class NKNetworkInfoHandler: NKNetworkBase {
     
+    /// (缓存)当前周数
     static var nowWeek: Int!
+    /// (缓存)当前是否是假期
     static var isVocation: Bool!
     
-    /**
-     获取当前周数（也有可能是假期）（带缓存）
-     
-     - parameter completionHandler: 返回闭包
-     */
-    class func fetchNowWeek(completionHandler: (nowWeek: Int?, isVocation: Bool?) -> Void) {
-        
+    /// 获取当前周数（也有可能是假期）
+    /// - important: 自带缓存机制
+    ///
+    /// - parameter completionHandler: 返回闭包
+    class func fetchNowWeek(withBlock block: @escaping (_ nowWeek: Int?, _ isVocation: Bool?) -> Void) {
         if (nowWeek != nil) && (isVocation != nil) {
-            completionHandler(nowWeek: nowWeek, isVocation: isVocation)
+            block(nowWeek, isVocation)
             return
         }
-        Alamofire.request(.GET, NKNetworkBase.getURLStringByAppendingBaseURLWithPath("info/week")).responseJSON { (response) in
+        Alamofire.request(NKNetworkBase.getURLByAppendingBaseURL(withPath: "info/week")).responseJSON { (response) in
             switch response.result {
-            case .Success(let value):
+            case .success(let value):
                 let json = JSON(value)
                 guard json["msg"].stringValue == "OK" else {
-                    completionHandler(nowWeek: nil, isVocation: nil)
+                    block(nil, nil)
                     return
                 }
                 nowWeek = json["data"]["nowWeek"].intValue
                 isVocation = json["data"]["isVocation"].boolValue
-                
-                completionHandler(nowWeek: nowWeek, isVocation: isVocation)
-            case .Failure( _):
-                completionHandler(nowWeek: nil, isVocation: nil)
+                block(nowWeek, isVocation)
+            case .failure( _):
+                block(nil, nil)
             }
         }
-        
     }
-    
-    /**
-     登记用户
-    */
+
+    /// 登记用户
     class func registerUser() {
         do {
-            let user = try UserDetailInfoAgent.sharedInstance.getData()
-            Alamofire.request(.POST, NKNetworkBase.getURLStringByAppendingBaseURLWithPath("info/user"), parameters: ["UID": user.userID]).responseJSON { (response) in
+            let user = try UserAgent.sharedInstance.getUserInfo()
+            Alamofire.request(NKNetworkBase.getURLByAppendingBaseURL(withPath: "info/user"), method: .post, parameters: ["UID": user.userID]).responseJSON { (response) in
                 switch response.result {
-                case .Success(let value):
+                case .success(let value):
                     let json = JSON(value)
                     guard json["msg"].stringValue == "OK" else {
-                        print("registerUser fail")
+                        print("register user FAIL")
                         return
                     }
-                    print("registerUser success")
-                case .Failure( _):
-                    print("registerUser fail")
+                    print("register user SUCCESS")
+                case .failure( _):
+                    print("register user FAIL")
                 }
             }
         } catch {
@@ -70,29 +76,28 @@ class NKNetworkInfoHandler: NKNetworkBase {
         }
     }
     
-    /**
-     上传DeviceToken，以学号和uuid作为标记
-     
-     - parameter deviceToken: DeviceToken
-     */
-    class func uploadDeviceToken(deviceToken: String) {
-        guard let uuid = UIDevice.currentDevice().identifierForVendor?.UUIDString else {
+    /// 上传DeviceToken
+    /// - important: 以学号和uuid作为标记
+    ///
+    /// - parameter deviceToken: DeviceToken
+    class func uploadDeviceToken(_ deviceToken: String) {
+        guard let uuid = UIDevice.current.identifierForVendor?.uuidString else {
             print("获取uuid失败")
             return
         }
         do {
-            let user = try UserDetailInfoAgent.sharedInstance.getData()
-            Alamofire.request(.POST, NKNetworkBase.getURLStringByAppendingBaseURLWithPath("info/deviceToken"), parameters: ["UID": user.userID, "UUID": uuid, "DeviceToken": deviceToken]).responseJSON { (response) in
+            let user = try UserAgent.sharedInstance.getUserInfo()
+            Alamofire.request(NKNetworkBase.getURLByAppendingBaseURL(withPath: "info/deviceToken"), method: .post, parameters: ["UID": user.userID, "UUID": uuid, "DeviceToken": deviceToken]).responseJSON { (response) in
                 switch response.result {
-                case .Success(let value):
+                case .success(let value):
                     let json = JSON(value)
                     guard json["msg"].stringValue == "OK" else {
-                        print("上传device token fail")
+                        print("upload device token FAIL")
                         return
                     }
-                    print("上传device token success")
-                case .Failure( _):
-                    print("上传device token fail")
+                    print("upload device token SUCCESS")
+                case .failure( _):
+                    print("upload device token FAIL")
                 }
             }
         }

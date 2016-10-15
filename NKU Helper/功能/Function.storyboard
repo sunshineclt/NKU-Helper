@@ -1,9 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="p27-lO-dTl">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="p27-lO-dTl">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--功能-->
@@ -11,25 +12,23 @@
             <objects>
                 <tableViewController storyboardIdentifier="FunctionVC" id="EhZ-Vk-1UP" customClass="FunctionTableViewController" customModule="NKU_Helper" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="WAx-V2-zYf">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="NotiCenterCell" rowHeight="80" id="mDL-jZ-taT">
-                                <rect key="frame" x="0.0" y="86" width="600" height="80"/>
+                                <rect key="frame" x="0.0" y="86" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mDL-jZ-taT" id="diG-rw-vkz">
-                                    <rect key="frame" x="0.0" y="0.0" width="567" height="80"/>
+                                    <frame key="frameInset" width="342" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="通知中心" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IuD-Pf-sWq">
-                                            <rect key="frame" x="60" y="8" width="499" height="64"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="notiCenter" translatesAutoresizingMaskIntoConstraints="NO" id="3bm-xZ-2oE">
-                                            <rect key="frame" x="8" y="18" width="44" height="44"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="3bm-xZ-2oE" secondAttribute="height" multiplier="1:1" id="424-88-glI"/>
                                                 <constraint firstAttribute="width" constant="44" id="h6B-6C-M16"/>
@@ -46,29 +45,27 @@
                                         <constraint firstAttribute="bottomMargin" secondItem="3bm-xZ-2oE" secondAttribute="bottom" constant="10" id="vph-3r-7EN"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.61176470589999998" green="0.34901960780000002" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.61176470589999998" green="0.34901960780000002" blue="0.71372549019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <segue destination="XWb-6R-lWR" kind="show" identifier="ShowNotiCenter" id="qhO-km-gvT"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="GradeShowerCell" rowHeight="80" id="ztR-Br-ZPV">
-                                <rect key="frame" x="0.0" y="166" width="600" height="80"/>
+                                <rect key="frame" x="0.0" y="166" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ztR-Br-ZPV" id="cUb-Og-sQ2">
-                                    <rect key="frame" x="0.0" y="0.0" width="567" height="80"/>
+                                    <frame key="frameInset" width="342" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gradeGet" translatesAutoresizingMaskIntoConstraints="NO" id="wqa-0m-JFN">
-                                            <rect key="frame" x="8" y="18" width="44" height="44"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="wqa-0m-JFN" secondAttribute="height" multiplier="1:1" id="KLJ-V6-Bfp"/>
                                                 <constraint firstAttribute="width" constant="44" id="sBg-ed-9jm"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="成绩查询" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U9c-dJ-HJB">
-                                            <rect key="frame" x="60" y="8" width="499" height="64"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -82,29 +79,27 @@
                                         <constraint firstAttribute="topMargin" secondItem="wqa-0m-JFN" secondAttribute="top" constant="-10" id="gsX-od-Cyx"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.50609725713729858" green="0.68362480401992798" blue="0.99904388189315796" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.43517398834228516" green="0.60896193981170654" blue="0.99755764007568359" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <segue destination="Y31-yR-s4t" kind="show" identifier="ShowGrade" id="ZIG-vz-ZWI"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SelectCourseCenterCell" rowHeight="80" id="RuU-y6-i7z">
-                                <rect key="frame" x="0.0" y="246" width="600" height="80"/>
+                                <rect key="frame" x="0.0" y="246" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RuU-y6-i7z" id="nCH-AG-7dS">
-                                    <rect key="frame" x="0.0" y="0.0" width="567" height="80"/>
+                                    <frame key="frameInset" width="342" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="selectCourse" translatesAutoresizingMaskIntoConstraints="NO" id="0gk-rh-wUS">
-                                            <rect key="frame" x="8" y="18" width="44" height="44"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="44" id="41d-LK-gTE"/>
                                                 <constraint firstAttribute="width" secondItem="0gk-rh-wUS" secondAttribute="height" multiplier="1:1" id="6Ev-5r-eMV"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选课" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c1g-29-Rcq">
-                                            <rect key="frame" x="60" y="8" width="499" height="64"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -118,29 +113,24 @@
                                         <constraint firstAttribute="topMargin" secondItem="0gk-rh-wUS" secondAttribute="top" constant="-10" id="kcT-HR-R6Y"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.59999999999999998" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <segue destination="AHW-2j-Gk3" kind="show" identifier="ShowSelectCourse" id="yge-x2-Qs2"/>
-                                </connections>
+                                <color key="backgroundColor" red="0.59999999999999998" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="EvaluateCenterCell" rowHeight="80" id="Jbq-gZ-4aQ">
-                                <rect key="frame" x="0.0" y="326" width="600" height="80"/>
+                                <rect key="frame" x="0.0" y="326" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Jbq-gZ-4aQ" id="Si8-Oa-Deg">
-                                    <rect key="frame" x="0.0" y="0.0" width="567" height="80"/>
+                                    <frame key="frameInset" width="342" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="evaluate" translatesAutoresizingMaskIntoConstraints="NO" id="A4o-6V-6ce">
-                                            <rect key="frame" x="8" y="18" width="44" height="44"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="A4o-6V-6ce" secondAttribute="height" multiplier="1:1" id="1QO-eA-tsy"/>
                                                 <constraint firstAttribute="width" constant="44" id="LEG-Wa-njq"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="评教" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="npe-iK-iuX">
-                                            <rect key="frame" x="60" y="8" width="499" height="64"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -154,29 +144,27 @@
                                         <constraint firstAttribute="leadingMargin" secondItem="A4o-6V-6ce" secondAttribute="leading" id="uw1-eN-eQR"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.80000000000000004" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.80000000000000004" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <segue destination="TRu-kD-Szh" kind="show" identifier="ShowEvaluate" id="big-fa-38h"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="TestTimeSearchCell" rowHeight="80" id="af4-xY-M1n" userLabel="TestTimeSearchCell">
-                                <rect key="frame" x="0.0" y="406" width="600" height="80"/>
+                                <rect key="frame" x="0.0" y="406" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="af4-xY-M1n" id="zBw-3H-Yex">
-                                    <rect key="frame" x="0.0" y="0.0" width="567" height="80"/>
+                                    <frame key="frameInset" width="342" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="book" translatesAutoresizingMaskIntoConstraints="NO" id="pEQ-gQ-45z">
-                                            <rect key="frame" x="8" y="18" width="44" height="44"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="pEQ-gQ-45z" secondAttribute="height" multiplier="1:1" id="8Zj-bF-SBe"/>
                                                 <constraint firstAttribute="width" constant="44" id="odf-xv-2mu"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="考试时间查询" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ipo-4M-Uan">
-                                            <rect key="frame" x="60" y="8" width="499" height="64"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -190,29 +178,27 @@
                                         <constraint firstItem="Ipo-4M-Uan" firstAttribute="leading" secondItem="pEQ-gQ-45z" secondAttribute="trailing" constant="8" symbolic="YES" id="y28-3W-c2Z"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <segue destination="jph-oB-h6f" kind="show" identifier="ShowTestTime" id="e8Z-dN-ZRM"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MoreFunctionCell" rowHeight="80" id="kq4-ze-3Qw">
-                                <rect key="frame" x="0.0" y="486" width="600" height="80"/>
+                                <rect key="frame" x="0.0" y="486" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kq4-ze-3Qw" id="zdA-uz-daF">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
+                                    <frame key="frameInset" width="375" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="moreFunction" translatesAutoresizingMaskIntoConstraints="NO" id="Nq4-AJ-KGl">
-                                            <rect key="frame" x="8" y="18" width="44" height="44"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="Nq4-AJ-KGl" secondAttribute="height" multiplier="1:1" id="K74-RO-agX"/>
                                                 <constraint firstAttribute="width" constant="44" id="thv-Du-X6g"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="更多功能敬请期待" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uon-v7-9hd">
-                                            <rect key="frame" x="60" y="8" width="532" height="64"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -226,7 +212,7 @@
                                         <constraint firstAttribute="bottomMargin" secondItem="Nq4-AJ-KGl" secondAttribute="bottom" constant="10" id="tcA-ig-cun"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.98590224981307983" green="0.75145250558853149" blue="0.49525225162506104" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.97630715370178223" green="0.70032578706741333" blue="0.42179542779922485" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -292,14 +278,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8fe-JJ-Nit" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2420" y="-283"/>
-        </scene>
-        <!--SelectCourse-->
-        <scene sceneID="Y0S-XA-8xL">
-            <objects>
-                <viewControllerPlaceholder storyboardName="SelectCourse" id="AHW-2j-Gk3" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kx5-d1-872" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2435" y="-92"/>
         </scene>
     </scenes>
     <resources>

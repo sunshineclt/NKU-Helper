@@ -21,45 +21,45 @@ class DatePickerTableViewController: UITableViewController, UINavigationControll
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        noneCell.accessoryType = .Checkmark
+        noneCell.accessoryType = .checkmark
         navigationController?.delegate = self
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         datePickerVisible = false
-        datePicker.hidden = true
+        datePicker.isHidden = true
     }
     
     private func showPickerCell() {
         datePickerVisible = true
         tableView.beginUpdates()
-        datePicker.hidden = false
+        datePicker.isHidden = false
         datePicker.alpha = 0
-        UIView.animateWithDuration(0.25) { 
+        UIView.animate(withDuration: 0.25, animations: { 
             self.datePicker.alpha = 1.0
-        }
+        }) 
         tableView.endUpdates()
     }
     
     private func hidePickerCell() {
         datePickerVisible = false
         tableView.beginUpdates()
-        UIView.animateWithDuration(0.25, animations: {
+        UIView.animate(withDuration: 0.25, animations: {
             self.datePicker.alpha = 0
-            }) { (finished) in
-                self.datePicker.hidden = true
-        }
+            }, completion: { (finished) in
+                self.datePicker.isHidden = true
+        }) 
         tableView.endUpdates()
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if (indexPath.row == PICKER_ROW) {
             return datePickerVisible ? 216 : 0
         }
         return ceil(tableView.rowHeight)
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (indexPath.row == 2) {
             if !datePickerVisible {
                 showPickerCell()
@@ -73,21 +73,21 @@ class DatePickerTableViewController: UITableViewController, UINavigationControll
             optionChoosed = indexPath.row
             let cells = [noneCell, nextWeekCell, customCell]
             cells.forEach({ (cell) in
-                cell.accessoryType = .None
+                cell?.accessoryType = .none
             })
-            cells[indexPath.row].accessoryType = .Checkmark
+            cells[indexPath.row]?.accessoryType = .checkmark
         }
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
         tableView.reloadData()
     }
     
-    func navigationController(navigationController: UINavigationController, willShowViewController viewController: UIViewController, animated: Bool) {
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         if let controller = viewController as? NewTaskTableViewController {
             switch optionChoosed {
             case 0:
                 controller.dueDate = nil
             case 1:
-                controller.dueDate = CalendarHelper.buildDateAfterDays(7)
+                controller.dueDate = CalendarHelper.buildDate(afterDays: 7)
             case 2:
                 controller.dueDate = datePicker.date
             default:

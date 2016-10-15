@@ -24,9 +24,9 @@ class GradeCell: UITableViewCell {
         }
     }
     
-    private func getGradeImageWithGrade(grade: Double) -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(CGSizeMake(40, 40), false, 0)
-        let context = UIGraphicsGetCurrentContext()
+    fileprivate func getGradeImageWithGrade(_ grade: Double) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: 40, height: 40), false, 0)
+        let context = UIGraphicsGetCurrentContext()!
         let per = (grade - 60) / 40
         var red: Double = 0, green: Double = 0
         if per < 0.5 {
@@ -41,10 +41,10 @@ class GradeCell: UITableViewCell {
             red = 0
             green = 0
         }
-        CGContextSetFillColorWithColor(context, UIColor(red: CGFloat(red * 0.8 + 0.1), green: CGFloat(green * 0.8 + 0.1), blue: 0.1, alpha: 1).CGColor)
-        CGContextAddEllipseInRect(context, CGRectMake(10, 10, 20, 20));
-        CGContextDrawPath(context, .Fill)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
+        context.setFillColor(UIColor(red: CGFloat(red * 0.8 + 0.1), green: CGFloat(green * 0.8 + 0.1), blue: 0.1, alpha: 1).cgColor)
+        context.addEllipse(in: CGRect(x: 10, y: 10, width: 20, height: 20));
+        context.drawPath(using: .fill)
+        let image = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext();
         return image
         

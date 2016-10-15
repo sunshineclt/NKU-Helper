@@ -15,19 +15,19 @@ class NewTaskTableViewController: UITableViewController {
         didSet {
             if forCourseCell != nil {
                 if let courseTime = forCourseTime {
-                    forCourseCell.detailTextLabel?.text = courseTime.ownerCourse.name
+                    forCourseCell.detailTextLabel?.text = courseTime.forCourse?.name
                 } else {
                     forCourseCell.detailTextLabel?.text = "None"
                 }
             }
         }
     }
-    var dueDate: NSDate? {
+    var dueDate: Date? {
         didSet {
             if let date = dueDate {
-                let formatter = NSDateFormatter()
+                let formatter = DateFormatter()
                 formatter.dateFormat = "yy-MM-dd"
-                dueDateCell.detailTextLabel?.text = formatter.stringFromDate(date)
+                dueDateCell.detailTextLabel?.text = formatter.string(from: date)
             } else {
                 dueDateCell.detailTextLabel?.text = "None"
             }
@@ -47,32 +47,32 @@ class NewTaskTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        color = (try! Color.getColors())[0]
+        color = (try! Color.getAllColors())[0]
         if let courseTime = forCourseTime {
-            forCourseCell.detailTextLabel?.text = courseTime.ownerCourse.name
+            forCourseCell.detailTextLabel?.text = courseTime.forCourse?.name
         } else {
             forCourseCell.detailTextLabel?.text = "None"
         }
     }
     
-    @IBAction func saveButtonClicked(sender: UIBarButtonItem) {
+    @IBAction func saveButtonClicked(_ sender: UIBarButtonItem) {
         do {
             let task: Task
             if let courseTime = forCourseTime {
-                task = Task(title: titleCell.textField.text ?? "", descrip: descriptionCell.textField.text ?? "", type: taskType, dueDate: dueDate, forCourse: courseTime.ownerCourse)
+                task = Task(title: titleCell.textField.text ?? "", descrip: descriptionCell.textField.text ?? "", type: taskType, dueDate: dueDate, forCourse: courseTime.forCourse)
             }
             else {
                 task = Task(title: titleCell.textField.text ?? "", descrip: descriptionCell.textField.text ?? "", type: taskType, dueDate: dueDate)
             }
             task.color = color
             try task.save()
-            self.dismissViewControllerAnimated(true, completion: nil)
+            self.dismiss(animated: true, completion: nil)
         } catch {
-            presentViewController(ErrorHandler.alert(ErrorHandler.DataBaseError()), animated: true, completion: nil)
+            present(ErrorHandler.alert(withError: ErrorHandler.DataBaseError()), animated: true, completion: nil)
         }
     }
     
-    @IBAction func cancelButtonClicked(sender: UIBarButtonItem) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func cancelButtonClicked(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
     }
 }

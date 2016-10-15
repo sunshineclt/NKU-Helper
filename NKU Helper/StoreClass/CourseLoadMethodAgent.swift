@@ -10,13 +10,20 @@ import Foundation
 
 private let sharedStoreAgent = CourseLoadMethodAgent()
 
+/**
+ 访问课程加载方式的帮助类
+ * * * * *
+ 
+ last modified:
+ - date: 2016.9.30
+ 
+ - author: 陈乐天
+ - since: Swift3.0
+ - version: 1.0
+ */
 class CourseLoadMethodAgent: UserDefaultsBaseStoreAgent, UserDefaultsStoreProtocol {
     
-    private override init() {
-        super.init()
-    }
-    
-    class var sharedInstance:CourseLoadMethodAgent {
+    class var sharedInstance: CourseLoadMethodAgent {
         return sharedStoreAgent
     }
     
@@ -24,28 +31,22 @@ class CourseLoadMethodAgent: UserDefaultsBaseStoreAgent, UserDefaultsStoreProtoc
     
     let key = "ClassLoadMethod"
     
-    /**
-     获取课表加载方法
-     
-     - returns: 课表加载方法（0代表从课程表加载，1代表从课程列表加载）
-     */
+    /// 获取课表加载方法
+    /// - note: 0代表从课程表加载，1代表从课程列表加载
+    ///
+    /// - returns: 课表加载方法
     func getData() -> dataForm {
-        if let courseLoadMethod = userDefaults.objectForKey(key) as? Int {
-            return courseLoadMethod
-        }
-        else {
-            return 0
-        }
+        // TODO: 确认可以平滑Migrate
+        return userDefaults.integer(forKey: key)
     }
     
-    /**
-     存储课程加载方法
-     
-     - parameter data: 要存储的课程加载方法（0代表从课程表加载，1代表从课程列表加载）
-     */
-    func saveData(data: dataForm) {
-        userDefaults.removeObjectForKey(key)
-        userDefaults.setObject(data, forKey: key)
+    /// 存储课程加载方法
+    /// - note: 0代表从课程表加载，1代表从课程列表加载
+    ///
+    /// - parameter data: 课表加载方法
+    func save(data: dataForm) {
+        userDefaults.removeObject(forKey: key)
+        userDefaults.set(data, forKey: key)
         userDefaults.synchronize()
     }
     

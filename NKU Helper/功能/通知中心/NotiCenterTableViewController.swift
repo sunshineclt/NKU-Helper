@@ -23,13 +23,13 @@ class NotiCenterTableViewController: UITableViewController {
         
         super.viewDidLoad()
         let footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(NotiCenterTableViewController.fetchMoreData))
-        footer.setTitle("点击或上拉刷新", forState: .Idle)
-        footer.setTitle("正在加载更多通知", forState: .Refreshing)
-        footer.setTitle("没有更多通知啦", forState: .NoMoreData)
-        footer.stateLabel?.font = UIFont(name: "HelveticaNeue", size: 15)
-        footer.stateLabel?.textColor = UIColor.whiteColor()
-        footer.activityIndicatorViewStyle = .White
-        footer.backgroundColor = UIColor(red: 155/255, green: 92/255, blue: 180/255, alpha: 1)
+        footer?.setTitle("点击或上拉刷新", for: .idle)
+        footer?.setTitle("正在加载更多通知", for: .refreshing)
+        footer?.setTitle("没有更多通知啦", for: .noMoreData)
+        footer?.stateLabel?.font = UIFont(name: "HelveticaNeue", size: 15)
+        footer?.stateLabel?.textColor = UIColor.white
+        footer?.activityIndicatorViewStyle = .white
+        footer?.backgroundColor = UIColor(red: 155/255, green: 92/255, blue: 180/255, alpha: 1)
         
         self.tableView.mj_footer = footer
         tableView.estimatedRowHeight = 100
@@ -40,16 +40,16 @@ class NotiCenterTableViewController: UITableViewController {
     
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return noti.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.notiCell.identifier, forIndexPath: indexPath) as! NotiTableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.notiCell.identifier, for: indexPath) as! NotiTableViewCell
         cell.notiData = noti[indexPath.row]
         return cell
     }
@@ -58,36 +58,35 @@ class NotiCenterTableViewController: UITableViewController {
     func fetchMoreData() {
         if !self.isUpdatingData && !self.isEndOfData {
             self.isUpdatingData = true
-            let notiFetcher = NKNetworkFetchNoti()
-            notiFetcher.fetchNotiOnPage(currentPage + 1, WithBlock: { (result:NKNetworkFetchNotiResult) -> Void in
+            NKNetworkNotiHandler.fetchNoti(onPage: currentPage + 1, WithBlock: { (result) in
                 SVProgressHUD.dismiss()
                 self.isUpdatingData = false
                 self.tableView.mj_footer.endRefreshing()
                 self.currentPage += 1
                 switch (result) {
-                case .Success(notis: let notis, totalPages: let totalPages):
-                    self.noti.appendContentsOf(notis)
+                case .success(notis: let notis, totalPages: let totalPages):
+                    self.noti.append(contentsOf: notis)
                     self.tableView.reloadData()
                     if totalPages == self.currentPage {
                         self.isEndOfData = true
                         self.tableView.mj_footer.endRefreshingWithNoMoreData()
                     }
-                case .Fail:
-                    self.presentViewController(ErrorHandler.alert(ErrorHandler.GetNotiFailed()), animated: true, completion: nil)
+                case .fail:
+                    self.present(ErrorHandler.alert(withError: ErrorHandler.GetNotiFailed()), animated: true, completion: nil)
                 }
             })
         }
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as! NotiTableViewCell
-        let url = NSURL(string: cell.notiData.url)!
-        self.performSegueWithIdentifier(R.segue.notiCenterTableViewController.showNotiDetail, sender: url)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! NotiTableViewCell
+        let url = URL(string: cell.notiData.url)!
+        self.performSegue(withIdentifier: R.segue.notiCenterTableViewController.showNotiDetail, sender: url)
     }
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let typeInfo = R.segue.notiCenterTableViewController.showNotiDetail(segue: segue) {
-            typeInfo.destinationViewController.url = sender as! NSURL
+            typeInfo.destination.url = sender as! URL
         }
     }
 

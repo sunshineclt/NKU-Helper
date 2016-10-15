@@ -8,7 +8,18 @@
 
 import Foundation
 
-/// 选课中的课程类
+/**
+ 选课中的课程类
+ - important: 未启用!!!
+ * * * * *
+ 
+ last modified:
+ - date: 2016.10.1
+ 
+ - author: 陈乐天
+ - since: Swift3.0
+ - version: 1.0
+ */
 class CourseSelecting: NSObject {
 
     var ID: String
