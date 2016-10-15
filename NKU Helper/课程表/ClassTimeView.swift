@@ -208,6 +208,7 @@ class ClassTimeView: UIView {
                     let courseView = self.classScrollView.viewWithTag(courseTime.key)!
                     if ((weekOddEven == "单周" && week % 2 == 0) || (weekOddEven == "双周" && (week % 2 == 1))) || (week < startWeek) || (week > endWeek) {
                         courseView.alpha = 0.15
+                        courseView.isUserInteractionEnabled = false
                     }
                 })
             })

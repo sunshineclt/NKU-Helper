@@ -11,7 +11,7 @@ import RealmSwift
 
 class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCourseDelegate {
     
-// MARK: View Property
+// MARK:- View Property
     
     @IBOutlet var refreshBarButton: UIBarButtonItem!
     var classTimeView: ClassTimeView {
@@ -20,7 +20,7 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
         }
     }
     
-// MARK: VC Life Cycle
+// MARK:- VC Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +67,7 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
         }
     }
     
-// MARK: 事件监听
+// MARK:- 事件监听
     
     override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
         self.classTimeView.orientation = toInterfaceOrientation
@@ -82,52 +82,12 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
         self.classTimeView.drawBackground()
     }
     
-// MARK: NKNetworkLoadCourseDelegate
+// MARK:- NKNetworkLoadCourseDelegate
     
     func didSuccessToReceiveCourseData() {
+        assignColor()
         DispatchQueue.main.async(execute: { () -> Void in
             self.classTimeView.loadEndAnimation()
-            
-            // 给每个课程分配一个颜色
-            // 初始化颜色的使用
-            var isColorUsed = [Bool]()
-            for _ in 0 ..< Color.getColorCount() {
-                isColorUsed.append(false)
-            }
-            do {
-                let colors = try Color.getAllColors()
-                /**
-                 为课程获取合适的颜色（若已有过，则使用那个颜色，否则随机出一个没用过的颜色）
-                 
-                 - parameter classID: 课程ID
-                 
-                 - returns: 合适的颜色
-                 */
-                func findProperColorForCourse(_ classID: String) -> Color {
-                    var count = 0
-                    var colorIndex = Int(arc4random_uniform(UInt32(colors.count)))
-                    
-                    while (isColorUsed[colorIndex]) || (!colors[colorIndex].liked) {
-                        colorIndex = Int(arc4random_uniform(UInt32(colors.count)))
-                        count += 1
-                        if count > 100 {
-                            break
-                        }
-                    }
-                    isColorUsed[colorIndex] = true
-                    return colors[colorIndex]
-                }
-                let courses = try Course.getAllCourses()
-                // TODO: 不是每次都要重新分配颜色吧？
-                for i in 0 ..< courses.count {
-                    let current = courses[i]
-                    let classID = current.ID
-                    try Realm().write({ 
-                        current.color = findProperColorForCourse(classID)
-                    })
-                }
-            } catch {
-            }
             self.classTimeView.drawClassTimeTableOnViewController(self)
         })
     }
@@ -152,7 +112,7 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
         })
     }
     
-// MARK: 事件监听
+// MARK:- 事件监听
     
     @IBAction func refreshClassTimeTable(_ sender: AnyObject) {
         let alert = UIAlertController(title: "刷新课表确认", message: "若刷新课表，则原来记录的课程作业都会被删除，确定要继续吗？", preferredStyle: .alert)
@@ -290,7 +250,51 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
         }        
     }
 
-// MARK: 页面间跳转
+// MARK:- 私有方法
+    private func assignColor() {
+        // 给每个课程分配一个颜色
+        // 初始化颜色的使用
+        var isColorUsed = [Bool]()
+        for _ in 0 ..< Color.getColorCount() {
+            isColorUsed.append(false)
+        }
+        do {
+            let colors = try Color.getAllColors()
+            /// 为课程获取合适的颜色
+            /// - note: 随机出一个没用过的颜色，但当颜色太少时会不得不使用重复的颜色
+            ///
+            /// - parameter classID: 课程ID
+            ///
+            /// - returns: 合适的颜色
+            func findProperColorForCourse(_ classID: String) -> Color {
+                var count = 0
+                var colorIndex = Int(arc4random_uniform(UInt32(colors.count)))
+                
+                while (isColorUsed[colorIndex]) || (!colors[colorIndex].liked) {
+                    colorIndex = Int(arc4random_uniform(UInt32(colors.count)))
+                    count += 1
+                    if count > 100 {
+                        break
+                    }
+                }
+                isColorUsed[colorIndex] = true
+                return colors[colorIndex]
+            }
+            let courses = try Course.getAllCourses()
+            let realm = try Realm()
+            for i in 0 ..< courses.count {
+                let current = courses[i]
+                let classID = current.ID
+                try realm.write({
+                    current.color = findProperColorForCourse(classID)
+                })
+            }
+        } catch {
+        }
+        
+    }
+    
+// MARK:- 页面间跳转
     
     func showCourseDetail(_ tapGesture:UITapGestureRecognizer) {
         self.performSegue(withIdentifier: R.segue.classTimeViewController.showCourseDetail, sender: (tapGesture.view as! ClassView).courseTime)
@@ -305,7 +309,7 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
         }
     }
     
-// MARK: 私有方法
+// MARK:- 私有方法
     
     private func canDrawClassTimeTable() -> Bool {
         do {
@@ -322,7 +326,7 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
 
 }
 
-// MARK: ScrollViewDelegate
+// MARK:- ScrollViewDelegate
 
 extension ClassTimeViewController: UIScrollViewDelegate {
     

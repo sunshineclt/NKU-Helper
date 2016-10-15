@@ -56,7 +56,12 @@ class NKNetworkCourseHandler: NKNetworkBase {
             }
             DispatchQueue.global().async {
                 let saveOK = self.analyzeClassTimeTableHtml(html)
-                saveOK ? self.delegate?.didSuccessToReceiveCourseData() : self.delegate?.didFailToSaveCourseData()
+                if saveOK {
+                    self.delegate?.didSuccessToReceiveCourseData()
+                }
+                else {
+                    self.delegate?.didFailToSaveCourseData()
+                }
             }
         }
     }
@@ -162,21 +167,23 @@ class NKNetworkCourseHandler: NKNetworkBase {
                 self.delegate?.didFailToReceiveCourseData()
                 return
             }
-            let pageExtractor = try! NSRegularExpression(pattern: "共 (\\d) 页,第 (\\d) 页 ", options: .caseInsensitive)
-            let match = pageExtractor.matches(in: html, options: .reportProgress, range: NSMakeRange(0, (html as NSString).length))[0]
-            self.nowPage = ((html as NSString).substring(with: match.rangeAt(2)) as NSString).integerValue
-            self.totalPage = ((html as NSString).substring(with: match.rangeAt(1)) as NSString).integerValue
-            let saveOK = self.analyzeClassListHtml(html)
-            if saveOK {
-                if self.nowPage == self.totalPage {
-                    self.delegate?.didSuccessToReceiveCourseData()
+            DispatchQueue.global().async {
+                let pageExtractor = try! NSRegularExpression(pattern: "共 (\\d) 页,第 (\\d) 页 ", options: .caseInsensitive)
+                let match = pageExtractor.matches(in: html, options: .reportProgress, range: NSMakeRange(0, (html as NSString).length))[0]
+                self.nowPage = ((html as NSString).substring(with: match.rangeAt(2)) as NSString).integerValue
+                self.totalPage = ((html as NSString).substring(with: match.rangeAt(1)) as NSString).integerValue
+                let saveOK = self.analyzeClassListHtml(html)
+                if saveOK {
+                    if self.nowPage == self.totalPage {
+                        self.delegate?.didSuccessToReceiveCourseData()
+                    }
+                    else {
+                        self.loadNextPageClassTable()
+                    }
                 }
                 else {
-                    self.loadNextPageClassTable()
+                    self.delegate?.didFailToSaveCourseData()
                 }
-            }
-            else {
-                self.delegate?.didFailToSaveCourseData()
             }
         }
     }
