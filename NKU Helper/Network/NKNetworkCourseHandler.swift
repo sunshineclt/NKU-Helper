@@ -126,11 +126,65 @@ class NKNetworkCourseHandler: NKNetworkBase {
                 return
             }
             DispatchQueue.global().async {
+                let pageExtractor = try! NSRegularExpression(pattern: "共 (\\d) 页,第 (\\d) 页 ", options: .caseInsensitive)
+                let match = pageExtractor.matches(in: html, options: .reportProgress, range: NSMakeRange(0, (html as NSString).length))[0]
+                self.nowPage = ((html as NSString).substring(with: match.rangeAt(2)) as NSString).integerValue
+                self.totalPage = ((html as NSString).substring(with: match.rangeAt(1)) as NSString).integerValue
+                // 清空之前的课表数据
+                do {
+                    try Task.deleteCourseTasks()
+                    try CourseTime.deleteAllCourseTimes()
+                    try Course.deleteAllCourses()
+                } catch {
+                    CourseLoadedAgent.sharedInstance.signCourseToUnloaded()
+                    self.delegate?.didFailToSaveCourseData()
+                }
                 let saveOK = self.analyzeClassListHtml(html)
-                saveOK ? self.delegate?.didSuccessToReceiveCourseData() : self.delegate?.didFailToSaveCourseData()
+                if saveOK {
+                    if self.nowPage == self.totalPage {
+                        self.delegate?.didSuccessToReceiveCourseData()
+                    }
+                    else {
+                        self.loadNextPageClassTable()
+                    }
+                }
+                else {
+                    self.delegate?.didFailToSaveCourseData()
+                }
             }
         }
     }
+
+    /// 加载课程列表下一页
+    dynamic private func loadNextPageClassTable() {
+        Alamofire.request("http://222.30.32.10/xsxk/selectedPageAction.do?page=next").responseString { (response) in
+            guard let html = response.result.value else {
+                self.delegate?.didFailToReceiveCourseData()
+                return
+            }
+            let pageExtractor = try! NSRegularExpression(pattern: "共 (\\d) 页,第 (\\d) 页 ", options: .caseInsensitive)
+            let match = pageExtractor.matches(in: html, options: .reportProgress, range: NSMakeRange(0, (html as NSString).length))[0]
+            self.nowPage = ((html as NSString).substring(with: match.rangeAt(2)) as NSString).integerValue
+            self.totalPage = ((html as NSString).substring(with: match.rangeAt(1)) as NSString).integerValue
+            let saveOK = self.analyzeClassListHtml(html)
+            if saveOK {
+                if self.nowPage == self.totalPage {
+                    self.delegate?.didSuccessToReceiveCourseData()
+                }
+                else {
+                    self.loadNextPageClassTable()
+                }
+            }
+            else {
+                self.delegate?.didFailToSaveCourseData()
+            }
+        }
+    }
+    
+    /// 现在加载到课程列表第几页
+    private var nowPage = 0
+    /// 课程列表一共有几页
+    private var totalPage = 0
     
     /// 分析课程列表html
     ///
@@ -141,32 +195,24 @@ class NKNetworkCourseHandler: NKNetworkBase {
         let htmlNSString = html as NSString
         let regularExpression1 = try! NSRegularExpression(pattern: "<td[^<>]*?NavText\"[^<>]*?>(\\S*?)\\s*?</td>\\s*?<td[^<>]*?NavText\"[^<>]*?>(\\S*?)\\s*?</td>\\s*?<td[^<>]*?NavText\"[^<>]*?>(\\S*?)\\s*?</td>\\s*?<td[^<>]*?NavText\"[^<>]*?>(\\S*?)\\s*?</td>\\s*?<td[^<>]*?NavText\"[^<>]*?>(\\S*?)\\s*?</td>\\s*?<td[^<>]*?NavText\"[^<>]*?>(\\S*?)\\s*?</td>\\s*?<td[^<>]*?NavText\"[^<>]*?>(\\S*?)\\s*?</td>\\s*?<td[^<>]*?NavText\"[^<>]*?>(\\S*?)\\s*?</td>\\s*?<td[^<>]*?NavText\"[^<>]*?>(\\S*?)\\s*?</td>\\s*?<td[^<>]*?NavText\"[^<>]*?>(\\S*?)\\s*?</td>\\s*?<td[^<>]*?NavText\"[^<>]*?>(\\S*?)\\s*?</td>\\s*?<td[^<>]*?NavText\"[^<>]*?>(\\S*?)\\s*?</td>\\s*?<td[^<>]*?NavText\"[^<>]*?>\\s*?<a[^<>]*?href=\".*?&amp;(.*?)\".*?</a>\\s*?</td>", options: .caseInsensitive)
         let matches = regularExpression1.matches(in: html, options: .reportProgress, range: NSMakeRange(0, htmlNSString.length))
-        do {
-            try Task.deleteCourseTasks()
-            try CourseTime.deleteAllCourseTimes()
-            try Course.deleteAllCourses()
-            for i in 0..<matches.count {
-                let match = matches[i]
-                let index = (htmlNSString.substring(with: match.rangeAt(1)) as NSString).integerValue
-                let startSection = (htmlNSString.substring(with: match.rangeAt(6)) as NSString).integerValue
-                let endSection = (htmlNSString.substring(with: match.rangeAt(7)) as NSString).integerValue
-                let url = URL(string: "http://222.30.32.10/xsxk/selectedAllAction.do?ifkebiao=no&" + htmlNSString.substring(with: match.rangeAt(13)))!
-                do {
-                    try saveDetailClassInfoWith(URL: url, startSection: startSection, sectionNumber: endSection - startSection + 1, index: index)
-                }
-                catch {
-                    CourseLoadedAgent.sharedInstance.signCourseToUnloaded()
-                    return false
-                }
-                let progress = (Float(i + 1)) / Float(matches.count)
-                delegate?.updateLoadProgress(progress)
+        for i in 0..<matches.count {
+            let match = matches[i]
+            let index = (htmlNSString.substring(with: match.rangeAt(1)) as NSString).integerValue
+            let startSection = (htmlNSString.substring(with: match.rangeAt(6)) as NSString).integerValue
+            let endSection = (htmlNSString.substring(with: match.rangeAt(7)) as NSString).integerValue
+            let url = URL(string: "http://222.30.32.10/xsxk/selectedAllAction.do?ifkebiao=no&" + htmlNSString.substring(with: match.rangeAt(13)))!
+            do {
+                try saveDetailClassInfoWith(URL: url, startSection: startSection, sectionNumber: endSection - startSection + 1, index: index)
             }
-            CourseLoadedAgent.sharedInstance.signCourseToLoaded()
-            return true
-        } catch {
-            CourseLoadedAgent.sharedInstance.signCourseToUnloaded()
-            return false
+            catch {
+                CourseLoadedAgent.sharedInstance.signCourseToUnloaded()
+                return false
+            }
+            let progress = (Float(i + 1)) / Float(matches.count) * Float(nowPage) / Float(totalPage)
+            delegate?.updateLoadProgress(progress)
         }
+        CourseLoadedAgent.sharedInstance.signCourseToLoaded()
+        return true
     }
 
     /// 加载、分析并保存课程详细信息
