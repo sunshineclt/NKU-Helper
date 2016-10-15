@@ -28,10 +28,8 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
         
         self.classTimeView.classScrollView.delegate = self
         self.classTimeView.headScrollView.delegate = self
-        self.classTimeView.drawBackground()
         
         if canDrawClassTimeTable() {
-            self.classTimeView.drawClassTimeTableOnViewController(self)
         }
         else {
             switch NKNetworkIsLogin.isLoggedin() {
@@ -51,6 +49,7 @@ class ClassTimeViewController: UIViewController, WXApiDelegate, NKNetworkLoadCou
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.classTimeView.drawBackground()
         classTimeView.drawClassTimeTableOnViewController(self)
         NKNetworkInfoHandler.fetchNowWeek { (nowWeek, isVocation) in
             guard let nowWeek = nowWeek, let isVocation = isVocation else {
