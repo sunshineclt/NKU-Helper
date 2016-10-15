@@ -16,18 +16,22 @@
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="米色白色渐变背景.png" translatesAutoresizingMaskIntoConstraints="NO" id="WYP-B8-HNv"/>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="slogan.png" translatesAutoresizingMaskIntoConstraints="NO" id="2JW-ir-6hF">
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="2JW-ir-6hF" secondAttribute="height" multiplier="601:320" id="Rck-O5-1Wp"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="500" id="cac-GV-hw5"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="175" id="ndf-iE-TKb"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="南开表情包.png" translatesAutoresizingMaskIntoConstraints="NO" id="wpC-jx-wIs">
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="200" id="ehq-N3-7aK"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="300" id="ehq-N3-7aK">
+                                        <variation key="heightClass=regular" constant="200"/>
+                                    </constraint>
                                     <constraint firstAttribute="width" secondItem="wpC-jx-wIs" secondAttribute="height" multiplier="1:1" id="y0B-Rl-LA5"/>
                                 </constraints>
                             </imageView>
@@ -35,13 +39,14 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="WYP-B8-HNv" secondAttribute="bottom" id="00k-4z-8E6"/>
-                            <constraint firstAttribute="trailing" secondItem="2JW-ir-6hF" secondAttribute="trailing" id="Bx1-w3-oT2"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="2JW-ir-6hF" secondAttribute="trailing" id="Bx1-w3-oT2"/>
                             <constraint firstItem="WYP-B8-HNv" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" id="EgD-ge-Izc"/>
-                            <constraint firstItem="wpC-jx-wIs" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="2/5" id="Ev1-cr-ZMa"/>
+                            <constraint firstItem="wpC-jx-wIs" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="2/5" priority="750" id="Ev1-cr-ZMa"/>
                             <constraint firstItem="wpC-jx-wIs" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="WmV-bV-zdR"/>
+                            <constraint firstItem="2JW-ir-6hF" firstAttribute="centerX" secondItem="WYP-B8-HNv" secondAttribute="centerX" id="byd-Md-4a6"/>
                             <constraint firstAttribute="trailing" secondItem="WYP-B8-HNv" secondAttribute="trailing" id="cbw-o7-JOK"/>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" relation="greaterThanOrEqual" secondItem="wpC-jx-wIs" secondAttribute="bottom" constant="8" symbolic="YES" id="grK-KO-UVz"/>
-                            <constraint firstItem="2JW-ir-6hF" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="kab-EA-uLW"/>
+                            <constraint firstItem="2JW-ir-6hF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="kab-EA-uLW"/>
                             <constraint firstItem="WYP-B8-HNv" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="kxP-U0-MSS"/>
                             <constraint firstItem="wpC-jx-wIs" firstAttribute="top" secondItem="2JW-ir-6hF" secondAttribute="bottom" constant="8" symbolic="YES" id="xyL-oN-gwY"/>
                             <constraint firstItem="2JW-ir-6hF" firstAttribute="top" secondItem="WYP-B8-HNv" secondAttribute="top" id="yx2-GK-9al"/>
