@@ -36,7 +36,6 @@ class CourseLoadMethodAgent: UserDefaultsBaseStoreAgent, UserDefaultsStoreProtoc
     ///
     /// - returns: 课表加载方法
     func getData() -> dataForm {
-        // TODO: 确认可以平滑Migrate
         return userDefaults.integer(forKey: key)
     }
     

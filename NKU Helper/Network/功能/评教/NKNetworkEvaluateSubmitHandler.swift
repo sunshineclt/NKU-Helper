@@ -41,24 +41,19 @@ class NKNetworkEvaluateSubmitHandler: NKNetworkBase {
     /// - parameter block:   返回闭包
     class func submit(grades: [String], opinion: String, index: Int, withBlock block: @escaping NKNetworkEvaluateSubmitBlock) {
         //TODO: 在开放时整理
-//        let url = URL(string: "http://222.30.32.10/evaluate/stdevatea/queryTargetAction.do")!
-//        let req = NSMutableURLRequest(url: url)
-//        var data = String(format: "operation=Store")
-//        for i in 0 ..< grades.count {
-//            let gradeString = "&array[\(i)]=\(grades[i])"
-//            data = data + gradeString
-//        }
-//        data = data + "&opinion=\(opinion)"
-//        req.httpBody = data.data(using: String.Encoding(rawValue: CFStringConvertEncodingToNSStringEncoding(0x0632)))
-//        req.addValue("http://222.30.32.10/evaluate/stdevatea/queryTargetAction.do?operation=target&index=\(index)", forHTTPHeaderField: "Referer")
-//        req.httpMethod = "POST"
-        var params = ["operation": "Store",
-                      "opinion": opinion]
+        let url = URL(string: "http://222.30.32.10/evaluate/stdevatea/queryTargetAction.do")!
+        var req = URLRequest(url: url)
+        var data = String(format: "operation=Store")
         for i in 0 ..< grades.count {
-            params["array[\(i)]"] = grades[i]
+            let gradeString = "&array[\(i)]=\(grades[i])"
+            data = data + gradeString
         }
-        // TODO: 编码没关系吗？
-        Alamofire.request("http://222.30.32.10/evaluate/stdevatea/queryTargetAction.do", method: .post, parameters: params, headers: ["Referer": "http://222.30.32.10/evaluate/stdevatea/queryTargetAction.do?operation=target&index=\(index)"]).responseString { (response) -> Void in
+        data = data + "&opinion=\(opinion)"
+        req.httpBody = data.data(using: String.Encoding(rawValue: CFStringConvertEncodingToNSStringEncoding(0x0632)))
+        req.addValue("http://222.30.32.10/evaluate/stdevatea/queryTargetAction.do?operation=target&index=\(index)", forHTTPHeaderField: "Referer")
+        req.httpMethod = "POST"
+
+        Alamofire.request(req).responseString { (response) -> Void in
             guard let html = response.result.value else {
                 block(.fail)
                 return
@@ -70,20 +65,6 @@ class NKNetworkEvaluateSubmitHandler: NKNetworkBase {
                 block(.fail)
             }
         }
-
-//        Alamofire.request(req).responseString { (response) -> Void in
-//            if let html = response.result.value {
-//                if (html as NSString).rangeOfString("成功保存").length > 0 {
-//                    self.delegate?.didSuccessToSubmit()
-//                }
-//                else {
-//                    self.delegate?.didFailToSubmit()
-//                }
-//            }
-//            else {
-//                self.delegate?.didFailToSubmit()
-//            }
-//        }
     }
     
 }

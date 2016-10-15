@@ -24,7 +24,6 @@ class GradeShowerTableViewController: FunctionBaseTableViewController, FunctionD
         gradeGetter.fetchGrade { (result) in
             switch result {
             case .success(let grade):
-                // TODO: 确认是在主线程上
                 SVProgressHUD.dismiss()
                 self.gradeResult = grade
                 self.tableView.reloadData()
