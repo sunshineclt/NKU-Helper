@@ -43,9 +43,7 @@ class Task: Object {
             return TaskType(rawValue: typeStored)!
         }
         set {
-            try! realm?.write {
-                typeStored = newValue.rawValue
-            }
+            typeStored = newValue.rawValue
         }
     }
     
