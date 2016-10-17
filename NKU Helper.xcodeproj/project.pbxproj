@@ -84,6 +84,7 @@
 		E97648D21D484405005326EE /* CourseLoadMethodAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97648D11D484405005326EE /* CourseLoadMethodAgent.swift */; };
 		E977742A1D4B59B3008D768E /* NewTaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97774291D4B59B3008D768E /* NewTaskTableViewController.swift */; };
 		E977742C1D4B59D0008D768E /* DatePickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E977742B1D4B59D0008D768E /* DatePickerTableViewController.swift */; };
+		E97FE9481DB4FFD900FEB8AC /* PrintLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97FE9471DB4FFD900FEB8AC /* PrintLog.swift */; };
 		E984C7701D50D1E400C0BBC8 /* VersionInfoAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E984C76F1D50D1E400C0BBC8 /* VersionInfoAgent.swift */; };
 		E984C7711D50D58B00C0BBC8 /* Colors.realm in Resources */ = {isa = PBXBuildFile; fileRef = E984C76C1D50D19A00C0BBC8 /* Colors.realm */; };
 		E988B5371AB005DF006818FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E988B5361AB005DF006818FA /* Main.storyboard */; };
@@ -213,7 +214,7 @@
 		E95F93EC1C51377300CEEC12 /* EvaluateOpinionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EvaluateOpinionTableViewCell.swift; sourceTree = "<group>"; };
 		E95F93EE1C51394800CEEC12 /* NKNetworkEvaluateSubmitHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkEvaluateSubmitHandler.swift; sourceTree = "<group>"; };
 		E961C83E1D2EAE740066C9C3 /* 编码规范.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "编码规范.md"; sourceTree = "<group>"; };
-		E9634EBE1D38E3B900F30FA0 /* NKNetworkInfoHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkInfoHandler.swift; sourceTree = "<group>"; };
+		E9634EBE1D38E3B900F30FA0 /* NKNetworkInfoHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = NKNetworkInfoHandler.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E96419D11AA8971B00397691 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AccountTableViewCell.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E96419D31AA8BC9800397691 /* DetailAccountInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = DetailAccountInfoTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E964B9501D45141C00F10B3D /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -237,6 +238,7 @@
 		E97648D11D484405005326EE /* CourseLoadMethodAgent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseLoadMethodAgent.swift; sourceTree = "<group>"; };
 		E97774291D4B59B3008D768E /* NewTaskTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTaskTableViewController.swift; sourceTree = "<group>"; };
 		E977742B1D4B59D0008D768E /* DatePickerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = DatePickerTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		E97FE9471DB4FFD900FEB8AC /* PrintLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PrintLog.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E984C76C1D50D19A00C0BBC8 /* Colors.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = Colors.realm; sourceTree = "<group>"; };
 		E984C76F1D50D1E400C0BBC8 /* VersionInfoAgent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VersionInfoAgent.swift; sourceTree = "<group>"; };
 		E988B5361AB005DF006818FA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -758,6 +760,7 @@
 				E92B2D001B48DB89008825A3 /* CalendarHelper.swift */,
 				E9536B521DB081190018D10E /* NKRouter.swift */,
 				E930839D1D3A0DE1000FC8E8 /* UIViewExtention.swift */,
+				E97FE9471DB4FFD900FEB8AC /* PrintLog.swift */,
 			);
 			path = HelperClass;
 			sourceTree = "<group>";
@@ -1018,6 +1021,7 @@
 				E95F93C61C4E6CD100CEEC12 /* Grade.swift in Sources */,
 				E96419D21AA8971B00397691 /* AccountTableViewCell.swift in Sources */,
 				E93083A31D3A8F4D000FC8E8 /* TimeScheduleView.swift in Sources */,
+				E97FE9481DB4FFD900FEB8AC /* PrintLog.swift in Sources */,
 				E93D05F31D4B5C0000ACC043 /* TextFieldCell.swift in Sources */,
 				E95F93E51C50FAEB00CEEC12 /* EvaluateDetailTableViewController.swift in Sources */,
 				E95F93E71C50FE8800CEEC12 /* EvaluateDetailTableViewCell.swift in Sources */,

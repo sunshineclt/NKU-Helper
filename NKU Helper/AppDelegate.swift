@@ -145,17 +145,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate{
     }
 
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        print("Register For Remote Notification With Device Token Successfully")
+        printLog("Register For Remote Notification With Device Token Successfully")
         var token = ""
         for i in 0..<deviceToken.count {
             token = token + String(format: "%02.2hhx", arguments: [deviceToken[i]])
         }
-        print("Device Token: ", token)
+        printLog("Device Token: \(token)")
         NKNetworkInfoHandler.uploadDeviceToken(token)
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        print("Register For Remote Notification With Device Token Unsuccessfully")
+        printLog("Register For Remote Notification With Device Token Unsuccessfully")
     }
     
     // 推送来的消息需要打开哪个页面
@@ -172,7 +172,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate{
     
     func onResp(_ resp: BaseResp!) {
         if resp.isKind(of: type(of: SendMessageToWXResp())) {
-            print("分享到微信错误")
+            printLog("分享到微信错误")
         }
     }
     

@@ -63,16 +63,16 @@ class NKNetworkInfoHandler: NKNetworkBase {
                 case .success(let value):
                     let json = JSON(value)
                     guard json["msg"].stringValue == "OK" else {
-                        print("register user FAIL")
+                        printLog("register user FAIL")
                         return
                     }
-                    print("register user SUCCESS")
+                    printLog("register user SUCCESS")
                 case .failure( _):
-                    print("register user FAIL")
+                    printLog("register user FAIL")
                 }
             }
         } catch {
-            print("登记用户时无用户存储")
+            printLog("登记用户时无用户存储")
         }
     }
     
@@ -82,7 +82,7 @@ class NKNetworkInfoHandler: NKNetworkBase {
     /// - parameter deviceToken: DeviceToken
     class func uploadDeviceToken(_ deviceToken: String) {
         guard let uuid = UIDevice.current.identifierForVendor?.uuidString else {
-            print("获取uuid失败")
+            printLog("获取uuid失败")
             return
         }
         do {
@@ -92,17 +92,17 @@ class NKNetworkInfoHandler: NKNetworkBase {
                 case .success(let value):
                     let json = JSON(value)
                     guard json["msg"].stringValue == "OK" else {
-                        print("upload device token FAIL")
+                        printLog("upload device token FAIL")
                         return
                     }
-                    print("upload device token SUCCESS")
+                    printLog("upload device token SUCCESS")
                 case .failure( _):
-                    print("upload device token FAIL")
+                    printLog("upload device token FAIL")
                 }
             }
         }
         catch {
-            print("上传DeviceToken无用户存储")
+            printLog("上传DeviceToken无用户存储")
         }
     }
     
