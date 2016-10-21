@@ -118,6 +118,7 @@ class TodayViewController: UIViewController {
                         return
                     }
                     self.todayCourses = nowWeek % 2 == 0 ? self.todayCourses?.filter("!((weekOddEven == '单周') || (\(nowWeek) < startWeek) || (\(nowWeek) > endWeek))") : self.todayCourses?.filter("!((weekOddEven == '双周') || (\(nowWeek) < startWeek) || (\(nowWeek) > endWeek))")
+                    self.mainTableView.reloadData()
                 }
                 self.mainTableView.reloadData()
                 self.todayCourseCountLabel.text = "今天有\(self.todayCourses?.count ?? 0)节课"
