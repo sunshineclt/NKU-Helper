@@ -11,7 +11,6 @@ import MessageUI
 
 class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate {
 
-    @IBOutlet var aboutTextView: UITextView!
     @IBOutlet var appNameVersionLabel: UILabel!
     
     override func viewDidLoad() {
@@ -36,6 +35,10 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func openOpenSourceURL(_ sender: UIButton) {
+        UIApplication.shared.openURL(URL(string: "https://github.com/sunshineclt/NKU-Helper")!)
     }
     
     @IBAction func backwardAction(_ sender: UIButton) {
