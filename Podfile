@@ -34,14 +34,10 @@ target 'NKU Helper' do
 	pod 'ShareSDK3/ShareSDKPlatforms/QQ'
 	pod 'ShareSDK3/ShareSDKPlatforms/WeChat'
 
-	end
-
-	post_install do |installer|
-	`find Pods -regex 'Pods/pop.*\\.h' -print0 | xargs -0 sed -i '' 's/\\(<\\)pop\\/\\(.*\\)\\(>\\)/\\"\\2\\"/'`
-    
 end
 
 post_install do |installer|
+    `find Pods -regex 'Pods/pop.*\\.h' -print0 | xargs -0 sed -i '' 's/\\(<\\)pop\\/\\(.*\\)\\(>\\)/\\"\\2\\"/'`
     installer.pods_project.targets.each do |target|
         target.build_configurations.each do |config|
             config.build_settings['SWIFT_VERSION'] = '3.0'
