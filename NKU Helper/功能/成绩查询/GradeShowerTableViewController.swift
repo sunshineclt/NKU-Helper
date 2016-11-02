@@ -69,7 +69,7 @@ extension GradeShowerTableViewController {
         else {
             switch section {
             case 2:classTypeLabel.text = "总计"
-            case 3:classTypeLabel.text = "GPA（以ABCDE类课计）"
+            case 3:classTypeLabel.text = "GPA（以ABCDE、FC、FD类课计）"
             default:
                 let nowClassType = classType[section + 5]
                 classTypeLabel.text = "\(nowClassType)类课"
@@ -201,7 +201,7 @@ extension GradeShowerTableViewController {
             }
             guard indexPath.section != 3 else {
                 let method = GPACalculateMethod.methods[indexPath.row]
-                let grade = Grade.computeGRA(gradeResult, WithGPACalculateMethod: method, AndCourseType: ["FC", "FD"])
+                let grade = Grade.computeGRA(gradeResult, WithGPACalculateMethod: method, AndCourseType: ["A", "B", "C", "D", "E", "FC", "FD"])
                 let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.gPACell.identifier, for: indexPath) as! GPACell
                 cell.GPASum = GPACalculateMethod.methodsSum[indexPath.row]
                 cell.GPAName = method.methodName
