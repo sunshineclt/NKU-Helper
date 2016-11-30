@@ -4,7 +4,7 @@
 [![LICENSE](https://img.shields.io/badge/LICENSE-GPL--3.0%2B-brightgreen.svg)](./LICENSE.txt)
 
 - 南开大学教务软件 iOS版
-- 基于macOS 10.12, Xcode 8.0, Swift 3.0, Cocoapods 1.0.1建构
+- 基于macOS 10.12, Xcode 8.0, Swift 3.0, Cocoapods 1.1.1建构
 
 ## 使用方法
 - `git clone git://github.com/sunshineclt/NKU-Helper.git`下载工程
