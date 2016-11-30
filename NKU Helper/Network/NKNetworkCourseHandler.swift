@@ -49,7 +49,7 @@ class NKNetworkCourseHandler: NKNetworkBase {
     
     /// 从课程表页面获取课程信息
     dynamic func loadCourseFromClassTimeTable() {
-        Alamofire.request("http://222.30.32.10/xsxk/selectedAction.do?operation=kebiao").responseString { (response) in
+        Alamofire.request("http://222.30.49.10/xsxk/selectedAction.do?operation=kebiao").responseString { (response) in
             guard let html = response.result.value else {
                 self.delegate?.didFailToReceiveCourseData()
                 return
@@ -85,7 +85,7 @@ class NKNetworkCourseHandler: NKNetworkBase {
                 let match = matches[i]
                 if match.range.length > 190 {
                     // 说明是一个课程方格
-                    let urlString = "http://222.30.32.10/xsxk/selectedAllAction.do?" + htmlNSString.substring(with: match.rangeAt(2))
+                    let urlString = "http://222.30.49.10/xsxk/selectedAllAction.do?" + htmlNSString.substring(with: match.rangeAt(2))
                     let url = URL(string: urlString)!
                     
                     let subString = htmlNSString.substring(with: match.rangeAt(1)) as NSString
@@ -125,7 +125,7 @@ class NKNetworkCourseHandler: NKNetworkBase {
     
     /// 从课程列表加载课程
     dynamic private func loadCourseFromClassTable() {
-        Alamofire.request("http://222.30.32.10/xsxk/selectedAction.do").responseString { (response) in
+        Alamofire.request("http://222.30.49.10/xsxk/selectedAction.do").responseString { (response) in
             guard let html = response.result.value else {
                 self.delegate?.didFailToReceiveCourseData()
                 return
@@ -162,7 +162,7 @@ class NKNetworkCourseHandler: NKNetworkBase {
 
     /// 加载课程列表下一页
     dynamic private func loadNextPageClassTable() {
-        Alamofire.request("http://222.30.32.10/xsxk/selectedPageAction.do?page=next").responseString { (response) in
+        Alamofire.request("http://222.30.49.10/xsxk/selectedPageAction.do?page=next").responseString { (response) in
             guard let html = response.result.value else {
                 self.delegate?.didFailToReceiveCourseData()
                 return
@@ -207,7 +207,7 @@ class NKNetworkCourseHandler: NKNetworkBase {
             let index = (htmlNSString.substring(with: match.rangeAt(1)) as NSString).integerValue
             let startSection = (htmlNSString.substring(with: match.rangeAt(6)) as NSString).integerValue
             let endSection = (htmlNSString.substring(with: match.rangeAt(7)) as NSString).integerValue
-            let url = URL(string: "http://222.30.32.10/xsxk/selectedAllAction.do?ifkebiao=no&" + htmlNSString.substring(with: match.rangeAt(13)))!
+            let url = URL(string: "http://222.30.49.10/xsxk/selectedAllAction.do?ifkebiao=no&" + htmlNSString.substring(with: match.rangeAt(13)))!
             do {
                 try saveDetailClassInfoWith(URL: url, startSection: startSection, sectionNumber: endSection - startSection + 1, index: index)
             }

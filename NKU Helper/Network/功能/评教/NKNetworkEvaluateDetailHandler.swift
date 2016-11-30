@@ -39,7 +39,7 @@ class NKNetworkEvaluateDetailHandler: NKNetworkBase {
     /// - parameter index: 编号
     /// - parameter block: 返回闭包
     class func getDetailEvaluateInfo(forIndex index: Int, withBlock block: @escaping FetchEvaluateDetailBlock) {
-        Alamofire.request("http://222.30.32.10/evaluate/stdevatea/queryTargetAction.do?operation=target&index=\(index)").responseString { (response) -> Void in
+        Alamofire.request("http://222.30.49.10/evaluate/stdevatea/queryTargetAction.do?operation=target&index=\(index)").responseString { (response) -> Void in
             guard let html = response.result.value else {
                 block(.fail)
                 return

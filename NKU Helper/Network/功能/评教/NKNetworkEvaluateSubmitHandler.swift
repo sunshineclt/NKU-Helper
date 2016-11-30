@@ -41,7 +41,7 @@ class NKNetworkEvaluateSubmitHandler: NKNetworkBase {
     /// - parameter block:   返回闭包
     class func submit(grades: [String], opinion: String, index: Int, withBlock block: @escaping NKNetworkEvaluateSubmitBlock) {
         //TODO: 在开放时整理
-        let url = URL(string: "http://222.30.32.10/evaluate/stdevatea/queryTargetAction.do")!
+        let url = URL(string: "http://222.30.49.10/evaluate/stdevatea/queryTargetAction.do")!
         var req = URLRequest(url: url)
         var data = String(format: "operation=Store")
         for i in 0 ..< grades.count {
@@ -50,7 +50,7 @@ class NKNetworkEvaluateSubmitHandler: NKNetworkBase {
         }
         data = data + "&opinion=\(opinion)"
         req.httpBody = data.data(using: String.Encoding(rawValue: CFStringConvertEncodingToNSStringEncoding(0x0632)))
-        req.addValue("http://222.30.32.10/evaluate/stdevatea/queryTargetAction.do?operation=target&index=\(index)", forHTTPHeaderField: "Referer")
+        req.addValue("http://222.30.49.10/evaluate/stdevatea/queryTargetAction.do?operation=target&index=\(index)", forHTTPHeaderField: "Referer")
         req.httpMethod = "POST"
 
         Alamofire.request(req).responseString { (response) -> Void in

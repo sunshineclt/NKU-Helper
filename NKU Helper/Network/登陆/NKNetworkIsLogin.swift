@@ -38,7 +38,7 @@ class NKNetworkIsLogin: NKNetworkBase {
     /// - returns: 登录状态
     class func isLoggedin() -> NKNetworkLoginStatus {
         do {
-            let html = try NSString(contentsOf: URL(string: "http://222.30.32.10/xsxk/selectedAction.do?operation=kebiao")!, encoding: CFStringConvertEncodingToNSStringEncoding(0x0632))
+            let html = try NSString(contentsOf: URL(string: "http://222.30.49.10/xsxk/selectedAction.do?operation=kebiao")!, encoding: CFStringConvertEncodingToNSStringEncoding(0x0632))
             if html.range(of: "星期一").length > 0 {
                 return .loggedin
             }

@@ -42,7 +42,7 @@ class NKNetworkCourseEvaluateHandler: NKNetworkBase {
     ///
     /// - parameter block: 返回闭包
     class func getEvaluateList(withBlock block: @escaping FetchCourseEvaluateListBlock) {
-        Alamofire.request("http://222.30.32.10/evaluate/stdevatea/queryCourseAction.do").responseString { (response) -> Void in
+        Alamofire.request("http://222.30.49.10/evaluate/stdevatea/queryCourseAction.do").responseString { (response) -> Void in
             guard let html = response.result.value else {
                 block(.fail)
                 return

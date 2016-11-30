@@ -46,7 +46,7 @@ class NKNetworkGradeHandler: NKNetworkBase {
     /// - parameter block: 返回闭包
     func fetchGrade(withBlock block: @escaping FetchGradeResult) {
         self.block = block
-        Alamofire.request("http://222.30.32.10/xsxk/studiedAction.do").responseString { (response) -> Void in
+        Alamofire.request("http://222.30.49.10/xsxk/studiedAction.do").responseString { (response) -> Void in
             guard let html = response.result.value else {
                 block(.fail(error: ErrorHandler.NetworkError()))
                 return
@@ -80,7 +80,7 @@ class NKNetworkGradeHandler: NKNetworkBase {
     
     /// 加载下一页
     dynamic private func loadNextPage() {
-        Alamofire.request("http://222.30.32.10/xsxk/studiedPageAction.do?page=next").responseString { (response) -> Void in
+        Alamofire.request("http://222.30.49.10/xsxk/studiedPageAction.do?page=next").responseString { (response) -> Void in
             guard let html = response.result.value else {
                 self.block(.fail(error: ErrorHandler.NetworkError()))
                 return
