@@ -28,7 +28,7 @@ class NKNetworkValidateCodeGetter: NKNetworkBase {
     ///
     /// - parameter block: 返回闭包
     class func getValidateCode(withBlock block: @escaping ValidateCodeResult) {
-        Alamofire.request("http://222.30.32.10/ValidateCode").responseData { (response) -> Void in
+        Alamofire.request("http://222.30.49.10/ValidateCode").responseData { (response) -> Void in
             if let data = response.result.value {
                 block(data, nil)
             } else {

@@ -41,7 +41,7 @@ class NKNetworkUserInfoHandler: NKNetworkBase {
     ///
     /// - parameter block: 返回闭包
     class func getAllAccountInfo(withBlock block: @escaping FetchUserInfoResult) {
-        Alamofire.request("http://222.30.32.10/studymanager/stdbaseinfo/queryAction.do").responseString(encoding: String.Encoding(rawValue: CFStringConvertEncodingToNSStringEncoding(0x0632))) { (response) -> Void in
+        Alamofire.request("http://222.30.49.10/studymanager/stdbaseinfo/queryAction.do").responseString(encoding: String.Encoding(rawValue: CFStringConvertEncodingToNSStringEncoding(0x0632))) { (response) -> Void in
             guard let html = response.result.value else {
                 block(.networkError)
                 return

@@ -104,7 +104,7 @@ class NKNetworkLoginHandler: NKNetworkBase, UIWebViewDelegate {
     ///
     /// - parameter encryptedPassword: 加密过后的密码
     @objc private func doLogin(withEncryptedPassword encryptedPassword: String) {
-        let url = URL(string: "http://222.30.32.10/stdloginAction.do")!
+        let url = URL(string: "http://222.30.49.10/stdloginAction.do")!
         var req = URLRequest(url: url)
         let data = NSString(format: "operation=&usercode_text=%@&userpwd_text=%@&checkcode_text=%@&submittype=%%C8%%B7+%%C8%%CF", userID, encryptedPassword, validateCode)
         req.httpBody = data.data(using: String.Encoding.utf8.rawValue)

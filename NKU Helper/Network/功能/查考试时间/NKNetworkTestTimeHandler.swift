@@ -38,7 +38,7 @@ class NKNetworkTestTimeHandler: NKNetworkBase {
     ///
     /// - parameter completionHandler: 返回闭包
     class func fetchTestTime(withBlock completionHandler: @escaping FetchTestTimeBlock) {
-        Alamofire.request("http://222.30.32.10/xxcx/stdexamarrange/listAction.do").responseString { (response) in
+        Alamofire.request("http://222.30.49.10/xxcx/stdexamarrange/listAction.do").responseString { (response) in
             guard let html = response.result.value else {
                 completionHandler(.fail)
                 return

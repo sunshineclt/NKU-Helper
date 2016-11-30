@@ -11,8 +11,11 @@
 - 使用Xcode编译
 - 如果有需要`pod install && pod update`
 
-## 编码规范
-[编码规范](./编码规范.md)
+## 贡献代码须知
+- 代码问题和需求请提issue
+- 贡献代码请fork后pull request
+- 希望讨论也可以先提issue
+- 编码规范请见[编码规范](./编码规范.md)
 
 ## 更新日志
 [VersionLog](./VersionLog.md)
