@@ -1,5 +1,5 @@
-osx_image: xcode8.0
-language: objective-c #语言种类
+language: objective-c
+osx_image: xcode8.1
 xcode_workspace: "./NKU Helper.xcworkspace"
 xcode_scheme: "NKU Helper"
 # script:
