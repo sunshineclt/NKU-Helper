@@ -1,7 +1,6 @@
 language: objective-c
 osx_image: xcode8.1
-xcode_workspace: "./NKU Helper.xcworkspace"
-xcode_scheme: "NKU Helper"
-xcode_sdk: iphonesimulator10.1
-# script:
-#   - xctool -workspace "NKU Helper.xcworkspace" -scheme "NKU Helper" clean build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+# xcode_workspace: "./NKU Helper.xcworkspace"
+# xcode_scheme: "NKU Helper"
+script:
+  - xcodebuild -workspace "NKU Helper.xcworkspace" -scheme "NKU Helper" clean build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
