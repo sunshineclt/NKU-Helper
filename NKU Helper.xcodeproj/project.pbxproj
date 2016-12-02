@@ -1796,6 +1796,7 @@
 				E91837751DF191040030DF82 /* ad hoc Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E9DA59511D3889AF0012ED9A /* Build configuration list for PBXNativeTarget "NKU HelperTests" */ = {
 			isa = XCConfigurationList;
