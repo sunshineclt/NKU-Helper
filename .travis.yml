@@ -3,4 +3,4 @@ osx_image: xcode8.1
 # xcode_workspace: "./NKU Helper.xcworkspace"
 # xcode_scheme: "NKU Helper"
 script:
-  - xcodebuild -workspace "NKU Helper.xcworkspace" -scheme "NKU Helper" clean build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+  - xcodebuild -workspace "NKU Helper.xcworkspace" -scheme "NKU Helper" -quiet  clean build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
