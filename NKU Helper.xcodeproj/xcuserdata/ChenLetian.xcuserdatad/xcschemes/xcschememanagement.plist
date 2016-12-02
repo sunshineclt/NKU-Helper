@@ -4,6 +4,16 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>NKU Helper Safari Extension.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+		<key>NKU Helper mac.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
 		<key>NKU Helper.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
@@ -20,17 +30,27 @@
 		<key>E90AE2271A8F813900AD0D78</key>
 		<dict>
 			<key>primary</key>
-			<true />
+			<true/>
 		</dict>
 		<key>E90AE23F1A8F813900AD0D78</key>
 		<dict>
 			<key>primary</key>
-			<true />
+			<true/>
+		</dict>
+		<key>E91837461DF18F9C0030DF82</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E918375C1DF191030030DF82</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 		<key>E9DA59491D3889AF0012ED9A</key>
 		<dict>
 			<key>primary</key>
-			<true />
+			<true/>
 		</dict>
 	</dict>
 </dict>

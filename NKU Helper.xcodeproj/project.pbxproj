@@ -12,6 +12,17 @@
 		E90AE2381A8F813900AD0D78 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E90AE2371A8F813900AD0D78 /* Images.xcassets */; };
 		E90E87241C40E58B00E6BE3A /* NKNetworkBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90E87231C40E58B00E6BE3A /* NKNetworkBase.swift */; };
 		E90E87261C40E5C700E6BE3A /* NKNetworkIsLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90E87251C40E5C700E6BE3A /* NKNetworkIsLogin.swift */; };
+		E918374A1DF18F9C0030DF82 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91837491DF18F9C0030DF82 /* AppDelegate.swift */; };
+		E918374C1DF18F9C0030DF82 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E918374B1DF18F9C0030DF82 /* ViewController.swift */; };
+		E918374E1DF18F9C0030DF82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E918374D1DF18F9C0030DF82 /* Assets.xcassets */; };
+		E91837511DF18F9C0030DF82 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E918374F1DF18F9C0030DF82 /* Main.storyboard */; };
+		E918375F1DF191040030DF82 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E918375E1DF191030030DF82 /* Cocoa.framework */; };
+		E91837641DF191040030DF82 /* SafariExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91837631DF191040030DF82 /* SafariExtensionHandler.swift */; };
+		E91837661DF191040030DF82 /* SafariExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91837651DF191040030DF82 /* SafariExtensionViewController.swift */; };
+		E91837691DF191040030DF82 /* SafariExtensionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E91837671DF191040030DF82 /* SafariExtensionViewController.xib */; };
+		E918376C1DF191040030DF82 /* script.js in Resources */ = {isa = PBXBuildFile; fileRef = E918376B1DF191040030DF82 /* script.js */; };
+		E918376E1DF191040030DF82 /* ToolbarItemIcon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E918376D1DF191040030DF82 /* ToolbarItemIcon.pdf */; };
+		E91837711DF191040030DF82 /* NKU Helper Safari Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E918375D1DF191030030DF82 /* NKU Helper Safari Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E91E5F4F1A90FAED009F3B2B /* GradeShowerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91E5F4E1A90FAED009F3B2B /* GradeShowerTableViewController.swift */; };
 		E91E5F551A9103DF009F3B2B /* GradeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91E5F541A9103DF009F3B2B /* GradeCell.swift */; };
 		E926CD751AB33B1700A5076A /* NKU.plist in Resources */ = {isa = PBXBuildFile; fileRef = E926CD741AB33B1700A5076A /* NKU.plist */; };
@@ -130,6 +141,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		E918376F1DF191040030DF82 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E90AE2201A8F813900AD0D78 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E918375C1DF191030030DF82;
+			remoteInfo = "NKU Helper Safari Extension";
+		};
 		E9DA594F1D3889AF0012ED9A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E90AE2201A8F813900AD0D78 /* Project object */;
@@ -140,6 +158,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		E91837761DF191040030DF82 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				E91837711DF191040030DF82 /* NKU Helper Safari Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E93C0C9B1BB54077001303CF /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -163,6 +192,21 @@
 		E90AE2371A8F813900AD0D78 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E90E87231C40E58B00E6BE3A /* NKNetworkBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkBase.swift; sourceTree = "<group>"; };
 		E90E87251C40E5C700E6BE3A /* NKNetworkIsLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKNetworkIsLogin.swift; sourceTree = "<group>"; };
+		E91837471DF18F9C0030DF82 /* NKU Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NKU Helper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E91837491DF18F9C0030DF82 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E918374B1DF18F9C0030DF82 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E918374D1DF18F9C0030DF82 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E91837501DF18F9C0030DF82 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E91837521DF18F9C0030DF82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E918375D1DF191030030DF82 /* NKU Helper Safari Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "NKU Helper Safari Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E918375E1DF191030030DF82 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		E91837621DF191040030DF82 /* NKU_Helper_Safari_Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NKU_Helper_Safari_Extension.entitlements; sourceTree = "<group>"; };
+		E91837631DF191040030DF82 /* SafariExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariExtensionHandler.swift; sourceTree = "<group>"; };
+		E91837651DF191040030DF82 /* SafariExtensionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariExtensionViewController.swift; sourceTree = "<group>"; };
+		E91837681DF191040030DF82 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SafariExtensionViewController.xib; sourceTree = "<group>"; };
+		E918376A1DF191040030DF82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E918376B1DF191040030DF82 /* script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = script.js; sourceTree = "<group>"; };
+		E918376D1DF191040030DF82 /* ToolbarItemIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ToolbarItemIcon.pdf; sourceTree = "<group>"; };
 		E91E5F4A1A90FA9E009F3B2B /* NKU Helper-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NKU Helper-Bridging-Header.h"; sourceTree = "<group>"; };
 		E91E5F4E1A90FAED009F3B2B /* GradeShowerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = GradeShowerTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E91E5F541A9103DF009F3B2B /* GradeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeCell.swift; sourceTree = "<group>"; };
@@ -319,6 +363,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E91837441DF18F9C0030DF82 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E918375A1DF191030030DF82 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E918375F1DF191040030DF82 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E9DA59471D3889AF0012ED9A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -350,6 +409,7 @@
 				E98DC7291B8B13D100273510 /* Foundation.framework */,
 				E9C2ECBF1B183E8B005C1F5F /* MessageUI.framework */,
 				9945BD65AD3E7D087016CF58 /* Pods_NKU_Helper.framework */,
+				E918375E1DF191030030DF82 /* Cocoa.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -367,6 +427,8 @@
 		E90AE21F1A8F813900AD0D78 = {
 			isa = PBXGroup;
 			children = (
+				E91837481DF18F9C0030DF82 /* NKU Helper mac */,
+				E91837601DF191040030DF82 /* NKU Helper Safari Extension */,
 				911897253CF7E957EC7F6666 /* Frameworks */,
 				E90AE22A1A8F813900AD0D78 /* NKU Helper */,
 				E9DA594B1D3889AF0012ED9A /* NKU HelperTests */,
@@ -386,6 +448,8 @@
 			children = (
 				E90AE2281A8F813900AD0D78 /* NKU Helper.app */,
 				E9DA594A1D3889AF0012ED9A /* NKU HelperTests.xctest */,
+				E91837471DF18F9C0030DF82 /* NKU Helper.app */,
+				E918375D1DF191030030DF82 /* NKU Helper Safari Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -436,6 +500,40 @@
 				E95F93D81C4FC04500CEEC12 /* NKNetworkUserInfoHandler.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		E91837481DF18F9C0030DF82 /* NKU Helper mac */ = {
+			isa = PBXGroup;
+			children = (
+				E91837491DF18F9C0030DF82 /* AppDelegate.swift */,
+				E918374B1DF18F9C0030DF82 /* ViewController.swift */,
+				E918374D1DF18F9C0030DF82 /* Assets.xcassets */,
+				E918374F1DF18F9C0030DF82 /* Main.storyboard */,
+				E91837521DF18F9C0030DF82 /* Info.plist */,
+			);
+			path = "NKU Helper mac";
+			sourceTree = "<group>";
+		};
+		E91837601DF191040030DF82 /* NKU Helper Safari Extension */ = {
+			isa = PBXGroup;
+			children = (
+				E91837631DF191040030DF82 /* SafariExtensionHandler.swift */,
+				E91837651DF191040030DF82 /* SafariExtensionViewController.swift */,
+				E91837671DF191040030DF82 /* SafariExtensionViewController.xib */,
+				E918376A1DF191040030DF82 /* Info.plist */,
+				E918376B1DF191040030DF82 /* script.js */,
+				E918376D1DF191040030DF82 /* ToolbarItemIcon.pdf */,
+				E91837611DF191040030DF82 /* Supporting Files */,
+			);
+			path = "NKU Helper Safari Extension";
+			sourceTree = "<group>";
+		};
+		E91837611DF191040030DF82 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E91837621DF191040030DF82 /* NKU_Helper_Safari_Extension.entitlements */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		E92BDD031C622304005A5CB8 /* 评教 */ = {
@@ -801,6 +899,42 @@
 			productReference = E90AE2281A8F813900AD0D78 /* NKU Helper.app */;
 			productType = "com.apple.product-type.application";
 		};
+		E91837461DF18F9C0030DF82 /* NKU Helper mac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E91837561DF18F9C0030DF82 /* Build configuration list for PBXNativeTarget "NKU Helper mac" */;
+			buildPhases = (
+				E91837431DF18F9C0030DF82 /* Sources */,
+				E91837441DF18F9C0030DF82 /* Frameworks */,
+				E91837451DF18F9C0030DF82 /* Resources */,
+				E91837761DF191040030DF82 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E91837701DF191040030DF82 /* PBXTargetDependency */,
+			);
+			name = "NKU Helper mac";
+			productName = "NKU Helper mac";
+			productReference = E91837471DF18F9C0030DF82 /* NKU Helper.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E918375C1DF191030030DF82 /* NKU Helper Safari Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E91837721DF191040030DF82 /* Build configuration list for PBXNativeTarget "NKU Helper Safari Extension" */;
+			buildPhases = (
+				E91837591DF191030030DF82 /* Sources */,
+				E918375A1DF191030030DF82 /* Frameworks */,
+				E918375B1DF191030030DF82 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "NKU Helper Safari Extension";
+			productName = "NKU Helper Safari Extension";
+			productReference = E918375D1DF191030030DF82 /* NKU Helper Safari Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		E9DA59491D3889AF0012ED9A /* NKU HelperTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E9DA59511D3889AF0012ED9A /* Build configuration list for PBXNativeTarget "NKU HelperTests" */;
@@ -826,7 +960,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftMigration = 0700;
-				LastSwiftUpdateCheck = 0730;
+				LastSwiftUpdateCheck = 0810;
 				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "陈乐天";
 				TargetAttributes = {
@@ -845,6 +979,16 @@
 								enabled = 0;
 							};
 						};
+					};
+					E91837461DF18F9C0030DF82 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = E9FBJ6HPDB;
+						ProvisioningStyle = Automatic;
+					};
+					E918375C1DF191030030DF82 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = E9FBJ6HPDB;
+						ProvisioningStyle = Automatic;
 					};
 					E9DA59491D3889AF0012ED9A = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -870,6 +1014,8 @@
 			targets = (
 				E90AE2271A8F813900AD0D78 /* NKU Helper */,
 				E9DA59491D3889AF0012ED9A /* NKU HelperTests */,
+				E91837461DF18F9C0030DF82 /* NKU Helper mac */,
+				E918375C1DF191030030DF82 /* NKU Helper Safari Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -901,6 +1047,25 @@
 				E93083A11D3A8D4A000FC8E8 /* TimeScheduleView.xib in Resources */,
 				E940C2D01D4F13BB0075A040 /* Launch Screen.storyboard in Resources */,
 				E9F674EC1BA80E7500BEF640 /* RSA.html in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E91837451DF18F9C0030DF82 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E918374E1DF18F9C0030DF82 /* Assets.xcassets in Resources */,
+				E91837511DF18F9C0030DF82 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E918375B1DF191030030DF82 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E918376E1DF191040030DF82 /* ToolbarItemIcon.pdf in Resources */,
+				E91837691DF191040030DF82 /* SafariExtensionViewController.xib in Resources */,
+				E918376C1DF191040030DF82 /* script.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1074,6 +1239,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E91837431DF18F9C0030DF82 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E918374C1DF18F9C0030DF82 /* ViewController.swift in Sources */,
+				E918374A1DF18F9C0030DF82 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E91837591DF191030030DF82 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E91837661DF191040030DF82 /* SafariExtensionViewController.swift in Sources */,
+				E91837641DF191040030DF82 /* SafariExtensionHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E9DA59461D3889AF0012ED9A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1085,6 +1268,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		E91837701DF191040030DF82 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E918375C1DF191030030DF82 /* NKU Helper Safari Extension */;
+			targetProxy = E918376F1DF191040030DF82 /* PBXContainerItemProxy */;
+		};
 		E9DA59501D3889AF0012ED9A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E90AE2271A8F813900AD0D78 /* NKU Helper */;
@@ -1093,6 +1281,22 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		E918374F1DF18F9C0030DF82 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E91837501DF18F9C0030DF82 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E91837671DF191040030DF82 /* SafariExtensionViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E91837681DF191040030DF82 /* Base */,
+			);
+			name = SafariExtensionViewController.xib;
+			sourceTree = "<group>";
+		};
 		E9D754FD1C6ADB8500619BAC /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1357,6 +1561,141 @@
 			};
 			name = Release;
 		};
+		E91837531DF18F9C0030DF82 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = E9FBJ6HPDB;
+				INFOPLIST_FILE = "NKU Helper mac/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = "cn.pikkacho.www.NKU-Helper-mac";
+				PRODUCT_NAME = "NKU Helper";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		E91837541DF18F9C0030DF82 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = E9FBJ6HPDB;
+				INFOPLIST_FILE = "NKU Helper mac/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = "cn.pikkacho.www.NKU-Helper-mac";
+				PRODUCT_NAME = "NKU Helper";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		E91837551DF18F9C0030DF82 /* ad hoc Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = E9FBJ6HPDB;
+				INFOPLIST_FILE = "NKU Helper mac/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = "cn.pikkacho.www.NKU-Helper-mac";
+				PRODUCT_NAME = "NKU Helper";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 3.0;
+			};
+			name = "ad hoc Distribution";
+		};
+		E91837731DF191040030DF82 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_ENTITLEMENTS = "NKU Helper Safari Extension/NKU_Helper_Safari_Extension.entitlements";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = E9FBJ6HPDB;
+				INFOPLIST_FILE = "NKU Helper Safari Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = "cn.pikkacho.www.NKU-Helper-mac.NKU-Helper-Safari-Extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		E91837741DF191040030DF82 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_ENTITLEMENTS = "NKU Helper Safari Extension/NKU_Helper_Safari_Extension.entitlements";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = E9FBJ6HPDB;
+				INFOPLIST_FILE = "NKU Helper Safari Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = "cn.pikkacho.www.NKU-Helper-mac.NKU-Helper-Safari-Extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		E91837751DF191040030DF82 /* ad hoc Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_ENTITLEMENTS = "NKU Helper Safari Extension/NKU_Helper_Safari_Extension.entitlements";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = E9FBJ6HPDB;
+				INFOPLIST_FILE = "NKU Helper Safari Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = "cn.pikkacho.www.NKU-Helper-mac.NKU-Helper-Safari-Extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = "ad hoc Distribution";
+		};
 		E9DA59521D3889AF0012ED9A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1438,6 +1777,25 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		E91837561DF18F9C0030DF82 /* Build configuration list for PBXNativeTarget "NKU Helper mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E91837531DF18F9C0030DF82 /* Debug */,
+				E91837541DF18F9C0030DF82 /* Release */,
+				E91837551DF18F9C0030DF82 /* ad hoc Distribution */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E91837721DF191040030DF82 /* Build configuration list for PBXNativeTarget "NKU Helper Safari Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E91837731DF191040030DF82 /* Debug */,
+				E91837741DF191040030DF82 /* Release */,
+				E91837751DF191040030DF82 /* ad hoc Distribution */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		E9DA59511D3889AF0012ED9A /* Build configuration list for PBXNativeTarget "NKU HelperTests" */ = {
 			isa = XCConfigurationList;
