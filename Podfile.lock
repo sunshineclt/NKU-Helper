@@ -24,6 +24,7 @@ PODS:
   - ShareSDK3 (3.5.2):
     - ShareSDK3/ShareSDK (= 3.5.2)
   - ShareSDK3/ShareSDK (3.5.2)
+  - ShareSDK3/ShareSDKExtension (3.5.2)
   - ShareSDK3/ShareSDKPlatforms/QQ (3.5.2)
   - ShareSDK3/ShareSDKPlatforms/WeChat (3.5.2)
   - ShareSDK3/ShareSDKUI (3.5.2)
@@ -48,6 +49,7 @@ DEPENDENCIES:
   - R.swift
   - RealmSwift
   - ShareSDK3
+  - ShareSDK3/ShareSDKExtension
   - ShareSDK3/ShareSDKPlatforms/QQ
   - ShareSDK3/ShareSDKPlatforms/WeChat
   - ShareSDK3/ShareSDKUI
@@ -91,6 +93,6 @@ SPEC CHECKSUMS:
   UAProgressView: ce49aee47c14df6dc372f6fd57852f570ca97e6b
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
-PODFILE CHECKSUM: a35dfd59943deb425047d05df1e664fd86b07cf4
+PODFILE CHECKSUM: da1631c80834ddc349411351ef87e480f2bb7916
 
 COCOAPODS: 1.1.1
