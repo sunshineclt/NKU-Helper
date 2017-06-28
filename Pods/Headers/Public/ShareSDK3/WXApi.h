@@ -1,1 +1,1 @@
-../../../ShareSDK3/ShareSDK/Support/PlatformSDK/WeChatSDK/WXApi.h
+../../../ShareSDK3/SDK/ShareSDK/Support/PlatformSDK/WeChatSDK/WXApi.h

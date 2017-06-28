@@ -262,12 +262,23 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  Returns a sorted `RLMResults` from the array.
 
+ @param keyPath     The key path to sort by.
+ @param ascending   The direction to sort in.
+
+ @return    An `RLMResults` sorted by the specified key path.
+ */
+- (RLMResults<RLMObjectType> *)sortedResultsUsingKeyPath:(NSString *)keyPath ascending:(BOOL)ascending;
+
+/**
+ Returns a sorted `RLMResults` from the array.
+
  @param property    The property name to sort by.
  @param ascending   The direction to sort in.
 
  @return    An `RLMResults` sorted by the specified property.
  */
-- (RLMResults<RLMObjectType> *)sortedResultsUsingProperty:(NSString *)property ascending:(BOOL)ascending;
+- (RLMResults<RLMObjectType> *)sortedResultsUsingProperty:(NSString *)property ascending:(BOOL)ascending
+    __deprecated_msg("Use `-sortedResultsUsingKeyPath:ascending:`");
 
 /**
  Returns a sorted `RLMResults` from the array.
@@ -343,6 +354,65 @@ NS_ASSUME_NONNULL_BEGIN
 - (RLMNotificationToken *)addNotificationBlock:(void (^)(RLMArray<RLMObjectType> *__nullable array,
                                                          RLMCollectionChange *__nullable changes,
                                                          NSError *__nullable error))block __attribute__((warn_unused_result));
+
+#pragma mark - Aggregating Property Values
+
+/**
+ Returns the minimum (lowest) value of the given property among all the objects in the array.
+
+     NSNumber *min = [object.arrayProperty minOfProperty:@"age"];
+
+ @warning You cannot use this method on `RLMObject`, `RLMArray`, and `NSData` properties.
+
+ @param property The property whose minimum value is desired. Only properties of
+                 types `int`, `float`, `double`, and `NSDate` are supported.
+
+ @return The minimum value of the property, or `nil` if the array is empty.
+ */
+- (nullable id)minOfProperty:(NSString *)property;
+
+/**
+ Returns the maximum (highest) value of the given property among all the objects in the array.
+
+     NSNumber *max = [object.arrayProperty maxOfProperty:@"age"];
+
+ @warning You cannot use this method on `RLMObject`, `RLMArray`, and `NSData` properties.
+
+ @param property The property whose maximum value is desired. Only properties of
+                 types `int`, `float`, `double`, and `NSDate` are supported.
+
+ @return The maximum value of the property, or `nil` if the array is empty.
+ */
+- (nullable id)maxOfProperty:(NSString *)property;
+
+/**
+ Returns the sum of the values of a given property over all the objects in the array.
+
+     NSNumber *sum = [object.arrayProperty sumOfProperty:@"age"];
+
+ @warning You cannot use this method on `RLMObject`, `RLMArray`, and `NSData` properties.
+
+ @param property The property whose values should be summed. Only properties of
+                 types `int`, `float`, and `double` are supported.
+
+ @return The sum of the given property.
+ */
+- (NSNumber *)sumOfProperty:(NSString *)property;
+
+/**
+ Returns the average value of a given property over the objects in the array.
+
+     NSNumber *average = [object.arrayProperty averageOfProperty:@"age"];
+
+ @warning You cannot use this method on `RLMObject`, `RLMArray`, and `NSData` properties.
+
+ @param property The property whose average value should be calculated. Only
+                 properties of types `int`, `float`, and `double` are supported.
+
+ @return    The average value of the given property, or `nil` if the array is empty.
+ */
+- (nullable NSNumber *)averageOfProperty:(NSString *)property;
+
 
 #pragma mark - Unavailable Methods
 

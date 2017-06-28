@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0810"
+   LastUpgradeVersion = "0830"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6FFAAC71154F96D189C05C554886418C"
+               BlueprintIdentifier = "D8F593E1043E8D51AEF82E7E6444559C"
                BuildableName = "UAProgressView.framework"
                BlueprintName = "UAProgressView"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6FFAAC71154F96D189C05C554886418C"
+            BlueprintIdentifier = "D8F593E1043E8D51AEF82E7E6444559C"
             BuildableName = "UAProgressView.framework"
             BlueprintName = "UAProgressView"
             ReferencedContainer = "container:Pods.xcodeproj">

@@ -40,13 +40,16 @@ public:
         size_t idx_marked_for_removal;
         size_t idx_user_token;
         size_t idx_auth_server_url;
+        size_t idx_user_is_admin;
     };
 
     std::string identity() const;
+    bool is_admin() const;
     util::Optional<std::string> server_url() const;
     util::Optional<std::string> user_token() const;
 
     void set_state(util::Optional<std::string> server_url, util::Optional<std::string> user_token);
+    void set_is_admin(bool);
 
     // Remove the user from the metadata database.
     void remove();
@@ -62,7 +65,7 @@ public:
     // set operations are no-ops and all get operations cause an assert to fail.
     //
     // If `make_if_absent` is true and the user was previously marked for deletion, it will be unmarked.
-    SyncUserMetadata(const SyncMetadataManager& manager, std::string identity, bool make_if_absent=true);
+    SyncUserMetadata(const SyncMetadataManager&, std::string, bool make_if_absent=true);
 
     SyncUserMetadata(Schema schema, SharedRealm realm, RowExpr row);
 
@@ -71,6 +74,55 @@ private:
 
     util::Optional<std::string> get_optional_string_field(size_t col_idx) const;
 
+    Schema m_schema;
+    SharedRealm m_realm;
+    Row m_row;
+};
+
+class SyncFileActionMetadata {
+public:
+    struct Schema {
+        size_t idx_original_name;
+        size_t idx_new_name;
+        size_t idx_action;
+        size_t idx_url;
+        size_t idx_user_identity;
+    };
+
+    enum class Action {
+        // The Realm files at the given directory will be deleted.
+        DeleteRealm,
+        // The Realm file will be copied to a 'recovery' directory, and the original Realm files will be deleted.
+        HandleRealmForClientReset
+    };
+
+    static util::Optional<SyncFileActionMetadata> metadata_for_path(const std::string&, const SyncMetadataManager&);
+
+    // The absolute path to the Realm file in question.
+    std::string original_name() const;
+
+    // The meaning of this parameter depends on the `Action` specified.
+    // For `HandleRealmForClientReset`, it is the absolute path where the backup copy 
+    // of the Realm file found at `original_name()` will be placed. 
+    // For all other `Action`s, it is ignored.
+    util::Optional<std::string> new_name() const;
+
+    Action action() const;
+    std::string url() const;
+    std::string user_identity() const;
+
+    // Remove the action from the metadata database, because it was completed or is now invalid.
+    void remove();
+
+    SyncFileActionMetadata(const SyncMetadataManager& manager,
+                           Action action,
+                           const std::string& original_name,
+                           const std::string& url,
+                           const std::string& user_identity,
+                           util::Optional<std::string> new_name=none);
+
+    SyncFileActionMetadata(Schema schema, SharedRealm realm, RowExpr row);
+private:
     Schema m_schema;
     SharedRealm m_realm;
     Row m_row;
@@ -102,9 +154,11 @@ private:
     mutable Results m_results;
 };
 using SyncUserMetadataResults = SyncMetadataResults<SyncUserMetadata>;
+using SyncFileActionMetadataResults = SyncMetadataResults<SyncFileActionMetadata>;
 
 class SyncMetadataManager {
 friend class SyncUserMetadata;
+friend class SyncFileActionMetadata;
 public:
     // Return a Results object containing all users not marked for removal.
     SyncUserMetadataResults all_unmarked_users() const;
@@ -114,8 +168,10 @@ public:
     // safely cleaned up the next time the host is launched.)
     SyncUserMetadataResults all_users_marked_for_removal() const;
 
-    Realm::Config get_configuration() const;
+    // Return a Results object containing all pending actions.
+    SyncFileActionMetadataResults all_pending_actions() const;
 
+    Realm::Config get_configuration() const;
 
     /// Construct the metadata manager.
     ///
@@ -131,7 +187,8 @@ private:
 
     Realm::Config m_metadata_config;
 
-    SyncUserMetadata::Schema m_schema;
+    SyncUserMetadata::Schema m_user_schema;
+    SyncFileActionMetadata::Schema m_file_action_schema;
     mutable std::mutex m_metadata_lock;
 };
 

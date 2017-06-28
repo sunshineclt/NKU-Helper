@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0810"
+   LastUpgradeVersion = "0830"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2799857F5478460E7F21F7EE970535DB"
+               BlueprintIdentifier = "12A5E581E662F3E6BE75769191438312"
                BuildableName = "NJKWebViewProgress.framework"
                BlueprintName = "NJKWebViewProgress"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2799857F5478460E7F21F7EE970535DB"
+            BlueprintIdentifier = "12A5E581E662F3E6BE75769191438312"
             BuildableName = "NJKWebViewProgress.framework"
             BlueprintName = "NJKWebViewProgress"
             ReferencedContainer = "container:Pods.xcodeproj">

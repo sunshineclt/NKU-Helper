@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0810"
+   LastUpgradeVersion = "0830"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7228C1781736C96EA18FF987E28C0B9E"
+               BlueprintIdentifier = "2451CBB751E3D5684F490585595D9F4A"
                BuildableName = "BTNavigationDropdownMenu.framework"
                BlueprintName = "BTNavigationDropdownMenu"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7228C1781736C96EA18FF987E28C0B9E"
+            BlueprintIdentifier = "2451CBB751E3D5684F490585595D9F4A"
             BuildableName = "BTNavigationDropdownMenu.framework"
             BlueprintName = "BTNavigationDropdownMenu"
             ReferencedContainer = "container:Pods.xcodeproj">

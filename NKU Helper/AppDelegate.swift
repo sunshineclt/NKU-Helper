@@ -30,36 +30,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate{
             
             WXApi.registerApp("wx311e5377578127f1")
             
-            ShareSDK.registerApp("f61adcd245a4", activePlatforms: [SSDKPlatformType.typeWechat.rawValue,
-                                                                   SSDKPlatformType.typeQQ.rawValue,
-                                                                   SSDKPlatformType.typeFacebook.rawValue,
-                                                                   SSDKPlatformType.typeMail.rawValue,
-                                                                   SSDKPlatformType.typeCopy.rawValue,
-                                                                   SSDKPlatformType.typePrint.rawValue],
-                                 onImport: { (platform) in
-                                    switch platform {
-                                    case .typeWechat:
-                                        ShareSDKConnector.connectWeChat(WXApi.classForCoder())
-                                    case .typeQQ:
-                                        ShareSDKConnector.connectQQ(QQApiInterface.classForCoder(), tencentOAuthClass: TencentOAuth.classForCoder())
-                                    default:
-                                        break;
-                                    }
-                }) { (platform, appInfo) in
-                    switch platform {
-                    case SSDKPlatformType.typeWechat:
-                        //设置微信应用信息
-                        appInfo?.ssdkSetupWeChat(byAppId: "wx311e5377578127f1", appSecret: "83c6080bc1957d3f8f7306f946eb3667")
-                    case SSDKPlatformType.typeQQ:
-                        //设置QQ应用信息
-                        appInfo?.ssdkSetupQQ(byAppId: "1104934641", appKey: "W66uuRWLP9ZnFlkC", authType: SSDKAuthTypeBoth)
-                    case SSDKPlatformType.typeFacebook:
-                        //设置Facebook应用信息，其中authType设置为只用SSO形式授权
-                        appInfo?.ssdkSetupFacebook(byApiKey: "576897682460678", appSecret: "20c9e13a474f9d603e488272a033d7d9", authType: SSDKAuthTypeSSO)
-                    default:
-                        break
-                    }
-
+            ShareSDK.registerActivePlatforms([SSDKPlatformType.typeWechat.rawValue,
+                                              SSDKPlatformType.typeQQ.rawValue,
+                                              SSDKPlatformType.typeFacebook.rawValue,
+                                              SSDKPlatformType.typeMail.rawValue,
+                                              SSDKPlatformType.typeCopy.rawValue,
+                                              SSDKPlatformType.typePrint.rawValue],
+                                             onImport: { (platform) in
+                                                switch platform {
+                                                case .typeWechat:
+                                                    ShareSDKConnector.connectWeChat(WXApi.classForCoder())
+                                                case .typeQQ:
+                                                    ShareSDKConnector.connectQQ(QQApiInterface.classForCoder(), tencentOAuthClass: TencentOAuth.classForCoder())
+                                                default:
+                                                    break;
+                                                }
+            }) { (platform, appInfo) in
+                switch platform {
+                case SSDKPlatformType.typeWechat:
+                    //设置微信应用信息
+                    appInfo?.ssdkSetupWeChat(byAppId: "wx311e5377578127f1", appSecret: "83c6080bc1957d3f8f7306f946eb3667")
+                case SSDKPlatformType.typeQQ:
+                    //设置QQ应用信息
+                    appInfo?.ssdkSetupQQ(byAppId: "1104934641", appKey: "W66uuRWLP9ZnFlkC", authType: SSDKAuthTypeBoth)
+                case SSDKPlatformType.typeFacebook:
+                    //设置Facebook应用信息，其中authType设置为只用SSO形式授权
+                    appInfo?.ssdkSetupFacebook(byApiKey: "576897682460678", appSecret: "20c9e13a474f9d603e488272a033d7d9", authType: SSDKAuthTypeSSO)
+                default:
+                    break
+                }
             }
         }
         
