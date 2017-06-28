@@ -9,7 +9,16 @@
 #ifndef MOBFoundation_MOBFImageServiceTypeDef_h
 #define MOBFoundation_MOBFImageServiceTypeDef_h
 
-@class UIImage;
+#import <UIKit/UIKit.h>
+
+
+/**
+ 图片缓存处理
+ 
+ @param image 图片对象
+ @param imageData 图片的数据
+ */
+typedef NSData* (^MOBFImageGetterCacheHandler)(NSData *imageData);
 
 /**
  *  图片加载返回
